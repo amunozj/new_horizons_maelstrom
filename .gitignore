@@ -16,6 +16,7 @@ options
 *.hdp
 *.loc
 *.mp3
+*.old
 *.ogg
 *.pdf
 *.prj
@@ -28,6 +29,8 @@ options
 *.wav
 *.wmv
 *.xb
+*.xbx
+*.psd
 *.xls
 *.xlsx
 *.xps
