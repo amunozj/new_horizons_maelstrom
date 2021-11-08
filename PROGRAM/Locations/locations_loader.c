@@ -870,8 +870,14 @@ bool LocLoadModel(aref loc, string sat, string addition)
 	bool res;
 	string tech = "";
 	int level = 10;
+	attr = sat + ".tech";
 	if(CheckAttribute(loc, attr)) tech = loc.(attr);
-	if(CheckAttribute(loc, attr)) level = MakeInt(loc.(attr));
+	attr = sat + ".level";
+	//#20180615-01
+    if(CheckAttribute(loc, attr)) {
+        level = MakeInt(loc.(attr));
+        if(!bSeaActive) level += 10;
+    }
 	//Грузим модельку
 	string realModel = loc.(sat) + addition;
 	if(HasSubStr(sat,"back") && !ownDeckStarted())

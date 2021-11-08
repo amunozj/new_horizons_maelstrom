@@ -49,6 +49,7 @@ void WhrCreateSkyEnvironment()
         Sky.techSkyFog = "SkyFog";
 	}
 	else {
+	    Sky.Size = 2048; // == 512.0 * 4;
 	    Sky.techSky = "SkyLand";
         Sky.techSkyBlend = "SkyBlendLand";
         Sky.techskyAlpha = "skyblend_alphaLand";

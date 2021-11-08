@@ -2378,7 +2378,7 @@ void SetParameterData()
 	BattleInterface.ShipIcon.shiphpiconsize			= "64,70";
 	BattleInterface.ShipIcon.shipspuv				= "0.5,0.109,1.0,0.6875";
 
-	BattleInterface.ShipIcon.shipspoffset			= "33,-15";
+	BattleInterface.ShipIcon.shipspoffset			= "32,-15";
 	BattleInterface.ShipIcon.shipspiconsize			= "64,70";
 
 	BattleInterface.ShipIcon.shipclasstexturename	= "battle_interface\empty.tga.tx"; //was Shipclass.tga.tx changed to fool it, beacuse it doesn't exist in original Mod / Mirsaneli
@@ -2421,7 +2421,7 @@ void SetParameterData()
     string sOff = "iconoffset";
     int fTmp3 = RecalculateVIcon(70);
     if(bRealBattleInterface) {
-        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(59);
+        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(225);
         if(nCmpNum == 1) {
             BattleInterface.ShipIcon.iconoffset1 = fTmp + "," + fTmp2;
         }
