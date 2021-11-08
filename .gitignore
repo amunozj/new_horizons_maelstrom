@@ -1,0 +1,25 @@
+# log files
+*.log
+
+# Options
+options
+
+# Binary extensions
+*.ani
+*.an
+*.gm
+*.col
+*.COL
+*.qch
+*.tx
+*.tga
+*.wmv
+*.xps
+*.wav
+*.mp3
+*.ogg
+*.dat
+*.bin
+*.hdp
+*.ptc
+*.zap
