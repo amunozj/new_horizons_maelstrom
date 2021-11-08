@@ -17,6 +17,7 @@ options
 *.loc
 *.mp3
 *.ogg
+*.pdf
 *.prj
 *.ptc
 *.qch
