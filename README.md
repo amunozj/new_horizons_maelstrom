@@ -34,13 +34,13 @@ If you install Visual Studio Code, and the required extensions mentioned below, 
 1. Download and install Git for Windows:  <https://gitforwindows.org/>
 2. Download and install Visual Studio Code:  <https://code.visualstudio.com/>
 3. Once VSCode is installed, install the following extensions (clicking on the install button will open the extension in VSCode):
-    1. Visual Intellicode for debugging:  <https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode>
-    2. C/C++ Extension Pack: <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack>
-    3. C/C++ Intellisense: <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>
-    4. C.C++ Themes: <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes>
-    5. GitLense.  Git versioning elevated:  <https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens>
+    1. [Visual Intellicode for debugging](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+    2. [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+    3. [C/C++ Intellisense](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+    4. [C.C++ Themes](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes)
+    5. [GitLense](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens).  Git versioning elevated.  
 4. If you want to add some pretty cool quality of life extensions, we recommend these:
-   1. Braket pair colorizer.  You never knew you needed it so badly:  <https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer>
-   2. Better Comments.  Like bracket pair colorizer, but for comments:  <https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments>
-   3. Vscode Icons.  To make everything beautiful:  <https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons>
-   4. Better align.  Make everything align perfectly:  <https://marketplace.visualstudio.com/items?itemName=wwm.better-align>
+   1. [Braket pair colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer).  You never knew you needed it so badly.
+   2. [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments).  Like bracket pair colorizer, but for comments.
+   3. [Vscode Icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons).  To make everything beautiful.
+   4. [Better align](https://marketplace.visualstudio.com/items?itemName=wwm.better-align).  Make everything align perfectly.
