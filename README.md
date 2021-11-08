@@ -38,7 +38,9 @@ If you install Visual Studio Code, and the required extensions mentioned below, 
     2. [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
     3. [C/C++ Intellisense](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
     4. [C.C++ Themes](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes)
-    5. [GitLense](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens).  Git versioning elevated.  
+    5. [GitLense](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens).  Git versioning elevated.
+
+
 4. If you want to add some pretty cool quality of life extensions, we recommend these:
    1. [Braket pair colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer).  You never knew you needed it so badly.
    2. [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments).  Like bracket pair colorizer, but for comments.
