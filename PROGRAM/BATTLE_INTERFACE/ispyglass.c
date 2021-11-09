@@ -95,7 +95,8 @@ void SetSpyGlassData()
 		if (iShip != SHIP_NOTUSED)
 		{
 			//iShip = sti(RealShips[iShip].basetype);
-			if(ShipsTypes[iShip].name == "fort")
+			//if(ShipsTypes[iShip].name == "fort")
+			if(iShip == SHIP_FORT)
 			{
 				if (CheckAttribute(arScopeItm,"scope.show.ship_type") && sti(arScopeItm.scope.show.ship_type)!=0 )
 				{
@@ -104,7 +105,13 @@ void SetSpyGlassData()
 				// boal -->
 				if (CheckAttribute(arScopeItm,"scope.show.ship_name") && sti(arScopeItm.scope.show.ship_name)!=0 )
 				{
-					shipName =  chref.Ship.Name;
+					shipName = "Fort";
+                    if (CheckAttribute(chref, "town")) {
+                        shipName = TranslateString(FindTownName(chref.town), shipName);
+                    } else {
+                        shipName = TranslateString("", shipName);
+                    }
+                    if (CheckAttribute(chref, "Fort.Mode") == true && chref.Fort.Mode != FORT_NORMAL) shipName += " (" + XI_ConvertString("DESTROYED") + ")";
 				}
 				// boal <--
 				if (CheckAttribute(arScopeItm,"scope.show.cannons") && sti(arScopeItm.scope.show.cannons)!=0) {

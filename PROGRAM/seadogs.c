@@ -896,7 +896,7 @@ void OnLoad()
 	ReloadProgressEnd();
 
 	ResetTimeToNormal(); // PB
-LAi_SetImmortal(pchar, true);
+
 	actLoadFlag = 0;
 }
 
