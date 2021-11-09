@@ -1641,7 +1641,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.greeting = "Gr_Evaristo Filho";
 	AddGameCharacter(n, ch);
 
-// François L'Ollonais
+// Franï¿½ois L'Ollonais
 	ch.old.name = "Francois";
 	ch.old.lastname = "L'Ollonais";
 	ch.name = TranslateString("", "Francois");
@@ -3475,7 +3475,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = TranslateString("", "Caceres");
 	ch.id		= "Capitan Caceres";
 	ch.model	= "Espinosa";
-	ch.model.animation = "new_man"; // PB
+	ch.model.animation = "man"; // PB
 	ch.sex = "man";
 	ch.sound_type = "pirate";
 	ch.location	= "none";

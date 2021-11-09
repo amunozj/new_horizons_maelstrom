@@ -1253,11 +1253,11 @@ void CreateTavernsCharacters(ref n)
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	AddGameCharacter(n, ch);
 	
-	ch.old.name = "Ramón";
+	ch.old.name = "Ramï¿½n";
 	ch.old.lastname = "Figueras";
-	ch.name = TranslateString("", "Ramón");
+	ch.name = TranslateString("", "Ramï¿½n");
 	ch.lastname = TranslateString("", "Figueras");
-	ch.id		= "Ramón Figueras";
+	ch.id		= "Ramï¿½n Figueras";
 	ch.model = "9S_Nav";
 	ch.sex = "man";
 	ch.sound_type = "male_citizen";
@@ -2802,9 +2802,9 @@ void CreateTavernsCharacters(ref n)
 // <-- KK
 
 	ch.old.name = "Miguel";
-	ch.old.lastname = "García";
+	ch.old.lastname = "Garcï¿½a";
 	ch.name = TranslateString("", "Miguel");
-	ch.lastname = TranslateString("", "García");
+	ch.lastname = TranslateString("", "Garcï¿½a");
 	ch.id		= "Miguel Garcia";
 	ch.model	= "Sailor15";
 	ch.sex = "man";
@@ -3139,7 +3139,7 @@ void CreateTavernsCharacters(ref n)
 	ch.id		= "Mary Wood";
 	ch.model	= "Ladyinred";
 	ch.headmodel = "h_Ladyinred";
-	ch.model.animation = "man_woman_sit";
+	ch.model.animation = "woman_sit";
 	ch.sex = "woman";
 	GiveItem2Character(ch, "blade24");
 	ch.equip.blade = "blade24";
@@ -3593,9 +3593,9 @@ void CreateTavernsCharacters(ref n)
 
 // GR --> Officiant 2
 	ch.old.name = "Jimena";
-	ch.old.lastname = "López";
+	ch.old.lastname = "Lï¿½pez";
 	ch.name = TranslateString("", "Jimena");
-	ch.lastname = TranslateString("", "López");
+	ch.lastname = TranslateString("", "Lï¿½pez");
 	ch.id		= "Cartagena_officiant2";
 	ch.model	= "Jimena";	// Special model for officiant in special tavern - GR
 	ch.sex = "woman";

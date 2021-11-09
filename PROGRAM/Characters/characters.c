@@ -362,9 +362,9 @@ void SetDefaultSitIdle(ref character)
 	character.actions.idle.i1 = "Sit_Look_Around";
 	character.actions.idle.i2 = "Sit_Lower_head";
 	character.actions.idle.i3 = "Sit_WaveFly";
-	character.actions.idle.i5 = "Sit_Blew_1";
-	character.actions.idle.i6 = "Sit_Blew_1";
-	character.actions.idle.i7 = "Sit_Blew_1";
+	character.actions.idle.i5 = "Sit_Idle01";
+	character.actions.idle.i6 = "Sit_Idle02";
+	character.actions.idle.i7 = "Sit_Idle03";
 }
 
 void SetDefaultNormWalk(ref character)
