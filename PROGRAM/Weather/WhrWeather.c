@@ -1270,7 +1270,7 @@ int FindWeather(string sWeatherID)
 	return -1;
 }
 
-//navy --> Rain вернул
+//navy --> Rain пїЅпїЅпїЅпїЅпїЅпїЅ
 void Whr_SetRainSound(bool _set, bool _isNight)
 {
 //	return;
@@ -1348,13 +1348,13 @@ void Whr_WindChange()
 	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 
-	CheckIslandChange();
+	// CheckIslandChange();
 }
 
 bool Whr_isRainEnable()
 {
 	bool bRain  = true;
-	if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(&loadedLocation)) // pchar проверяется для гл меню
+	if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(&loadedLocation)) // pchar пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
         if (CheckAttribute(&loadedLocation, "environment.weather.rain") && !sti(loadedLocation.environment.weather.rain))
 		{

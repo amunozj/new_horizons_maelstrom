@@ -420,8 +420,7 @@ string GetMapIslandzone(string Island)
 			{
 				tempIslandDist = tempDist;
 				// Screwface : should fix the no-existing label error
-				if (Checkattribute(arLandfalls,(sLandfallName) + ".label") &&
-                    Checkattribute(arLandfalls,(sLandfallName) + ".label.text"))
+				if (Checkattribute(arLandfalls,(sLandfallName) + ".label"))
 				{
 					if (worldMap.islands.(LandfallIsland).locations.(sLandfallName).label.text == "")
 						tempLandfall = worldMap.islands.(LandfallIsland).locations.(sLandfallName).label.old.text;
@@ -1149,7 +1148,7 @@ void DisplaySeaviewCoords()
 
 void DSTrace(string logtext)
 {
-return;		// LDH 26Mar09
+// return;		// LDH 26Mar09
 	if (DS_DEBUGINFO)
 	{
 		LogIt(logtext);
