@@ -15,11 +15,13 @@ options
 *.grs
 *.hdp
 *.itch
+*.jpg
 *.loc
 *.mp3
 *.old
 *.ogg
 *.pdf
+*.png
 *.prj
 *.ptc
 *.qch
