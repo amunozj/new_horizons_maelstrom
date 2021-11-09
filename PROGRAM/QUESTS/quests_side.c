@@ -2288,7 +2288,7 @@ void SideQuestComplete(string sQuestName)
 			LAi_ActorDialog(sld, PChar, "", 2.0, 0);
 			AddXP(pchar, SKILL_SAILING, 500, XP_GROUP_OFFIC);
 		break;
-//pär
+//pï¿½r
 		case "Returned in Greenford for Apothecary":
 			//RestoreCharacterShip(pchar);//PW moved to reduce food use and possible deaths and mutiny and in loop
 			for (i = 0; i < COMPANION_MAX; i++) {//PW now loop for whole pchar fleet
@@ -2396,7 +2396,7 @@ void SideQuestComplete(string sQuestName)
 			LAi_QuestDelay("Finish Beggar Find",0);
 			LAi_QuestDelay("Cartagena_hotel_plants_start",0);
 		break;
-//pär
+//pï¿½r
 		case "Got Hotel Flyer":
 			AddQuestRecord("plants",39);
 			LAi_QuestDelay("Finish Beggar Find",0);
@@ -2889,7 +2889,7 @@ void SideQuestComplete(string sQuestName)
 			
            		
 		break;
-//pär
+//pï¿½r
 
 ///////////////////////////////////////////////////////////////
 ///// Smugglers: Thomas O Reily is annoying
@@ -3538,7 +3538,7 @@ void SideQuestComplete(string sQuestName)
 		case "mendes_away_forewer":
 			LAi_SetActorType(characterFromID("Vigila Mendes"));
 			LAi_ActorGoToLocation(characterFromID("Vigila Mendes"), "reload", "locator2", "none", "", "", "", 3.0);
-			//ZAID MURRO - çàêðûâàåì âîçìîæíîñòü ïðîõîäèòü ýòîò êâåñò
+			//ZAID MURRO - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 			//ChangeCharacterAddress(characterFromID("Zaid Murro"), "none", ""); //NK disable this (dunno why it's here but it breaks Zaid)
 		break;
 
@@ -6868,7 +6868,7 @@ void SideQuestComplete(string sQuestName)
 		case "pushdavy":
 			LAi_SetActorType(pchar);
 			LAi_SetActorType(characterFromID("Davy Jones"));
-			LAi_ActorAnimation(pchar, "attack_2", "davywater", 0.0);
+			LAi_ActorAnimation(pchar, "attack_fast_2", "davywater", 0.0);
 			PlaySound("OBJECTS\duel\punch1.wav");
 		break;
 
@@ -11726,7 +11726,7 @@ void SideQuestComplete(string sQuestName)
 ///////////////////////////////////////////////////////////////////////
 // The Kapitein of Kralendijk
 // By Grey Roger
-// Based very loosely on the real life story of the Captain of Köpenick
+// Based very loosely on the real life story of the Captain of Kï¿½penick
 ///////////////////////////////////////////////////////////////////////
 		case "Kapitein_follow_proposer_upstairs":
 			ChangeCharacterAddressGroup(characterFromID("Willem Voigt"), "Philipsburg_tavern", "tables", "table5");
@@ -12093,7 +12093,7 @@ void SideQuestComplete(string sQuestName)
 
 		case "kapitein_get_money2":
 			PlayStereoSound("INTERFACE\took_item.wav");
-			AddMoneyToCharacter(pchar, 35574);		// About 10 times the number of Marks that the real Captain of Köpenick got.
+			AddMoneyToCharacter(pchar, 35574);		// About 10 times the number of Marks that the real Captain of Kï¿½penick got.
 			PChar.quest.kapitein = "got_money";
 			LAi_SetActorType(characterFromID("Dou_soldier_1"));
 			Characters[GetCharacterIndex("Dou_soldier_1")].dialog.CurrentNode = "keep_them_here";
