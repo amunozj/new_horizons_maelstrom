@@ -1145,10 +1145,10 @@ string	GetLightingPath()
     switch(sLightingPathOld)
     {
     case "day11":
-        sLightingPath = "day2";
+        sLightingPath = "day1";
         break;
     case "day12":
-        sLightingPath = "day2";
+        sLightingPath = "day1";
         break;
     case "day13":
         sLightingPath = "day1";
@@ -1163,13 +1163,13 @@ string	GetLightingPath()
         sLightingPath = "day1";
         break;
     case "day17":
-        sLightingPath = "day2";
+        sLightingPath = "day1";
         break;
     case "day18":
-        sLightingPath = "day2";
+        sLightingPath = "day1";
         break;
     case "evening19":
-        sLightingPath = "evening1";
+        sLightingPath = "evening3";
         break;
     case "evening20":
         sLightingPath = "night1";
@@ -1205,7 +1205,7 @@ string	GetLightingPath()
         sLightingPath = "night1";
         break;
     case "morning7":
-        sLightingPath = "day3";
+        sLightingPath = "day1";
         break;
     case "morning8":
         sLightingPath = "morning1";
@@ -1217,13 +1217,13 @@ string	GetLightingPath()
         sLightingPath = "morning1";
         break;
     case "storm1":
-        sLightingPath = "evening1";
+        sLightingPath = "evening3";
         break;
     case "storm2":
-        sLightingPath = "evening2";
+        sLightingPath = "evening3";
         break;
     case "storm3":
-        sLightingPath = "evening1";
+        sLightingPath = "evening3";
         break;
     case "storm4":
         sLightingPath = "night1";
@@ -1319,7 +1319,7 @@ void Whr_SetRainSound(bool _set, bool _isNight)
 string Whr_GetRainyLightningPath()
 {
 	//trace("__GET__COL__");
-	return "storm1";
+	return "evening3"; //storm1";
 }
 //navy <--
 
