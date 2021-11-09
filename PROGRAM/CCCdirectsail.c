@@ -420,7 +420,8 @@ string GetMapIslandzone(string Island)
 			{
 				tempIslandDist = tempDist;
 				// Screwface : should fix the no-existing label error
-				if (Checkattribute(arLandfalls,(sLandfallName) + ".label"))
+				if (Checkattribute(arLandfalls,(sLandfallName) + ".label") &&
+                    Checkattribute(arLandfalls,(sLandfallName) + ".label.text"))
 				{
 					if (worldMap.islands.(LandfallIsland).locations.(sLandfallName).label.text == "")
 						tempLandfall = worldMap.islands.(LandfallIsland).locations.(sLandfallName).label.old.text;
