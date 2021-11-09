@@ -1148,7 +1148,7 @@ void DisplaySeaviewCoords()
 
 void DSTrace(string logtext)
 {
-return;		// LDH 26Mar09
+// return;		// LDH 26Mar09
 	if (DS_DEBUGINFO)
 	{
 		LogIt(logtext);
