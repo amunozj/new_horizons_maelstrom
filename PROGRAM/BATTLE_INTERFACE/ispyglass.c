@@ -91,11 +91,12 @@ void SetSpyGlassData()
 
 	if(CheckAttribute(chref,"Ship.Type"))
 	{
-		int iShip = sti(chref.Ship.Type);
+		int iShip = GetCharacterShipType(chref); //sti(chref.Ship.Type);
 		if (iShip != SHIP_NOTUSED)
 		{
 			//iShip = sti(RealShips[iShip].basetype);
 			//if(ShipsTypes[iShip].name == "fort")
+			trace("iShip: " + iShip + ", SHIP_FORT: " + SHIP_FORT);
 			if(iShip == SHIP_FORT)
 			{
 				if (CheckAttribute(arScopeItm,"scope.show.ship_type") && sti(arScopeItm.scope.show.ship_type)!=0 )
