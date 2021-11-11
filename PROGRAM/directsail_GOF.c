@@ -88,7 +88,7 @@ void CheckIslandChange()
 		DSGTrace("Directsail GOF would trigger here");
 
 	}
- }
+}
 
 float getRTplayerShipX()
 {
