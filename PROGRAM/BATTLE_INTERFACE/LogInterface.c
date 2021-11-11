@@ -853,6 +853,7 @@ void procUpdateTime()
 			{
 				if ( ! bIslandChecked )
 				{
+					CheckIslandChange();
 					Trace("== Directsail called at " + timestring);
 					mchr.directsail.count = stf(mchr.directsail.count) + DirectsailCheckFrequency/60.0; // update encounter frequency count
 //TraceAndLog("Directsail encounter check = " + stf(mchr.directsail.count));

@@ -13,7 +13,7 @@ int DIRECTENCOUNTERCHANCE;				// Set in function InitOpenSeaMod() in PROGRAM\NK.
 int DIRECTENCOUNTERDISTANCE;			// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 float ENCOUNTERBREAK = 1.0;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 
-#define DS_DEBUGINFO			0		// Set this to 1 to get on-screen debug information, 0 to get just normal information - 12Jan09
+#define DS_DEBUGINFO			1		// Set this to 1 to get on-screen debug information, 0 to get just normal information - 12Jan09
 
 
 //------------------------ Initial checks and trigger -----------------------------
@@ -117,13 +117,15 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 	// Maximus Jan07; aborts Directsail if you are below decks 
 
 	// once all those conditions are checked we trigger an event that runs DS some seconds later
-	if (ActualUpdate)
-	{
-		SetEventHandler("DirectsailRun", "DirectsailRun", 0);  // Jan 07
-		int delay = 12000;	// LDH always one game minute delay in sea time -30Dec08
-		if(CheckAttribute(GetMainCharacter(),"mapEnter")) { delay = 500; }//MAXIMUS: check added into BattleInterface for islands search after enable MapEnter
-		PostEvent("DirectsailRun", delay);  // Jan 07, calls DirectsailRun() after delay to create break
-	}
+	// if (ActualUpdate)
+	// {
+	// 	SetEventHandler("DirectsailRun", "DirectsailRun", 0);  // Jan 07
+	// 	int delay = 12000;	// LDH always one game minute delay in sea time -30Dec08
+	// 	if(CheckAttribute(GetMainCharacter(),"mapEnter")) { delay = 500; }//MAXIMUS: check added into BattleInterface for islands search after enable MapEnter
+	// 	PostEvent("DirectsailRun", delay);  // Jan 07, calls DirectsailRun() after delay to create break
+	// }
+
+	DSTrace("Classing DS would trigger here")
 	return true;
 }
 
@@ -310,6 +312,8 @@ string GetMapIslandzone(string Island)
 	float pmX = MakeFloat(worldMap.playerShipX);
 	float pmZ = MakeFloat(worldMap.playerShipZ);
 
+	DSTrace("Ship position: " + pmX + "," + pmZ)	
+
 	// LDH 29Dec08
 	float ClosestDist1 = 99999.0;	// arbitrary high value
 	string ClosestIsland1 = "";
@@ -367,13 +371,13 @@ string GetMapIslandzone(string Island)
 			}
 		}
 	}
-/*
+
 	// LDH traces for testing closest island 30Dec08
-	DSTrace("=== DirectSail Closest1 " + StrLeft(FindIslandName(ClosestIsland1)+"        ",10) + " distance: " + makeint(ClosestDist1*WDM_MAP_TO_SEA_SCALE) + " yards");
-	DSTrace("=== DirectSail Closest2 " + StrLeft(FindIslandName(ClosestIsland2)+"        ",10) + " distance: " + makeint(ClosestDist2*WDM_MAP_TO_SEA_SCALE) + " yards");
-	DSTrace("=== DirectSail Closest3 " + StrLeft(FindIslandName(ClosestIsland3)+"        ",10) + " distance: " + makeint(ClosestDist3*WDM_MAP_TO_SEA_SCALE) + " yards");
-	DSTrace("=== DirectSail");
-*/
+	// DSTrace("=== DirectSail Closest1 " + StrLeft(FindIslandName(ClosestIsland1)+"        ",10) + " distance: " + makeint(ClosestDist1*WDM_MAP_TO_SEA_SCALE) + " yards");
+	// DSTrace("=== DirectSail Closest2 " + StrLeft(FindIslandName(ClosestIsland2)+"        ",10) + " distance: " + makeint(ClosestDist2*WDM_MAP_TO_SEA_SCALE) + " yards");
+	// DSTrace("=== DirectSail Closest3 " + StrLeft(FindIslandName(ClosestIsland3)+"        ",10) + " distance: " + makeint(ClosestDist3*WDM_MAP_TO_SEA_SCALE) + " yards");
+	// DSTrace("=== DirectSail");
+
 	// LDH 03Jan09
 	// Now find the closest landfall on these three islands
 

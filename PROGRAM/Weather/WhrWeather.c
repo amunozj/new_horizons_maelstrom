@@ -599,6 +599,7 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	if(bSeaActive && !ownDeckStarted())
 	{
 		PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
+		CheckIslandChange();
 		DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
 	}
 }
@@ -1348,7 +1349,7 @@ void Whr_WindChange()
 	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 
-	// CheckIslandChange();
+	CheckIslandChange();
 }
 
 bool Whr_isRainEnable()

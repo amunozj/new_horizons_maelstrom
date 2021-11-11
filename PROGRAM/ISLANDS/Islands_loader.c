@@ -2,7 +2,16 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	0;
+#define DIRECTSAILDEBUG	1;
+
+#define DIR_PORTBOW 1
+#define DIR_FORWARD 2
+#define DIR_STARBOW 3
+#define DIR_STAR 4
+#define DIR_PORT 5
+#define DIR_PORTSTERN 6
+#define DIR_ABAFT 7
+#define DIR_STARSTERN 8
 
 // #define DIRECTENCOUNTERCHANCE 50   // chance in percent that an encounter fleet appears every hour
 #define DIRECTENCOUNTERDISTANCE 1000 // distance from player at which random ships appear
@@ -12,16 +21,16 @@ float wmDistanceNow = 75000.0;
 //Boyer POTC change
 string DiscoveredIsland(float discoveryDistance)
 {
-    if (DIRECTSAILDEBUG) trace("DiscoveredIsland worldMap.playerShipX = " + worldMap.playerShipX);
+    DSGTrace("DiscoveredIsland worldMap.playerShipX = " + worldMap.playerShipX);
 	string sReturn = WDM_NONE_ISLAND;
 	int nextisland = getWMclosestIsland();
 	if(nextisland < 0)
 		return sReturn;
-	if (DIRECTSAILDEBUG) trace("DiscoveredIsland distance = " + wmDistanceNow);
+	DSGTrace("DiscoveredIsland distance = " + wmDistanceNow);
 	if(wmDistanceNow > discoveryDistance)
 		return sReturn;
 	sReturn = Islands[nextisland].id;
-	if (DIRECTSAILDEBUG) trace("DiscoveredIsland found: " + sReturn);
+	DSGTrace("DiscoveredIsland found: " + sReturn);
 	return sReturn;
 }
 
@@ -29,23 +38,24 @@ void CheckIslandChange()
 {
 	int nextisland = getRTclosestIsland();
 
-	if (DIRECTSAILDEBUG) trace("CheckIslandChange: nextisland=" + nextisland);
+	DSGTrace("CheckIslandChange: nextisland=" + nextisland);
 
-	if (nextisland != FindIsland(worldMap.island))
+	if (nextisland != FindIsland(pchar.location))
 	{
 		//only switch if pretty close
 		ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
 		string sNewIslandId = rIsland.id;
-		string sIslandNow = worldMap.island;
+		string sIslandNow = pchar.location;
 
-		float RTplayerShipX = getRTplayerShipX();
-		float RTplayerShipZ = getRTplayerShipZ();
+		float RTplayerShipX = getRelRTplayerShipX(pchar.location);
+		float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
+
 		float distToCurIsland;
-		if (worldMap.island == WDM_NONE_ISLAND) distToCurIsland = 50000.0;
+		if (pchar.location == WDM_NONE_ISLAND) distToCurIsland = 50000.0;
 		else distToCurIsland = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(sIslandNow).position.x), stf(worldMap.islands.(sIslandNow).position.z));
 		float distToClosestIsland = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(sNewIslandId).position.x), stf(worldMap.islands.(sNewIslandId).position.z));
 
-		if (DIRECTSAILDEBUG) trace("CheckIslandChange: distToCurIsland=" + distToCurIsland + ", distToClosestIsland=" + distToClosestIsland);
+		DSGTrace("CheckIslandChange: distToCurIsland=" + distToCurIsland + ", distToClosestIsland=" + distToClosestIsland);
 
 		//only change if getting close
 		if (distToClosestIsland * 2 > distToCurIsland)
@@ -60,29 +70,31 @@ void CheckIslandChange()
 		int neutralDistLimit = 1000;
 
 		nextenemy = FindClosestShipofRel(GetMainCharacterIndex(), &enemydist, RELATION_ENEMY);
-		if (DIRECTSAILDEBUG) trace("DirectsailCheck; next enemy: "+nextenemy + " dist: "+enemydist);
+		DSGTrace("DirectsailCheck; next enemy: "+nextenemy + " dist: "+enemydist);
 		if(nextenemy!= -1 && enemydist<enemyDistLimit )
 		{
-			if (DIRECTSAILDEBUG) trace("Directsail aborted due to hostile ship, dist = " + enemydist);	// LDH - 07Jan09
+			DSGTrace("Directsail aborted due to hostile ship, dist = " + enemydist);	// LDH - 07Jan09
 			return;
 		}
 
 		// Jan 07, same for neutral ships
 		nextenemy = FindClosestShipofRel(GetMainCharacterIndex(), &enemydist, RELATION_NEUTRAL);
-		if (DIRECTSAILDEBUG) trace("DirectsailCheck; next neutral ship: "+nextenemy + " dist: "+enemydist);
+		DSGTrace("DirectsailCheck; next neutral ship: "+nextenemy + " dist: "+enemydist);
 		if(nextenemy!= -1 && enemydist<neutralDistLimit && Characters[nextenemy].ship.type != SHIP_FORT ) // LDH added fort check 08Jan09
 		{
-		  if (DIRECTSAILDEBUG) trace("Directsail aborted due to neutral ship, dist = " + enemydist);	// LDH added logit to trace - 07Jan09
+		  DSGTrace("Directsail aborted due to neutral ship, dist = " + enemydist);	// LDH added logit to trace - 07Jan09
 		  return;
 		}
 
 		// looks like this doesn't always work, so I added another check for being in battle
 		if(!bMapEnter) {
-			if (DIRECTSAILDEBUG) trace("Directsail aborted in battle");
+			DSGTrace("Directsail aborted in battle");
 			return;
 		}		// LDH added logit to trace 07Jan09
 
 		ChangeSeaMapNew(sNewIslandId);
+
+		DSGTrace("Directsail GOF would trigger here");
 
 	}
  }
@@ -107,6 +119,34 @@ float getRTplayerShipZ()
 	return RTplayerShipZ;
 }
 
+float getRelRTplayerShipX(string Island)
+{
+	/*
+		Function to determine the x position of the player given an island
+	*/
+
+	float zeroX = MakeFloat(worldMap.islands.(Island).position.rx);
+	float SeaX = stf(pchar.Ship.Pos.x);
+	int scale = WDM_MAP_TO_SEA_SCALE;
+
+	float RTplayerShipX = (SeaX/scale) + zeroX;
+	return RTplayerShipX;
+}
+
+float getRelRTplayerShipZ(string Island)
+{
+	/*
+		Function to determine the z position of the player given an island
+	*/
+
+	float zeroZ = MakeFloat(worldMap.islands.(Island).position.rz);
+	float SeaZ = stf(pchar.Ship.Pos.z);
+	int scale = WDM_MAP_TO_SEA_SCALE;
+
+	float RTplayerShipZ = (SeaZ/scale) + zeroZ;
+	return RTplayerShipZ;
+}
+
 float getRTplayerShipAY()
 {
 	float RTplayerShipAY = stf(pchar.Ship.Ang.y);
@@ -116,7 +156,7 @@ float getRTplayerShipAY()
 //Boyer add
 int getWMclosestIsland()
 {
-	if(DIRECTSAILDEBUG) trace("getWMclosestIsland. curr island: " + worldMap.island);
+	DSGTrace("getWMclosestIsland. curr island: " + pchar.location);
 
 	float RTplayerShipX = worldMap.playerShipX;
 	float RTplayerShipZ = worldMap.playerShipZ:
@@ -139,10 +179,13 @@ int getWMclosestIsland()
 		}
 		islandTemp = rIsland.id;
 
+		float isX = stf(worldMap.islands.(islandTemp).position.x);
+		float isZ = stf(worldMap.islands.(islandTemp).position.z);		
+
 		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
-		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(islandTemp).position.x), stf(worldMap.islands.(islandTemp).position.z));
+		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
 		distance = distance / scale;
-		if(DIRECTSAILDEBUG) trace("getWMclosestIsland. islandTemp=" + islandTemp + ", distance=" + distance + ", wmDistanceNow=" + wmDistanceNow);
+		DSGTrace("getWMclosestIsland. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", wmDistanceNow=" + wmDistanceNow);
 
 		if (distance < wmDistanceNow)
 		{
@@ -151,17 +194,20 @@ int getWMclosestIsland()
 		}
 	}
 
-	if(DIRECTSAILDEBUG) trace("getWMclosestIsland. closest island: " + Islands[nextisland].id + ", idx=" + nextisland);
+	DSGTrace("getWMclosestIsland. closest island: " + Islands[nextisland].id + ", idx=" + nextisland);
 
 	return nextisland;
 }
 
 int getRTclosestIsland()
 {
-	if(DIRECTSAILDEBUG) trace("getRTclosestIsland. curr island: " + worldMap.island);
+	DSGTrace("getRTclosestIsland. pchar.location: " + pchar.location);
+	DSGTrace("getRTclosestIsland. curr island: " + worldMap.island);
 
-	float RTplayerShipX = getRTplayerShipX();
-	float RTplayerShipZ = getRTplayerShipZ();
+	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
+	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
+
+	DSGTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ)
 
 	float distance;
 	float iDistanceNow = 50000.0;
@@ -170,16 +216,19 @@ int getRTclosestIsland()
 	ref rIsland;
 	string islandTemp;
 
-	for (int inum=0; inum<MAX_ISLANDS; inum++)
+	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
 	{
 		rIsland = GetIslandByIndex(inum);//makeref(rIsland, Islands[inum]);
 		if(!CheckAttribute(rIsland, "id")) continue;
 		islandTemp = rIsland.id;
 
-		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
-		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(islandTemp).position.x), stf(worldMap.islands.(islandTemp).position.z));
+		float isX = stf(worldMap.islands.(islandTemp).position.x);
+		float isZ = stf(worldMap.islands.(islandTemp).position.z);			
 
-		if(DIRECTSAILDEBUG) trace("getRTclosestIsland. islandTemp=" + islandTemp + ", distance=" + distance + ", iDistanceNow=" + iDistanceNow);
+		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
+		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
+
+		DSGTrace("getWMclosestIsland. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", wmDistanceNow=" + iDistanceNow);
 
 		if (distance < iDistanceNow)
 		{
@@ -188,7 +237,7 @@ int getRTclosestIsland()
 		}
 	}
 
-	if(DIRECTSAILDEBUG) trace("getRTclosestIsland. closest island: " + Islands[nextisland].id + ", idx=" + nextisland);
+	DSGTrace("getRTclosestIsland. closest island: " + Islands[nextisland].id + ", idx=" + nextisland);
 
 	return nextisland;
 }
@@ -208,8 +257,8 @@ void Sea2Sea_Reload()
 
 	object seaLoginToSea;
 
-	float CX = getRTplayerShipX();
-	float CZ = getRTplayerShipZ();
+	float CX = getRelRTplayerShipX(pchar.location);
+	float CZ = getRelRTplayerShipZ(pchar.location);
 	float CAY = getRTplayerShipAY();
 	int nextisland = getRTclosestIsland();
 	ref rIsland = GetIslandByIndex(nextisland);
@@ -240,3 +289,43 @@ void Sea2Sea_Reload()
 
 }
 
+void DSGTrace(string logtext)
+{
+	if (DIRECTSAILDEBUG)
+	{
+		LogIt(logtext);
+	}
+	Trace("DSGOF: " + logtext);
+	return;
+}
+
+int ClosestDirFA(float dir)
+{
+	/*
+		Function to determine the heading of the ship to only direct sail to islands roughly 
+		ahead and not necessarily the closest
+
+	*/
+    float aX[6];
+    float aZ[6];
+    //Bug in compiler...array inits don't work in .c files
+    aX[0] = -1.0; aX[1] = 0.0; aX[2] = 1.0; aX[3] = -1.0; aX[4] = 0.0; aX[5] = 1.0;
+    aZ[0] = 0.5; aZ[1] = 1.0; aZ[2] = 0.5; aZ[3] = 0.0; aZ[4] = -1.0; aZ[5] = 0.0;
+
+    float maxDot = -99999999.0;
+    int nRet = 0;
+    for(int i = 0; i < 6; i++) {
+        float v = GetAngleY(aX[i], aZ[i]);
+        float t = GetDotProduct(v, dir);
+        if (t > maxDot) {
+             nRet = i + 1;
+             maxDot = t;
+         }
+    }
+    if(nRet < 4)
+        nRet = DIR_FORWARD;
+    else
+        nRet = DIR_ABAFT;
+
+    return nRet;
+}
