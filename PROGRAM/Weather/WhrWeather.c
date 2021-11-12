@@ -11,7 +11,7 @@
 #include "weather\WhrTornado.c"
 #include "weather\WhrAstronomy.c"
 
-#define WIND_NORMAL_POWER		30.0 // NK
+#define WIND_NORMAL_POWER		18.0 // NK
 
 #define MAX_WEATHERS   35
 
