@@ -6,7 +6,7 @@
 // That makes accurate navigation possible. However, due to the confined worldmap voyages are rather short, and sometimes you appear BEHIND a coast.
 // To try this set this to 1, with 0 you'll use the old "islandcell" islandhopping navigation
 
-#define MINES					1		// set to 0 to disable encounters with random mines
+#define MINES					0		// set to 0 to disable encounters with random mines
 
 int DirectsailCheckFrequency = 15;		// check for new island every this many minutes - 07Jan09, also used for abort distances 12Jan09
 int DIRECTENCOUNTERCHANCE;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c

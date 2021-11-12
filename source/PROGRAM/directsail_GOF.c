@@ -2,7 +2,7 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	1;
+#define DIRECTSAILDEBUG	0;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
 
