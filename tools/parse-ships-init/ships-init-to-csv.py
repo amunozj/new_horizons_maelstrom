@@ -53,8 +53,14 @@ def ships_make_csv(
                 if shipProperty in column_names:
                     if ',' in shipValue:
                         shipValue = np.array(shipValue.split(',')).astype('float')
+                    else:
+                        shipValue = np.array([shipValue])
 
-                    shipsdDf.loc[ship_n, shipProperty] = shipValue
+                    if shipValue.shape[0] == 1:
+                        shipsdDf.loc[ship_n, shipProperty] = shipValue[0]
+                    else:
+                        shipsdDf.loc[ship_n, shipProperty] = shipValue[0]
+                        shipsdDf.loc[ship_n, shipProperty+'2'] = shipValue[1]
 
  
     initShipsFile.close()
