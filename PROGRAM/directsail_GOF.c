@@ -289,3 +289,34 @@ void DSGTrace(string logtext)
 	Trace("DSGOF: " + logtext);
 	return;
 }
+
+
+void ProcessCCCkeys(string ControlName) // Jan07, called by Seadogs.c. Put the code here so that I don't have to mess with seadogs.c for every control change
+{
+ 	if(bSeaActive && !bAbordageStarted) // checks if you are in sailing mode
+	{
+		switch(ControlName)
+		{
+			 case "BI_ChargeKey9": //"Minedrop":
+				if(GetCurrentPeriod() >= PERIOD_REVOLUTIONS) LaunchMine(GetMainCharacter());
+			 break;
+
+			 case "BI_ChargeKey0": //Toggle directsail
+				if(CheckAttribute(GetMainCharacter(),"nodirectsail"))
+				{
+					DeleteAttribute(GetMainCharacter(),"nodirectsail");
+					Logit(TranslateString("","Directsail mod active"));
+				}
+				else
+				{
+					characters[GetMainCharacterIndex()].nodirectsail = 1;
+					Logit(TranslateString("","Directsail mod deactivated"));
+				}
+			 break;
+
+			 case "BI_ChargeKey8": //"Seaview position":
+				 DisplaySeaviewCoords();
+			 break;
+		}
+	}
+}
