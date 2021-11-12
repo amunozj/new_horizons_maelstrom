@@ -39,5 +39,10 @@ options
 *.xps
 *.zap
 
+launch.json
+
 # Save folder
 source/SAVE
+
+# Screenshots
+source/Screenshots
