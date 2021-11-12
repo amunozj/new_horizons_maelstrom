@@ -58,7 +58,7 @@ def ships_make_csv(
 
  
     initShipsFile.close()
-    shipsdDf.to_csv('ship_init.csv')
+    shipsdDf.to_csv('ship_init_COAS.csv')
 
  
 
