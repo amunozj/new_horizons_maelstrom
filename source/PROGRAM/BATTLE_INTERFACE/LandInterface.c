@@ -233,7 +233,7 @@ ref BLI_CheckCommand()
 		break;
 	}
 
-	if(!bUsed) objLandInterface.UserIcons.cancel.enable = true;
+	if(!bUsed) objLandInterface.UserIcons.cancel.enable = false;
 	return &g_intRetVal;
 }
 
@@ -387,9 +387,9 @@ void BLI_SetObjectData()
     int fTmp, fTmp2;
 	DeleteAttribute(&objLandInterface,"");
 	objLandInterface.data.riskAlarm = 0;
-	// индикатор тревоги
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	objLandInterface.data.alarm = 0.0;
-	// персы вместе с нами
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	ref mainCh = GetMainCharacter();
 	aref ar;
 	int i,cn;
@@ -409,7 +409,7 @@ void BLI_SetObjectData()
 	}
 
 	BLI_SetMessageParameters();
-	// текстуры
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	int idLngFile = LanguageOpenFile("commands_name.txt");
 	objLandInterface.CommandTextures.list.t0.name = "battle_interface\LandCommands.tga";
 	objLandInterface.CommandTextures.list.t0.xsize = 4;
@@ -470,7 +470,7 @@ void BLI_SetObjectData()
 	objLandInterface.CommandTextures.list.t16.ysize = 16;
 
 	objLandInterface.CommandTextures.CommandTexNum = 0;
-	// список команд
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	objLandInterface.Commands.Cancel.enable			= false;
 	objLandInterface.Commands.Cancel.picNum			= 0;
 	objLandInterface.Commands.Cancel.selPicNum			= 1;
@@ -593,7 +593,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ActivateRush.event	= "BI_ActivateRush";
 	objLandInterface.Commands.ActivateRush.note		= LanguageConvertString(idLngFile, "land_ActivateRush");
 
-	// список пользовательских картинок
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// cancel icon
 	objLandInterface.UserIcons.cancel.enable = true;
 	objLandInterface.UserIcons.cancel.pic = 0;
@@ -723,7 +723,7 @@ void BLI_SetShowParameters()
 	ar.heightHealth = RecalculateVIcon(16);
 	ar.distHealth = RecalculateVIcon(4);
 
-	// высота и отступ для количества зарядов пистолета
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ar.GunShootHeight = RecalculateHIcon(16);
 	ar.GunShootSpace = RecalculateVIcon(2);
 
@@ -1639,11 +1639,11 @@ bool SetUsedPotionIcons()
 			UI_name = "potion"+UI_idx;
 			objLandInterface.UserIcons.(UI_name).enable = true;
 			nPicNum = GetPotionPicture(arItm);
-			objLandInterface.UserIcons.(UI_name).pic = nPicNum;
+			objLandInterface.UserIcons.(UI_name).pic = 10;
 			nTexNum = GetPotionTexture(arItm);
 			objLandInterface.UserIcons.(UI_name).tex = nTexNum;
 			if(nTexNum==4){
-				objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 2;
+				objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 8;
 			}
 			else {
 				objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 1;
