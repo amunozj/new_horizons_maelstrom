@@ -1,6 +1,8 @@
 import argparse
 import os
 import sys
+import numpy as np
+import pandas as pd
 
 
 parser = argparse.ArgumentParser()
@@ -12,14 +14,6 @@ parser.add_argument(
     help='Location of the New Horizons mod'
 )
 
-parser.add_argument(
-    '--output_dir',
-    type=str,
-    default=None,
-    required=True,
-    help='Folder for converted output'
-)
-
 class ship_model:
     """
     Model class to store a dictionary with all the necessary parameters as well
@@ -27,8 +21,7 @@ class ship_model:
     """
 
     def __init__(self, model_list,
-                nh_dir=None,
-                output_dir=None):
+                nh_dir=None):
         """
         Initialization function of the storm_model class
 
@@ -126,8 +119,7 @@ class ship_model:
 
 
 def ships_add_wake(
-    nh_dir=None,
-    output_dir=None
+    nh_dir=None
     ):
     """Batch process initModels.c
 
@@ -143,100 +135,42 @@ def ships_add_wake(
     initShipsFile = open(initShipsFile, 'r')
     initModelslines = initShipsFile.readlines()
 
-    initShipsOutputFile = output_dir + 'Ships_init.c'
-    initShipsOutputFile = open(initShipsOutputFile, 'w')
+    column_names = ['Name', 'Class', 'Weight', 'Capacity', 'CannonsQuantity', 'Track1.ZStart', 'Track1.LifeTime', 'Track1.Width', 'Track1.Speed', 'Track2.ZStart', 'Track2.LifeTime', 'Track2.Width', 'Track2.Speed']
+    shipsdDf = pd.DataFrame(columns = column_names)
 
-    new_model_definition = False
-    ship_has_wake = False
+    ship_n = -1
     for index, line in enumerate(initModelslines):
 
-        initShipsOutputFile.write(line)
+        if index>144 and index<18383:
 
-        # Find beginning of ship model definition
-        if new_model_definition:
-            
-            if not ship_has_wake:
+            if 'makeref(refShip,ShipsTypes' in line:
+                ship_n += 1
+
+            # If the line has a model definition
+            if 'refShip.' in line:
+                shipProperty = line.split('refShip.')[1].split('=')[0].replace(' ', '').replace('\t', '')
+                shipValue = line.split('=')[1].replace('"','').replace(' ', '').replace('\t', '').replace('\n', '').replace(';', '')
+
+                if shipProperty == 'Weight':
+                    shipValue = shipValue.split('(')[1].split(')')[0]
                 
+                if shipProperty in column_names:
+                    if ',' in shipValue:
+                        shipValue = np.array(shipValue.split(',')).astype('float')
 
-        if 'AddCharacterModel(model);' in line and not model_definition_start:
-            model_definition_start = True
+                    shipsdDf.loc[ship_n, shipProperty] = shipValue
 
-        
-
-
-        if not model_definition_start:
-            initShipsOutputFile.write(line)
-
-            if 'MODEL_HIGH = 0;' in line:
-                model_definition_start = True
-                model_found = False
-                block_comment_found = False
-        
-        else:
-
-            # Find where the model begings and trigger flag
-            if not model_found:
-
-                # Begin list of lines associated with a model
-                if 'model.description' in line:
-                    model_found = True
-                    model_list = [line]
-                else:
-                    initShipsOutputFile.write(line)
-
-            # Append lines unitl the last line of the model is found
-            else:
-                model_list += [line]
-
-                # Close the model, trigger conversion, and print to file
-                if 'AddCharacterModel(model);' in line:
-                    model_found = False
-                    model = storm_model(model_list, nh_dir, output_dir)
-                    if model.sex is not 'monkey' and os.path.exists(model.filepath):
-                        bpy.ops.object.select_all(action='SELECT')
-                        bpy.ops.object.delete()
-
-                        # Import
-                        print(model.filepath, model.textures_path, model.an_path, '\nhead', model.fix_coas_man_head, '\nmc2p', model.convert_coas_to_potc_man, '\nmp2c', model.convert_potc_to_coas_man, '\nwc2p', model.convert_coas_to_potc_woman, '\nwp2c', model.convert_potc_to_coas_woman)
-                        bpy.ops.storm.import_gm(filepath_in=model.filepath, 
-                                                textures_path=model.textures_path,
-                                                an_path=model.an_path,
-                                                fix_coas_man_head=model.fix_coas_man_head,
-                                                convert_coas_to_potc_man=model.convert_coas_to_potc_man,
-                                                convert_potc_to_coas_man=model.convert_potc_to_coas_man,
-                                                convert_coas_to_potc_woman=model.convert_coas_to_potc_woman,
-                                                convert_potc_to_coas_woman=model.convert_potc_to_coas_woman)
-
-                        # Select
-                        objectToSelect = bpy.data.objects["root"]
-                        objectToSelect.select_set(True)    
-                        bpy.context.view_layer.objects.active = objectToSelect
-
-                        # Export
-                        bpy.ops.storm.export_gm(filepath_out=model.filepath_out)
-
-                        # Clear collection
-                        collection = bpy.data.collections.get(model.model)
-                        for obj in collection.objects:
-                            bpy.data.objects.remove(obj, do_unlink=True)
-                        bpy.data.collections.remove(collection)
-
-                        # Open new file
-                        bpy.ops.wm.read_homefile()
-
-                    model.print_to_file(initShipsOutputFile)
-
-
+ 
     initShipsFile.close()
-    initShipsOutputFile.close()
-
+    
+ 
 
 if __name__ == "__main__":
 
-    print(sys.argv[sys.argv.index("--")+1:])
+    print(sys.argv)
 
-    print(parser.parse_known_args(sys.argv[sys.argv.index("--")+1:]))
-    args = vars(parser.parse_known_args(sys.argv[sys.argv.index("--")+1:])[0])
+    print(parser.parse_known_args(sys.argv))
+    args = vars(parser.parse_known_args(sys.argv)[0])
     print(args)
 
     ships_add_wake(**args)
