@@ -4,15 +4,6 @@
 
 #define DIRECTSAILDEBUG	1;
 
-#define DIR_PORTBOW 1
-#define DIR_FORWARD 2
-#define DIR_STARBOW 3
-#define DIR_STAR 4
-#define DIR_PORT 5
-#define DIR_PORTSTERN 6
-#define DIR_ABAFT 7
-#define DIR_STARSTERN 8
-
 // #define DIRECTENCOUNTERCHANCE 50   // chance in percent that an encounter fleet appears every hour
 #define DIRECTENCOUNTERDISTANCE 1000 // distance from player at which random ships appear
 
@@ -97,7 +88,7 @@ void CheckIslandChange()
 		DSGTrace("Directsail GOF would trigger here");
 
 	}
- }
+}
 
 float getRTplayerShipX()
 {
@@ -297,35 +288,4 @@ void DSGTrace(string logtext)
 	}
 	Trace("DSGOF: " + logtext);
 	return;
-}
-
-int ClosestDirFA(float dir)
-{
-	/*
-		Function to determine the heading of the ship to only direct sail to islands roughly 
-		ahead and not necessarily the closest
-
-	*/
-    float aX[6];
-    float aZ[6];
-    //Bug in compiler...array inits don't work in .c files
-    aX[0] = -1.0; aX[1] = 0.0; aX[2] = 1.0; aX[3] = -1.0; aX[4] = 0.0; aX[5] = 1.0;
-    aZ[0] = 0.5; aZ[1] = 1.0; aZ[2] = 0.5; aZ[3] = 0.0; aZ[4] = -1.0; aZ[5] = 0.0;
-
-    float maxDot = -99999999.0;
-    int nRet = 0;
-    for(int i = 0; i < 6; i++) {
-        float v = GetAngleY(aX[i], aZ[i]);
-        float t = GetDotProduct(v, dir);
-        if (t > maxDot) {
-             nRet = i + 1;
-             maxDot = t;
-         }
-    }
-    if(nRet < 4)
-        nRet = DIR_FORWARD;
-    else
-        nRet = DIR_ABAFT;
-
-    return nRet;
 }
