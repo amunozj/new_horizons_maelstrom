@@ -40,4 +40,4 @@ options
 *.zap
 
 # Save folder
-/SAVE
+source/SAVE
