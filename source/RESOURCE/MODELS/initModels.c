@@ -4236,7 +4236,7 @@ void InitModels(bool isstart)
 	AssignModelTypeNation(isstart, model, "navy", 1.0, FRANCE);	// ccc Feb06
 	AddCharacterModel(model);
 
-	model.description =  "A French Naval Lieutenant's uniform, s'il vous plait. Blue and white from 'la m�re' and 'rouge' from blood!";
+	model.description =  "A French Naval Lieutenant's uniform, s'il vous plait. Blue and white from 'la mère' and 'rouge' from blood!";
 	model.id          =  "fra_lut2_18";
 	model.FaceId      =  101;
 	model.minlevel    =  6;
