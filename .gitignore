@@ -46,3 +46,6 @@ source/SAVE
 
 # Screenshots
 source/Screenshots
+
+#Ships_init output
+tools/parse-ships-init/Ships_init.c
