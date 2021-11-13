@@ -6662,7 +6662,7 @@ void InitModels(bool isstart)
 	model.nation	  =  PORTUGAL;
 	model.price	   =  120;
 	model.assigned	=  true;
-    model.name = "Jos�";
+    model.name = "José";
     model.middlename = "Joaquín";
 	model.lastname = "Almeida";
     model.storytitle = "Rustic Sea Wolf";
