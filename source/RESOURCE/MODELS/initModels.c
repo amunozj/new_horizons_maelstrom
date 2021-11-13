@@ -1022,7 +1022,7 @@ void InitModels(bool isstart)
 	AddCharacterModel(model);
 	// <-- no model assignment quest character
 
-	model.description =  "As skilled with the sword as she is beautiful, they call her Borinque�a";
+	model.description =  "As skilled with the sword as she is beautiful, they call her Borinqueña";
 	model.id       =  "50_33Petra";
 	model.FaceId	= 175;
 	model.nation      =  SPAIN;
