@@ -936,36 +936,39 @@ void procDoneFireRequest()
 // <-- KK
 
 
-// void Ship_SetTrackSettings(ref rCharacter)
-// {
-// 	ref rShip = GetRealShip(GetCharacterShipType(rCharacter));
+void Ship_SetTrackSettings(ref rCharacter)
+{
 
-// 	rCharacter.Ship.Track.Enable = rShip.Track.Enable;
-// 	if (!sti(rShip.Track.Enable)) return;
+	ref rShip = GetShipByType(GetCharacterShipType(rCharacter));
 
-// 	rCharacter.Ship.Track.TrackDistance = 1.0;
-// 	rCharacter.Ship.Track.WaveHeight2 = 0.9;
-// 	rCharacter.Ship.Track.WaveHeight1 = 0.2;
+	rCharacter.Ship.Track.Enable = rShip.Track.Enable;
+	if (!sti(rShip.Track.Enable)) return;
 
-// 	rCharacter.Ship.Track1.Texture = "ships\trailShip.tga.tx";
-// 	rCharacter.Ship.Track1.TrackWidthSteps = 12.0;
+	trace(rCharacter.Ship.Track.Enable)
 
-// 	rCharacter.Ship.Track2.Texture = "ships\trailKeel.tga.tx";
-// 	rCharacter.Ship.Track2.TrackWidthSteps = 4.0;
+	rCharacter.Ship.Track.TrackDistance = 1.0;
+	rCharacter.Ship.Track.WaveHeight2 = 0.9;
+	rCharacter.Ship.Track.WaveHeight1 = 0.2;
 
-// 	rCharacter.Ship.Track1.ZStart = rShip.Track1.ZStart;
-// 	rCharacter.Ship.Track1.LifeTime = rShip.Track1.LifeTime;
-// 	rCharacter.Ship.Track1.Width = rShip.Track1.Width;
-// 	rCharacter.Ship.Track1.Speed = rShip.Track1.Speed;
+	rCharacter.Ship.Track1.Texture = "ships\trailShip.tga.tx";
+	rCharacter.Ship.Track1.TrackWidthSteps = 12.0;
 
-// 	rCharacter.Ship.Track2.ZStart = rShip.Track2.ZStart;
-// 	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime;
-// 	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
-//     //Boyer tracing for debug
-//     //if(!CheckAttribute(rCharacter, "Ship.Track2.speed")) Trace("No speed rChar.Ship " + rShip.Name);
-//     if(!CheckAttribute(rShip, "Track2.speed")) Trace("No speed rship " + rShip.Name);
-//         rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
-// }
+	rCharacter.Ship.Track2.Texture = "ships\trailKeel.tga.tx";
+	rCharacter.Ship.Track2.TrackWidthSteps = 4.0;
+
+	rCharacter.Ship.Track1.ZStart = rShip.Track1.ZStart;
+	rCharacter.Ship.Track1.LifeTime = rShip.Track1.LifeTime;
+	rCharacter.Ship.Track1.Width = rShip.Track1.Width;
+	rCharacter.Ship.Track1.Speed = rShip.Track1.Speed;
+
+	rCharacter.Ship.Track2.ZStart = rShip.Track2.ZStart;
+	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime;
+	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
+    //Boyer tracing for debug
+    //if(!CheckAttribute(rCharacter, "Ship.Track2.speed")) Trace("No speed rChar.Ship " + rShip.Name);
+    if(!CheckAttribute(rShip, "Track2.speed")) Trace("No speed rship " + rShip.Name);
+        rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
+}
 
 
 

@@ -1,6 +1,6 @@
 import argparse
-import os
 import sys
+import numpy as np
 
 
 parser = argparse.ArgumentParser()
@@ -11,118 +11,6 @@ parser.add_argument(
     required=True,
     help='Location of the New Horizons mod'
 )
-
-parser.add_argument(
-    '--output_dir',
-    type=str,
-    default=None,
-    required=True,
-    help='Folder for converted output'
-)
-
-class ship_model:
-    """
-    Model class to store a dictionary with all the necessary parameters as well
-        as flags to indicate gender and processing status
-    """
-
-    def __init__(self, model_list,
-                nh_dir=None,
-                output_dir=None):
-        """
-        Initialization function of the storm_model class
-
-        Parameters
-        ----------
-        model_list: list
-            list with all entries read from initModel.c
-        nh_dir: str
-            Location of the New Horizons mod
-        output_dir: str
-            Folder for converted output                   
-        """
-
-        self.nh_dir = nh_dir
-        self.output_dir = output_dir
-
-        # create list with animation as comment
-        self.comments_and_ending = ['//'+line for line in model_list if '.ani' in line and '//' not in line]
-        #add all comments and ending
-        self.comments_and_ending += [line for line in model_list if 'model.' not in line or '//' in line.split('model.')[0] or 'AssignModel' in line or 'IF' in line]
-
-        self.only_parameters = [line for line in model_list if 'model.' in line and '//' not in line.split('model.')[0] and 'AssignModel' not in line and '.ani' not in line]
-        self.model_parameters = {}
-
-        # Fill parameter dictionary
-        for line in self.only_parameters:
-            parameter = line.split('model.')[1].split('=')[0].replace(' ', '').replace('\t', '')
-            self.model_parameters[parameter] = line.split('=')[1].replace('\t', '').strip()
-        
-        # Make sure the model has an assigned sex
-        if 'sex' not in self.model_parameters:
-            self.model_parameters['sex'] = '"man";'
-
-        # Store flag to indicate that the model has an animation different than "man" or "woman_sit"
-        self.standard_ani = True
-        if 'ani' in self.model_parameters:
-            if self.model_parameters['ani'] == '"woman_sit";' or self.model_parameters['ani'] == '"man";':
-                self.standard_ani = True
-            else:
-                self.standard_ani = False
-
-        # Assemble model file name
-        self.model = self.model_parameters['id'].split('"')[1]
-        self.model_file = self.model + ".gm"
-
-        # clean sex string, set animation files, and conversion flags
-        self.convert_potc_to_coas_man=False
-        self.convert_potc_to_coas_woman=False
-        if 'woman' in self.model_parameters['sex']:
-            self.sex = 'woman'
-            self.an_path = self.output_dir + f'/RESOURCE/animation/woman_coas.an'
-            self.convert_potc_to_coas_woman = True
-            self.model_parameters['ani'] = '"woman_coas";'
-            
-        elif 'monkey' in self.model_parameters['sex']:
-            self.sex = 'monkey'
-
-        elif 'skeleton' in self.model_parameters['sex']:
-            self.sex = 'skeleton'
-            self.an_path = self.output_dir + f'/RESOURCE/animation/man_coas.an'
-            self.convert_potc_to_coas_man = True
-            self.model_parameters['ani'] = f'"man";'
-        else:
-            self.sex = 'man'
-            self.an_path = self.output_dir + f'/RESOURCE/animation/man_coas.an'
-            self.convert_potc_to_coas_man = True
-
-        # Define parameters for import
-        self.filepath = self.nh_dir + f'/RESOURCE/MODELS/Characters/{self.model_file}'
-        self.textures_path = self.nh_dir + '/RESOURCE/Textures/Characters/'
-        
-        self.fix_coas_man_head = False
-        self.convert_coas_to_potc_man = False
-        self.convert_coas_to_potc_woman = False
-
-        # Define parameters for export
-        self.filepath_out = self.output_dir + f'/RESOURCE/MODELS/Characters/{self.model_file}'
-
-
-    def print_to_file(self, initShipsOutputFile):
-        """
-        Function to print model into file
-
-        Parameters
-        ----------
-        initShipsOutputFile: file
-            file where to print the lines of each model       
-        """
-
-        for key, value in self.model_parameters.items():
-            initShipsOutputFile.write(f'\tmodel.{key} = {value}\n')
-
-        for line in self.comments_and_ending:
-            initShipsOutputFile.write(line)
 
 
 def ships_add_wake(
@@ -143,7 +31,7 @@ def ships_add_wake(
     initShipsFile = open(initShipsFile, 'r')
     initModelslines = initShipsFile.readlines()
 
-    initShipsOutputFile = output_dir + 'Ships_init.c'
+    initShipsOutputFile = 'Ships_init.c'
     initShipsOutputFile = open(initShipsOutputFile, 'w')
 
     new_model_definition = False
@@ -152,80 +40,91 @@ def ships_add_wake(
 
         initShipsOutputFile.write(line)
 
-        # Find beginning of ship model definition
-        if new_model_definition:
-            
-            if not ship_has_wake:
-                
+        if index>144 and index<18383:        
 
-        if 'AddCharacterModel(model);' in line and not model_definition_start:
-            model_definition_start = True
+            # Find beginning of ship model definition
+            if not new_model_definition:
 
-        
+                if 'n++' in line:
+                    new_model_definition = True
+                    ship_has_wake = False
+                    weight = None
+                    sclass = None
+                    capacity = None
 
-
-        if not model_definition_start:
-            initShipsOutputFile.write(line)
-
-            if 'MODEL_HIGH = 0;' in line:
-                model_definition_start = True
-                model_found = False
-                block_comment_found = False
-        
-        else:
-
-            # Find where the model begings and trigger flag
-            if not model_found:
-
-                # Begin list of lines associated with a model
-                if 'model.description' in line:
-                    model_found = True
-                    model_list = [line]
-                else:
-                    initShipsOutputFile.write(line)
-
-            # Append lines unitl the last line of the model is found
             else:
-                model_list += [line]
 
-                # Close the model, trigger conversion, and print to file
-                if 'AddCharacterModel(model);' in line:
-                    model_found = False
-                    model = storm_model(model_list, nh_dir, output_dir)
-                    if model.sex is not 'monkey' and os.path.exists(model.filepath):
-                        bpy.ops.object.select_all(action='SELECT')
-                        bpy.ops.object.delete()
+                if 'refShip.' in line:
+                    shipProperty = line.split('refShip.')[1].split('=')[0].replace(' ', '').replace('\t', '')
+                    shipValue = line.split('=')[1].replace('"','').replace(' ', '').replace('\t', '').replace('\n', '').replace(';', '').split('//')[0]
 
-                        # Import
-                        print(model.filepath, model.textures_path, model.an_path, '\nhead', model.fix_coas_man_head, '\nmc2p', model.convert_coas_to_potc_man, '\nmp2c', model.convert_potc_to_coas_man, '\nwc2p', model.convert_coas_to_potc_woman, '\nwp2c', model.convert_potc_to_coas_woman)
-                        bpy.ops.storm.import_gm(filepath_in=model.filepath, 
-                                                textures_path=model.textures_path,
-                                                an_path=model.an_path,
-                                                fix_coas_man_head=model.fix_coas_man_head,
-                                                convert_coas_to_potc_man=model.convert_coas_to_potc_man,
-                                                convert_potc_to_coas_man=model.convert_potc_to_coas_man,
-                                                convert_coas_to_potc_woman=model.convert_coas_to_potc_woman,
-                                                convert_potc_to_coas_woman=model.convert_potc_to_coas_woman)
+                    if shipProperty.lower() == 'weight':
+                        weight = np.array(shipValue.split('(')[1].split(')')[0]).astype('float')
 
-                        # Select
-                        objectToSelect = bpy.data.objects["root"]
-                        objectToSelect.select_set(True)    
-                        bpy.context.view_layer.objects.active = objectToSelect
+                    if shipProperty.lower() == 'class':
+                        sclass = np.array(shipValue).astype('float')
 
-                        # Export
-                        bpy.ops.storm.export_gm(filepath_out=model.filepath_out)
+                    if shipProperty.lower() == 'capacity':
+                        capacity = np.array(shipValue).astype('float')
 
-                        # Clear collection
-                        collection = bpy.data.collections.get(model.model)
-                        for obj in collection.objects:
-                            bpy.data.objects.remove(obj, do_unlink=True)
-                        bpy.data.collections.remove(collection)
+                if not ship_has_wake and weight is not None and sclass is not None and capacity is not None and len(line) < 4:
 
-                        # Open new file
-                        bpy.ops.wm.read_homefile()
+                    initShipsOutputFile.write('\trefShip.Track.Enable = true;\n')
 
-                    model.print_to_file(initShipsOutputFile)
+                    coeff = [1.55517214e-02, 5.00225823e-05, -4.98928074e-06]
+                    intercept = 0.09820077736886756
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track1.ZStart = {np.round(value, 2)};\n')
 
+                    coeff = [-0.62688704, -0.00091369, 0.00088025]
+                    intercept = 13.210084408616721
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track1.LifeTime = {int(np.round(value, 0))};\n')
+
+                    coeff = [-0.08050374, 0.00034216, 0.00045451]
+                    intercept = 2.223110932622534
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    coeff = [0.10751939, 0.00012831, 0.00070964]
+                    intercept = 1.7119858376185348
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track1.Width = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n')
+
+                    coeff = [0.0228987, 0.00079388, -0.00019649]
+                    intercept = 6.630231071240672
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    coeff = [0.02616642, 0.00055361, -0.00022146]
+                    intercept = 8.315454087729835
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track1.Speed = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n\n')
+
+                    coeff = [4.67918432e-03, 2.00266650e-05, -5.72896726e-06]
+                    intercept = -0.16740627232249805
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track2.ZStart = {np.round(value, 2)};\n')                
+
+                    coeff = [0.01688486, 0.00057339, 0.00019802]
+                    intercept = 6.662296537342268
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track2.LifeTime = {int(np.round(value, 0))};\n')
+
+                    coeff = [-0.19453281, 0.00101803, 0.0006664]
+                    intercept = 3.8901838205823576
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    coeff = [-0.1736205, 0.00074637, 0.00084421]
+                    intercept = 5.042083500051052
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track2.Width = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n')
+
+                    coeff = [-4.28609993e-03, 1.20394955e-04, -2.04583143e-05]
+                    intercept = 0.1745199323568355
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    coeff = [-8.82432338e-03,  2.47871965e-04, -4.21200588e-05]
+                    intercept = 0.30048221367583794
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    initShipsOutputFile.write(f'\trefShip.Track2.Speed = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n\n')
+
+                    ship_has_wake = True
+                    new_model_definition = False
 
     initShipsFile.close()
     initShipsOutputFile.close()
@@ -233,10 +132,10 @@ def ships_add_wake(
 
 if __name__ == "__main__":
 
-    print(sys.argv[sys.argv.index("--")+1:])
+    print(sys.argv)
 
-    print(parser.parse_known_args(sys.argv[sys.argv.index("--")+1:]))
-    args = vars(parser.parse_known_args(sys.argv[sys.argv.index("--")+1:])[0])
+    print(parser.parse_known_args(sys.argv))
+    args = vars(parser.parse_known_args(sys.argv)[0])
     print(args)
 
     ships_add_wake(**args)
