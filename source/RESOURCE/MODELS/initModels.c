@@ -6631,7 +6631,7 @@ void InitModels(bool isstart)
 	model.nation	  =  SPAIN;
 	model.price	   =  100;
 	model.assigned	=  true;
-	model.name = "Jos�";
+	model.name = "José";
 	model.lastname = "Gaspar";
 	model.storytitle = "The Legend of Gasparilla";
 	model.storytext = "Eventually becoming the last of the Buccaneers, rumours surrounding your life have been scarce. Most say you were born in Spain in 1756 and served in the Spanish Navy. Whatever may be the truth, you worked yourself up from a lowly position until you gained command of a ship of your own. It is time to make a name for yourself in the waters south of Florida!";
