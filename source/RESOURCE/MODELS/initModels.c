@@ -4185,7 +4185,7 @@ void InitModels(bool isstart)
 	model.period = "" + PERIOD_COLONIAL_POWERS + PERIOD_REVOLUTIONS + PERIOD_NAPOLEONIC;
 	AddCharacterModel(model);
 
-	model.description =  "A French Naval Commodore's uniform. Oui, C'est tr�s bon.";
+	model.description =  "A French Naval Commodore's uniform. Oui, C'est très bon.";
 	model.id          =  "fra_cmd_18";
 	model.FaceId      =  101;
 	model.minlevel    =  14;
