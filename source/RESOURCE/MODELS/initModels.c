@@ -1033,7 +1033,7 @@ void InitModels(bool isstart)
 	model.ani         =  "woman_sit";
 	model.height      =  1.75;
 	model.name = "Petra";
-	model.lastname = "Borinque�a";
+	model.lastname = "Borinqueña";
 	AssignModelType(isstart, model, "women", 1.0);
 	AssignModelType(isstart, model, OFFIC_TYPE_DOCTOR, 1.0);
 	AddCharacterModel(model);
