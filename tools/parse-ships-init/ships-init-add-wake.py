@@ -94,7 +94,7 @@ def ships_add_wake(
 
                     coeff = [-0.62688704, -0.00091369, 0.00088025]
                     intercept = 13.210084408616721
-                    value = 9.0# sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    value = 20.0# sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
                     initShipsOutputFile.write(f'\trefShip.Track1.LifeTime = {int(np.round(value, 1))};\n')
 
                     coeff = [-0.08050374, 0.00034216, 0.00045451]
@@ -121,7 +121,7 @@ def ships_add_wake(
 
                     coeff = [0.01688486, 0.00057339, 0.00019802]
                     intercept = 6.662296537342268
-                    value = 7.0#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    value = 20.0#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
                     initShipsOutputFile.write(f'\trefShip.Track2.LifeTime = {int(np.round(value, 1))};\n')
 
                     coeff = [-0.19453281, 0.00101803, 0.0006664]

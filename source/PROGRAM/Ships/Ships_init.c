@@ -287,12 +287,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -400,12 +400,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -501,12 +501,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -608,12 +608,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -711,12 +711,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -824,12 +824,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -933,12 +933,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1044,12 +1044,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1155,12 +1155,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1277,12 +1277,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1384,12 +1384,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1490,12 +1490,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1597,12 +1597,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1704,12 +1704,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1820,12 +1820,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -1930,12 +1930,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2041,12 +2041,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2151,12 +2151,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2264,12 +2264,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2383,12 +2383,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2500,12 +2500,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2607,12 +2607,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2717,12 +2717,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2829,12 +2829,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -2938,12 +2938,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3052,12 +3052,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3163,12 +3163,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3273,12 +3273,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3379,12 +3379,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3498,12 +3498,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3608,12 +3608,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3716,12 +3716,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3823,12 +3823,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -3935,12 +3935,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4050,12 +4050,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4159,12 +4159,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4267,12 +4267,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4385,12 +4385,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4499,12 +4499,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4607,12 +4607,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4715,12 +4715,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4823,12 +4823,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -4931,12 +4931,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5031,12 +5031,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5123,12 +5123,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5219,12 +5219,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5323,12 +5323,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5443,12 +5443,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5572,12 +5572,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5675,12 +5675,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5776,12 +5776,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5877,12 +5877,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -5980,12 +5980,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6080,12 +6080,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6175,12 +6175,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6290,12 +6290,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6394,12 +6394,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6498,12 +6498,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6594,12 +6594,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6706,12 +6706,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6808,12 +6808,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -6914,12 +6914,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7018,12 +7018,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7121,12 +7121,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7220,12 +7220,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7326,12 +7326,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7432,12 +7432,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7536,12 +7536,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7636,12 +7636,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7741,12 +7741,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7836,12 +7836,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -7948,12 +7948,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8065,12 +8065,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8172,12 +8172,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8270,12 +8270,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8361,12 +8361,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8466,12 +8466,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8573,12 +8573,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8679,12 +8679,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8785,12 +8785,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8891,12 +8891,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -8999,12 +8999,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9104,12 +9104,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9209,12 +9209,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9318,12 +9318,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9426,12 +9426,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9513,12 +9513,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9617,12 +9617,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9728,12 +9728,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9833,12 +9833,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -9941,12 +9941,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10050,12 +10050,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10157,12 +10157,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10264,12 +10264,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10372,12 +10372,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10480,12 +10480,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10587,12 +10587,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10694,12 +10694,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10798,12 +10798,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -10905,12 +10905,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11009,12 +11009,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11112,12 +11112,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11215,12 +11215,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11312,12 +11312,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11412,12 +11412,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11518,12 +11518,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11628,12 +11628,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11727,12 +11727,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11835,12 +11835,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -11940,12 +11940,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12053,12 +12053,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12158,12 +12158,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12264,12 +12264,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12368,12 +12368,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12472,12 +12472,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12578,12 +12578,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12688,12 +12688,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12797,12 +12797,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -12900,12 +12900,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13009,12 +13009,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13115,12 +13115,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13225,12 +13225,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13329,12 +13329,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13433,12 +13433,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13532,12 +13532,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13632,12 +13632,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13732,12 +13732,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13832,12 +13832,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -13932,12 +13932,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14035,12 +14035,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14145,12 +14145,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14250,12 +14250,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14352,12 +14352,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14458,12 +14458,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14559,12 +14559,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14663,12 +14663,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14766,12 +14766,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14873,12 +14873,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -14977,12 +14977,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15084,12 +15084,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15179,12 +15179,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15302,12 +15302,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15391,12 +15391,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15496,12 +15496,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15597,12 +15597,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15704,12 +15704,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15820,12 +15820,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -15917,12 +15917,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16035,12 +16035,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16145,12 +16145,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16251,12 +16251,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16357,12 +16357,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16454,12 +16454,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16569,12 +16569,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16674,12 +16674,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16774,12 +16774,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16874,12 +16874,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -16977,12 +16977,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17088,12 +17088,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17201,12 +17201,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17314,12 +17314,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17431,12 +17431,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17524,12 +17524,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17628,12 +17628,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17732,12 +17732,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17837,12 +17837,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -17940,12 +17940,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18045,12 +18045,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18153,12 +18153,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18261,12 +18261,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18358,12 +18358,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18481,12 +18481,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18624,12 +18624,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18767,12 +18767,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -18904,12 +18904,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19040,12 +19040,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19143,12 +19143,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19239,12 +19239,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19327,12 +19327,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19424,12 +19424,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19521,12 +19521,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19613,12 +19613,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19710,12 +19710,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19808,12 +19808,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -19906,12 +19906,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -20003,12 +20003,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -20100,12 +20100,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -20196,12 +20196,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -20299,12 +20299,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
@@ -20400,12 +20400,12 @@ void InitShips()
 
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.2;
-	refShip.Track1.LifeTime = 9;
+	refShip.Track1.LifeTime = 20;
 	refShip.Track1.Width = "1.0, 2.0";
 	refShip.Track1.Speed = "0.1, 0.2";
 
 	refShip.Track2.ZStart = -0.25;
-	refShip.Track2.LifeTime = 7;
+	refShip.Track2.LifeTime = 20;
 	refShip.Track2.Width = "5.2, 7.0";
 	refShip.Track2.Speed = "-5.05, -1.15";
 
