@@ -5436,7 +5436,7 @@ void InitModels(bool isstart)
 	model.assigned	=  true;
 	model.name = "Michiel";
 	model.lastname = "de Ruyter";
-	model.storytitle = "Besteva�r";
+	model.storytitle = "Bestevaêr";
 	model.storytext = "Born as Michiel Adriaenszoon de Ruyter to a beer porter in Vlissingen, you are a humble man. However, the Anglo-Dutch Wars of the 17th century will give you plenty of opportunity for greatness!";
 	model.playertype = PLAYER_TYPE_NAVAL_OFFICER;
 	model.ship = "NL_NeptunusE";
