@@ -935,7 +935,6 @@ void procDoneFireRequest()
 }
 // <-- KK
 
-
 void Ship_SetTrackSettings(ref rCharacter)
 {
 	Trace("Enter track settings set")
@@ -976,8 +975,6 @@ void Ship_SetTrackSettings(ref rCharacter)
     if(!CheckAttribute(rShip, "Track2.speed")) Trace("No speed rship " + rShip.Name);
         rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
 }
-
-
 
 
 void Ship_SetLightsOff(ref rCharacter, float fTime, bool bLights, bool bFlares, bool bNow)
@@ -1064,7 +1061,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 
 	CharacterUpdateShipFromBaseShip(iCharacterIndex);
 	Ship_SetLightsAndFlares(rCharacter);
-	Ship_SetTrackSettings(rCharacter);
+
 	trace("updated ship from base");
 
 //	rCharacter.Ship.Ang.y = 0.0;

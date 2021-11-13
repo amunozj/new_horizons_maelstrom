@@ -11174,12 +11174,11 @@ void InitModels(bool isstart)
 
 	model.description = "I am invisible - you can't see me!";
 	model.id = "B_girl";
-	model.ani = "woman_sit"
 	model.FaceId = 160;
 	model.nation = BROKEN;
 	model.price = 50;
 	model.assigned = true;
-	model.sex = "woman";
+	model.sex = "man";
 	AddCharacterModel(model);
 
 	model.description = "I am invisible - you can't see me!";

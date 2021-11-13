@@ -336,7 +336,7 @@ void FillISpyGlassParameters()
 	objISpyGlass.lens.pos = showWindow.left+","+showWindow.top+"," + showWindow.right+","+showWindow.bottom;
 
 	int ntop = sti(showWindow.bottom) - RecalculateVIconScaled(70);
-	int nbottom = ntop + RecalculateVIconScaled(128);
+    int nbottom = ntop + RecalculateVIconScaled(128);
 	//==========================================================
 	objISpyGlass.shipsign.ship.texture = "battle_interface\\ship_icons3.tga.tx";
 	objISpyGlass.shipsign.ship.pos = RecalculateHIconScaled(10)+","+(ntop+RecalculateVIconScaled(8)) + "," + RecalculateHIconScaled(72)+","+(ntop+RecalculateVIconScaled(65));
@@ -347,7 +347,7 @@ void FillISpyGlassParameters()
 	objISpyGlass.shipsign.hp.pos = RecalculateHIconScaled(-2)+","+(ntop+RecalculateVIconScaled(3)) + "," + RecalculateHIconScaled(40)+","+(ntop+RecalculateVIconScaled(65));
 	objISpyGlass.shipsign.hp.uv = "0.0,0.109,0.5,0.6875";
 	objISpyGlass.shipsign.sp.texture = "battle_interface\\ShipState.tga.tx";
-	objISpyGlass.shipsign.sp.pos = RecalculateHIconScaled(64)+","+(ntop+RecalculateVIconScaled(3)) + "," + RecalculateHIconScaled(94)+","+(ntop+RecalculateVIconScaled(65));
+	objISpyGlass.shipsign.sp.pos = RecalculateHIconScaled(62)+","+(ntop+RecalculateVIconScaled(3)) + "," + RecalculateHIconScaled(98)+","+(ntop+RecalculateVIconScaled(65));
 	objISpyGlass.shipsign.sp.uv = "0.5,0.109,1.0,0.6875";
 	objISpyGlass.shipsign.class.texture = "battle_interface\\blank.tga.tx";
 	objISpyGlass.shipsign.class.pos = RecalculateHIconScaled(30)+","+(ntop+RecalculateVIconScaled(6)) + "," + RecalculateHIconScaled(92)+","+(ntop+RecalculateVIconScaled(22));

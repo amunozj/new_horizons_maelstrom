@@ -217,7 +217,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define FIREKILLCH_HP_RAT_PWR		0.5			// FLOAT - power to HP ratio
 
 
-#define SURR_GLOBAL_SCL				0.005		// FLOAT - Ships will surrender if damage or crew morale become critical
+#define SURR_GLOBAL_SCL				0.001		// FLOAT - Ships will surrender if damage or crew morale become critical
 												// 0.0 : Stock PotC, no surrenders
 												// 0.01 - 0.5 : The higher that value the faster ships surrender
 // Surrender adjustments
