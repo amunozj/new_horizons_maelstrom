@@ -2153,7 +2153,7 @@ void InitModels(bool isstart)
 	model.assigned		=  true;
 	model.name = "Hector";
 	model.lastname = "Barbossa";
-	model.storytitle = "The Curse of Cort�s";
+	model.storytitle = "The Curse of Cortés";
 	model.storytext = "Pirate Lord of the Caspian Sea. Mutineer. And now finder of the lost treasure of Isla de Muerta. You are ready to make good use of your new-found wealth! But a nasty surprise lies in store for you...";
 	model.playertype = PLAYER_TYPE_CURSED;
 	model.ship = SHIP_CURSED;
