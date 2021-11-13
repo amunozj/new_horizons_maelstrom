@@ -54,6 +54,7 @@ object	SeaFader;
 object	Seafoam, BallSplash, SinkEffect, PeopleOnShip, Telescope, SeaOperator, Artifact;
 object	Sharks;
 object	SeaLighter;
+object  ShipTracks;
 
 object	SeaLocatorShow;
 object	LoginGroupsNow;
@@ -99,6 +100,7 @@ void DeleteSeaEnvironment()
 
 	DeleteSea();
 
+	DeleteClass(&ShipTracks);
 	DeleteClass(&Island);
 	DeleteClass(&IslandReflModel);
 	DeleteClass(&Touch);
@@ -207,8 +209,12 @@ void CreateSeaEnvironment()
 	LayerAddObject(SEA_REALIZE, &BallSplash, 65535);
 
 	CreateEntity(&SinkEffect, "SINKEFFECT");		ReloadProgressUpdate();
-	LayerAddObject(SEA_EXECUTE, &SinkEffect, 65531);
-	LayerAddObject(SEA_REALIZE, &SinkEffect, 65531);
+	LayerAddObject(SEA_EXECUTE, &SinkEffect, 65532);
+	LayerAddObject(SEA_REALIZE, &SinkEffect, 65532);
+
+	CreateEntity(&ShipTracks, "ShipTracks");		ReloadProgressUpdate();
+	LayerAddObject(SEA_EXECUTE, &ShipTracks, 65533);
+	LayerAddObject(SEA_REALIZE, &ShipTracks, 65533);
 
 	CreateEntity(&PeopleOnShip, "PEOPLE_ON_SHIP");	ReloadProgressUpdate();
 	LayerAddObject(SEA_EXECUTE, &PeopleOnShip, 100);

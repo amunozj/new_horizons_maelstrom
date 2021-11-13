@@ -285,6 +285,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -387,6 +398,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -476,6 +498,17 @@ void InitShips()
 	refShip.Cannons.Borts.cannonb.qty = 2;
 	refShip.MaxCrew		 = 110;
 	refShip.MinCrew		 = 20;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Price		   = 44000;
 	refShip.HP			  = 2000;
@@ -573,6 +606,17 @@ void InitShips()
 	refShip.MaxCrew		 = 78;
 	refShip.MinCrew		 = 13;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.Price		   = 29000;//BB was 30600
 	refShip.HP			  = 1200;//BB was 1250
 	refShip.SP			  = 200;
@@ -664,6 +708,17 @@ void InitShips()
 	refShip.Capacity	= 1850;
 	refShip.Cannon		= CANNON_TYPE_LONG_LBS6;
 	refShip.MaxCaliber	= 6;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.CannonsQuantity = 14;
 	refShip.Cannons.Borts.cannonf.qty = 0;
@@ -767,6 +822,17 @@ void InitShips()
 	refShip.Cannon		= CANNON_TYPE_LONG_LBS6;
 	refShip.MaxCaliber	= 6;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.CannonsQuantity = 14;
 	refShip.Cannons.Borts.cannonf.qty = 0;
 	refShip.Cannons.Borts.cannonb.qty = 0;
@@ -864,6 +930,17 @@ void InitShips()
 	refShip.Capacity	= 1550;
 	refShip.Cannon		= CANNON_TYPE_LONG_LBS9;
 	refShip.MaxCaliber	= 9;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.CannonsQuantity = 16;
 	refShip.Cannons.Borts.cannonf.qty = 0;
@@ -965,6 +1042,17 @@ void InitShips()
 	refShip.Cannon		= CANNON_TYPE_LONG_LBS9;
 	refShip.MaxCaliber	= 9;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.CannonsQuantity = 16;
 	refShip.Cannons.Borts.cannonf.qty = 0;
 	refShip.Cannons.Borts.cannonb.qty = 2;
@@ -1064,6 +1152,17 @@ void InitShips()
 	refShip.Capacity	= 1550;
 	refShip.Cannon		= CANNON_TYPE_LONG_LBS9;
 	refShip.MaxCaliber	= 9;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.CannonsQuantity = 16;
 	refShip.Cannons.Borts.cannonf.qty = 0;
@@ -1176,6 +1275,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -1272,6 +1382,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -1366,6 +1487,17 @@ void InitShips()
 	refShip.Price		   = 46000;
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -1463,6 +1595,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -1558,6 +1701,17 @@ void InitShips()
 	refShip.Price			= 75000;//BB was 69000
 	refShip.HP 		   = 1750;
 	refShip.SP 		   = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -1664,6 +1818,17 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_petros_blue_white.tga";
 // <-- Petros
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -1762,6 +1927,17 @@ void InitShips()
 	refShip.Price			= 55000;//BB was 46000
 	refShip.HP 		   = 1250;
 	refShip.SP 		   = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -1863,6 +2039,17 @@ void InitShips()
 	refShip.HP			  = 1750;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -1961,6 +2148,17 @@ void InitShips()
 	refShip.Price		   = 76800;
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -2063,6 +2261,17 @@ void InitShips()
 	refShip.Price			= 42000;//BB was 46000
 	refShip.HP 		   = 1250;
 	refShip.SP 		   = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -2172,6 +2381,17 @@ void InitShips()
 	refShip.HP 		   = 1250;
 	refShip.SP 		   = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -2278,6 +2498,17 @@ void InitShips()
 	refShip.HP				= 1000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -2373,6 +2604,17 @@ void InitShips()
 	refShip.Price		   = 46800;
 	refShip.HP			  = 1500;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -2472,6 +2714,17 @@ void InitShips()
 	refShip.Price		   = 52000;//BB was 32000
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 
@@ -2574,6 +2827,17 @@ void InitShips()
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 
 // KK -->
@@ -2671,6 +2935,17 @@ void InitShips()
 	refShip.Cannons.Borts.cannonf.qty = 0;
 	refShip.Cannons.Borts.cannonb.qty = 2;
 	// NK <--
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.MaxCrew		 = 57;		// GR: Taken from real "Lady Washington", which has 12 crew
 	refShip.MinCrew		 = 12;		// and 45 passengers
@@ -2775,6 +3050,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -2875,6 +3161,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -2974,6 +3271,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3068,6 +3376,17 @@ void InitShips()
 	refShip.Price		   	= 27200;
 	refShip.HP			 	= 1000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -3177,6 +3496,17 @@ void InitShips()
 	refShip.HP			= 1000;
 	refShip.SP			= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3276,6 +3606,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3373,6 +3714,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3468,6 +3820,17 @@ void InitShips()
 	refShip.Price		   = 76800;
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -3569,6 +3932,17 @@ void InitShips()
 	refShip.Price		   = 76800;
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -3674,6 +4048,17 @@ void InitShips()
 	refShip.HP			  = 1750;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3772,6 +4157,17 @@ void InitShips()
 	refShip.HP			  = 1750;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -3868,6 +4264,17 @@ void InitShips()
 	refShip.Price		   	= 81600;
 	refShip.HP			= 2000;
 	refShip.SP			= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -3976,6 +4383,17 @@ void InitShips()
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -4079,6 +4497,17 @@ void InitShips()
 	refShip.HP			= 1500;
 	refShip.SP			= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -4175,6 +4604,17 @@ void InitShips()
 	refShip.Price		   = 67500;
 	refShip.HP			  = 3500;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -4273,6 +4713,17 @@ void InitShips()
 	refShip.HP			  = 3500;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -4369,6 +4820,17 @@ void InitShips()
 	refShip.Price			= 46000;
 	refShip.HP			= 1500;
 	refShip.SP			= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
@@ -4467,6 +4929,17 @@ void InitShips()
 	refShip.HP			= 1800;
 	refShip.SP			= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS5"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -4556,6 +5029,17 @@ void InitShips()
 	refShip.HP			  = 300;
 	refShip.SP			  = 100;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -4636,6 +5120,17 @@ void InitShips()
 	refShip.MaxCrew		 = 5;
 	refShip.MinCrew		 = 2;
 	refShip.Price			= 2600;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.HP			  = 300;
 	refShip.SP			  = 100;
@@ -4721,6 +5216,17 @@ void InitShips()
 	refShip.Price			= 2000;
 	refShip.HP 		   = 200;
 	refShip.SP 		   = 100;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -4814,6 +5320,17 @@ void InitShips()
 	refShip.MaxCrew	 = 20; // PB: was 10
 	refShip.MinCrew	 = 7; // PB: was 3
 	refShip.Price			= 7000;//BB was 9000
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.HP 		   = 250;
 	refShip.SP 		   = 100;
@@ -4923,6 +5440,17 @@ void InitShips()
 	refShip.MaxCrew			= 16;
 	refShip.MinCrew			= 5;
 	refShip.Price			= 9600;//BB was 15600
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.HP				= 500;
 	refShip.SP				= 100;
@@ -5042,6 +5570,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5134,6 +5673,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5224,6 +5774,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5313,6 +5874,17 @@ void InitShips()
 	refShip.Price		   = 46800;
 	refShip.HP			  = 1500;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
@@ -5406,6 +5978,17 @@ void InitShips()
 	refShip.HP			  = 1000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5495,6 +6078,17 @@ void InitShips()
 	refShip.HP			  = 1500;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5578,6 +6172,17 @@ void InitShips()
 	refShip.Weight		= Tonnes2CWT(250);//BB ? weight seems large compared to normal sloop?(was 390)
 	refShip.Capacity	= 1100;//BB these were trade ships too(was 500). Increased to better match weight and reduced guns
 	refShip.CannonsQuantity	= 10;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 1;
 	refShip.Cannons.Borts.cannonb.qty = 1;
@@ -5683,6 +6288,17 @@ void InitShips()
 	refShip.HP 		   = 1500;
 	refShip.SP 		   = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5775,6 +6391,17 @@ void InitShips()
 	refShip.Price			= 39600;
 	refShip.HP 		   = 1500;
 	refShip.SP 		   = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -5869,6 +6496,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	// KK refShip.AbordageLocation = "BOARDING_SLOOP";
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -5953,6 +6591,17 @@ void InitShips()
 	refShip.Price		   = 12000;
 	refShip.HP			  = 600;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -6055,6 +6704,17 @@ void InitShips()
 	refShip.HP			  = 600;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6145,6 +6805,17 @@ void InitShips()
 	refShip.Price			= 12000;
 	refShip.HP 		   = 600;
 	refShip.SP 		   = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -6241,6 +6912,17 @@ void InitShips()
 	refShip.HP				= 900;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6334,6 +7016,17 @@ void InitShips()
 	refShip.HP			  = 700;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6426,6 +7119,17 @@ void InitShips()
 	refShip.HP			  = 600;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6513,6 +7217,17 @@ void InitShips()
 	refShip.Price			= 19900;//BB was 15200
 	refShip.HP				= 1000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -6609,6 +7324,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6704,6 +7430,17 @@ void InitShips()
 	refShip.HP			  = 2400;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6797,6 +7534,17 @@ void InitShips()
 	refShip.HP			  	= 2400;
 	refShip.SP			  	= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -6885,6 +7633,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -6980,6 +7739,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -7063,6 +7833,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(450);
 	refShip.Capacity			= 5000;
 	refShip.CannonsQuantity		= 30;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
@@ -7164,6 +7945,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(450);
 	refShip.Capacity			= 5000;
 	refShip.CannonsQuantity		= 30;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
@@ -7271,6 +8063,17 @@ void InitShips()
 	refShip.SP		  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -7367,6 +8170,17 @@ void InitShips()
 	refShip.SP		  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
@@ -7454,6 +8268,17 @@ void InitShips()
 	refShip.SP		  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -7533,6 +8358,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 	refShip.Jetty			  = false; 	//JRH
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -7627,6 +8463,17 @@ void InitShips()
 	refShip.HP			  = 3500;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -7724,6 +8571,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -7818,6 +8676,17 @@ void InitShips()
 	refShip.HP			  = 2300;//BB was 2000, increased due to extra weight vs other Pinnace
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -7914,6 +8783,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -8008,6 +8888,17 @@ void InitShips()
 	refShip.HP			  = 7000;
 	refShip.SP			  = 200;
 	refShip.Jetty = false; // CTM
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -8106,6 +8997,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -8200,6 +9102,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -8293,6 +9206,17 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_petros_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_petros_plain.tga";
 // <-- Petros
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -8392,6 +9316,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -8489,6 +9424,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_pirate6.tga";
 	
@@ -8564,6 +9510,17 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_petros_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_petros_plain.tga";
 // <-- Petros
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -8657,6 +9614,17 @@ void InitShips()
 	refShip.HP			  = 6000;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 // Petros -->
 	refShip.EmblemedSails.normalTex = "sail_petros_plain.tga";
@@ -8758,6 +9726,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -8851,6 +9830,17 @@ void InitShips()
 	refShip.SP					= 200;
 	refShip.Jetty				= false; 	//JRH
 //	refShip.RigType = "Fri";
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -8948,6 +9938,17 @@ void InitShips()
 	refShip.HP = 8000;
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -9047,6 +10048,17 @@ void InitShips()
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9143,6 +10155,17 @@ void InitShips()
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9238,6 +10261,17 @@ void InitShips()
 	refShip.HP = 8000;
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -9336,6 +10370,17 @@ void InitShips()
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9433,6 +10478,17 @@ void InitShips()
 	refShip.SP = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9528,6 +10584,17 @@ void InitShips()
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -9625,6 +10692,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9717,6 +10795,17 @@ void InitShips()
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
@@ -9814,6 +10903,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9907,6 +11007,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -9998,6 +11109,17 @@ void InitShips()
 	refShip.HP			  = 4500;
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -10091,6 +11213,17 @@ void InitShips()
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -10176,6 +11309,17 @@ void InitShips()
 	refShip.Price		   = 46000;
 	refShip.HP			  = 1250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -10265,6 +11409,17 @@ void InitShips()
 	refShip.Price		= 84300;//BB was 100000
 	refShip.HP			= 2500;
 	refShip.SP			= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -10360,6 +11515,17 @@ void InitShips()
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
 	// KK refShip.AbordageLocation = "BOARDING_XEBEC";
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -10460,6 +11626,17 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_petros_blue_white.tga";
 // <-- Petros
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -10547,6 +11724,17 @@ void InitShips()
 	refShip.Price		   = 81600;
 	refShip.HP			  = 2000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 // KK -->
 	refShip.BigPicTexName = "SHIPS3"; //Armada
@@ -10645,6 +11833,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -10738,6 +11937,17 @@ void InitShips()
 	refShip.Price		   = 138000;
 	refShip.HP			  = 2500;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -10841,6 +12051,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -10934,6 +12155,17 @@ void InitShips()
 	refShip.HP		= 2500;
 	refShip.SP		= 200;
 	refShip.Jetty			= false; // PB
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -11030,6 +12262,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -11123,6 +12366,17 @@ void InitShips()
 	refShip.HP			  = 2500;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -11215,6 +12469,17 @@ void InitShips()
 	refShip.Price		   = 190200;
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -11310,6 +12575,17 @@ void InitShips()
 	refShip.Price				= 282000;
 	refShip.HP				= 5500;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
@@ -11410,6 +12686,17 @@ void InitShips()
 	refShip.HP				= 5500;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 34;
@@ -11508,6 +12795,17 @@ void InitShips()
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 34;
@@ -11599,6 +12897,17 @@ void InitShips()
 	refShip.Price				= 282000;
 	refShip.HP				= 5500;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 	refShip.BI.Tex = 16;
@@ -11698,6 +13007,17 @@ void InitShips()
 	refShip.HP				= 5500;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 34;
@@ -11792,6 +13112,17 @@ void InitShips()
 	refShip.Price		   = 190200;
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -11892,6 +13223,17 @@ void InitShips()
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -11984,6 +13326,17 @@ void InitShips()
 	refShip.Price				= 228000;
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 	refShip.BI.Tex = 16;
@@ -12078,6 +13431,17 @@ void InitShips()
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 38;
@@ -12165,6 +13529,17 @@ void InitShips()
 	refShip.Price				= 428000;
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 	refShip.BI.Tex = 16;
@@ -12255,6 +13630,17 @@ void InitShips()
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 38;
@@ -12343,6 +13729,17 @@ void InitShips()
 	refShip.Price				= 428000;
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 	refShip.BI.Tex = 16;
@@ -12433,6 +13830,17 @@ void InitShips()
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 38;
@@ -12521,6 +13929,17 @@ void InitShips()
 	refShip.Price				= 428000;
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 	refShip.BI.Tex = 16;
@@ -12613,6 +14032,17 @@ void InitShips()
 	refShip.Price		   = 190200;
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -12713,6 +14143,17 @@ void InitShips()
 	refShip.HP			= 3800;
 	refShip.SP			= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 
@@ -12807,6 +14248,17 @@ void InitShips()
 	refShip.HP			= 3800;
 	refShip.SP			= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 
@@ -12897,6 +14349,17 @@ void InitShips()
 	refShip.Price		   = 216000;
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -12993,6 +14456,17 @@ void InitShips()
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 
@@ -13082,6 +14556,17 @@ void InitShips()
 	refShip.Price		   = 190200;
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -13176,6 +14661,17 @@ void InitShips()
 	refShip.HP			  = 3250;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -13267,6 +14763,17 @@ void InitShips()
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
 	refShip.Walk 				= "Flushdeck";
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 	refShip.BI.Tex = 16;
@@ -13364,6 +14871,17 @@ void InitShips()
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 32;
@@ -13456,6 +14974,17 @@ void InitShips()
 	refShip.Price			= 248000;
 	refShip.HP				= 6000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -13553,6 +15082,17 @@ void InitShips()
     refShip.SP              = 200;
     refShip.Jetty            = false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
     refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
     refShip.BI.Tex = 16;
@@ -13636,6 +15176,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(1050);
 	refShip.Capacity		= 2500;
 	refShip.CannonsQuantity		= 28;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 0;
 	refShip.Cannons.Borts.cannonb.qty = 0;
@@ -13749,6 +15300,17 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_pirate6.tga";
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -13826,6 +15388,17 @@ void InitShips()
 	refShip.Price			= 220000;
 	refShip.HP				= 5000;
 	refShip.SP				= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 	refShip.BI.Tex = 16;
@@ -13921,6 +15494,17 @@ void InitShips()
 	refShip.HP				= 6000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14010,6 +15594,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(1800);
 	refShip.Capacity		= 2500;
 	refShip.CannonsQuantity = 44;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
@@ -14106,6 +15701,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(1300);
 	refShip.Capacity        = 5000;
 	refShip.CannonsQuantity = 58;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 6;
@@ -14212,6 +15818,17 @@ void InitShips()
 	refShip.HP				= 8000;
 	refShip.SP				= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14297,6 +15914,17 @@ void InitShips()
 	refShip.Weight			= Tonnes2CWT(2250);
 	refShip.Capacity        = 2750;
 	refShip.CannonsQuantity = 60;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 2;
@@ -14405,6 +16033,17 @@ void InitShips()
 	refShip.SP				= 200;
 	refShip.Jetty			= false; // PB
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14504,6 +16143,17 @@ void InitShips()
 	refShip.HP			  = 10000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14598,6 +16248,17 @@ void InitShips()
 	refShip.Price		   = 400000;
 	refShip.HP			  = 10000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -14694,6 +16355,17 @@ void InitShips()
 	refShip.HP			  = 10000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14779,6 +16451,17 @@ void InitShips()
 	refShip.MaxCaliber = 24;
 	refShip.Weight     = Tonnes2CWT(2500);
 	refShip.Capacity   = 3000;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.CannonsQuantity = 70;
 	refShip.Cannons.Borts.cannonf.qty = 2;
@@ -14884,6 +16567,17 @@ void InitShips()
 	refShip.HP			 	= 10000;
 	refShip.SP			  	= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -14978,6 +16672,17 @@ void InitShips()
 	refShip.HP				 = 12000;
 	refShip.SP				 = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -15067,6 +16772,17 @@ void InitShips()
 	refShip.HP				 = 12000;
 	refShip.SP				 = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -15155,6 +16871,17 @@ void InitShips()
 	refShip.Price			 = 464000;
 	refShip.HP				 = 12000;
 	refShip.SP				 = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
@@ -15247,6 +16974,17 @@ void InitShips()
 	refShip.HP			  = 11000;
 	refShip.SP			  = 200;
 //	refShip.RigType = "Fri";
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -15347,6 +17085,17 @@ void InitShips()
 	refShip.HP			  	= 11000;
 	refShip.SP			  	= 200;
 //	refShip.RigType 			= "Fri";
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -15450,6 +17199,17 @@ void InitShips()
 	refShip.SP			  = 200;
 	refShip.RigType = "Fri";
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -15551,6 +17311,17 @@ void InitShips()
 	refShip.HP				 = 5000;
 	refShip.SP				 = 200;
 	refShip.Jetty				= false; 	//JRH
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -15658,6 +17429,17 @@ void InitShips()
 	refShip.Flags.UseMerchantFlag = true;
 // <-- KK
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	//Period
 	refShip.period.0 = 0.0; //
 	refShip.period.1 = 0.0; //
@@ -15739,6 +17521,17 @@ void InitShips()
 	refShip.Price					= 528000;
 	refShip.HP					= 14000;
 	refShip.SP					= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -15833,6 +17626,17 @@ void InitShips()
 	refShip.HP					= 14000;
 	refShip.SP					= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -15925,6 +17729,17 @@ void InitShips()
 	refShip.Price             = 620000;
 	refShip.HP                 = 19000;
 	refShip.SP                 = 300;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -16020,6 +17835,17 @@ void InitShips()
 	refShip.HP					= 14000;
 	refShip.SP					= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -16111,6 +17937,17 @@ void InitShips()
 	refShip.Price					= 528000;
 	refShip.HP					= 14000;
 	refShip.SP					= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
@@ -16205,6 +18042,17 @@ void InitShips()
 	refShip.Price		   = 592000;
 	refShip.HP			  = 16000;
 	refShip.SP			  = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
@@ -16303,6 +18151,17 @@ void InitShips()
 	refShip.HP			  = 16000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -16400,6 +18259,17 @@ void InitShips()
 	refShip.HP			  = 16000;
 	refShip.SP			  = 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -16485,6 +18355,17 @@ void InitShips()
 	refShip.Capacity		= 4000;
 	refShip.Cannon			= CANNON_TYPE_LONG_LBS32;
 	refShip.MaxCaliber	= 32;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.CannonsQuantity	= 100;
 	refShip.Cannons.Borts.cannonf.qty	= 2;
@@ -16597,6 +18478,17 @@ void InitShips()
 	refShip.Price				= 224000;
 	refShip.HP				= 4000;
 	refShip.SP				= 300;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
@@ -16730,6 +18622,17 @@ void InitShips()
 	refShip.HP				= 4000;
 	refShip.SP				= 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
@@ -16862,6 +18765,17 @@ void InitShips()
 	refShip.HP				= 4000;
 	refShip.SP				= 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
@@ -16988,6 +18902,17 @@ void InitShips()
 	refShip.HP				= 4000;
 	refShip.SP				= 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
@@ -17113,6 +19038,17 @@ void InitShips()
 	refShip.MaxCrew		 = 200;
 	refShip.MinCrew		 = 40;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.Price		   = 70000;
 	refShip.HP			  = 100000;
 	refShip.SP			  = 999999;
@@ -17205,6 +19141,17 @@ void InitShips()
 	refShip.HP				= 100000;
 	refShip.SP				= 999999;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
 	refShip.EmblemedSails.normalTex = "sail_dutchman2.tga";
@@ -17290,6 +19237,17 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_dutchman1.tga";
 	refShip.EmblemedSails.nationFileName = "sail_dutchman1.tga";
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -17366,6 +19324,17 @@ void InitShips()
 	refShip.Price				= 225000;
 	refShip.HP					= 3600;
 	refShip.SP					= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
@@ -17453,6 +19422,17 @@ void InitShips()
 	refShip.HP					= 4500;
 	refShip.SP					= 200;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
 	refShip.BI.Tex = 16;
@@ -17539,6 +19519,17 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_BlackPearl_whole.tga";
 	refShip.night_stealth = true;	// PB: Half visibility at night
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 2;
@@ -17619,6 +19610,17 @@ void InitShips()
 	refShip.HP					= 100000; // stronger
 // SWS: Pieter suggested a MoW should stand a chance against the Pearl
 	refShip.SP					= 999999;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
@@ -17705,6 +19707,17 @@ void InitShips()
 	refShip.Price		   = 624000;
 	refShip.HP			  = 19000;
 	refShip.SP			  = 300;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 	refShip.BI.Tex = 16;
@@ -17793,6 +19806,17 @@ void InitShips()
 	refShip.HP			  = 19000;
 	refShip.SP			  = 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 22;
@@ -17880,6 +19904,17 @@ void InitShips()
 	refShip.HP			  = 19000;
 	refShip.SP			  = 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 22;
@@ -17965,6 +20000,17 @@ void InitShips()
 	refShip.Price		   = 624000;
 	refShip.HP			  = 19000;
 	refShip.SP			  = 300;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 	refShip.BI.Tex = 16;
@@ -18052,6 +20098,17 @@ void InitShips()
 	refShip.HP			  = 19000;
 	refShip.SP			  = 300;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 22;
@@ -18136,6 +20193,17 @@ void InitShips()
 	refShip.Price		   		= 450000;
 	refShip.HP			  	= 12000;
 	refShip.SP			  	= 250;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 	refShip.BI.Tex = 16;
@@ -18229,6 +20297,17 @@ void InitShips()
 	refShip.HP			  	= 12000;
 	refShip.SP			  	= 250;
 
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
+
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 	refShip.BI.Tex = 16;
 	refShip.BI.Pic = 50;
@@ -18318,6 +20397,17 @@ void InitShips()
 	refShip.Price		   		= 450000;
 	refShip.HP			  	= 12000;
 	refShip.SP			  	= 250;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.2;
+	refShip.Track1.LifeTime = 20;
+	refShip.Track1.Width = "1.0, 2.0";
+	refShip.Track1.Speed = "0.1, 0.2";
+
+	refShip.Track2.ZStart = -0.25;
+	refShip.Track2.LifeTime = 20;
+	refShip.Track2.Width = "5.2, 7.0";
+	refShip.Track2.Speed = "-5.05, -1.15";
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
 	refShip.BI.Tex = 16;

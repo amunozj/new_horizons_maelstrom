@@ -407,8 +407,8 @@ void DSTrace(string logtext)
 	if (DIRECTSAILDEBUG)
 	{
 		LogIt(logtext);
+		Trace("DSGOF: " + logtext);
 	}
-	Trace("DSGOF: " + logtext);
 	return;
 }
 
