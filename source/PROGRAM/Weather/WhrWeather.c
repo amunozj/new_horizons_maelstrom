@@ -11,7 +11,7 @@
 #include "weather\WhrTornado.c"
 #include "weather\WhrAstronomy.c"
 
-#define WIND_NORMAL_POWER		18.0 // NK
+#define WIND_NORMAL_POWER		20.0 // NK
 
 #define MAX_WEATHERS   35
 
@@ -599,7 +599,6 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	if(bSeaActive && !ownDeckStarted())
 	{
 		PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
-		CheckIslandChange();
 		DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
 	}
 }
@@ -1349,7 +1348,7 @@ void Whr_WindChange()
 	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 
-	CheckIslandChange();
+	// CheckIslandChange();
 }
 
 bool Whr_isRainEnable()
