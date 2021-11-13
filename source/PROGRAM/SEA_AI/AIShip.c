@@ -938,15 +938,18 @@ void procDoneFireRequest()
 
 void Ship_SetTrackSettings(ref rCharacter)
 {
+	Trace("Enter track settings set")
 
 	ref rShip = GetShipByType(GetCharacterShipType(rCharacter));
 
 	rCharacter.Ship.Track.Enable = rShip.Track.Enable;
 	if (!sti(rShip.Track.Enable)) return;
 
-	trace(rCharacter.Ship.Track.Enable)
+	Trace("Enter track crossed the enable")
 
-	rCharacter.Ship.Track.TrackDistance = 1.0;
+	rCharacter.Ship.Track.TrackDistance = 1.5;
+	// rCharacter.Ship.Track.WaveHeight2 = 0.9;
+	// rCharacter.Ship.Track.WaveHeight1 = 0.2;
 	rCharacter.Ship.Track.WaveHeight2 = 0.9;
 	rCharacter.Ship.Track.WaveHeight1 = 0.2;
 
@@ -964,6 +967,10 @@ void Ship_SetTrackSettings(ref rCharacter)
 	rCharacter.Ship.Track2.ZStart = rShip.Track2.ZStart;
 	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime;
 	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
+	rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
+
+	Trace("track wake properties " + rCharacter.Ship.Track.Enable + " " + rCharacter.Ship.Track2.ZStart);
+
     //Boyer tracing for debug
     //if(!CheckAttribute(rCharacter, "Ship.Track2.speed")) Trace("No speed rChar.Ship " + rShip.Name);
     if(!CheckAttribute(rShip, "Track2.speed")) Trace("No speed rship " + rShip.Name);
@@ -1020,7 +1027,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 		rCharacter.seatime = 0;
 		rCharacter.lastupdateseatime = 0;
 	}
-	//trace("starting sa2s for " + rCharacter.id + " and prev numships " + iNumShips+ ", did delete attr");
+	trace("starting sa2s for " + rCharacter.id + " and prev numships " + iNumShips+ ", did delete attr");
 
 	int iShipType = GetCharacterShipType(rCharacter); // PS
 	if (iShipType < 0 || iShipType >= SHIP_TYPES_QUANTITY_WITH_FORT)
@@ -1058,7 +1065,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 	CharacterUpdateShipFromBaseShip(iCharacterIndex);
 	Ship_SetLightsAndFlares(rCharacter);
 	Ship_SetTrackSettings(rCharacter);
-	//trace("updated ship from base");
+	trace("updated ship from base");
 
 //	rCharacter.Ship.Ang.y = 0.0;
 	rCharacter.Ship.Ang.y = rand(90);
