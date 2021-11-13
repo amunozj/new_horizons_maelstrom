@@ -13,7 +13,7 @@ int DIRECTENCOUNTERCHANCE;				// Set in function InitOpenSeaMod() in PROGRAM\NK.
 int DIRECTENCOUNTERDISTANCE;			// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 float ENCOUNTERBREAK = 1.0;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 
-#define DS_DEBUGINFO			1		// Set this to 1 to get on-screen debug information, 0 to get just normal information - 12Jan09
+#define DS_DEBUGINFO			0		// Set this to 1 to get on-screen debug information, 0 to get just normal information - 12Jan09
 
 
 //------------------------ Initial checks and trigger -----------------------------
