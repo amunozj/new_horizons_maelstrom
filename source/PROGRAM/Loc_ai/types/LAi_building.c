@@ -10,8 +10,8 @@ void LAi_type_Building_Init(aref chr)
 	LAi_tmpl_stay_InitTemplate(chr);
 //	LAi_SetDefaultStayAnimation(chr);
 	BeginChangeCharacterActions(chr);
-	chr.actions.idle.i1 = "idle_3";
-	chr.actions.dead.d1 = "idle_3";
+	chr.actions.idle.i1 = "building";
+	chr.actions.dead.d1 = "building";
 	EndChangeCharacterActions(chr);
 //	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
