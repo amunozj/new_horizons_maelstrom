@@ -6663,7 +6663,7 @@ void InitModels(bool isstart)
 	model.price	   =  120;
 	model.assigned	=  true;
     model.name = "Jos�";
-    model.middlename = "Joaqu�n";
+    model.middlename = "Joaquín";
 	model.lastname = "Almeida";
     model.storytitle = "Rustic Sea Wolf";
     model.storytext = "I left my Portuguese home in the Azores for America in 1796 at the age of 19. I worked as a merchant for a while but now with the outbreak of war I have turned privateer.";
