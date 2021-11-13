@@ -5777,7 +5777,7 @@ void InitModels(bool isstart)
 	AssignModelType(isstart, model, OFFIC_TYPE_FIRSTMATE, 1.0); // later switch this to CAP?
 	AddCharacterModel(model);
 
-	model.description =  "I feel like a Portuguese Marine. How about something like Louren�o Vaz ?";
+	model.description =  "I feel like a Portuguese Marine. How about something like Lourenço Vaz ?";
 	model.id	   =  "Navy_Portugal";
 	model.FaceId	= 363;
 	model.nation	  =  PORTUGAL;
