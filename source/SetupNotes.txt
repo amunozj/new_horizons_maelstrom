@@ -1,0 +1,5 @@
+Just place the New Horizons mod in a folder somewhere on your drive and point a Maelstrom shortcut to the Target: <path>\START.exe, and Start in: <path> to the New Horizons folder you just copied the mod into.
+
+Find the Maelstrom directory and executable you wish to use and create a shortcut on your desktop or somewhere you keep application shortcuts.  Change the properties of the shortcut to 'Start in:' at the base path of the mod it is supposed to play.  Also, the config.exe changes/manipulates the start.ini for each mod, so don't run the one in the Maelstrom directories, but copy the whole config.exe executable to each mod you have, which should contain the appropriate start.ini and run it from that mod directory to change any config properties it provides for change for that particular mod you intend to play/change.
+
+You can also copy START.exe, config.exe, modules folder, Buccaneer's Reef file and fmod.dll/fmod64.dll to each of the mod folders if you wish, but the above method reduces consumed file space on your drive, allows the itch client to automatically update, simplifying updates and such.

@@ -1,0 +1,17 @@
+string DLG_TEXT[15] = {
+"¡Así que ahí estás, ",
+"! ¡Casi pensé que no tendrías el coraje de aparecer!",
+"Bueno, como puedes ver, estoy aquí. ¡Así que no te preocupes!",
+"¿Preocuparme? ¿Yo? ¡Ja! ¡Lo único que me preocupa es que derrames tu sangre sobre mis preciosas ropas!",
+"Bueno, veremos quién es el que sangra.",
+"Muy bien, entonces. Resolvamos este asunto de una vez por todas.",
+"No hay nada que resolver, #sfriend#. Tu hermana solamente fue muy, muy amistosa conmigo, ¡ja ja!",
+"No hay nada que resolver, #sfriend#. Tu hermano solamente fue muy, muy amistoso conmigo, ¡ja ja!",
+"Eres muy mal perdedor. El barco es mío. ¡Te vencí justamente y sin trampas!",
+"¡#sputa#! ¡Diablo de #sgender# sin honor!",
+"¡Eso es un insulto que tendrás que pagar!",
+"¡Vete al infierno, ",
+"! ¡En guardia!",
+"¡En guardia!",
+"amigo mío",
+};

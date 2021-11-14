@@ -1,0 +1,4 @@
+title=Objetos malteses
+text.t1=Hay seis libros y documentos que tengo que encontrar para el secretario. Habló de nueve celdas que hay que abrir. También de su posesión más preciada, una reliquia. Muy valiosa. 
+text.t2=¡Ya tengo los seis libros y documentos!
+
