@@ -3,12 +3,15 @@ import sys
 import numpy as np
 
 
-TRACK1_ZSTART_OFFSET = -0.1
-TRACK1_SPEED_FACTOR = 10.1
+TRACK1_ZSTART_OFFSET = -0.25
+TRACK1_SPEED_FACTOR = 1
+TRACK1_WIDTH_OFFSET = 1.0
+TRACK1_LIFETIME_FACTOR = 5
 
 
-TRACK2_ZSTART_OFFSET = -0.1
-TRACK2_SPEED_FACTOR = 10.0
+TRACK2_ZSTART_OFFSET = -0.0
+TRACK2_SPEED_FACTOR = 1
+TRACK2_LIFETIME_FACTOR = 5
 
 
 parser = argparse.ArgumentParser()
@@ -56,7 +59,7 @@ def ships_add_wake(
 
         initShipsOutputFile.write(line)
 
-        if index>144 and index<18383:        
+        if index>144 and index<29192:        
 
             # Find beginning of ship model definition
             if not new_model_definition:
@@ -77,67 +80,79 @@ def ships_add_wake(
                     if shipProperty.lower() == 'weight':
                         weight = np.array(shipValue.split('(')[1].split(')')[0]).astype('float')
 
-                    if shipProperty.lower() == 'class':
+                    if shipProperty.lower() == 'class' and shipValue != '':
                         sclass = np.array(shipValue).astype('float')
 
                     if shipProperty.lower() == 'capacity':
                         capacity = np.array(shipValue).astype('float')
 
-                if not ship_has_wake and weight is not None and sclass is not None and capacity is not None and len(line) < 4:
+                if not ship_has_wake and weight is not None and sclass is not None and capacity is not None and (len(line) < 4 or '//' in line) and '=' not in line:
 
                     initShipsOutputFile.write('\trefShip.Track.Enable = true;\n')
 
                     coeff = [1.55517214e-02, 5.00225823e-05, -4.98928074e-06]
                     intercept = 0.09820077736886756
-                    value = -0.2 # sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK1_ZSTART_OFFSET
+                    # value = -0.2
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK1_ZSTART_OFFSET
                     initShipsOutputFile.write(f'\trefShip.Track1.ZStart = {np.round(value, 2)};\n')
 
                     coeff = [-0.62688704, -0.00091369, 0.00088025]
                     intercept = 13.210084408616721
-                    value = 20.0# sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value = 100.0# sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    value = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK1_LIFETIME_FACTOR
                     initShipsOutputFile.write(f'\trefShip.Track1.LifeTime = {int(np.round(value, 1))};\n')
 
                     coeff = [-0.08050374, 0.00034216, 0.00045451]
                     intercept = 2.223110932622534
-                    value1 = 1.0# sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value1 = 1.0
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK1_WIDTH_OFFSET
                     coeff = [0.10751939, 0.00012831, 0.00070964]
                     intercept = 1.7119858376185348
-                    value2 = 2.0#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value2 = 2.0
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK1_WIDTH_OFFSET
                     initShipsOutputFile.write(f'\trefShip.Track1.Width = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n')
 
                     coeff = [0.0228987, 0.00079388, -0.00019649]
                     intercept = 6.630231071240672
-                    value1 = 0.1#(sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK1_SPEED_FACTOR
+                    # value1 = 0.1
+                    value1 = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK1_SPEED_FACTOR
                     coeff = [0.02616642, 0.00055361, -0.00022146]
                     intercept = 8.315454087729835
-                    value2 = 0.15#(sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK1_SPEED_FACTOR
+                    # value2 = 0.15
+                    value2 = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK1_SPEED_FACTOR
                     initShipsOutputFile.write(f'\trefShip.Track1.Speed = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n\n')
 
                     coeff = [4.67918432e-03, 2.00266650e-05, -5.72896726e-06]
                     intercept = -0.16740627232249805
-                    value = -0.25#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK2_ZSTART_OFFSET
+                    # value = -0.25
+                    value = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept + TRACK2_ZSTART_OFFSET
                     initShipsOutputFile.write(f'\trefShip.Track2.ZStart = {np.round(value, 2)};\n')                
                     # initShipsOutputFile.write(f'\trefShip.Track2.ZStart = {-0.15};\n')                
 
                     coeff = [0.01688486, 0.00057339, 0.00019802]
                     intercept = 6.662296537342268
-                    value = 20.0#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value = 100.0
+                    value = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK2_LIFETIME_FACTOR
                     initShipsOutputFile.write(f'\trefShip.Track2.LifeTime = {int(np.round(value, 1))};\n')
 
                     coeff = [-0.19453281, 0.00101803, 0.0006664]
                     intercept = 3.8901838205823576
-                    value1 = 5.2#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value1 = 5.2
+                    value1 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
                     coeff = [-0.1736205, 0.00074637, 0.00084421]
                     intercept = 5.042083500051052
-                    value2 = 7.0#sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
+                    # value2 = 7.0
+                    value2 = sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept
                     initShipsOutputFile.write(f'\trefShip.Track2.Width = "{np.round(value1, 1)}, {np.round(value2, 1)}";\n')
 
                     coeff = [-4.28609993e-03, 1.20394955e-04, -2.04583143e-05]
                     intercept = 0.1745199323568355
-                    value1 = -5.05#(sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK2_SPEED_FACTOR
+                    # value1 = -5.05
+                    value1 = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK2_SPEED_FACTOR
                     coeff = [-8.82432338e-03,  2.47871965e-04, -4.21200588e-05]
                     intercept = 0.30048221367583794
-                    value2 = -1.15#(sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK2_SPEED_FACTOR
+                    # value2 = -1.15
+                    value2 = (sclass*coeff[0] + weight*coeff[1] + capacity*coeff[2] + intercept)*TRACK2_SPEED_FACTOR
                     initShipsOutputFile.write(f'\trefShip.Track2.Speed = "{np.round(value1, 2)}, {np.round(value2, 2)}";\n\n')
 
                     ship_has_wake = True

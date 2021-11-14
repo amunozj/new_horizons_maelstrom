@@ -946,7 +946,7 @@ void Ship_SetTrackSettings(ref rCharacter)
 
 	Trace("Enter track crossed the enable")
 
-	rCharacter.Ship.Track.TrackDistance = 1.5;
+	rCharacter.Ship.Track.TrackDistance = 1.0;
 	// rCharacter.Ship.Track.WaveHeight2 = 0.9;
 	// rCharacter.Ship.Track.WaveHeight1 = 0.2;
 	rCharacter.Ship.Track.WaveHeight2 = 0.9;
@@ -1061,6 +1061,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 
 	CharacterUpdateShipFromBaseShip(iCharacterIndex);
 	Ship_SetLightsAndFlares(rCharacter);
+	Ship_SetTrackSettings(rCharacter);
 
 	trace("updated ship from base");
 
