@@ -1,3 +1,0 @@
-title=Acetum Saturninum
-text.t1=Have to find this medicine.
-text.t2=Done!

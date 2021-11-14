@@ -1,4 +1,0 @@
-title=Etherbottle
-text.t1=Have to find this medicine.
-text.t2=It may be found in the Opium Den.
-text.t3=Done!
