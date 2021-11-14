@@ -1,3 +1,0 @@
-title=Finding #svillain#
-text.t1=#svillain# was sailing near #sisland# in #spronoun# ship, the '#sship#'.
-text.t2=An end, at last. We defeated the '#sship#' and finally put paid to #svillain#.
