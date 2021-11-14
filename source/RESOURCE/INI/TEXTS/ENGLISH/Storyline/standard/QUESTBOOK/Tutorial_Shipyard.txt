@@ -1,3 +1,0 @@
-title=Tutorial - Repair the damage caused to my ship by a storm
-text.t1=The hull and rigging are damaged, so I must repair them at the shipyard before leaving the island.
-text.t2=Done!
