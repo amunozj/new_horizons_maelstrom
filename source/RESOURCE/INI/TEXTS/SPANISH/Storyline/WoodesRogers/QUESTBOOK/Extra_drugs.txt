@@ -1,0 +1,13 @@
+title=Medicinas e instrumentos adicionales (opcional)
+text.t1=Creo que es un equipo de cirujía, pero cerrado.
+text.t2=¿Hojas medicinales? A mí me parece cáñamo. 
+text.t3=Tengo un tarro de sanguijuelas. También una bolsa; podría ser útil para más objetos medicinales.
+text.t4=Ésta no es una sierra cualquiera, sino una herramienta médica, propia de un doctor. ¿De verdad la usan en el astillero? 
+text.t5=¿Un montón de cartas viejas? No, no, no: es una colección de prescripciones y consejos médicos. 
+text.t6=Rollos de tela vieja reutilizados como vendajes.
+text.t7=¡Encontradas todas las medicinas adicionales!
+text.t8=¡Cualquier otro tipo de drogas u instrumentos médicos son de interés! Charles Vane.
+text.t9=Tengo que registrar el dormitorio de la abuela Rogers más tarde.
+text.t10=Huevo Frito podría tener algunas medicinas pero, ¿dónde está?
+text.t11=Quizás debería echar un vistazo en el astillero mientras espero.
+text.t12=Tengo que hablar con la familia Rogers al completo, amigos y oficiales. ¡Puede que tengan algo útil para el cofre de medicinas!

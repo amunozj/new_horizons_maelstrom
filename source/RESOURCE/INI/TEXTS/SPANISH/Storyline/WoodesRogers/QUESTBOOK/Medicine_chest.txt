@@ -1,0 +1,15 @@
+title=Un cofre de medicinas lleno
+text.t1=Dave Edna podría saber algo sobre un cofre de medicinas.
+text.t2=He encontrado un cofre de medicinas, pero sigue cerrado a cal y canto.
+text.t3=La mitad del cofre de medicinas está... abierta. ¿Dónde puedo conseguir algo de comida? ¿Quizás en el sótano, bajo la cocina?
+text.t4=También hay espacio para unas botellas en la parte de atrás.
+text.t5=La comida ha sido entregada. Ahora veamos si los ciudadanos pueden contribuir con algunas medicinas.
+text.t6=Ese loco ha abierto la puerta de la izquierda... ¡saltando la cerradura de un tiro! El cajón grande está en su sitio. Ahora hay que recoger algunos remedios en la iglesia. 
+text.t7=¡Vaya una colección! ¡No hay sitio par amás botellas y todos los cajones están llenos! El único problema es que las puertas no pueden volver a cerrarse.
+text.t8=El cofre de medicinas está reparado. (de forma algo chapucera, todo hay que decirlo).
+text.t9=La mitad del cofre está llena de medicinas. Dos cajones están llenos: uno con píldoras para prevenir el escorbuto, y el otro con varios artículos médicos proporcionados por el doctor.
+text.t10=¡Hay un cofre en la tienda!
+text.t11=El señor Cook estáen la iglesia, recogiendo las donaciones de medicinas y remedios que están haciendo los ciudadanos.
+text.t12=El señor Stretton puede abrir el resto del cofre, según la abuela Rogers.
+text.t13=Se requiere mi presencia en el astillero.
+text.t14=Tengo que hablar con la familia Rogers al completo, amigos y oficiales. ¡Puede que tengan algo útil para el cofre de medicinas!
