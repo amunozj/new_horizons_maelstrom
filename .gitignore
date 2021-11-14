@@ -1,0 +1,51 @@
+# log files
+*.log
+
+# Options
+options
+
+# Binary extensions
+*.an
+*.ani
+*.bin
+*.col
+*.COL
+*.dat
+*.gm
+*.grs
+*.hdp
+*.itch
+*.jpg
+*.loc
+*.mp3
+*.old
+*.ogg
+*.pdf
+*.png
+*.prj
+*.ptc
+*.qch
+*.rar
+*.sfk
+*.tga
+*.tx
+*.wav
+*.wmv
+*.xb
+*.xbx
+*.psd
+*.xls
+*.xlsx
+*.xps
+*.zap
+
+launch.json
+
+# Save folder
+source/SAVE
+
+# Screenshots
+source/Screenshots
+
+#Ships_init output
+tools/parse-ships-init/Ships_init.c
