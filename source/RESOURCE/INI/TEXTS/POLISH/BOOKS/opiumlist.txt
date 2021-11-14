@@ -1,4 +1,0 @@
-TEXT	{
-TU s¹ ludzie którzy s¹ zainteresowani kupnem opiumu:
-#sOpiumList#
-}
