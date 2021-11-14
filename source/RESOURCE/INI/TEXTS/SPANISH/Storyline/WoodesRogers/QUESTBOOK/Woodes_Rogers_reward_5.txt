@@ -1,0 +1,6 @@
+title=La quinta recompensa de Woodes Rogers
+text.t1=Hay una llave en el tanque de melaza. Tengo que encontrar alguna forma de sacarla de ahí. Rogers ha mencionado la oficina de la tienda. Tengo que psar por allí.
+text.t2=¿De dónde han salido estas pistolas? ¿A quién han pertenecido? ¿A piratas que aceptaron la amnistía de Woodes Rogers? Este arma muy larga está firmada 'Richards'. Supongo que vuelve a ser hora de entrar en la enorme residencia de Rogers...
+text.t3=
+text.t4=
+text.t5=
