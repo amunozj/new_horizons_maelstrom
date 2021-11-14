@@ -1,3 +1,0 @@
-title=Arrival at #sisland#
-text.t1=After surviving a fearsome storm, I've finally arrived at #sisland#. Thankfully the ship's cargo is intact.
-text.t2=After surviving a fearsome storm, I've finally arrived at #sisland#.

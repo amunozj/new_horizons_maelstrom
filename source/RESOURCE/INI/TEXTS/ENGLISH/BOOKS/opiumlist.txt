@@ -1,4 +1,0 @@
-TEXT	{
-These are the people now known to buy opium:
-#sOpiumList#
-}
