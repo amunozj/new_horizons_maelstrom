@@ -2,7 +2,7 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	0;
+#define DIRECTSAILDEBUG	1;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
 
@@ -221,6 +221,9 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 bool CheckIslandChange()
 {
 	int nextisland = getRTclosestIsland();
+	int nextlocation = -1
+	getRTclosestIslandLoc(nextisland, nextlocation);
+
 	ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
 	string sNewIslandId = rIsland.id;
 	string sIslandNow = pchar.location;
@@ -312,6 +315,106 @@ float getRTplayerShipAY()
 	return RTplayerShipAY;
 }
 
+
+
+void getRTclosestIslandLoc(ref nextIsland, ref nextLocation)
+{
+	DSTrace("getRTclosestIsland. pchar.location: " + pchar.location);
+	DSTrace("getRTclosestIsland. curr island: " + worldMap.island);
+
+	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
+	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
+
+	DSTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ)
+
+	float distance;
+	float iDistanceNow = 50000.0;
+	
+	ref rIsland;
+	string islandTemp;
+	nextIsland = -1;
+
+	aref arLandfalls;
+	int nLandfalls = 0 
+	nextLocation = -1;
+	int tempLocationN = -1;
+	float LFx;
+	float LFz;
+	float tempDist = 99999.0;
+	float tempLocationDist = 99999.0;
+	string tempLandfall = "";
+	string sLandfallName = "";
+
+	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
+	{
+		rIsland = GetIslandByIndex(inum);//makeref(rIsland, Islands[inum]);
+		if(!CheckAttribute(rIsland, "id")) continue;
+		islandTemp = rIsland.id;
+
+		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
+
+		float isX = stf(worldMap.islands.(islandTemp).position.x);
+		float isZ = stf(worldMap.islands.(islandTemp).position.z);			
+
+		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
+
+		makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
+		nLandfalls = GetAttributesNum(arLandfalls);		
+		tempLocationDist = 99999.0;
+		tempLocationN = -1;
+
+		for(int i=0 ; i<nLandfalls ; i++)
+		{
+			sLandfallName = GetAttributeName(GetAttributeN(arLandfalls,i));
+			DSTrace(sLandfallName);
+			LFx = stf(arLandFalls.(sLandfallName).position.x);
+			LFz = stf(arLandFalls.(sLandfallName).position.z);
+			tempDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, LFx, LFz);
+			DSTrace(LFx + ", " + LFz + " tempDist="+tempDist);
+
+			if (tempDist < tempLocationDist)
+			{
+				tempLocationDist = tempDist;
+				tempLocationN = i;
+				// if (Checkattribute(arLandfalls,(sLandfallName) + ".label") &&
+                //     Checkattribute(arLandfalls,(sLandfallName) + ".label.text"))
+				// {
+				// 	if (worldMap.islands.(islandTemp).locations.(sLandfallName).label.text == "")
+				// 		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
+				// 	else
+				// 		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
+				// }
+				tempLandfall = sLandfallName
+
+			}
+
+		}
+
+		DSTrace("getRTclosestIslandLoc. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", DistanceNow=" + iDistanceNow + " closest loc:" + tempLandfall + " at distance:" + tempLocationDist);		
+
+		if (tempLocationDist < distance)
+		{
+			distance = tempLocationDist;
+		}
+
+		if (distance < iDistanceNow)
+		{
+			iDistanceNow = distance;
+			nextIsland = inum;
+			nextLocation = tempLocationN;
+		}
+	}
+
+	islandTemp = rIsland.id;
+	makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
+
+	DSTrace("getRTclosestIsland. closest island: " + Islands[nextIsland].id + ", idx=" + nextIsland + " closest location:" + GetAttributeName(GetAttributeN(arLandfalls,nextLocation)) + ", idx=" + nextLocation);
+
+}
+
+
+
+
 int getRTclosestIsland()
 {
 	DSTrace("getRTclosestIsland. pchar.location: " + pchar.location);
@@ -341,7 +444,7 @@ int getRTclosestIsland()
 		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
 		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
 
-		DSTrace("getWMclosestIsland. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", wmDistanceNow=" + iDistanceNow);
+		DSTrace("getRTclosestIsland. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", wmDistanceNow=" + iDistanceNow);
 
 		if (distance < iDistanceNow)
 		{
@@ -368,6 +471,8 @@ void Sea2Sea_Reload()
 {
 	DelEventHandler("Sea2Sea_Reload", "Sea2Sea_Reload");
 
+	DSTrace("TRIGGER SEA2SEA_RELOAD")
+
 	object seaLoginToSea;
 
 	float CX = getRelRTplayerShipX(pchar.location);
@@ -393,8 +498,7 @@ void Sea2Sea_Reload()
 
 	SeaLogin(&seaLoginToSea);
 
-	worldMap.playerShipX = getRTplayerShipX();
-	worldMap.playerShipZ = getRTplayerShipZ();
+	SetCorrectWorldMapPosition()
 	worldMap.playerShipAY = getRTplayerShipAY();
 	worldMap.island = rIsland.id;
 	worldMap.zeroX = ix;
@@ -981,6 +1085,9 @@ void Sea_ReloadDirect() // Jan 07, new version by Screwface that works also with
 // called by Sea_ReloadStartDirect(), structure like original Sea_Reload
 // Modified Nov 2021 to be only used to load encounter ships
 {
+
+	DSTrace("TRIGGER SEA_RELOAD_DIRECT")
+	
 	DelEventHandler("Sea_ReloadDirect", "Sea_ReloadDirect");
 
 	ReloadProgressStart(); // KK
