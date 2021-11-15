@@ -1638,14 +1638,14 @@ bool SetUsedPotionIcons()
 			UI_idx++;
 			UI_name = "potion"+UI_idx;
 			objLandInterface.UserIcons.(UI_name).enable = true;
-			objLandInterface.UserIcons.(UI_name).pic = GetPotionPicture(arItm);
-			objLandInterface.UserIcons.(UI_name).tex = GetPotionTexture(arItm);
+			nPicNum = GetPotionPicture(arItm);
+			objLandInterface.UserIcons.(UI_name).pic = nPicNum;
+			nTexNum = GetPotionTexture(arItm);
+			objLandInterface.UserIcons.(UI_name).tex = nTexNum;
+			objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 4;
 			objLandInterface.UserIcons.(UI_name).name = UI_name;
 			objLandInterface.UserIcons.(UI_name).potion = arItm.id;
 			objLandInterface.UserIcons.(UI_name).note = GetItemNameByID(arItm.id) + ": " + GetCharacterItem(mc, arItm.id); // KK
-			if(nTexNum==4){
-				objLandInterface.UserIcons.(UI_name).selpic = GetPotionPicture(arItm) + 4;
-			}
 			bUsed = true;
 		}
 		itmIdx = FindPotionFromChr(mc, &arItm, itmIdx+1);
