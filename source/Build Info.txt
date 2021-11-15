@@ -1,4 +1,4 @@
-Build Version: Friday 13th August 2021
+Build Version: Thursday 28th September 2021
 Build 14
 
 ==========================
@@ -44,6 +44,7 @@ Build 14:
   . New voice greetings for female pirate and English officers by Jack Rackham and Tingyun
   . Partial Russian translation by Maximus
   . Partial Spanish translation by Homo Eructus, Perro Negro and Xianco. Now includes storyline questbooks and some dialogs.
+  . Spanish translation expanded by Homo Eructus including more dialogs
   . Partial Polish translation by Jacob and Konrad Kulczycki
   . Support for Swedish keyboard by Konrad Kulczycki
   . Colombia jungle including land route from Cartagena to Dolphin Sands by Grey Roger and Jack Rackham
@@ -84,6 +85,7 @@ Build 14:
   . Time travel Easter egg in Rheims' house in Smugglers' Lair if not playing "Tales of a Sea Hawk" by Grey Roger
   . "Cooking With Albatross" removes an albatross and gives 2 food during daily update, by Grey Roger
   . Naval officers can not capture towns for themselves nor select any government but their own when persuading a diplomat in a fort to surrender; diplomats in forts use period-correct king names, obey 'isEnabledTownCapture', by Grey Roger
+  . If you have a choice to not execute a surrendered captain and actively choose to do so, lose reputation by Grey Roger
 - Code Updates:
   . Limited number of soldiers in Merchant Guild attacks by Pieter Boelen
   . Reduced number of soldiers in Soldier Reinforcements by Pieter Boelen
@@ -149,7 +151,12 @@ Build 14:
   . New voice greeting for Joshamee Gibbs by Grey Roger
   . Blackjack renamed to Vingt-Un by Grey Roger
   . Gambling code overhauled by Levis
+  . Gambling code revised to use 'XI_ConvertString' instead of 'DLG_TEXT', gambling text moved from "Habitue_dialog.c" to "common.ini" by Grey Roger
   . International relations for War of the Spanish Succession corrected by Homo Eructus
+  . Random euphemisms in Terry Snider's dialog and general Nevis Pirate citizen dialog made translatable, and translated, by Homo Eructus
+  . Drinking in taverns, wenching in Nevis Pirate Settlement overhauled by Grey Roger
+  . Inverted exclamation mark resized in "RESOURCE\INI\fonts_euro.ini" to make it look better by Grey Roger
+  . "PROGRAM\DiALOGS\Enc_Officer_dialog.c"; "PROGRAM\INTERFACE\kam_shipberthing.c", "kam_shipberthing_updatedisplay.c", "kam_shipberthing_windows.c", "perks.c": made translatable and translated by Homo Eructus
 - Bug Fixes:
   . Fix to prevent Merchant Guild attack when player group was not responsible by Pieter Boelen
   . Fix to allow larger Random Quest Ships by Pieter Boelen
@@ -276,6 +283,9 @@ Build 14:
   . Selling Virginie d'Espivant earns correct amount of money by Jack Rackham
   . Gibbs01.wav": made audible within game, so can be used as greeting sound for Mr. Gibbs - Jack Rackham
   . Diplomat uses period-correct nation names, correctly handles America and Sweden - Grey Roger
+  . Citizen dialog files corrected to show town population by Homo Eructus
+  . "PROGRAM\Characters\Leveling.c, officers.c", "PROGRAM\QUESTS\quests_common.c": calls on GetAttributeN, GetAttributesNum, GetAttributeName changed to supply '&name' (aref) instead of 'name' (object) to prevent bugs by Hammie
+  . "SName" attribute for "HMS_Sophie" changed from "Sophie" to "HMS_Sophie" to avoid conflict with woman's name "Sophie" by Homo Eructus
 - Storyline Updates:
   . Sidequests:
     > A Girl Won in a Card Game, enabled also at Grenada by Pieter Boelen
@@ -533,6 +543,12 @@ Build 14:
   . Improved church as background to "Cartagena_town_01" by Jack Rackham
   . New playable character "BeatriceB" by Bathtub Pirate
   . Building in Grand Turk near tavern now has "RR Club" sign by Jack Rackham
+  . New playable character Ricardo Orellana, with custom sword and loading screen, by GhostofDeath91
+  . Two cannon locators added to "Frigate_Sat.gm" and "Frigate_Ex_Sat.gm" for previously unused gunports by Grey Roger
+  . Santiago tavern "sit4" and "sit11" locators changed to point slightly to the side to fix a bug which prevents a character from appearing on them, by Grey Roger
+  . New custom sail textures, plus torn versions of existing custom sails, by GhostofDeath91
+  . New playable supernatural characters Avergorex and Dervia, with custom swords, by Jacob
+  . New playable historical character Blas de Lezo by Homo Eructus
 - ADDITIONAL INSTALLATION OPTIONS:
   . Possibility to revert to original black-and-yellow paint scheme for British ships
 - For Future Development:

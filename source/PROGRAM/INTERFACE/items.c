@@ -87,8 +87,8 @@ void InitInterface_I(string iniName, int item)
 
 	//JRH -->
 	if (selection == BLADE_ITEM_TYPE || selection == ARMOR_ITEM_TYPE || selection == AMMUNITION_ITEM_TYPE || selection == FLASK_ITEM_TYPE || selection == POUCH_ITEM_TYPE || selection == BELT_ITEM_TYPE || selection == OPEN_ITEM_TYPE) selection = GUN_ITEM_TYPE;
-	if (selection == SPYGLASS_ITEM_TYPE  || selection == LOCKPICK_ITEM_TYPE || selection == CLOCK_ITEM_TYPE || selection == COMPASS_ITEM_TYPE || selection == DOCUMENT_ITEM_TYPE || selection == OUTFIT_ITEM_TYPE) selection = OBJECT_ITEM_TYPE;
-	if (selection == EQUIP_ITEM_TYPE || selection == EXAMINE_ITEM_TYPE) selection = QUEST_ITEM_TYPE;
+	if (selection == SPYGLASS_ITEM_TYPE  || selection == LOCKPICK_ITEM_TYPE || selection == CLOCK_ITEM_TYPE || selection == COMPASS_ITEM_TYPE || selection == DOCUMENT_ITEM_TYPE || selection == OUTFIT_ITEM_TYPE || selection == FLIP_ITEM_TYPE) selection = OBJECT_ITEM_TYPE;
+	if (selection == EQUIP_ITEM_TYPE || selection == EQUIP2_ITEM_TYPE || selection == EQUIP3_ITEM_TYPE || selection == EXAMINE_ITEM_TYPE) selection = QUEST_ITEM_TYPE;
 	//<-- JRH
 
 	FillSelectedScroll(selection);
@@ -98,7 +98,7 @@ void InitInterface_I(string iniName, int item)
 
 // KK -->
 	bool hasShip = false;
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < COMPANION_MAX; i++) {
 		int cidx = GetCompanionIndex(GetMainCharacter(), i);
 		if (cidx < 0) continue;
 		if (GetCharacterShipType(GetCharacter(cidx)) != SHIP_NOTUSED) {
@@ -110,7 +110,7 @@ void InitInterface_I(string iniName, int item)
 	if (hasShip == false && GetBerthedShipsQuantityForTown(GetTownIDFromLocID(characters[GetMainCharacterIndex()].location)) > 0) {
 		hasShip = true;
 		GameInterface.GoDirectToShipBerthing = true;
-		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "I_SHIP", 0, "#"+XI_ConvertString("Sel Berth"));
+		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "I_SHIP", 0, XI_ConvertString("Sel Berth"));
 	}
 // <-- KK
 
@@ -286,7 +286,7 @@ if(comName=="activate" || comName=="click")
 	case "EQUIP_BUTTON":
 		if(comName=="activate" || comName=="click")
 		{
-
+//p�r h�r
 		//JRH -->
 			ref PChar;
 			PChar = GetMainCharacter();
@@ -321,6 +321,7 @@ if(comName=="activate" || comName=="click")
 						TakeItemFromCharacter(Pchar, "ammobag2");
 						GiveItem2Character(Pchar, "ammobag1");
 					}
+
 					if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0) LAi_QuestDelay("pchar_outfit_check", 0.1);	//JRH: see quest_reaction
 				}
 			}
@@ -331,12 +332,12 @@ if(comName=="activate" || comName=="click")
 					if(itmName == "pistolbelt")	//yes should be different, pistolbelt is not a gun
 					{
 						if(IsEquipCharacterByItem(Pchar, "ammobag2")) RemoveCharacterEquip(Pchar, POUCH_ITEM_TYPE);
-
 						if(CheckCharacterItem(Pchar,"ammobag2"))
 						{
 							TakeItemFromCharacter(Pchar, "ammobag2");
 							GiveItem2Character(Pchar, "ammobag1");
 						}
+
 						if(IsEquipCharacterByItem(Pchar, "pistolcannon")) RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 						if(CheckCharacterItem(Pchar,"pistolcannon"))
 						{
@@ -359,6 +360,7 @@ if(comName=="activate" || comName=="click")
 						TakeItemFromCharacter(Pchar, "ammobag1");
 						GiveItem2Character(Pchar, "ammobag2");
 					}
+
 					if(CheckCharacterItem(Pchar,"pistolcannon1"))
 					{
 						TakeItemFromCharacter(Pchar, "pistolcannon1");
@@ -380,6 +382,7 @@ if(comName=="activate" || comName=="click")
 				TakeItemFromCharacter(Pchar, "ammopouch");
 				RemoveCharacterEquip(Pchar, FLASK_ITEM_TYPE);
 				TakeItemFromCharacter(Pchar, "powderflask");
+
 				if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0) LAi_QuestDelay("pchar_outfit_check", 0.1);	//JRH: see quest_reaction
 			}
 
@@ -523,6 +526,7 @@ if(comName=="activate" || comName=="click")
 				TakeItemFromCharacter(Pchar, "doc60D");
 				GiveItem2Character(Pchar, "doc60A");
 			}
+
 			if(itmName == "doc2E")
 			{
 				PlaySound("INTERFACE\book_close.wav");
@@ -640,26 +644,10 @@ if(comName=="activate" || comName=="click")
 				else
 				{
 					//EQUIP
-					LAi_QuestDelay("indian_arrow_tomahawk_equip_check", 0.1);
+					LAi_QuestDelay("indian_arrows_equip_check", 0.1);
 				}
 			}
 
-			if(itmName == "tomahawk")
-			{
-				if(IsEquipCharacterByItem(Pchar, "tomahawk"))
-				{
-					//RELEASE
-					//no problem
-				}
-				else
-				{
-					//EQUIP
-					LAi_QuestDelay("indian_arrow_tomahawk_equip_check", 0.1);
-				}
-			}
-
-			if(itmName != "pistolbow" || itmName != "blowgun")
-			{
 				if(HasSubStr(itmName, "pistol"))
 				{
 					if(IsEquipCharacterByItem(Pchar, FindCharacterItemByGroup(&PChar, GUN_ITEM_TYPE)))
@@ -670,8 +658,11 @@ if(comName=="activate" || comName=="click")
 					else
 					{
 						//EQUIP
-						LAi_QuestDelay("indian_pistols_equip_check", 0.1);
+					if(itmName == "pistolbow" || itmName == "blowgun")
+					{
+						//ok
 					}
+					else LAi_QuestDelay("indian_pistols_equip_check", 0.1);
 				}
 			}
 
@@ -1511,7 +1502,7 @@ if(comName=="activate" || comName=="click")
 							GiveItem2Character(Pchar, "portugize");
 						
 							LAi_QuestDelay("portugize_equip", 0.2);
-							LAi_QuestDelay("delete_library_map", 0.5);
+							
 						break;
 
 						case "4":
@@ -3378,7 +3369,7 @@ void I_ExamineItem()
 			LAi_QuestDelay("secret_room_finished_check", 0.1);
 		}
 	}
-//pär BB1
+//p�r BB1
 	if(itmName == "sealed_map")
 	{
 		if(IsEquipCharacterByItem(Pchar, "folding_knife"))
@@ -3925,23 +3916,15 @@ void UpdateItemData()
 		{
 			case GUN_ITEM_TYPE:
 				// scheffnow - weaponsmod -->
-				if (CheckAttribute(itemARef,"QualityName"))
-				{
-					// LDH added quality "q" translation string - 07May09
-					Quality = TranslateString("", "q"+itemARef.QualityName) + " ";
-				}
-				GameInterface.strings.ItemName = Quality + GameInterface.strings.ItemName; // KK
+				if (CheckAttribute(itemARef,"QualityName")) Quality = TranslateString("", "q"+itemARef.QualityName);
+				//GameInterface.strings.ItemName = Quality + GameInterface.strings.ItemName; // KK // MAXIMUS 31.05.2019: corrected for russian spelling
 				// scheffnow - weaponsmod <--
 				itmDescribe = GetAssembledString(TranslateString("", "weapon gun parameters"), itemARef) + newLineStr;
 			break;
 			case BLADE_ITEM_TYPE:
 				// scheffnow - weaponsmod -->
-				if (CheckAttribute(itemARef,"QualityName"))
-				{
-					// LDH added quality "q" translation string - 07May09
-					Quality = TranslateString("", "q"+itemARef.QualityName) + " ";
-				}
-				GameInterface.strings.ItemName = Quality + GameInterface.strings.ItemName; // KK
+				if (CheckAttribute(itemARef,"QualityName")) Quality = TranslateString("", "q"+itemARef.QualityName);
+				//GameInterface.strings.ItemName = Quality + GameInterface.strings.ItemName; // KK // MAXIMUS 31.05.2019: corrected for russian spelling
 				// scheffnow - weaponsmod <--
 				itmDescribe = GetAssembledString(TranslateString("", "weapon blade parameters"), itemARef) + newLineStr; // KK
 			break;
@@ -3950,8 +3933,36 @@ void UpdateItemData()
 				itmDescribe = GetAssembledString(TranslateString("", "weapon armor parameters"),itemARef) + newLineStr;
 			break;
 			// GreatZen <--
-			
+			// Grey Roger: copied from below as potions now have "groupID" attribute -->
+			case POTION_ITEM_TYPE:
+				if( CheckAttribute(itemARef,"potion") )
+				{
+					itmDescribe = TranslateString("", "Potion parameters")+":";
+					if( CheckAttribute(itemARef,"potion.health") )
+					{
+						itmDescribe += " "+TranslateString("", "health value");
+						if(stf(itemARef.potion.health)>=0)
+						{	itmDescribe += "+" + sti(itemARef.potion.health) + ".";
+						} else
+						{	itmDescribe += sti(itemARef.potion.health) + ".";
+						}
+					}
+					itmDescribe += newLineStr;
+				}
+			break;
+			// <-- Grey Roger
 		}
+			
+		// MAXIMUS 31.05.2019: corrected for russian spelling ==>
+		switch(LanguageGetLanguage())
+		{
+			case "Russian":
+				GameInterface.strings.ItemName = GameInterface.strings.ItemName + " " + Quality;
+			break;
+			GameInterface.strings.ItemName = Quality + " " + GameInterface.strings.ItemName;//default for English
+		}
+		// MAXIMUS 31.05.2019: corrected for russian spelling <==
+
 	}
 	else
 	{	if( CheckAttribute(itemARef,"potion") )
@@ -4026,7 +4037,8 @@ void UpdateItemData()
 		&& itemARef.groupID!=FLASK_ITEM_TYPE && itemARef.groupID!=POUCH_ITEM_TYPE && itemARef.groupID!=LOCKPICK_ITEM_TYPE
 		&& itemARef.groupID!=CLOCK_ITEM_TYPE && itemARef.groupID!=COMPASS_ITEM_TYPE && itemARef.groupID!=BELT_ITEM_TYPE
 		&& itemARef.groupID!=DOCUMENT_ITEM_TYPE && itemARef.groupID!=OUTFIT_ITEM_TYPE
-		&& itemARef.groupID!=EQUIP_ITEM_TYPE) {
+		&& itemARef.groupID!=EQUIP_ITEM_TYPE && itemARef.groupID!=EQUIP2_ITEM_TYPE && itemARef.groupID!=EQUIP3_ITEM_TYPE
+		&& itemARef.groupID!=FLIP_ITEM_TYPE) {
 			//JRH: new types
 			SetNodeUsing("EQUIP_BUTTON",false);
 			SetNodeUsing("EXAMINE_BUTTON", false);
@@ -4048,20 +4060,21 @@ void UpdateItemData()
 
 		if(IsEquipedItem(itemARef.id))
 		{
-			SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Release that"));
+			SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, XI_ConvertString("Release that"));
 			if(itemARef.groupID==GUN_ITEM_TYPE || itemARef.groupID==BLADE_ITEM_TYPE || itemARef.groupID==ARMOR_ITEM_TYPE || itemARef.groupID==SPYGLASS_ITEM_TYPE
 			|| itemARef.groupID==FLASK_ITEM_TYPE || itemARef.groupID==POUCH_ITEM_TYPE || itemARef.groupID==LOCKPICK_ITEM_TYPE
 			|| itemARef.groupID==CLOCK_ITEM_TYPE || itemARef.groupID==COMPASS_ITEM_TYPE || itemARef.groupID==BELT_ITEM_TYPE
-			|| itemARef.groupID==OUTFIT_ITEM_TYPE || itemARef.groupID==EQUIP_ITEM_TYPE)
+			|| itemARef.groupID==OUTFIT_ITEM_TYPE || itemARef.groupID==EQUIP_ITEM_TYPE || itemARef.groupID==EQUIP2_ITEM_TYPE || itemARef.groupID==EQUIP3_ITEM_TYPE)
 			{
 				//JRH: new types
 				SetSelectable("EQUIP_BUTTON",true);
+				SetNodeUsing("FLIP_BUTTON", false); //JRH
 			}
 			SetSelectable("TOSS_BUTTON", false); //Levis
 		}
 		else
 		{
-			SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Equip that"));
+			SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, XI_ConvertString("Equip that"));
 			SetNodeUsing("FLIP_BUTTON", false); //JRH
 		}
 	} else {
@@ -4155,8 +4168,8 @@ void IDoExit(int exitCode)
 	}*/
 	EndCancelInterface(true);
 // MAXIMUS interface MOD <--
-
-	if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0) LAi_QuestDelay("pchar_outfit_check", 0.1);	//JRH: see quest_reaction
+//p�r h�r 2, moved up see p�r h�r
+//	if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0) LAi_QuestDelay("pchar_outfit_check", 0.1);	//JRH: see quest_reaction
 }
 
 void ProcEquipPress()
@@ -4341,7 +4354,7 @@ void FillSelectedScroll(string itemsID)
 				if(arItem.groupID==POTION_ITEM_TYPE) curItemID = POTION_ITEM_TYPE;
 				//if(arItem.groupID==SPYGLASS_ITEM_TYPE || arItem.groupID==FLASK_ITEM_TYPE || arItem.groupID==POUCH_ITEM_TYPE || arItem.groupID==LOCKPICK_ITEM_TYPE || arItem.groupID==CLOCK_ITEM_TYPE || arItem.groupID==COMPASS_ITEM_TYPE) { curItemID = OBJECT_ITEM_TYPE; }
 				if (arItem.groupID == MAP_ITEM_TYPE) curItemID = MAP_ITEM_TYPE; // KK
-				if(arItem.groupID==QUEST_ITEM_TYPE || arItem.groupID==EQUIP_ITEM_TYPE || arItem.groupID==EXAMINE_ITEM_TYPE) curItemID = QUEST_ITEM_TYPE;
+				if(arItem.groupID==QUEST_ITEM_TYPE || arItem.groupID==EQUIP_ITEM_TYPE || arItem.groupID==EQUIP2_ITEM_TYPE || arItem.groupID==EQUIP3_ITEM_TYPE || arItem.groupID==EXAMINE_ITEM_TYPE) curItemID = QUEST_ITEM_TYPE;
 				if(curItemID==itemsID)
 				{
 				//	if(curItemID==GUN_ITEM_TYPE && arItem.id=="bladeX4") continue;//MAXIMUS
@@ -4351,7 +4364,7 @@ void FillSelectedScroll(string itemsID)
 					if(j>1)	GameInterface.itemslist.(attributeName).str1 = "#"+j;
 // KK -->
 					string name = "";
-					if (CheckAttribute(arItem, "QualityName")) name = TranslateString("", "q"+arItem.QualityName) + " "; // PB: Correct quality name
+					//if (CheckAttribute(arItem, "QualityName")) name = TranslateString("", "q"+arItem.QualityName) + " "; // PB: Correct quality name // MAXIMUS 31.05.2019: corrected for russian spelling
 					if( GetAttribute(arItem,"groupID") == QUEST_ITEM_TYPE)
 					{
 						name += PreprocessText(TranslateString("", arItem.name)); // PB
@@ -4360,6 +4373,7 @@ void FillSelectedScroll(string itemsID)
 					{
 						name += GetAssembledString(TranslateString("", arItem.name), arItem); // Levis
 					}
+
 					// MAXIMUS 31.05.2019: corrected for russian spelling ==>
 					if (CheckAttribute(arItem, "QualityName"))
 					{

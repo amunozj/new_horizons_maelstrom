@@ -1,6 +1,11 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+{=====| JackSparrow.c |=====}
 Jack{Jack}
 Sparrow{Sparrow}
+
+{=====| StartStoryline.c |=====}
+
+{=====| quests_reaction.c |=====}
 Heumac{Heumac}
 Tezcacoatl{Tezcacoatl}
 Angler{Angler}
@@ -21,6 +26,8 @@ Wyvern{Wyvern}
 Quittance{Quittance}
 Penrod{Penrod}
 French Soldier{French Soldier}
+
+{=====| Officers.c |=====}
 Captaine{Captaine}
 Chevalle{Chevalle}
 Lucas{Lucas}
@@ -31,17 +38,25 @@ Gombo{Gombo}
 the Slave{the Slave}
 Prognatus{Prognatus}
 Solvo{Solvo}
+
+{=====| QuebradasCostillas.c |=====}
 Ines{Ines}
 Diaz{Diaz}
 Skull{Skull}
+
+{=====| Redmond.c |=====}
 Henry{Henry}
 Weatherby{Weatherby}
 Swann{Swann}
+
+{=====| Story.c |=====}
 Joshamee{Joshamee}
 Gibbs{Gibbs}
 Random{Random}
 Drunk{Drunk}
 Random Drunk{Random Drunk}
+
+{=====| TempQuest.c |=====}
 Matthew{Matthew}
 Shaw{Shaw}
 Billy{Billy}
@@ -184,6 +199,8 @@ Jimmy{Jimmy}
 Legs{Legs}
 Port Admiral{Port Admiral}
 Talicerdor{Talicerdor}
+
+{=====| TempQuestEnemy.c |=====}
 Ronald{Ronald}
 Blacklock{Blacklock}
 Harris{Harris}
@@ -201,4 +218,8 @@ Spanish Lieutenant{Spanish Lieutenant}
 Spanish Officer{Spanish Officer}
 Prison Commendant{Prison Commandant}
 Spanish Midshipman{Spanish Midshipman}
+
+{=====| Others |=====}
 Nigel{Nigel}
+
+{=====| 189 characters |=====}

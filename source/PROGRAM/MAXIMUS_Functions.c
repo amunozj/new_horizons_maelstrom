@@ -729,10 +729,24 @@ void InitQCBrothel()
 	Locations[n].reload.l1.emerge = "reload9";
 	Locations[n].reload.l1.autoreload = "0";
 	Locations[n].reload.l1.label = "#stown_name#.";
+
+	Locations[n].reload.l2.name = "reload2";
+	Locations[n].reload.l2.go = "QC_brothel_upstairs";
+	Locations[n].reload.l2.emerge = "reload1";
+	Locations[n].reload.l2.label = "Brothel Bedroom";
+	Locations[n].reload.l2.disable = 1;
+
 	Locations[n].monsters = "0";
 	LAi_LocationFightDisable(Locations[n], true);
 
 	Locations[n].island = "QuebradasCostillas"; // NK 04-08-29
+
+	// Bedroom
+	n = FindLocation("QC_brothel_upstairs");
+	Locations[n].reload.l1.name = "reload1";
+	Locations[n].reload.l1.go  = "QC_brothel";
+	Locations[n].reload.l1.emerge = Locations[n].reload.l1.emerge = Locations[FindLocation("QC_brothel")].reload.l2.name;
+	Locations[n].reload.l1.label = "Brothel";
 }
 
 // KK -->
@@ -2205,13 +2219,13 @@ string GetLingvo(string strData)
 {
 	if(LanguageGetLanguage()=="Russian")
 	{
-		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="à")
+		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="ï¿½")
 		{
-			strData = strcut(strData, 0, strlen(strData)-2)+"ó";
+			strData = strcut(strData, 0, strlen(strData)-2)+"ï¿½";
 		}
-		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="À")
+		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="ï¿½")
 		{
-			strData = strcut(strData, 0, strlen(strData)-2)+"Ó";
+			strData = strcut(strData, 0, strlen(strData)-2)+"ï¿½";
 		}
 	}
 
@@ -3083,39 +3097,39 @@ void ResetKeyboardCharacters(string curLanguage)
 		break;
 
 		case "English":
-			CI_CreateAndSetControls("", "NK_Key_à", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_á", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_â", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ã", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ä", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_å", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_¸", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_æ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ç", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_è", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_é", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ê", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ë", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ì", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_í", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_î", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ï", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ð", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ñ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ò", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ó", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ô", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_õ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ö", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_÷", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ø", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ù", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_û", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ú", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ý", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ü", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_þ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ÿ", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
 			CI_CreateAndSetControls("", "NK_Key_.", "", 0, false);
 		break;
 	}

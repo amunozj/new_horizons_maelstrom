@@ -150,7 +150,6 @@ void InitShips()
 		// whoops this should be left blank as default refShip.CanBuy = true;
 		refShip.Type.Trade = true;
 		refShip.Type.War = true;
-		refShip.Track.Enable = true;
 
 		// PS -->
 		/*these override refShip.name for each case
@@ -299,8 +298,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -412,8 +411,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -517,8 +516,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -628,8 +627,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -735,8 +734,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -848,8 +847,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -957,8 +956,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -1068,8 +1067,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -1179,8 +1178,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -1289,8 +1288,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -1396,8 +1395,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -1502,8 +1501,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -1609,8 +1608,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -1716,8 +1715,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
  	refShip.CargoHold = 1;
@@ -1832,8 +1831,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -1942,8 +1941,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2053,8 +2052,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2163,8 +2162,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 84;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 5;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2276,8 +2275,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 8;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2395,8 +2394,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 8;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2512,8 +2511,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2619,8 +2618,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2730,8 +2729,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2842,8 +2841,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -2957,8 +2956,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3064,8 +3063,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 100;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3175,8 +3174,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 100;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3285,8 +3284,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3391,8 +3390,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -3510,8 +3509,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -3620,8 +3619,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3728,8 +3727,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3835,8 +3834,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 84;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 5;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -3947,8 +3946,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4062,8 +4061,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 4;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4171,8 +4170,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 4;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4279,8 +4278,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 24;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4397,8 +4396,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4511,8 +4510,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 8;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4619,8 +4618,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 84;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 5;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4727,8 +4726,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 84;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 5;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4835,8 +4834,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 8;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -4943,8 +4942,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 8;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -5043,8 +5042,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 104;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 0;
@@ -5138,8 +5137,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 104;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 0;
@@ -5231,8 +5230,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 104;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 0;
@@ -5359,8 +5358,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 104;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 0;
@@ -5462,8 +5461,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 104;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 0;
@@ -5584,7 +5583,7 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
+	refShip.BI.Tex = 11;
 	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
@@ -5687,7 +5686,7 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
+	refShip.BI.Tex = 11;
 	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
@@ -5788,8 +5787,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -5889,8 +5888,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -5992,8 +5991,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6092,8 +6091,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6206,8 +6205,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6302,8 +6301,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6406,8 +6405,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6510,8 +6509,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6606,8 +6605,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6718,8 +6717,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6820,8 +6819,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -6926,8 +6925,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -7030,8 +7029,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -7133,8 +7132,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -7232,8 +7231,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -7338,8 +7337,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -7444,8 +7443,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -7548,8 +7547,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -7648,8 +7647,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -7753,8 +7752,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -7866,8 +7865,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -7970,8 +7969,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -8077,8 +8076,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 56;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8188,8 +8187,8 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_plain.tga";
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 130;
+	refShip.BI.Tex = 15;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8282,8 +8281,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 56;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8373,8 +8372,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8478,8 +8477,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8585,8 +8584,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8691,8 +8690,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8797,8 +8796,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -8903,8 +8902,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -9011,8 +9010,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9116,8 +9115,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9221,8 +9220,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9330,8 +9329,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9441,8 +9440,8 @@ void InitShips()
 	
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9525,8 +9524,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9634,8 +9633,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -9740,8 +9739,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -9845,8 +9844,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -9953,8 +9952,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10062,8 +10061,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10169,8 +10168,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10276,8 +10275,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10384,8 +10383,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10492,8 +10491,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 116;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 13;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -10579,8 +10578,8 @@ void InitShips()
 	refShip.CannonsQuantity = 38;
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
-	refShip.MaxCrew		 = 360;
-	refShip.MinCrew		 = 32;
+	refShip.MaxCrew			= 360;
+	refShip.MinCrew			= 64; // GR: was 32, too small!
 	refShip.Price		   = 110000;
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
@@ -10599,8 +10598,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -10686,8 +10685,8 @@ void InitShips()
 	refShip.CannonsQuantity = 38;
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
-	refShip.MaxCrew		 = 390;
-	refShip.MinCrew		 = 45;
+	refShip.MaxCrew			= 400; // GR: was 390, usually over 400 after national modifiers, so increase to 400 and make it officially tier 3
+	refShip.MinCrew			= 90; // GR: was 45, too small!
 	refShip.Price		   = 120000;
 	refShip.HP			  = 4500;
 	refShip.SP			  = 200;
@@ -10706,8 +10705,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -10790,8 +10789,8 @@ void InitShips()
 	refShip.CannonsQuantity = 38;
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
-	refShip.MaxCrew		 = 360;
-	refShip.MinCrew		 = 32;
+	refShip.MaxCrew			= 360;
+	refShip.MinCrew			= 64;  // GR: was 32, too small!
 	refShip.Price		   = 110000;
 	refShip.HP			  = 4000;
 	refShip.SP			  = 200;
@@ -10810,8 +10809,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -10897,8 +10896,8 @@ void InitShips()
 	refShip.CannonsQuantity = 38;
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
-	refShip.MaxCrew		 = 390;
-	refShip.MinCrew		 = 45;
+	refShip.MaxCrew			= 400; // GR: was 390, usually over 400 after national modifiers, so increase to 400 and make it officially tier 3
+	refShip.MinCrew			= 90;  // GR: was 45, too small!
 	refShip.Price		   = 120000;
 	refShip.HP			  = 4500;
 	refShip.SP			  = 200;
@@ -10917,8 +10916,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -11001,8 +11000,8 @@ void InitShips()
 	refShip.CannonsQuantity = 38;
 	refShip.Cannons.Borts.cannonf.qty = 2;
 	refShip.Cannons.Borts.cannonb.qty = 4;
-	refShip.MaxCrew		 = 390;
-	refShip.MinCrew		 = 45;
+	refShip.MaxCrew			= 400; // GR: was 390, usually over 400 after national modifiers, so increase to 400 and make it officially tier 3
+	refShip.MinCrew			= 90;  // GR: was 45, too small!
 	refShip.Price		   = 120000;
 	refShip.HP			  = 4500;
 	refShip.SP			  = 200;
@@ -11021,8 +11020,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -11124,8 +11123,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -11227,8 +11226,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 102;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11324,8 +11323,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 102;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11424,8 +11423,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 102;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11530,8 +11529,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 20;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 5;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11640,8 +11639,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 102;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11739,8 +11738,8 @@ void InitShips()
 
 // KK -->
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -11847,8 +11846,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -11952,8 +11951,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
  	refShip.CargoHold = 1;
@@ -12065,8 +12064,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12170,8 +12169,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
  	refShip.CargoHold = 1;
@@ -12276,8 +12275,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12380,8 +12379,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12484,8 +12483,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12589,8 +12588,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12699,8 +12698,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12808,8 +12807,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12911,8 +12910,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -12981,7 +12980,7 @@ void InitShips()
 // on this day and date Dec 23 2009, 0325h
 
 //-------------------------------------------------------------------------
-// French Battle Frigate (Artï¿½mise class Frigate) By ZarethPL
+// French Battle Frigate (Artémise class Frigate) By ZarethPL
 // Further model and texture work by Captain Armstrong and Armada; rigging by Hylie Pistof
 //     SWS / Flushdeck Frigate / WBT4
 //-------------------------------------------------------------------------
@@ -13020,8 +13019,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13127,8 +13126,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13237,8 +13236,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13340,8 +13339,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13444,8 +13443,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13543,8 +13542,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.37, 0.71";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13643,8 +13642,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.37, 0.71";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13743,8 +13742,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.37, 0.71";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13843,8 +13842,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.37, 0.71";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -13943,8 +13942,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.37, 0.71";
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14047,8 +14046,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14161,8 +14160,8 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_plain.tga";
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14263,8 +14262,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14340,7 +14339,7 @@ void InitShips()
 	refShip.MaxCaliber		= 12;
 	refShip.Weight			= Tonnes2CWT(1300);
 	refShip.Capacity		= 2000;
-	refShip.CannonsQuantity = 42;
+	refShip.CannonsQuantity = 44;	// was 42, two missing guns added
 	// NK cannon qtys 05-04-18 -->
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.02;
@@ -14367,8 +14366,8 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_plain.tga";
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14446,7 +14445,7 @@ void InitShips()
 	refShip.MaxCaliber		= 12;
 	refShip.Weight			= Tonnes2CWT(1300);
 	refShip.Capacity		= 2000;
-	refShip.CannonsQuantity = 42;
+	refShip.CannonsQuantity = 44;	// was 42, two missing guns added
 	// NK cannon qtys 05-04-18 -->
 	refShip.Track.Enable = true;
 	refShip.Track1.ZStart = -0.02;
@@ -14471,8 +14470,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14571,8 +14570,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14675,8 +14674,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14777,8 +14776,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.22, 0.4";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -14884,8 +14883,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 32;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -14989,8 +14988,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 32;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -15096,8 +15095,8 @@ void InitShips()
 
     refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-    refShip.BI.Tex = 16;
-    refShip.BI.Pic = 116;
+    refShip.BI.Tex = 10;
+    refShip.BI.Pic = 13;
     refShip.QDeck = "ShipDeck6";
     refShip.CannonsDeck = 1;
     refShip.CargoHold = 1;
@@ -15202,8 +15201,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -15314,8 +15313,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -15364,7 +15363,7 @@ void InitShips()
 // on this day and date Jan 2 10, 2131h
 
 //-------------------------------------------------------------------------
-// Lineship47 by Chris Roupï¿½ and Thomas the Terror
+// Lineship47 by Chris Roupé and Thomas the Terror
 //     <SWS - Willemstad Builders' Trials Winter 09 S/N 165> (WBT4)
 //-------------------------------------------------------------------------
 	makeref(refShip,ShipsTypes[n]);
@@ -15402,8 +15401,8 @@ void InitShips()
 	refShip.SP				= 200;
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 32;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -15508,8 +15507,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -15618,8 +15617,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 32;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -15726,8 +15725,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -15832,8 +15831,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -15938,8 +15937,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -16047,8 +16046,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16157,8 +16156,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16263,8 +16262,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16369,8 +16368,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16476,8 +16475,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16581,8 +16580,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16686,8 +16685,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16786,8 +16785,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16886,8 +16885,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS5"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -16989,8 +16988,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -17100,8 +17099,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -17213,8 +17212,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -17326,8 +17325,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -17430,8 +17429,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -17536,8 +17535,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic =  6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -17603,7 +17602,7 @@ void InitShips()
 // on this day and date Jan 1 2010, 1711h
 
 //-------------------------------------------------------------------------
-// Intrï¿½pide by Seb
+// Intrépide by Seb
 //     <SWS - Willemstad Builders' Trials Winter 09 S/N 198> (WBT4XL)
 //-------------------------------------------------------------------------
 	makeref(refShip,ShipsTypes[n]);
@@ -17640,8 +17639,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -17744,8 +17743,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -17849,8 +17848,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -17952,8 +17951,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -18057,8 +18056,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 118;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -18165,8 +18164,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 118;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -18273,8 +18272,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 118;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -18380,8 +18379,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 118;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
  	refShip.CargoHold = 2;
@@ -18494,8 +18493,8 @@ void InitShips()
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -18637,8 +18636,8 @@ void InitShips()
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -18780,8 +18779,8 @@ void InitShips()
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -18917,8 +18916,8 @@ void InitShips()
 // Steam-assisted frigate. Reduced cargo space from machinery & bunkerage, significantly increased tonnage.
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 34;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -19059,8 +19058,8 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_dutchman2.tga";
 	refShip.EmblemedSails.nationFileName = "sail_dutchman2.tga";
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -19159,8 +19158,8 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_dutchman2.tga";
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck				= "ShipDeck2";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -19251,8 +19250,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck				= "ShipDeck2";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -19343,8 +19342,8 @@ void InitShips()
 	refShip.EmblemedSails.nationFileName = "sail_whole_black_patch1.tga";
 	refShip.night_stealth = true;	// PB: Half visibility at night
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 2;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck7"; // SuperDurnius
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -19436,8 +19435,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 16;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -19532,8 +19531,8 @@ void InitShips()
 	refShip.night_stealth = true;	// PB: Half visibility at night
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 2;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck7"; // SuperDurnius
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -19630,8 +19629,8 @@ void InitShips()
 	refShip.fog_trail = true;		// PB: Cursed Ship Trails Fog
 	refShip.night_stealth = true;	// PB: Half visibility at night
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 2;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck7"; // SuperDurnius
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -19721,8 +19720,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -19819,8 +19818,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -19917,8 +19916,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -20014,8 +20013,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -20111,8 +20110,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 22;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
 	refShip.CargoHold = 2;
@@ -20207,8 +20206,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.46, 0.89";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20310,8 +20309,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.46, 0.89";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20411,8 +20410,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.46, 0.89";
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20513,8 +20512,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20617,8 +20616,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20719,8 +20718,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.49, 0.95";
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 50;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -20829,8 +20828,8 @@ void InitShips()
 	refShip.GeraldSails.rey_b2	= 1;	
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1; // PB: No cannon deck nor cargo hold, but with a cabin does not work well
@@ -20923,8 +20922,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.19, 0.34";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
  	refShip.CargoHold = 1;
@@ -21022,8 +21021,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.19, 0.34";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
  	refShip.CargoHold = 1;
@@ -21121,8 +21120,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.19, 0.34";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
  	refShip.CargoHold = 1;
@@ -21190,10 +21189,10 @@ void InitShips()
 // Armada -->
 	makeref(refShip,ShipsTypes[n]);
 	n++;
-	refShip.Name			 = "HMS_Sophie";
-	refShip.id 			 = refShip.Name;
-	refShip.Walk		= "Sophie";
-	refShip.sname			= "Sophie";
+	refShip.Name			= "HMS_Sophie";
+	refShip.id			= refShip.Name;
+	refShip.Walk			= "Sophie";
+	refShip.sname			= "HMS_Sophie";
 	refShip.All			= "Brig1";
 	refShip.Class			= 7;
 	refShip.Cannon		 = CANNON_TYPE_CARRONADE_LBS24;
@@ -21224,8 +21223,8 @@ void InitShips()
 	refShip.CanBuy		= true;
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -21324,8 +21323,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.15, 0.25";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -21420,8 +21419,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.3, 0.56";
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -21521,8 +21520,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.43, 0.82";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -21579,7 +21578,7 @@ void InitShips()
 	}
 
 //-------------------------------------------------------------------------
-// Apostï¿½l Felipe 1626 by pgargon
+// Apostól Felipe 1626 by pgargon
 //-------------------------------------------------------------------------
 	makeref(refShip,ShipsTypes[n]);
 	n++;
@@ -21615,8 +21614,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.2, 0.35";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -21710,8 +21709,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.15, 0.24";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -21803,8 +21802,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.15, 0.25";
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -21896,8 +21895,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.16, 0.28";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -21999,8 +21998,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.4, 0.77";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22093,8 +22092,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.4, 0.77";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22187,8 +22186,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.4, 0.77";
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22281,8 +22280,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.4, 0.77";
 
 	refShip.BigPicTexName = "SHIPS5"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 86;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 6;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22377,8 +22376,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.27, 0.49";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22476,8 +22475,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.28, 0.52";
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22539,7 +22538,7 @@ void InitShips()
 	}
 
 //-------------------------------------------------------------------------
-// Unitï¿½ class frigate, French version of RN_Surprise by pgargon, retextured by Grey Roger
+// Unité class frigate, French version of RN_Surprise by pgargon, retextured by Grey Roger
 //-------------------------------------------------------------------------
 	makeref(refShip,ShipsTypes[n]);
 	n++;
@@ -22574,8 +22573,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.28, 0.52";
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22637,7 +22636,7 @@ void InitShips()
 	}
 
 //-------------------------------------------------------------------------
-// Unitï¿½ class frigate, Spanish version of RN_Surprise by pgargon, retextured by Grey Roger
+// Unité class frigate, Spanish version of RN_Surprise by pgargon, retextured by Grey Roger
 //-------------------------------------------------------------------------
 	makeref(refShip,ShipsTypes[n]);
 	n++;
@@ -22672,8 +22671,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.28, 0.52";
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 38;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -22771,8 +22770,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 40;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 3;
  	refShip.CargoHold = 2;
@@ -22870,8 +22869,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 40;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 11;
 	refShip.QDeck = "ShipDeck3";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 2;
@@ -22975,8 +22974,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -23081,8 +23080,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -23187,8 +23186,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 2;
@@ -23292,8 +23291,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 82;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 4;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -23388,8 +23387,8 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_torn_red_qar.tga";
 	refShip.EmblemedSails.nationFileName = "sail_torn_red_qar.tga";
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 2;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -23472,8 +23471,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -23576,8 +23575,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -23680,8 +23679,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 98;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -23784,8 +23783,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -23891,8 +23890,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -24004,8 +24003,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -24117,8 +24116,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -24230,8 +24229,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -24342,8 +24341,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -24449,8 +24448,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -24565,8 +24564,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -24681,8 +24680,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -24797,8 +24796,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -24913,8 +24912,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25029,8 +25028,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25144,8 +25143,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25247,8 +25246,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25351,8 +25350,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 88;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 7;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25458,8 +25457,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25569,8 +25568,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25680,8 +25679,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS3"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 70;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -25789,8 +25788,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 54;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 14;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2;
 	refShip.CargoHold = 1;
@@ -25892,8 +25891,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26001,8 +26000,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 72;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 3;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26111,8 +26110,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck_4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -26218,8 +26217,8 @@ void InitShips()
 // KK -->
 	refShip.EmblemedSails.normalTex = "sail_Empress.tga";
 	refShip.EmblemedSails.nationFileName = "sail_Empress.tga";
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 120;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 15;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -26308,8 +26307,8 @@ void InitShips()
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
 
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 68;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 1;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26409,13 +26408,13 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 	// KK -->
-	refShip.EmblemedSails.normalTex = "sail_Mariana.tga";
-	refShip.EmblemedSails.nationFileName = "sail_Mariana.tga";
+	refShip.EmblemedSails.normalTex = "sail_DeathVessel_torn.tga";
+	refShip.EmblemedSails.nationFileName = "sail_DeathVessel_torn1.tga";
 	refShip.devil_trail = true;		// PB: Cursed Ship Trails Fog
 	refShip.night_stealth = true;	// PB: Half visibility at night
 	
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck6";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26501,8 +26500,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.2, 0.35";
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 114;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 12;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -26597,8 +26596,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.21, 0.38";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26696,8 +26695,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.21, 0.38";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26795,8 +26794,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.21, 0.38";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26893,8 +26892,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.21, 0.38";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -26992,8 +26991,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.21, 0.38";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27094,8 +27093,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS1"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 40;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 11;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -27192,8 +27191,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -27280,8 +27279,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS2"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 18;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 4;
 	refShip.QDeck				= "ShipDeck3";
 	refShip.CannonsDeck			= 3;
 	refShip.CargoHold			= 2;
@@ -27374,8 +27373,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27473,8 +27472,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27573,8 +27572,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27672,8 +27671,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27771,8 +27770,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27875,8 +27874,8 @@ void InitShips()
 	refShip.EmblemedSails.normalTex = "sail_whole_red_plain.tga";
 	refShip.EmblemedSails.nationFileName = "sail_whole_red_plain.tga";
 
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -27975,8 +27974,8 @@ void InitShips()
 	refShip.Track2.Speed = "0.26, 0.47";
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 36;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 9;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -28078,8 +28077,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -28192,8 +28191,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -28306,8 +28305,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -28420,8 +28419,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 6;
+	refShip.BI.Tex = 14;
+	refShip.BI.Pic = 2;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -28533,8 +28532,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 102;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 10;
 	refShip.QDeck = "ShipDeck1";
 	refShip.CannonsDeck = 0;
 	refShip.CargoHold = 1;
@@ -28629,8 +28628,8 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS1"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 16;
+	refShip.BI.Tex = 12;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck2";
 	refShip.CannonsDeck = 2
 	refShip.CargoHold = 2;
@@ -28729,8 +28728,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS4"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -28826,8 +28825,8 @@ void InitShips()
 
 	refShip.BigPicTexName = "SHIPS3"; //Armada
 // KK -->
-	refShip.BI.Tex = 16;
-	refShip.BI.Pic = 66;
+	refShip.BI.Tex = 10;
+	refShip.BI.Pic = 0;
 	refShip.QDeck = "ShipDeck5";
 	refShip.CannonsDeck = 1;
 	refShip.CargoHold = 1;
@@ -29591,7 +29590,7 @@ void InitShips()
 
 	refShip.BigPicTexName	= "SHIPS2"; // Armada
 // KK -->
-	refShip.BI.Tex = 16;
+	refShip.BI.Tex = 10;
 	refShip.BI.Pic = 8;
 	refShip.QDeck = "ShipDeck4";
 	refShip.CannonsDeck = 0;
@@ -30278,7 +30277,7 @@ void InitShips()
 	refShip.CanBuy	= false; //JRH
 
 	refShip.BigPicTexName	= "SHIPS4"; // Armada
-	refShip.BI.Tex = 16;
+	refShip.BI.Tex = 10;
 	refShip.BI.Pic = 8;
 
 	refShip.InertiaAccelerationX	= 5.0;	refShip.InertiaBrakingX		= 3.0;

@@ -188,7 +188,7 @@ void InitInterface(string iniName)
 	SetWindow(WINDOW_MAIN);
 
 	CreateString(true, "ScreenTitle", XI_ConvertString("titleSelectStoryline"), FONT_TITLE, COLOR_NORMAL, 320, 5, SCRIPT_ALIGN_CENTER, 1.0);
-	CreateString(true, "StorylineTitle", GetStorylineTitle(slno), FONT_NORMAL, COLOR_NORMAL, 320, 84, SCRIPT_ALIGN_CENTER, 1.0);
+	CreateString(true, "StorylineTitle", GetTranslatedStoryLine(slno, GetStorylineTitle(slno)), FONT_NORMAL, COLOR_NORMAL, 320, 84, SCRIPT_ALIGN_CENTER, 1.0); //MAXIMUS 17.05.2019: needed for localization
 	CreateString(true, "lblProfile", TranslateString("", "Profile") + ":", FONT_NORMAL, COLOR_NORMAL, 200, 245, SCRIPT_ALIGN_LEFT, 0.7);
 	//CreateString(true, "StartDate", "", FONT_NORMAL, COLOR_NORMAL, 200, 270, SCRIPT_ALIGN_LEFT, 0.7); //Levis
 	CreateString(true, "StartLocation", TranslateString("", "unknown"), FONT_NORMAL, COLOR_NORMAL, 320, 308, SCRIPT_ALIGN_CENTER, 0.7); //Levis
@@ -203,8 +203,8 @@ void InitInterface(string iniName)
 	CreateString(true, "StartYear", CharYear, FONT_NORMAL, COLOR_NORMAL, 420, 268, SCRIPT_ALIGN_CENTER, 0.7);
 	CreateString(true, "StartDay", CharDay, FONT_NORMAL, COLOR_NORMAL, 368, 268, SCRIPT_ALIGN_CENTER, 0.7);
 	CreateString(true, "StartMonth", GetMonthName(CharMonth), FONT_NORMAL, COLOR_NORMAL, 260, 268, SCRIPT_ALIGN_LEFT, 0.7);
-	CreateString(true, "LblData", "Date:", FONT_NORMAL, COLOR_NORMAL, 200, 268, SCRIPT_ALIGN_LEFT, 0.7);
-	CreateString(true, "LblPeriod", "Period:", FONT_NORMAL, COLOR_NORMAL, 200, 289, SCRIPT_ALIGN_LEFT, 0.7);
+	CreateString(true, "LblData", XI_ConvertString("Date") + ":", FONT_NORMAL, COLOR_NORMAL, 200, 268, SCRIPT_ALIGN_LEFT, 0.7);
+	CreateString(true, "LblPeriod", XI_ConvertString("Period") + ":", FONT_NORMAL, COLOR_NORMAL, 200, 289, SCRIPT_ALIGN_LEFT, 0.7);
 	CreateString(true, "StartPeriod", TranslateString("", GetPeriodName(curPeriod)), FONT_NORMAL, COLOR_NORMAL, 250, 289, SCRIPT_ALIGN_LEFT, 0.7);
 	//Levis custom startdate end
 
@@ -796,9 +796,9 @@ void ChangeStoryline(bool bRight)
 
 	//Levis custom start date -->
 	GameInterface.strings.StartYear = CharYear;
-	GameInterface.strings.StartMonth = GetMonthName(CharMonth);
+	GameInterface.strings.StartMonth = TranslateString("",GetMonthName(CharMonth));
 	GameInterface.strings.StartDay = CharDay;
-	GameInterface.strings.StartPeriod = GetPeriodName(curPeriod);
+	GameInterface.strings.StartPeriod = TranslateString("", GetPeriodName(curPeriod));
 	bool canchangedate = true;
 	if(CheckAttribute(arstart,"date.lock")) canchangedate = false;
 	SetNodeUsing("YEAR", canchangedate);
@@ -836,16 +836,17 @@ void ChangeStoryline(bool bRight)
 		//MAXIMUS 17.05.2019: needed for localization ==>
 		GiveHimName(&arstart);
 
-		GameInterface.strings.CharacterName = CharFirstName + " ";
-		if (CharMiddleName != "") GameInterface.strings.CharacterName = GameInterface.strings.CharacterName + CharMiddleName + " ";
-		GameInterface.strings.CharacterName = GameInterface.strings.CharacterName + CharLastName;
+		GameInterface.strings.CharacterName = GetTranslatedStoryLine(slno, CharFirstName);
+		if (CharMiddleName != "") GameInterface.strings.CharacterName = GameInterface.strings.CharacterName + " " + GetTranslatedStoryLine(slno, CharMiddleName);
+		GameInterface.strings.CharacterName = GameInterface.strings.CharacterName + " " + GetTranslatedStoryLine(slno, CharLastName);
+		//MAXIMUS 17.05.2019: <==
 	}
 
 	curShip = -1;
 	if (CheckAttribute(arstart, "ship"))
 	{
 		curShip = GetShipIndex(arstart.ship);
-		if (CheckAttribute(arstart, "shipname"))	GameInterface.strings.ShipName = arstart.shipname;
+		if (CheckAttribute(arstart, "shipname"))	GameInterface.strings.ShipName = GetTranslatedStoryLine(slno, arstart.shipname); //MAXIMUS 17.05.2019: needed for localization
 		else										GameInterface.strings.ShipName = "";
 	}
 	else
@@ -933,7 +934,7 @@ void RefreshScreen()
 					IsNotLocked = CheckAttribute(arstart, "shipname.lock") == false || sti(arstart.shipname.lock) == false);
 					if (CheckAttribute(model, "shipname") && IsNotLocked)
 					{
-						GameInterface.strings.ShipName = model.shipname;
+						GameInterface.strings.ShipName = GetTranslatedStoryLine(slno, model.shipname);
 					}
 				}
 				IsNotLocked = CheckAttribute(arstart, "Flags.Pirate.lock") == false || sti(arstart.Flags.Pirate.lock) == false);
@@ -987,19 +988,19 @@ void RefreshScreen()
 				}
 				if (slno == FindStoryline("FreePlay") && CheckAttribute(model, "storytext"))
 				{
-					SetFormatedText("INFO_TEXT", model.storytext);
+					SetFormatedText("INFO_TEXT", GetTranslatedStoryLine(slno, model.storytext)); //MAXIMUS 17.05.2019: needed for localization
 				}
 				else
 				{
-					SetFormatedText("INFO_TEXT", GetStorylineDescription(slno));
+					SetFormatedText("INFO_TEXT", GetTranslatedStoryLine(slno, GetStorylineDescription(slno))); //MAXIMUS 17.05.2019: needed for localization
 				}
 				if (slno == FindStoryline("FreePlay") && CheckAttribute(model, "storytitle"))
 				{
-					GameInterface.strings.StorylineTitle = model.storytitle;
+					GameInterface.strings.StorylineTitle = GetTranslatedStoryLine(slno, model.storytitle); //MAXIMUS 17.05.2019: needed for localization
 				}
 				else
 				{
-					GameInterface.strings.StorylineTitle = GetStorylineTitle(slno);
+					GameInterface.strings.StorylineTitle = GetTranslatedStoryLine(slno,  GetStorylineTitle(slno)); //MAXIMUS 17.05.2019: needed for localization
 				}
 			}
 			// PB: Model-based options <--
@@ -1009,7 +1010,7 @@ void RefreshScreen()
 				GameInterface.SHIP.pic1.img2 = GetShipPicName(curShip);
 				GameInterface.SHIP.pic1.tex2 = 1 + GetShipTexture(curShip); // PB
 				SendMessage(&GameInterface, "ls", MSG_INTERFACE_REFRESH_SCROLL, "SHIP");
-				CharShipName = GameInterface.strings.ShipName;
+				CharShipName = GetTranslatedStoryLine(slno, GameInterface.strings.ShipName); //MAXIMUS 17.05.2019: needed for localization
 				SetTextBoxReadOnly("ShipName", false);
 			} else {
 				CharShipName = "";
@@ -1056,25 +1057,25 @@ void RefreshScreen()
 							break;
 
 							case PLAYER_TYPE_AGENT:
-								id += "Hostile Port";
+								id += TranslateString("", "Hostile Port");
 								LocationOverride = true;
 							break;
 
 							case PLAYER_TYPE_SMUGGLER:
-								id += "Friendly Port";
+								id += TranslateString("", "Friendly Port");
 								LocationOverride = true;
 							break;
 
 							case PLAYER_TYPE_CURSED:
 								if(HasSubStr(ShipsTypes[curShip].id, "Dutchman"))
-									id += "Cozumel Waters";
+									id += TranslateString("", "Cozumel Waters");
 								else
-									id += "Random Port";
+									id += TranslateString("", "Random Port");
 								LocationOverride = true;
 							break;
 
 							case PLAYER_TYPE_CASTAWAY:
-								id += "Random Shore";
+								id += TranslateString("", "Random Shore");
 								LocationOverride = true;
 								SetSelectable("SHIP", false);
 								SetTextBoxReadOnly("ShipName", true);
@@ -1101,6 +1102,8 @@ void RefreshScreen()
 									{
 										if (CharNation == ENGLAND)
 											lidx = FindLocation("Redmond_port");						// Speightstown isn't much of a navy base
+										if (CharNation == SPAIN && GetAttribute(model, "id") == "spa_Lezo")
+											lidx = FindLocation("Cartagena_port");
 									}
 									NavyLockShipSelection(true , model);								// Navy assignment is pre-defined
 								}
@@ -1170,25 +1173,25 @@ void RefreshScreen()
 
 			makeref(model, Models[tmpOutfit]);
 			faceid = model.FaceId;
-			if (FindFile(GetResourceDirectory() + "TEXTURES\INTERFACES\PORTRAITS\128", "*.tga.tx", "face_" + faceid + ".tga.tx") != "")
+			if (FindFile("RESOURCE\TEXTURES\INTERFACES\PORTRAITS\128", "*.tga.tx", "face_" + faceid + ".tga.tx") != "")
 				GameInterface.SELECTPICT.ImagesGroup.t4 = "FACE128_" + faceid;
 			else
 				GameInterface.SELECTPICT.ImagesGroup.t4 = "";
 			id = "";
-			if (CheckAttribute(model, "name")) id += model.name;
+			if (CheckAttribute(model, "name")) id += GetTranslatedStoryLine(slno, model.name);
 			if (CheckAttribute(model, "middlename")) {
 				if (id != "") id += " ";
-				id += model.middlename;
+				id += GetTranslatedStoryLine(slno, model.middlename);
 			}
 			if (CheckAttribute(model, "lastname")) {
 				if (id != "") id += " ";
-				id += model.lastname;
+				id += GetTranslatedStoryLine(slno, model.lastname);
 			}
 			if (id != "")
 				SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "OutfitName", id, FONT_NORMAL, 380, 130, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 1.0, 0);
 			else
 				SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "OutfitName", TranslateString("", model.id), FONT_NORMAL, 380, 130, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 1.0, 0);
-			if (slno == FindStoryline("FreePlay") && CheckAttribute(model, "storytext"))	SetFormatedText("SELECT_DESCRIPTION", model.storytext);
+			if (slno == FindStoryline("FreePlay") && CheckAttribute(model, "storytext"))	SetFormatedText("SELECT_DESCRIPTION", GetTranslatedStoryLine(slno, model.storytext));
 			else if (CheckAttribute(model, "description")) SetFormatedText("SELECT_DESCRIPTION", LanguageConvertString(idModelDescr, model.description));
 			SendMessage(&GameInterface, "lsl", MSG_INTERFACE_MSG_TO_NODE, "SELECT_DESCRIPTION", 5);
 			GameInterface.SELECTPICT.pic1.img2 = "face";
@@ -1376,13 +1379,13 @@ void ChangeStartDate(int year, int month, int day)
 	//CharSecond = sti(arstart.date.sec);
 	curPeriod = GetPeriodFromYear(CharYear);
 	GameInterface.strings.StartYear = CharYear;
-	GameInterface.strings.StartMonth = GetMonthName(CharMonth);
+	GameInterface.strings.StartMonth = TranslateString("",GetMonthName(CharMonth));
 	GameInterface.strings.StartDay = CharDay;
 	curPeriod = GetPeriodFromYear(CharYear);
 	SetCurrentPeriod(curPeriod);
 	RefreshScreen();
 	iNationsQuantity = CheckNationsQuantity(curPeriod);
-	GameInterface.strings.StartPeriod = GetPeriodName(curPeriod);
+	GameInterface.strings.StartPeriod = TranslateString("", GetPeriodName(curPeriod));
 }
 
 //These are copies of the function in calendar.c but they take the Char data instead of the envirioment data as current data.
@@ -1967,7 +1970,7 @@ void SetWindow(int iWindow)
 			SetNewPicture("FLAG_PICTURE41", "INTERFACES\Flags\Flag_Personal" + personalflagidx + personalflagtex + ".tga");
 			SetNodeUsing("FLAG_PICTURE41", true);
 			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "lblNationPersonal", TranslateString("", CheckNationNameByPeriod(PERSONAL_NATION, curPeriod, true)), FONT_NORMAL, 440, 180, COLOR_NORMAL, 0, SCRIPT_ALIGN_LEFT, true, 0.8, 0);
-			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", "NATION", FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
+			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", XI_ConvertString("TitleNation"), FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
 			SetNodeUsing("WINDOWSTRINGES", true);
 			SetNodeUsing("TITLE_WINDOW", true);
 			SetNodeUsing("EXIT_WINDOW_BUTTON", true);
@@ -1979,7 +1982,7 @@ void SetWindow(int iWindow)
 		case WINDOW_PIRATEFLAG:
 			SetNodeUsing("TOOLTIP_FADER", true);
 			SetNodeUsing("DIALOG_WINDOW", true);
-			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", "PIRATE FLAG", FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
+			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", XI_ConvertString("TitlePirateFlag"), FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
 			SetNodeUsing("WINDOWSTRINGES", true);
 			SetNodeUsing("TITLE_WINDOW", true);
 			SetNodeUsing("EXIT_WINDOW_BUTTON", true);
@@ -2004,7 +2007,7 @@ void SetWindow(int iWindow)
 		case WINDOW_PERSONALFLAG:
 			SetNodeUsing("TOOLTIP_FADER", true);
 			SetNodeUsing("DIALOG_WINDOW", true);
-			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", "PERSONAL FLAG", FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
+			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", XI_ConvertString("TitlePersonalFlag"), FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
 			SetNodeUsing("WINDOWSTRINGES", true);
 			SetNodeUsing("TITLE_WINDOW", true);
 			SetNodeUsing("EXIT_WINDOW_BUTTON", true);
@@ -2029,7 +2032,7 @@ void SetWindow(int iWindow)
 		case WINDOW_PLAYERTYPE:
 			SetNodeUsing("TOOLTIP_FADER", true);
 			SetNodeUsing("DIALOG_WINDOW", true);
-			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", "BACKGROUND PROFESSION", FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
+			SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "Title", XI_ConvertString("TitleProfession"), FONT_TITLE, 320, 110, COLOR_NORMAL, 0, SCRIPT_ALIGN_CENTER, true, 0.8, 0);
 			SetNodeUsing("WINDOWSTRINGES", true);
 			SetNodeUsing("TITLE_WINDOW", true);
 			SetNodeUsing("EXIT_WINDOW_BUTTON", true);
@@ -3249,6 +3252,7 @@ void SetupPlayerType()
 		}
 		SetSkillShow(i);
 	}
+
 	if (tmpPlayerType == PLAYER_TYPE_CUSTOM) {
 		SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "lblfreeskillpoints", TranslateString("", "Available points:"), FONT_NORMAL, 80, 374, COLOR_NORMAL, 0, SCRIPT_ALIGN_LEFT, true, 0.8, 0);
 		SendMessage(&GameInterface, "lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE, "WINDOWSTRINGES", 0, "freeskillpoints", "" + GetFreeSkillPoints(), FONT_BOLD_NUMBERS, 255, 374, COLOR_NORMAL, 0, SCRIPT_ALIGN_RIGHT, true, 0.5, 0);

@@ -317,7 +317,7 @@ void InitInterface_RRS(string iniName,ref pCharacter,ref enemyCh,string newCurNo
 				SetSelectable("CANNONS_BUTTON", false);
 				SetSelectable("SWAP_BUTTON", false);
 				SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "GOODS_BUTTON"  , 0, "Cannot plunder");*/
-				SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "CREW_BUTTON"   , 0, "Assign prize crew");
+				SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "CREW_BUTTON"   , 0, TranslateString("", "Assign prize crew"));
 			/*	SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "CANNONS_BUTTON", 0, "Cannot take cannons");
 				SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "SWAP_BUTTON"   , 0, "Cannot take ship");*/
 			}
@@ -863,7 +863,7 @@ void CharactersProcess()
 	/*if(GetCrewQuantity(refEnemyCharacter)<GetMinCrewQuantity(refEnemyCharacter))
 	{
 		GameInterface.strings.Mincrewwarn = TranslateString("","Not enough crew assigned");
-		PlaySound("knock");
+		PlaySound("interface\knock.wav");
 		return;
 	}*/
 	// boal min crew on ship <--
@@ -931,7 +931,7 @@ void SwapProcess()
 // boal min crew on ship -->
 	/*if((GetCrewQuantity(xi_refCharacter) + GetCrewQuantity(refEnemyCharacter))< GetMinCrewQuantity(refEnemyCharacter))
 	{
-		PlaySound("knock");
+		PlaySound("interface\knock.wav");
 		int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 		GameInterface.strings.Mincrewwarn = LanguageConvertString(tmpLangFileID,"Not enough crew assigned"); // MAXIMUS
 		LanguageCloseFile(tmpLangFileID);

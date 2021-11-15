@@ -145,10 +145,10 @@ float LAi_CalcDamageForBlade(aref attack, aref enemy, string attackType, bool is
 	return 0.0;
 }
 /*
-//Получить повреждение от сабли
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 float LAi_BladeCalcDamage(aref attack)
 {
-	//Расчитываем повреждение от сабли
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	float min = 10.0;
 	float max = 10.0;
 	if(CheckAttribute(attack, "chr_ai.dmgbldmin"))
@@ -164,10 +164,10 @@ float LAi_BladeCalcDamage(aref attack)
 }
 */
 
-//Модифицировать повреждение от сабли с учётом скилов
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_BladeApplySkills(aref attack, aref enemy, float dmg)
 {
-	//Учитываем скилы
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	float aSkill = LAi_GetCharacterFightLevel(attack);
 	float eSkill = LAi_GetCharacterFightLevel(enemy);
 	if(aSkill >= eSkill)
@@ -200,7 +200,7 @@ float LAi_BladeApplySkills(aref attack, aref enemy, float dmg)
 		kDmg = 1.5;
 	}
 	dmg = dmg*kDmg;
-	//Аттака своей группы
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	kDmg = 1.0;
 	if(IsCharacterPerkOn(enemy, "BasicDefence")) kDmg = 0.9;
 	if(IsCharacterPerkOn(enemy, "AdvancedDefence")) kDmg = 0.8;
@@ -213,10 +213,10 @@ float LAi_BladeApplySkills(aref attack, aref enemy, float dmg)
 	return dmg;
 }
 
-//Расчитать полученный опыт при ударе саблей
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_BladeCalcExperience(aref attack, aref enemy, float dmg)
 {
-	//Вычисляем полученый опыт
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	float ra = 1.0;
 	float re = 1.0;
 	if(CheckAttribute(attack, "rank"))
@@ -314,7 +314,7 @@ float Lai_UpdateEnergyPerDltTime(aref chr, float curEnergy, float dltTime)
 
 	return fEnergy;
 }
-//Расчитать вероятность пробивки блока
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 float LAi_BladeFindPiercingProbability(aref attack, aref enemy, float hitDmg)
 {
 	float piercing = 0.05;
@@ -397,23 +397,23 @@ float LAi_BladeFindPiercingProbability(aref attack, aref enemy, float hitDmg)
 //Gun parameters
 //--------------------------------------------------------------------------------
 
-//Расчитаем вероятность попадания
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_GunCalcProbability(aref attack, float kDist)
 {
-	//Если близко, то попадём точно
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	if(kDist >= 0.9) return 1.0;
-	//Расчитаем вероятность на конце отрезка
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float pmin = 0.3;
 	if(CheckAttribute(attack, "chr_ai.accuracy"))
 	{
 		pmin = stf(attack.chr_ai.accuracy);
 	}
-	//Применим разброс от скила
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	float aSkill = LAi_GetCharacterFightLevel(attack);
 	pmin = pmin + 0.3*aSkill;
-	//Вероятность попадания в текущей позиции
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float p = pmin + (1.0 - pmin)*(kDist/0.9);
-	//Учесть абилити
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(IsCharacterPerkOn(attack, "GunProfessional"))
 	{
 		p = p + 0.10;
@@ -429,10 +429,10 @@ float LAi_GunCalcProbability(aref attack, float kDist)
 	return p;
 }
 
-//Получить повреждение от пистолета
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_GunCalcDamage(aref attack)
 {
-	//Расчитываем повреждение от сабли
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	float min = 10.0;
 	float max = 10.0;
 	if(CheckAttribute(attack, "chr_ai.dmggunmin"))
@@ -451,10 +451,10 @@ float LAi_GunCalcDamage(aref attack)
 	return dmg;
 }
 
-//Расчитать полученный опыт при попадании из пистолета
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_GunCalcExperience(aref attack, aref enemy, float dmg)
 {
-	//Вычисляем полученый опыт
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	float ra = 1.0;
 	float re = 1.0;
 	if(CheckAttribute(attack, "rank"))
@@ -479,10 +479,10 @@ float LAi_GunCalcExperience(aref attack, aref enemy, float dmg)
 	return dmg;
 }
 
-//Расчитаем текущую скорость перезарядки пистолета
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 float LAi_GunReloadSpeed(aref chr)
 {
-	//Получим текущее состояние скорости зарядки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float charge_dlt = LAI_DEFAULT_DLTCHRG;
 	if(CheckAttribute(chr, "chr_ai.charge_dlt"))
 	{
@@ -527,11 +527,11 @@ float LAi_GunReloadSpeed(aref chr)
 	}
      //JRH
 
-	//Модифицируем скилом
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	float skill = LAi_GetCharacterFightLevel(chr);
 	//charge_dlt = charge_dlt*(1.0 + 0.25*skill);
 	charge_dlt = charge_dlt*(1.0 + 0.25*skill)*F*P; //JRH
-	//Учтём абилити
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(IsCharacterPerkOn(chr, "GunProfessional"))
 	{
 		charge_dlt = charge_dlt*1.5;
@@ -626,6 +626,10 @@ float LAi_GunReloadSpeed(aref chr)
 						ammoName2 = "caps_box_O";
 						if(gpb == 0 || cap == 0) return 0.0;
 					break;
+					case "pg6":
+						ammoName = "pistolgrapes";
+						if(pg <= 5 || gp <= 5) return 0.0;
+					break;				
 				}
 				if(!CheckAttribute(chr,"Items.gunpowder")) chr.Items.gunpowder = 0;
 				if(!CheckAttribute(chr,"Items."+ammoName) || sti(chr.Items.gunpowder)==0)
@@ -663,7 +667,7 @@ float LAi_GunReloadSpeed(aref chr)
 
 float LAi_CalcDeadExp(aref attack, aref enemy)
 {
-	//Вычисляем полученый опыт
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	float ra = 1.0;
 	float re = 1.0;
 	if(CheckAttribute(attack, "rank"))
@@ -813,28 +817,28 @@ float LAi_CalcDeadExp(aref attack, aref enemy)
 //--------------------------------------------------------------------------------
 
 /*
-//Начисление повреждений при незаблокированной атаке
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
 	LAi_ApplyCharacterBladeDamage(attack, enemy, attackDmg, hitDmg, false);
 }
 
-//Начисление повреждений при заблокированной атаке
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void LAi_ApplyCharacterBlockDamage(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
 	LAi_ApplyCharacterBladeDamage(attack, enemy, attackDmg, hitDmg, true);
 }
 */
 
-//Начисление повреждений при атаке мечём
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 //void LAi_ApplyCharacterBladeDamage(aref attack, aref enemy, float attackDmg, float hitDmg, bool isBlocked)
 void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, bool isBlocked)
 {
 	float dmg = LAi_CalcDamageForBlade(attack, enemy, attackType, isBlocked);
 
-	//Если неубиваемый, то нетрогаем его
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	if(LAi_IsImmortal(enemy)) return;
-	//Применяем абилити
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	/*float pBreak = 0.0;
 	if(IsCharacterPerkOn(attack, "SwordplayProfessional"))
 	{
@@ -855,13 +859,13 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 	// PB: Disable blocking for enemies with either no sword or their fists equiped
 	if(isBlocked)
 	{
-		//Вероятность пробивки
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		float p = LAi_BladeFindPiercingProbability(attack, enemy, dmg);
 		//p = p + pBreak;
 
-		//Если шансов пробить нет, то ненаносим провреждения
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //		if(p < 0.0) return;										// LDH removed 06Apr09
-		//Если шансов пробить нет, то ненаносим провреждения
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(rand(10000) > p*10000)	// if block is NOT pierced
 		{
 			// LDH rewrite 06Apr09
@@ -877,7 +881,7 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 			return;
 		}
 	}
-	//Вычисляем повреждение
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//float dmg = LAi_BladeCalcDamage(attack);
 	float damage = LAi_BladeApplySkills(attack, enemy, dmg);
 	// Baste - critical hit calculation changed -->
@@ -948,7 +952,7 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 	// TIH <--
 	// if(!LAi_IsFightMode(enemy) && attack.equip.blade=="blade5") {damage = damage*(rand(5)+sti(attack.skill.Sneak)+5);}	// ccc sneakmod backstab
 
-	//Наносим повреждение
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Baste -->
 	if(critical > 0.0)
 	{
@@ -958,27 +962,44 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 	{
 		LAi_ApplyCharacterDamage(enemy, MakeInt(ApplyArmor(enemy, attack, damage, true) + 0.5)); // GreatZen-NK
 	}
-	//Проверим на смерть
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_CheckKillCharacter(enemy);
-	//Есть ли оружие у цели
+	//пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	bool isSetBalde = (SendMessage(enemy, "ls", MSG_CHARACTER_EX_MSG, "IsSetBalde") != 0);
-	//Начисляем опыта
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	if(critical > 0.0) damage = critical; // So EXP calculation takes critical damage into account
 	float exp = LAi_BladeCalcExperience(attack, enemy, damage);
 	// Baste <--
 	if(LAi_IsDead(enemy))
 	{
-		//Начислим за убийство
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		exp = exp + LAi_CalcDeadExp(attack, enemy);
 		if(!isSetBalde)
 		{
 			// ccc mar05 REPLOSS tweak added
 			if(enemy.chr_ai.group != LAi_monsters_group)
 			{
-				if(sti(attack.index) == GetMainCharacterIndex()) LogIt("CHANGE REP for player: " + -REPLOSS*3 + " - undrawn blade 1"); 	// LDH 19Dec08
+				if(sti(attack.index) == GetMainCharacterIndex()) LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS*3 + " - " + TranslateString("","undrawn blade 1")); 	// LDH 19Dec08
 				LAi_ChangeReputation(attack, - REPLOSS*3); // NK tempfix for un-drawn blades 04-17
-				if(IsMainCharacter(attack)) GuardsAttackOpium(); //All near guards will attack you now. -Levis
+				if(IsMainCharacter(attack))		 //All near guards will attack you now. -Levis
+				{
+					LAi_group_FightGroups(LAI_GROUP_PLAYER, GetSoldiersGroup(GetCurrentLocationNation()), true);
 			}
+		}
+	}
+		// GR: REPLOSS for killing a stunned character
+		if(CheckAttribute(enemy, "stuntime"))
+		{
+			if(enemy.chr_ai.group != LAi_monsters_group)
+			{
+				if(sti(attack.index) == GetMainCharacterIndex()) LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS*3 + " - " + TranslateString("","stunned victim"));
+				LAi_ChangeReputation(attack, - REPLOSS*3);
+				if(IsMainCharacter(attack) && !CheckAttribute(enemy,"pickgold")) //All near guards will attack you now. -Levis
+				{
+					LAi_group_FightGroups(LAI_GROUP_PLAYER, GetSoldiersGroup(GetCurrentLocationNation()), true);
+				}
+			}
+			exp = 0.0;
 		}
 	}
 	//if(AUTO_SKILL_SYSTEM) { if(!LAi_IsDead(enemy)) { AddCharacterExpChar(enemy, "Defence", MakeInt(stf(exp*0.5 + 0.5))/2); } }// MAXIMUS! //Levis we moved this to when its really blocked
@@ -987,17 +1008,27 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 		// ccc mar05 REPLOSS tweak added
 		if(enemy.chr_ai.group != LAi_monsters_group)
 		{
-			if(sti(attack.index) == GetMainCharacterIndex()) LogIt("CHANGE REP for player: " + -REPLOSS + " - undrawn blade 2"); 	// LDH 19Dec08
+			if (CheckAttribute(enemy, "attacked_you")) // GR: No reploss if enemy attacked you.  If player attacks enemy who attacked you and is now running, show warning
+			{
+				if (sti(GetAttribute(attack, "index")) == GetMainCharacterIndex()) logit(TranslateString("", "Enemy lost weapon, trying to run!"));
+			}
+			else
+			{
+				if (!CheckAttribute(enemy,"pickgold") || GetCharacterEquipByGroup(attack, BLADE_ITEM_TYPE) != "bladeX3") // GR: no reploss if he robbed you and you use a thief's knife
+				{
+					if(sti(attack.index) == GetMainCharacterIndex()) LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS + " - " + TranslateString("","undrawn blade 2")); 	// LDH 19Dec08
 			LAi_ChangeReputation(attack, - REPLOSS); // NK tempfix for un-drawn blades 04-17
+		}
+			}
 		}
 		exp = 0.0;
 	}
 
-	if(!noExp) { if(AUTO_SKILL_SYSTEM) { AddCharacterExpChar(attack, "Fencing", MakeInt(exp*0.5 + 0.5)); }else{ AddCharacterExp(attack, MakeInt(exp*0.5 + 0.5)); } }
+	if(!noExp) { if(AUTO_SKILL_SYSTEM) { AddCharacterExpChar(attack, SKILL_FENCING, MakeInt(exp*0.5 + 0.5)); }else{ AddCharacterExp(attack, MakeInt(exp*0.5 + 0.5)); } }
 	if ( resetshowXP ) { DeleteAttribute(attack,"donotshowXP"); } // TIH do not show other characters XP increases
 }
 
-//Начисление повреждений при попадании
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 {
 	//Levis -->
@@ -1039,13 +1070,13 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 		}
 	}
 	//Levis <--
-	//Если неубиваемый, то нетрогаем его
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	if(LAi_IsImmortal(enemy)) return;
-	//Вероятность поподания
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float p = LAi_GunCalcProbability(attack, kDist);
-	//Если промахнулись, то выйдем
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if(rand(10000) > p*10000) return;
-	//Начисляем повреждение
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float damage = LAi_GunCalcDamage(attack);
 	// Baste - added possibility to score critical hit with pistol -->
 	float critical = 0.0;
@@ -1079,7 +1110,7 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 	{
 		critical = damage*2.0;
 	}
-	//Аттака своей группы
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool noExp;		// Changed to correspond to how it is in LAi_ApplyCharacterBladeDamage
 	noExp = false;
 	if(CheckAttribute(attack, "chr_ai.group"))
@@ -1112,30 +1143,47 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 	{
 		LAi_ApplyCharacterDamage(enemy, ApplyArmor(enemy, attack, damage, false) + 0.5)); // GreatZen-NK
 	}
-	//Проверим на смерть
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	// ccc sep05, keeps player & officers barely alive
 	if(stf(enemy.chr_ai.hp)<1.0 && enemy.chr_ai.group==LAI_GROUP_PLAYER) enemy.chr_ai.hp = MIN_GUNATTACK_HP;
 
 	LAi_CheckKillCharacter(enemy);
-	//Есть ли оружие у цели
+	//пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	bool isSetBalde = (SendMessage(enemy, "ls", MSG_CHARACTER_EX_MSG, "IsSetBalde") != 0);
-	//Начисляем опыт
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	if(critical > 0.0) damage = critical; // So EXP calculation takes critical damage into account
 	// Baste <--
 	float exp = LAi_GunCalcExperience(attack, enemy, damage);
 	if(LAi_IsDead(enemy))
 	{
-		//Начислим за убийство
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		exp = exp + LAi_CalcDeadExp(attack, enemy);
 		if(!isSetBalde)
 		{
 			// ccc mar05 REPLOSS tweak added
 			if(enemy.chr_ai.group != LAi_monsters_group)
 			{
-				if(sti(attack.index) == GetMainCharacterIndex()) LogIt("CHANGE REP for player: " + -REPLOSS*3 + " - firing on undrawn blade 1"); 	// LDH 19Dec08
+				if(sti(attack.index) == GetMainCharacterIndex()) LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS*3 + " - " + TranslateString("","firing on undrawn blade 1")); 	// LDH 19Dec08
 				LAi_ChangeReputation(attack, - REPLOSS*3); // NK tempfix for un-drawn blades 04-17
-				if(IsMainCharacter(attack)) GuardsAttackOpium(); //All near guards will attack you now. -Levis
+				if(IsMainCharacter(attack))		//All near guards will attack you now. -Levis
+				{
+					LAi_group_FightGroups(LAI_GROUP_PLAYER, GetSoldiersGroup(GetCurrentLocationNation()), true);
+				}
+			}
+			exp = exp*0.05;
+		}
+		// GR: REPLOSS for killing a stunned character
+		if(CheckAttribute(enemy, "stuntime"))
+		{
+			if(enemy.chr_ai.group != LAi_monsters_group)
+			{
+				if(sti(attack.index) == GetMainCharacterIndex()) LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS*3 + " - " + TranslateString("","stunned victim"));
+				LAi_ChangeReputation(attack, - REPLOSS*3);
+				if(IsMainCharacter(attack) && !CheckAttribute(enemy,"pickgold"))	//All near guards will attack you now. -Levis
+				{
+					LAi_group_FightGroups(LAI_GROUP_PLAYER, GetSoldiersGroup(GetCurrentLocationNation()), true);
+				}
 			}
 			exp = exp*0.05;
 		}
@@ -1150,7 +1198,7 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 			if(enemy.chr_ai.group != LAi_monsters_group)
 			{
 				if(sti(attack.index) == GetMainCharacterIndex())
-					LogIt("CHANGE REP for player: " + -REPLOSS + " - firing on undrawn blade 2"); 	// LDH 19Dec08
+					LogIt(TranslateString("","CHANGE REP for player:") + " " + -REPLOSS + " - " + TranslateString("","firing on undrawn blade 2")); 	// LDH 19Dec08
 				LAi_ChangeReputation(attack, -REPLOSS); // NK tempfix for un-drawn blades 04-17
 			}
 		}
@@ -1278,13 +1326,13 @@ void LAi_Location_CharacterSGFire()
 
 	if(LAi_CharacterCanFire(attack)) LAi_CharacterFireExecute(attack, enemy, kDist, true);	// PB: Use normal damage calculations
 /*	kDmg = LAi_GunCalcDamage(attack);
-	//Реакция груп на атаку
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	LAi_group_Attack(attack, enemy);
 	if(AUTO_SKILL_SYSTEM) { AddCharacterExpChar(attack, "Accuracy", 100*kDmg); }
 	else { AddCharacterExp(attack, 100*kDmg); }
-	//Наносим повреждение
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_ApplyCharacterDamage(enemy, MakeInt((5 + rand(5))*kDmg));
-	//Проверим на смерть
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_CheckKillCharacter(enemy);*/
 }
 

@@ -1466,31 +1466,31 @@ float GetHullPercent(ref _refCharacter)
 	float fphp = 100.0*stf(_refCharacter.Ship.HP)/iHP;
 	return fphp;
 }
-float GetSailRPD(ref _refCharacter) // процент ремонта парусов в день
+float GetSailRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 {
 	int repairSkill = GetShipSkill(_refCharacter,SKILL_REPAIR);
 	float damagePercent = 100.0 - GetSailPercent(_refCharacter);
 	if(damagePercent==0.0) return 0.0;
 	return repairSkill*10.0 / damagePercent;
 }
-float GetHullRPD(ref _refCharacter) // процент ремонта корпуса в день
+float GetHullRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 {
 	int repairSkill = GetShipSkill(_refCharacter,SKILL_REPAIR);
 	float damagePercent = 100.0 - GetHullPercent(_refCharacter);
 	if(damagePercent==0.0) return 0.0;
 	return repairSkill*10.0 / damagePercent;
 }
-int GetSailSPP(ref _refCharacter) // количество парусины на один процент починки
+int GetSailSPP(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	return 9-GetCharacterShipClass(_refCharacter);
 }
-int GetHullPPP(ref _refCharacter) // количество досок на один процент починки
+int GetHullPPP(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	return 9-GetCharacterShipClass(_refCharacter);
 }
 
 // Fellowtravels utilites
-// работа с пассажирами
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int GetPassengersQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Fellows.Passengers.Quantity")) return 0;
@@ -1730,7 +1730,7 @@ bool IsInParty(int mchridx, int chridx)
 	return false;
 }
 
-// работа с компаньонами
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int SetCompanionIndex(ref _refCharacter,int _CompanionNum, int _CompanionIdx)
 {
 	if(_CompanionNum == -1)
@@ -1838,7 +1838,7 @@ int GetCompanionQuantity(ref _refCharacter)
 	return qn;
 }
 
-// работа с офицерами
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int GetOfficersQuantity(ref _refCharacter)
 {
 	int idx=0;
@@ -2522,7 +2522,8 @@ int Promote(ref char, ref gov, int iNation)
 	SetRank(char, iNation, curRank); // PB: was	char.nations.(sNation).Rank = curRank;
 	GivePromotionReward(iNation); // PB
 //	bool NoLandGiven = ProfessionalNavyNation() != UNKNOWN_NATION && curRank < 7;
-	bool NoLandGiven = curRank < 7;	// GR: no land for navy OR privateers until you are landed gentry	if(NoLandGiven || iNation == PIRATE)
+	bool NoLandGiven = curRank < 7;	// GR: no land for navy OR privateers until you are landed gentry
+	if(NoLandGiven || iNation == PIRATE)
 	{
 		if (!InTutDeck) WriteNewLogEntry("Promoted to "+GetNationDescByType(iNation)+" "+GetRankNameDirect(char, iNation, currank),"My dedication and faithful service for "+GetNationNameByType(iNation)+" have earned me the rank of "+GetRankNameDirect(char, iNation, currank)+".","Personal",true);
 	}
@@ -2644,6 +2645,7 @@ bool LeaveService(ref char, int iNation, bool override)
 		{
 			RemoveLandFromCharacterNation(&char, iNation); // KK
 			curRank = 0;
+
 			if (sti(GetAttribute(char, "knighted")) == iNation) // GR: if you have an honorific prefix from this nation, lose it
 			{
 				DeleteAttribute(char, "knighted");
@@ -4109,7 +4111,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 			if(CheckAttribute(arItm, "blade.time"))	{liveTime = stf(arItm.blade.time);}
 			if(CheckAttribute(arItm, "blade.colorstart"))	{colors = sti(arItm.blade.colorstart);}
 			if(CheckAttribute(arItm, "blade.colorend"))	{colore = sti(arItm.blade.colorend);}
-			SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, modelName, liveTime, colors, colore);
+			SendMessage(chref, "lsfll", MSG_CHARACTER_SETBLADE, modelName, liveTime, colors, colore);
 
 			if(CheckAttribute(arItm,"dmg_min"))
 				LAi_BladeSetDamageMin(chref,stf(arItm.dmg_min));

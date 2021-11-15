@@ -1,12 +1,19 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+{=====| WoodesRogers.c |=====}
 Howard{Howard}
 Pyle{Pyle}
+
+{=====| StartStoryline.c |=====}
+
+{=====| quests_reaction.c |=====}
 Israel{Israel}
 Hands{Hands}
 Samuel{Samuel}
 Odel{Odel}
 Edward{Edward}
 Teach{Teach}
+
+{=====| QuebradasCostillas.c |=====}
 Celestine{Celestine}
 Maupassant{Maupassant}
 Natalia{Natalia}
@@ -19,6 +26,8 @@ Valentina{Valentina}
 Malter{Malter}
 Celia{Celia}
 Hilder{Hilder}
+
+{=====| TempQuest.c |=====}
 Richard{Richard}
 Bolitho{Bolitho}
 Midshipman{Guardiamarina}
@@ -418,3 +427,5 @@ Nick{Botero}
 Conquistador{Conquistador}
 Templar{Templario}
 Demon{Demoníaco}
+
+{=====| 570 characters |=====}

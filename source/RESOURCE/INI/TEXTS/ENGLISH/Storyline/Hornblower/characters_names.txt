@@ -1,6 +1,11 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+{=====| Hornblower.c |=====}
 Horatio{Horatio}
 Hornblower{Hornblower}
+
+{=====| StartStoryline.c |=====}
+
+{=====| quests_reaction.c |=====}
 Jack{Jack}
 Hammond{Hammond}
 Lt. William{Lt. William}
@@ -10,6 +15,8 @@ Wolfe{Wolfe}
 Matthews{Matthews}
 Lt.{Lt.}
 Chadd{Chadd}
+
+{=====| Story.c |=====}
 Keene{Keene}
 Edward{Edward}
 Pellew{Pellew}
@@ -96,6 +103,8 @@ Two{Two}
 Three{Three}
 Donatien{Donatien}
 Thibaud{Thibaud}
+
+{=====| TempQuest.c |=====}
 Captain{Captain}
 Simon{Simon}
 Blunden{Blunden}
@@ -103,3 +112,5 @@ Cecil Scott{Cecil Scott}
 Forester{Forester}
 Capitaine{Capitaine}
 de Corvette{de Corvette}
+
+{=====| 86 characters |=====}

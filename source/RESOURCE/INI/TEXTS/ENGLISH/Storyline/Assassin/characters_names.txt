@@ -1,6 +1,13 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+{=====| Assassin.c |=====}
 Johan{Johan}
 Elting{Elting}
+
+{=====| StartStoryline.c |=====}
+
+{=====| quests_reaction.c |=====}
+
+{=====| Story.c |=====}
 Salvadore{Salvadore}
 Benavides{Benavides}
 Soldier{Soldier}
@@ -10,6 +17,8 @@ Merchant{Merchant}
 Chief{Chief}
 Indian Chief{Indian Chief}
 Street Merchant{Street Merchant}
+
+{=====| TempQuest.c |=====}
 Enrique{Enrique}
 Padilla{Padilla}
 Baltasar{Baltasar}
@@ -104,6 +113,8 @@ Villalobos{Villalobos}
 Pirate{Pirate}
 Capitan{Capitan}
 Caceres{Caceres}
+
+{=====| TempQuestEnemy.c |=====}
 Gilles{Gilles}
 Chennault{Chennault}
 Aimery{Aimery}
@@ -119,3 +130,5 @@ Grigorio{Grigorio}
 Cadena{Cadena}
 Bautista{Bautista}
 Lozano{Lozano}
+
+{=====| 143 characters |=====}

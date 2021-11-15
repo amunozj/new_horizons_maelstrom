@@ -613,6 +613,7 @@ void CreateStringCheckCase(int enable, string strName, string strData, string st
 	}
 	CreateString(enable,strName,strAlfa,strFont,color,x,y,alignment,scale);
 }
+
 string StringCheckCase(string strData, string strFont, bool bTranslated)
 {
 	string strAlfa = "";
@@ -644,16 +645,18 @@ void SetMainCharacterName(string newName)
 
 	if (CheckAttribute(mChr, "name")) mChr.name = GetTranslatedStoryLine(idx, mChr.name);
 	if (CheckAttribute(mChr, "middlename")) mChr.middlename = GetTranslatedStoryLine(idx, mChr.middlename);
-	if (CheckAttribute(mChr, "lastname")) mChr.lastname = GetTranslatedStoryLine(idx, mChr.lastname);}
+	if (CheckAttribute(mChr, "lastname")) mChr.lastname = GetTranslatedStoryLine(idx, mChr.lastname);
+}
+// MAXIMUS 30.06.2019: <==
 
 void SetCharacterName(ref chr, string newName)
 {
 	chr.name = "";
-	chr.old.name = "";
+//	chr.old.name = "";
 	chr.middlename = "";
-	chr.old.middlename = "";
+//	chr.old.middlename = "";
 	chr.lastname = "";
-	chr.old.lastname = "";
+//	chr.old.lastname = "";
 	bool bNamed = CheckAttribute(chr, "named");
 
 	string part1 = "";
