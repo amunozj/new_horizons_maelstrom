@@ -68,7 +68,7 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 	if(nextenemy!= -1 && enemydist<enemyDistLimit ) 
 	{
 		if (ActualUpdate) DSTrace("Directsail aborted due to hostile ship, dist = " + enemydist);				// LDH - 07Jan09
-		CheckIslandChange(); // DirectIslandCoordCheck();				// update the map
+		// CheckIslandChange(); // DirectIslandCoordCheck();				// update the map
 		return false;
 	}
 
@@ -78,7 +78,7 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 	if(nextenemy!= -1 && enemydist<neutralDistLimit && Characters[nextenemy].ship.type != SHIP_FORT_NAME )	// LDH added fort check 08Jan09
 	{
 		if (ActualUpdate) DSTrace("Directsail aborted due to neutral ship, dist = " + enemydist);				// LDH added logit to trace - 07Jan09
-		CheckIslandChange(); // DirectIslandCoordCheck();				// update the map
+		// CheckIslandChange(); // DirectIslandCoordCheck();				// update the map
 		return false;
 	}
 
@@ -123,12 +123,12 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 
 	ref pchar = GetMainCharacter();
 
+	int nextIsland
 	// check if islandchange takes place
-	bool islandswitch = CheckIslandChange();
+	bool islandswitch = getRTclosestIslandLocs(&nextIsland);
 
 	DSTrace("DirectsailRun: islandswitch =" + islandswitch)
 
-	int nextisland = getRTclosestIsland();
 	ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
 	string sNewIslandId = rIsland.id; 
 
@@ -218,49 +218,6 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 }
 
 
-bool CheckIslandChange()
-{
-	int nextisland = getRTclosestIsland();
-	int nextlocation = -1
-	getRTclosestIslandLoc(nextisland, nextlocation);
-
-	ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
-	string sNewIslandId = rIsland.id;
-	string sIslandNow = pchar.location;
-
-	if (nextisland != FindIsland(pchar.location))
-	{
-
-		DSTrace("CheckIslandChange: Entered island change");
-	
-		//only switch if pretty close
-
-		float RTplayerShipX = getRelRTplayerShipX(pchar.location);
-		float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
-
-		float distToCurIsland;
-		if (pchar.location == WDM_NONE_ISLAND) distToCurIsland = 50000.0;
-		else distToCurIsland = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(sIslandNow).position.x), stf(worldMap.islands.(sIslandNow).position.z));
-		float distToClosestIsland = GetDistance2D(RTplayerShipX, RTplayerShipZ, stf(worldMap.islands.(sNewIslandId).position.x), stf(worldMap.islands.(sNewIslandId).position.z));
-
-		DSTrace("CheckIslandChange: distToCurIsland=" + distToCurIsland + ", distToClosestIsland=" + distToClosestIsland);
-
-		pchar.directsail1.closestdist = distToClosestIsland
-
-		//only change if getting close
-		if (distToClosestIsland * 2 > distToCurIsland)
-		{
-			return false;
-		}
-
-		return true;
-
-	}
-
-	return false;
-
-}
-
 float getRTplayerShipX()
 {
 	float zeroX = MakeFloat(worldMap.zeroX);
@@ -270,6 +227,7 @@ float getRTplayerShipX()
 	float RTplayerShipX = (SeaX/scale) + zeroX;
 	return RTplayerShipX;
 }
+
 
 float getRTplayerShipZ()
 {
@@ -315,122 +273,104 @@ float getRTplayerShipAY()
 	return RTplayerShipAY;
 }
 
-
-
-void getRTclosestIslandLoc(ref nextIsland, ref nextLocation)
+void getClosestLocations(string islandId, ref nextLocation, ref locDistance, ref nextLocation2, ref locDistance2)
 {
-	DSTrace("getRTclosestIsland. pchar.location: " + pchar.location);
-	DSTrace("getRTclosestIsland. curr island: " + worldMap.island);
+
+	nextLocation = -1;
+	nextLocation2 = -1;
+	locDistance = 99999.0;
+	locDistance2 = 99999.0;
 
 	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
-	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
-
-	DSTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ)
-
-	float distance;
-	float iDistanceNow = 50000.0;
-	
-	ref rIsland;
-	string islandTemp;
-	nextIsland = -1;
+	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);	
 
 	aref arLandfalls;
-	int nLandfalls = 0 
-	nextLocation = -1;
-	int tempLocationN = -1;
+	int nLandfalls = 0;
 	float LFx;
 	float LFz;
 	float tempDist = 99999.0;
-	float tempLocationDist = 99999.0;
 	string tempLandfall = "";
+	string tempLandfall2 = "";
 	string sLandfallName = "";
 
-	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
+	makearef(arLandfalls, worldMap.islands.(islandId).locations);
+	nLandfalls = GetAttributesNum(arLandfalls);	
+
+	for(int i=0 ; i<nLandfalls ; i++)
 	{
-		rIsland = GetIslandByIndex(inum);//makeref(rIsland, Islands[inum]);
-		if(!CheckAttribute(rIsland, "id")) continue;
-		islandTemp = rIsland.id;
+		sLandfallName = GetAttributeName(GetAttributeN(arLandfalls,i));
+		DSTrace(sLandfallName);
+		LFx = stf(arLandFalls.(sLandfallName).position.x);
+		LFz = stf(arLandFalls.(sLandfallName).position.z);
+		tempDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, LFx, LFz);
+		DSTrace(LFx + ", " + LFz + " tempDist="+tempDist);
 
-		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
-
-		float isX = stf(worldMap.islands.(islandTemp).position.x);
-		float isZ = stf(worldMap.islands.(islandTemp).position.z);			
-
-		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
-
-		makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
-		nLandfalls = GetAttributesNum(arLandfalls);		
-		tempLocationDist = 99999.0;
-		tempLocationN = -1;
-
-		for(int i=0 ; i<nLandfalls ; i++)
+		if (tempDist < locDistance)
 		{
-			sLandfallName = GetAttributeName(GetAttributeN(arLandfalls,i));
-			DSTrace(sLandfallName);
-			LFx = stf(arLandFalls.(sLandfallName).position.x);
-			LFz = stf(arLandFalls.(sLandfallName).position.z);
-			tempDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, LFx, LFz);
-			DSTrace(LFx + ", " + LFz + " tempDist="+tempDist);
 
-			if (tempDist < tempLocationDist)
+			locDistance2 = locDistance;
+			nextLocation2 = nextLocation;
+			tempLandfall2 = tempLandfall;
+
+			locDistance = tempDist;
+			nextLocation = i;
+			tempLandfall = sLandfallName;
+		}
+		else
+		{
+			if (tempDist < locDistance2)
 			{
-				tempLocationDist = tempDist;
-				tempLocationN = i;
-				// if (Checkattribute(arLandfalls,(sLandfallName) + ".label") &&
-                //     Checkattribute(arLandfalls,(sLandfallName) + ".label.text"))
-				// {
-				// 	if (worldMap.islands.(islandTemp).locations.(sLandfallName).label.text == "")
-				// 		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
-				// 	else
-				// 		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
-				// }
-				tempLandfall = sLandfallName
-
-			}
-
+				locDistance2 = tempDist;
+				nextLocation2 = i;
+				tempLandfall2 = sLandfallName;
+			}			
 		}
 
-		DSTrace("getRTclosestIslandLoc. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", DistanceNow=" + iDistanceNow + " closest loc:" + tempLandfall + " at distance:" + tempLocationDist);		
-
-		if (tempLocationDist < distance)
-		{
-			distance = tempLocationDist;
-		}
-
-		if (distance < iDistanceNow)
-		{
-			iDistanceNow = distance;
-			nextIsland = inum;
-			nextLocation = tempLocationN;
-		}
 	}
 
-	islandTemp = rIsland.id;
-	makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
-
-	DSTrace("getRTclosestIsland. closest island: " + Islands[nextIsland].id + ", idx=" + nextIsland + " closest location:" + GetAttributeName(GetAttributeN(arLandfalls,nextLocation)) + ", idx=" + nextLocation);
+	DSTrace("getClosestLocation. islandTemp=" + islandId + " closest loc:" + tempLandfall + " at distance:" + locDistance + " 2nd closest:" + tempLandfall2 + " at distance:" + locDistance2);		
 
 }
 
-
-
-
-int getRTclosestIsland()
+bool getRTclosestIslandLocs(ref nextIsland)
 {
-	DSTrace("getRTclosestIsland. pchar.location: " + pchar.location);
-	DSTrace("getRTclosestIsland. curr island: " + worldMap.island);
+	nextIsland = -1;
+	int nextIsland2 = -1;
+	int nextLocation = -1;
+	int nextLocation2 = -1;
+	float distance = 99999.0;
+	float distance2 = 99999.0;
+
+	DSTrace("getRTclosestIslandLocs. pchar.location: " + pchar.location);
 
 	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
 	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
 
-	DSTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ)
+	DSTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ);
 
-	float distance;
-	float iDistanceNow = 50000.0;
-
-	int nextisland = -1;
 	ref rIsland;
 	string islandTemp;
+
+	int currentLocation = -1;
+	int currentLocation2 = -1;
+	float currentLocationDist = 99999.0;
+	float currentLocationDist2 = 99999.0;
+
+	// First find optimal locations for current island
+	if (pchar.location != WDM_NONE_ISLAND) 
+		getClosestLocations(pchar.location, &currentLocation, &currentLocationDist, &currentLocation2, &currentLocationDist2);
+		nextIsland = FindIsland(pchar.location)
+		nextIsland2 = FindIsland(pchar.location)
+
+	distance = currentLocationDist;
+	nextLocation = currentLocation;
+	distance2 = currentLocationDist2;
+	nextLocation2 = currentLocation2;
+
+	int tempLocation = -1;
+	int tempLocation2 = -1;
+	float tempLocationDist = 99999.0;
+	float tempLocationDist2 = 99999.0;
 
 	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
 	{
@@ -438,24 +378,86 @@ int getRTclosestIsland()
 		if(!CheckAttribute(rIsland, "id")) continue;
 		islandTemp = rIsland.id;
 
-		float isX = stf(worldMap.islands.(islandTemp).position.x);
-		float isZ = stf(worldMap.islands.(islandTemp).position.z);			
-
 		if(!CheckAttribute(&worldMap, "islands." + islandTemp)) continue;
-		distance = GetDistance2D(RTplayerShipX, RTplayerShipZ, isX, isZ);
 
-		DSTrace("getRTclosestIsland. islandTemp=" + islandTemp + " at " + isX + "," + isZ + ", distance=" + distance + ", wmDistanceNow=" + iDistanceNow);
-
-		if (distance < iDistanceNow)
+		if (inum != FindIsland(pchar.location))
 		{
-			iDistanceNow = distance
-			nextisland = inum;
+
+			getClosestLocations(islandTemp, &tempLocation, &tempLocationDist, &tempLocation2, &tempLocationDist2);
+
+			if (tempLocationDist < distance)
+			{
+				distance2 = distance;
+				nextIsland2 = nextIsland;
+				nextLocation2 = nextLocation;
+
+				distance = tempLocationDist;
+				nextIsland = inum;
+				nextLocation = tempLocation;
+
+				if (tempLocationDist2 < distance2)
+				{
+					distance2 = tempLocationDist2;
+					nextIsland2 = inum;
+					nextLocation2 = tempLocation2;
+				}			
+			}
+			else
+			{
+				if (tempLocationDist < distance2)
+				{
+					distance2 = tempLocationDist;
+					nextIsland2 = inum;
+					nextLocation2 = tempLocation;
+				}
+			}
 		}
+
 	}
 
-	DSTrace("getRTclosestIsland. closest island: " + Islands[nextisland].id + ", idx=" + nextisland);
+	navigatorReport(nextIsland, nextLocation, distance);
+	navigatorReport(nextIsland2, nextLocation2, distance2);
 
-	return nextisland;
+	// Check if island change
+	DSTrace("CheckIslandChange: distToCurIsland=" + currentLocationDist + ", distToClosestIsland=" + distance);
+
+	pchar.directsail1.closestdist = distance
+
+	//only change if getting close
+	if (distance * 2 > currentLocationDist)
+	{
+		return false;
+	}
+	return true;
+
+}
+
+void navigatorReport(int nextIsland, int nextLocation, float distance)
+{
+	ref rIsland = GetIslandByIndex(nextIsland);
+	string islandTemp = rIsland.id;
+
+	aref arLandfalls;
+	makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
+	string sLandfallName = GetAttributeName(GetAttributeN(arLandfalls, nextLocation));
+	string tempLandfall;
+
+	if (worldMap.islands.(islandTemp).locations.(sLandfallName).label.text == "")
+		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
+	else
+		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
+
+	string strLog;
+
+	strLog = StrLeft(islandTemp +"        ",10) + " ";
+	strLog += StrLeft(tempLandfall +"                    ",20);
+	strLog += " distance: " + makeint(distance*WDM_MAP_TO_SEA_SCALE) + " yards";
+	// strLog += " " + ClosestLandfallDir1;
+
+	LogIt(strLog);		
+	if (DIRECTSAILDEBUG)
+		Trace(strLog);
+
 }
 
 void ChangeSeaMapNew(string sNewIslandId)
@@ -478,7 +480,10 @@ void Sea2Sea_Reload()
 	float CX = getRelRTplayerShipX(pchar.location);
 	float CZ = getRelRTplayerShipZ(pchar.location);
 	float CAY = getRTplayerShipAY();
-	int nextisland = getRTclosestIsland();
+
+	int nextisland = -1;
+	getRTclosestIslandLocs(&nextisland);
+	
 	ref rIsland = GetIslandByIndex(nextisland);
 	string CIsland = rIsland.id;
 
