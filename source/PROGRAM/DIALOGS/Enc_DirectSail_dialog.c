@@ -28,7 +28,7 @@ void ProcessDialogEvent()
 			{
 				case "land_ho":
 					string toIsland = "";
-					if(CheckAttribute(NPChar,"directsail.toisland")) { toIsland = DLG_TEXT[6] + LanguageConvertString(tmpLangFileID, NPChar.directsail.toisland) + "."; }
+					if(CheckAttribute(worldmap,"directsail.toisland")) { toIsland = DLG_TEXT[6] + LanguageConvertString(tmpLangFileID, worldmap.directsail.toisland) + "."; }
 					Dialog.Text = DLG_TEXT[0] + toIsland;
 					Link.l1 = DLG_TEXT[2] + DLG_TEXT[3];
 					Link.l1.go = "Engage";
@@ -321,18 +321,18 @@ string InfoReloadToSea(ref mc)
 
 void DialogDirectSailExit(ref char)
 {
-	//Если диалога уже не ведётся, выйдем
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ
 	if(dialogRun == false) return;
 	DelEventHandler("frame", "DialogPlayGreeting");
-	//Освобождаем ресурсы
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	DeleteClass(&Dialog);
 	if(FullDialogPath!="") UnloadSegment(FullDialogPath);
 	if(PathDlgLngExtn!="") UnloadSegment(PathDlgLngExtn);
 	if(dialogSelf == false)
 	{
-		//Ссылка на главного персонажа
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		ref mainChr = GetMainCharacter();
-		//Отметим, что персонажи освободились от диалога
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		LAi_Character_EndDialog(mainChr, char);
 		LAi_Character_EndDialog(char, mainChr);
 		SendMessage(mainChr, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
@@ -344,6 +344,6 @@ void DialogDirectSailExit(ref char)
 	}
 	DeleteAttribute(GetMainCharacter(), "forcedlg");
 	dialogRun = false;
-	//Сообщим об окончании диалога
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	PostEvent(EVENT_DIALOG_EXIT, 1, "l", sti(char.index));
 }

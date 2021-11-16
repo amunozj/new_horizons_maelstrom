@@ -451,9 +451,10 @@ void Sea_MapLoad()
 	bSkipSeaLogin = true;
 
 	ref rPlayer = GetMainCharacter();
+	SetCorrectWorldMapPosition();
 
-	SeaMapLoadX = stf(rPlayer.Ship.Pos.x);
-	SeaMapLoadZ = stf(rPlayer.Ship.Pos.z);
+	SeaMapLoadX = stf(worldMap.playerShipX);
+	SeaMapLoadZ = stf(worldMap.playerShipY);
 	SeaMapLoadAY = stf(rPlayer.Ship.Ang.y);
 	//LanguageCloseFile(tmpLangFileID);
 //	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
@@ -477,8 +478,10 @@ void Land_MapLoad()
 
 	bSkipSeaLogin = true;
 
-	SeaMapLoadX = stf(characters[GetMainCharacterIndex()].Ship.Pos.x);
-	SeaMapLoadZ = stf(characters[GetMainCharacterIndex()].Ship.Pos.z);
+	SetCorrectWorldMapPosition();
+
+	SeaMapLoadX = stf(worldMap.playerShipX);
+	SeaMapLoadZ = stf(worldMap.playerShipY);
 	SeaMapLoadAY = stf(characters[GetMainCharacterIndex()].Ship.Ang.y);
 }
 
@@ -572,7 +575,7 @@ void SeaLogin(ref Login)
 
 	// Island
 	int iIslandIndex = FindIsland(Login.Island);
-	//Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
+	Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
 	string sIslandID = "";
 	if (iIslandIndex != -1) sIslandID = Islands[iIslandIndex].id;
 
@@ -1882,6 +1885,8 @@ void SetCorrectWorldMapPosition()
 		//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
 		worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
 		worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
+
+		Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
 	}
 }
 
