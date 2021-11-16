@@ -937,14 +937,14 @@ void procDoneFireRequest()
 
 void Ship_SetTrackSettings(ref rCharacter)
 {
-	Trace("Enter track settings set")
+	// Trace("Enter track settings set")
 
 	ref rShip = GetShipByType(GetCharacterShipType(rCharacter));
 
 	rCharacter.Ship.Track.Enable = rShip.Track.Enable;
 	if (!sti(rShip.Track.Enable)) return;
 
-	Trace("Enter track crossed the enable")
+	// Trace("Enter track crossed the enable")
 
 	rCharacter.Ship.Track.TrackDistance = 1.0;
 	// rCharacter.Ship.Track.WaveHeight2 = 0.9;
@@ -968,7 +968,7 @@ void Ship_SetTrackSettings(ref rCharacter)
 	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
 	rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
 
-	Trace("track wake properties " + rCharacter.Ship.Track.Enable + " " + rCharacter.Ship.Track2.ZStart);
+	// Trace("track wake properties " + rCharacter.Ship.Track.Enable + " " + rCharacter.Ship.Track2.ZStart);
 
     //Boyer tracing for debug
     //if(!CheckAttribute(rCharacter, "Ship.Track2.speed")) Trace("No speed rChar.Ship " + rShip.Name);

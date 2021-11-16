@@ -42,7 +42,7 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 	int nextenemy = 0;
 	int enemyDistLimit;
 	int neutralDistLimit;
-	if (DirectsailCheckFrequency < 15 && CheckAttribute(worldmap, "islands."+pchar.location))
+	if (DirectsailCheckFrequency < 15 && CheckAttribute(worldmap, "islands."+pchar.location) && CheckAttribute(worldMap,"directsail.closestisland"))
 	{
 		// note: by the time DirectsailCheckFrequency is set to other than default 15, pchar.directsail1 attributes will exist
 		if (worldmap.directsail1.closestisland != pchar.location && stf(worldmap.directsail1.closestdist) < 2000.0/WDM_MAP_TO_SEA_SCALE)
@@ -220,36 +220,6 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 }
 
 
-float getRelRTplayerShipX(string Island)
-{
-	/*
-		Function to determine the x position of the player given an island
-	*/
-
-	float zeroX = MakeFloat(worldMap.islands.(Island).position.rx);
-	float SeaX = stf(pchar.Ship.Pos.x);
-	int scale = WDM_MAP_TO_SEA_SCALE;
-
-	float RTplayerShipX = (SeaX/scale) + zeroX;
-	return RTplayerShipX;
-}
-
-
-float getRelRTplayerShipZ(string Island)
-{
-	/*
-		Function to determine the z position of the player given an island
-	*/
-
-	float zeroZ = MakeFloat(worldMap.islands.(Island).position.rz);
-	float SeaZ = stf(pchar.Ship.Pos.z);
-	int scale = WDM_MAP_TO_SEA_SCALE;
-
-	float RTplayerShipZ = (SeaZ/scale) + zeroZ;
-	return RTplayerShipZ;
-}
-
-
 float getRTplayerShipAY()
 {
 	float RTplayerShipAY = stf(pchar.Ship.Ang.y);
@@ -267,8 +237,9 @@ void getClosestLocations(string islandId, ref nextLocationO, ref locDistanceO, r
 	string LandfallDir = "";
 	string LandfallDir2 = "";
 
-	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
-	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);	
+	SetCorrectWorldMapPosition();
+	float RTplayerShipX = worldMap.playerShipX;
+	float RTplayerShipZ = worldMap.playerShipZ;
 
 	aref arLandfalls;
 	int nLandfalls = 0;
@@ -348,8 +319,9 @@ bool getRTclosestIslandLocs(ref nextIsland)
 
 	DSTrace("getRTclosestIslandLocs. pchar.location: " + pchar.location);
 
-	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
-	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);
+	SetCorrectWorldMapPosition();
+	float RTplayerShipX = worldMap.playerShipX;
+	float RTplayerShipZ = worldMap.playerShipZ;
 
 	DSTrace("Ship position: " + RTplayerShipX + "," + RTplayerShipZ);
 
@@ -384,18 +356,18 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	string tempLandfallDir2 = "";
 
 	// Then make sure you are not close to the spanish main
-	tempLocationDist = GetDistance2D(0, RTplayerShipZ, 0, 760.0);
-	if (tempLocationDist < GetDistance2D(RTplayerShipX, 0, 890.0, 0))
+	tempLocationDist = GetDistance2D(0, RTplayerShipZ, 0, 850.0);
+	if (tempLocationDist < GetDistance2D(RTplayerShipX, 0, 900.0, 0))
 	{
 		tempLandfallDir = "S";
-		tempLocationDist2 = GetDistance2D(RTplayerShipX, 0, 890.0, 0);
+		tempLocationDist2 = GetDistance2D(RTplayerShipX, 0, 900.0, 0);
 		tempLandfallDir2 = "W";
 	}
 	else
 	{
 		tempLocationDist2 = tempLocationDist;
 		tempLandfallDir2 = "S";
-		tempLocationDist = GetDistance2D(RTplayerShipX, 0, 890.0, 0);
+		tempLocationDist = GetDistance2D(RTplayerShipX, 0, 900.0, 0);
 		tempLandfallDir = "W";
 	}
 
@@ -428,7 +400,12 @@ bool getRTclosestIslandLocs(ref nextIsland)
 			nextLocation2 = -66;
 			LandfallDir2 = tempLandfallDir;
 		}
-	}	
+	}
+
+	if (pchar.location == "Colombia")
+	{
+		currentLocationDist = distance;
+	}
 
 
 	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
@@ -516,26 +493,45 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 	string islandName = rIsland.name;
 
 	aref arLandfalls;
-	makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
-	string sLandfallName = GetAttributeName(GetAttributeN(arLandfalls, nextLocation));
-	string tempLandfall = "";
-	ref rPeriod;
-	makeref(rPeriod, Periods[GetCurrentPeriod()]);
-
 	if (nextLocation == -66)
 	{
 		tempLandfall = "Spanish Main";
 	}
 	else
 	{
-		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
-		if (tempLandfall == "error")
-			tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
-		if (tempLandfall == "error")
-			tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).name;
 
-			if (CheckAttribute(rPeriod, "Towns." + tempLandfall + ".Name"))
-				tempLandfall.name = rPeriod.Towns.(tempLandfall).Name;
+		makearef(arLandfalls, worldMap.islands.(islandTemp).locations);
+		string sLandfallName = GetAttributeName(GetAttributeN(arLandfalls, nextLocation));
+		string tempLandfall = "";
+		ref rPeriod;
+		makeref(rPeriod, Periods[GetCurrentPeriod()]);		
+
+		DSTrace("Label.text: " + worldMap.islands.(islandTemp).locations.(sLandfallName).label.text + " check: " + CheckAttribute(worldMap, "islands." + islandTemp + ".locations." + sLandfallName + ".label.text"))
+
+		if (CheckAttribute(worldMap, "islands." + islandTemp + ".locations." + sLandfallName + ".label.text"))
+		{
+			tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
+		}
+		else
+		{
+
+			DSTrace("Label.old.text: " + worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text + " check: " + CheckAttribute(worldMap, "islands." + islandTemp + ".locations." + sLandfallName + ".label.old.text"))
+
+			if (CheckAttribute(worldMap, "islands." + islandTemp + ".locations." + sLandfallName + ".label.old.text"))
+			{
+				tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
+			}
+			else
+			{
+
+				DSTrace("name: " + worldMap.islands.(islandTemp).locations.(sLandfallName).name)
+
+				tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).name;
+			}
+		}
+
+		if (CheckAttribute(rPeriod, "Towns." + tempLandfall + ".Name"))
+			tempLandfall.name = rPeriod.Towns.(tempLandfall).Name;
 		else
 		{
 			switch (tempLandfall) {
@@ -556,7 +552,7 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 	}
 
 	string strLog;
-	strLog = StrLeft(islandName +"        ",10) + " ";
+	strLog = StrLeft(islandName +"        ",12) + " ";
 	if (tempLandfall == "error")
 	{
 		strLog += "                    ";
