@@ -2,7 +2,7 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	1;
+#define DIRECTSAILDEBUG	0;
 #define NAVIGATORMESSAGES 1;
 #define TRANSITIONFACTOR 1.25;
 
