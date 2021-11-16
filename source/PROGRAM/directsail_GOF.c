@@ -335,7 +335,8 @@ void getClosestLocations(string islandId, ref nextLocationO, ref locDistanceO, r
 
 bool getRTclosestIslandLocs(ref nextIsland)
 {
-	worldmap.directsail.toisland = pchar.location
+	worldmap.directsail.toisland = pchar.location;
+	worldMap.closestisland = pchar.location;
 	nextIsland = -1;
 	int nextIsland2 = -1;
 	int nextLocation = -1;
