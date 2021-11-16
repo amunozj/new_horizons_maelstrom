@@ -454,7 +454,7 @@ void Sea_MapLoad()
 	SetCorrectWorldMapPosition();
 
 	SeaMapLoadX = stf(worldMap.playerShipX);
-	SeaMapLoadZ = stf(worldMap.playerShipY);
+	SeaMapLoadZ = stf(worldMap.playerShipZ);
 	SeaMapLoadAY = stf(rPlayer.Ship.Ang.y);
 	//LanguageCloseFile(tmpLangFileID);
 //	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
@@ -481,7 +481,7 @@ void Land_MapLoad()
 	SetCorrectWorldMapPosition();
 
 	SeaMapLoadX = stf(worldMap.playerShipX);
-	SeaMapLoadZ = stf(worldMap.playerShipY);
+	SeaMapLoadZ = stf(worldMap.playerShipZ);
 	SeaMapLoadAY = stf(characters[GetMainCharacterIndex()].Ship.Ang.y);
 }
 
