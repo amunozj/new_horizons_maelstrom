@@ -637,11 +637,11 @@ void BLI_SetObjectData()
 	objLandInterface.ManSign.gunchargecolor			= argb(255,168,168,48);
 	objLandInterface.ManSign.gunchargebackcolor		= argb(255,188,48,48);
 	objLandInterface.ManSign.gunchargeuv			= "0.0,0.0,1.0,1.0";
-	fTmp = RecalculateHIcon(-25);
-	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(174);
+	fTmp = RecalculateHIcon(-18);
+	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(168);
 	//objLandInterface.ManSign.gunchargeoffset		= "-14,740";
 	objLandInterface.ManSign.gunchargeoffset = fTmp + "," + fTmp2;
-	objLandInterface.ManSign.gunchargeiconsize		= "76,16";
+	objLandInterface.ManSign.gunchargeiconsize		= "80,20";
 	objLandInterface.ManSign.gunchargeprogress		= "0.0625, 0.219, 0.359, 0.5, 0.641, 0.781, 0.983";
 
 	objLandInterface.ManSign.manfacecolor			= argb(255,128,128,128);
@@ -1639,15 +1639,10 @@ bool SetUsedPotionIcons()
 			UI_name = "potion"+UI_idx;
 			objLandInterface.UserIcons.(UI_name).enable = true;
 			nPicNum = GetPotionPicture(arItm);
-			objLandInterface.UserIcons.(UI_name).pic = 10;
+			objLandInterface.UserIcons.(UI_name).pic = nPicNum;
 			nTexNum = GetPotionTexture(arItm);
 			objLandInterface.UserIcons.(UI_name).tex = nTexNum;
-			if(nTexNum==4){
-				objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 8;
-			}
-			else {
-				objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 1;
-			}
+			objLandInterface.UserIcons.(UI_name).selpic = nPicNum + 4;
 			objLandInterface.UserIcons.(UI_name).name = UI_name;
 			objLandInterface.UserIcons.(UI_name).potion = arItm.id;
 			objLandInterface.UserIcons.(UI_name).note = GetItemNameByID(arItm.id) + ": " + GetCharacterItem(mc, arItm.id); // KK
