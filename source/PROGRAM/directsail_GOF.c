@@ -519,58 +519,6 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 }
 
 
-void ChangeSeaMapNew(string sNewIslandId)
-{
-	//ShipsInit();
-	DeleteSeaEnvironment();
-	SetEventHandler("Sea2Sea_Reload", "Sea2Sea_Reload", 0);
-	PostEvent("Sea2Sea_Reload", 1);
-
-}
-
-
-void Sea2Sea_Reload()
-{
-	DelEventHandler("Sea2Sea_Reload", "Sea2Sea_Reload");
-
-	DSTrace("TRIGGER SEA2SEA_RELOAD")
-
-	object seaLoginToSea;
-
-	float CX = getRelRTplayerShipX(pchar.location);
-	float CZ = getRelRTplayerShipZ(pchar.location);
-	float CAY = getRTplayerShipAY();
-
-	int nextisland = -1;
-	getRTclosestIslandLocs(&nextisland);
-	
-	ref rIsland = GetIslandByIndex(nextisland);
-	string CIsland = rIsland.id;
-
-	float psX = MakeFloat(CX);
-	float psZ = MakeFloat(CZ);
-	float ix = MakeFloat(worldMap.islands.(CIsland).position.x);
-	float iz = MakeFloat(worldMap.islands.(CIsland).position.z);
-	int scale = WDM_MAP_TO_SEA_SCALE;
-
-	seaLoginToSea.playerGroup.x = (psX - ix)*scale;
-	seaLoginToSea.playerGroup.z = (psZ - iz)*scale;
-	seaLoginToSea.playerGroup.ay = CAY;
-	seaLoginToSea.island = CIsland;
-
-	string imageName = "loading\sea.tga.tx";
-	seaLoginToSea.imageName = imageName;
-
-	SeaLogin(&seaLoginToSea);
-
-	worldMap.playerShipAY = getRTplayerShipAY();
-	worldMap.island = rIsland.id;
-	worldMap.zeroX = ix;
-	worldMap.zeroZ = iz;
-
-}
-
-
 void DSTrace(string logtext)
 {
 	if (DIRECTSAILDEBUG)
