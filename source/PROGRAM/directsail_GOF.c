@@ -357,17 +357,17 @@ bool getRTclosestIslandLocs(ref nextIsland)
 
 	// Then make sure you are not close to the spanish main
 	tempLocationDist = GetDistance2D(0, RTplayerShipZ, 0, 850.0);
-	if (tempLocationDist < GetDistance2D(RTplayerShipX, 0, 900.0, 0))
+	if (tempLocationDist < GetDistance2D(RTplayerShipX, 0, 1020.0, 0))
 	{
 		tempLandfallDir = "S";
-		tempLocationDist2 = GetDistance2D(RTplayerShipX, 0, 900.0, 0);
+		tempLocationDist2 = GetDistance2D(RTplayerShipX, 0, 1020.0, 0);
 		tempLandfallDir2 = "W";
 	}
 	else
 	{
 		tempLocationDist2 = tempLocationDist;
 		tempLandfallDir2 = "S";
-		tempLocationDist = GetDistance2D(RTplayerShipX, 0, 900.0, 0);
+		tempLocationDist = GetDistance2D(RTplayerShipX, 0, 1020.0, 0);
 		tempLandfallDir = "W";
 	}
 
