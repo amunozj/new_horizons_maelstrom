@@ -291,7 +291,7 @@ void getClosestLocations(string islandId, ref nextLocationO, ref locDistanceO, r
 		LFz = stf(arLandFalls.(sLandfallName).position.z);
 		tempDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, LFx, LFz);
 		tempLandfallDir = GetCompassDirFromPoints16(RTplayerShipX, RTplayerShipZ, LFx, LFz);
-		// DSTrace(LFx + ", " + LFz + " tempDist=" + tempDist + " locDistance=" + locDistance + " locDistance2=" + locDistance2);
+		DSTrace(sLandfallName + ": " + LFx + ", " + LFz + " tempDist=" + tempDist + " locDistance=" + locDistance + " locDistance2=" + locDistance2);
 
 		if (tempDist < locDistance)
 		{
@@ -381,6 +381,54 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	float tempLocationDist2 = 99999.0;
 	string tempLandfallDir = "";
 	string tempLandfallDir2 = "";
+
+	// Then make sure you are not close to the spanish main
+	tempLocationDist = GetDistance2D(0, RTplayerShipZ, 0, 760.0);
+	if (tempLocationDist < GetDistance2D(RTplayerShipX, 0, 890.0, 0))
+	{
+		tempLandfallDir = "S";
+		tempLocationDist2 = GetDistance2D(RTplayerShipX, 0, 890.0, 0);
+		tempLandfallDir2 = "W";
+	}
+	else
+	{
+		tempLocationDist2 = tempLocationDist;
+		tempLandfallDir2 = "S";
+		tempLocationDist = GetDistance2D(RTplayerShipX, 0, 890.0, 0);
+		tempLandfallDir = "W";
+	}
+
+	if (tempLocationDist < distance)
+	{
+		distance2 = distance;
+		nextIsland2 = nextIsland;
+		nextLocation2 = nextLocation;
+		LandfallDir2 = LandfallDir;
+
+		distance = tempLocationDist;
+		nextIsland = FindIsland("Colombia");
+		nextLocation = -66;
+		LandfallDir = tempLandfallDir;
+
+		if (tempLocationDist2 < distance2)
+		{
+			distance2 = tempLocationDist2;
+			nextIsland2 = FindIsland("Colombia");
+			nextLocation2 = -66;
+			LandfallDir2 = tempLandfallDir2;
+		}			
+	}
+	else
+	{
+		if (tempLocationDist < distance2)
+		{
+			distance2 = tempLocationDist;
+			nextIsland2 = FindIsland("Colombia");
+			nextLocation2 = -66;
+			LandfallDir2 = tempLandfallDir;
+		}
+	}	
+
 
 	for (int inum=0; inum<ISLANDS_QUANTITY; inum++)
 	{
@@ -473,15 +521,21 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 	ref rPeriod;
 	makeref(rPeriod, Periods[GetCurrentPeriod()]);
 
-	tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
-	if (tempLandfall == "error")
-		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
-	if (tempLandfall == "error")
-		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).name;
-
-		if (CheckAttribute(rPeriod, "Towns." + tempLandfall + ".Name"))
-			tempLandfall.name = rPeriod.Towns.(tempLandfall).Name;
+	if (nextLocation == -66)
+	{
+		tempLandfall = "Spanish Main";
+	}
 	else
+	{
+		tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.text;
+		if (tempLandfall == "error")
+			tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).label.old.text;
+		if (tempLandfall == "error")
+			tempLandfall = worldMap.islands.(islandTemp).locations.(sLandfallName).name;
+
+			if (CheckAttribute(rPeriod, "Towns." + tempLandfall + ".Name"))
+				tempLandfall.name = rPeriod.Towns.(tempLandfall).Name;
+		else
 		{
 			switch (tempLandfall) {
 				case "Conceicao":           tempLandfall = "Sao Jorge";         break;
@@ -498,6 +552,7 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 				case "Khael Roa":           tempLandfall = "Cozumel";           break;
 			}
 		}	
+	}
 
 	string strLog;
 	strLog = StrLeft(islandName +"        ",10) + " ";
@@ -509,7 +564,7 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 	{
 		strLog += StrLeft("- " + tempLandfall +"                    ",20);
 	}
-	strLog += " distance: " + makeint(distance*WDM_MAP_TO_SEA_SCALE) + " yards";
+	if (nextLocation != -66) strLog += " distance: " + makeint(distance*WDM_MAP_TO_SEA_SCALE) + " yards";
 	strLog += " " + LandfallDir;
 
 	LogIt(strLog);		
