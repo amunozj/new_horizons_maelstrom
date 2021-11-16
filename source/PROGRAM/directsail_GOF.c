@@ -433,7 +433,7 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	if (NAVIGATORMESSAGES) navigatorReport(nextIsland2, nextLocation2, distance2, LandfallDir2);
 
 	// Check if island change
-	DSTrace("getRTclosestIslandLocs: distToCurIsland=" + currentLocationDist + ", distToClosestIsland=" + distance + " limit="+ OPENSEALIMIT/WDM_MAP_TO_SEA_SCALE);
+	DSTrace("getRTclosestIslandLocs: distToCurIsland=" + currentLocationDist + ", distToClosestIsland=" + distance);
 
 	// pchar.directsail1.closestdist = distance;
 	worldMap.directsail1.closestdist = distance;
