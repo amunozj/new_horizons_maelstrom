@@ -4,7 +4,7 @@
 
 #define DIRECTSAILDEBUG	1;
 #define NAVIGATORMESSAGES 1;
-#define TRANSITIONFACTOR 1.5;
+#define TRANSITIONFACTOR 1.25;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
 
@@ -21,6 +21,7 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 // ever growing list of conditions when Directsail shall NOT run
 {
 	ref pchar = GetMainCharacter();
+	SetCorrectWorldMapPosition();
 
 	// PB: No DirectSail during Pirate Hunting Quests to prevent breaking them -->
 	// UPDATE: This appears not to be necessary; the target ship remains even on heavy DirectSailing
@@ -44,7 +45,7 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 	if (DirectsailCheckFrequency < 15 && CheckAttribute(worldmap, "islands."+pchar.location))
 	{
 		// note: by the time DirectsailCheckFrequency is set to other than default 15, pchar.directsail1 attributes will exist
-		if (pchar.directsail1.closestisland != pchar.location && stf(pchar.directsail1.closestdist) < 2000.0/WDM_MAP_TO_SEA_SCALE)
+		if (worldmap.directsail1.closestisland != pchar.location && stf(worldmap.directsail1.closestdist) < 2000.0/WDM_MAP_TO_SEA_SCALE)
 		{
 			// LDH 29Jan09
 			// if we're very close to an island we're not logged in to,
@@ -55,14 +56,14 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 		else
 		{
 			// if we're near the border between two islands but not particularly close a different island, need less strict limits
-			enemyDistLimit   = 800; 
+			enemyDistLimit   = 600; 
 			neutralDistLimit = 500;
 		}
 	}
 	else 
 	{
-		enemyDistLimit   = 1000;
-		neutralDistLimit = 1000;
+		enemyDistLimit   = 800;
+		neutralDistLimit = 800;
 	}
 
 	nextenemy = FindClosestShipofRel(GetMainCharacterIndex(), &enemydist, RELATION_ENEMY);
@@ -147,8 +148,6 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 		// LDH 21Feb09 - Set MapEnter condition for quests, removed when MapEnter condition is checked in ProcessCondition()
 		pchar.directsail1.QuestCheckMapEnter = true;
 
-		// ChangeSeaMapNew(sNewIslandId);	// reloads Sea with new island at horizon
-		SetCorrectWorldMapPosition();
 		Sea_ReloadStartDirect();
 	}
 	else
@@ -182,9 +181,9 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 
 			float islandDistLimit;
 			islandDistLimit = 300.0;
-			if (stf(pchar.directsail1.closestdist) < islandDistLimit/WDM_MAP_TO_SEA_SCALE)
+			if (stf(worldmap.directsail1.closestdist) < islandDistLimit/WDM_MAP_TO_SEA_SCALE)
 			{
-				DSTrace("Directsail encounter aborted, too close to coast of " + FindIslandName(pchar.directsail1.closestisland) + ", " + makeint(sti(pchar.directsail1.closestdist)*WDM_MAP_TO_SEA_SCALE) + " of " + makeint(islandDistLimit) + " yards");
+				DSTrace("Directsail encounter aborted, too close to coast of " + FindIslandName(worldmap.directsail1.closestisland) + ", " + makeint(sti(worldmap.directsail1.closestdist)*WDM_MAP_TO_SEA_SCALE) + " of " + makeint(islandDistLimit) + " yards");
 				return;
 			}
 		}
@@ -209,7 +208,6 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 			SendMessage(&SeaFader, "ls", FADER_PICTURE0, FindReloadPicture("SailHo.tga")); // KK
 			SendMessage(&SeaFader, "lfl", FADER_IN, 0.5, true);
 			PlaySound("#sail_ho");
-			SetCorrectWorldMapPosition();
 			Sea_ReloadStartDirect();	// reloads Sea with new ships at horizon
 		}
 	}
@@ -259,13 +257,15 @@ float getRTplayerShipAY()
 }
 
 
-void getClosestLocations(string islandId, ref nextLocation, ref locDistance, ref LandfallDir, ref nextLocation2, ref locDistance2, ref LandfallDir2)
+void getClosestLocations(string islandId, ref nextLocationO, ref locDistanceO, ref LandfallDirO, ref nextLocation2O, ref locDistance2O, ref LandfallDir2O)
 {
 
-	nextLocation = -1;
-	nextLocation2 = -1;
-	locDistance = 99999.0;
-	locDistance2 = 99999.0;
+	int nextLocation = -1;
+	int nextLocation2 = -1;
+	float locDistance = 99999.0;
+	float locDistance2 = 99999.0;
+	string LandfallDir = "";
+	string LandfallDir2 = "";
 
 	float RTplayerShipX = getRelRTplayerShipX(pchar.location);
 	float RTplayerShipZ = getRelRTplayerShipZ(pchar.location);	
@@ -283,15 +283,15 @@ void getClosestLocations(string islandId, ref nextLocation, ref locDistance, ref
 	makearef(arLandfalls, worldMap.islands.(islandId).locations);
 	nLandfalls = GetAttributesNum(arLandfalls);	
 
-	for(int i=0 ; i<nLandfalls ; i++)
+	for (int i=0 ; i<nLandfalls ; i++)
 	{
 		sLandfallName = GetAttributeName(GetAttributeN(arLandfalls,i));
-		DSTrace(sLandfallName);
+		// DSTrace(sLandfallName);
 		LFx = stf(arLandFalls.(sLandfallName).position.x);
 		LFz = stf(arLandFalls.(sLandfallName).position.z);
 		tempDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, LFx, LFz);
 		tempLandfallDir = GetCompassDirFromPoints16(RTplayerShipX, RTplayerShipZ, LFx, LFz);
-		DSTrace(LFx + ", " + LFz + " tempDist="+tempDist);
+		// DSTrace(LFx + ", " + LFz + " tempDist=" + tempDist + " locDistance=" + locDistance + " locDistance2=" + locDistance2);
 
 		if (tempDist < locDistance)
 		{
@@ -305,27 +305,37 @@ void getClosestLocations(string islandId, ref nextLocation, ref locDistance, ref
 			nextLocation = i;
 			tempLandfall = sLandfallName;
 			LandfallDir = tempLandfallDir;
+
+			// DSTrace("Conditional 1 - tempDist=" + tempDist + " locDistance=" + locDistance + " locDistance2=" + locDistance2);			
 		}
-		else
-		{
+		else { 
 			if (tempDist < locDistance2)
 			{
 				locDistance2 = tempDist;
 				nextLocation2 = i;
 				tempLandfall2 = sLandfallName;
 				LandfallDir2 = tempLandfallDir;
+
+				// DSTrace("Conditional 2 - tempDist=" + tempDist + " locDistance=" + locDistance + " locDistance2=" + locDistance2);
 			}			
 		}
-
 	}
 
 	DSTrace("getClosestLocation. islandTemp=" + islandId + " closest loc:" + tempLandfall + " at distance:" + locDistance + " 2nd closest:" + tempLandfall2 + " at distance:" + locDistance2);		
+
+	nextLocationO = nextLocation;
+	nextLocation2O = nextLocation2;
+	locDistanceO = locDistance;
+	locDistance2O = locDistance2;
+	LandfallDirO = LandfallDir;
+	LandfallDir2O = LandfallDir2;
 
 }
 
 
 bool getRTclosestIslandLocs(ref nextIsland)
 {
+	worldmap.directsail.toisland = pchar.location
 	nextIsland = -1;
 	int nextIsland2 = -1;
 	int nextLocation = -1;
@@ -423,11 +433,13 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	if (NAVIGATORMESSAGES) navigatorReport(nextIsland2, nextLocation2, distance2, LandfallDir2);
 
 	// Check if island change
-	DSTrace("CheckIslandChange: distToCurIsland=" + currentLocationDist + ", distToClosestIsland=" + distance);
+	DSTrace("getRTclosestIslandLocs: distToCurIsland=" + currentLocationDist + ", distToClosestIsland=" + distance + " limit="+ OPENSEALIMIT/WDM_MAP_TO_SEA_SCALE);
 
-	pchar.directsail1.closestdist = distance;
+	// pchar.directsail1.closestdist = distance;
+	worldMap.directsail1.closestdist = distance;
 	rIsland = GetIslandByIndex(nextIsland);
-	pchar.directsail1.closestisland = rIsland.id
+	// pchar.directsail1.closestisland = rIsland.id
+	worldMap.closestisland = rIsland.id;
 
 	//only change if getting close
 	float transitionDistance = (distance * TRANSITIONFACTOR - currentLocationDist)*WDM_MAP_TO_SEA_SCALE;
@@ -441,7 +453,8 @@ bool getRTclosestIslandLocs(ref nextIsland)
 		return false;
 	}
 
-	pchar.directsail.toisland = rIsland.id;
+	// pchar.directsail.toisland = rIsland.id;
+	worldMap.directsail.toisland = rIsland.id;
 	return true;
 
 }
@@ -494,7 +507,7 @@ void navigatorReport(int nextIsland, int nextLocation, float distance, string La
 	}
 	else
 	{
-		strLog += StrLeft(", " + tempLandfall +"                    ",20);
+		strLog += StrLeft("- " + tempLandfall +"                    ",20);
 	}
 	strLog += " distance: " + makeint(distance*WDM_MAP_TO_SEA_SCALE) + " yards";
 	strLog += " " + LandfallDir;
@@ -550,7 +563,6 @@ void Sea2Sea_Reload()
 
 	SeaLogin(&seaLoginToSea);
 
-	SetCorrectWorldMapPosition()
 	worldMap.playerShipAY = getRTplayerShipAY();
 	worldMap.island = rIsland.id;
 	worldMap.zeroX = ix;
@@ -1149,19 +1161,22 @@ void Sea_ReloadDirect() // Jan 07, new version by Screwface that works also with
 	ReloadProgressStart(); // KK
 
 	ref rPlayer = GetMainCharacter();
+	SetCorrectWorldMapPosition();
 
 	object Login;
 	Login.PlayerGroup.ay = stf(rPlayer.Ship.Ang.y);
 	Login.PlayerGroup.x = MakeFloat(rPlayer.ship.pos.x); 
 	Login.PlayerGroup.y = 0.0;
 	Login.PlayerGroup.z = MakeFloat(rPlayer.ship.pos.z);
-	Login.Island = rPlayer.directsail.toisland;
+	Login.Island = worldmap.directsail.toisland;
 
-	if(CheckAttribute(rPlayer,"directsail.toisland"))
+	DSTrace("Sea_ReloadDirect: Login.Island=" + Login.Island)
+
+	if(CheckAttribute(worldMap,"directsail.toisland"))
 	// if Directsail() calls islandchange island and playerposition are changed
 	{
 		// Login.Island = rPlayer.directsail.toisland;
-		string toislandname = rPlayer.directsail.toisland;
+		string toislandname = worldmap.directsail.toisland;
 
 		// SECTION TO APPEAR IN THE NEW REAL POSITION AT THE NEW ISLAND 
 		float psX = MakeFloat(worldMap.playerShipX);
@@ -1179,7 +1194,7 @@ void Sea_ReloadDirect() // Jan 07, new version by Screwface that works also with
 	Login.DirectSail = true;
 
 	SeaLogin(&Login); // KK
-	SetCorrectWorldMapPosition()
+	// SetCorrectWorldMapPosition()
 
 	ReloadProgressEnd(); // KK
 }

@@ -575,7 +575,7 @@ void SeaLogin(ref Login)
 
 	// Island
 	int iIslandIndex = FindIsland(Login.Island);
-	//Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
+	Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
 	string sIslandID = "";
 	if (iIslandIndex != -1) sIslandID = Islands[iIslandIndex].id;
 
