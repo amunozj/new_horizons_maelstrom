@@ -4698,7 +4698,8 @@ void Ship_UpdateParameters()
 	arCharShip.Crew.MinRatio = Bring2Range(0.0, 1.0, fCrewMin25Percent, fCrewMin, fCrewCur);
 
 // wind power
-	float	fWindPower = Whr_GetWindSpeed() / WIND_NORMAL_POWER;
+	float	wind_normal_power = GetWindPower()
+	float	fWindPower = Whr_GetWindSpeed() / wind_normal_power;
 	float	fWindDotShip = GetDotProduct(Whr_GetWindAngle(), stf(arCharShip.Ang.y));		// Wind.ay | Ship.ay
 
 // calculate MaxSpeedZ
@@ -4762,6 +4763,7 @@ void Ship_UpdateParameters()
 					if(CheckAttribute(rCharacter, "timescale_reset"))
 					{
 						ResetTimeToNormal();
+						ResetWindToNormal(); // Reset wind to normal
 					}
 					// PB: Slow down game to normal speed when you are caught in irons <--
 					if (SAIL_LUFFING_SOUNDS)
@@ -5634,8 +5636,9 @@ int GetTimeToSailDist(aref arship, float dist, float angle)
 // <-- KK
 
 	//get angles
+	float	wind_normal_power = GetWindPower()	
 	float	fWindAngle = Whr_GetWindAngle();
-	float fWindPower = Whr_GetWindSpeed() / WIND_NORMAL_POWER;
+	float fWindPower = Whr_GetWindSpeed() / wind_normal_power;
 	float fOffWind = RS_CalcOffWind(angle,fWindAngle);
 	float speed = stf(GetLocalShipAttrib(arship, rShip, "speedrate")); if(CheckAttribute(arship,"speedmult")) speed = stf(arship.speedmult); // get sail state, load, speedperk, and mult by speedrate
 	if(iRealismMode == 0) return makeint(dist/(fWindPower * speed * (0.5+fOffWind/2.0)));

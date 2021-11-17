@@ -516,6 +516,18 @@ BOAL_Control0
 
 }
 
+Wind_ControlP
+{
+Increase wind power
+
+}
+
+Wind_ControlM
+{
+Decrease wind power
+
+}
+
 BOAL_UsePotion
 {
 On land / boarding: Drink a healing potion; At sea: try to put out fire on ship

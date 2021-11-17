@@ -458,6 +458,8 @@ void Sea_MapLoad()
 	SeaMapLoadAY = stf(rPlayer.Ship.Ang.y);
 	//LanguageCloseFile(tmpLangFileID);
 //	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
+	ResetWindToNormal(); // Reset wind to normal
+	
 }
 
 void Land_MapLoad()
@@ -494,6 +496,7 @@ void Land_MapStartFade()
 		UnloadLocation(&locations[FindLocation(PChar.location)]);
 	}
 //	ResetTimeToNormal();
+	ResetWindToNormal(); // Reset wind to normal
 }
 
 string	sTaskList[2];
@@ -535,6 +538,8 @@ void SeaLogin(ref Login)
 	bool bLoadSavedGame = CheckAttribute(Login, "LoadAtSea") && !bDirectSail; // KK
 
 	int iRDTSC = RDTSC_B();
+
+	ResetWindToNormal(); // Reset wind to normal	
 
 	// clear load groups now object
 	DeleteAttribute(&LoginGroupsNow, "");
@@ -1378,6 +1383,7 @@ void Sea_FirstInit()
 	// KK: Companion Mutiny <--
 
 	ResetTimeToNormal(); // PB: Reset Time Scale
+	ResetWindToNormal(); // Reset wind to normal
 
 	//Boyer change as wdmCurrentIsland not set as no WorldMap event to do so in 2.8 engine anymore
  	//Fixed by worldmap.legacyArea

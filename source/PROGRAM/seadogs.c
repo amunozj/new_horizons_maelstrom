@@ -900,6 +900,7 @@ void OnLoad()
 	ReloadProgressEnd();
 
 	ResetTimeToNormal(); // PB
+	ResetWindToNormal();
 
 	actLoadFlag = 0;
 }
@@ -2126,6 +2127,21 @@ void ProcessControls()
 				LogIt(XI_ConvertString("Time") + " x" + makeint(GetTimeScale()));
 			return; break;
 			// PB: Simplified Time Compression Controls <--
+
+
+			// Wind power Controls -->
+			case "Wind_ControlP":
+				PChar.windpower -= 5;
+				UpdateWindPower();
+				LogIt("Wind normal power " + makeint(GetWindPower()));
+			return; break;
+
+			case "Wind_ControlM":
+				PChar.windpower += 5;
+				UpdateWindPower();
+				LogIt("Wind normal power " + makeint(GetWindPower()));
+			return; break;
+			// Wind power Controls <--			
 
 			case "BOAL_Control2":
 // changed by MAXIMUS [just for fun] -->

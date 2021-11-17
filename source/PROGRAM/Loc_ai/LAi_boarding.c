@@ -61,7 +61,7 @@ int cdistrict = 0;
 int next_boarding_location = -1;
 // <-- KK
 
-//Процес абордажа
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // Process of the boarding
 bool LAi_IsBoardingProcess()
 {
@@ -70,7 +70,7 @@ bool LAi_IsBoardingProcess()
 
 // -------------- Start Boarding ----------------------
 
-//Начать абордаж с главным персонажем
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // To begin boarding with the main character
 void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 {
@@ -133,7 +133,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	int eclass = GetCharacterShipClass(echr);
 	if (IsTown) eclass = 0; // KK
 
-	//Сохраним индекс врага
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	// Save the enemy character index
 	boarding_echr_index = sti(echr.index);
 
@@ -176,11 +176,11 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	}
 // <-- KK
 
-	//Установим обработчик на убийство группы
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	// Casualty event handler
 	// KK SetEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill", 1);		// activated in LAi_group_CheckGroupQuest()
 
-	//Настроим интерфейс
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us dispose the interface
 	DeleteBattleInterface();
 	StartBattleLandInterface();
@@ -249,7 +249,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	SetCrewBoarding(mchr, mcrew);	// save boarding crew
 	mchr.origcrew = mcrew;			// includes squadron quantity if boarding a fort
 
-	//Расчитаем получаемый опыт в случае победы
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	// We calculate the experience obtained in the case of victory
 	if (!CheckAttribute(mchr,"boarding_exp"))
 	{
@@ -272,7 +272,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	boarding_erank = makeint((2.0*sti(mchr.rank) + boarding_erank)/3.0+0.5);
 	SDLogIt("boarding_erank changed from " + old_boarding_erank + " to " + boarding_erank + ", player rank = " + mchr.rank);
 
-	//Определяем цепь локаций для абордажа
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// We determine the chain of locations for the boarding
 	boarding_location = -1;
 	boarding_location_type = locType;
@@ -475,7 +475,7 @@ void LAi_InitializeDeck(int locIndex)
 	ref mchr = GetMainCharacter();
 	int maxcrew;
 
-	//Параметры сражающихся сторон
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	// Enemy and friendly parameters
 
 	DeleteAttribute(&mchr, "lockerweapons"); // NK get weaps back 05-05-10
@@ -484,7 +484,7 @@ void LAi_InitializeDeck(int locIndex)
 	ecrew = GetCrewBoarding(echr);
 	boarding_enemy_base_crew = ecrew;
 
-	//Количество хитпойнтов
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Amount of hitpoints
 	ResetMaxHP(mchr);	// just in case
 	ResetMaxHP(echr);	// this is being set way too low on easy difficulty
@@ -543,7 +543,7 @@ void LAi_InitializeDeck(int locIndex)
 	boarding_player_crew_per_chr = boarding_player_crew_per_chr * (0.20 + frand(0.05));	// 75% to 80% of crew in reserve.
 	boarding_enemy_crew_per_chr  = boarding_enemy_crew_per_chr  * (0.20 + frand(0.05));
 
-	//Выставим игроку и офицерам максимальную жизнь и запомним адреса
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	// Set player and officers HP according to relative strengths of mchr and echr and record the boarding location.
 	// KK LAi_SetCurHPMax(mchr); // when we go to the next deck we are magically healed?! Why doesn't that work on land with normal doors...
 
@@ -560,7 +560,7 @@ void LAi_InitializeDeck(int locIndex)
 } //-------- end of LAi_InitializeDeck() -------------
 // LDH <--
 
-//Загрузить локацию абордажа
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // To load the location of the boarding
 void LAi_LoadLocation(string locationID)
 {
@@ -575,7 +575,7 @@ void LAi_LoadLocation(string locationID)
 	SDLogIt("Enemy crew = " + GetCrewBoarding(boarding_enemy) + ", Enemy morale = " + boarding_enemy.ship.crew.morale);
 	SDLogIt("Player crew = " + GetCrewBoarding(mchr) + ", Our morale = " + mchr.ship.crew.morale);*/
 
-	//Ищем локацию
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// We search for the location
 	int locIndex = FindLocation(locationID);
 	Log_SetActiveAction("Nothing");
@@ -707,10 +707,10 @@ void LAi_LoadLocation(string locationID)
 
 		if (Surrendered) noOfficers = SurrenderAction(mchr, refEnCharacter, locationID, homeLocator, chLocType, false);//MAXIMUS
 
-		//Устанавливаем офицеров, если такие есть
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		// We establish officers, if such exist
 		PlaceOfficers(locationID, chLocType, noOfficers, !noOfficers);//MAXIMUS
-		//Перегружаемся в локацию
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// We are reloaded into the location
 		boarding_location = locIndex;
 		if (LoadLocation(&Locations[boarding_location]))
@@ -733,7 +733,7 @@ void LAi_LoadLocation(string locationID)
 				}
 				// PB: Stop sound upon surrendering <--
 			}
-			//Запретим диалог
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			// Let us forbid the dialogue
 			dialogDisable = false; // Captain Hawk Fix
 			// NK enable dialog in boarding - 05-07-12 - dialogDisable = true;
@@ -757,6 +757,7 @@ void LAi_LoadLocation(string locationID)
 	}
 
 	ResetTimeToNormal(); // PB: Reset Time Scale
+	ResetWindToNormal(); // Reset wind to normal
 	PostEvent("LoadSceneSound", 500);
 }
 
@@ -958,7 +959,7 @@ bool SurrenderAction(ref mchr, ref ch, string locationID, string homeLocator, st
 	return true;
 }
 
-//Перегрузиться в следующую локации
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // Reload into the next boarding location
 void LAi_ReloadBoarding()
 {
@@ -974,13 +975,13 @@ void LAi_ReloadBoarding()
 		SDLogIt("Player crew = " + GetCrewBoarding(mchr) + ", Our morale = " + mchr.ship.crew.morale);
 	}
 
-	//Разрешим диалоги
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us solve the dialogues
 // changed by MAXIMUS -->
 	SDLogIt("bCabinStarted bDeckStarted bCrewStarted = " + bCabinStarted + "," + bDeckStarted + "," + bCrewStarted);
 	dialogDisable = !bDeckEnter; // Captain Hawk Fix // KK
 // changed by MAXIMUS <--
-	//Проверим предыдущую локацию
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us verify the previous location
 	if (boarding_location < 0)
 	{
@@ -989,12 +990,12 @@ void LAi_ReloadBoarding()
 		return;
 	}
 
-	//Установить хендлеры для обработки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// To establish event handlers
 	SetEventHandler("FaderEvent_StartFade", "LAi_ReloadStartFade", 0);
 	SetEventHandler("FaderEvent_EndFade", "LAi_ReloadEndFade", 0);
 
-	//Создаём фейдер и запускаем
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// We create fader and we start
 	CreateEntity(&boarding_fader, "fader");
 // KK -->
@@ -1032,7 +1033,7 @@ void LAi_ReloadBoarding()
 void LAi_ReloadStartFade()
 {
 	SDLogIt("***ReloadStartFade()");
-	//Выгружаем локацию
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// We unload the location
 	//ResetSoundScheme();
 	ResetSound();
@@ -1046,12 +1047,12 @@ void LAi_ReloadEndFade()
 	int i, idx;
 	ref mchr = GetMainCharacter();
 	SDLogIt("***ReloadEndFade()");
-	//Загружаем следующую локацию
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// We load the next location
 	DelEventHandler("FaderEvent_EndFade", "LAi_ReloadEndFade");
 	SendMessage(&boarding_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 
-	//Определим возможность продолжения перегрузок
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us determine the possibility of continuing the reloads
 	bool canReload = true;
 // START MOD Code by Stone-D : 27/07/2003
@@ -1067,7 +1068,7 @@ void LAi_ReloadEndFade()
 	if (canReload)
 // END MOD Code by Stone-D : 27/07/2003
 	{
-		//Продолжаем абордаж
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// We continue the boarding
 // added by MAXIMUS [abordage MOD] -->
 		SDLogIt("Surrendered = " + Surrendered);
@@ -1088,18 +1089,18 @@ void LAi_ReloadEndFade()
 	}
 	else		// cannot reload, no following location
 	{
-		//Следующей локации нет
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 		// There is no following location
 		// KK DelEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill");
 		boarding_location = -1;
 
-		//Начислим опыт
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		// Let us update the group experience
 		if(AUTO_SKILL_SYSTEM) { AddPartyExpChar(mchr, "Grappling", MakeInt(mchr.boarding_exp)); }
 		else { AddPartyExp(mchr, MakeInt(mchr.boarding_exp)); } // NK - AddCharacterExp(GetMainCharacter(), MakeInt(boarding_exp));
 		DeleteAttribute(mchr, "boarding_exp");
 
-		//Настроим интерфейс
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// Let us dispose of the interface
 		Log_SetActiveAction("Nothing");
 		EndBattleLandInterface();
@@ -1107,7 +1108,7 @@ void LAi_ReloadEndFade()
 		//StartBattleInterface();
 		//RefreshBattleInterface(true);
 
-		//Восстановим адреса
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		//Restores addresses
 		mchr.location = boarding_adr[0].location;
 		mchr.location.group = boarding_adr[0].group;
@@ -1121,7 +1122,7 @@ void LAi_ReloadEndFade()
 			Characters[idx].location.locator = boarding_adr[i].locator;
 		}
 // START MOD Code by Stone-D : 27/07/2003
-		//Выгружаемся в интерфейс
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// We are unloaded into the interface
 		LAi_boarding_process = false;
 		CreateWeatherEnvironment(); // Baste
@@ -1252,7 +1253,7 @@ void LAi_ReloadEndFade()
 }
 
 // added by MAXIMUS [abordage MOD] -->
-// красиво убрать труп капитана
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // it is beautiful to remove the corpse of the captain (hehe!)
 #event_handler("LAi_RemoveDeadCap", "Lai_RemoveDeadBody");
 void Lai_RemoveDeadBody()
@@ -1285,7 +1286,7 @@ void StartKill()
 }
 // added by MAXIMUS [abordage MOD] <--
 
-//Разрешить перегрузку на следующую палубу
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 // Event handler reload to the following deck
 #event_handler("LAi_event_boarding_EnableReload", "LAi_EnableReload");
 void LAi_EnableReload()
@@ -1312,7 +1313,7 @@ void LAi_EnableReload()
 	//DeleteAttribute(mchr, "groupkill");	// LDH - Fixed in LAi_groups.c so LAi_EnableReload only gets called when all enemy dead
 
 	// LDH moved from below 29Jan09
-	//Уберём саблю
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	// Put away the player's sword
 	SendMessage(mchr, "lsl", MSG_CHARACTER_EX_MSG, "ChangeFightMode", 0);
 
@@ -1323,7 +1324,7 @@ void LAi_EnableReload()
 		return;
 	}
 
-	//Вернём выживших обратно в кучу
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	// Let us return those who survived back to the crew
 	for (i = 0; i < LAi_numloginedcharacters; i++)
 	{
@@ -1414,7 +1415,7 @@ void LAi_EnableReload()
 // END MOD Code by Stone-D : 01/08/2003
 }
 
-//Активация перегрузки на следующую палубу
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 // Activation of reload to the following deck
 void LAi_ActivateReload()
 {
@@ -1442,7 +1443,7 @@ void LAi_ActivateReload()
 // changed by MAXIMUS [for speaking with officers on Boarding Deck by ordinary way] <--
 }
 
-//Расставить персонажей для боя
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
 // To arrange characters for the battle
 void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 {
@@ -1495,7 +1496,7 @@ void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 	mlimit = sti(mchr.mlimit);
 	elimit = sti(mchr.elimit);
 
-	//Установим союзников из команды
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us establish allies from the command
 	// NK -->
 
@@ -1557,7 +1558,7 @@ void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 
 		// ccc section 1 end
 
-		//JRH fix oct 06: boarders don't use ammo, code removed & it didnґt work anyway
+		//JRH fix oct 06: boarders don't use ammo, code removed & it didnпїЅt work anyway
 
 		LAi_group_MoveCharacter(chr, LAI_GROUP_PLAYER);
 		LAi_SetFightMode(chr, false); 					   //JRH long guns didn't fire
@@ -1578,7 +1579,7 @@ void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 	SDLogIt("Player crew change in SetBoardingActors():  " + GetCrewBoarding(mchr) + " -> " + crewchange);
 	SetCrewBoarding(mchr, crewchange);
 
-	//Установим врагов
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	// Let us establish the enemies
 	numBoardingActors = 0;
 	startlocnum = 0;
@@ -1681,7 +1682,7 @@ void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 // END MOD Code by Stone-D : 30/07/2003
 }
 
-//Убийство группы
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 // Death of the enemy group
 // event handler, activated in LAi_group_CheckGroupQuest().  Changed from call once for each dead enemy to call once when all enemy dead // KK -->
 /*void LAi_BoardingGroupKill()
@@ -1693,7 +1694,7 @@ void LAi_SetBoardingActors(string locID, string chLocType, string enLocType)
 }*/
 // <-- KK
 
-//Моделька для абордажного персонажа
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // Model for the boarding character
 string LAi_GetBoardingModel(ref rCharacter, ref ani)
 {

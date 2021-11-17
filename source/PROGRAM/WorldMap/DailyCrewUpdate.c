@@ -386,6 +386,7 @@ void DailyCrewUpdate()
 						Log_SetStringToLog(TranslateString("","Drunken brawl breaks out, morale plummets!")); // NK 05-03-19 added detail
 						moralech = moralech - RUMDEC * (2-moralemod);	// PB: Corrected to prevent morale INCREASING when this happens
 						ResetTimeToNormal();							// PB: Slow down game to normal speed so you can deal with the situation
+						ResetWindToNormal(); // Reset wind to normal
 					}
 					else
 					{

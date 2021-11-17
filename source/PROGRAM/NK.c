@@ -4072,6 +4072,35 @@ void ResetTimeToNormal()
 	}
 }
 
+float GetWindPower()
+{
+	float windpower = WIND_NORMAL_POWER;
+	ref pchar = GetMainCharacter();
+	if(CheckAttribute(PChar,"windpower"))
+	{
+		windpower = stf(PChar.windpower);
+		if (windpower < 1) windpower = 1;
+	}	
+	return windpower;
+}
+
+#event_handler("GetWindPower", "UpdateWindPower");
+void UpdateWindPower()
+{
+	float windpower = GetWindPower();
+	ref pchar = GetMainCharacter();
+	PChar.windpower = windpower;
+}
+
+void ResetWindToNormal()
+{
+	if(GetWindPower() != WIND_NORMAL_POWER)				// skip this if you are already on normal
+	{
+		Characters[GetMaincharacterIndex()].windpower = WIND_NORMAL_POWER;
+		UpdateWindPower();
+	}
+}
+
 bool KrakenAttackEnabled()
 {
 	ref pchar = GetMainCharacter();

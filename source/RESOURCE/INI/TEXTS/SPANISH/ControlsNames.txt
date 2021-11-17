@@ -513,6 +513,18 @@ BOAL_UsePotion
 {
 Beber una poción curativa
 
+Wind_ControlP
+{
+Incrementar el poder del viento
+
+}
+
+Wind_ControlM
+{
+Reducir el poder del viento
+
+}
+
 }
 TIH_FireDrill
 {

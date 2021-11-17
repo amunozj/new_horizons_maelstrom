@@ -159,6 +159,11 @@ void ExternControlsInit(bool bFirst)
 // -------------------------------------------------------------------------------------------------------------------
 // Ship
 
+	CI_CreateAndSetControls( "Sailing1Pers", "Wind_ControlP", CI_GetKeyCode(CTL_WINDP), 0, true );		// Increase wind power
+	CI_CreateAndSetControls( "Sailing3Pers", "Wind_ControlP", CI_GetKeyCode(CTL_WINDP), 0, true );		// Increase wind power
+	CI_CreateAndSetControls( "Sailing1Pers", "Wind_ControlM", CI_GetKeyCode(CTL_WINDM), 0, true );		// Decrease wind power
+	CI_CreateAndSetControls( "Sailing3Pers", "Wind_ControlM", CI_GetKeyCode(CTL_WINDM), 0, true );		// Decrease wind power
+
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Forward", CI_GetKeyCode(CTL_SHIP_VIEW_FORWARD), 0, true );
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Backward", CI_GetKeyCode(CTL_SHIP_VIEW_BACKWARD), 0, true );
 
@@ -744,7 +749,7 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_F5        = 116;
 	objControlsState.key_codes.VK_F5.img    = "a";
 	objControlsState.key_codes.VK_F6        = 117;
-	objControlsState.key_codes.VK_F6.img    = "ö";
+	objControlsState.key_codes.VK_F6.img    = "ï¿½";
 	objControlsState.key_codes.VK_F9        = 120;
 	objControlsState.key_codes.VK_F9.img    = "f";
 
@@ -780,29 +785,29 @@ void ExternInitKeyCodes()
 		objControlsState.key_codes.VK_INSERT.img = ">";
 		objControlsState.key_codes.VK_DELETE = 46;
 		objControlsState.key_codes.VK_DELETE.img = ">";
-		objControlsState.key_codes.VK_OEM_1 = 186; // ; æ
+		objControlsState.key_codes.VK_OEM_1 = 186; // ; ï¿½
 		objControlsState.key_codes.VK_OEM_1.img = ">";
 		objControlsState.key_codes.VK_OEM_PLUS = 187; // +
 		objControlsState.key_codes.VK_OEM_PLUS.img = ">";
-		objControlsState.key_codes.VK_OEM_COMMA = 188; // , á
+		objControlsState.key_codes.VK_OEM_COMMA = 188; // , ï¿½
 		objControlsState.key_codes.VK_OEM_COMMA.img = ">";
 		objControlsState.key_codes.VK_OEM_MINUS = 189; // -
 		objControlsState.key_codes.VK_OEM_MINUS.img = ">";
-		objControlsState.key_codes.VK_OEM_PERIOD = 190; // . þ
+		objControlsState.key_codes.VK_OEM_PERIOD = 190; // . ï¿½
 		objControlsState.key_codes.VK_OEM_PERIOD.img = ">";
 
 		// added by MAXIMUS for typing on Russian -->
 		objControlsState.key_codes.VK_OEM_2 = 191; // / .
 		objControlsState.key_codes.VK_OEM_2.img = ">";
-		objControlsState.key_codes.VK_OEM_3 = 192; // ` ¸
+		objControlsState.key_codes.VK_OEM_3 = 192; // ` ï¿½
 		objControlsState.key_codes.VK_OEM_3.img = ">";
-		objControlsState.key_codes.VK_OEM_4 = 219; // [ õ
+		objControlsState.key_codes.VK_OEM_4 = 219; // [ ï¿½
 		objControlsState.key_codes.VK_OEM_4.img = ">";
 		objControlsState.key_codes.VK_OEM_5 = 220; // \
 		objControlsState.key_codes.VK_OEM_5.img = ">";
-		objControlsState.key_codes.VK_OEM_6 = 221; // ] ú
+		objControlsState.key_codes.VK_OEM_6 = 221; // ] ï¿½
 		objControlsState.key_codes.VK_OEM_6.img = ">";
-		objControlsState.key_codes.VK_OEM_7 = 222; // ' ý changed by MAXIMUS was 223
+		objControlsState.key_codes.VK_OEM_7 = 222; // ' ï¿½ changed by MAXIMUS was 223
 		objControlsState.key_codes.VK_OEM_7.img = ">";
 		// added by MAXIMUS for typing on Russian <--
 		//oem_2-3 are 191-192 as / and `

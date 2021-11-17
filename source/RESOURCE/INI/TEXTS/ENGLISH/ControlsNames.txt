@@ -514,6 +514,19 @@ BOAL_UsePotion
 Drink a healing potion
 
 }
+
+Wind_ControlP
+{
+Increase wind power
+
+}
+
+Wind_ControlM
+{
+Decrease wind power
+
+}
+
 TIH_FireDrill
 {
 Try to put out a fire on your ship

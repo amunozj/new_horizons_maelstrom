@@ -570,7 +570,8 @@ void CreateWeatherEnvironment()
 	}
 	if (bWhrTornado) { WhrCreateTornadoEnvironment(); }
 
-	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	float wind_normal_power = GetWindPower()	
+	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / wind_normal_power);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
 

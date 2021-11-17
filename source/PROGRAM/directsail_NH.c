@@ -853,6 +853,7 @@ void Randomshipevent()
 		PlayStereoSound(sound);
 
 		ResetTimeToNormal(); // PB: Reset Time Scale
+		ResetWindToNormal(); // Reset wind to normal
 	}
 }
 
