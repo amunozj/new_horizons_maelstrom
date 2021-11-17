@@ -274,6 +274,10 @@ bool LANDCREWMEMBERS = false;
 int  MAX_CREWMEMBERS = 10;
 //
 
+// QS
+
+
+
 bool isCharacterDead(int iIndex) { return sti(Characters[iIndex].Dead); }
 ref GetFantomCharacter(int iIndex) { return &Characters[FANTOM_CHARACTERS + iIndex]; }
 ref GetCharacter(int iIndex) { if(iIndex >= TOTAL_CHARACTERS || iIndex < 0) return &NullCharacter; return &Characters[iIndex]; }
