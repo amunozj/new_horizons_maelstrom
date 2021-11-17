@@ -749,7 +749,7 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_F5        = 116;
 	objControlsState.key_codes.VK_F5.img    = "a";
 	objControlsState.key_codes.VK_F6        = 117;
-	objControlsState.key_codes.VK_F6.img    = "�";
+	objControlsState.key_codes.VK_F6.img    = "ü";
 	objControlsState.key_codes.VK_F9        = 120;
 	objControlsState.key_codes.VK_F9.img    = "f";
 
