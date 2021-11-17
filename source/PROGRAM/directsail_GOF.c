@@ -3,7 +3,7 @@
 /////////////////////////
 
 #define DIRECTSAILDEBUG	0;
-#define NAVIGATORMESSAGES 1;
+#define NAVIGATORMESSAGES 0;
 #define TRANSITIONFACTOR 1.25;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
