@@ -2131,14 +2131,12 @@ void ProcessControls()
 
 			// Wind power Controls -->
 			case "Wind_ControlP":
-				PChar.windpower -= 5;
-				UpdateWindPower();
+				increaseWindPower();
 				LogIt("Wind normal power " + makeint(GetWindPower()));
 			return; break;
 
 			case "Wind_ControlM":
-				PChar.windpower += 5;
-				UpdateWindPower();
+				decreaseWindPower();
 				LogIt("Wind normal power " + makeint(GetWindPower()));
 			return; break;
 			// Wind power Controls <--			

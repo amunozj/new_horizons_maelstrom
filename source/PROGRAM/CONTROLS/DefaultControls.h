@@ -19,6 +19,9 @@ Please follow these rules when editing settings:
 #define CTL_10X30X 					"KEY_G"
 #define CTL_QUICKSAVE 				"VK_F5" // (not changable ingame)
 #define CTL_QUICKLOAD 				"VK_F6" // (not changable ingame)
+#define CTL_WINDP 					"KEY_U"
+#define CTL_WINDM 					"KEY_J"
+
 
 // Ammo equip keys (not changable ingame)
 #define CTL_AMMO_EQUIP_1 			"KEY_1" // Change to Balls (on sea) - Equip best blade   (on land)
@@ -98,9 +101,6 @@ Please follow these rules when editing settings:
 
 #define CTL_SHIP_OPEN_ICONMENU 		"VK_RETURN" // Open commands menu (lower left)
 #define CTL_SHIP_HOT_ACTION 		"VK_F3" // Perform quick command icon (upper left)
-
-#define CTL_WINDP 		"KEY_Y"
-#define CTL_WINDM 		"KEY_H"
 
 // ======================================
 // World Map Control

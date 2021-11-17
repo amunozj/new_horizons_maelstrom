@@ -5,10 +5,12 @@
 #define DIRECTSAILDEBUG	0;
 #define NAVIGATORMESSAGES 1;
 #define TRANSITIONFACTOR 1.25;
+#define DSFREQUENCY 15;
+#define MINDSFREQUENCY 1;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
 
-int DirectsailCheckFrequency = 15;		// check for new island every this many minutes - 07Jan09, also used for abort distances 12Jan09
+int DirectsailCheckFrequency = DSFREQUENCY;		// check for new island every this many minutes - 07Jan09, also used for abort distances 12Jan09
 int DIRECTENCOUNTERCHANCE;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 int DIRECTENCOUNTERDISTANCE;			// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 float ENCOUNTERBREAK = 1.0;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c
@@ -20,6 +22,7 @@ float wmDistanceNow = 75000.0;
 bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather - now also called by procUpdateTime()
 // ever growing list of conditions when Directsail shall NOT run
 {
+	// Logit("DirectsailCheckFrequency: "+DirectsailCheckFrequency)
 	ref pchar = GetMainCharacter();
 	SetCorrectWorldMapPosition();
 
@@ -467,12 +470,15 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	// pchar.directsail1.closestisland = rIsland.id
 	worldMap.closestisland = rIsland.id;
 
+	float windpower = GetWindPower()
 	//only change if getting close
 	float transitionDistance = (distance * TRANSITIONFACTOR - currentLocationDist)*WDM_MAP_TO_SEA_SCALE;
 	if ( stf(pchar.Ship.Speed.z) * 100.0 > transitionDistance && nextIsland != FindIsland(pchar.location) ) 
-		DirectsailCheckFrequency = 5;		// check every 5 minutes
+		DirectsailCheckFrequency = DSFREQUENCY*windpower/WIND_NORMAL_POWER/3;
+		if (DirectsailCheckFrequency<MINDSFREQUENCY) DirectsailCheckFrequency = MINDSFREQUENCY;
 	else	
-		DirectsailCheckFrequency = 15;		// check every 15 minutes		
+		DirectsailCheckFrequency = DSFREQUENCY*windpower/WIND_NORMAL_POWER;
+		if (DirectsailCheckFrequency<MINDSFREQUENCY) DirectsailCheckFrequency = MINDSFREQUENCY;	
 
 	if (distance * TRANSITIONFACTOR > currentLocationDist)
 	{
