@@ -5100,7 +5100,7 @@ void InitOpenSeaMod()
 	else
 	{
 		DIRECTENCOUNTERCHANCE =								50;		// chance in percent that an encounter fleet appears every hour
-		DIRECTENCOUNTERDISTANCE =							1000;	// distance from player at which random ships appear
+		DIRECTENCOUNTERDISTANCE =							2000;	// distance from player at which random ships appear
 		ENCOUNTERBREAK =									1.0;	// LDH - Changed to float, number is hours per encounter, directsail is called every 5 minutes occasionally
 		// so you can let the clock run faster (by increasing TIMESCALAR_SEA below), meaning longer voyagetimes, without getting too many encounters.
 
