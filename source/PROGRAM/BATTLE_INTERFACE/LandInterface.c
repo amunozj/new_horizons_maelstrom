@@ -233,7 +233,7 @@ ref BLI_CheckCommand()
 		break;
 	}
 
-	if(!bUsed) objLandInterface.UserIcons.cancel.enable = true;
+	if(!bUsed) objLandInterface.UserIcons.cancel.enable = false;
 	return &g_intRetVal;
 }
 
