@@ -754,7 +754,7 @@ void procUpdateTime()
 				bCheckForAiupdate = true;
 			}
 		}
-		if (iSeaTime >= sti(mchr.TimeSeconds)+60/TIMESCALAR_SEA)	// 12 seconds, this is approximate, but works
+		if (iSeaTime >= sti(mchr.TimeSeconds)+60/sea_scale_wind)	// 12 seconds, this is approximate, but works
 		{
 			mchr.TimeSeconds = iSeaTime;
 			float CurrentTime = stf(mchr.CurrentTime);

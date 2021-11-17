@@ -275,7 +275,8 @@ int  MAX_CREWMEMBERS = 10;
 //
 
 // QS
-
+int sea_scale_wind;   // Variable to change the pass of time with wind force management
+#define MAX_SEA_SCALE_WIND 60  // Maximum number of seconds per second in game
 
 
 bool isCharacterDead(int iIndex) { return sti(Characters[iIndex].Dead); }

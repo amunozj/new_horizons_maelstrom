@@ -2384,7 +2384,7 @@ int AddSeaTimeToCurrent()
 	if(sti(pchar.lastupdateseatime) + 1 <= st/60)
 	{
 		int oldhour = GetHour();
-		minutes = TIMESCALAR_SEA * (st/60 - sti(pchar.lastupdateseatime));
+		minutes = sea_scale_wind * (st/60 - sti(pchar.lastupdateseatime));
 		AddTimeToCurrent(0, minutes);
 		pchar.lastupdateseatime = (st/60);
 // KK -->

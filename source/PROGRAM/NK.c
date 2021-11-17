@@ -4098,6 +4098,9 @@ void increaseWindPower()
 	DirectsailCheckFrequency = DSFREQUENCY*windpower/WIND_NORMAL_POWER;
 	if (DirectsailCheckFrequency<MINDSFREQUENCY) DirectsailCheckFrequency = MINDSFREQUENCY;
 
+	sea_scale_wind = TIMESCALAR_SEA*WIND_NORMAL_POWER/windpower;
+	if (sea_scale_wind > MAX_SEA_SCALE_WIND) sea_scale_wind = MAX_SEA_SCALE_WIND;
+	
 	Characters[GetMaincharacterIndex()].windpower = windpower;
 }
 
@@ -4114,12 +4117,16 @@ void decreaseWindPower()
 	windpower = windpower+5;	
 	DirectsailCheckFrequency = DSFREQUENCY*windpower/WIND_NORMAL_POWER;
 	if (DirectsailCheckFrequency<MINDSFREQUENCY) DirectsailCheckFrequency = MINDSFREQUENCY;
+	sea_scale_wind = TIMESCALAR_SEA*WIND_NORMAL_POWER/windpower;
+	if (sea_scale_wind > MAX_SEA_SCALE_WIND) sea_scale_wind = MAX_SEA_SCALE_WIND;
 	Characters[GetMaincharacterIndex()].windpower = windpower;
 }
 
 void ResetWindToNormal()
 {
 		Characters[GetMaincharacterIndex()].windpower = WIND_NORMAL_POWER;
+		DirectsailCheckFrequency = DSFREQUENCY;
+		sea_scale_wind = TIMESCALAR_SEA;
 }
 
 bool KrakenAttackEnabled()

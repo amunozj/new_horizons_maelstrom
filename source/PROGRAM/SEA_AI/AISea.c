@@ -178,7 +178,7 @@ void SeaAI_SailToLocator(string sLocName)
 	int time = GetTimeToSailDist(arship, dist, angle) * TIMESCALAR_SAILTO_LOC;
 	if(dist > 0.75 * (GetDistance2D(px, pz, 0, 0) + GetDistance2D(dx, dz, 0, 0))) time *= TIMESCALAR_SAILTO_THRU/2.0; //i.e. probably through a piece of island - update 04-10-24
 	if(SameSign(px * dx, pz * dz) && !SameSignPairs(px, pz, dx, dz)) time *= TIMESCALAR_SAILTO_THRU/2.0; //i.e. probably through center of island, so double again. 04-10-24
-	pchar.seatime = sti(pchar.seatime) + makeint(makefloat(time) / makefloat(TIMESCALAR_SEA)); // because sailto has its own timescale above
+	pchar.seatime = sti(pchar.seatime) + makeint(makefloat(time) / makefloat(sea_scale_wind)); // because sailto has its own timescale above
 	pchar.sailtostring = TranslateString("","Sail to") + " " + loclabel + " " + XI_ConvertString("takes") + " " + MakeTimeString(time);
 	// NK <--
 	SeaAI_SailToCreateFader();
@@ -228,7 +228,7 @@ void SeaAI_SailToCharacter(int iCharacterIndex)
 		/*else*/ if(speedratio > 5.0) speedratio = 5.0; // caps at 5 times as long.
 		time = makeint(makefloat(time) * speedratio);
 	}
-	pchar.seatime = sti(pchar.seatime) + makeint(makefloat(time) / makefloat(TIMESCALAR_SEA)); // because sailto has its own timescale above
+	pchar.seatime = sti(pchar.seatime) + makeint(makefloat(time) / makefloat(sea_scale_wind)); // because sailto has its own timescale above
 	pchar.sailtostring = TranslateString("","Sail to") + " " + GetMyShipNameShow(stchar) + " " + XI_ConvertString("takes") + " " + MakeTimeString(time); // KK
 	// NK <--
 	SeaAI_SailToCreateFader();
