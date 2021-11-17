@@ -13,6 +13,8 @@ int DIRECTENCOUNTERCHANCE;				// Set in function InitOpenSeaMod() in PROGRAM\NK.
 int DIRECTENCOUNTERDISTANCE;			// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 float ENCOUNTERBREAK = 1.0;				// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 
+float wmDistanceNow = 75000.0;
+
 //------------------------ Initial checks and trigger -----------------------------
 
 bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather - now also called by procUpdateTime()
