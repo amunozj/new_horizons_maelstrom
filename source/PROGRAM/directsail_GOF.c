@@ -6,7 +6,7 @@
 #define NAVIGATORMESSAGES 1;
 #define TRANSITIONFACTOR 1.25;
 #define DSFREQUENCY 15;
-#define MINDSFREQUENCY 1;
+#define MINDSFREQUENCY 3;
 
 #define MINES					1		// set to 0 to disable encounters with random mines
 
@@ -22,7 +22,7 @@ float wmDistanceNow = 75000.0;
 bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather - now also called by procUpdateTime()
 // ever growing list of conditions when Directsail shall NOT run
 {
-	// Logit("DirectsailCheckFrequency: "+DirectsailCheckFrequency)
+	Logit("DirectsailCheckFrequency: "+DirectsailCheckFrequency)
 	ref pchar = GetMainCharacter();
 	SetCorrectWorldMapPosition();
 
@@ -132,7 +132,7 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 	// check if islandchange takes place
 	bool islandswitch = getRTclosestIslandLocs(&nextIsland);
 
-	DSTrace("DirectsailRun: islandswitch =" + islandswitch)
+	DSTRace("DirectsailRun: islandswitch =" + islandswitch)
 
 	ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
 	string sNewIslandId = rIsland.id; 
@@ -159,6 +159,7 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 		// no islandchange, instead random check if an shipencounter or flotsam shall appear
     
 		// Jan07 counter that allows us to set encounterfrequency independent of clockspeed/hourly weatherchange
+		TraceAndLog("DS GOF: Directsail encounter check = " + stf(pchar.directsail.count) + " Encounterbreak:" + ENCOUNTERBREAK);
 		if(!CheckAttribute(pchar,"directsail.count")) pchar.directsail.count = 0.0;
 		if(stf(pchar.directsail.count) < ENCOUNTERBREAK) 
 		{ 
@@ -213,9 +214,9 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 			PlaySound("#sail_ho");
 			Sea_ReloadStartDirect();	// reloads Sea with new ships at horizon
 		}
-	}
-	else	// LDH - this appears to be an error, but executes properly after the preceeding else code if original condition is false
-	{ 
+	// }
+	// else	// LDH - this appears to be an error, but executes properly after the preceeding else code if original condition is false
+	// { 
 		Randomshipevent(); 	// random shiplife events
 		pchar.directsail.count = 0.0;		// LDH - 08Jan09
 	}

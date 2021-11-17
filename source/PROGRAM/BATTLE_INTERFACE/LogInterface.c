@@ -849,13 +849,15 @@ void procUpdateTime()
 		{
 			timeString = GetStringTime(stf(mchr.CurrentTime));
 			theMinute = sti(strRight(timeString,2));
+			// TraceAndLog("DirectsailCheckFrequency = " + DirectsailCheckFrequency + " minute:" + theMinute + " CheckForIslandChange:" + bCheckForIslandChange + " bIslandChecked:" + bIslandChecked);
+
 			if (theMinute != 0 && theMinute+1 != 60 && ((theMinute+1) % DirectsailCheckFrequency) == 0)	// check every DirectsailCheckFrequency minutes
 			{
 				if ( ! bIslandChecked )
 				{
 					Trace("== Directsail called at " + timestring);
-					mchr.directsail.count = stf(mchr.directsail.count) + DirectsailCheckFrequency/60.0; // update encounter frequency count
-//TraceAndLog("Directsail encounter check = " + stf(mchr.directsail.count));
+					mchr.directsail.count = stf(mchr.directsail.count) + DirectsailCheckFrequency/60.0*sea_scale_wind/60; // update encounter frequency count
+					// TraceAndLog("Loginterface: Directsail encounter check = " + stf(mchr.directsail.count));
 					DirectSailCheck(true);
 					bIslandChecked = true;
 				}
