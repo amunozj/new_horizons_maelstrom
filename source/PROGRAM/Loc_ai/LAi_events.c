@@ -234,6 +234,7 @@ void LAi_CharacterAttack()
 	int i;
 	ref mainCh = GetMainCharacter();//MAXIMUS
 	bool bPlayer = false;//MAXIMUS
+	bool isBlocked = GetEventData();
 
 	//skillearning(attack, "Fencing", 1);	// ccc skillearning
 //JRH -->
