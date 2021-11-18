@@ -27,6 +27,12 @@ float rWindA = 0.0;
 float fSeaA;
 float fSeaB;
 
+// MS Variables
+
+int		iPrevWeather = -1;
+int		sunIsShine = true;
+int		iBlendWeatherNum = -1;
+
 // Values for overriding weather or setting it
 // ----------------DO NOT CHANGE THESE VALUES HERE------------------------
 float OWeatherAngle = -50.0;		 //Value between 0.0 and PIm2 - Determines the wind angle
