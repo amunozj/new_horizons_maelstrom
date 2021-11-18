@@ -49,3 +49,4 @@ source/Screenshots
 
 #Ships_init output
 tools/parse-ships-init/Ships_init.c
+source/start.ini
