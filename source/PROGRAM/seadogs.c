@@ -32,7 +32,11 @@
 #include "ITEMS\itemLogic.c"
 #include "ITEMS\items_utilite.c"
 #include "sound\alias.c" // KK
-#include "weather\WhrWeather.c"
+
+// #include "weather\WhrWeather_MS.c"  // GOF/MS weather
+#include "weather\WhrWeather_NH.c"  // NH Weather
+
+
 #include "controls\controls.c"
 #include "landencounters\landencounters.c"
 #include "NK.c" // 05-07-03 NK for misc functions
@@ -453,7 +457,7 @@ void Main_Start()
 		UnloadSegment("store\initGoods.c");
 	}
 
-	if(LoadSegment("Interface\BaseInterface.c"))
+	if(LoadSegment("Interface\BaseInterface.c"))fWhrWeather_NH
 	{
 		InitBaseInterfaces_main();
 		InitBaseInterfaces();
