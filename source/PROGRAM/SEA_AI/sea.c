@@ -1886,7 +1886,7 @@ void SetCorrectWorldMapPosition()
 		worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
 		worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
 
-		Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
+		// Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
 	}
 }
 

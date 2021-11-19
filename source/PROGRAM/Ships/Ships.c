@@ -128,7 +128,7 @@ int Force_GetShipType(int maxclass, int minclass, string type, int nat)
 	}
 	if(finish)
 	{
-		trace("Force_GetShipType: Maxclass = "+maxclass+", Minclass = "+minclass+", Per = "+GetPeriodName(GetCurrentPeriod())+", Nat = "+GetNationNameByType(nat)+", Type = "+type+", Loop = "+end+", Ship ID = "+GetShipID(iShipType));
+		// trace("Force_GetShipType: Maxclass = "+maxclass+", Minclass = "+minclass+", Per = "+GetPeriodName(GetCurrentPeriod())+", Nat = "+GetNationNameByType(nat)+", Type = "+type+", Loop = "+end+", Ship ID = "+GetShipID(iShipType));
 		return iShipType;
 	}
 	else

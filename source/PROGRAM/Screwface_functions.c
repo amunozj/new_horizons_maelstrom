@@ -398,7 +398,7 @@ void CheckInitialFlagRelations(ref chr, float visibility_range, float ship_range
 	// Ships that recognized you are ALWAYS hostile
 	if (CheckAttribute(chr, "recognized") && !CheckAttribute(chr, "surrendered"))
 	{
-		Trace("FLAGS: The " + GetMyShipNameShow(chr) + " turned hostile as they have recognized us");
+		// Trace("FLAGS: The " + GetMyShipNameShow(chr) + " turned hostile as they have recognized us");
 		SetCharRelationToFleet(chr, RELATION_ENEMY);
 	}
 	else
@@ -413,9 +413,9 @@ void CheckInitialFlagRelations(ref chr, float visibility_range, float ship_range
 					chr.PlayerNation = iNation;
 //					chr.PlayerShip = GetCharacterShipID(GetMainCharacter());
 					chr.PlayerShip = GetCharacterShipModel(GetMainCharacter());
-					Trace("FLAGS: The " + GetMyShipNameShow(chr) + " has spotted us at " + ship_range + " and will remember us as " + GetNationDescByType(iNation) + " in " + chr.PlayerShip + " with visibility=" + visibility_range);
+					// Trace("FLAGS: The " + GetMyShipNameShow(chr) + " has spotted us at " + ship_range + " and will remember us as " + GetNationDescByType(iNation) + " in " + chr.PlayerShip + " with visibility=" + visibility_range);
 				}
-				else Trace("FLAGS: The " + GetMyShipNameShow(chr) + " has spotted us at " + ship_range + ", but is not interested as we are not hostile");
+				// else Trace("FLAGS: The " + GetMyShipNameShow(chr) + " has spotted us at " + ship_range + ", but is not interested as we are not hostile");
 			}
 			else
 			{
