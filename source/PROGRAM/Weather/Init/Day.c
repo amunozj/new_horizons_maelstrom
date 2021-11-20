@@ -43,6 +43,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.00006;
 	//Weathers[n].Fog.Color = argb(0,115,140,155);
 	Weathers[n].Fog.Color = argb(0,135,168,205);
+	Weathers[n].SpecialSeaFog.Color = argb(0,135,168,205);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -124,7 +125,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	//пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.5, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 5.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 8.0, 2.5, 0.0, 200.00";
@@ -138,8 +139,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 0.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.PosShift = 0.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
 	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
@@ -152,10 +153,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.45;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 7.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.30; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 7.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.30; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.1;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -215,6 +216,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.00006;
 	//Weathers[n].Fog.Color = argb(0,115,140,155);
 	Weathers[n].Fog.Color = argb(0,135,168,205);
+	Weathers[n].SpecialSeaFog.Color = argb(0,135,168,205);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -296,7 +298,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	//пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.5, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 5.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 8.0, 2.5, 0.0, 200.00";
@@ -310,8 +312,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.PosShift = 2.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
@@ -324,10 +326,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.35;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 7.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.30; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 7.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.30; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.1;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -387,6 +389,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.00025;
 	//Weathers[n].Fog.Color = argb(0,85,155,190);
 	Weathers[n].Fog.Color = argb(0,85,145,190);
+	Weathers[n].SpecialSeaFog.Color = argb(0,85,145,190);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -476,10 +479,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.8; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 6.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.8; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -539,6 +542,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.00025;
 	//Weathers[n].Fog.Color = argb(0,85,155,190);
 	Weathers[n].Fog.Color = argb(0,85,145,190);
+	Weathers[n].SpecialSeaFog.Color = argb(0,85,145,190);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -628,10 +632,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.8; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 6.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.8; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -691,6 +695,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.0003;
 	//Weathers[n].Fog.Color = argb(0,60,125,150);
 	Weathers[n].Fog.Color = argb(0,90,145,180);
+	Weathers[n].SpecialSeaFog.Color = argb(0,90,145,180);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -780,10 +785,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.8; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 6.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.8; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -842,6 +847,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.IslandDensity = 0.00035;
 	Weathers[n].Fog.SeaDensity = 0.0009;
 	Weathers[n].Fog.Color = argb(0,110,130,150);
+	Weathers[n].SpecialSeaFog.Color = argb(0,110,130,150);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -917,7 +923,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	//пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Weathers[n].Sea.Harmonics.h1 = "90.0, 2.0, 4.5, 0.0, 10.0";
 	Weathers[n].Sea.Harmonics.h2 = "45.0, 1.0, 6.0, 0.0, 50.0";
 	Weathers[n].Sea.Harmonics.h2 = "0.0, 4.0, 2.0, 0.0, 150.0";
@@ -930,8 +936,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 0.1; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.PosShift = 0.1; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 175, 255, 255);
@@ -944,10 +950,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.08; 
 	Weathers[n].Sea2.Attenuation = 0.2;
 
-	Weathers[n].Sea2.Amp1 = 12.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.25; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 12.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.25; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.5;
 	Weathers[n].Sea2.AnimSpeed2 = 9.0;
@@ -1006,6 +1012,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.IslandDensity = 0.00035;
 	Weathers[n].Fog.SeaDensity = 0.0009;
 	Weathers[n].Fog.Color = argb(0,110,130,150);
+	Weathers[n].SpecialSeaFog.Color = argb(0,110,130,150);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -1081,7 +1088,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	//пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	Weathers[n].Sea.Harmonics.h1 = "90.0, 2.0, 4.5, 0.0, 10.0";
 	Weathers[n].Sea.Harmonics.h2 = "45.0, 1.0, 6.0, 0.0, 50.0";
 	Weathers[n].Sea.Harmonics.h2 = "0.0, 4.0, 2.0, 0.0, 150.0";
@@ -1094,8 +1101,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 0.1; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.PosShift = 0.1; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 175, 255, 255);
@@ -1108,10 +1115,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.08; 
 	Weathers[n].Sea2.Attenuation = 0.2;
 
-	Weathers[n].Sea2.Amp1 = 12.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.25; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 12.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.Scale1 = 0.25; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	Weathers[n].Sea2.Amp2 = 1.5;
 	Weathers[n].Sea2.AnimSpeed2 = 9.0;
@@ -1170,6 +1177,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.IslandDensity = 0.0003;
 	Weathers[n].Fog.SeaDensity = 0.00003;
 	Weathers[n].Fog.Color = argb(0,139,178,211);
+	Weathers[n].SpecialSeaFog.Color = argb(0,139,178,211);
 	
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
