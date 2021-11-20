@@ -34,8 +34,8 @@
 #include "sound\alias.c" // KK
 
 // Define weather framework
-#include "weather\WhrWeather_GOF.c"
-// #include "weather\WhrWeather_NH.c"
+// #include "weather\WhrWeather_GOF.c"
+#include "weather\WhrWeather_NH.c"
 
 
 #include "controls\controls.c"
