@@ -243,7 +243,7 @@ void DeleteWeatherEnvironment()
 	WhrDeleteSeaEnvironment();
 	WhrDeleteAstronomyEnvironment();
 
-	DelEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor");
+	// DelEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor");
 	DelEventHandler("frame","Whr_OnWindChange");
 
 	bWeatherLoaded = false;
@@ -309,26 +309,26 @@ void CreateWeatherEnvironment()
 		for (int i=0;i<MAX_WEATHERS;i++)
 		{
 
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && !sti(WeatherParams.Rain.ThisDay))
-			{
-				trace("current: " + Weathers[i].Fog.Height + "backup" + WeathersBackup[i].Fog.Height);
-				Weathers[i].Fog.Color		= WeathersBackup[i].Fog.Color;
-				Weathers[i].Fog.Height		= WeathersBackup[i].Fog.Height;
-				Weathers[i].Fog.Density		= WeathersBackup[i].Fog.Density;
-				Weathers[i].Fog.SeaDensity	= WeathersBackup[i].Fog.SeaDensity;
-				Weathers[i].Fog.IslandDensity	= WeathersBackup[i].Fog.IslandDensity;
+			// if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && !sti(WeatherParams.Rain.ThisDay))
+			// {
+			// 	trace("current: " + Weathers[i].Fog.Height + "backup" + WeathersBackup[i].Fog.Height);
+			// 	Weathers[i].Fog.Color		= WeathersBackup[i].Fog.Color;
+			// 	Weathers[i].Fog.Height		= WeathersBackup[i].Fog.Height;
+			// 	Weathers[i].Fog.Density		= WeathersBackup[i].Fog.Density;
+			// 	Weathers[i].Fog.SeaDensity	= WeathersBackup[i].Fog.SeaDensity;
+			// 	Weathers[i].Fog.IslandDensity	= WeathersBackup[i].Fog.IslandDensity;
 
-				Weathers[i].Sun.Glow.Enable		= WeathersBackup[i].Sun.Glow.Enable;
-				Weathers[i].Sun.Overflow.Enable	= WeathersBackup[i].Sun.Overflow.Enable;
+			// 	Weathers[i].Sun.Glow.Enable		= WeathersBackup[i].Sun.Glow.Enable;
+			// 	Weathers[i].Sun.Overflow.Enable	= WeathersBackup[i].Sun.Overflow.Enable;
 
-			}
-			if (!bRain) Weathers[i].Rainbow.Enable = false;
-			//navy <--
-			if (!CheckAttribute(&Weathers[i], "hour")) { continue; }
-			if (CheckAttribute(&Weathers[i], "skip"))
-			{
-				if (sti(Weathers[i].skip)) { continue; }
-			}
+			// }
+			// if (!bRain) Weathers[i].Rainbow.Enable = false;
+			// //navy <--
+			// if (!CheckAttribute(&Weathers[i], "hour")) { continue; }
+			// if (CheckAttribute(&Weathers[i], "skip"))
+			// {
+			// 	if (sti(Weathers[i].skip)) { continue; }
+			// }
 
 			bool bCanStorm = sti(Weathers[i].Storm);
 			bool bCanTornado = sti(Weathers[i].Tornado);
@@ -389,85 +389,85 @@ void CreateWeatherEnvironment()
 	}
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 
-	if (iBlendWeatherNum < 0 )
-	{
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 350.0;
-		Weather.Time.updatefrequence = 12;
-	} else {
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 450;
-		Weather.Time.updatefrequence = 15;
-		if (bSeaActive && !bAbordageStarted)
-		{
-			/*
-			if (iArcadeSails == 1)
-            {
-                Weather.Time.speed = 250;
-                Weather.Time.updatefrequence = 10;
-            }
-		*/
-		}
-		else
-		{
-			Weather.Time.speed = 350;
-			Weather.Time.updatefrequence = 12;
-		}
-	}
+	// if (iBlendWeatherNum < 0 )
+	// {
+	// 	Weather.Time.time = fGetTime;
+	// 	Weather.Time.speed = 350.0;
+	// 	Weather.Time.updatefrequence = 12;
+	// } else {
+	// 	Weather.Time.time = fGetTime;
+	// 	Weather.Time.speed = 450;
+	// 	Weather.Time.updatefrequence = 15;
+	// 	if (bSeaActive && !bAbordageStarted)
+	// 	{
+	// 		/*
+	// 		if (iArcadeSails == 1)
+    //         {
+    //             Weather.Time.speed = 250;
+    //             Weather.Time.updatefrequence = 10;
+    //         }
+	// 	*/
+	// 	}
+	// 	else
+	// 	{
+	// 		Weather.Time.speed = 350;
+	// 		Weather.Time.updatefrequence = 12;
+	// 	}
+	// }
 	Weather.isDone = "";
 
-	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
+	// SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
 
-	fFogDensity = stf(Weather.Fog.Density);
+	fFogDensity = stf(WeathersNH.Fog.Density);
 
 	fWeatherDelta = 0.0;
 //	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherAngle = GetAngleY(stf(worldMap.WindX), stf(worldMap.WindZ));
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 
-    // boal -->
-	bRain = true; // Whr_isRainEnable();
-    string sLocation = "";
-    int iLocation = -1;
-    if(CheckAttribute(pchar, "location")) {
-       sLocation = pchar.location;
-       iLocation = FindLocation(sLocation);
-    }
-	if(iLocation != -1)
-	{
-		ref rLoc;
-		rLoc = &Locations[iLocation];
+    // // boal -->
+	// bRain = true; // Whr_isRainEnable();
+    // string sLocation = "";
+    // int iLocation = -1;
+    // if(CheckAttribute(pchar, "location")) {
+    //    sLocation = pchar.location;
+    //    iLocation = FindLocation(sLocation);
+    // }
+	// if(iLocation != -1)
+	// {
+	// 	ref rLoc;
+	// 	rLoc = &Locations[iLocation];
 
-		if (CheckAttribute(rLoc, "environment.weather.rain") && !sti(rLoc.environment.weather.rain))
-		{
-			bRain = false;
-		}
-		//navy
-		else
-		{
-			if (CheckAttribute(rLoc, "type"))
-			{
-				if(rLoc.type == "residence"
-					|| rLoc.type == "tavern"
-					|| rLoc.type == "house"
-					|| rLoc.type == "shop"
-					|| rLoc.type == "shipyard"
-					|| rLoc.type == "church" )
-				{
-					bRain = false;
-				}
-			}
-		}
-	}
-	if (bRain)
-	{
-		WhrCreateRainEnvironment();
-	}
-	else
-	{
-		ClearRainEnvironment();
-	}
+	// 	if (CheckAttribute(rLoc, "environment.weather.rain") && !sti(rLoc.environment.weather.rain))
+	// 	{
+	// 		bRain = false;
+	// 	}
+	// 	//navy
+	// 	else
+	// 	{
+	// 		if (CheckAttribute(rLoc, "type"))
+	// 		{
+	// 			if(rLoc.type == "residence"
+	// 				|| rLoc.type == "tavern"
+	// 				|| rLoc.type == "house"
+	// 				|| rLoc.type == "shop"
+	// 				|| rLoc.type == "shipyard"
+	// 				|| rLoc.type == "church" )
+	// 			{
+	// 				bRain = false;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// if (bRain)
+	// {
+	// 	WhrCreateRainEnvironment();
+	// }
+	// else
+	// {
+	// 	ClearRainEnvironment();
+	// }
 	// boal <--
 
 	WhrCreateSunGlowEnvironment();
@@ -475,14 +475,15 @@ void CreateWeatherEnvironment()
 	WhrCreateAstronomyEnvironment();
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
+	WhrCreateRainEnvironment();
 
-	if(iLocation != -1)
-	{
-		if(CheckAttribute(&Locations[iLocation], "lockWeather"))
-		{
-			bWhrTornado = false;
-		}
-	}
+	// if(iLocation != -1)
+	// {
+	// 	if(CheckAttribute(&Locations[iLocation], "lockWeather"))
+	// 	{
+	// 		bWhrTornado = false;
+	// 	}
+	// }
 	if (bWhrTornado) { WhrCreateTornadoEnvironment(); }
 
 	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
