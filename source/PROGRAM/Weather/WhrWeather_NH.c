@@ -363,6 +363,8 @@ void CreateWeatherEnvironment()
 	}
 
 	float fGetTime = GetTime();
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+
 
 	// create main module Weather
 	DeleteAttribute(&Weather,"");
