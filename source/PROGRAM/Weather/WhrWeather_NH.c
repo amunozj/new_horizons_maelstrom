@@ -87,7 +87,8 @@ void SetNextWeather(string sWeatherID)
 	string sWeather = sWeatherID;
 	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night") sWeather = "Clear";
 	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";	
-
+	if (sWeatherID == "alcove") sWeather = "inside";
+	
 	switch (sWeather)
 	{
 	case  "Clear":
