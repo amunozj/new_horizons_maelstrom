@@ -1362,6 +1362,7 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.Height = WeathersNH.Fog.Height;
 	tmpweather.Fog.Density = WeathersNH.Fog.Density;
 	tmpweather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
+	tmpweather.Fog.IslandDensity = WeathersNH.Fog.IslandDensity;
 
 	// Weather.Fog.Enable = WeathersNH.Fog.Enable;
 	// Weather.Fog.Start =  WeathersNH.Fog.Start;
