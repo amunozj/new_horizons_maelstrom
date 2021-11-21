@@ -90,7 +90,17 @@ void Whr_SetAzmAng(){
 
 	// modify SpecialSeaFog color for fog - 26Feb09
 
-	int fogColor = sti(WeathersNH.SpecialSeaFog.color);
+	int fogColor;
+	if (CheckAttribute(&WeathersNH, "SpecialSeaFog.color")){
+		fogColor = sti(WeathersNH.SpecialSeaFog.color);
+	}else{
+		if (CheckAttribute(&WeathersNH, "Fog.color")){
+			fogColor = sti(WeathersNH.Fog.color);
+		}else{
+			fogColor = argb(0,85,145,190);
+		}
+	}
+
 	int R = and(shr(fogColor, 16), 255);
 	int G = and(shr(fogColor, 8), 255);
 	int B = and(fogColor, 255);

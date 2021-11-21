@@ -20,6 +20,8 @@ void WhrCreateSkyEnvironment()
 	aref aSky;
 	makearef(aSky, aCurWeather.Sky);
 
+	trace("whrCSky: done making reference");
+
 	DeleteAttribute(&Sky, "")
 	if(!isEntity(&Sky))
 	{
@@ -31,8 +33,12 @@ void WhrCreateSkyEnvironment()
             LayerAddObject("sea_reflection", &Sky, 11);
 	}
 
+	trace("whrCSky: done making sea reflection");	
+
 	FillSkyDir(&Sky);
 	//Sky.Dir = Whr_GetString(aSky, "Dir");
+
+	trace("whrCSky: done filling sky");		
 
 	Sky.Color = Whr_GetColor(aSky, "Color");
 	Sky.RotateSpeed = Whr_GetFloat(aSky, "Rotate"); // Warship 02.06.09
@@ -40,6 +46,8 @@ void WhrCreateSkyEnvironment()
 	Sky.Size = Whr_GetFloat(aSky, "Size");
 
 	//#20180615-01
+
+	trace("whrCSky: done getting colors");	
 
     if(bSeaActive) {
         Sky.Size = Whr_GetFloat(aSky, "Size");
@@ -56,7 +64,11 @@ void WhrCreateSkyEnvironment()
         Sky.techSkyFog = "SkyFogLand";
 	}
 
+	trace("whrCSky: done");		
+
 	Sky.isDone = "";
+
+	trace("whrCSky: done 2");	
 }
 
 // Warship 02.06.09
