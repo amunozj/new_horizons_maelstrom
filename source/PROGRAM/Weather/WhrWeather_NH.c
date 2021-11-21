@@ -681,136 +681,136 @@ void Whr_TimeUpdate()
 	//navy --> Rain
 	bool  bIsRainEnable = Whr_isRainEnable();
 
-	if (bIsRainEnable)
-	{
-		if (bRain)
-		{
-			int nRainDuration = sti(WeatherParams.Rain.Duration);
-			iTmp = 3;
+	// if (bIsRainEnable)
+	// {
+	// 	if (bRain)
+	// 	{
+	// 		int nRainDuration = sti(WeatherParams.Rain.Duration);
+	// 		iTmp = 3;
 
-			iTime = GetQuestPastMinutesParam("Rain.Duration");
-			if (iTime > nRainDuration)
-			{
-				iTmp = 3;
-				bRain = false;
-			}
-			if (iTime < (4*nRainDuration/5))
-			{
-				iTmp = 2;
-			}
-			if (iTime < (2*nRainDuration/3))
-			{
-				iTmp = 1;
-			}
-			if (iTime < (nRainDuration/3))
-			{
-				iTmp = 0;
-			}
-			Log_TestInfo("Is Raining: " + iTime + " minutes, stage: " + iTmp);
-			switch (iTmp)
-			{
-				case 0:
-					WeatherParams.Rain.Sound = true;
-					break;
-				case 1:
-					if (rand(100) < 40)
-					{
-						Log_TestInfo("Starting the Lightning...");
-						Weathers[iCurWeatherNum].Lightning.Enable = true;
-						Weathers[iCurWeatherNum].Lightning.SubTexX = 4;
-						Weathers[iCurWeatherNum].Lightning.SubTexY = 1;
-						Weathers[iCurWeatherNum].Lightning.ScaleX = 0.7;
-						Weathers[iCurWeatherNum].Lightning.ScaleY = 1.0;
-						Weathers[iCurWeatherNum].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
-					}
-					break;
-				case 2:
-					break;
-				case 3:
-					if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
-					{
-						WeatherParams.Rain = false;
-						WeatherParams.Rain.Sound = false;
-						Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-						Weathers[iCurWeatherNum].Lightning.Enable = false;
-						if (nNewHour > 5 && nNewHour < 20) //navy -- 5.03.07
-						{
-							Weathers[iCurWeatherNum].Rainbow.Enable = true;
-						}
+	// 		iTime = GetQuestPastMinutesParam("Rain.Duration");
+	// 		if (iTime > nRainDuration)
+	// 		{
+	// 			iTmp = 3;
+	// 			bRain = false;
+	// 		}
+	// 		if (iTime < (4*nRainDuration/5))
+	// 		{
+	// 			iTmp = 2;
+	// 		}
+	// 		if (iTime < (2*nRainDuration/3))
+	// 		{
+	// 			iTmp = 1;
+	// 		}
+	// 		if (iTime < (nRainDuration/3))
+	// 		{
+	// 			iTmp = 0;
+	// 		}
+	// 		Log_TestInfo("Is Raining: " + iTime + " minutes, stage: " + iTmp);
+	// 		switch (iTmp)
+	// 		{
+	// 			case 0:
+	// 				WeatherParams.Rain.Sound = true;
+	// 				break;
+	// 			case 1:
+	// 				if (rand(100) < 40)
+	// 				{
+	// 					Log_TestInfo("Starting the Lightning...");
+	// 					Weathers[iCurWeatherNum].Lightning.Enable = true;
+	// 					Weathers[iCurWeatherNum].Lightning.SubTexX = 4;
+	// 					Weathers[iCurWeatherNum].Lightning.SubTexY = 1;
+	// 					Weathers[iCurWeatherNum].Lightning.ScaleX = 0.7;
+	// 					Weathers[iCurWeatherNum].Lightning.ScaleY = 1.0;
+	// 					Weathers[iCurWeatherNum].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
+	// 				}
+	// 				break;
+	// 			case 2:
+	// 				break;
+	// 			case 3:
+	// 				if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+	// 				{
+	// 					WeatherParams.Rain = false;
+	// 					WeatherParams.Rain.Sound = false;
+	// 					Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+	// 					Weathers[iCurWeatherNum].Lightning.Enable = false;
+	// 					if (nNewHour > 5 && nNewHour < 20) //navy -- 5.03.07
+	// 					{
+	// 						Weathers[iCurWeatherNum].Rainbow.Enable = true;
+	// 					}
 
-						DeleteAttribute(&WeatherParams, "Rain.StartTime");
-					}
-					WeatherParams.Rain.ThisDay = false;
-					break;
-			}
-			if (iTmp != 0)
-			{
-				Weathers[iCurWeatherNum].Rain.NumDrops = 3500 + rand(1500);
-				Weathers[iCurWeatherNum].Rain.DropLength = 4 + rand(8);
-				Weathers[iCurWeatherNum].Rain.Color = argb(0,23,23,23);
-			}
-			if (iTmp != 3)
-			{
-				Weathers[iBlendWeatherNum].Rain.NumDrops = 3500 + rand(1500);
-				Weathers[iBlendWeatherNum].Rain.DropLength = 4 + rand(8);
-				Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
+	// 					DeleteAttribute(&WeatherParams, "Rain.StartTime");
+	// 				}
+	// 				WeatherParams.Rain.ThisDay = false;
+	// 				break;
+	// 		}
+	// 		if (iTmp != 0)
+	// 		{
+	// 			Weathers[iCurWeatherNum].Rain.NumDrops = 3500 + rand(1500);
+	// 			Weathers[iCurWeatherNum].Rain.DropLength = 4 + rand(8);
+	// 			Weathers[iCurWeatherNum].Rain.Color = argb(0,23,23,23);
+	// 		}
+	// 		if (iTmp != 3)
+	// 		{
+	// 			Weathers[iBlendWeatherNum].Rain.NumDrops = 3500 + rand(1500);
+	// 			Weathers[iBlendWeatherNum].Rain.DropLength = 4 + rand(8);
+	// 			Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
 
-				if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
-				{
-					Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
-					Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
-					Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
-					Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
-					Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
+	// 			if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
+	// 			{
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
 
-					Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
-					Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
-				}
-				Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
-				Weathers[iBlendWeatherNum].Fog.Height = 1000;
-				Weathers[iBlendWeatherNum].Fog.Density = 0.003;
-				Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
-				Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
+	// 				Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
+	// 				Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
+	// 			}
+	// 			Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
+	// 			Weathers[iBlendWeatherNum].Fog.Height = 1000;
+	// 			Weathers[iBlendWeatherNum].Fog.Density = 0.003;
+	// 			Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
+	// 			Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
 
-				Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
-				Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
-			}
-		}
-		else
-		{
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay) && sti(WeatherParams.Rain.StartTime) <= nOldHour)
-			{
-				Weathers[iBlendWeatherNum].Rain.NumDrops = 2000 + rand(3000);
-				Weathers[iBlendWeatherNum].Rain.DropLength = 2 + rand(10);
-				Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
+	// 			Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
+	// 			Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay) && sti(WeatherParams.Rain.StartTime) <= nOldHour)
+	// 		{
+	// 			Weathers[iBlendWeatherNum].Rain.NumDrops = 2000 + rand(3000);
+	// 			Weathers[iBlendWeatherNum].Rain.DropLength = 2 + rand(10);
+	// 			Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
 
-				if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
-				{
-					Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
-					Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
-					Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
-					Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
-					Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
+	// 			if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
+	// 			{
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
+	// 				Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
 
-					Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
-					Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
-				}
-				Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
-				Weathers[iBlendWeatherNum].Fog.Height = 1000;
-				Weathers[iBlendWeatherNum].Fog.Density = 0.003;
-				Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
-				Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
+	// 				Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
+	// 				Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
+	// 			}
+	// 			Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
+	// 			Weathers[iBlendWeatherNum].Fog.Height = 1000;
+	// 			Weathers[iBlendWeatherNum].Fog.Density = 0.003;
+	// 			Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
+	// 			Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
 
-				Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
-				Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
+	// 			Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
+	// 			Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
 
-				SaveCurrentQuestDateParam("Rain.Duration");
-				WeatherParams.Rain = true;
-				Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-				Log_TestInfo("Rain Strated. Duration: " + WeatherParams.Rain.Duration + " minutes");
-			}
-		}
-	}
+	// 			SaveCurrentQuestDateParam("Rain.Duration");
+	// 			WeatherParams.Rain = true;
+	// 			Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+	// 			Log_TestInfo("Rain Strated. Duration: " + WeatherParams.Rain.Duration + " minutes");
+	// 		}
+	// 	}
+	// }
 	//navy <-- Rain
 	if( nNewHour != nOldHour )
 	{
