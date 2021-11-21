@@ -256,22 +256,15 @@ aref GetCurrentWeather()
 	if (iCurWeatherNum < 0)
 		iCurWeatherNum = iTotalNumWeathers - 1;
 
-
 	//End fix
 	aref arWeather;
 	makearef(arWeather,Weathers[iCurWeatherNum]);
 
-	// trace("Current weather:" + arWeather.id + " fog color:" + arWeather.Fog.Color);
-
-	// Trace("Original wind speed:" + arWeather.wind.speed + " max:" + arWeather.wind.speed.max + " min:" + arWeather.wind.speed.min);
-	// Trace("Original wind speed:" + WeathersNH.wind.speed + " max:" + WeathersNH.wind.speed.max + " min:" + WeathersNH.wind.speed.min);
-
-	Whr_addwind2weather(&arWeather);	
-	Whr_addRain2weather(&arWeather);
-	Whr_addfog2weather(&arWeather);
-
-
-	// Trace("NH Weather wind speed:" + arWeather.wind.speed + " max:" + arWeather.wind.speed.max + " min:" + arWeather.wind.speed.min);	
+	if ((arWeather.id != "inside") && (arWeather.id != "Underwater")){
+		Whr_addwind2weather(&arWeather);	
+		Whr_addRain2weather(&arWeather);
+		Whr_addfog2weather(&arWeather);
+	}
 
 	return arWeather;
 }
