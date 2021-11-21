@@ -647,7 +647,7 @@ void SeaLogin(ref Login)
 		CreateEntity(&Island, "Island");
 		Island.LightingPath = GetLightingPath();
 		//20180715
-		Island.FogDensity = Weather.Fog.IslandDensity;
+		Island.FogDensity = WeathersNH.Fog.IslandDensity;
         Island.ImmersionDistance = 450000.0;
 		Island.ImmersionDepth = 0.0;
 		if (GetTargetPlatform() != "xbox")
