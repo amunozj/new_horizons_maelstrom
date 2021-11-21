@@ -47,11 +47,7 @@ int InitWeather()
 		if (!CheckAttribute(&Weathers[i], "Sea2.FoamUV")) { Weathers[i].Sea2.FoamUV = 0.05; }
 		if (!CheckAttribute(&Weathers[i], "Sea2.FoamTexDisturb")) { Weathers[i].Sea2.FoamTexDisturb = 0.7; }
 
-		WeathersBackup[i] = sti(Weathers[i]);
 	}
-
-	WeathersNH.Storm = false;
-	WeathersNH.Tornado = false;	
 
 	return n;
 }

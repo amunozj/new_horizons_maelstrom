@@ -309,26 +309,26 @@ void CreateWeatherEnvironment()
 		for (int i=0;i<MAX_WEATHERS;i++)
 		{
 
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && !sti(WeatherParams.Rain.ThisDay))
-			{
-				trace("current: " + Weathers[i].Fog.Height + "backup" + WeathersBackup[i].Fog.Height);
-				Weathers[i].Fog.Color		= WeathersBackup[i].Fog.Color;
-				Weathers[i].Fog.Height		= WeathersBackup[i].Fog.Height;
-				Weathers[i].Fog.Density		= WeathersBackup[i].Fog.Density;
-				Weathers[i].Fog.SeaDensity	= WeathersBackup[i].Fog.SeaDensity;
-				Weathers[i].Fog.IslandDensity	= WeathersBackup[i].Fog.IslandDensity;
+			// if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && !sti(WeatherParams.Rain.ThisDay))
+			// {
+			// 	trace("current: " + Weathers[i].Fog.Height + "backup" + WeathersBackup[i].Fog.Height);
+			// 	Weathers[i].Fog.Color		= WeathersBackup[i].Fog.Color;
+			// 	Weathers[i].Fog.Height		= WeathersBackup[i].Fog.Height;
+			// 	Weathers[i].Fog.Density		= WeathersBackup[i].Fog.Density;
+			// 	Weathers[i].Fog.SeaDensity	= WeathersBackup[i].Fog.SeaDensity;
+			// 	Weathers[i].Fog.IslandDensity	= WeathersBackup[i].Fog.IslandDensity;
 
-				Weathers[i].Sun.Glow.Enable		= WeathersBackup[i].Sun.Glow.Enable;
-				Weathers[i].Sun.Overflow.Enable	= WeathersBackup[i].Sun.Overflow.Enable;
+			// 	Weathers[i].Sun.Glow.Enable		= WeathersBackup[i].Sun.Glow.Enable;
+			// 	Weathers[i].Sun.Overflow.Enable	= WeathersBackup[i].Sun.Overflow.Enable;
 
-			}
-			if (!bRain) Weathers[i].Rainbow.Enable = false;
-			//navy <--
-			if (!CheckAttribute(&Weathers[i], "hour")) { continue; }
-			if (CheckAttribute(&Weathers[i], "skip"))
-			{
-				if (sti(Weathers[i].skip)) { continue; }
-			}
+			// }
+			// if (!bRain) Weathers[i].Rainbow.Enable = false;
+			// //navy <--
+			// if (!CheckAttribute(&Weathers[i], "hour")) { continue; }
+			// if (CheckAttribute(&Weathers[i], "skip"))
+			// {
+			// 	if (sti(Weathers[i].skip)) { continue; }
+			// }
 
 			bool bCanStorm = sti(Weathers[i].Storm);
 			bool bCanTornado = sti(Weathers[i].Tornado);
@@ -419,14 +419,16 @@ void CreateWeatherEnvironment()
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
 
-	fFogDensity = stf(Weather.Fog.Density);
+	trace("Done setting event handler");
+
+	fFogDensity = stf(WeathersNH.Fog.Density);
 
 	fWeatherDelta = 0.0;
 //	fWeatherAngle = stf(Weather.Wind.Angle);
 	fWeatherAngle = GetAngleY(stf(worldMap.WindX), stf(worldMap.WindZ));
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 
-    // boal -->
+    // // boal -->
 	bRain = true; // Whr_isRainEnable();
     string sLocation = "";
     int iLocation = -1;
@@ -468,21 +470,29 @@ void CreateWeatherEnvironment()
 	{
 		ClearRainEnvironment();
 	}
-	// boal <--
 
 	WhrCreateSunGlowEnvironment();
+	trace("Done setting Glow");
 	WhrCreateLightningEnvironment();
+	trace("Done setting Lightning");
 	WhrCreateAstronomyEnvironment();
+	trace("Done setting Astronomy");
 	WhrCreateSkyEnvironment();
+	trace("Done setting sky");
 	WhrCreateSeaEnvironment();
+	trace("Done setting Sea");
+	WhrCreateRainEnvironment();
 
-	if(iLocation != -1)
-	{
-		if(CheckAttribute(&Locations[iLocation], "lockWeather"))
-		{
-			bWhrTornado = false;
-		}
-	}
+	trace("Done setting environments");
+
+
+	// if(iLocation != -1)
+	// {
+	// 	if(CheckAttribute(&Locations[iLocation], "lockWeather"))
+	// 	{
+	// 		bWhrTornado = false;
+	// 	}
+	// }
 	if (bWhrTornado) { WhrCreateTornadoEnvironment(); }
 
 	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
@@ -549,7 +559,7 @@ void Whr_LoadNextWeather(int nPlus)
 	CreateWeatherEnvironment();
 	MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
 
-	aref	aCurWeather = GetCurrentWeather();
+	aref aCurWeather = GetCurrentWeather();
 	iCurWeatherHour = sti(aCurWeather.Hour.Min);
 
 	SetCurrentTime(iCurWeatherHour, 0);
@@ -912,6 +922,7 @@ void FillWeatherData(int nw1, int nw2)
 	if( nw2<0)
 	{
 		trace("fog color nw1 only: " + Weathers[nw1].Fog.color)
+		trace("Island density nw1 only: " + Weathers[nw1].Fog.IslandDensity)
 		Weather.Fog.Enable = Whr_GetLong(&Weathers[nw1], sCurFog + ".Enable");
 		Weather.Fog.Start = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Start");
 		Weather.Fog.Density = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density");
@@ -940,6 +951,8 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Sun.AzimuthAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.AzimuthAngle") );
 		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
 	}
+	trace("Finish Fillweather");
+
 }
 
 int FindWeatherByHour(int nHour)
@@ -1332,9 +1345,9 @@ void Whr_addwind2weather(ref tmpweather)
 	tmpweather.Wind.Speed.Min = WeathersNH.Wind.Speed.Min;
 	tmpweather.Wind.Speed.Max = WeathersNH.Wind.Speed.Max;
 
-	Weather.Wind.Angle = WeathersNH.Wind.Angle;
-	Weather.Wind.Speed.Min = WeathersNH.Wind.Speed.Min;
-	Weather.Wind.Speed.Max = WeathersNH.Wind.Speed.Max;
+	// Weather.Wind.Angle = WeathersNH.Wind.Angle;
+	// Weather.Wind.Speed.Min = WeathersNH.Wind.Speed.Min;
+	// Weather.Wind.Speed.Max = WeathersNH.Wind.Speed.Max;
 
 
 }
@@ -1350,6 +1363,13 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.Density = WeathersNH.Fog.Density;
 	tmpweather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
 
+	// Weather.Fog.Enable = WeathersNH.Fog.Enable;
+	// Weather.Fog.Start =  WeathersNH.Fog.Start;
+	// Weather.Fog.Height = WeathersNH.Fog.Height;
+	// Weather.Fog.Density = WeathersNH.Fog.Density;
+	// Weather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
+	// Weather.Fog.Color = tmpweather.Fog.Color;	
+
 	// trace("SpecialFog height: " + WeathersNH.SpecialSeaFog.Height + " Specialfog density:" + WeathersNH.SpecialSeaFog.Density + " Specialfog seadensity:" + WeathersNH.SpecialSeaFog.SeaDensity)
 
 
@@ -1358,6 +1378,13 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.SpecialSeaFog.Start =  WeathersNH.SpecialSeaFog.Start;
 	tmpweather.SpecialSeaFog.Density =  WeathersNH.SpecialSeaFog.Density;
 	tmpweather.SpecialSeaFog.SeaDensity =  WeathersNH.SpecialSeaFog.SeaDensity;
+
+	// Weather.SpecialSeaFog.Enable =  WeathersNH.SpecialSeaFog.Enable;
+	// Weather.SpecialSeaFog.Height =  WeathersNH.SpecialSeaFog.Height;		
+	// Weather.SpecialSeaFog.Start =  WeathersNH.SpecialSeaFog.Start;
+	// Weather.SpecialSeaFog.Density =  WeathersNH.SpecialSeaFog.Density;
+	// Weather.SpecialSeaFog.SeaDensity =  WeathersNH.SpecialSeaFog.SeaDensity;
+	// Weather.SpecialSeaFog.Color =  tmpweather.SpecialSeaFog.Color;
 
 }
 
@@ -1378,5 +1405,16 @@ void Whr_addRain2weather(ref tmpweather)
 	tmpweather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
 	tmpweather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;
 	// tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
+
+	// Weather.Rain.NumDrops = WeathersNH.Rain.NumDrops;
+	// Weather.Rain.Color = WeathersNH.Rain.Color;
+	// Weather.Rain.DropLength = WeathersNH.Rain.DropLength;
+	// Weather.Rain.Height = WeathersNH.Rain.Height;
+	// Weather.Rain.Radius = WeathersNH.Rain.Radius;
+	// Weather.Rain.Speed = WeathersNH.Rain.Speed;
+	// Weather.Rain.Jitter = WeathersNH.Rain.Jitter;
+	// Weather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
+	// Weather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
+	// Weather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;	
 
 }
