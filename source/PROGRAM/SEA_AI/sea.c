@@ -1853,9 +1853,9 @@ float GetVisibilityRange(int iRange)
 	}
 	//Boyer add
     if(USE_NEW_WEATHER)
-        visibility_range -= (stf(Weather.Fog.SeaDensity) * 130 * visibility_range);
+        visibility_range -= (stf(WeathersNH.Fog.SeaDensity) * 130 * visibility_range);
     else
-        visibility_range -= (stf(Weathers.Fog.SeaDensity) * 130 * visibility_range);
+        visibility_range -= (stf(WeathersNH.Fog.SeaDensity) * 130 * visibility_range);
 	if (Whr_IsNight()) visibility_range /= 2.0;
 	return visibility_range;
 }

@@ -67,7 +67,7 @@ bool	bWeatherIsNight = false;
 bool	bWeatherIsLight = false;
 bool	bWeatherIsRain = false;
 bool	bWeatherIsStorm = false;
-bool	Whr_IsFog() { return stf(Weather.Fog.SeaDensity)>0.01; }
+bool	Whr_IsFog() { return stf(WeathersNH.Fog.SeaDensity)>0.01; }
 
 object Weathers[MAX_WEATHERS];
 object WeathersBackup[MAX_WEATHERS];
@@ -1382,7 +1382,6 @@ void Whr_addfog2weather(ref tmpweather)
 	int rainfogcolor;
 	if (tmpweather.Night == true){
 		rainfogcolor = argb(0,20,15,15);
-
 	}else{
 		int lightfog = argb(0,230,230,230);
 		int darkfog = argb(0,50,60,65);
