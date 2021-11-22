@@ -1438,9 +1438,9 @@ void Whr_addRain2weather(ref tmpweather)
 	tmpweather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
 	tmpweather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;
 
-	trace("WeathersNH LE:" + WeathersNH.Lightning.Enable);
+	// trace("WeathersNH LE:" + WeathersNH.Lightning.Enable);
 
-	tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
+	if (CheckAttribute(&tmpweather,"Lightning.Enable")) {tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;}
 	tmpweather.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
 	tmpweather.Lightning.FlickerTime = 32;
 	tmpweather.Lightning.SubTexX = 4;
