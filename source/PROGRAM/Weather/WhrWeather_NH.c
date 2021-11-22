@@ -265,6 +265,7 @@ aref GetCurrentWeather()
 		arWeather.Lightning.Enable = false;
 		Whr_addRain2weather(&arWeather);
 		Whr_addfog2weather(&arWeather);
+		Whr_addWaves2weather(&arWeather);
 	}
 
 	return arWeather;
@@ -1459,5 +1460,13 @@ void Whr_addRain2weather(ref tmpweather)
 	// Weather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
 	// Weather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
 	// Weather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;	
+
+}
+
+void Whr_addWaves2weather(ref tmpweather){
+
+	tmpweather.Sea.Harmonics.h1 = WeathersNH.Sea.Harmonics.h1;
+	tmpweather.Sea.Harmonics.h2 = WeathersNH.Sea.Harmonics.h2;
+	tmpweather.Sea.Harmonics.h3 = WeathersNH.Sea.Harmonics.h3;
 
 }
