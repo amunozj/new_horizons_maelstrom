@@ -261,7 +261,8 @@ aref GetCurrentWeather()
 	makearef(arWeather,Weathers[iCurWeatherNum]);
 
 	if ((arWeather.id != "inside") && (arWeather.id != "Underwater")){
-		Whr_addwind2weather(&arWeather);	
+		Whr_addwind2weather(&arWeather);
+		arWeather.Lightning.Enable = false;
 		Whr_addRain2weather(&arWeather);
 		Whr_addfog2weather(&arWeather);
 	}
@@ -289,20 +290,10 @@ void CreateWeatherEnvironment()
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	if (!CheckAttribute(&WeatherParams, "Rain.ThisHour")) WeatherParams.Rain.ThisDay = false;
 
-	if (iNextWeatherNum != -1)
-	{
-		if (iPrevWeather == -1) { iPrevWeather = iCurWeatherNum; }
-		iCurWeatherHour = iHour;
-		iCurWeatherNum = iNextWeatherNum;
-		iNextWeatherNum = -1;
-		//Trace("Weather: used preset weather " + iCurWeatherNum);
-	}
-	else
-	{
-		// Get weather for particular hour
-		iCurWeatherHour = iHour;
-		iCurWeatherNum = FindWeatherByHour(iHour);
-	}
+
+	// Get weather for particular hour
+	iCurWeatherHour = iHour;
+	iCurWeatherNum = FindWeatherByHour(iHour);
 	// 	// search weather for hour
 	// 	for (int i=0;i<MAX_WEATHERS;i++)
 	// 	{
@@ -964,13 +955,30 @@ void FillWeatherData(int nw1, int nw2)
 
 int FindWeatherByHour(int nHour)
 {
+	trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
 	for (int n=0; n<MAX_WEATHERS; n++)
 	{
-		if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
-		if (CheckAttribute(&Weathers[n], "skip") && sti(Weathers[n].skip)==true) {continue;}
-		if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==true) {continue;}
+		if (WeathersNH.StormSky==false){
+			trace("Calm weather");
 
-		if( sti(Weathers[n].hour.min) == nHour ) {return n;}
+			if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
+			if (CheckAttribute(&Weathers[n], "skip") && sti(Weathers[n].skip)==true) {continue;}
+			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==true) {continue;}
+			if( sti(Weathers[n].hour.min) == nHour ) {return n;}
+
+		}else{
+			trace("Stormy weather");
+
+			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==false) {continue;}
+			if (sti(Weathers[n].hour.min) > sti(Weathers[n].hour.max))
+			{
+				if (nHour < sti(Weathers[n].hour.min) && nHour > sti(Weathers[n].hour.max)) {return n;}
+			}
+			if (sti(Weathers[n].hour.min) < sti(Weathers[n].hour.max))
+			{
+				if (nHour < sti(Weathers[n].hour.min) || nHour > sti(Weathers[n].hour.max)) {return n;}
+			}
+		}
 	}
 	return -1;
 }
@@ -1412,6 +1420,15 @@ void Whr_addRain2weather(ref tmpweather)
 	tmpweather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
 	tmpweather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
 	tmpweather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;
+
+	tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
+	tmpweather.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
+	tmpweather.Lightning.FlickerTime = 32;
+	tmpweather.Lightning.SubTexX = 4;
+	tmpweather.Lightning.SubTexY = 1;
+	tmpweather.Lightning.ScaleX = 0.7;
+	tmpweather.Lightning.ScaleY = 1.0;
+	tmpweather.Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";	
 	// tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
 
 	// Weather.Rain.NumDrops = WeathersNH.Rain.NumDrops;

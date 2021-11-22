@@ -127,13 +127,10 @@ void Whr_FogRainCheck(){
 
 	fog = tempFog;		// LDH 26Feb09
 
-	if (wRain>50){
-		WeatherParams.Rain.ThisDay = true;
-	}
-	else{
-		WeatherParams.Rain = false;
-		WeatherParams.Rain.ThisDay = false;		
-	}
+	WeathersNH.Rain = false;
+	WeathersNH.Storm = false;
+	WeathersNH.Tornado = false;
+	WeathersNH.StormSky = false;
 
 	if (wRain > 75)
 	{
@@ -166,6 +163,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sky.Color = argb(0,220,220,255);
 		}
 		if(wRain >= 85 && wRain < 95){
+			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 16.0;
 			WeathersNH.Rain.MaxBlend = 115;
 			WeathersNH.Rain.DropLength = (1.75);
@@ -183,6 +181,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sky.Color = argb(0,210,210,255);
 		}
 		if(wRain >= 95){
+			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 18.0;
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);
