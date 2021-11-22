@@ -250,7 +250,7 @@ void Whr_Generator(){
 		WeathersNH.Sea.Harmonics.h3 = direction3 + "," + waveLength3 + "," + seaStrength3 + ",0," + waveSpeed;
 	}
 
-	Whr_DebugInfo();
+	// Whr_DebugInfo();
 }
 
 
