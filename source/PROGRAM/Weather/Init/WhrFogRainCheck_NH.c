@@ -95,7 +95,8 @@ void Whr_FogRainCheck(){
 
 //  LDH more fog during rain - 26Feb09
 	if (wRain > 75 && fog < 10) fog += (wRain-75)/2;
-
+	WeathersNH.Fog.Fog = fog;
+	
 	if ( fog >= 5 ){
 		WeathersNH.Fog.Enable = true;
 		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09

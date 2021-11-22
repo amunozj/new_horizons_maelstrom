@@ -44,6 +44,8 @@ int Whr_InitDay(int n)
 	//Weathers[n].Fog.Color = argb(0,115,140,155);
 	Weathers[n].Fog.Color = argb(0,135,168,205);
 	Weathers[n].SpecialSeaFog.Color = argb(0,135,168,205);
+	Weathers[n].Bak.Fog.Color = argb(0,135,168,205);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,135,168,205);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -217,6 +219,8 @@ int Whr_InitDay(int n)
 	//Weathers[n].Fog.Color = argb(0,115,140,155);
 	Weathers[n].Fog.Color = argb(0,135,168,205);
 	Weathers[n].SpecialSeaFog.Color = argb(0,135,168,205);
+	Weathers[n].Bak.Fog.Color = argb(0,135,168,205);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,135,168,205);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -390,6 +394,8 @@ int Whr_InitDay(int n)
 	//Weathers[n].Fog.Color = argb(0,85,155,190);
 	Weathers[n].Fog.Color = argb(0,85,145,190);
 	Weathers[n].SpecialSeaFog.Color = argb(0,85,145,190);
+	Weathers[n].Bak.Fog.Color = argb(0,85,145,190);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,85,145,190);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -543,6 +549,8 @@ int Whr_InitDay(int n)
 	//Weathers[n].Fog.Color = argb(0,85,155,190);
 	Weathers[n].Fog.Color = argb(0,85,145,190);
 	Weathers[n].SpecialSeaFog.Color = argb(0,85,145,190);
+	Weathers[n].Bak.Fog.Color = argb(0,85,145,190);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,85,145,190);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -696,6 +704,8 @@ int Whr_InitDay(int n)
 	//Weathers[n].Fog.Color = argb(0,60,125,150);
 	Weathers[n].Fog.Color = argb(0,90,145,180);
 	Weathers[n].SpecialSeaFog.Color = argb(0,90,145,180);
+	Weathers[n].Bak.Fog.Color = argb(0,90,145,180);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,90,145,180);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -848,6 +858,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.0009;
 	Weathers[n].Fog.Color = argb(0,110,130,150);
 	Weathers[n].SpecialSeaFog.Color = argb(0,110,130,150);
+	Weathers[n].Bak.Fog.Color = argb(0,110,130,150);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,110,130,150);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -1013,6 +1025,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.0009;
 	Weathers[n].Fog.Color = argb(0,110,130,150);
 	Weathers[n].SpecialSeaFog.Color = argb(0,110,130,150);
+	Weathers[n].Bak.Fog.Color = argb(0,110,130,150);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,110,130,150);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -1178,6 +1192,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Fog.SeaDensity = 0.00003;
 	Weathers[n].Fog.Color = argb(0,139,178,211);
 	Weathers[n].SpecialSeaFog.Color = argb(0,139,178,211);
+	Weathers[n].Bak.Fog.Color = argb(0,139,178,211);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,139,178,211);
 	
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);

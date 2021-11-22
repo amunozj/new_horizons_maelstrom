@@ -579,11 +579,18 @@ int Whr_OnCalcFogColor()
 		iAlpha = 255 - MakeInt(255.0 * Clampf(y / stf(aCurWeather.(sCurrentFog).Height)));	
 	}
 
-	trace("current weather: " + Weathers[iCurWeatherNum].id + " Fog: " + sCurrentFog + " Color:" + Weathers[iCurWeatherNum].(sCurrentFog).Color + " Height: " + Weathers[iCurWeatherNum].(sCurrentFog).Height)
+	// trace("current weather: " + Weathers[iCurWeatherNum].id + " Fog: " + sCurrentFog + " Color:" + Weathers[iCurWeatherNum].Bak.(sCurrentFog).Color + " Height: " + Weathers[iCurWeatherNum].(sCurrentFog).Height)
 
 	// 	//iColor = argb(0,0,0,0);
 	int iFogColor = sti(Weather.Fog.Color);
 	iColor = or(shl(iAlpha, 24), iFogColor);
+
+	int lightfog = argb(iAlpha,210,210,210);
+	int darkfog = argb(iAlpha,33,40,50);
+
+
+	
+
 	// }
 	// else
 	// {
@@ -947,11 +954,11 @@ void FillWeatherData(int nw1, int nw2)
 
 int FindWeatherByHour(int nHour)
 {
-	trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
+	// trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
 	for (int n=0; n<MAX_WEATHERS; n++)
 	{
 		if (WeathersNH.StormSky==false){
-			trace("Calm weather");
+			// trace("Calm weather");
 
 			if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
 			if (CheckAttribute(&Weathers[n], "skip") && sti(Weathers[n].skip)==true) {continue;}
@@ -959,7 +966,7 @@ int FindWeatherByHour(int nHour)
 			if( sti(Weathers[n].hour.min) == nHour ) {return n;}
 
 		}else{
-			trace("Stormy weather");
+			// trace("Stormy weather");
 
 			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==false) {continue;}
 			if (sti(Weathers[n].hour.min) > sti(Weathers[n].hour.max))
@@ -1371,6 +1378,23 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
 	tmpweather.Fog.IslandDensity = WeathersNH.Fog.IslandDensity;
 
+	int lightfog = argb(0,230,230,230);
+	int darkfog = argb(0,50,60,65);
+	float fblend = MakeFloat(wRain)/100.0;
+	int rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
+	// trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
+
+
+	float tmpdensity = WeathersNH.Fog.Density;
+	// trace("WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0);
+	float fblend2 = Clampf(tmpdensity*100.0);
+
+	int rainfogcolor2 =  Whr_BlendColor(fblend2, tmpweather.Bak.Fog.Color, rainfogcolor);
+	// trace("weather fog: " + tmpweather.Bak.Fog.Color + " lightdark fog:" + rainfogcolor + " blended fog:" + rainfogcolor2 + " blend constant: " + fblend2);
+
+	tmpweather.Fog.Color = rainfogcolor;
+	tmpweather.SpecialSeaFog.Color = rainfogcolor;
+
 	// Weather.Fog.Enable = WeathersNH.Fog.Enable;
 	// Weather.Fog.Start =  WeathersNH.Fog.Start;
 	// Weather.Fog.Height = WeathersNH.Fog.Height;
@@ -1412,6 +1436,8 @@ void Whr_addRain2weather(ref tmpweather)
 	tmpweather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
 	tmpweather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
 	tmpweather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;
+
+	trace("WeathersNH LE:" + WeathersNH.Lightning.Enable);
 
 	tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
 	tmpweather.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	

@@ -39,6 +39,8 @@ int Whr_InitRain(int n)
 	Weathers[n].Fog.SeaDensity = 0.0015;
 	Weathers[n].Fog.Color = argb(0,52,55,52);
 	Weathers[n].SpecialSeaFog.Color = argb(0,52,55,52);
+	Weathers[n].Bak.Fog.Color = argb(0,52,55,52);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,52,55,52);
 
 	Weathers[n].Rain.NumDrops = 6000;
 	Weathers[n].Rain.Color = argb(0,23,23,23);

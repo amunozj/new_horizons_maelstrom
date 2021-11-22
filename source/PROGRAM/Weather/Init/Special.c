@@ -53,6 +53,8 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Fog.IslandDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,200,220,255);
 	Weathers[n].SpecialSeaFog.Color = argb(0,200,220,255);
+	Weathers[n].Bak.Fog.Color = argb(0,200,220,255);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,200,220,255);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -216,6 +218,8 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Fog.SeaDensity = 0.003;
 	Weathers[n].Fog.Color = argb(0,26,64,59);
 	Weathers[n].SpecialSeaFog.Color = argb(0,26,64,59);
+	Weathers[n].Bak.Fog.Color = argb(0,26,64,59);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,26,64,59);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
