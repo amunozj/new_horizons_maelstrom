@@ -1356,13 +1356,13 @@ bool Whr_isRainEnable()
 void Whr_addwind2weather(ref tmpweather)
 {
 
-	tmpweather.Wind.Angle = WeathersNH.Wind.Angle;
-	tmpweather.Wind.Speed.Min = WeathersNH.Wind.Speed.Min;
-	tmpweather.Wind.Speed.Max = WeathersNH.Wind.Speed.Max;
+	tmpweather.Wind.Angle = sti(WeathersNH.Wind.Angle);
+	tmpweather.Wind.Speed.Min = sti(WeathersNH.Wind.Speed.Min);
+	tmpweather.Wind.Speed.Max = sti(WeathersNH.Wind.Speed.Max);
 
-	// Weather.Wind.Angle = WeathersNH.Wind.Angle;
-	// Weather.Wind.Speed.Min = WeathersNH.Wind.Speed.Min;
-	// Weather.Wind.Speed.Max = WeathersNH.Wind.Speed.Max;
+	// Weather.Wind.Angle = sti(WeathersNH.Wind.Angle;
+	// Weather.Wind.Speed.Min = sti(WeathersNH.Wind.Speed.Min;
+	// Weather.Wind.Speed.Max = sti(WeathersNH.Wind.Speed.Max;
 
 
 }
@@ -1370,14 +1370,14 @@ void Whr_addwind2weather(ref tmpweather)
 void Whr_addfog2weather(ref tmpweather)
 {
 
-	// trace("Fog height: " + WeathersNH.Fog.Height + " fog density:" + WeathersNH.Fog.Density + " fog seadensity:" + WeathersNH.Fog.SeaDensity)
+	// trace("Fog height: " + sti(WeathersNH.Fog.Height + " fog density:" + sti(WeathersNH.Fog.Density + " fog seadensity:" + sti(WeathersNH.Fog.SeaDensity)
 
-	tmpweather.Fog.Enable = WeathersNH.Fog.Enable;
-	tmpweather.Fog.Start =  WeathersNH.Fog.Start;
-	tmpweather.Fog.Height = WeathersNH.Fog.Height;
-	tmpweather.Fog.Density = WeathersNH.Fog.Density;
-	tmpweather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
-	tmpweather.Fog.IslandDensity = WeathersNH.Fog.IslandDensity;
+	tmpweather.Fog.Enable = sti(WeathersNH.Fog.Enable);
+	tmpweather.Fog.Start =  sti(WeathersNH.Fog.Start);
+	tmpweather.Fog.Height = sti(WeathersNH.Fog.Height);
+	tmpweather.Fog.Density = sti(WeathersNH.Fog.Density);
+	tmpweather.Fog.SeaDensity = sti(WeathersNH.Fog.SeaDensity);
+	tmpweather.Fog.IslandDensity = sti(WeathersNH.Fog.IslandDensity);
 
 	int lightfog = argb(0,230,230,230);
 	int darkfog = argb(0,50,60,65);
@@ -1386,8 +1386,8 @@ void Whr_addfog2weather(ref tmpweather)
 	// trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
 
 
-	float tmpdensity = WeathersNH.Fog.Density;
-	// trace("WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0);
+	float tmpdensity = sti(WeathersNH.Fog.Density);
+	// trace("sti(WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0);
 	float fblend2 = Clampf(tmpdensity*100.0);
 
 	int rainfogcolor2 =  Whr_BlendColor(fblend2, tmpweather.Bak.Fog.Color, rainfogcolor);
@@ -1396,28 +1396,12 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.Color = rainfogcolor;
 	tmpweather.SpecialSeaFog.Color = rainfogcolor;
 
-	// Weather.Fog.Enable = WeathersNH.Fog.Enable;
-	// Weather.Fog.Start =  WeathersNH.Fog.Start;
-	// Weather.Fog.Height = WeathersNH.Fog.Height;
-	// Weather.Fog.Density = WeathersNH.Fog.Density;
-	// Weather.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
-	// Weather.Fog.Color = tmpweather.Fog.Color;	
+	tmpweather.SpecialSeaFog.Enable =  sti(WeathersNH.SpecialSeaFog.Enable);
+	tmpweather.SpecialSeaFog.Height =  sti(WeathersNH.SpecialSeaFog.Height);		
+	tmpweather.SpecialSeaFog.Start =  sti(WeathersNH.SpecialSeaFog.Start);
+	tmpweather.SpecialSeaFog.Density =  sti(WeathersNH.SpecialSeaFog.Density);
+	tmpweather.SpecialSeaFog.SeaDensity =  sti(WeathersNH.SpecialSeaFog.SeaDensity);
 
-	// trace("SpecialFog height: " + WeathersNH.SpecialSeaFog.Height + " Specialfog density:" + WeathersNH.SpecialSeaFog.Density + " Specialfog seadensity:" + WeathersNH.SpecialSeaFog.SeaDensity)
-
-
-	tmpweather.SpecialSeaFog.Enable =  WeathersNH.SpecialSeaFog.Enable;
-	tmpweather.SpecialSeaFog.Height =  WeathersNH.SpecialSeaFog.Height;		
-	tmpweather.SpecialSeaFog.Start =  WeathersNH.SpecialSeaFog.Start;
-	tmpweather.SpecialSeaFog.Density =  WeathersNH.SpecialSeaFog.Density;
-	tmpweather.SpecialSeaFog.SeaDensity =  WeathersNH.SpecialSeaFog.SeaDensity;
-
-	// Weather.SpecialSeaFog.Enable =  WeathersNH.SpecialSeaFog.Enable;
-	// Weather.SpecialSeaFog.Height =  WeathersNH.SpecialSeaFog.Height;		
-	// Weather.SpecialSeaFog.Start =  WeathersNH.SpecialSeaFog.Start;
-	// Weather.SpecialSeaFog.Density =  WeathersNH.SpecialSeaFog.Density;
-	// Weather.SpecialSeaFog.SeaDensity =  WeathersNH.SpecialSeaFog.SeaDensity;
-	// Weather.SpecialSeaFog.Color =  tmpweather.SpecialSeaFog.Color;
 
 }
 
@@ -1427,20 +1411,20 @@ void Whr_addRain2weather(ref tmpweather)
 	// tmpweather.Sun.Glow.Enable = false;
 	// tmpweather.Sun.Overflow.Enable = false;
 
-	tmpweather.Rain.NumDrops = WeathersNH.Rain.NumDrops;
-	tmpweather.Rain.Color = WeathersNH.Rain.Color;
-	tmpweather.Rain.DropLength = WeathersNH.Rain.DropLength;
-	tmpweather.Rain.Height = WeathersNH.Rain.Height;
-	tmpweather.Rain.Radius = WeathersNH.Rain.Radius;
-	tmpweather.Rain.Speed = WeathersNH.Rain.Speed;
-	tmpweather.Rain.Jitter = WeathersNH.Rain.Jitter;
-	tmpweather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
-	tmpweather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
-	tmpweather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;
+	tmpweather.Rain.NumDrops = sti(WeathersNH.Rain.NumDrops);
+	tmpweather.Rain.Color = sti(WeathersNH.Rain.Color);
+	tmpweather.Rain.DropLength = sti(WeathersNH.Rain.DropLength);
+	tmpweather.Rain.Height = sti(WeathersNH.Rain.Height);
+	tmpweather.Rain.Radius = sti(WeathersNH.Rain.Radius);
+	tmpweather.Rain.Speed = sti(WeathersNH.Rain.Speed);
+	tmpweather.Rain.Jitter = sti(WeathersNH.Rain.Jitter);
+	tmpweather.Rain.WindSpeedJitter = sti(WeathersNH.Rain.WindSpeedJitter);
+	tmpweather.Rain.MaxBlend = sti(WeathersNH.Rain.MaxBlend);
+	tmpweather.Rain.TimeBlend = sti(WeathersNH.Rain.TimeBlend);
 
-	// trace("WeathersNH LE:" + WeathersNH.Lightning.Enable);
+	// trace("WeathersNH LE:" + sti(WeathersNH.Lightning.Enable);
 
-	if (CheckAttribute(&tmpweather,"Lightning.Enable")) {tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;}
+	if (CheckAttribute(&tmpweather,"Lightning.Enable")) {tmpweather.Lightning.Enable = sti(WeathersNH.Lightning.Enable);}
 	tmpweather.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
 	tmpweather.Lightning.FlickerTime = 32;
 	tmpweather.Lightning.SubTexX = 4;
@@ -1448,25 +1432,13 @@ void Whr_addRain2weather(ref tmpweather)
 	tmpweather.Lightning.ScaleX = 0.7;
 	tmpweather.Lightning.ScaleY = 1.0;
 	tmpweather.Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";	
-	// tmpweather.Lightning.Enable = WeathersNH.Lightning.Enable;
-
-	// Weather.Rain.NumDrops = WeathersNH.Rain.NumDrops;
-	// Weather.Rain.Color = WeathersNH.Rain.Color;
-	// Weather.Rain.DropLength = WeathersNH.Rain.DropLength;
-	// Weather.Rain.Height = WeathersNH.Rain.Height;
-	// Weather.Rain.Radius = WeathersNH.Rain.Radius;
-	// Weather.Rain.Speed = WeathersNH.Rain.Speed;
-	// Weather.Rain.Jitter = WeathersNH.Rain.Jitter;
-	// Weather.Rain.WindSpeedJitter = WeathersNH.Rain.WindSpeedJitter;
-	// Weather.Rain.MaxBlend = WeathersNH.Rain.MaxBlend;
-	// Weather.Rain.TimeBlend = WeathersNH.Rain.TimeBlend;	
 
 }
 
 void Whr_addWaves2weather(ref tmpweather){
 
-	tmpweather.Sea.Harmonics.h1 = WeathersNH.Sea.Harmonics.h1;
-	tmpweather.Sea.Harmonics.h2 = WeathersNH.Sea.Harmonics.h2;
-	tmpweather.Sea.Harmonics.h3 = WeathersNH.Sea.Harmonics.h3;
+	tmpweather.Sea.Harmonics.h1 = sti(WeathersNH.Sea.Harmonics.h1);
+	tmpweather.Sea.Harmonics.h2 = sti(WeathersNH.Sea.Harmonics.h2);
+	tmpweather.Sea.Harmonics.h3 = sti(WeathersNH.Sea.Harmonics.h3);
 
 }
