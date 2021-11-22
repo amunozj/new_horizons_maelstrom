@@ -590,6 +590,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ActivateRush.enable	= true;
 	objLandInterface.Commands.ActivateRush.picNum	= 12;
 	objLandInterface.Commands.ActivateRush.selPicNum	= 14;
+	objLandInterface.Commands.ActivateRush.texNum		= 0;
 	objLandInterface.Commands.ActivateRush.event	= "BI_ActivateRush";
 	objLandInterface.Commands.ActivateRush.note		= LanguageConvertString(idLngFile, "land_ActivateRush");
 
