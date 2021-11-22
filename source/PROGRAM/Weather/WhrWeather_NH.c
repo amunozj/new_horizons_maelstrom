@@ -476,7 +476,7 @@ void CreateWeatherEnvironment()
 	// }
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
-	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	Particles.windpower = 0.025 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
 

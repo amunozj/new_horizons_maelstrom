@@ -163,7 +163,6 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sky.Color = argb(0,220,220,255);
 		}
 		if(wRain >= 85 && wRain < 95){
-			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 16.0;
 			WeathersNH.Rain.MaxBlend = 115;
 			WeathersNH.Rain.DropLength = (1.75);
@@ -179,6 +178,9 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
 			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
 			WeathersNH.Sky.Color = argb(0,210,210,255);
+		}
+		if(wRain >= 90){
+			WeathersNH.StormSky = true;
 		}
 		if(wRain >= 95){
 			WeathersNH.StormSky = true;
