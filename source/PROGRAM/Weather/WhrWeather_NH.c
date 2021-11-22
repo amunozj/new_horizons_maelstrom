@@ -265,7 +265,7 @@ aref GetCurrentWeather()
 		arWeather.Lightning.Enable = false;
 		Whr_addRain2weather(&arWeather);
 		Whr_addfog2weather(&arWeather);
-		Whr_addWaves2weather(&arWeather);
+		// Whr_addWaves2weather(&arWeather);
 	}
 
 	return arWeather;
@@ -1379,10 +1379,16 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.SeaDensity = sti(WeathersNH.Fog.SeaDensity);
 	tmpweather.Fog.IslandDensity = sti(WeathersNH.Fog.IslandDensity);
 
-	int lightfog = argb(0,230,230,230);
-	int darkfog = argb(0,50,60,65);
-	float fblend = MakeFloat(wRain)/100.0;
-	int rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
+	int rainfogcolor;
+	if (tmpweather.Night == true){
+		rainfogcolor = argb(0,20,15,15);
+
+	}else{
+		int lightfog = argb(0,230,230,230);
+		int darkfog = argb(0,50,60,65);
+		float fblend = MakeFloat(wRain)/100.0;
+		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
+	}
 	// trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
 
 
