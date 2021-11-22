@@ -461,18 +461,10 @@ void CreateWeatherEnvironment()
 	}
 
 	WhrCreateSunGlowEnvironment();
-	trace("Done setting Glow");
 	WhrCreateLightningEnvironment();
-	trace("Done setting Lightning");
 	WhrCreateAstronomyEnvironment();
-	trace("Done setting Astronomy");
 	WhrCreateSkyEnvironment();
-	trace("Done setting sky");
 	WhrCreateSeaEnvironment();
-	trace("Done setting Sea");
-	WhrCreateRainEnvironment();
-
-	trace("Done setting environments");
 
 
 	// if(iLocation != -1)
@@ -482,7 +474,7 @@ void CreateWeatherEnvironment()
 	// 		bWhrTornado = false;
 	// 	}
 	// }
-	if (bWhrTornado) { WhrCreateTornadoEnvironment(); }
+	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
 	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
