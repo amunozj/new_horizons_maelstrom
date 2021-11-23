@@ -932,6 +932,7 @@ void CreateSaintMartinCharacters(ref n)
     ch.lastname     = TranslateString("","Truffel");
     ch.id        = "Juliette Truffel";
     ch.model    = "caroline_k";
+	ch.model.ani = "woman_sit";
     ch.sex = "woman";
     ch.sound_type = "female_citizen";
     ch.location    = "Marigot_town_01";
