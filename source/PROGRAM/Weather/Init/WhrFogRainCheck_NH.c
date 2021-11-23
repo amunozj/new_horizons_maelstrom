@@ -139,7 +139,8 @@ void Whr_FogRainCheck(){
 	WeathersNH.Rain.DropsLifeTime = 0.25;
 	WeathersNH.Rain.DropsSize = 0.06;
 	WeathersNH.Rain.DropsTexture = "weather\rain_drops.tga.tx";
-	WeathersNH.Rain.DropsColor = argb(63,255,255,255);	
+	WeathersNH.Rain.DropsColor = argb(63,255,255,255);
+	WeathersNH.Lightning.Enable = false;	
 
 	if (wRain > 75)
 	{
