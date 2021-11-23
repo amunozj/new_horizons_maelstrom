@@ -355,7 +355,7 @@ void CreateWeatherEnvironment()
 	float fGetTime = GetTime();
 	// iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	sunIsShine = true;
-
+	int iCurLocation;
 	if(CheckAttribute(pchar, "location"))
 	{
 		iCurLocation = reload_location_index;	
