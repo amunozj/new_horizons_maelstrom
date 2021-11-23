@@ -161,6 +161,8 @@ void SetNextWeather(string sWeatherID)
 
 	}
 
+	Whr_Generator();
+
 	// find weather
 	iNextWeatherNum = -1;
 	for (int i=0; i<MAX_WEATHERS; i++)
@@ -176,6 +178,8 @@ void SetNextWeather(string sWeatherID)
 			return;
 		}
 	}
+
+	iCurWeatherNum = FindWeatherByHour(MakeInt(GetHour()));	
 }
 
 // call this with sDir = "" to use old wind direction

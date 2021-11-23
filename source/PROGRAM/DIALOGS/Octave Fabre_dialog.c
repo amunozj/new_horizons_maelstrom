@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------Диалог первый - первая встреча
+		// -----------------------------------пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "First time":
 			Dialog.defAni = "dialog_stay1";
 			Dialog.defCam = "1";
@@ -91,7 +91,7 @@ void ProcessDialogEvent()
 			dialog.text = DLG_TEXT[16];
 			link.l1 = DLG_TEXT[17];
 			link.l1.go = "exit";
-			SetNextWeather("Day Storm");
+			SetNextWeather("Stormy");
 			AddDialogExitQuest("pap_storm");
 		break;
 
