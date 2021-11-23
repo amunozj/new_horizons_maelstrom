@@ -40,8 +40,6 @@ void ClearRainEnvironment()
 
 void FillRainData()
 {
-	if( nw1 < 0 || nw1 >= MAX_WEATHERS ) {return;}
-
 	aref aRain1; makearef(aRain1, WeathersNH.Rain);
 	aref aRainbow1; makearef(aRainbow1, WeathersNH.Rainbow);
 
