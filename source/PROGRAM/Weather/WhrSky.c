@@ -106,14 +106,9 @@ void FillSkyDir(aref aSky)
 
 //navy -->
 			sDir = Weathers[i].Sky.Dir;
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay))
+			if (CheckAttribute(&WeathersNH, "storm") && sti(WeathersNH.Storm)==true)
 			{
-				nStart = sti(WeatherParams.Rain.StartTime);
-				nDur = MakeInt(sti(WeatherParams.Rain.Duration)/60 + 0.5);
-				if (sti(Weathers[i].Hour.Min) >= nStart  && sti(Weathers[i].Hour.Max) <= (nStart + nDur))
-				{
-					sDir = "weather\skies\Storm01\";
-				}
+				sDir = "weather\skies\Storm01\";
 			}
 //navy <--
 			aSky.Dir.(satr) = sDir;
