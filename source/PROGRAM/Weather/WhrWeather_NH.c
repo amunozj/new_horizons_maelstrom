@@ -79,7 +79,7 @@ extern int InitWeather();
 #event_handler("EWhr_GetWindSpeed", "Whr_GetWindSpeed");
 #event_handler("EWhr_GetShadowDensity", "Whr_GetShadowDensity");
 #event_handler("EWhr_GetFogDensity", "Whr_GetFogDensity");
-#event_handler("WeatherTimeUpdate", "Whr_TimeUpdate" );
+// #event_handler("WeatherTimeUpdate", "Whr_TimeUpdate" );
 
 void SetNextWeather(string sWeatherID)
 {
@@ -353,7 +353,7 @@ void CreateWeatherEnvironment()
 	// }
 
 	float fGetTime = GetTime();
-	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	// iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 
 
 	// create main module Weather
@@ -377,7 +377,41 @@ void CreateWeatherEnvironment()
 	{
 		if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sCurrentFog = "SpecialSeaFog"; }
 	}
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// FillWeatherData();
+
+	// trace("CWE Current Fog: " + sCurrentFog);
+	// trace("CWE WeathersNH density: " + Whr_GetFloat(WeathersNH, "Fog.Density"));
+	// trace("CWE WeathersNH islandDensity: " + Whr_GetFloat(WeathersNH, "Fog.IslandDensity"));
+	// trace("CWE WeathersNH SeaDensity: " + Whr_GetFloat(WeathersNH, "Fog.SeaDensity"));
+	// trace("CWE WeathersNH color: " + Whr_GetLong(WeathersNH, "Fog.Color"));
+
+	// trace("CWE WeathersNH special density: " + Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density"));
+	// trace("CWE WeathersNH Special SeaDensity: " + Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity"));
+
+
+	// trace("CWE Current density: " + Whr_GetFloat(aCurWeather, sCurrentFog + ".Density"));
+	// trace("CWE Current islandDensity: " + Whr_GetFloat(aCurWeather, "Fog.IslandDensity"));
+	// trace("CWE Current SeaDensity: " + Whr_GetFloat(aCurWeather, sCurrentFog + ".SeaDensity"));
+	// trace("CWE Current color: " + Whr_GetLong(aCurWeather, sCurrentFog + ".Color"));
+
+	Weather.Fog.Enable = Whr_GetLong(WeathersNH, sCurrentFog + ".Enable");
+	Weather.Fog.Start = Whr_GetFloat(WeathersNH, sCurrentFog + ".Start");
+	Weather.Fog.Density = Whr_GetFloat(WeathersNH, sCurrentFog + ".Density"));
+	trace("Current blended fog color: " + Whr_getCurrentBlendedFogColor())
+	Weather.Fog.Color = Whr_getCurrentBlendedFogColor();
+	Weather.Fog.IslandDensity = Whr_GetFloat(WeathersNH, "Fog.IslandDensity");
+	Weather.Fog.SeaDensity = Whr_GetFloat(WeathersNH, sCurrentFog + ".SeaDensity");
+
+	// trace("CWE Weather density: " + Whr_GetFloat(Weather, "Fog.Density"));
+	// trace("CWE Weather islandDensity: " + Whr_GetFloat(Weather, "Fog.IslandDensity"));
+	// trace("CWE Weather SeaDensity: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
+	// trace("CWE Weather color: " + Whr_GetLong(Weather, "Fog.Color"));
+
+
+	Weather.Sun.Color = sti(aCurWeather.Sun.Color);
+	Weather.Sun.HeightAngle = sti(aCurWeather.Sun.HeightAngle);
+	Weather.Sun.AzimuthAngle = sti(aCurWeather.Sun.AzimuthAngle);
+	Weather.Sun.Ambient = sti(aCurWeather.Sun.Ambient);	
 
 	if (iBlendWeatherNum < 0 )
 	{
@@ -482,12 +516,12 @@ void CreateWeatherEnvironment()
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
-
 	if (bSeaActive)
 	{
 		Island.LightingPath = GetLightingPath();
 		Island.FogDensity = WeathersNH.Fog.IslandDensity;
-		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));
+		Sea.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(WeathersNH.Fog.IslandDensity));
 	}
 	//Trace("Whr: Select id = " + aCurWeather.id);
 }
@@ -815,7 +849,7 @@ void Whr_TimeUpdate()
 		Whr_UpdateWeatherHour();
 	}
 	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	FillWeatherData();
 	Weather.isDone = "";
 	trace("fog color after filling: " + Weather.Fog.color);
 
@@ -912,44 +946,27 @@ void Whr_ChangeDayNight()
 	}
 }
 
-void FillWeatherData(int nw1, int nw2)
+void FillWeatherData()
 {
-	if( nw1<0 || nw1>=MAX_WEATHERS ) {return;}
+	aref aCurWeather = GetCurrentWeather();
 
-	string sCurFog = Whr_GetCurrentFog();
-	if( nw2<0)
-	{
-		trace("fog color nw1 only: " + Weathers[nw1].Fog.color)
-		trace("Island density nw1 only: " + Weathers[nw1].Fog.IslandDensity)
-		Weather.Fog.Enable = Whr_GetLong(&Weathers[nw1], sCurFog + ".Enable");
-		Weather.Fog.Start = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Start");
-		Weather.Fog.Density = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density");
-		Weather.Fog.Color = Whr_GetColor(&Weathers[nw1], sCurFog + ".Color");
-		Weather.Fog.IslandDensity = Whr_GetFloat(&Weathers[nw1], sCurFog + ".IslandDensity");
-		Weather.Fog.SeaDensity = Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity");
+	trace("Current fog: " + sCurrentFog);
+	trace("fog color nw1 only: " + aCurWeather.(sCurrentFog).color);
+	float islandDensity = sti(aCurWeather.Fog.IslandDensity);
+	trace("Island density nw1 only: " + islandDensity);
+	float seaDensity = sti(aCurWeather.(sCurrentFog).SeaDensity);
+	trace("Sea density nw1 only: " + seaDensity);
+	Weather.Fog.Enable = sti(aCurWeather.(sCurrentFog).Enable);
+	Weather.Fog.Start = sti(aCurWeather.(sCurrentFog).Start);
+	Weather.Fog.Density = sti(aCurWeather.(sCurrentFog).Density);
+	Weather.Fog.Color = sti(aCurWeather.(sCurrentFog).Color);
+	Weather.Fog.IslandDensity = sti(aCurWeather.Fog.IslandDensity);
+	Weather.Fog.SeaDensity = sti(aCurWeather.(sCurrentFog).SeaDensity);
 
-		Weather.Sun.Color = Whr_GetColor(&Weathers[nw1],"Sun.Color");
-		Weather.Sun.HeightAngle = Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle");
-		Weather.Sun.AzimuthAngle = Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle");
-		Weather.Sun.Ambient = Whr_GetColor(&Weathers[nw1],"Sun.Ambient");
-	}
-	else
-	{
-		trace("fog color nw1: " + Weathers[nw1].Fog.color + " nw2: " + Weathers[nw2].Fog.color)
-		float fBlend = stf(Environment.Time) - sti(Environment.Time);
-		Weather.Fog.Enable = Whr_GetLong(&Weathers[nw1], sCurFog + ".Enable");
-		Weather.Fog.Start = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".Start"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".Start") );
-		Weather.Fog.Density = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".Density") );
-		Weather.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], sCurFog + ".Color"), Whr_GetColor(&Weathers[nw2], sCurFog + ".Color") );
-		Weather.Fog.IslandDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".IslandDensity"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".IslandDensity") );
-		Weather.Fog.SeaDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".SeaDensity") );
-
-		Weather.Sun.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Color"), Whr_GetColor(&Weathers[nw2],"Sun.Color") );
-		Weather.Sun.HeightAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.HeightAngle") );
-		Weather.Sun.AzimuthAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.AzimuthAngle") );
-		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
-	}
-	trace("Finish Fillweather");
+	Weather.Sun.Color = sti(aCurWeather.Sun.Color);
+	Weather.Sun.HeightAngle = sti(aCurWeather.Sun.HeightAngle);
+	Weather.Sun.AzimuthAngle = sti(aCurWeather.Sun.AzimuthAngle);
+	Weather.Sun.Ambient = sti(aCurWeather.Sun.Ambient);
 
 }
 
@@ -1356,9 +1373,9 @@ bool Whr_isRainEnable()
 void Whr_addwind2weather(ref tmpweather)
 {
 
-	tmpweather.Wind.Angle = sti(WeathersNH.Wind.Angle);
-	tmpweather.Wind.Speed.Min = sti(WeathersNH.Wind.Speed.Min);
-	tmpweather.Wind.Speed.Max = sti(WeathersNH.Wind.Speed.Max);
+	tmpweather.Wind.Angle = Whr_GetFloat(WeathersNH, "Wind.Angle");
+	tmpweather.Wind.Speed.Min = Whr_GetFloat(WeathersNH, "Wind.Speed.Min");
+	tmpweather.Wind.Speed.Max = Whr_GetFloat(WeathersNH, "Wind.Speed.Max");
 
 	// Weather.Wind.Angle = sti(WeathersNH.Wind.Angle;
 	// Weather.Wind.Speed.Min = sti(WeathersNH.Wind.Speed.Min;
@@ -1372,15 +1389,22 @@ void Whr_addfog2weather(ref tmpweather)
 
 	// trace("Fog height: " + sti(WeathersNH.Fog.Height + " fog density:" + sti(WeathersNH.Fog.Density + " fog seadensity:" + sti(WeathersNH.Fog.SeaDensity)
 
-	tmpweather.Fog.Enable = sti(WeathersNH.Fog.Enable);
-	tmpweather.Fog.Start =  sti(WeathersNH.Fog.Start);
-	tmpweather.Fog.Height = sti(WeathersNH.Fog.Height);
-	tmpweather.Fog.Density = sti(WeathersNH.Fog.Density);
-	tmpweather.Fog.SeaDensity = sti(WeathersNH.Fog.SeaDensity);
-	tmpweather.Fog.IslandDensity = sti(WeathersNH.Fog.IslandDensity);
+	tmpweather.Fog.Enable = Whr_GetLong(WeathersNH, "Fog.Enable");
+	tmpweather.Fog.Start =  Whr_GetFloat(WeathersNH, "Fog.Start");
+	tmpweather.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height");
+	tmpweather.Fog.Density = Whr_GetFloat(WeathersNH, "Fog.Density");
+	tmpweather.Fog.SeaDensity = Whr_GetFloat(WeathersNH, "Fog.SeaDensity");
+	tmpweather.Fog.IslandDensity = Whr_GetFloat(WeathersNH, "Fog.IslandDensity");
+
+	tmpweather.SpecialSeaFog.Enable =  Whr_GetLong(WeathersNH, "SpecialSeaFog.Enable");
+	tmpweather.SpecialSeaFog.Height =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height");		
+	tmpweather.SpecialSeaFog.Start =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Start");
+	tmpweather.SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
+	tmpweather.SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
+
 
 	int rainfogcolor;
-	if (tmpweather.Night == true){
+	if (iCurWeatherHour<6 || iCurWeatherHour>19){
 		rainfogcolor = argb(0,20,15,15);
 	}else{
 		int lightfog = argb(0,230,230,230);
@@ -1391,7 +1415,7 @@ void Whr_addfog2weather(ref tmpweather)
 	// trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
 
 
-	float tmpdensity = sti(WeathersNH.Fog.Density);
+	float tmpdensity = Whr_GetFloat(WeathersNH, "Fog.Density");
 	// trace("sti(WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0);
 	float fblend2 = Clampf(tmpdensity*100.0);
 
@@ -1401,12 +1425,32 @@ void Whr_addfog2weather(ref tmpweather)
 	tmpweather.Fog.Color = rainfogcolor;
 	tmpweather.SpecialSeaFog.Color = rainfogcolor;
 
-	tmpweather.SpecialSeaFog.Enable =  sti(WeathersNH.SpecialSeaFog.Enable);
-	tmpweather.SpecialSeaFog.Height =  sti(WeathersNH.SpecialSeaFog.Height);		
-	tmpweather.SpecialSeaFog.Start =  sti(WeathersNH.SpecialSeaFog.Start);
-	tmpweather.SpecialSeaFog.Density =  sti(WeathersNH.SpecialSeaFog.Density);
-	tmpweather.SpecialSeaFog.SeaDensity =  sti(WeathersNH.SpecialSeaFog.SeaDensity);
+}
 
+int Whr_getCurrentBlendedFogColor(){
+
+	int rainfogcolor;
+	int lightfog = argb(0,230,230,230);
+	int darkfog = argb(0,50,60,65);
+	float fblend = MakeFloat(wRain)/100.0;
+
+	if (iCurWeatherHour<6 || iCurWeatherHour>19){
+		rainfogcolor = argb(0,20,15,15);
+	}else{
+
+		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
+	}
+	trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
+
+
+	float tmpdensity = Whr_GetFloat(WeathersNH, "Fog.Density");
+	trace("sti(WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0 + "Current weather color: " + Whr_GetLong(Weathers[iCurWeatherNum], "Bak.Fog.Color"));
+	float fblend2 = Clampf(tmpdensity*100.0);
+
+	int rainfogcolor2 =  Whr_BlendColor(fblend2, Whr_GetLong(Weathers[iCurWeatherNum], "Bak.Fog.Color"), rainfogcolor);
+	trace("final color: " + rainfogcolor2);
+
+	return rainfogcolor2;
 
 }
 
