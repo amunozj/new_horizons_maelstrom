@@ -377,27 +377,11 @@ void CreateWeatherEnvironment()
 	{
 		if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sCurrentFog = "SpecialSeaFog"; }
 	}
-	// FillWeatherData();
-
-	// trace("CWE Current Fog: " + sCurrentFog);
-	// trace("CWE WeathersNH density: " + Whr_GetFloat(WeathersNH, "Fog.Density"));
-	// trace("CWE WeathersNH islandDensity: " + Whr_GetFloat(WeathersNH, "Fog.IslandDensity"));
-	// trace("CWE WeathersNH SeaDensity: " + Whr_GetFloat(WeathersNH, "Fog.SeaDensity"));
-	// trace("CWE WeathersNH color: " + Whr_GetLong(WeathersNH, "Fog.Color"));
-
-	// trace("CWE WeathersNH special density: " + Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density"));
-	// trace("CWE WeathersNH Special SeaDensity: " + Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity"));
-
-
-	// trace("CWE Current density: " + Whr_GetFloat(aCurWeather, sCurrentFog + ".Density"));
-	// trace("CWE Current islandDensity: " + Whr_GetFloat(aCurWeather, "Fog.IslandDensity"));
-	// trace("CWE Current SeaDensity: " + Whr_GetFloat(aCurWeather, sCurrentFog + ".SeaDensity"));
-	// trace("CWE Current color: " + Whr_GetLong(aCurWeather, sCurrentFog + ".Color"));
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 
 	Weather.Fog.Enable = Whr_GetLong(WeathersNH, sCurrentFog + ".Enable");
 	Weather.Fog.Start = Whr_GetFloat(WeathersNH, sCurrentFog + ".Start");
 	Weather.Fog.Density = Whr_GetFloat(WeathersNH, sCurrentFog + ".Density"));
-	trace("Current blended fog color: " + Whr_getCurrentBlendedFogColor())
 	Weather.Fog.Color = Whr_getCurrentBlendedFogColor();
 	Weather.Fog.IslandDensity = Whr_GetFloat(WeathersNH, "Fog.IslandDensity");
 	Weather.Fog.SeaDensity = Whr_GetFloat(WeathersNH, sCurrentFog + ".SeaDensity");
@@ -406,12 +390,6 @@ void CreateWeatherEnvironment()
 	// trace("CWE Weather islandDensity: " + Whr_GetFloat(Weather, "Fog.IslandDensity"));
 	// trace("CWE Weather SeaDensity: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
 	// trace("CWE Weather color: " + Whr_GetLong(Weather, "Fog.Color"));
-
-
-	Weather.Sun.Color = sti(aCurWeather.Sun.Color);
-	Weather.Sun.HeightAngle = sti(aCurWeather.Sun.HeightAngle);
-	Weather.Sun.AzimuthAngle = sti(aCurWeather.Sun.AzimuthAngle);
-	Weather.Sun.Ambient = sti(aCurWeather.Sun.Ambient);	
 
 	if (iBlendWeatherNum < 0 )
 	{
@@ -518,6 +496,7 @@ void CreateWeatherEnvironment()
 	bWeatherLoaded = true;
 	if (bSeaActive)
 	{
+		trace("Lighting path: " + GetLightingPath());
 		Island.LightingPath = GetLightingPath();
 		Island.FogDensity = WeathersNH.Fog.IslandDensity;
 		Sea.Fog.SeaDensity = WeathersNH.Fog.SeaDensity;
@@ -713,143 +692,13 @@ void Whr_TimeUpdate()
 	//navy --> Rain
 	bool  bIsRainEnable = Whr_isRainEnable();
 
-	// if (bIsRainEnable)
-	// {
-	// 	if (bRain)
-	// 	{
-	// 		int nRainDuration = sti(WeatherParams.Rain.Duration);
-	// 		iTmp = 3;
 
-	// 		iTime = GetQuestPastMinutesParam("Rain.Duration");
-	// 		if (iTime > nRainDuration)
-	// 		{
-	// 			iTmp = 3;
-	// 			bRain = false;
-	// 		}
-	// 		if (iTime < (4*nRainDuration/5))
-	// 		{
-	// 			iTmp = 2;
-	// 		}
-	// 		if (iTime < (2*nRainDuration/3))
-	// 		{
-	// 			iTmp = 1;
-	// 		}
-	// 		if (iTime < (nRainDuration/3))
-	// 		{
-	// 			iTmp = 0;
-	// 		}
-	// 		Log_TestInfo("Is Raining: " + iTime + " minutes, stage: " + iTmp);
-	// 		switch (iTmp)
-	// 		{
-	// 			case 0:
-	// 				WeatherParams.Rain.Sound = true;
-	// 				break;
-	// 			case 1:
-	// 				if (rand(100) < 40)
-	// 				{
-	// 					Log_TestInfo("Starting the Lightning...");
-	// 					Weathers[iCurWeatherNum].Lightning.Enable = true;
-	// 					Weathers[iCurWeatherNum].Lightning.SubTexX = 4;
-	// 					Weathers[iCurWeatherNum].Lightning.SubTexY = 1;
-	// 					Weathers[iCurWeatherNum].Lightning.ScaleX = 0.7;
-	// 					Weathers[iCurWeatherNum].Lightning.ScaleY = 1.0;
-	// 					Weathers[iCurWeatherNum].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
-	// 				}
-	// 				break;
-	// 			case 2:
-	// 				break;
-	// 			case 3:
-	// 				if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
-	// 				{
-	// 					WeatherParams.Rain = false;
-	// 					WeatherParams.Rain.Sound = false;
-	// 					Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-	// 					Weathers[iCurWeatherNum].Lightning.Enable = false;
-	// 					if (nNewHour > 5 && nNewHour < 20) //navy -- 5.03.07
-	// 					{
-	// 						Weathers[iCurWeatherNum].Rainbow.Enable = true;
-	// 					}
-
-	// 					DeleteAttribute(&WeatherParams, "Rain.StartTime");
-	// 				}
-	// 				WeatherParams.Rain.ThisDay = false;
-	// 				break;
-	// 		}
-	// 		if (iTmp != 0)
-	// 		{
-	// 			Weathers[iCurWeatherNum].Rain.NumDrops = 3500 + rand(1500);
-	// 			Weathers[iCurWeatherNum].Rain.DropLength = 4 + rand(8);
-	// 			Weathers[iCurWeatherNum].Rain.Color = argb(0,23,23,23);
-	// 		}
-	// 		if (iTmp != 3)
-	// 		{
-	// 			Weathers[iBlendWeatherNum].Rain.NumDrops = 3500 + rand(1500);
-	// 			Weathers[iBlendWeatherNum].Rain.DropLength = 4 + rand(8);
-	// 			Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
-
-	// 			if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
-	// 			{
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
-
-	// 				Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
-	// 				Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
-	// 			}
-	// 			Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
-	// 			Weathers[iBlendWeatherNum].Fog.Height = 1000;
-	// 			Weathers[iBlendWeatherNum].Fog.Density = 0.003;
-	// 			Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
-	// 			Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
-
-	// 			Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
-	// 			Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay) && sti(WeatherParams.Rain.StartTime) <= nOldHour)
-	// 		{
-	// 			Weathers[iBlendWeatherNum].Rain.NumDrops = 2000 + rand(3000);
-	// 			Weathers[iBlendWeatherNum].Rain.DropLength = 2 + rand(10);
-	// 			Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
-
-	// 			if (!CheckAttribute(&Weathers[iBlendWeatherNum], "Bak"))
-	// 			{
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Color		= Weathers[iBlendWeatherNum].Fog.Color;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Height		= Weathers[iBlendWeatherNum].Fog.Height;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.Density		= Weathers[iBlendWeatherNum].Fog.Density;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.SeaDensity	= Weathers[iBlendWeatherNum].Fog.SeaDensity;
-	// 				Weathers[iBlendWeatherNum].Bak.Fog.IslandDensity	= Weathers[iBlendWeatherNum].Fog.IslandDensity;
-
-	// 				Weathers[iBlendWeatherNum].Bak.Sun.Glow.Enable		= Weathers[iBlendWeatherNum].Sun.Glow.Enable;
-	// 				Weathers[iBlendWeatherNum].Bak.Sun.Overflow.Enable	= Weathers[iBlendWeatherNum].Sun.Overflow.Enable;
-	// 			}
-	// 			Weathers[iBlendWeatherNum].Fog.Color = argb(0,50,60,65);
-	// 			Weathers[iBlendWeatherNum].Fog.Height = 1000;
-	// 			Weathers[iBlendWeatherNum].Fog.Density = 0.003;
-	// 			Weathers[iBlendWeatherNum].Fog.SeaDensity = 0.0022;
-	// 			Weathers[iBlendWeatherNum].Fog.IslandDensity = 0.0015;
-
-	// 			Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
-	// 			Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
-
-	// 			SaveCurrentQuestDateParam("Rain.Duration");
-	// 			WeatherParams.Rain = true;
-	// 			Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-	// 			Log_TestInfo("Rain Strated. Duration: " + WeatherParams.Rain.Duration + " minutes");
-	// 		}
-	// 	}
-	// }
-	//navy <-- Rain
 	if( nNewHour != nOldHour )
 	{
 		Whr_UpdateWeatherHour();
 	}
 	// update weather: sun lighting
-	FillWeatherData();
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 	Weather.isDone = "";
 	trace("fog color after filling: " + Weather.Fog.color);
 
@@ -857,7 +706,7 @@ void Whr_TimeUpdate()
 	//navy -- 5.03.07
 	if (bIsRainEnable)
 	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		FillRainData();
 		Rain.isDone = "";
 	}
 	// update sun glow: sun\moon, flares
@@ -946,28 +795,26 @@ void Whr_ChangeDayNight()
 	}
 }
 
-void FillWeatherData()
+void FillWeatherData(int nw1, int nw2)
 {
-	aref aCurWeather = GetCurrentWeather();
+	if( nw1<0 || nw1>=MAX_WEATHERS ) {return;}
 
-	trace("Current fog: " + sCurrentFog);
-	trace("fog color nw1 only: " + aCurWeather.(sCurrentFog).color);
-	float islandDensity = sti(aCurWeather.Fog.IslandDensity);
-	trace("Island density nw1 only: " + islandDensity);
-	float seaDensity = sti(aCurWeather.(sCurrentFog).SeaDensity);
-	trace("Sea density nw1 only: " + seaDensity);
-	Weather.Fog.Enable = sti(aCurWeather.(sCurrentFog).Enable);
-	Weather.Fog.Start = sti(aCurWeather.(sCurrentFog).Start);
-	Weather.Fog.Density = sti(aCurWeather.(sCurrentFog).Density);
-	Weather.Fog.Color = sti(aCurWeather.(sCurrentFog).Color);
-	Weather.Fog.IslandDensity = sti(aCurWeather.Fog.IslandDensity);
-	Weather.Fog.SeaDensity = sti(aCurWeather.(sCurrentFog).SeaDensity);
-
-	Weather.Sun.Color = sti(aCurWeather.Sun.Color);
-	Weather.Sun.HeightAngle = sti(aCurWeather.Sun.HeightAngle);
-	Weather.Sun.AzimuthAngle = sti(aCurWeather.Sun.AzimuthAngle);
-	Weather.Sun.Ambient = sti(aCurWeather.Sun.Ambient);
-
+	string sCurFog = Whr_GetCurrentFog();
+	if( nw2<0)
+	{
+		Weather.Sun.Color = Whr_GetColor(&Weathers[nw1],"Sun.Color");
+		Weather.Sun.HeightAngle = Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle");
+		Weather.Sun.AzimuthAngle = Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle");
+		Weather.Sun.Ambient = Whr_GetColor(&Weathers[nw1],"Sun.Ambient");
+	}
+	else
+	{
+		float fBlend = stf(Environment.Time) - sti(Environment.Time);
+		Weather.Sun.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Color"), Whr_GetColor(&Weathers[nw2],"Sun.Color") );
+		Weather.Sun.HeightAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.HeightAngle") );
+		Weather.Sun.AzimuthAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.AzimuthAngle") );
+		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
+	}
 }
 
 int FindWeatherByHour(int nHour)
@@ -1165,21 +1012,6 @@ string	GetLightingPath()
         sLightingPath = "night1";
         break;
     case "morning6":
-        sLightingPath = "night1";
-        break;
-    case "night0":
-        sLightingPath = "night1";
-        break;
-    case "night2":
-        sLightingPath = "night1";
-        break;
-    case "night3":
-        sLightingPath = "night1";
-        break;
-    case "night4":
-        sLightingPath = "night1";
-        break;
-    case "night5":
         sLightingPath = "night1";
         break;
     case "morning7":
@@ -1490,4 +1322,33 @@ void Whr_addWaves2weather(ref tmpweather){
 	tmpweather.Sea.Harmonics.h2 = sti(WeathersNH.Sea.Harmonics.h2);
 	tmpweather.Sea.Harmonics.h3 = sti(WeathersNH.Sea.Harmonics.h3);
 
+}
+
+
+string Whr_getMoonTexture(){
+
+	// PURSEON ========Begin Moon Phases at night code===========>
+	string moonpic = "weather\sun\glow\moonglowfull.tga.tx";   //default in case moon state is not known
+	switch (getMoonStateName(getMoonState())){
+		case FULL_MOON:
+			moonpic = "weather\sun\glow\moonglowfull.tga.tx";
+		break;
+		case NEW_MOON:
+			moonpic = "weather\sun\glow\moonglownew.tga.tx";
+		break;
+		case QUARTER_ONE:
+			moonpic = "weather\sun\glow\moonglowwaxc.tga.tx";
+		break;
+		case QUARTER_TWO:
+			moonpic = "weather\sun\glow\moonglowwax.tga.tx";
+		break;
+		case QUARTER_THREE:
+			moonpic = "weather\sun\glow\moonglowwan.tga.tx";
+		break;
+		case QUARTER_FOUR:
+			moonpic = "weather\sun\glow\moonglowwanc.tga.tx";
+		break;
+	}
+
+	return moonpic;
 }
