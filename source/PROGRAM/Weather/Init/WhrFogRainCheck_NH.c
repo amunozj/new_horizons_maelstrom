@@ -148,6 +148,16 @@ void Whr_FogRainCheck(){
 		WeathersNH.Rain.WindSpeedJitter = (0.5);
 		WeathersNH.Rain.MaxBlend = 75;
 		WeathersNH.Rain.TimeBlend = 2000;
+		WeathersNH.Rain.DropsNearNum = 500;
+		WeathersNH.Rain.DropsFarNum = 500;
+		WeathersNH.Rain.DropsNearRadius = 25.0;
+		WeathersNH.Rain.DropsFarRadius = 75.0;
+		WeathersNH.Rain.DropsLifeTime = 0.25;
+		WeathersNH.Rain.DropsSize = 0.06;
+		WeathersNH.Rain.DropsTexture = "weather\rain_drops.tga.tx";
+		WeathersNH.Rain.DropsColor = argb(63,255,255,255);
+		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = true;}		//UZVER
+
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
 		if(wRain > 80 && wRain < 85){
@@ -155,7 +165,6 @@ void Whr_FogRainCheck(){
 			WeathersNH.Rain.MaxBlend = 95;
 			WeathersNH.Rain.DropLength = (1.5);
 			WeathersNH.Lightning.Enable = false;
-			if(theHour >= 6 && theHour < 20) {WeathersNH.Rainbow.Enable = true;}		//UZVER
 			WeathersNH.LightingLm = "storm";
 			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);

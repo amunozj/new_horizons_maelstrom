@@ -1,4 +1,3 @@
-#include "Weather\Init\WhrSetAzmAng_NH.c"
 #include "Weather\Init\WhrGenerateValues_NH.c"
 #include "Weather\Init\WhrFogRainCheck_NH.c"
 #include "Weather\Init\WhrDebugInfo_NH.c"
