@@ -36,6 +36,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 	aref aOverflow1;	makearef(aOverflow1, aSun1.Overflow);
 	aref aReflection1;	makearef(aReflection1, aSun1.Reflection);
 
+	string moonpath = Whr_getMoonTexture();
+
 	aref aFlares,aFlareN;
 	int iNumFlares, i;
 	string sTemp;
@@ -147,6 +149,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 	if( stf(Environment.Time) < 4.5 || stf(Environment.Time) > 23.5 ) {
 		SunGlow.Moon = true;
 		SunGlow.Reflection.Texture = "weather\sun\reflection\refl_night.tga.tx";
+		SunGlow.Glow.Texture = moonpath;
+
 	} else {
 		SunGlow.Moon = false;
 	}
@@ -154,7 +158,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 	if( nw2 >= 0)
 	{
 		SunGlow.Glow.SunTexture = "weather\sun\glow\sun.tga.tx";
-		SunGlow.Glow.MoonTexture = "weather\sun\glow\moon.tga.tx";
+		SunGlow.Glow.MoonTexture = moonpath;
 		SunGlow.Glow.GlowTexture = "weather\sun\glow\sunglow.tga.tx";
 		SunGlow.Glow.SunSize = 400;
 		SunGlow.Glow.MoonSize = 110;
@@ -165,7 +169,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 		if (sunIsShine)
 		{
 			SunGlow.Glow.SunTexture = "weather\sun\glow\sun.tga.tx";
-			SunGlow.Glow.MoonTexture = "weather\sun\glow\moon.tga.tx";
+			SunGlow.Glow.MoonTexture = moonpath;
 			SunGlow.Glow.GlowTexture = "weather\sun\glow\sunglow.tga.tx";
 			SunGlow.Glow.SunSize = 400;
 			SunGlow.Glow.MoonSize = 110;

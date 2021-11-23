@@ -354,7 +354,17 @@ void CreateWeatherEnvironment()
 
 	float fGetTime = GetTime();
 	// iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	sunIsShine = true;
 
+	if(CheckAttribute(pchar, "location"))
+	{
+		iCurLocation = reload_location_index;	
+
+		if (CheckAttribute(&locations[iCurLocation], "lockWeather") && locations[iCurLocation].lockWeather == "Inside")
+		{
+			sunIsShine = false;
+		}
+	}
 
 	// create main module Weather
 	DeleteAttribute(&Weather,"");
