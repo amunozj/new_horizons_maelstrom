@@ -123,7 +123,6 @@ void Whr_Generator(){
 	
 	// Whr_InitGValues(); //Setup generic values based on ToD
 	Whr_FogRainCheck();	 //Set wRain and fog values
-	Whr_SetAzmAng(); //Setup specific values for azimuth and angle and sky loaded
 
 	// NK & Mith-->
 	// LDH fixes - 16Mar09
