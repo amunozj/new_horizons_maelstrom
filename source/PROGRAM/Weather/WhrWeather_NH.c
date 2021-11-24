@@ -1319,7 +1319,7 @@ int Whr_getCurrentBlendedFogColor(){
 	int rainfogcolor;
 	int lightfog = argb(0,230,230,230);
 	int darkfog = argb(0,50,60,65);
-	float fblend = MakeFloat(wRain)/100.0;
+	float fblend = MakeFloat(wRain)/100.0*0.8;
 
 	if (iCurWeatherHour<6 || iCurWeatherHour>19){
 		rainfogcolor = argb(0,20,15,15);
