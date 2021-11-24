@@ -13,7 +13,7 @@
 #include "weather\WhrGeneration_NH.c"
 
 #define WIND_NORMAL_POWER		20.0 // NK
-#define MAX_WEATHERS   35
+#define MAX_WEATHERS   36
 
 float fWeatherAngleOld, fWeatherSpeedOld;
 int fogBallast, rainBallast, windBallast;
@@ -70,7 +70,6 @@ bool	bWeatherIsStorm = false;
 bool	Whr_IsFog() { return stf(WeathersNH.Fog.SeaDensity)>0.01; }
 
 object Weathers[MAX_WEATHERS];
-object WeathersBackup[MAX_WEATHERS];
 object WeathersNH;  // Variable to use in NH generation
 
 extern int InitWeather();
@@ -79,82 +78,97 @@ extern int InitWeather();
 #event_handler("EWhr_GetWindSpeed", "Whr_GetWindSpeed");
 #event_handler("EWhr_GetShadowDensity", "Whr_GetShadowDensity");
 #event_handler("EWhr_GetFogDensity", "Whr_GetFogDensity");
-// #event_handler("WeatherTimeUpdate", "Whr_TimeUpdate" );
+#event_handler("WeatherTimeUpdate", "Whr_TimeUpdate" );
 
 void SetNextWeather(string sWeatherID)
 {
 
+	Trace("SetNextWeathr: " + sWeatherID)
 	string sWeather = sWeatherID;
-	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night") sWeather = "Clear";
+	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
 	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";	
 	if (sWeatherID == "alcove") sWeather = "inside";
 	
 	switch (sWeather)
 	{
-	case  "Clear":
-		Orain = 0;
+	case "Clear":
+		wRain = 0;
+		ORain = 0;
 		ORBallast = 0;
+		Fog = 0;
 		OFog = 0;
 		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
 		break;
 
-	case  "Cloudy":
-		Orain = 60;		// clouds start at 50, overcast starts at 65
+	case "Cloudy":
+		wRain = 60;		// clouds start at 50, overcast starts at 65
+		ORain = 60;		// clouds start at 50, overcast starts at 65
+		gWeatherOvrd = true;
+		sWeatherID = "21 Rain";
+		break;
+
+	case "Overcast":
+		wRain = 70;		// overcast starts at 65, rain starts at 75
+		ORain = 70;		// overcast starts at 65, rain starts at 75
 		gWeatherOvrd = true;
 		break;
 
-	case  "Overcast":
-		Orain = 70;		// overcast starts at 65, rain starts at 75
+	case "Rainy":
+		wRain = 80;		// rain starts at 75, storm starts at 95
+		ORain = 80;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		break;
 
-	case  "Rainy":
-		Orain = 80;		// rain starts at 75, storm starts at 95
+	case "Heavy Rain":
+		wRain = 90;		// rain starts at 75, storm starts at 95
+		ORain = 90;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		break;
 
-	case  "Heavy Rain":
-		Orain = 90;		// rain starts at 75, storm starts at 95
-		gWeatherOvrd = true;
-		break;
-
-	case  "Stormy":		// this produces lightning
-		Orain = 97;		// storm starts at 95
+	case "Stormy":		// this produces lightning
+		wRain = 97;		// storm starts at 95
+		ORain = 97;		// storm starts at 95
 		OWind = 25;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
 		break;
 
 	case "Heavy Storm":	// this produces twisters, "Day Storm"
-		Orain = 100;	// storm starts at 95
+		wRain = 100;	// storm starts at 95
+		ORain = 100;	// storm starts at 95
 		ORBallast = 15;
 		OWind = 30;		// twisters start at minwind >= 28
 		OWBallast = 15;
 		gWeatherOvrd = true;
 		break;
 
-	case  "Foggy":
-		OFog = 15;		// produces fog density of 0.00375
+	case "Foggy":
+		Fog = 25;		// produces fog density of 0.00375
+		OFog = 25;		// produces fog density of 0.00375
 		gWeatherOvrd = true;
 		break;
 
-	case  "Heavy Fog":
-		OFog = 25;		// produces fog density of 0.00625
+	case "Heavy Fog":
+		Fog = 40;		// produces fog density of 0.00625
+		OFog = 40;		// produces fog density of 0.00625
 		gWeatherOvrd = true;
 		break;
 
-	case  "Black Pearl Fight":
-		Orain = 90;
-		OFog = 15;
+	case "Black Pearl Fight":
+		wRain = 90;
+		Fog = 25;
+		OFog = 25;
 		OWind = 25;
 		gWeatherOvrd = true;
 		break;
 
-	case  "IslaDeMuerte":
+	case "IslaDeMuerte":
+		Fog = 80;		// produces fog density of 0.02
 		OFog = 80;		// produces fog density of 0.02
 		gWeatherOvrd = true;
 		break;
 
-	case  "Super Fog":
+	case "Super Fog":
+		Fog = 999;
 		OFog = 999;
 		gWeatherOvrd = true;
 		break;
@@ -170,7 +184,7 @@ void SetNextWeather(string sWeatherID)
 		if (!CheckAttribute(&Weathers[i], "id")) { continue; }
 		if (Weathers[i].id == sWeatherID)
 		{
-			iNextWeatherNum = i;
+			iCurWeatherNum = i;
 			if (true)
 			{
 				Trace("iNextWeatherNum = " + iNextWeatherNum);
@@ -299,6 +313,13 @@ void CreateWeatherEnvironment()
 	// Get weather for particular hour
 	iCurWeatherHour = iHour;
 	iCurWeatherNum = FindWeatherByHour(iHour);
+
+	Trace("current weather: " + iCurWeatherHour)
+	// SetNextWeather("Red sky");
+	Trace("After SetNextWeather weather: " + iCurWeatherHour)
+
+	iBlendWeatherNum = -1;
+
 	// 	// search weather for hour
 	// 	for (int i=0;i<MAX_WEATHERS;i++)
 	// 	{
@@ -364,9 +385,11 @@ void CreateWeatherEnvironment()
 	{
 		iCurLocation = reload_location_index;	
 
-		if (CheckAttribute(&locations[iCurLocation], "lockWeather") && locations[iCurLocation].lockWeather == "Inside")
-		{
-			sunIsShine = false;
+		if (iCurLocation>0){
+			if (CheckAttribute(&locations[iCurLocation], "lockWeather") && locations[iCurLocation].lockWeather == "Inside")
+			{
+				sunIsShine = false;
+			}
 		}
 	}
 
@@ -379,19 +402,22 @@ void CreateWeatherEnvironment()
 
 	aref aCurWeather = GetCurrentWeather();
 
+	trace("Current aCurWeather:" + aCurWeather.id)
+
 	sLightingPath = Whr_GetString(aCurWeather,"Lighting");
 	sLmLightingPath = Whr_GetString(aCurWeather,"LightingLm");
 	sInsideBack = Whr_GetString(aCurWeather,"InsideBack");
 	bWeatherIsNight = Whr_GetLong(aCurWeather,"Night");
 	bWeatherIsLight = Whr_GetLong(aCurWeather,"Lights");
-	Weather.Wind.Speed = Whr_GetFloat(aCurWeather,"Wind.Speed");		
+	Weather.Wind.Speed = Whr_GetFloat(aCurWeather,"Wind.Speed");
+	pchar.wind.speed = Weather.Wind.Speed;		
 
 	sCurrentFog = "Fog";
 	if (bSeaActive)
 	{
 		if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sCurrentFog = "SpecialSeaFog"; }
 	}
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	FillWeatherData(iCurWeatherNum, -1);
 
 	Weather.Fog.Enable = Whr_GetLong(WeathersNH, sCurrentFog + ".Enable");
 	Weather.Fog.Start = Whr_GetFloat(WeathersNH, sCurrentFog + ".Start");
@@ -680,6 +706,8 @@ void Whr_TimeUpdate()
 	Environment.date.sec = nNewSec;
 	worldMap.date.hour = nNewHour;
 	worldMap.date.min  = nNewMin;
+
+	iBlendWeatherNum = -1
 	if( nNewHour < nOldHour )
 	{
 		AddDataToCurrent(0,0,1,true);
@@ -693,6 +721,7 @@ void Whr_TimeUpdate()
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
+	// SetNextWeather("Red sky");
 	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
 
 	if( iBlendWeatherNum < 0 ) {return;}
@@ -705,6 +734,19 @@ void Whr_TimeUpdate()
 	}
 	//navy --> Rain
 	bool  bIsRainEnable = Whr_isRainEnable();
+		if (bIsRainEnable)
+	{
+		if (bRain)
+		{
+			WeatherParams.Rain.Sound = true;
+			Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+
+		}
+		else{
+			WeatherParams.Rain.Sound = false;
+			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+		}
+	}
 
 
 	if( nNewHour != nOldHour )
@@ -712,9 +754,8 @@ void Whr_TimeUpdate()
 		Whr_UpdateWeatherHour();
 	}
 	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	FillWeatherData(iCurWeatherNum, -1);
 	Weather.isDone = "";
-	trace("fog color after filling: " + Weather.Fog.color);
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07

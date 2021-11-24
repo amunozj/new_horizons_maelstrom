@@ -131,6 +131,8 @@ void Whr_FogRainCheck(){
 	WeathersNH.Storm = false;
 	WeathersNH.Tornado = false;
 	WeathersNH.StormSky = false;
+	bWeatherIsStorm = false;
+	WeathersNH.StormSky = false;
 
 	WeathersNH.Rain.DropsNearNum = 500;
 	WeathersNH.Rain.DropsFarNum = 500;
@@ -159,7 +161,7 @@ void Whr_FogRainCheck(){
 		WeathersNH.Rain.MaxBlend = 75;
 		WeathersNH.Rain.TimeBlend = 2000;
 
-		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = true;}		//UZVER
+		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = false;}		//UZVER
 
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
@@ -200,6 +202,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);
 			WeathersNH.Storm = true;
+			bWeatherIsStorm = true;			
 			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";
 			WeathersNH.Lightning.FlickerTime = 32;
 			WeathersNH.Lightning.SubTexX = 4;

@@ -32,7 +32,7 @@ void WhrCreateSkyEnvironment()
 	}
 
 	FillSkyDir(&Sky);
-	//Sky.Dir = Whr_GetString(aSky, "Dir");
+	Sky.Dir = Whr_GetString(aCurWeather, "Sky.Dir");
 
 	Sky.Color = Whr_GetColor(aSky, "Color");
 	Sky.RotateSpeed = Whr_GetFloat(aSky, "Rotate"); // Warship 02.06.09
