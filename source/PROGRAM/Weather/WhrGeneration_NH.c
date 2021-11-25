@@ -69,10 +69,10 @@ void Whr_Generator(){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	wRain = 80;
+	// wRain = 80;
 	//fog = 20;
 	//curTime = 6;
-	winds = 20;
+	// winds = 20;
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
