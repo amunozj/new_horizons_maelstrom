@@ -1377,10 +1377,6 @@ void Whr_addRain2weather(ref tmpweather)
 
 void Whr_addWaves2weather(ref tmpweather){
 
-	tmpweather.Sea.Harmonics.h1 = Whr_GetString(WeathersNH, "Sea.Harmonics.h1");
-	tmpweather.Sea.Harmonics.h2 = Whr_GetString(WeathersNH, "Sea.Harmonics.h2");
-	tmpweather.Sea.Harmonics.h3 = Whr_GetString(WeathersNH, "Sea.Harmonics.h3");
-
 	tmpweather.Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
 	tmpweather.Sea2.PosShift = Whr_GetFloat(WeathersNH, "ea2.PosShift");
 
