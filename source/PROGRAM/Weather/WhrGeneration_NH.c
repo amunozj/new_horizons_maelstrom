@@ -202,8 +202,8 @@ void Whr_Generator(){
 	WeathersNH.Sea2.Scale1 = scale1;
 
 
-	string waveSpeedZ = f2s(-WIND2WAVESPEED*winds*sin(fWindA), 2);
-	string waveSpeedX = f2s(-WIND2WAVESPEED*winds*cos(fWindA), 2);
+	string waveSpeedZ = f2s(WIND2WAVESPEED*winds*sin(fWindA), 2);
+	string waveSpeedX = f2s(WIND2WAVESPEED*winds*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
 
