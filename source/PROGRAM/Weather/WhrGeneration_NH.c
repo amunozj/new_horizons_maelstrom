@@ -183,7 +183,7 @@ void Whr_Generator(){
 
 	if(Characters[GetMainCharacterIndex()].location !="")
 	{
-		Sea.MaxSeaHeight = 0.5;
+		Sea.MaxSeaHeight = 30.0;
 	}
 
 
