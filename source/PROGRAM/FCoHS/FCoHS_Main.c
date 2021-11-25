@@ -227,6 +227,8 @@ void FCoHS_Boarding_StartFade()
 	{
 		fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
 		Sea.MaxSeaHeight = 1.2;
+	}else{
+		Sea.MaxSeaHeight = 1.2;
 	}
 
 	// Fader event has been processed, delete handler
