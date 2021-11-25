@@ -1393,6 +1393,12 @@ void Whr_addWaves2weather(ref tmpweather){
 	tmpweather.Sea2.AnimSpeed2 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed2");
 	tmpweather.Sea2.Scale2 = Whr_GetFloat(WeathersNH, "Sea2.Scale2");
 	tmpweather.Sea2.MoveSpeed2 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed2");
+
+	tmpweather.Sea2.FoamV = Whr_GetFloat(WeathersNH, "Sea2.FoamV");
+	tmpweather.Sea2.FoamK = Whr_GetFloat(WeathersNH, "Sea2.FoamK");
+	tmpweather.Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
+	tmpweather.Sea2.FoamTexDisturb = Whr_GetFloat(WeathersNH, "Sea2.FoamTexDisturb");
+
 }
 
 

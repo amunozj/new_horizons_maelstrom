@@ -3,8 +3,20 @@
 #include "Weather\Init\WhrDebugInfo_NH.c"
 
 #define WIND2WAVESPEED 0.25
-#define WIND2WAVELENGTH 5.0
-#define WIND2AMPLITUDE 0.5
+#define WIND2WAVELENGTH 8.0
+#define WIND2AMPLITUDE 0.3
+
+#define RAIN2AMPLITUDE 0.15
+#define RAIN2WAVELENGTH 0.25
+#define RAIN2ANIM 0.01
+#define RAIN2FOAMV 0.025
+#define RAIN2BUMPSCALE 0.35
+
+#define WIND2WAVELENGTH2 2.0
+#define WIND2AMPLITUDE2 0.1
+#define WIND2BUMPSCALE 1.0
+#define WIND2FOAMV 0.175
+
 
 // #define REALISTIC_WAVES 1
 
@@ -57,10 +69,10 @@ void Whr_Generator(){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	//wRain = 66;
+	wRain = 80;
 	//fog = 20;
 	//curTime = 6;
-	winds = 30;
+	winds = 20;
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
@@ -288,21 +300,45 @@ void Whr_Generator(){
 		Sea.MaxSeaHeight = 50.0;
 	}
 
+
+	float bumpscale = WIND2BUMPSCALE*WIND2WAVELENGTH/(winds + RAIN2BUMPSCALE*wRain);
+	if (bumpscale > 1.0) {bumpscale = 1.0;}
+	WeathersNH.Sea2.BumpScale = bumpscale;
+	trace("WeathersNH.Sea2.BumpScale:" + WeathersNH.Sea2.BumpScale);
+	WeathersNH.Sea2.PosShift = 0.2;
+
+	WeathersNH.Sea2.Amp1 = 3 + WIND2AMPLITUDE*winds + RAIN2AMPLITUDE*wRain;
+	// WeathersNH.Sea2.Amp1 = 9;
+	WeathersNH.Sea2.AnimSpeed1 = 4 - RAIN2ANIM*wRain;
+
+	float scale1 = WIND2WAVELENGTH/(winds + RAIN2WAVELENGTH*wRain);
+	if (scale1 > 1.0) {scale1 = 1.0;}
+	WeathersNH.Sea2.Scale1 = scale1;
+
+
 	string waveSpeedZ = f2s(-WIND2WAVESPEED*winds*sin(fWindA), 2);
 	string waveSpeedX = f2s(-WIND2WAVESPEED*winds*cos(fWindA), 2);
-
-	WeathersNH.Sea2.BumpScale = 0.09;
-	WeathersNH.Sea2.PosShift = 1.75;
-
-	WeathersNH.Sea2.Amp1 = WIND2AMPLITUDE*winds;
-	WeathersNH.Sea2.AnimSpeed1 = 4.0;
-	WeathersNH.Sea2.Scale1 = WIND2WAVELENGTH/winds;
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
-	WeathersNH.Sea2.Amp2 = 0;
-	WeathersNH.Sea2.AnimSpeed2 = 0.0;
-	WeathersNH.Sea2.Scale2 = 0.0;
-	WeathersNH.Sea2.MoveSpeed2 = "0.0, 0.0, 0.0";
+
+
+	WeathersNH.Sea2.Amp2 = WIND2AMPLITUDE*WIND2AMPLITUDE2*winds;
+	WeathersNH.Sea2.AnimSpeed2 = 8.0;
+	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/winds;
+
+
+	float randomDir = frnd()*PI;
+	trace("random dir: " + randomDir);
+	string waveSpeed2Z = f2s(-WIND2WAVESPEED*winds*sin(randomDir), 2);
+	string waveSpeed2X = f2s(-WIND2WAVESPEED*winds*cos(randomDir), 2);
+	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
+
+	WeathersNH.Sea2.FoamV = 1.0 + WIND2FOAMV*winds + RAIN2FOAMV*wRain;
+	WeathersNH.Sea2.FoamK = 0.2;
+	WeathersNH.Sea2.FoamUV = 0.2;
+	WeathersNH.Sea2.FoamTexDisturb = 0.2;
+
+
 
 	trace("WeathersNH.Sea2.Amp:" + WeathersNH.Sea2.Amp1 + ", " + WeathersNH.Sea2.Amp2);
 	trace("WeathersNH.Sea2.AnimSpeed:" + WeathersNH.Sea2.AnimSpeed1+ ", " + WeathersNH.Sea2.AnimSpeed2);
