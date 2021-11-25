@@ -45,9 +45,10 @@ void WhrCreateSeaEnvironment()
 			Sea.MaxDim = 65536;
 			Sea.MinDim = 128;
 			Sea.GridStep = 0.07;//GridStepPC*5.0;
-			if (CheckAttribute(WeathersNH, "Storm") && sti(WeathersNH.Storm) == true)
+			// if (CheckAttribute(WeathersNH, "Storm") && sti(WeathersNH.Storm) == true)
+			if(bSeaActive && !ownDeckStarted())
 			{
-				fMaxSeaHeight = 2.0;
+				fMaxSeaHeight = 4.0;
 			}
 			else
             {
@@ -105,7 +106,7 @@ void WhrCreateSeaEnvironment()
 			else
 			{
 				SetSeaSettings();
-				fMaxSeaHeight = 200.0;
+				fMaxSeaHeight = 4.0;
 			}
 		}
 	}
@@ -177,8 +178,10 @@ void WhrCreateSeaEnvironment()
 	for (i=0;i<iNumHarmonics;i++)
 	{
 		aref aHarmonic = GetAttributeN(aHarmonics,i);
-		string sTemp = "h" + i;
+		string sTemp = "h" + i + 1;
 		Sea.Harmonics.(sTemp) = GetAttributeValue(aHarmonic);
+		// trace("Weather Harmonics " + sTemp + ": " + GetAttributeValue(aHarmonic));
+		// trace("Sea Harmonics " + sTemp + ": " + Sea.Harmonics.(sTemp));
 	}
 
 	// Advanced Sea initialize
@@ -194,6 +197,11 @@ void WhrCreateSeaEnvironment()
 	Sea.Sea2.AnimSpeed2 = Whr_GetFloat(aSea2, "AnimSpeed2");
 	Sea.Sea2.Scale2 = Whr_GetFloat(aSea2, "Scale2");
 	Sea.Sea2.MoveSpeed2 = Whr_GetString(aSea2, "MoveSpeed2");
+
+	trace("Sea.Sea2.Amp:" + Sea.Sea2.Amp1 + ", " + Sea.Sea2.Amp2);
+	trace("Sea.Sea2.AnimSpeed:" + Sea.Sea2.AnimSpeed1+ ", " + Sea.Sea2.AnimSpeed2);
+	trace("Sea.Sea2.Scale:" + Sea.Sea2.Scale1 + ", " + Sea.Sea2.Scale2);
+	trace("Sea.Sea2.MoveSpeed:" + Sea.Sea2.MoveSpeed1 + ", " + Sea.Sea2.MoveSpeed2);
 
 	Sea.Sea2.PosShift = Whr_GetFloat(aSea2, "PosShift");
 
@@ -212,6 +220,7 @@ void WhrCreateSeaEnvironment()
 	Sea.Sea2.FoamTexDisturb = Whr_GetFloat(aSea2, "FoamTexDisturb");
 
 	Sea.MaxSeaHeight = fMaxSeaHeight;
+	trace("Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 	Sea.isDone = "";
 	//Log_TestInfo("Whether Sea.MaxSeaHeight " + Sea.MaxSeaHeight);
 

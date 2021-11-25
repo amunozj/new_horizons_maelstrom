@@ -283,8 +283,10 @@ aref GetCurrentWeather()
 		arWeather.Lightning.Enable = false;
 		Whr_addRain2weather(&arWeather);
 		Whr_addfog2weather(&arWeather);
-		// Whr_addWaves2weather(&arWeather);
+		Whr_addWaves2weather(&arWeather);
 	}
+
+	// trace("Current weather: " + arWeather.id)
 
 	return arWeather;
 }
@@ -518,6 +520,7 @@ void CreateWeatherEnvironment()
 	WhrCreateAstronomyEnvironment();
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
+	trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 
 
 	// if(iLocation != -1)
@@ -813,6 +816,7 @@ void Whr_UpdateWeatherHour()
             if (isSeaEnt) {
                 if(!CheckAttribute(&Sea, "MaxSeaHeight") || stf(Sea.MaxSeaHeight) != SetMaxSeaHeight(i))
                     WhrCreateSeaEnvironment();
+					trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 	 		}
  		}
  		//#20190211-01
@@ -1347,16 +1351,16 @@ void Whr_addRain2weather(ref tmpweather)
 	// tmpweather.Sun.Glow.Enable = false;
 	// tmpweather.Sun.Overflow.Enable = false;
 
-	tmpweather.Rain.NumDrops = sti(WeathersNH.Rain.NumDrops);
-	tmpweather.Rain.Color = sti(WeathersNH.Rain.Color);
-	tmpweather.Rain.DropLength = sti(WeathersNH.Rain.DropLength);
-	tmpweather.Rain.Height = sti(WeathersNH.Rain.Height);
-	tmpweather.Rain.Radius = sti(WeathersNH.Rain.Radius);
-	tmpweather.Rain.Speed = sti(WeathersNH.Rain.Speed);
-	tmpweather.Rain.Jitter = sti(WeathersNH.Rain.Jitter);
-	tmpweather.Rain.WindSpeedJitter = sti(WeathersNH.Rain.WindSpeedJitter);
-	tmpweather.Rain.MaxBlend = sti(WeathersNH.Rain.MaxBlend);
-	tmpweather.Rain.TimeBlend = sti(WeathersNH.Rain.TimeBlend);
+	tmpweather.Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
+	tmpweather.Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
+	tmpweather.Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
+	tmpweather.Rain.Height = Whr_GetFloat(WeathersNH, "Rain.Height");
+	tmpweather.Rain.Radius = Whr_GetFloat(WeathersNH, "Rain.Radius");
+	tmpweather.Rain.Speed = Whr_GetFloat(WeathersNH, "Rain.Speed");
+	tmpweather.Rain.Jitter = Whr_GetFloat(WeathersNH, "Rain.Jitter");
+	tmpweather.Rain.WindSpeedJitter = Whr_GetFloat(WeathersNH, "Rain.WindSpeedJitter");
+	tmpweather.Rain.MaxBlend = Whr_GetLong(WeathersNH, "Rain.MaxBlend");
+	tmpweather.Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
 
 	// trace("WeathersNH LE:" + sti(WeathersNH.Lightning.Enable);
 
@@ -1373,10 +1377,22 @@ void Whr_addRain2weather(ref tmpweather)
 
 void Whr_addWaves2weather(ref tmpweather){
 
-	tmpweather.Sea.Harmonics.h1 = sti(WeathersNH.Sea.Harmonics.h1);
-	tmpweather.Sea.Harmonics.h2 = sti(WeathersNH.Sea.Harmonics.h2);
-	tmpweather.Sea.Harmonics.h3 = sti(WeathersNH.Sea.Harmonics.h3);
+	tmpweather.Sea.Harmonics.h1 = Whr_GetString(WeathersNH, "Sea.Harmonics.h1");
+	tmpweather.Sea.Harmonics.h2 = Whr_GetString(WeathersNH, "Sea.Harmonics.h2");
+	tmpweather.Sea.Harmonics.h3 = Whr_GetString(WeathersNH, "Sea.Harmonics.h3");
 
+	tmpweather.Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
+	tmpweather.Sea2.PosShift = Whr_GetFloat(WeathersNH, "ea2.PosShift");
+
+	tmpweather.Sea2.Amp1 = Whr_GetFloat(WeathersNH, "Sea2.Amp1");
+	tmpweather.Sea2.AnimSpeed1 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed1");
+	tmpweather.Sea2.Scale1 = Whr_GetFloat(WeathersNH, "Sea2.Scale1");
+	tmpweather.Sea2.MoveSpeed1 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed1");
+
+	tmpweather.Sea2.Amp2 = Whr_GetFloat(WeathersNH, "Sea2.Amp2");
+	tmpweather.Sea2.AnimSpeed2 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed2");
+	tmpweather.Sea2.Scale2 = Whr_GetFloat(WeathersNH, "Sea2.Scale2");
+	tmpweather.Sea2.MoveSpeed2 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed2");
 }
 
 

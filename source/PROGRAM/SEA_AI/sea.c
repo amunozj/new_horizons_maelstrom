@@ -683,7 +683,7 @@ void SeaLogin(ref Login)
 		CreateCoastFoamEnvironment(sIslandID, SEA_EXECUTE, SEA_REALIZE);
 		Fort_Login(iIslandIndex);
 
-		if(!bstorm) Sea.MaxSeaHeight = 3.0; // screwface : allow big waves around island in storm conditions
+		// if(!bstorm) Sea.MaxSeaHeight = 15.0; // screwface : allow big waves around island in storm conditions
 		// WM base coords for fleets 05-05-02 -->
 		// 05-05-03 get correct wdm name for island.
 		string wdmisland = wdmGetIslandNameFromID(sIslandID);
@@ -1919,6 +1919,7 @@ ref SeaLoad_GetPointer()
 float SetMaxSeaHeight(int islandIdx)
 {
 	if (!bSeaActive) return   6.0; // ??????? ????? ??? ????, ??? ????????? pchar.Ship.Pos.x
+	return  200.0;
 	if (bStorm) return 200.0;
 	string sIslandID = Islands[islandIdx].id;
 

@@ -2,6 +2,12 @@
 #include "Weather\Init\WhrFogRainCheck_NH.c"
 #include "Weather\Init\WhrDebugInfo_NH.c"
 
+#define WIND2WAVESPEED 0.25
+#define WIND2WAVELENGTH 5.0
+#define WIND2AMPLITUDE 0.5
+
+// #define REALISTIC_WAVES 1
+
 void Whr_ResetOvrd(){
 	OWeatherAngle = -50.0;
 	OWABallast = -50.0;
@@ -54,7 +60,7 @@ void Whr_Generator(){
 	//wRain = 66;
 	//fog = 20;
 	//curTime = 6;
-	//winds = 16;
+	winds = 30;
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
@@ -146,20 +152,28 @@ void Whr_Generator(){
 	direction3 = fts((fSeaB - (PId2 / 2.0)), 4);
 
 	float myWind = maxwind;
-	if (maxwind > 25.0 && !bWhrStorm && !bWhrTornado)
-		myWind = 25.0;
+	// if (maxwind > 25.0 && !bWhrStorm && !bWhrTornado)
+	// 	myWind = 25.0;
 
-	float windStrength1 = myWind / 26.0;
-	float windStrength2 = myWind / 30.0;
-	float windStrength3 = myWind / 28.0;
+	// float windStrength1 = myWind / 26.0;
+	// float windStrength2 = myWind / 30.0;
+	// float windStrength3 = myWind / 28.0;
+
+	float testfactor = 2.0
+	float windStrength1 = testfactor * myWind / 26.0;
+	float windStrength2 = testfactor * myWind / 30.0;
+	float windStrength3 = testfactor * myWind / 28.0;
+
 
 	string seaStrength1 = f2s(windStrength1, 4);
 	string seaStrength2 = f2s(windStrength2, 4);
 	string seaStrength3 = f2s(windStrength3, 4);
 
-	string waveSpeed = "-78.0";
+	// string waveSpeed = "-200.0";
+	string waveSpeed = f2s(-maxwind*15, 2);
 	if(REALISTIC_WAVES == 1)
 	{
+		trace("Realistic waves")
 		// Note on the piece of code below: each line, numbered 1, 2 and 3, are each separate "generators" of waves,
 		// each controlling the different aspects of the harmonics model. 
 		// The first line controls the height, direction and speed of the wave.
@@ -228,13 +242,15 @@ void Whr_Generator(){
 					if(maxheights<3) Sea.MaxSeaHeight = 3.0;
 					else Sea.MaxSeaHeight = Maxheights;
 					if(wrain < 75) Sea.MaxSeaHeight = 3.0;
-					//traceandlog("waves heights : " + Sea.MaxSeaHeight);	
+					//traceandlog("waves heights : " + Sea.MaxSeaHeight);
+					Sea.MaxSeaHeight = 200;	
 				}
 			}
 		} //screwface : end
 	}
 	else
 	{
+		trace("Default waves")
 		float wave1 = 5  + windStrength2 * 3;
 		float wave2 = 10 + windStrength1 * 3;
 		float wave3 = 10 + windStrength3 * 3;
@@ -246,7 +262,52 @@ void Whr_Generator(){
 		WeathersNH.Sea.Harmonics.h1 = direction1 + "," + waveLength1 + "," + seaStrength1 + ",0," + waveSpeed;
 		WeathersNH.Sea.Harmonics.h2 = direction2 + "," + waveLength2 + "," + seaStrength2 + ",0," + waveSpeed;
 		WeathersNH.Sea.Harmonics.h3 = direction3 + "," + waveLength3 + "," + seaStrength3 + ",0," + waveSpeed;
+
+		WeathersNH.Sea2.Amp1 = 30.0;
+		WeathersNH.Sea2.AnimSpeed1 = 4.0;
+		WeathersNH.Sea2.Scale1 = 0.12;
+		WeathersNH.Sea2.MoveSpeed1 = "3.0, 0.0, 3.0";
+
+		WeathersNH.Sea2.Amp2 = 2.0;
+		WeathersNH.Sea2.AnimSpeed2 = 9.0;
+		WeathersNH.Sea2.Scale2 = 1.3;
+		WeathersNH.Sea2.MoveSpeed2 = "0.0, 0.0, 5.0";
+
+		// WeathersNH.Sea2.Amp1 = maxwind;
+		// WeathersNH.Sea2.Amp2 = maxwind/10;
+
+		// WeathersNH.Sea2.AnimSpeed1 = 1.0;
+		// WeathersNH.Sea2.AnimSpeed2 = 1.0;
+		Sea.MaxSeaHeight = 200;		
+
+
 	}
+
+	if(Characters[GetMainCharacterIndex()].location !="")
+	{
+		Sea.MaxSeaHeight = 50.0;
+	}
+
+	string waveSpeedZ = f2s(-WIND2WAVESPEED*winds*sin(fWindA), 2);
+	string waveSpeedX = f2s(-WIND2WAVESPEED*winds*cos(fWindA), 2);
+
+	WeathersNH.Sea2.BumpScale = 0.09;
+	WeathersNH.Sea2.PosShift = 1.75;
+
+	WeathersNH.Sea2.Amp1 = WIND2AMPLITUDE*winds;
+	WeathersNH.Sea2.AnimSpeed1 = 4.0;
+	WeathersNH.Sea2.Scale1 = WIND2WAVELENGTH/winds;
+	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
+
+	WeathersNH.Sea2.Amp2 = 0;
+	WeathersNH.Sea2.AnimSpeed2 = 0.0;
+	WeathersNH.Sea2.Scale2 = 0.0;
+	WeathersNH.Sea2.MoveSpeed2 = "0.0, 0.0, 0.0";
+
+	trace("WeathersNH.Sea2.Amp:" + WeathersNH.Sea2.Amp1 + ", " + WeathersNH.Sea2.Amp2);
+	trace("WeathersNH.Sea2.AnimSpeed:" + WeathersNH.Sea2.AnimSpeed1+ ", " + WeathersNH.Sea2.AnimSpeed2);
+	trace("WeathersNH.Sea2.Scale:" + WeathersNH.Sea2.Scale1 + ", " + WeathersNH.Sea2.Scale2);
+	trace("WeathersNH.Sea2.MoveSpeed:" + WeathersNH.Sea2.MoveSpeed1 + ", " + WeathersNH.Sea2.MoveSpeed2);
 
 	// Whr_DebugInfo();
 }
