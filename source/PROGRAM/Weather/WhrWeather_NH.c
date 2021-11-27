@@ -533,7 +533,7 @@ void CreateWeatherEnvironment()
 	WhrCreateAstronomyEnvironment();
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
-	trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
+	// trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 
 
 	// if(iLocation != -1)
@@ -729,7 +729,7 @@ void Whr_TimeUpdate()
 		AddDataToCurrent(0,0,1,true);
 		Weather.Time.time = GetTime();
 	} // to_do CalcLocalTime
-    if( iBlendWeatherNum < 0 ) {return;}
+    // if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
 	string sTmp;
 	int iTmp, iTime;
@@ -738,9 +738,9 @@ void Whr_TimeUpdate()
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
 	// SetNextWeather("Red sky");
-	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
+	// iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
 
-	if( iBlendWeatherNum < 0 ) {return;}
+	// if( iBlendWeatherNum < 0 ) {return;}
 
 	if (bSeaActive)
 	{
@@ -829,7 +829,7 @@ void Whr_UpdateWeatherHour()
             if (isSeaEnt) {
                 if(!CheckAttribute(&Sea, "MaxSeaHeight") || stf(Sea.MaxSeaHeight) != SetMaxSeaHeight(i))
                     WhrCreateSeaEnvironment();
-					trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
+					// trace("After Create Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 	 		}
  		}
  		//#20190211-01
@@ -1345,15 +1345,15 @@ int Whr_getCurrentBlendedFogColor(){
 
 		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
 	}
-	trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
+	// trace("light fog: " + lightfog + " dark fog: " + darkfog + " blended fog:" + rainfogcolor + " blend constant: " + fblend);
 
 
 	float tmpdensity = Whr_GetFloat(WeathersNH, "Fog.Density");
-	trace("sti(WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0 + "Current weather color: " + Whr_GetLong(Weathers[iCurWeatherNum], "Bak.Fog.Color"));
+	// trace("sti(WeathersNH.Fog.Density: " + tmpdensity + " before clamp: " + tmpdensity*100.0 + "Current weather color: " + Whr_GetLong(Weathers[iCurWeatherNum], "Bak.Fog.Color"));
 	float fblend2 = Clampf(tmpdensity*100.0);
 
 	int rainfogcolor2 =  Whr_BlendColor(fblend2, Whr_GetLong(Weathers[iCurWeatherNum], "Bak.Fog.Color"), rainfogcolor);
-	trace("final color: " + rainfogcolor2);
+	// trace("final color: " + rainfogcolor2);
 
 	return rainfogcolor2;
 

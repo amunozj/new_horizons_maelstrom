@@ -220,7 +220,7 @@ void WhrCreateSeaEnvironment()
 	Sea.Sea2.FoamTexDisturb = Whr_GetFloat(aSea2, "FoamTexDisturb");
 
 	Sea.MaxSeaHeight = fMaxSeaHeight;
-	trace("Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
+	// trace("Sea.MaxSeaHeight: " + Sea.MaxSeaHeight);
 	Sea.isDone = "";
 	//Log_TestInfo("Whether Sea.MaxSeaHeight " + Sea.MaxSeaHeight);
 

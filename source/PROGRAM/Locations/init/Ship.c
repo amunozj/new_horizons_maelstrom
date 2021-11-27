@@ -880,6 +880,8 @@ void LocationInitShip(ref n)
 	Locations[n].environment.sea = "true";
 	Locations[n].environment.curse = "false"; // PB: Cursed Coins
 	Locations[n].environment.weather = "true";
+
+	Locations[n].MaxSeaHeight = 0.6;
 	//Locations[n].lockWeather = "Alcove";  //JA 14DEC06 having this weather locked means it revert to blue sky everytime you visit any cabin
 
 	if (WEAPONSLOCKER) Locations[n].WeaponsLocker.disabled = false; // KK
