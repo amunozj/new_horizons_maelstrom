@@ -32,7 +32,13 @@
 #include "ITEMS\itemLogic.c"
 #include "ITEMS\items_utilite.c"
 #include "sound\alias.c" // KK
-#include "weather\WhrWeather.c"
+
+// ======================================
+// WEATHER OPTIONS
+// ======================================
+#include "Weather_NH/WhrWeather.c"   // NH weather
+// #include "Weather_GOF/WhrWeather.c"   //GOF weather
+
 #include "controls\controls.c"
 #include "landencounters\landencounters.c"
 #include "NK.c" // 05-07-03 NK for misc functions

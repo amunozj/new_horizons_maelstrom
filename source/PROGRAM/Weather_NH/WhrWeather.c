@@ -1,15 +1,15 @@
 /////////////////////////
-// GOF 1.2
+// NH 2021
 /////////////////////////
 
-#include "weather\WhrUtils.c"
-#include "weather\WhrLightning.c"
-#include "weather\WhrRain.c"
-#include "weather\WhrSea.c"
-#include "weather\WhrSky.c"
-#include "weather\WhrSun.c"
-#include "weather\WhrTornado.c"
-#include "weather\WhrAstronomy.c"
+#include "Weather_NH\WhrUtils.c"
+#include "Weather_NH\WhrLightning.c"
+#include "Weather_NH\WhrRain.c"
+#include "Weather_NH\WhrSea.c"
+#include "Weather_NH\WhrSky.c"
+#include "Weather_NH\WhrSun.c"
+#include "Weather_NH\WhrTornado.c"
+#include "Weather_NH\WhrAstronomy.c"
 
 #define WIND_NORMAL_POWER		20.0 // NK
 
@@ -125,10 +125,10 @@ void WeatherInit()
 {
 	//DeleteAttribute(&WeatherParams,"");
 
-	if (LoadSegment("weather\WhrInit.c"))
+	if (LoadSegment("Weather_NH\WhrInit.c"))
 	{
 		iTotalNumWeathers = InitWeather();
-		UnloadSegment("weather\WhrInit.c");
+		UnloadSegment("Weather_NH\WhrInit.c");
 	}
 }
 
@@ -796,7 +796,7 @@ void Whr_TimeUpdate()
 						Weathers[iCurWeatherNum].Lightning.SubTexY = 1;
 						Weathers[iCurWeatherNum].Lightning.ScaleX = 0.7;
 						Weathers[iCurWeatherNum].Lightning.ScaleY = 1.0;
-						Weathers[iCurWeatherNum].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
+						Weathers[iCurWeatherNum].Lightning.Flash.Texture = "Weather_NH\lightning\flash.tga.tx";
 					}
 					break;
 				case 2:

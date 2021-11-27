@@ -1,11 +1,11 @@
-#include "Weather\Init\Common.c"
-#include "Weather\Init\Day.c"
-#include "Weather\Init\Evening.c"
-#include "Weather\Init\Morning.c"
-#include "Weather\Init\Night.c"
-#include "Weather\Init\DayStorm.c"
-#include "Weather\Init\Special.c"
-#include "Weather\Init\Rain.c" //navy
+#include "Weather_GOF\Init\Common.c"
+#include "Weather_GOF\Init\Day.c"
+#include "Weather_GOF\Init\Evening.c"
+#include "Weather_GOF\Init\Morning.c"
+#include "Weather_GOF\Init\Night.c"
+#include "Weather_GOF\Init\DayStorm.c"
+#include "Weather_GOF\Init\Special.c"
+#include "Weather_GOF\Init\Rain.c" //navy
 
 int InitWeather()
 {
@@ -37,7 +37,7 @@ int InitWeather()
 		if (!CheckAttribute(&Weathers[i], "Rain.DropsFarRadius")) { Weathers[i].Rain.DropsFarRadius = 55.0; }
 		if (!CheckAttribute(&Weathers[i], "Rain.DropsLifeTime")) { Weathers[i].Rain.DropsLifeTime = 0.25; }
 		if (!CheckAttribute(&Weathers[i], "Rain.DropsSize")) { Weathers[i].Rain.DropsSize = 0.07; }
-		if (!CheckAttribute(&Weathers[i], "Rain.DropsTexture")) { Weathers[i].Rain.DropsTexture = "weather\rain_drops.tga.tx"; }
+		if (!CheckAttribute(&Weathers[i], "Rain.DropsTexture")) { Weathers[i].Rain.DropsTexture = "Weather_GOF\rain_drops.tga.tx"; }
 		if (!CheckAttribute(&Weathers[i], "Rain.DropsColor")) { Weathers[i].Rain.DropsColor = argb(63, 255, 255, 255); }
 
 		//#20171220-01 Foam enable
