@@ -198,10 +198,10 @@ void WhrCreateSeaEnvironment()
 	Sea.Sea2.Scale2 = Whr_GetFloat(aSea2, "Scale2");
 	Sea.Sea2.MoveSpeed2 = Whr_GetString(aSea2, "MoveSpeed2");
 
-	trace("Sea.Sea2.Amp:" + Sea.Sea2.Amp1 + ", " + Sea.Sea2.Amp2);
-	trace("Sea.Sea2.AnimSpeed:" + Sea.Sea2.AnimSpeed1+ ", " + Sea.Sea2.AnimSpeed2);
-	trace("Sea.Sea2.Scale:" + Sea.Sea2.Scale1 + ", " + Sea.Sea2.Scale2);
-	trace("Sea.Sea2.MoveSpeed:" + Sea.Sea2.MoveSpeed1 + ", " + Sea.Sea2.MoveSpeed2);
+	// trace("Sea.Sea2.Amp:" + Sea.Sea2.Amp1 + ", " + Sea.Sea2.Amp2);
+	// trace("Sea.Sea2.AnimSpeed:" + Sea.Sea2.AnimSpeed1+ ", " + Sea.Sea2.AnimSpeed2);
+	// trace("Sea.Sea2.Scale:" + Sea.Sea2.Scale1 + ", " + Sea.Sea2.Scale2);
+	// trace("Sea.Sea2.MoveSpeed:" + Sea.Sea2.MoveSpeed1 + ", " + Sea.Sea2.MoveSpeed2);
 
 	Sea.Sea2.PosShift = Whr_GetFloat(aSea2, "PosShift");
 
