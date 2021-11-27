@@ -21,6 +21,8 @@
 #define WIND2BUMPSCALE 1.0
 #define WIND2FOAMV 0.175
 
+#define AMPLITUDERANDOM 0.2
+#define SCALERANDOM 0.2
 
 // #define REALISTIC_WAVES 1
 
@@ -197,12 +199,15 @@ void Whr_Generator(){
 	WeathersNH.Sea2.BumpScale = bumpscale;
 	WeathersNH.Sea2.PosShift = 1.2;
 
-	float Amp1 = 3 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain)
+	float Amp1rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
+	float Amp1 = (3.0 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain))*Amp1rand;
 	WeathersNH.Sea2.Amp1 = Amp1;
 	WeathersNH.Sea2.AnimSpeed1 = 4.0;
 
+	float Scale1rand = 2.0*(frnd()-0.5)*SCALERANDOM + 1.0;
 	float scale1 = WIND2WAVELENGTH/(winds + effectiveRain);
 	if (scale1 > 1.0) {scale1 = 1.0;}
+	scale1 = scale1*Scale1rand; 
 	WeathersNH.Sea2.Scale1 = scale1;
 
 
@@ -210,21 +215,23 @@ void Whr_Generator(){
 	string waveSpeedZ = f2s(-WIND2WAVESPEED*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
-
+	float Amp2rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
 	float Amp2 = WIND2AMPLITUDE*WIND2AMPLITUDE2*(winds + effectiveRain);
-	WeathersNH.Sea2.Amp2 = Amp2;
+	WeathersNH.Sea2.Amp2 = Amp2*Amp2rand;
 	WeathersNH.Sea2.AnimSpeed2 = 4.0;
-	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/(winds + effectiveRain);
+
+	float Scale2rand = 2.0*(frnd()-0.5)*SCALERANDOM + 1.0;
+	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/(winds + effectiveRain)*Scale2rand;
 
 
-	float randomDir = frnd()*PI;
+	// float randomDir = frnd()*PI;
 	// trace("random dir: " + randomDir);
 	string waveSpeed2X = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*sin(fWindA), 2);
 	string waveSpeed2Z = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
 
 	WeathersNH.Sea2.FoamV = Amp1*0.5;
-	WeathersNH.Sea2.FoamK = 0.11 - 0.04*effectiveRain/RAIN2WIND/25.0;
+	WeathersNH.Sea2.FoamK = 0.1 - 0.04*effectiveRain/RAIN2WIND/25.0;
 	WeathersNH.Sea2.FoamUV = scale1;
 	WeathersNH.Sea2.FoamTexDisturb = 1.2;
 
