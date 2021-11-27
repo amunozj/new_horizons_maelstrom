@@ -224,7 +224,7 @@ void Whr_Generator(){
 	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
 
 	WeathersNH.Sea2.FoamV = Amp1*0.5;
-	WeathersNH.Sea2.FoamK = 0.1 - 0.05*effectiveRain/RAIN2WIND/25.0;
+	WeathersNH.Sea2.FoamK = 0.11 - 0.04*effectiveRain/RAIN2WIND/25.0;
 	WeathersNH.Sea2.FoamUV = scale1;
 	WeathersNH.Sea2.FoamTexDisturb = 1.2;
 
