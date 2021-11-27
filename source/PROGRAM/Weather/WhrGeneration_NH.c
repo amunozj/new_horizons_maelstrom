@@ -2,17 +2,21 @@
 #include "Weather\Init\WhrFogRainCheck_NH.c"
 #include "Weather\Init\WhrDebugInfo_NH.c"
 
+#define GENERATIONDEBUG 0
+
 #define WIND2WAVESPEED 0.25
 #define WIND2WAVELENGTH 8.0
 #define WIND2AMPLITUDE 0.3
 
-#define RAIN2AMPLITUDE 0.15
-#define RAIN2WAVELENGTH 0.25
-#define RAIN2ANIM 0.01
-#define RAIN2FOAMV 0.025
-#define RAIN2BUMPSCALE 0.35
+// #define RAIN2AMPLITUDE 0.15
+// #define RAIN2WAVELENGTH 0.25
+// #define RAIN2ANIM 0.01
+// #define RAIN2FOAMV 0.025
+// #define RAIN2BUMPSCALE 0.35
+#define RAIN2AMPLITUDE 2.0
+#define RAIN2WIND 1.0
 
-#define WIND2WAVELENGTH2 2.0
+#define WIND2WAVELENGTH2 1.5
 #define WIND2AMPLITUDE2 0.1
 #define WIND2BUMPSCALE 1.0
 #define WIND2FOAMV 0.175
@@ -69,10 +73,10 @@ void Whr_Generator(){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	// wRain = 80;
+	// wRain = 100;
 	//fog = 20;
 	//curTime = 6;
-	// winds = 20;
+	// winds = 10;
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
@@ -186,52 +190,61 @@ void Whr_Generator(){
 		Sea.MaxSeaHeight = 30.0;
 	}
 
+	float effectiveRain = (wRain-75)*RAIN2WIND;
+	if (effectiveRain < 0) effectiveRain = 0;
 
-	float bumpscale = WIND2BUMPSCALE*WIND2WAVELENGTH/(winds + RAIN2BUMPSCALE*wRain);
-	if (bumpscale > 1.0) {bumpscale = 1.0;}
+	float bumpscale = 0.2;
 	WeathersNH.Sea2.BumpScale = bumpscale;
-	trace("WeathersNH.Sea2.BumpScale:" + WeathersNH.Sea2.BumpScale);
-	WeathersNH.Sea2.PosShift = 0.2;
+	WeathersNH.Sea2.PosShift = 1.2;
 
-	WeathersNH.Sea2.Amp1 = 3 + WIND2AMPLITUDE*winds + RAIN2AMPLITUDE*wRain;
-	// WeathersNH.Sea2.Amp1 = 9;
-	WeathersNH.Sea2.AnimSpeed1 = 4 - RAIN2ANIM*wRain;
+	float Amp1 = 3 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain)
+	WeathersNH.Sea2.Amp1 = Amp1;
+	WeathersNH.Sea2.AnimSpeed1 = 4.0;
 
-	float scale1 = WIND2WAVELENGTH/(winds + RAIN2WAVELENGTH*wRain);
+	float scale1 = WIND2WAVELENGTH/(winds + effectiveRain);
 	if (scale1 > 1.0) {scale1 = 1.0;}
 	WeathersNH.Sea2.Scale1 = scale1;
 
 
-	string waveSpeedZ = f2s(-WIND2WAVESPEED*winds*sin(fWindA), 2);
-	string waveSpeedX = f2s(-WIND2WAVESPEED*winds*cos(fWindA), 2);
+	string waveSpeedX = f2s(-WIND2WAVESPEED*(winds + effectiveRain)*sin(fWindA), 2);
+	string waveSpeedZ = f2s(-WIND2WAVESPEED*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
 
-
-	WeathersNH.Sea2.Amp2 = WIND2AMPLITUDE*WIND2AMPLITUDE2*winds;
-	WeathersNH.Sea2.AnimSpeed2 = 8.0;
-	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/winds;
+	float Amp2 = WIND2AMPLITUDE*WIND2AMPLITUDE2*(winds + effectiveRain);
+	WeathersNH.Sea2.Amp2 = Amp2;
+	WeathersNH.Sea2.AnimSpeed2 = 4.0;
+	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/(winds + effectiveRain);
 
 
 	float randomDir = frnd()*PI;
-	trace("random dir: " + randomDir);
-	string waveSpeed2Z = f2s(-WIND2WAVESPEED*winds*sin(randomDir), 2);
-	string waveSpeed2X = f2s(-WIND2WAVESPEED*winds*cos(randomDir), 2);
+	// trace("random dir: " + randomDir);
+	string waveSpeed2X = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*sin(fWindA), 2);
+	string waveSpeed2Z = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
 
-	WeathersNH.Sea2.FoamV = 1.0 + WIND2FOAMV*winds + RAIN2FOAMV*wRain;
-	WeathersNH.Sea2.FoamK = 0.2;
-	WeathersNH.Sea2.FoamUV = 0.2;
-	WeathersNH.Sea2.FoamTexDisturb = 0.2;
+	WeathersNH.Sea2.FoamV = Amp1*0.5;
+	WeathersNH.Sea2.FoamK = 0.1 - 0.05*effectiveRain/RAIN2WIND/25.0;
+	WeathersNH.Sea2.FoamUV = scale1;
+	WeathersNH.Sea2.FoamTexDisturb = 1.2;
 
 
+	if (GENERATIONDEBUG){
 
-	trace("WeathersNH.Sea2.Amp:" + WeathersNH.Sea2.Amp1 + ", " + WeathersNH.Sea2.Amp2);
-	trace("WeathersNH.Sea2.AnimSpeed:" + WeathersNH.Sea2.AnimSpeed1+ ", " + WeathersNH.Sea2.AnimSpeed2);
-	trace("WeathersNH.Sea2.Scale:" + WeathersNH.Sea2.Scale1 + ", " + WeathersNH.Sea2.Scale2);
-	trace("WeathersNH.Sea2.MoveSpeed:" + WeathersNH.Sea2.MoveSpeed1 + ", " + WeathersNH.Sea2.MoveSpeed2);
+		trace("WeathersNH.Sea2.Amp:" + WeathersNH.Sea2.Amp1 + ", " + WeathersNH.Sea2.Amp2);
+		trace("WeathersNH.Sea2.AnimSpeed:" + WeathersNH.Sea2.AnimSpeed1+ ", " + WeathersNH.Sea2.AnimSpeed2);
+		trace("WeathersNH.Sea2.Scale:" + WeathersNH.Sea2.Scale1 + ", " + WeathersNH.Sea2.Scale2);
+		trace("WeathersNH.Sea2.MoveSpeed:" + WeathersNH.Sea2.MoveSpeed1 + ", " + WeathersNH.Sea2.MoveSpeed2);
 
-	// Whr_DebugInfo();
+		trace("WeathersNH.Sea2.FoamV:" + WeathersNH.Sea2.FoamV);
+		trace("WeathersNH.Sea2.FoamK:" + WeathersNH.Sea2.FoamK);
+		trace("WeathersNH.Sea2.FoamUV:" + WeathersNH.Sea2.FoamUV);
+		trace("WeathersNH.Sea2.FoamTexDisturb:" + WeathersNH.Sea2.FoamTexDisturb);
+
+
+		Whr_DebugInfo();
+	}
+
 }
 
 
