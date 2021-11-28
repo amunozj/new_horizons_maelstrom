@@ -145,10 +145,6 @@ void Whr_FogRainCheck(){
 	WeathersNH.Rain.DropsColor = argb(63,255,255,255);
 	WeathersNH.Lightning.Enable = false;
 
-	if(wRain >= 60){
-		WeathersNH.StormSky = true;
-	}	
-
 	if (wRain > 75)
 	{
 		WeatherParams.Rain = true;
@@ -166,11 +162,12 @@ void Whr_FogRainCheck(){
 		WeathersNH.Rain.MaxBlend = 75;
 		WeathersNH.Rain.TimeBlend = 2000;
 
-		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = false;}		//UZVER
+		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = true;}		//UZVER
 
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
 		if(wRain > 80 && wRain < 85){
+			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 14.0;
 			WeathersNH.Rain.MaxBlend = 95;
 			WeathersNH.Rain.DropLength = (1.5);

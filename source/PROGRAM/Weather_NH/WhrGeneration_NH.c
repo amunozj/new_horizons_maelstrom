@@ -5,7 +5,7 @@
 #define GENERATIONDEBUG 0
 
 #define WIND2WAVESPEED 0.25
-#define WIND2WAVELENGTH 8.0
+#define WIND2WAVELENGTH 6.0
 #define WIND2AMPLITUDE 0.3
 
 // #define RAIN2AMPLITUDE 0.15
@@ -21,8 +21,9 @@
 #define WIND2BUMPSCALE 1.0
 #define WIND2FOAMV 0.175
 
-#define AMPLITUDERANDOM 0.3
-#define SCALERANDOM 0.3
+#define AMPLITUDERANDOM 0.4
+#define SCALERANDOM 0.4
+#define FOAMRANDOM 0.025
 
 // #define REALISTIC_WAVES 1
 
@@ -73,10 +74,10 @@ void Whr_Generator(){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	wRain = 0;
-	fog = 10;
+	// wRain = 100;
+	// fog = 10;
 	//curTime = 6;
-	winds = 30;
+	// winds = 30;
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
@@ -172,15 +173,15 @@ void Whr_Generator(){
 		Sea.MaxSeaHeight = 30.0;
 	}
 
-	float effectiveRain = (wRain-75)*RAIN2WIND;
+	float effectiveRain = (wRain-70)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
-	float bumpscale = 0.2;
+	float bumpscale = 0.03 + frnd()*0.05;
 	WeathersNH.Sea2.BumpScale = bumpscale;
-	WeathersNH.Sea2.PosShift = 1.2;
+	WeathersNH.Sea2.PosShift = 1.0;
 
 	float Amp1rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
-	float Amp1 = (3.0 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain))*Amp1rand;
+	float Amp1 = (4.0 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain))*Amp1rand;
 	WeathersNH.Sea2.Amp1 = Amp1;
 	WeathersNH.Sea2.AnimSpeed1 = 4.0;
 
@@ -196,7 +197,7 @@ void Whr_Generator(){
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
 	float Amp2rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
-	float Amp2 = WIND2AMPLITUDE*WIND2AMPLITUDE2*(winds + effectiveRain);
+	float Amp2 = 1 + WIND2AMPLITUDE*WIND2AMPLITUDE2*(winds + effectiveRain);
 	WeathersNH.Sea2.Amp2 = Amp2*Amp2rand;
 	WeathersNH.Sea2.AnimSpeed2 = 4.0;
 
@@ -210,9 +211,10 @@ void Whr_Generator(){
 	string waveSpeed2Z = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
 
-	WeathersNH.Sea2.FoamV = Amp1*0.5;
-	WeathersNH.Sea2.FoamK = 0.1 - 0.04*effectiveRain/RAIN2WIND/25.0;
-	WeathersNH.Sea2.FoamUV = scale1;
+	float foamrand = 2.0*(frnd()-0.5)*FOAMRANDOM;
+	WeathersNH.Sea2.FoamV = Amp1*(0.6 + foamrand);
+	WeathersNH.Sea2.FoamK = 0.1 - 0.05*effectiveRain/RAIN2WIND/25.0;
+	WeathersNH.Sea2.FoamUV = scale1*4;
 	WeathersNH.Sea2.FoamTexDisturb = 1.2;
 
 

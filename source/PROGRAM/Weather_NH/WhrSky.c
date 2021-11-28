@@ -20,6 +20,8 @@ void WhrCreateSkyEnvironment()
 	aref aSky;
 	makearef(aSky, aCurWeather.Sky);
 
+	trace("Sky weather: " + aCurWeather.id);
+
 	DeleteAttribute(&Sky, "")
 	if(!isEntity(&Sky))
 	{
@@ -31,8 +33,13 @@ void WhrCreateSkyEnvironment()
             LayerAddObject("sea_reflection", &Sky, 11);
 	}
 
-	FillSkyDir(&Sky);
-	//Sky.Dir = Whr_GetString(aSky, "Dir");
+	// FillSkyDir(&Sky);
+	Sky.Dir = Whr_GetString(aSky, "Dir");
+
+	if (wRain > 60)
+	{
+		Sky.Dir = "weather\skies\Storm01\";
+	}
 
 	Sky.Color = Whr_GetColor(aSky, "Color");
 	Sky.RotateSpeed = Whr_GetFloat(aSky, "Rotate"); // Warship 02.06.09

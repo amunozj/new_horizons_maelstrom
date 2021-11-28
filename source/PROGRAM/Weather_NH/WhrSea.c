@@ -51,7 +51,7 @@ void WhrCreateSeaEnvironment()
 			}
 			else
             {
-				fMaxSeaHeight = 0.5;
+				fMaxSeaHeight = 1.5;
 			}
 			/*FogDensity = 20.0;
 			FogSeaDensity = 20.0;*/

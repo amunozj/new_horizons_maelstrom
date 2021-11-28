@@ -734,7 +734,7 @@ void addProceduralWeather(int iTmp)
 		rainfogcolor = argb(0,20,15,15);
 	}else{
 		int lightfog = argb(0,128,128,128);
-		int darkfog = argb(0,70,70,70);
+		int darkfog = argb(0,33,40,50);
 		float fblend = MakeFloat(wRain)/100.0;
 		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
 	}
@@ -765,6 +765,34 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.FoamK = Whr_GetFloat(WeathersNH, "Sea2.FoamK");
 	Weathers[iTmp].Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
 	Weathers[iTmp].Sea2.FoamTexDisturb = Whr_GetFloat(WeathersNH, "Sea2.FoamTexDisturb");
+
+
+	// Rain Definition -----------------------------------------------------------------
+
+
+	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
+	Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
+	Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
+	Weathers[iTmp].Rain.Height = Whr_GetFloat(WeathersNH, "Rain.Height");
+	Weathers[iTmp].Rain.Radius = Whr_GetFloat(WeathersNH, "Rain.Radius");
+	Weathers[iTmp].Rain.Speed = Whr_GetFloat(WeathersNH, "Rain.Speed");
+	Weathers[iTmp].Rain.Jitter = Whr_GetFloat(WeathersNH, "Rain.Jitter");
+	Weathers[iTmp].Rain.WindSpeedJitter = Whr_GetFloat(WeathersNH, "Rain.WindSpeedJitter");
+	Weathers[iTmp].Rain.MaxBlend = Whr_GetLong(WeathersNH, "Rain.MaxBlend");
+	Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
+
+	Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
+	Weathers[iTmp].Lightning.FlickerTime = 32;
+	Weathers[iTmp].Lightning.SubTexX = 4;
+	Weathers[iTmp].Lightning.SubTexY = 1;
+	Weathers[iTmp].Lightning.ScaleX = 0.7;
+	Weathers[iTmp].Lightning.ScaleY = 1.0;
+	Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
+
+	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
+	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
+	Weathers[iTmp].Sun.Flare.Enable = Whr_GetLong(WeathersNH, "Sun.Flare.Enable");
+	Weathers[iTmp].Sun.Overflow.Enable = Whr_GetLong(WeathersNH, "Sun.Overflow.Enable");
 
 }
 
