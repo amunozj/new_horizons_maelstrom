@@ -33,8 +33,8 @@ void WhrCreateSkyEnvironment()
             LayerAddObject("sea_reflection", &Sky, 11);
 	}
 
-	// FillSkyDir(&Sky);
-	Sky.Dir = Whr_GetString(aSky, "Dir");
+	FillSkyDir(&Sky);
+	// Sky.Dir = Whr_GetString(aSky, "Dir");
 
 	if (wRain > 60)
 	{
