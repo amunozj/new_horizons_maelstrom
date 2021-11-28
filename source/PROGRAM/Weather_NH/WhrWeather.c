@@ -85,6 +85,101 @@ extern int InitWeather();
 
 void SetNextWeather(string sWeatherID)
 {
+
+	Trace("SetNextWeathr: " + sWeatherID)
+	string sWeather = sWeatherID;
+	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
+	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";	
+	if (sWeatherID == "alcove") sWeather = "inside";
+	
+	switch (sWeather)
+	{
+	case "Clear":
+		wRain = 0;
+		ORain = 0;
+		ORBallast = 0;
+		Fog = 0;
+		OFog = 0;
+		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
+		break;
+
+	case "Cloudy":
+		wRain = 60;		// clouds start at 50, overcast starts at 65
+		ORain = 60;		// clouds start at 50, overcast starts at 65
+		gWeatherOvrd = true;
+		sWeatherID = "21 Rain";
+		break;
+
+	case "Overcast":
+		wRain = 70;		// overcast starts at 65, rain starts at 75
+		ORain = 70;		// overcast starts at 65, rain starts at 75
+		gWeatherOvrd = true;
+		break;
+
+	case "Rainy":
+		wRain = 80;		// rain starts at 75, storm starts at 95
+		ORain = 80;		// rain starts at 75, storm starts at 95
+		gWeatherOvrd = true;
+		break;
+
+	case "Heavy Rain":
+		wRain = 90;		// rain starts at 75, storm starts at 95
+		ORain = 90;		// rain starts at 75, storm starts at 95
+		gWeatherOvrd = true;
+		break;
+
+	case "Stormy":		// this produces lightning
+		wRain = 97;		// storm starts at 95
+		ORain = 97;		// storm starts at 95
+		OWind = 25;		// twisters start at minwind >= 28
+		gWeatherOvrd = true;
+		break;
+
+	case "Heavy Storm":	// this produces twisters, "Day Storm"
+		wRain = 100;	// storm starts at 95
+		ORain = 100;	// storm starts at 95
+		ORBallast = 15;
+		OWind = 30;		// twisters start at minwind >= 28
+		OWBallast = 15;
+		gWeatherOvrd = true;
+		break;
+
+	case "Foggy":
+		Fog = 25;		// produces fog density of 0.00375
+		OFog = 25;		// produces fog density of 0.00375
+		gWeatherOvrd = true;
+		break;
+
+	case "Heavy Fog":
+		Fog = 40;		// produces fog density of 0.00625
+		OFog = 40;		// produces fog density of 0.00625
+		gWeatherOvrd = true;
+		break;
+
+	case "Black Pearl Fight":
+		wRain = 90;
+		Fog = 25;
+		OFog = 25;
+		OWind = 25;
+		gWeatherOvrd = true;
+		break;
+
+	case "IslaDeMuerte":
+		Fog = 80;		// produces fog density of 0.02
+		OFog = 80;		// produces fog density of 0.02
+		gWeatherOvrd = true;
+		break;
+
+	case "Super Fog":
+		Fog = 999;
+		OFog = 999;
+		gWeatherOvrd = true;
+		break;
+
+	}
+
+	Whr_Generator();
+
 	// find weather
 	iNextWeatherNum = -1;
 	for (int i=0; i<MAX_WEATHERS; i++)
@@ -92,7 +187,7 @@ void SetNextWeather(string sWeatherID)
 		if (!CheckAttribute(&Weathers[i], "id")) { continue; }
 		if (Weathers[i].id == sWeatherID)
 		{
-			iNextWeatherNum = i;
+			iCurWeatherNum = i;
 			if (true)
 			{
 				Trace("iNextWeatherNum = " + iNextWeatherNum);
@@ -100,6 +195,8 @@ void SetNextWeather(string sWeatherID)
 			return;
 		}
 	}
+
+	iCurWeatherNum = FindWeatherByHour(MakeInt(GetHour()));	
 }
 
 // call this with sDir = "" to use old wind direction
