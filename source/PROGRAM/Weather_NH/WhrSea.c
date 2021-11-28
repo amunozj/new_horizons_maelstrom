@@ -45,9 +45,9 @@ void WhrCreateSeaEnvironment()
 			Sea.MaxDim = 65536;
 			Sea.MinDim = 128;
 			Sea.GridStep = 0.07;//GridStepPC*5.0;
-			if (CheckAttribute(aCurWeather, "Storm") && sti(aCurWeather.Storm) == true)
+			if(bSeaActive && !ownDeckStarted())
 			{
-				fMaxSeaHeight = 2.0;
+				fMaxSeaHeight = 5.0;
 			}
 			else
             {
@@ -78,7 +78,7 @@ void WhrCreateSeaEnvironment()
 	}
 	else
 	{
-        if (CheckAttribute(aCurWeather, "Storm") && sti(aCurWeather.Storm) == true)
+        if(bSeaActive && !ownDeckStarted())
 		{
 		    SetSeaSettings();
 			fMaxSeaHeight = 200.0;

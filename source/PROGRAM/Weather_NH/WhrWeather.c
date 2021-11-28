@@ -715,6 +715,7 @@ int FindWeatherByHour(int nHour)
 
 void addProceduralWeather(int iTmp)
 {
+	// Fog deffinition ---------------------------------------------------------------------
 	Weathers[iTmp].Fog.Enable = Whr_GetLong(WeathersNH, "Fog.Enable");
 	Weathers[iTmp].Fog.Start =  Whr_GetFloat(WeathersNH, "Fog.Start");
 	Weathers[iTmp].Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height");
@@ -744,6 +745,27 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Fog.Color = rainfogcolor;
 	Weathers[iTmp].SpecialSeaFog.Color = rainfogcolor;
+
+
+	// Sea Definition -----------------------------------------------------
+	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
+	Weathers[iTmp].Sea2.PosShift = Whr_GetFloat(WeathersNH, "ea2.PosShift");
+
+	Weathers[iTmp].Sea2.Amp1 = Whr_GetFloat(WeathersNH, "Sea2.Amp1");
+	Weathers[iTmp].Sea2.AnimSpeed1 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed1");
+	Weathers[iTmp].Sea2.Scale1 = Whr_GetFloat(WeathersNH, "Sea2.Scale1");
+	Weathers[iTmp].Sea2.MoveSpeed1 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed1");
+
+	Weathers[iTmp].Sea2.Amp2 = Whr_GetFloat(WeathersNH, "Sea2.Amp2");
+	Weathers[iTmp].Sea2.AnimSpeed2 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed2");
+	Weathers[iTmp].Sea2.Scale2 = Whr_GetFloat(WeathersNH, "Sea2.Scale2");
+	Weathers[iTmp].Sea2.MoveSpeed2 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed2");
+
+	Weathers[iTmp].Sea2.FoamV = Whr_GetFloat(WeathersNH, "Sea2.FoamV");
+	Weathers[iTmp].Sea2.FoamK = Whr_GetFloat(WeathersNH, "Sea2.FoamK");
+	Weathers[iTmp].Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
+	Weathers[iTmp].Sea2.FoamTexDisturb = Whr_GetFloat(WeathersNH, "Sea2.FoamTexDisturb");
+
 }
 
 int FindBlendWeather(int nHour)
