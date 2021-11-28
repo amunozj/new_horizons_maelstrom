@@ -7,7 +7,7 @@ void Whr_FogRainCheck(){
 //  LDH more fog in mornings - 26Feb09
 	int tempFog = fog;
 	int theHour = GetHour();
-	if (theHour >= 5 && theHour < 9) fog += 30-theHour;	// +8, 7, 6, 5, don't use random number here
+	if (theHour >= 5 && theHour < 9) fog += 20-theHour;	// +8, 7, 6, 5, don't use random number here
 
 //JRH -->
 	ref PChar = GetMainCharacter();

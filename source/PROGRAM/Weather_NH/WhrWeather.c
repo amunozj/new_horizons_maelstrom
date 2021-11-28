@@ -302,7 +302,7 @@ void CreateWeatherEnvironment()
 		if (iPrevWeather == -1) { iPrevWeather = iCurWeatherNum; }
 		iCurWeatherHour = iHour;
 		iCurWeatherNum = iNextWeatherNum;
-		iNextWeatherNum = -1;
+		// iNextWeatherNum = -1;
 	}
 	else
 	{
@@ -315,6 +315,7 @@ void CreateWeatherEnvironment()
 	
 	Whr_Generator();
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	iNextWeatherNum = iBlendWeatherNum;
 	addProceduralWeather(iBlendWeatherNum);
 
 	int iCurLocation;
@@ -812,6 +813,8 @@ int FindWeatherByHour(int nHour)
 
 void addProceduralWeather(int iTmp)
 {
+
+	trace("addProceduralWeather ID: " + Weathers[iTmp].id);
 	// Fog deffinition ---------------------------------------------------------------------
 	Weathers[iTmp].Fog.Enable = Whr_GetLong(WeathersNH, "Fog.Enable");
 	Weathers[iTmp].Fog.Start =  Whr_GetFloat(WeathersNH, "Fog.Start");
