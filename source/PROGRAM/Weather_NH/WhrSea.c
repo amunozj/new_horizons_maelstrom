@@ -70,7 +70,7 @@ void WhrCreateSeaEnvironment()
 			Sea.MaxDim = 65536;
 			Sea.MinDim = 64;
 			Sea.GridStep = GridStepPC;
-			fMaxSeaHeight = 0.5;// boal бухты затапливает 5.0;
+			fMaxSeaHeight = 0.5;// boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 5.0;
 			Sea.Sea2.LodScale = 2.0;
 			Sea.Sea2.GridStep = 0.15;
 			//SetSeaSettings();
@@ -82,7 +82,7 @@ void WhrCreateSeaEnvironment()
 		{
 		    SetSeaSettings();
 			fMaxSeaHeight = 200.0;
-			Log_TestInfo("Шторм включен, волны по Мах разрешены");
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		}
 		else
 		{
@@ -215,7 +215,7 @@ void WhrCreateSeaEnvironment()
 	Sea.isDone = "";
 	//Log_TestInfo("Whether Sea.MaxSeaHeight " + Sea.MaxSeaHeight);
 
-	// boal 14/09/06 запоминаем стреднюю волну для моря (не локации)
+	// boal 14/09/06 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 	if (bSeaActive && !bAbordageStarted)
 	{
 		pchar.SystemInfo.ScaleSeaHeight = GetScaleSeaHeight();
@@ -258,17 +258,17 @@ void SetSeaGridStep(float SeaDetails)
 	Sea.Sea2.SimpleSea = sti(InterfaceStates.SimpleSea);
 }
 
-// boal 14.09.06 относительная высота волны
+// boal 14.09.06 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 float GetScaleSeaHeight()
 {
 	/*
-	из ядра
+	пїЅпїЅ пїЅпїЅпїЅпїЅ
 	float fScale = (fMaxSeaHeight >= _fAmp1 + _fAmp2) ? 1.0f : fMaxSeaHeight / (_fAmp1 + _fAmp2);
 
 		fAmp1 = _fAmp1 * fScale;
 		fAmp2 = _fAmp2 * fScale;
 
-    будеи считать среднюю волну как (а1 + а2)/2
+    пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (пїЅ1 + пїЅ2)/2
 	*/
 	float fMaxSeaHeight = 0.0;
 

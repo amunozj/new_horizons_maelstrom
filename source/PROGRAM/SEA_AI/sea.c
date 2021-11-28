@@ -646,8 +646,11 @@ void SeaLogin(ref Login)
 		trace("SEA: sealogin loading island " + sIslandID);
 		CreateEntity(&Island, "Island");
 		Island.LightingPath = GetLightingPath();
+		// trace("Island lighting path: " + Island.LightingPath);
 		//20180715
-		Island.FogDensity = Weather.Fog.IslandDensity;
+		// trace("WeathersNH IslandDensity: " + Whr_GetFloat(WeathersNH, "Fog.IslandDensity") + " Weather IslandDensity: " + Whr_GetFloat(Weather, "Fog.IslandDensity"))
+		
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
         Island.ImmersionDistance = 450000.0;
 		Island.ImmersionDepth = 0.0;
 		if (GetTargetPlatform() != "xbox")
