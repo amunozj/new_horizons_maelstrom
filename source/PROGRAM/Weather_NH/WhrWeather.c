@@ -612,8 +612,12 @@ void Whr_TimeUpdate()
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
-	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
-
+	addProceduralWeather(iCurWeatherNum);	
+	Whr_Generator();
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	iNextWeatherNum = iBlendWeatherNum;
+	addProceduralWeather(iBlendWeatherNum);
+	
 	if( iBlendWeatherNum < 0 ) {return;}
 
 	sCurrentFog = "Fog";
