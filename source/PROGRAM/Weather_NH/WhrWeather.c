@@ -617,7 +617,7 @@ void Whr_TimeUpdate()
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
-	addProceduralWeather(iBlendWeatherNum);
+	// addProceduralWeather(iBlendWeatherNum);
 
 
 	if( iBlendWeatherNum < 0 ) {return;}
@@ -652,7 +652,6 @@ void Whr_TimeUpdate()
 	if( nNewHour != nOldHour )
 	{
 		Whr_UpdateWeatherHour();
-		Whr_Generator();
 	}
 	// update weather: sun lighting
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
@@ -683,6 +682,7 @@ void Whr_TimeUpdate()
 
 void Whr_UpdateWeatherHour()
 {
+
 	bool bOldIsDay = Whr_IsDay();
 	//#20190211-01
 	bool doLightChange = false;
@@ -727,6 +727,14 @@ void Whr_UpdateWeatherHour()
             doShipLightChange(aCurWeather);
         }
  	}
+
+	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
+	// addProceduralWeather(iCurWeatherNum);	
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	iNextWeatherNum = iBlendWeatherNum;
+	Whr_Generator();
+	addProceduralWeather(iBlendWeatherNum);	
+	 
 }
 
 void doShipLightChange(ref aCurWeather)
