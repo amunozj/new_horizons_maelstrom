@@ -36,6 +36,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0003;
@@ -190,7 +191,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
 	Weathers[n].Shark = true;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -212,6 +213,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0003;
@@ -365,7 +367,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
 	Weathers[n].Shark = true;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -387,6 +389,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.005;
@@ -539,7 +542,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
 	Weathers[n].Shark = true;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -561,6 +564,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.005;
@@ -713,7 +717,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
 	Weathers[n].Shark = true;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -735,6 +739,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.005;

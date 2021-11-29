@@ -50,6 +50,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0008;
@@ -234,6 +235,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0008;
@@ -418,6 +420,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0008;
@@ -602,6 +605,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.001;
@@ -786,6 +790,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.001;
@@ -970,6 +975,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.002;

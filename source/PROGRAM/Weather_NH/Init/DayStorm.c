@@ -49,6 +49,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -238,6 +239,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -427,6 +429,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -616,6 +619,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -806,6 +810,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -996,6 +1001,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -1187,6 +1193,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;
@@ -1378,6 +1385,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.VisualMagnitude = 8.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 14000.0;
 	Weathers[n].Fog.Start = 0.0;
 	Weathers[n].Fog.Density = 0.030;

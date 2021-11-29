@@ -176,15 +176,18 @@ void Whr_Generator(){
 	float effectiveRain = (wRain-70)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
+	// Bupmscale the sea grainyness
 	float bumpscale = 0.03 + frnd()*0.05;
 	WeathersNH.Sea2.BumpScale = bumpscale;
-	WeathersNH.Sea2.PosShift = 1.0;
+	WeathersNH.Sea2.PosShift = 100.0;
 
+	// Wave amplitude
 	float Amp1rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
 	float Amp1 = (4.0 + WIND2AMPLITUDE*(winds + RAIN2AMPLITUDE*effectiveRain))*Amp1rand;
 	WeathersNH.Sea2.Amp1 = Amp1;
 	WeathersNH.Sea2.AnimSpeed1 = 4.0;
 
+	// Wave Length
 	float Scale1rand = 2.0*(frnd()-0.5)*SCALERANDOM + 1.0;
 	float scale1 = WIND2WAVELENGTH/(winds + effectiveRain);
 	if (scale1 > 1.0) {scale1 = 1.0;}
@@ -196,11 +199,13 @@ void Whr_Generator(){
 	string waveSpeedZ = f2s(-WIND2WAVESPEED*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed1 = waveSpeedX + ", 0.0, " + waveSpeedZ;
 
+	// Amplitude 2
 	float Amp2rand = 2.0*(frnd()-0.5)*AMPLITUDERANDOM + 1.0;
 	float Amp2 = 1 + WIND2AMPLITUDE*WIND2AMPLITUDE2*(winds + effectiveRain);
 	WeathersNH.Sea2.Amp2 = Amp2*Amp2rand;
 	WeathersNH.Sea2.AnimSpeed2 = 4.0;
 
+	// Wavelength 2
 	float Scale2rand = 2.0*(frnd()-0.5)*SCALERANDOM + 1.0;
 	WeathersNH.Sea2.Scale2 = WIND2WAVELENGTH*WIND2WAVELENGTH2/(winds + effectiveRain)*Scale2rand;
 
@@ -211,11 +216,16 @@ void Whr_Generator(){
 	string waveSpeed2Z = f2s(-WIND2WAVESPEED*WIND2WAVELENGTH2*(winds + effectiveRain)*cos(fWindA), 2);
 	WeathersNH.Sea2.MoveSpeed2 = waveSpeed2X + ", 0.0, " + waveSpeed2Z;
 
+	// Foam properties
 	float foamrand = 2.0*(frnd()-0.5)*FOAMRANDOM;
 	WeathersNH.Sea2.FoamV = Amp1*(0.6 + foamrand);
 	WeathersNH.Sea2.FoamK = 0.1 - 0.05*effectiveRain/RAIN2WIND/25.0;
 	WeathersNH.Sea2.FoamUV = scale1*4;
 	WeathersNH.Sea2.FoamTexDisturb = 1.2;
+
+	// Sea properties
+	WeathersNH.Sea2.Frenel = 0.1;
+	WeathersNH.Sea2.Reflection = 0.5;
 
 
 	if (GENERATIONDEBUG){

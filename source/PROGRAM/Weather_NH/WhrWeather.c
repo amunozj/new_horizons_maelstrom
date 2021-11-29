@@ -308,10 +308,12 @@ void CreateWeatherEnvironment()
 	{
 		Whr_Generator();
 		iCurWeatherHour = iHour;
-		iCurWeatherNum = FindWeatherByHour(iHour)		
+		iCurWeatherNum = FindWeatherByHour(iHour);
+		addProceduralWeather(iCurWeatherNum);
 	}
 
-	addProceduralWeather(iCurWeatherNum);
+	// Whr_Generator();	
+
 	
 	Whr_Generator();
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
@@ -612,12 +614,12 @@ void Whr_TimeUpdate()
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
-	addProceduralWeather(iCurWeatherNum);	
-	Whr_Generator();
+	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 	addProceduralWeather(iBlendWeatherNum);
-	
+
+
 	if( iBlendWeatherNum < 0 ) {return;}
 
 	sCurrentFog = "Fog";
@@ -650,6 +652,7 @@ void Whr_TimeUpdate()
 	if( nNewHour != nOldHour )
 	{
 		Whr_UpdateWeatherHour();
+		Whr_Generator();
 	}
 	// update weather: sun lighting
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
@@ -665,6 +668,12 @@ void Whr_TimeUpdate()
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
+
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
 	// update sky: fog
 	Sky.TimeUpdate = fTime;
@@ -870,7 +879,10 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
 	Weathers[iTmp].Sea2.FoamTexDisturb = Whr_GetFloat(WeathersNH, "Sea2.FoamTexDisturb");
 
+	Weathers[iTmp].Sea2.Frenel = Whr_GetFloat(WeathersNH, "Sea2.Frenel");
+	Weathers[iTmp].Sea2.Reflection = Whr_GetFloat(WeathersNH, "Sea2.Reflection");
 
+	// trace("Weather NH Frenel:" + Whr_GetFloat(WeathersNH, "Sea2.Frenel") + "Weathers Frenel:" + Whr_GetFloat(Weathers[iTmp], "Sea2.Frenel"))
 	// Rain Definition -----------------------------------------------------------------
 
 
@@ -884,6 +896,7 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Rain.WindSpeedJitter = Whr_GetFloat(WeathersNH, "Rain.WindSpeedJitter");
 	Weathers[iTmp].Rain.MaxBlend = Whr_GetLong(WeathersNH, "Rain.MaxBlend");
 	Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
+	Weathers[iTmp].Rain.DropsTexture = "weather\rain_drops.tga.tx";
 
 	Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
 	Weathers[iTmp].Lightning.FlickerTime = 32;

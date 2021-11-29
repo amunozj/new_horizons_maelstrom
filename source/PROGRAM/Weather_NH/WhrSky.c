@@ -41,7 +41,8 @@ void WhrCreateSkyEnvironment()
 		Sky.Dir = "weather\skies\Storm01\";
 	}
 
-	Sky.Color = Whr_GetColor(aSky, "Color");
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	// Sky.Color = Whr_GetColor(aSky, "Color");
 	Sky.RotateSpeed = Whr_GetFloat(aSky, "Rotate"); // Warship 02.06.09
 	Sky.Angle = Whr_GetFloat(aSky, "Angle");
 	Sky.Size = Whr_GetFloat(aSky, "Size");
@@ -64,6 +65,28 @@ void WhrCreateSkyEnvironment()
 	}
 
 	Sky.isDone = "";
+}
+
+void FillSkyData(int nw1, int nw2)
+{
+	if( nw1 < 0 || nw1 >= MAX_WEATHERS ) {return;}
+
+	aref aSky; makearef(aSky,  Weathers[nw1].Sky);
+
+	float waveSpeedXf, waveSpeedZf, waveSpeed2Xf, waveSpeed2Zf;
+
+	if( nw2 < 0 )
+	{
+		Sky.Color = Whr_GetColor(aSky, "Color");
+	}
+	else
+	{
+		aref aSky2; makearef(aSky2, Weathers[nw2].Sky);
+		float fBlend = stf(Environment.Time) - sti(Environment.Time);
+
+		Sky.Color =  Whr_BlendColor( fBlend, Whr_GetColor(aSky, "Color"), Whr_GetColor(aSky2, "Color") );	
+	}
+
 }
 
 // Warship 02.06.09

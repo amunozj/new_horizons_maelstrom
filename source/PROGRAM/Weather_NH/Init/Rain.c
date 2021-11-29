@@ -32,6 +32,7 @@ int Whr_InitRain(int n)
 	Weathers[n].Sky.Angle = 0.0;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.002;

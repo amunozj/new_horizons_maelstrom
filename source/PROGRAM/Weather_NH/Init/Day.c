@@ -36,6 +36,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0003;
@@ -211,6 +212,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = false;
+	Weathers[n].SpecialSeaFog.Enable = false;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0003;
@@ -386,6 +388,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.00025;
@@ -541,6 +544,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.00025;
@@ -696,6 +700,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 150;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0009;
@@ -851,6 +856,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 450;
 	Weathers[n].Fog.Start = 1;
 	Weathers[n].Fog.Density = 0.0008;
@@ -1018,6 +1024,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 450;
 	Weathers[n].Fog.Start = 1;
 	Weathers[n].Fog.Density = 0.0008;
@@ -1185,6 +1192,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Planets.enable = false;
 
 	Weathers[n].Fog.Enable = true;
+	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0005;
