@@ -224,8 +224,22 @@ void Whr_Generator(){
 	WeathersNH.Sea2.FoamTexDisturb = 1.2;
 
 	// Sea properties
-	WeathersNH.Sea2.Frenel = 0.1;
+	WeathersNH.Sea2.Frenel = 0.1 + 0.1*frnd();
 	WeathersNH.Sea2.Reflection = 0.5;
+
+	int futureHour = makeint(Environment.time) + 1;
+	int randomPick, itmp;
+	if (futureHour>10 && futureHour<19)
+	{
+		randomPick = rand(18-10) + 10;
+		itmp = FindWeatherByHour(randomPick);
+		trace("Random number: " + itmp + " Weather id: " + Weathers[itmp].id)
+		WeathersNH.Sea2.WaterColor = Whr_GetColor(Weathers[itmp], "Bak.Sea2.WaterColor");
+	}else
+	{
+		itmp = FindWeatherByHour(futureHour);
+		WeathersNH.Sea2.WaterColor = Whr_GetColor(Weathers[itmp], "Sea2.WaterColor");
+	}
 
 
 	if (GENERATIONDEBUG){

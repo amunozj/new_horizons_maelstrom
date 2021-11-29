@@ -890,6 +890,8 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.Frenel = Whr_GetFloat(WeathersNH, "Sea2.Frenel");
 	Weathers[iTmp].Sea2.Reflection = Whr_GetFloat(WeathersNH, "Sea2.Reflection");
 
+	Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
+
 	// trace("Weather NH Frenel:" + Whr_GetFloat(WeathersNH, "Sea2.Frenel") + "Weathers Frenel:" + Whr_GetFloat(Weathers[iTmp], "Sea2.Frenel"))
 	// Rain Definition -----------------------------------------------------------------
 
