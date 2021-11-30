@@ -16,7 +16,7 @@
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
 
-#define DEBUG_SEA_OPTICAL 1
+#define DEBUG_SEA_OPTICAL 0
 
 float fWeatherAngleOld, fWeatherSpeedOld;
 int fogBallast, rainBallast, windBallast;
