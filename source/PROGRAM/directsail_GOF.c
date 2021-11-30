@@ -2,7 +2,7 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	0;
+#define DIRECTSAILDEBUG	1;
 #define NAVIGATORMESSAGES 0;
 #define TRANSITIONFACTOR 1.25;
 
@@ -164,7 +164,7 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 		}
 
 		// PB: Possibility to disable random encounters -->
-		if(pchar.location != "")
+		if(pchar.location != WDM_NONE_ISLAND)
 		{
 			ref CurrentIsland = GetIslandByID(pchar.location);
 			if(sti(GetAttribute(CurrentIsland, "Enc_enable")) == false)
@@ -336,10 +336,16 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	string currLandfallDir2 = "";
 
 	// First find optimal locations for current island
-	if (pchar.location != WDM_NONE_ISLAND) 
+	trace("pchar.location: " + pchar.location);
+	if (pchar.location != WDM_NONE_ISLAND){
 		getClosestLocations(pchar.location, &currentLocation, &currentLocationDist, &currLandfallDir, &currentLocation2, &currentLocationDist2, &currLandfallDir2);
 		nextIsland = FindIsland(pchar.location)
 		nextIsland2 = FindIsland(pchar.location)
+	}
+	else{
+		currentLocationDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, worldMap.seaEntryX, worldMap.seaEntryZ);
+		trace("Open Sea distance to entry point: " + currentLocationDist);
+	}
 
 	distance = currentLocationDist;
 	nextLocation = currentLocation;

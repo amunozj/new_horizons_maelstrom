@@ -171,7 +171,7 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 		}
 
 		// PB: Possibility to disable random encounters -->
-		if(pchar.location != "")
+		if(pchar.location != WDM_NONE_ISLAND)
 		{
 			ref CurrentIsland = GetIslandByID(pchar.location);
 			if(sti(GetAttribute(CurrentIsland, "Enc_enable")) == false)

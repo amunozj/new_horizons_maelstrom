@@ -1205,7 +1205,7 @@ void Sea_LoginShip(ref chr)
 		rGroup.AlreadyLoaded = "";
 		ref Pchar = GetMainCharacter();
 		//trace ("ile : " + Pchar.location);
-		if(Pchar.location != "" && Pchar.location != "error") rGroup.location = Pchar.location;
+		if(Pchar.location != WDM_NONE_ISLAND && Pchar.location != "error") rGroup.location = Pchar.location;
 	}
 	RecalculateCargoLoad(chr); // PB: Check if ship is overweight
 	if(CheckAttribute(chr,"fallen")) // Screwface : Need to restore the fallen mast(s) to avoid crashes with set flags
@@ -1878,20 +1878,30 @@ void SetCorrectWorldMapPosition()
 {
 	ref Pchar = GetMaincharacter();
 
-	if(Pchar.location != "" && Pchar.location != "error")
+	float psX = MakeFloat(pchar.Ship.Pos.x);
+	float psZ = MakeFloat(pchar.Ship.Pos.z);	
+
+
+	trace("Sea instance char.pos: " + psX + " , " + psZ);
+
+	float ix, iz;
+	if(Pchar.location != WDM_NONE_ISLAND && Pchar.location != "error")
 	{
 		string island = Pchar.location;
-		float psX = MakeFloat(pchar.Ship.Pos.x);
-		float psZ = MakeFloat(pchar.Ship.Pos.z);
-		float ix = MakeFloat(worldMap.islands.(Island).position.rx);
-		float iz = MakeFloat(worldMap.islands.(Island).position.rz);
+		ix = MakeFloat(worldMap.islands.(Island).position.rx);
+		iz = MakeFloat(worldMap.islands.(Island).position.rz);
 
-		//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
-		worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
-		worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
-
-		// Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
 	}
+	else
+	{
+		ix = worldMap.seaEntryX;
+		iz = worldMap.seaEntryZ;
+	}
+	//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
+	worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
+	worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
+	Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
+
 }
 
 //Boyer add
