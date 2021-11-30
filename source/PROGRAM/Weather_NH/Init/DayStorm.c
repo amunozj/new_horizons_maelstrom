@@ -164,6 +164,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -355,6 +356,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -546,6 +548,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -737,6 +740,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 65, 60);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 65, 60);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.7;
@@ -929,6 +933,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -1122,6 +1127,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 0.3;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 50, 65, 70);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 50, 65, 70);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.8;
@@ -1314,6 +1320,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 0.8;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 85, 105, 100);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 85, 105, 100);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.2;
@@ -1507,6 +1514,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.PosShift = 2.0;
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 65, 60);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 65, 60);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.7;

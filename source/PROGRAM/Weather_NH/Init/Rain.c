@@ -154,6 +154,7 @@ int Whr_InitRain(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 45, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 45, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 205, 205, 205);
 
 	Weathers[n].Sea2.Reflection = 0.6;

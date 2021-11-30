@@ -164,6 +164,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -350,6 +351,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -536,6 +538,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
@@ -722,6 +725,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 10, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 10, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 175, 175, 175);
 
 	Weathers[n].Sea2.Reflection = 0.6;
@@ -908,6 +912,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 10, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 10, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 175, 175, 175);
 
 	Weathers[n].Sea2.Reflection = 0.6;
@@ -1094,6 +1099,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 45);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 30, 45);
 	Weathers[n].Sea2.SkyColor = argb(0, 175, 175, 175);
 
 	Weathers[n].Sea2.Reflection = 0.7;

@@ -159,6 +159,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 50, 70, 90);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 50, 70, 90);
 	Weathers[n].Sea2.SkyColor = argb(0, 205, 205, 205);
 
 	Weathers[n].Sea2.Reflection = 0.7;
@@ -351,6 +352,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 45, 80, 90);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 45, 80, 90);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.8;
@@ -552,10 +554,11 @@ int Whr_InitMorning(int n)
 	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 65, 90);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 65, 90);
 	Weathers[n].Sea2.SkyColor = argb(0, 205, 205, 205);
 
 	Weathers[n].Sea2.Reflection = 0.6;
-		Weathers[n].Sea2.Transparency = 0.1;
+	Weathers[n].Sea2.Transparency = 0.1;
 	Weathers[n].Sea2.Frenel = 0.2;
 	Weathers[n].Sea2.Attenuation = 0.2;
 
@@ -754,6 +757,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 95, 110);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 60, 95, 110);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.5;
