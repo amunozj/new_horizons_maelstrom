@@ -145,10 +145,9 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
-	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
-	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.WaterColor = argb(0, 55, 85, 95);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 55, 85, 95);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.9;
@@ -322,10 +321,9 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
-	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
-	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.WaterColor = argb(0, 55, 85, 95);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 55, 85, 95);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.9;
@@ -497,10 +495,9 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
-	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
-	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.WaterColor = argb(0, 45, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 45, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 205, 205, 205);
 
 	Weathers[n].Sea2.Reflection = 0.9;
@@ -672,10 +669,9 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
-	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
-	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.WaterColor = argb(0, 40, 70, 80);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 40, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 205, 205);
 
 	Weathers[n].Sea2.Reflection = 0.9;
@@ -848,6 +844,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 20, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.6;
