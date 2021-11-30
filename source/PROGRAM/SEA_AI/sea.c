@@ -631,8 +631,22 @@ void SeaLogin(ref Login)
 	}
 // <-- KK
 
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
 	// create all sea modules
 	CreateSeaEnvironment();
+	// CreateWeatherEnvironment();
+
+
+	Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
 
 	Sea.MaxSeaHeight = 50.0;
 
@@ -644,6 +658,7 @@ void SeaLogin(ref Login)
 	if (sIslandID != "")
 	{
 		trace("SEA: sealogin loading island " + sIslandID);
+		
 		CreateEntity(&Island, "Island");
 		Island.LightingPath = GetLightingPath();
 		// trace("Island lighting path: " + Island.LightingPath);
