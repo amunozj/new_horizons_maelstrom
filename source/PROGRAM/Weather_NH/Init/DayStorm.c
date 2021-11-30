@@ -15,7 +15,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Storm = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -205,7 +205,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Storm = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -395,7 +395,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Storm = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = true;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -776,7 +776,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
@@ -967,7 +967,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
-	Weathers[n].Lights = 0;
+	Weathers[n].Lights = 1;
 	Weathers[n].Night = false;
 
 	Weathers[n].Shadow.Density.Head = argb(255,96,96,96);
