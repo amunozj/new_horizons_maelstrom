@@ -727,10 +727,11 @@ void Whr_UpdateWeatherHour()
 	 		}
  		}
  		//#20190211-01
-        if(doLightChange && isSeaEnt) {
-            doShipLightChange(aCurWeather);
-        }
+        // if(doLightChange && isSeaEnt) {
+        //     doShipLightChange(aCurWeather);
+        // }
  	}
+	doShipLightChange(aCurWeather);
 
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -1076,13 +1077,13 @@ string	GetLightingPath()
         sLightingPath = "day1";
         break;
     case "morning8":
-        sLightingPath = "morning1";
+        sLightingPath = "day1";
         break;
     case "morning9":
-        sLightingPath = "morning1";
+        sLightingPath = "day1";
         break;
     case "morning10":
-        sLightingPath = "morning1";
+        sLightingPath = "day1";
         break;
     case "storm1":
         sLightingPath = "evening3";
