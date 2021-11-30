@@ -245,6 +245,14 @@ void WeatherInit()
 		iTotalNumWeathers = InitWeather();
 		UnloadSegment("Weather_NH\WhrInit.c");
 	}
+	int iHour = MakeInt(GetHour());
+	Whr_Generator();
+	iCurWeatherNum = FindWeatherByHour(iHour);
+	addProceduralWeather(iCurWeatherNum);
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	Whr_Generator();
+	addProceduralWeather(iBlendWeatherNum);
+
 }
 
 void DeleteWeatherEnvironment()
