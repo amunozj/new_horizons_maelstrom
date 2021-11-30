@@ -2,7 +2,7 @@
 // GOF 1.2
 /////////////////////////
 
-#define DIRECTSAILDEBUG	1;
+#define DIRECTSAILDEBUG	0;
 #define NAVIGATORMESSAGES 0;
 #define TRANSITIONFACTOR 1.25;
 
@@ -336,7 +336,7 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	string currLandfallDir2 = "";
 
 	// First find optimal locations for current island
-	trace("pchar.location: " + pchar.location);
+	// trace("pchar.location: " + pchar.location);
 	if (pchar.location != WDM_NONE_ISLAND){
 		getClosestLocations(pchar.location, &currentLocation, &currentLocationDist, &currLandfallDir, &currentLocation2, &currentLocationDist2, &currLandfallDir2);
 		nextIsland = FindIsland(pchar.location)
@@ -344,7 +344,7 @@ bool getRTclosestIslandLocs(ref nextIsland)
 	}
 	else{
 		currentLocationDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, worldMap.seaEntryX, worldMap.seaEntryZ);
-		trace("Open Sea distance to entry point: " + currentLocationDist);
+		// trace("Open Sea distance to entry point: " + currentLocationDist);
 	}
 
 	distance = currentLocationDist;
