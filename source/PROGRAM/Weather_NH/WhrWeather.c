@@ -307,10 +307,10 @@ void CreateWeatherEnvironment()
 	}
 	else
 	{
-		Whr_Generator();
+		// Whr_Generator();
 		iCurWeatherHour = iHour;
 		iCurWeatherNum = FindWeatherByHour(iHour);
-		addProceduralWeather(iCurWeatherNum);
+		// addProceduralWeather(iCurWeatherNum);
 	}
 
 	if (DEBUG_SEA_OPTICAL){
@@ -319,10 +319,10 @@ void CreateWeatherEnvironment()
 	}
 
 	
-	Whr_Generator();
+	// Whr_Generator();
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
-	addProceduralWeather(iBlendWeatherNum);
+	// addProceduralWeather(iBlendWeatherNum);
 
 	int iCurLocation;
 	int iTestWeather;
@@ -357,6 +357,22 @@ void CreateWeatherEnvironment()
 		sCurrentFog = "SpecialSeaFog";
 	}
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+
+	if (WeathersNH.Rain == true)
+	{
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
+	}
+
 
 	if (iBlendWeatherNum < 0 )
 	{
