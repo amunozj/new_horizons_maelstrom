@@ -1,4 +1,4 @@
-﻿#define FOGFACTOR 1
+﻿#define FOGFACTOR 1.0
 #define FOGHEIGHTFACTOR 0.5
 
 void Whr_FogRainCheck(){
@@ -102,13 +102,13 @@ void Whr_FogRainCheck(){
 		WeathersNH.Fog.Start = 0.0;
 //		WeathersNH.Fog.Density = (fog*0.00025);
 		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
-		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
+		WeathersNH.Fog.SeaDensity = (fog*0.0005)*FOGFACTOR;
+		WeathersNH.Fog.IslandDensity = (fog*0.0005)*FOGFACTOR;
 		WeathersNH.SpecialSeaFog.Enable = true;
 		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
 		WeathersNH.SpecialSeaFog.Start = 0.0;
-		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
-		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
+		WeathersNH.SpecialSeaFog.Density = (fog*0.0005)*FOGFACTOR;
+		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.0005)*FOGFACTOR;
 	}
 	else{
 		WeathersNH.Fog.Enable = true;

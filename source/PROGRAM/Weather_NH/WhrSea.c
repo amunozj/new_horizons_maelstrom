@@ -50,7 +50,14 @@ void WhrCreateSeaEnvironment()
 			}
 			else
             {
-				fMaxSeaHeight = 1.5;
+				if (ownDeckStarted())
+				{
+					fMaxSeaHeight = 0.5;
+				}
+				else{
+					fMaxSeaHeight = 1.5;
+				}
+				
 			}
 			/*FogDensity = 20.0;
 			FogSeaDensity = 20.0;*/
@@ -252,6 +259,7 @@ void FillSeaData(int nw1, int nw2)
 
 	}
 
+	// trace("Sea Frenel: " + Whr_GetFloat(Sea, "Sea2.Frenel"));
 }
 
 

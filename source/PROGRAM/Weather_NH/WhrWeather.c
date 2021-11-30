@@ -14,8 +14,9 @@
 
 
 #define WIND_NORMAL_POWER		20.0 // NK
-
 #define MAX_WEATHERS   36
+
+#define DEBUG_SEA_OPTICAL 1
 
 float fWeatherAngleOld, fWeatherSpeedOld;
 int fogBallast, rainBallast, windBallast;
@@ -312,7 +313,10 @@ void CreateWeatherEnvironment()
 		addProceduralWeather(iCurWeatherNum);
 	}
 
-	// Whr_Generator();	
+	if (DEBUG_SEA_OPTICAL){
+		Whr_Generator();
+		addProceduralWeather(iCurWeatherNum);
+	}
 
 	
 	Whr_Generator();
@@ -850,23 +854,8 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
 	Weathers[iTmp].SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
 
-	int rainfogcolor;
-	if (iCurWeatherHour<6 || iCurWeatherHour>19){
-		rainfogcolor = argb(0,20,15,15);
-	}else{
-		int lightfog = argb(0,128,128,128);
-		int darkfog = argb(0,33,40,50);
-		float fblend = MakeFloat(wRain)/100.0;
-		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
-	}
-
-	float tmpdensity = Whr_GetFloat(WeathersNH, "Fog.Density");
-	float fblend2 = Clampf(tmpdensity*50.0);
-	int rainfogcolor2 =  Whr_BlendColor(fblend2, Weathers[iTmp].Bak.Fog.Color, rainfogcolor);
-
-	Weathers[iTmp].Fog.Color = rainfogcolor;
-	Weathers[iTmp].SpecialSeaFog.Color = rainfogcolor;
-
+	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
+	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------
 	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
@@ -889,6 +878,8 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Sea2.Frenel = Whr_GetFloat(WeathersNH, "Sea2.Frenel");
 	Weathers[iTmp].Sea2.Reflection = Whr_GetFloat(WeathersNH, "Sea2.Reflection");
+	Weathers[iTmp].Sea2.Attenuation = Whr_GetFloat(WeathersNH, "Sea2.Attenuation");
+	Weathers[iTmp].Sea2.Transparency = Whr_GetFloat(WeathersNH, "Sea2.Transparency");
 
 	Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
 
