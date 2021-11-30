@@ -55,7 +55,7 @@ void WhrCreateSeaEnvironment()
 					fMaxSeaHeight = 0.5;
 				}
 				else{
-					fMaxSeaHeight = 1.5;
+					fMaxSeaHeight = 5.0;
 				}
 				
 			}
