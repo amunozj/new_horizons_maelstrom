@@ -3309,6 +3309,8 @@ if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0 || sti(GetStor
 
   n = InitBlade(n, "bladeA11","bladeA11", 	     "JRH4",  3,  0.00,  99,  200, 10.0, 12.0, 15, 10,  "",        0,     1,    PERIOD_EARLY_EXPLORERS,      PERIOD_NAPOLEONIC); // WoodesRogers quest
 
+  n = InitBlade(n, "bladeMesser","messer", 	     "22",  14,  0.60,  12,  2000, 24.0, 45.0, 35, 25,  "",        0,     0,    PERIOD_GOLDEN_AGE_OF_PIRACY,      PERIOD_NAPOLEONIC); // Langes Messer
+
   n = InitBlade(n, "Barmansknife","Barmansknife",       22,   7,  0.90,   1,    5,  3.0,  9.0, 20,  3,  PIRATE,    0,     1,    PERIOD_EARLY_EXPLORERS,      PERIOD_NAPOLEONIC); // Breadknife (SuperDurnius)//BB USE AS BASE VALUE FOR ECONOMY (CHEAPEST)
   n = InitBlade(n, "Guestsknife","Guestsknife",         22,   6,  0.90,   1,    9,  3.0, 11.0, 25,  4,  PIRATE,    0,     1,    PERIOD_EARLY_EXPLORERS,      PERIOD_NAPOLEONIC); // Knife (SuperDurnius)//BB
   n = InitBlade(n, "MerchantsBlade","MerchantsBlade",   22,   9,  0.90,   1,   59, 10.0, 15.0, 13, 14,  "",        0,     1,    PERIOD_GOLDEN_AGE_OF_PIRACY, PERIOD_NAPOLEONIC); // Merchants Blade (SuperDurnius)//BB(defensive)

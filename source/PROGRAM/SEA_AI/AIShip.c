@@ -3506,6 +3506,7 @@ void Ship_HullHitEvent()
 			bSeriousBoom = false;
 			bInflame = false;
 			Play3DSound("grapes2bort", x, y, z);
+			if (rand(100) < 30) {Play3DSound("episode_boom", x, y, z);}
 			switch(SHIPHIT_PARTICLES)
 			{
 				case 0: CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); break; // one orange puff // stock behavior
