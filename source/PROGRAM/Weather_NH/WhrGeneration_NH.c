@@ -171,10 +171,10 @@ void Whr_Generator(){
 
 	float myWind = maxwind;
 
-	if(Characters[GetMainCharacterIndex()].location !="")
-	{
-		Sea.MaxSeaHeight = 30.0;
-	}
+	// if(Characters[GetMainCharacterIndex()].location !="")
+	// {
+	// 	Sea.MaxSeaHeight = 30.0;
+	// }
 
 	float effectiveRain = (wRain-70)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
