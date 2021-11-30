@@ -142,7 +142,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
+	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
@@ -319,7 +319,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
+	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
@@ -494,7 +494,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
+	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
@@ -669,7 +669,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
+	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
@@ -844,7 +844,7 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
+	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 1.0; //��������������� ����
 
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
