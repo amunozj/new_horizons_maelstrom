@@ -241,8 +241,8 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 	}
 	// else	// LDH - this appears to be an error, but executes properly after the preceeding else code if original condition is false
 	// { 
-	Randomshipevent(); 	// random shiplife events
 	pchar.directsail.count = 0.0;		// LDH - 08Jan09
+	Randomshipevent(); 	// random shiplife events
 	// }
 	if(CheckAttribute(GetMainCharacter(),"mapEnter")) { DeleteAttribute(GetMainCharacter(),"mapEnter"); }//MAXIMUS: check added into BattleInterface for islands search after enable MapEnter
 }
