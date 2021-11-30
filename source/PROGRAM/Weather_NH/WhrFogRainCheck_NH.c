@@ -92,6 +92,7 @@ void Whr_FogRainCheck(){
 		}
 	}
 //<-- JRH
+	WeathersNH.Lights = false;
 
 //  LDH more fog during rain - 26Feb09
 	if (wRain > 75 && fog < 10) fog += (wRain-75)/2;
@@ -124,6 +125,10 @@ void Whr_FogRainCheck(){
 		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
 		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
 		
+	}
+
+	if (fog > 10){
+		WeathersNH.Lights = true;
 	}
 
 	fog = tempFog;		// LDH 26Feb09
@@ -189,7 +194,6 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sun.Glow.Enable = false;
 			WeathersNH.Sun.Flare.Enable = false;
 			WeathersNH.Sun.Overflow.Enable = false;
-			WeathersNH.Lights = false;
 	        WeathersNH.LightingLm = "storm";
 	        WeathersNH.InsideBack = "n";
 			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
@@ -203,6 +207,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);
 			WeathersNH.Storm = true;
+			WeathersNH.Lights = true;			
 			bWeatherIsStorm = true;			
 			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";
 			WeathersNH.Lightning.FlickerTime = 32;
@@ -225,7 +230,6 @@ void Whr_FogRainCheck(){
 			if(minwind >= 28){
 				WeathersNH.Storm = true;
 				WeathersNH.Tornado = true;
-				WeathersNH.Lights = false;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
 				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
 					string PCCaptainTitle;

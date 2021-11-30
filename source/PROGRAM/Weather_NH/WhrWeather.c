@@ -179,8 +179,6 @@ void SetNextWeather(string sWeatherID)
 
 	}
 
-	Whr_Generator();
-
 	// find weather
 	iNextWeatherNum = -1;
 	for (int i=0; i<MAX_WEATHERS; i++)
@@ -770,8 +768,18 @@ void doShipLightChange(ref aCurWeather)
 {
     int j, iCharIdx;
 
+	// Turn on lights due to time
+	bool Lights = false;
+	int Hour = MakeInt(GetHour())
+	if (Hour < 7 || Hour > 22)
+	{
+		Lights = true;
+	}	
+
+	// Combine time and weather
+    Sea.Lights = (Lights || aCurWeather.Lights);
+
     ref rChar;
-    Sea.Lights = aCurWeather.Lights;
     for(j = 0; j < iNumShips; j++) {
         iCharIdx = Ships[j];
         if (iCharIdx < 0 || iCharIdx >= TOTAL_CHARACTERS) continue;
@@ -908,10 +916,6 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
 
-	// trace("Weather NH Frenel:" + Whr_GetFloat(WeathersNH, "Sea2.Frenel") + "Weathers Frenel:" + Whr_GetFloat(Weathers[iTmp], "Sea2.Frenel"))
-	// Rain Definition -----------------------------------------------------------------
-
-
 	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
 	Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
 	Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
@@ -934,8 +938,9 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
-	// Weathers[iTmp].Sun.Flare.Enable = Whr_GetLong(WeathersNH, "Sun.Flare.Enable");
-	// Weathers[iTmp].Sun.Overflow.Enable = Whr_GetLong(WeathersNH, "Sun.Overflow.Enable");
+
+	// Weather lights
+	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
 
 }
 
