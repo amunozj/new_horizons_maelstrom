@@ -908,7 +908,7 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
 
 	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
-	// Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
+	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
 	// Weathers[iTmp].Sun.Flare.Enable = Whr_GetLong(WeathersNH, "Sun.Flare.Enable");
 	// Weathers[iTmp].Sun.Overflow.Enable = Whr_GetLong(WeathersNH, "Sun.Overflow.Enable");
 
