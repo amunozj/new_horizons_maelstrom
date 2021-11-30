@@ -39,7 +39,11 @@ bool DirectsailCheck(bool ActualUpdate)  // called hourly by Whr_UpdateWeather -
 
 	// aborts function if enemyships near, so that you aren't teleported out of an engagement
 	int enemydist = 0;
+	int neutraldist = 0;
 	int nextenemy = 0;
+	int nextneutral = 0;
+	bool enemyNearby = false;
+	bool neutralNearby = false;	
 	int enemyDistLimit;
 	int neutralDistLimit;
 	if (DirectsailCheckFrequency < 15 && CheckAttribute(worldmap, "islands."+pchar.location) && CheckAttribute(worldMap,"directsail.closestisland"))
@@ -123,6 +127,13 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 {
 	DelEventHandler("DirectsailRun", "DirectsailRun");
 
+	int enemydist = 0;
+	int neutraldist = 0;
+	int nextenemy = 0;
+	int nextneutral = 0;
+	bool enemyNearby = false;
+	bool neutralNearby = false;		
+
 	ref pchar = GetMainCharacter();
 
 	int nextIsland
@@ -201,21 +212,38 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 
 		if (DIRECTENCOUNTERCHANCE > rand(100)) // chance check for shipencounter
 		{
-			// encounter markerattribute is attached to player
-			pchar.directsail.encounter = 1;
 
-			CreateEntity(&SeaFader, "fader");
-			SendMessage(&SeaFader, "ls", FADER_PICTURE0, FindReloadPicture("SailHo.tga")); // KK
-			SendMessage(&SeaFader, "lfl", FADER_IN, 0.5, true);
-			PlaySound("#sail_ho");
-			Sea_ReloadStartDirect();	// reloads Sea with new ships at horizon
+			
+			nextenemy = FindClosestShipofRel(GetMainCharacterIndex(), &enemydist, RELATION_ENEMY);
+			if(nextenemy != -1 && enemydist<2*DIRECTENCOUNTERDISTANCE && Characters[nextenemy].ship.type != SHIP_FORT_NAME ) enemyNearby = true;
+
+			nextneutral = FindClosestShipofRel(GetMainCharacterIndex(), &neutraldist, RELATION_NEUTRAL);
+			if(nextneutral != -1 && neutraldist<2*DIRECTENCOUNTERDISTANCE && Characters[nextneutral].ship.type != SHIP_FORT_NAME ) neutralNearby = true;
+
+			if (enemyNearby || neutralNearby)
+			{
+				Trace("No new ships added in encounter because there are already ships in the horizon");
+				return;
+			}
+			else{
+
+				// encounter markerattribute is attached to player
+				pchar.directsail.encounter = 1;
+
+				CreateEntity(&SeaFader, "fader");
+				SendMessage(&SeaFader, "ls", FADER_PICTURE0, FindReloadPicture("SailHo.tga")); // KK
+				SendMessage(&SeaFader, "lfl", FADER_IN, 0.5, true);
+				PlaySound("#sail_ho");
+				Sea_ReloadStartDirect();	// reloads Sea with new ships at horizon
+			}
+
 		}
 	}
-	else	// LDH - this appears to be an error, but executes properly after the preceeding else code if original condition is false
-	{ 
-		Randomshipevent(); 	// random shiplife events
-		pchar.directsail.count = 0.0;		// LDH - 08Jan09
-	}
+	// else	// LDH - this appears to be an error, but executes properly after the preceeding else code if original condition is false
+	// { 
+	Randomshipevent(); 	// random shiplife events
+	pchar.directsail.count = 0.0;		// LDH - 08Jan09
+	// }
 	if(CheckAttribute(GetMainCharacter(),"mapEnter")) { DeleteAttribute(GetMainCharacter(),"mapEnter"); }//MAXIMUS: check added into BattleInterface for islands search after enable MapEnter
 }
 
