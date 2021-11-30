@@ -48,6 +48,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
+	Weathers[n].SpecialSeaFog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.003;
 	Weathers[n].Fog.IslandDensity = 0.0015;
@@ -240,6 +241,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
+	Weathers[n].SpecialSeaFog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.005;
 	Weathers[n].Fog.IslandDensity = 0.0025;
@@ -430,6 +432,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
+	Weathers[n].SpecialSeaFog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.005;
 	Weathers[n].Fog.IslandDensity = 0.0025;
@@ -630,6 +633,7 @@ int Whr_InitMorning(int n)
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].SpecialSeaFog.Enable = true;
 	Weathers[n].Fog.Height = 200;
+	Weathers[n].SpecialSeaFog.Height = 200;
 	Weathers[n].Fog.Start = 10;
 	Weathers[n].Fog.Density = 0.0024;
 	Weathers[n].Fog.IslandDensity = 0.0012;
