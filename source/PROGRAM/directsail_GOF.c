@@ -497,9 +497,18 @@ bool getRTclosestIslandLocs(ref nextIsland)
 
 	// pchar.directsail1.closestdist = distance;
 	worldMap.directsail1.closestdist = distance;
-	rIsland = GetIslandByIndex(nextIsland);
-	// pchar.directsail1.closestisland = rIsland.id
-	worldMap.closestisland = rIsland.id;
+
+	if (nextIsland == -1)
+	{
+		worldMap.closestisland = WDM_NONE_ISLAND;
+	}
+	else
+	{
+		rIsland = GetIslandByIndex(nextIsland);
+		// pchar.directsail1.closestisland = rIsland.id
+		worldMap.closestisland = rIsland.id;
+	}
+
 
 	//only change if getting close
 	float transitionDistance = (distance * TRANSITIONFACTOR - currentLocationDist)*WDM_MAP_TO_SEA_SCALE;
