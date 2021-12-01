@@ -285,12 +285,13 @@ void Whr_Generator(){
 	WeathersNH.Sea2.Frenel = 0.5 + frnd()*0.25 - fog2trans*0.5;
 	WeathersNH.Sea2.Reflection = 0.75 + frnd()*0.25 - fog2trans*0.75;
 
-	// Bleand sea and Sky color
-	itmp = FindWeatherByHour(MakeInt(GetHour()));
-	int skycolor2 =  Whr_BlendColor(0.5, Weathers[iTmp].Bak.Fog.Color, WaterColor);
+	// Blend sea and Sky color
+	int currenthour = MakeInt(GetHour());
+	itmp = FindWeatherByHour(currenthour);
+	int skycolor2 =  Whr_BlendColor(0.25, Weathers[iTmp].Bak.Fog.Color, WaterColor);
 
 	int rainfogcolor;
-	if (iCurWeatherHour<6 || iCurWeatherHour>19){
+	if (futureHour<6 || futureHour>20){
 		rainfogcolor = argb(0,20,15,15);
 	}else{
 		int lightfog = argb(0,160,160,160);
