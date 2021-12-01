@@ -918,7 +918,9 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
 	Weathers[iTmp].SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
 
-	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
+	int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
+	// tint fog with sky color
+	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.1, fogcolor, Weathers[iTmp].Bak.Fog.Color);
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------

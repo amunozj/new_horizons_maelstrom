@@ -285,24 +285,35 @@ void Whr_Generator(){
 	WeathersNH.Sea2.Frenel = 0.5 + frnd()*0.25 - fog2trans*0.5;
 	WeathersNH.Sea2.Reflection = 0.75 + frnd()*0.25 - fog2trans*0.75;
 
-	// Blend sea and Sky color
-	int currenthour = MakeInt(GetHour());
-	itmp = FindWeatherByHour(currenthour);
-	int skycolor2 =  Whr_BlendColor(0.1, Weathers[iTmp].Bak.Fog.Color, WaterColor);
 
-	int rainfogcolor;
-	if (futureHour<6 || futureHour>20){
-		rainfogcolor = argb(0,20,15,15);
-	}else{
-		int lightfog = argb(0,220,220,220);
-		int darkfog = argb(0,50,50,50);
-		fblend = MakeFloat(wRain-75)/25.0;
-		trace("fblend: " + fblend);
-		if (fblend < 0) fblend = 0.0; 
-		rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
-	}
+	// Blend fog between day and night
+	int lightfog = argb(0,180,180,180);
+	int darkfog = argb(0,50,50,50);	
+	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
+	
+	// Tint it with the water color
+	fogcolor = Whr_BlendColor(0.1, fogcolor, WaterColor);
 
-	int fogColor = Whr_BlendColor(fog2trans, skycolor2, rainfogcolor);
+	// // Blend sea and Sky color
+	// int currenthour = MakeInt(GetHour());
+	// itmp = FindWeatherByHour(currenthour);
+
+
+	// int skycolor2 =  Whr_BlendColor(0.5, Weathers[iTmp].Bak.Fog.Color, WaterColor);
+
+	// int rainfogcolor;
+	// if (futureHour<6 || futureHour>20){
+	// 	rainfogcolor = argb(0,20,15,15);
+	// }else{
+	// 	int lightfog = argb(0,220,220,220);
+	// 	int darkfog = argb(0,50,50,50);
+	// 	fblend = MakeFloat(wRain-75)/25.0;
+	// 	trace("fblend: " + fblend);
+	// 	if (fblend < 0) fblend = 0.0; 
+	// 	rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
+	// }
+
+	// int fogColor = Whr_BlendColor(fog2trans, skycolor2, rainfogcolor);
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
