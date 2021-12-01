@@ -932,7 +932,7 @@ void procUpdateTime()
 			// Screwface : lagoon colour mod close to seashore reload locator
 			if(mchr.location != WDM_NONE_ISLAND)
 			{
-				trace("Check for lagoon")
+				// trace("Check for lagoon")
 				string island = mchr.location;
 				int li = Findisland(island);
 				//logit("island : " + island);
