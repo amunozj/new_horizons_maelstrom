@@ -920,7 +920,7 @@ void addProceduralWeather(int iTmp)
 
 	int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
 	// tint fog with sky color
-	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.1, fogcolor, Weathers[iTmp].Bak.Fog.Color);
+	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------
