@@ -154,7 +154,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 	if( nw2 >= 0)
 	{
 		SunGlow.Glow.SunTexture = "weather\sun\glow\sun.tga.tx";
-		SunGlow.Glow.MoonTexture = "weather\sun\glow\moon.tga.tx";
+		SunGlow.Glow.MoonTexture = Whr_getMoonTexture(); //"weather\sun\glow\moon.tga.tx";
 		SunGlow.Glow.GlowTexture = "weather\sun\glow\sunglow.tga.tx";
 		SunGlow.Glow.SunSize = 400;
 		SunGlow.Glow.MoonSize = 110;
@@ -165,7 +165,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 		if (sunIsShine)
 		{
 			SunGlow.Glow.SunTexture = "weather\sun\glow\sun.tga.tx";
-			SunGlow.Glow.MoonTexture = "weather\sun\glow\moon.tga.tx";
+			SunGlow.Glow.MoonTexture = Whr_getMoonTexture(); //"weather\sun\glow\moon.tga.tx";
 			SunGlow.Glow.GlowTexture = "weather\sun\glow\sunglow.tga.tx";
 			SunGlow.Glow.SunSize = 400;
 			SunGlow.Glow.MoonSize = 110;

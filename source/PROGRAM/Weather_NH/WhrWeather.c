@@ -947,6 +947,7 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
 
+	// Rain definition
 	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
 	Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
 	Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
@@ -966,6 +967,8 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Lightning.ScaleX = 0.7;
 	Weathers[iTmp].Lightning.ScaleY = 1.0;
 	Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
+
+	Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
 
 	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
@@ -1323,4 +1326,32 @@ bool Whr_isRainEnable()
 	}
 	return bRain;
 }
-// boal <--
+
+
+string Whr_getMoonTexture(){
+
+	// PURSEON ========Begin Moon Phases at night code===========>
+	string moonpic = "weather\sun\glow\moonglowfull.tga.tx";   //default in case moon state is not known
+	switch (getMoonStateName(getMoonState())){
+		case FULL_MOON:
+			moonpic = "weather\sun\glow\moonglowfull.tga.tx";
+		break;
+		case NEW_MOON:
+			moonpic = "weather\sun\glow\moonglownew.tga.tx";
+		break;
+		case QUARTER_ONE:
+			moonpic = "weather\sun\glow\moonglowwaxc.tga.tx";
+		break;
+		case QUARTER_TWO:
+			moonpic = "weather\sun\glow\moonglowwax.tga.tx";
+		break;
+		case QUARTER_THREE:
+			moonpic = "weather\sun\glow\moonglowwan.tga.tx";
+		break;
+		case QUARTER_FOUR:
+			moonpic = "weather\sun\glow\moonglowwanc.tga.tx";
+		break;
+	}
+
+	return moonpic;
+}
