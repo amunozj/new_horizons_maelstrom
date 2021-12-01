@@ -86,7 +86,7 @@ void Whr_GenerateValues(int fogCheck){
 	{
 		WeatherParams.Storm = true;
 	}
-	if(wRain >= 98 && winds >= 30)
+	if(wRain >= 98 && winds >= 28)
 	{
 		WeatherParams.tornado = true;
 	}

@@ -40,8 +40,8 @@ void wdmReloadToSea()
 	//Boyer change as wdmCurrentIsland not set as no WorldMap event to do so in 2.8 engine anymore
  	//Fixed by worldmap.legacyArea
  	//#20210827-01
- 	//wdmCurrentIsland = DiscoveredIsland(ISLAND_DISCOVERY_DISTANCE);
-//trace("wdmLoginToSea.island = " + wdmCurrentIsland);
+ 	// wdmCurrentIsland = DiscoveredIsland(ISLAND_DISCOVERY_DISTANCE);
+	trace("wdmLoginToSea.island = " + wdmCurrentIsland);
 	//
 	worldMap.seaEntryX = psX;
 	worldMap.seaEntryZ = psZ;
@@ -156,6 +156,8 @@ void wdmReloadToSea()
 	SendMessage(&wdm_fader, "lfl", FADER_OUT, fadeOutTime, true);
 	SendMessage(&wdm_fader, "l", FADER_STARTFRAME);
 // KK -->
+	
+	SetNextWeather("Clear");
 	string imageName = "sea.tga";
 	if (CheckAttribute(&worldMap, "QuestToSeaLogin") == true && sti(worldMap.QuestToSeaLogin) == true) {
 		DeleteAttribute(&worldMap, "QuestToSeaLogin");
@@ -164,9 +166,11 @@ void wdmReloadToSea()
 			if (CheckAttribute(&questToSeaLoginer, "Tornado") == true && sti(questToSeaLoginer.Tornado) == true) {
 				imageName = "Twister.tga";
 				wdmLoginToSea.tornado = 1;
+				SetNextWeather("Heavy Storm");
 			} else {
 				imageName = "Storm.tga";
 				wdmLoginToSea.tornado = 0;
+				SetNextWeather("Stormy");
 			}
 		}
 	} else {
@@ -176,9 +180,11 @@ void wdmReloadToSea()
 		if (wdmLoginToSea.storm != "0") {
 			imageName = "Storm.tga";
 			wdmLoginToSea.tornado = 0;
+			SetNextWeather("Stormy");
 			if(wdmTornadoGenerator()) {
 				imageName = "Twister.tga";
 				wdmLoginToSea.tornado = 1;
+				SetNextWeather("Heavy Storm");
 			}
 		}
 	}
@@ -321,8 +327,10 @@ void WdmStormEncounter()
 	if(MakeInt(wdmLoginToSea.storm) != 0)
 	{
 		wdmLoginToSea.tornado = worldMap.stormWhithTornado;
+		// SetNextWeather("Heavy Storm");
 	}else{
 		wdmLoginToSea.tornado = "0";
+		// SetNextWeather("Stormy");
 	}
 
 	//wdmLoginToSea.tornado = "1";

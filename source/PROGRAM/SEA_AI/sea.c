@@ -426,6 +426,7 @@ void Sea_MapLoadXZ_AY(float x, float z, float ay)
 
 void Sea_MapLoad()
 {
+	worldMap.playerInStorm = 0;
 	//int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	if(GetSeaTime() < 3 && !bSkipSeaLogin) {
 		LogIt(TranslateString("","Wait a sec while I get out the chart, captain!"));

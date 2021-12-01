@@ -140,6 +140,9 @@ void Whr_FogRainCheck(){
 	bWeatherIsStorm = false;
 	bWeatherIsRain = false;
 
+	WeatherParams.Storm = false;
+	WeatherParams.tornado = false;	
+
 	WeathersNH.Rain.DropsNearNum = 500;
 	WeathersNH.Rain.DropsFarNum = 500;
 	WeathersNH.Rain.DropsNearRadius = 25.0;
@@ -207,6 +210,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);
 			WeathersNH.Storm = true;
+			WeatherParams.Storm = true;
 			WeathersNH.Lights = true;			
 			bWeatherIsStorm = true;			
 			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";
@@ -230,6 +234,8 @@ void Whr_FogRainCheck(){
 			if(minwind >= 28){
 				WeathersNH.Storm = true;
 				WeathersNH.Tornado = true;
+				WeatherParams.Storm = true;
+				WeatherParams.tornado = true;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
 				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
 					string PCCaptainTitle;

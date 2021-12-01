@@ -110,7 +110,7 @@ void wdmCreateMap(float dx, float dz, float ay)
 //	Trace("Save check ---------------================--------------")
 //	DumpAttributes(&worldMap);
 //	Trace("Save check ###########----================--------------")
-	worldMap.playerInStorm = "0";
+	worldMap.playerInStorm = 0;
     wdmReset();
     worldMap.date.hourPerSec = MAP_VOYAGELENGTH;	// ccc maptweak original 4.0
     //#20210827-01

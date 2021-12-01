@@ -87,6 +87,7 @@ extern int InitWeather();
 void SetNextWeather(string sWeatherID)
 {
 
+	int iHour = MakeInt(GetHour());
 	Trace("SetNextWeathr: " + sWeatherID)
 	string sWeather = sWeatherID;
 	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
@@ -102,6 +103,7 @@ void SetNextWeather(string sWeatherID)
 		Fog = 0;
 		OFog = 0;
 		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Cloudy":
@@ -109,24 +111,28 @@ void SetNextWeather(string sWeatherID)
 		ORain = 60;		// clouds start at 50, overcast starts at 65
 		gWeatherOvrd = true;
 		sWeatherID = "21 Rain";
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Overcast":
 		wRain = 70;		// overcast starts at 65, rain starts at 75
 		ORain = 70;		// overcast starts at 65, rain starts at 75
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Rainy":
 		wRain = 80;		// rain starts at 75, storm starts at 95
 		ORain = 80;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Rain":
 		wRain = 90;		// rain starts at 75, storm starts at 95
 		ORain = 90;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Stormy":		// this produces lightning
@@ -134,6 +140,7 @@ void SetNextWeather(string sWeatherID)
 		ORain = 97;		// storm starts at 95
 		OWind = 25;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Storm":	// this produces twisters, "Day Storm"
@@ -143,18 +150,21 @@ void SetNextWeather(string sWeatherID)
 		OWind = 30;		// twisters start at minwind >= 28
 		OWBallast = 15;
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Foggy":
 		Fog = 25;		// produces fog density of 0.00375
 		OFog = 25;		// produces fog density of 0.00375
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Fog":
 		Fog = 40;		// produces fog density of 0.00625
 		OFog = 40;		// produces fog density of 0.00625
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Black Pearl Fight":
@@ -163,18 +173,21 @@ void SetNextWeather(string sWeatherID)
 		OFog = 25;
 		OWind = 25;
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "IslaDeMuerte":
 		Fog = 80;		// produces fog density of 0.02
 		OFog = 80;		// produces fog density of 0.02
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Super Fog":
 		Fog = 999;
 		OFog = 999;
 		gWeatherOvrd = true;
+		makeCurrentFutureRealizations(iHour);
 		break;
 
 	}
@@ -191,11 +204,12 @@ void SetNextWeather(string sWeatherID)
 			{
 				Trace("iNextWeatherNum = " + iNextWeatherNum);
 			}
+			makeCurrentFutureRealizations(Weathers[i].Hour.Min);
 			return;
 		}
 	}
 
-	iCurWeatherNum = FindWeatherByHour(MakeInt(GetHour()));	
+	makeCurrentFutureRealizations(iHour);	
 }
 
 // call this with sDir = "" to use old wind direction
@@ -232,6 +246,16 @@ void SetNextWind(string sDir, int speed)
 		OWind = iclamp(5,30,speed);
 		gWeatherOvrd = true;
 	}
+}
+
+void makeCurrentFutureRealizations(int iHour)
+{
+	Whr_Generator();
+	iCurWeatherNum = FindWeatherByHour(iHour);
+	addProceduralWeather(iCurWeatherNum);
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	Whr_Generator();
+	addProceduralWeather(iBlendWeatherNum);
 }
 
 void WeatherInit()
@@ -350,6 +374,7 @@ void CreateWeatherEnvironment()
 	sInsideBack = Whr_GetString(aCurWeather,"InsideBack");
 	bWeatherIsNight = Whr_GetLong(aCurWeather,"Night");
 	bWeatherIsLight = Whr_GetLong(aCurWeather,"Lights");
+	if (daytimeLights()) bWeatherIsLight = true;
 
 	Weather.Wind.Angle = Whr_GetFloat(WeathersNH,"Wind.Angle");
 	Weather.Wind.Speed = Whr_GetFloat(WeathersNH,"Wind.Speed");
@@ -715,6 +740,7 @@ void Whr_UpdateWeatherHour()
 	int i, j, iCharIdx;
 
 	bWeatherIsLight = Whr_GetLong(&Weathers[iCurWeatherNum],"Lights");
+	if (daytimeLights()) bWeatherIsLight = true;
 	bWeatherIsNight = Whr_GetLong(&Weathers[iCurWeatherNum],"Night");
 
 	//#20191020-01
@@ -752,8 +778,8 @@ void Whr_UpdateWeatherHour()
         // if(doLightChange && isSeaEnt) {
         //     doShipLightChange(aCurWeather);
         // }
+		doShipLightChange(aCurWeather);
  	}
-	doShipLightChange(aCurWeather);
 
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -764,20 +790,25 @@ void Whr_UpdateWeatherHour()
 	 
 }
 
+int daytimeLights()
+{
+	// Turn on lights due to time
+	bool Lights = false;
+	int Hour = MakeInt(GetHour())
+	if (Hour < 8 || Hour > 21)
+	{
+		Lights = true;
+	}
+	return Lights;
+}
+
 void doShipLightChange(ref aCurWeather)
 {
     int j, iCharIdx;
 
-	// Turn on lights due to time
-	bool Lights = false;
-	int Hour = MakeInt(GetHour())
-	if (Hour < 7 || Hour > 22)
-	{
-		Lights = true;
-	}	
-
 	// Combine time and weather
-    Sea.Lights = (Lights || aCurWeather.Lights);
+    Sea.Lights = aCurWeather.Lights;
+	if (daytimeLights()) Sea.Lights = true;
 
     ref rChar;
     for(j = 0; j < iNumShips; j++) {
