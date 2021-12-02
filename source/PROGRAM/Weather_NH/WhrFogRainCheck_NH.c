@@ -1,5 +1,5 @@
 ﻿#define FOGFACTOR 1.0
-#define FOGHEIGHTFACTOR 0.5
+#define FOGHEIGHTFACTOR 0.65
 
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------

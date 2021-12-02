@@ -147,8 +147,8 @@ int Whr_InitEvening(int n)
 	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
 
 
-	Weathers[n].Sea2.WaterColor = argb(0, 31, 66, 150);
-	Weathers[n].Bak.Sea2.WaterColor = argb(0, 31, 66, 150);
+	Weathers[n].Sea2.WaterColor = argb(0, 76, 126, 179);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 76, 126, 179);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.9;
