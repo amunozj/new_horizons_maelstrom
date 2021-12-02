@@ -652,8 +652,6 @@ void SeaLogin(ref Login)
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
-	PostEvent(WEATHER_CALC_FOG_COLOR, 0, "fff", 0, 2000, 0);
-
 	Sea.MaxSeaHeight = 50.0;
 
 	ReloadProgressUpdate();
