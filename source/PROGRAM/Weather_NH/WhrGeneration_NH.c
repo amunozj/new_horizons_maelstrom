@@ -271,7 +271,7 @@ void Whr_Generator(){
 
 	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-0.001*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
 	transparency = transparency - fog2trans;
-	trace("Fog to transparency: " + fog2trans);
+	// trace("Fog to transparency: " + fog2trans);
 
 	if (transparency < 0) transparency = 0.0;
 	if (fog2trans > 1) fog2trans = 1.0;
@@ -292,7 +292,7 @@ void Whr_Generator(){
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
 	
 	// Tint it with the water color
-	fogcolor = Whr_BlendColor(0.2, fogcolor, WaterColor);
+	fogcolor = Whr_BlendColor(0.3, fogcolor, WaterColor);
 
 	// // Blend sea and Sky color
 	// int currenthour = MakeInt(GetHour());

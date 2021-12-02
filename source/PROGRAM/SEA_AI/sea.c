@@ -458,6 +458,8 @@ void Sea_MapLoad()
 	SeaMapLoadX = stf(worldMap.playerShipX);
 	SeaMapLoadZ = stf(worldMap.playerShipZ);
 	SeaMapLoadAY = stf(rPlayer.Ship.Ang.y);
+
+	// trace("Seamapload coordinates: " + SeaMapLoadX + " , " + SeaMapLoadZ);
 	//LanguageCloseFile(tmpLangFileID);
 //	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
 }
@@ -1900,7 +1902,7 @@ void SetCorrectWorldMapPosition()
 	float psX = MakeFloat(pchar.Ship.Pos.x);
 	float psZ = MakeFloat(pchar.Ship.Pos.z);	
 
-	// trace("Sea instance char.pos: " + psX + " , " + psZ);
+	trace("Sea instance char.pos: " + psX + " , " + psZ);
 
 	float ix, iz;
 	if(Pchar.location != WDM_NONE_ISLAND && Pchar.location != "error")
@@ -1918,7 +1920,7 @@ void SetCorrectWorldMapPosition()
 	//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
 	worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
 	worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
-	// Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
+	Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
 
 }
 

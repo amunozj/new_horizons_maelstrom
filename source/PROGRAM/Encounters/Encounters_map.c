@@ -62,7 +62,7 @@ bool GenerateMapEncounter(int iMapEncounterType, string sIslandID, ref iEncounte
 
 	// NK 05-06-27 actually get island nation.
 
-	trace("generatemapencounter: island: " + sIslandID)
+	// trace("generatemapencounter: island: " + sIslandID)
 	if(sIslandID != WDM_NONE_ISLAND && sIslandID != "")
 	{
 		if(!Island_IsEncountersEnable(sIslandID)) {	return false; }

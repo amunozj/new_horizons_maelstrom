@@ -142,9 +142,6 @@ void DirectsailRun()  // Jan 07, taken out of DirectsailCheck() to create break
 
 	DSTrace("DirectsailRun: islandswitch =" + islandswitch)
 
-	ref rIsland = GetIslandByIndex(nextisland);//makeref(rIsland, Islands[inum]);
-	string sNewIslandId = rIsland.id; 
-
 	if(islandswitch)
 	{
 		// islandchange
@@ -371,7 +368,7 @@ bool getRTclosestIslandLocs(ref nextIsland)
 		nextIsland2 = FindIsland(pchar.location)
 	}
 	else{
-		currentLocationDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, worldMap.seaEntryX, worldMap.seaEntryZ);
+		currentLocationDist = GetDistance2D(RTplayerShipX, RTplayerShipZ, SeaMapLoadX, SeaMapLoadZ);
 		// trace("Open Sea distance to entry point: " + currentLocationDist);
 	}
 

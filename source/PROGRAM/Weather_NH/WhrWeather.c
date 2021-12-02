@@ -533,7 +533,8 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	if(bSeaActive && !ownDeckStarted())
 	{
 		PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
-		DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
+
+		if (GetSeaTime()>60) DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
 	}
 }
 
@@ -848,7 +849,7 @@ void FillWeatherData(int nw1, int nw2)
 	if( nw1<0 || nw1>=MAX_WEATHERS ) {return;}
 
 	string sCurFog = Whr_GetCurrentFog();
-	trace("Current Fog: " + sCurFog);
+	// trace("Current Fog: " + sCurFog);
 	if( nw2<0)
 	{
 		Weather.Fog.Enable = Whr_GetLong(&Weathers[nw1], sCurFog + ".Enable");
@@ -930,7 +931,7 @@ void addProceduralWeather(int iTmp)
 
 	int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
 	// tint fog with sky color
-	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
+	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.3, fogcolor, Weathers[iTmp].Bak.Fog.Color);
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------

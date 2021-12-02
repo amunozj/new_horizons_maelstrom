@@ -21,6 +21,8 @@ void wdmReloadToSea()
 		return;
 	}
 
+	ref Pchar = GetMaincharacter();
+
 	CreateILogAndActions(LOG_FOR_SEA); // KK
 
 	worldMap.encounter.type = "";
@@ -78,6 +80,8 @@ void wdmReloadToSea()
 		wdmLoginToSea.playerGroup.ay = worldMap.playerShipAY;
 		baseX = psX;
 		baseZ = psZ;
+		pchar.Ship.Pos.x = 0.0;
+		pchar.Ship.Pos.z = 0.0;
 		//trace("SEA: " + wdmLoginToSea.playerGroup.x + "  " +  wdmLoginToSea.playerGroup.z);
 	}
 // KK -->
