@@ -6,7 +6,7 @@ int Whr_InitDay(int n)
 // ====================================================================
 // Morning1 10 �����
 
-	Weathers[n].id = "10 Hours";
+	Weathers[n].id = "10 Hour";
 	Weathers[n].Hour.Min = 10;
 	Weathers[n].Hour.Max = 10;
 	Weathers[n].Lighting = "day11";

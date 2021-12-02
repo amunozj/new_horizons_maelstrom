@@ -228,7 +228,7 @@ void Whr_Generator(){
 	int futureHour = MakeInt(GetHour()) + 1;
 	int randomPick, itmp;
 
-	randomPick = rand(18-10) + 10;
+	randomPick = rand(23-10) + 10;
 	itmp = FindWeatherByHour(randomPick);
 	// trace("Random number: " + randomPick + " weather index: " + itmp + " Weather id: " + Weathers[itmp].id)
 	int WaterColor = Whr_GetColor(Weathers[itmp], "Bak.Sea2.WaterColor")
