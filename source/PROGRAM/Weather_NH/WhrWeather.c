@@ -933,12 +933,12 @@ void addProceduralWeather(int iTmp)
 	// tint fog with sky color
 	fogcolor = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
 
-	// Add sunrise/sunset
-	if (Weathers[iTmp].Hour.Min == 5 || Weathers[iTmp].Hour.Min == 21)
-	{
-		fogcolor = Whr_BlendColor(0.4, fogcolor, argb(0,0,161,43));
-		Weathers[iTmp].Sun.Color = argb(0,0,161,43);
-	}
+	// // Add sunrise/sunset
+	// if (Weathers[iTmp].Hour.Min == 5 || Weathers[iTmp].Hour.Min == 21)
+	// {
+	// 	fogcolor = Whr_BlendColor(0.4, fogcolor, argb(0,0,161,43));
+	// 	Weathers[iTmp].Sun.Color = argb(0,0,161,43);
+	// }
 
 
 	Weathers[iTmp].Fog.Color = fogcolor;
