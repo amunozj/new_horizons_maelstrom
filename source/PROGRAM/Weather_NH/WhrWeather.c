@@ -602,19 +602,21 @@ int Whr_OnCalcFogColor()
 
 	// if( iBlendWeatherNum < 0 )
 	// {
-	aref aCurWeather = GetCurrentWeather();
+	aref aCurWeather = GetCurrentWeather(); 
 
-	if (!CheckAttribute(&aCurWeather, sCurrentFog + ".Height")){
-		trace(aCurWeather.id + " doesn't have height for fog " + sCurrentFog);
+	if (!CheckAttribute(Weather, "Fog.Height")){
+		trace("Weather doesn't have height fog height");
 	}else{
-		iAlpha = 255 - MakeInt(255.0 * Clampf(y / stf(aCurWeather.(sCurrentFog).Height)));	
+		iAlpha = 255 - MakeInt(255.0 * Clampf(y / Whr_GetFloat(Weather, "Fog.Height")));	
 	}
 
-	// trace("current weather: " + Weathers[iCurWeatherNum].id + " Fog: " + sCurrentFog + " Color:" + Weathers[iCurWeatherNum].Bak.(sCurrentFog).Color + " Height: " + Weathers[iCurWeatherNum].(sCurrentFog).Height)
+	// trace("Fog Height: " + Whr_GetFloat(Weather, "Fog.Height"));
 
 	// 	//iColor = argb(0,0,0,0);
-	int iFogColor = sti(Weather.Fog.Color);
+	int iFogColor = Whr_GetLong(Weather, "Fog.Color");
 	iColor = or(shl(iAlpha, 24), iFogColor);
+
+	trace("Return Color: " + iColor);
 
 	return iColor;
 }
@@ -749,7 +751,7 @@ void Whr_UpdateWeatherHour()
 		//#20190211-01
         doLightChange = true;
  	}
-	trace("Weather hourly update before wind change")
+	trace("Weather hourly update before wind change");
  	if (bSeaActive && !bAbordageStarted)
 	{
 	    bool isSeaEnt = false;
@@ -776,10 +778,10 @@ void Whr_UpdateWeatherHour()
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
-	trace("Weather hourly update before generator")
+	trace("Weather hourly update before generator");
 	Whr_Generator();
 	addProceduralWeather(iBlendWeatherNum);	
-	trace("Weather hourly update done")
+	trace("Weather hourly update done");
 	 
 }
 
@@ -837,6 +839,7 @@ void FillWeatherData(int nw1, int nw2)
 	{
 		Weather.Fog.Enable = Whr_GetLong(&Weathers[nw1], sCurFog + ".Enable");
 		Weather.Fog.Start = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Start");
+		Weather.Fog.Height = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Height");
 		Weather.Fog.Density = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density");
 		Weather.Fog.Color = Whr_GetColor(&Weathers[nw1], sCurFog + ".Color");
 		Weather.Fog.IslandDensity = Whr_GetFloat(&Weathers[nw1], "Fog.IslandDensity");
@@ -860,6 +863,7 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], sCurFog + ".Color"), Whr_GetColor(&Weathers[nw2], sCurFog + ".Color") );
 		Weather.Fog.IslandDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Fog.IslandDensity"), Whr_GetFloat(&Weathers[nw2], "Fog.IslandDensity") );
 		Weather.Fog.SeaDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".SeaDensity") );
+		Weather.Fog.Height = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".Height"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".Height") );
 
 		Weather.Sun.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Color"), Whr_GetColor(&Weathers[nw2],"Sun.Color") );
 		Weather.Sun.HeightAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.HeightAngle") );
