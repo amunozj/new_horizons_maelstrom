@@ -491,6 +491,16 @@ void CreateWeatherEnvironment()
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
 
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);	
+
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
 	Particles.windpower = 0.001 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);

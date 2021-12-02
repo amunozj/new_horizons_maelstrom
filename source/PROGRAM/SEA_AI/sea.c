@@ -633,23 +633,25 @@ void SeaLogin(ref Login)
 	}
 // <-- KK
 
+	// create all sea modules
+	CreateSeaEnvironment();
+
+	// Whr_TimeUpdate()
+	sCurrentFog = "SpecialSeaFog";
+
+	int iHour = MakeInt(GetHour());
+	iCurWeatherNum = FindWeatherByHour(iHour);
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
-
 	// Fill Sea data
 	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
-
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
-	// create all sea modules
-	CreateSeaEnvironment();
-	// CreateWeatherEnvironment();
 
-
-	Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
-
+	// Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
 	Sea.MaxSeaHeight = 50.0;
 
 	ReloadProgressUpdate();

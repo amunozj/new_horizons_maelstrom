@@ -123,12 +123,12 @@ void WhrCreateSeaEnvironment()
 	Sea.Sun.HeightAngle = Whr_GetFloat(aCurWeather,"Sun.HeightAngle");
 	Sea.Sun.AzimuthAngle = Whr_GetFloat(aCurWeather,"Sun.AzimuthAngle");
 
-	string sCurFog = Whr_GetCurrentFog();
-	Sea.Fog.Color = Whr_GetColor(aCurWeather, sCurFog + ".Color");
-	Sea.Fog.Enable = Whr_GetLong(aCurWeather, sCurFog + ".Enable");
-	Sea.Fog.Start = Whr_GetFloat(aCurWeather, sCurFog + ".Start");
-	Sea.Fog.Density = Whr_GetFloat(aCurWeather, sCurFog + ".Density") * FogDensity;
-	Sea.Fog.SeaDensity = Whr_GetFloat(aCurWeather, sCurFog + ".SeaDensity") * FogSeaDensity;
+	// string sCurFog = Whr_GetCurrentFog();
+	// Sea.Fog.Color = Whr_GetColor(aCurWeather, sCurFog + ".Color");
+	// Sea.Fog.Enable = Whr_GetLong(aCurWeather, sCurFog + ".Enable");
+	// Sea.Fog.Start = Whr_GetFloat(aCurWeather, sCurFog + ".Start");
+	// Sea.Fog.Density = Whr_GetFloat(aCurWeather, sCurFog + ".Density") * FogDensity;
+	// Sea.Fog.SeaDensity = Whr_GetFloat(aCurWeather, sCurFog + ".SeaDensity") * FogSeaDensity;
 
 	Sea.Pena.Color = Whr_GetColor(aSea,"Pena.Color");
 	Sea.Pena.DepthSmall = 20.0;
@@ -231,8 +231,6 @@ void FillSeaData(int nw1, int nw2)
 
 	aref aSea2; makearef(aSea2, Weathers[nw1].Sea2);
 
-	float waveSpeedXf, waveSpeedZf, waveSpeed2Xf, waveSpeed2Zf;
-
 	if( nw2 < 0 )
 	{
 		Sea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
@@ -258,6 +256,12 @@ void FillSeaData(int nw1, int nw2)
 		Sea.Sea2.Frenel = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Frenel"), Whr_GetFloat(aSea22, "Frenel") );
 
 	}
+
+	Sea.Fog.Color = Whr_GetColor(Weather, "Fog.Color");
+	Sea.Fog.Enable = Whr_GetLong(Weather, "Fog.Enable");
+	Sea.Fog.Start = Whr_GetFloat(Weather, "Fog.Start");
+	Sea.Fog.Density = Whr_GetFloat(Weather, "Fog.Density");
+	Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");	
 
 	// trace("Sea Frenel: " + Whr_GetFloat(Sea, "Sea2.Frenel"));
 }

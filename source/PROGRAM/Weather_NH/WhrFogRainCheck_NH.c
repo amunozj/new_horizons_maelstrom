@@ -153,7 +153,8 @@ void Whr_FogRainCheck(){
 	WeathersNH.Rain.DropsColor = argb(63,255,255,255);
 	WeathersNH.Lightning.Enable = false;
 
-	WeathersNH.Sun.Glow.Enable = true;	
+	WeathersNH.Sun.Glow.Enable = true;
+	WeathersNH.Rainbow.Enable = false;
 
 	if (wRain > 75)
 	{
