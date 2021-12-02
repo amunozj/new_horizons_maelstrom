@@ -218,8 +218,8 @@ void Whr_Generator(){
 	float foamrand = 2.0*(frnd()-0.5)*FOAMRANDOM;
 	WeathersNH.Sea2.FoamV = Amp1*(0.6 + foamrand);
 	WeathersNH.Sea2.FoamK = 0.1 - 0.05*effectiveRain/RAIN2WIND/25.0;
-	WeathersNH.Sea2.FoamUV = scale1*4;
-	WeathersNH.Sea2.FoamTexDisturb = 1.2;
+	WeathersNH.Sea2.FoamUV = scale1*2.0;
+	WeathersNH.Sea2.FoamTexDisturb = 0.2;
 
 	// Sea properties
 	WeathersNH.Sea2.Attenuation = 0.5;
