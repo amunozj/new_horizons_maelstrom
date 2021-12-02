@@ -806,7 +806,7 @@ int daytimeLights()
 	// Turn on lights due to time
 	int Lights = 0;
 	int Hour = MakeInt(GetHour())
-	if (Hour < 8 || Hour > 21)
+	if (Hour < 7 || Hour > 20)
 	{
 		Lights = 1;
 	}
@@ -931,7 +931,17 @@ void addProceduralWeather(int iTmp)
 
 	int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
 	// tint fog with sky color
-	Weathers[iTmp].Fog.Color = Whr_BlendColor(0.3, fogcolor, Weathers[iTmp].Bak.Fog.Color);
+	fogcolor = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
+
+	// Add sunrise/sunset
+	if (Weathers[iTmp].Hour.Min == 5 || Weathers[iTmp].Hour.Min == 21)
+	{
+		fogcolor = Whr_BlendColor(0.4, fogcolor, argb(0,0,161,43));
+		Weathers[iTmp].Sun.Color = argb(0,0,161,43);
+	}
+
+
+	Weathers[iTmp].Fog.Color = fogcolor;
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------

@@ -288,11 +288,11 @@ void Whr_Generator(){
 
 	// Blend fog between day and night
 	int lightfog = argb(0,180,180,180);
-	int darkfog = argb(0,20,20,20);	
+	int darkfog = argb(0,0,0,0);	
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
 	
 	// Tint it with the water color
-	fogcolor = Whr_BlendColor(0.3, fogcolor, WaterColor);
+	fogcolor = Whr_BlendColor(0.2, fogcolor, WaterColor);
 
 	// // Blend sea and Sky color
 	// int currenthour = MakeInt(GetHour());
