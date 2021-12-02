@@ -867,8 +867,9 @@ void FillWeatherData(int nw1, int nw2)
 
 		trace("w1 angle: " + Whr_GetFloat(&Weathers[nw1], "Wind.Angle") + "w2 angle: " + Whr_GetFloat(&Weathers[nw2], "Wind.Angle"));
 
-		Weather.Wind.Angle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.Angle"), Whr_GetFloat(&Weathers[nw2], "Wind.Angle") );
+		// Weather.Wind.Angle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.Angle"), Whr_GetFloat(&Weathers[nw2], "Wind.Angle") );
 		Weather.Wind.Speed = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed"), Whr_GetFloat(&Weathers[nw2], "Wind.seaWindSpeed") );
+		Weather.Wind.Angle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
 
 		trace("Resulting angle: " + stf(Weather.Wind.Angle));
 
