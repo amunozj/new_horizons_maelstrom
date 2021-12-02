@@ -806,7 +806,7 @@ int daytimeLights()
 	// Turn on lights due to time
 	int Lights = 0;
 	int Hour = MakeInt(GetHour())
-	if (Hour < 7 || Hour > 20)
+	if (Hour < 7 || Hour > 22)
 	{
 		Lights = 1;
 	}
