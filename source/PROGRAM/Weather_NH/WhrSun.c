@@ -172,6 +172,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 			SunGlow.Glow.Color = argb(0,255,255,255);
 		}
 	}
+	SunGlow.Glow.skipFade = true;
 }
 
 void MoveSunGlowToLayers(string sExecuteLayer, string sRealizeLayer)
