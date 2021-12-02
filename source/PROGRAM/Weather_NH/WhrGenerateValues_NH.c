@@ -76,8 +76,9 @@ void Whr_GenerateValues(int fogCheck){
 		else{ winds = 0 };
 		windBallast -= rWind;
 	}
-	if (winds < 0) winds = 0;
-	if (winds < 5) winds = 15;	// LDH 12Feb09
+	// if (winds < 0) winds = 0;
+	// if (winds < 5) winds = 15;	// LDH 12Feb09
+	if (winds < 5) winds = 10;	// LDH 12Feb09
 
 	//wRain = wRain + 20; // to test the coming of a storm
 	//winds = 30;

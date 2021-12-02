@@ -376,11 +376,9 @@ void CreateWeatherEnvironment()
 	bWeatherIsLight = Whr_GetLong(aCurWeather,"Lights");
 	if (daytimeLights()) bWeatherIsLight = true;
 
-	Weather.Wind.Angle = Whr_GetFloat(WeathersNH,"Wind.Angle");
-	Weather.Wind.Speed = Whr_GetFloat(WeathersNH,"Wind.Speed");
+	// Weather.Wind.Angle = Whr_GetFloat(WeathersNH,"Wind.Angle");
+	// Weather.Wind.Speed = Whr_GetFloat(WeathersNH,"Wind.Speed");
 
-	pchar.Wind.Angle = Whr_GetFloat(Weather,"Wind.Angle");
-	pchar.Wind.Speed = Whr_GetFloat(Weather,"Wind.Speed");
 
 	sCurrentFog = "Fog";
 	if (bSeaActive)
@@ -397,6 +395,10 @@ void CreateWeatherEnvironment()
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
+	trace("Weather wind speed: " + Whr_GetFloat(Weather, "Wind.Speed"));
+
+	pchar.Wind.Angle = Whr_GetFloat(Weather,"Wind.Angle");
+	pchar.Wind.Speed = Whr_GetFloat(Weather,"Wind.Speed");
 
 	if (WeathersNH.Rain == true)
 	{
@@ -503,7 +505,7 @@ void CreateWeatherEnvironment()
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
-	Particles.windpower = 0.001 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	Particles.windpower = 0.0005 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
 
@@ -582,11 +584,11 @@ void Whr_OnWindChange()
 	float fDeltaTime = MakeFloat(GetDeltaTime()) * 0.001;
 	fWeatherDelta = fWeatherDelta + fDeltaTime;
 
-	float fSpd = fWeatherSpeed + (fWeatherSpeed / 6.0) * 0.1 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
-	float fAng = fWeatherAngle + 0.02 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
+	float fSpd = (fWeatherSpeed / 6.0) * 0.1 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
+	float fAng = 0.02 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
 
-	Weather.Wind.Angle = fAng;
-	Weather.Wind.Speed = fSpd;
+	Weather.Wind.Angle = Whr_GetFloat(Weather, "Wind.Angle") + fAng;
+	Weather.Wind.Speed = Whr_GetFloat(Weather, "Wind.Speed") + fSpd;
 }
 
 int Whr_OnCalcFogColor()
@@ -649,25 +651,7 @@ int Whr_BlendColor(float fBlend, int col1, int col2)
 
 void Whr_TimeUpdate()
 {
-	float fTime = GetEventData();
-	//float fBlend = fTime - makeint(fTime);
 
-	//
-	Environment.time = fTime;
-	int nOldHour = sti(Environment.date.hour);
-	int nNewHour = makeint(fTime);
-	int nNewMin = makeint((fTime - nNewHour)*60);
-	int nNewSec = makeint(((fTime - nNewHour)*60 - nNewMin)*60);
-	Environment.date.min = nNewMin;
-	Environment.date.hour = nNewHour;
-	Environment.date.sec = nNewSec;
-	worldMap.date.hour = nNewHour;
-	worldMap.date.min  = nNewMin;
-	if( nNewHour < nOldHour )
-	{
-		AddDataToCurrent(0,0,1,true);
-		Weather.Time.time = GetTime();
-	} // to_do CalcLocalTime
     if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
 	string sTmp;
@@ -675,7 +659,7 @@ void Whr_TimeUpdate()
 	bool bRain = false;
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	//navy <-- Rain
-	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
+	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
@@ -711,13 +695,10 @@ void Whr_TimeUpdate()
 		}
 	}
 
-	if( nNewHour != nOldHour )
-	{
-		Whr_UpdateWeatherHour();
-	}
+	Weather.isDone = "";
+
 	// update weather: sun lighting
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
-	Weather.isDone = "";
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07
@@ -736,8 +717,6 @@ void Whr_TimeUpdate()
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
-	// update sky: fog
-	Sky.TimeUpdate = fTime;
 }
 
 #event_handler("eChangeDayNight", "eChangeDayNight");
@@ -751,7 +730,7 @@ void Whr_UpdateWeatherHour()
 	int i, j, iCharIdx;
 
 	bWeatherIsLight = Whr_GetLong(&Weathers[iCurWeatherNum],"Lights");
-	if (daytimeLights()) bWeatherIsLight = true;
+	if (daytimeLights()==1) bWeatherIsLight = 1;
 	bWeatherIsNight = Whr_GetLong(&Weathers[iCurWeatherNum],"Night");
 
 	//#20191020-01
@@ -770,6 +749,7 @@ void Whr_UpdateWeatherHour()
 		//#20190211-01
         doLightChange = true;
  	}
+	trace("Weather hourly update before wind change")
  	if (bSeaActive && !bAbordageStarted)
 	{
 	    bool isSeaEnt = false;
@@ -796,8 +776,10 @@ void Whr_UpdateWeatherHour()
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
+	trace("Weather hourly update before generator")
 	Whr_Generator();
 	addProceduralWeather(iBlendWeatherNum);	
+	trace("Weather hourly update done")
 	 
 }
 
@@ -863,6 +845,10 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Sun.HeightAngle = Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle");
 		Weather.Sun.AzimuthAngle = Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle");
 		Weather.Sun.Ambient = Whr_GetColor(&Weathers[nw1],"Sun.Ambient");
+
+		Weather.Wind.Angle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
+		Weather.Wind.Speed = Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed");
+
 	}
 	else
 	{
@@ -878,6 +864,14 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Sun.HeightAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.HeightAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.HeightAngle") );
 		Weather.Sun.AzimuthAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.AzimuthAngle") );
 		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
+
+		trace("w1 angle: " + Whr_GetFloat(&Weathers[nw1], "Wind.Angle") + "w2 angle: " + Whr_GetFloat(&Weathers[nw2], "Wind.Angle"));
+
+		Weather.Wind.Angle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.Angle"), Whr_GetFloat(&Weathers[nw2], "Wind.Angle") );
+		Weather.Wind.Speed = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed"), Whr_GetFloat(&Weathers[nw2], "Wind.seaWindSpeed") );
+
+		trace("Resulting angle: " + stf(Weather.Wind.Angle));
+
 	}
 }
 
@@ -998,6 +992,13 @@ void addProceduralWeather(int iTmp)
 
 	// Weather lights
 	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
+
+	// Wind parameters
+	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");
+	else  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.Speed");
+
+	trace("Imprinted sea wind speed: " + Whr_GetFloat(Weathers[iTmp], "Wind.seaWindSpeed"));
+	Weathers[iTmp].Wind.Angle = Whr_GetFloat(WeathersNH, "Wind.Angle");
 
 }
 
@@ -1287,20 +1288,20 @@ string Whr_GetRainyLightningPath()
 // boal -->
 void Whr_WindChange()
 {
-	aref aCurWeather = GetCurrentWeather();
+	// aref aCurWeather = GetCurrentWeather();
 
-    if(CheckAttribute(pchar, "wind.angle"))
-    {
-    	Weather.Wind.Angle = stf(pchar.wind.angle) +  frand((PI/4.0)) - (PI / 8.0);
-    	if (stf(Weather.Wind.Angle) < 0)  Weather.Wind.Angle = PIm2 + stf(Weather.Wind.Angle);
-    }
-    else
-    {
-		Weather.Wind.Angle = frand(PIm2);
-	}
+    // if(CheckAttribute(pchar, "wind.angle"))
+    // {
+    // 	Weather.Wind.Angle = stf(pchar.wind.angle) +  frand((PI/4.0)) - (PI / 8.0);
+    // 	if (stf(Weather.Wind.Angle) < 0)  Weather.Wind.Angle = PIm2 + stf(Weather.Wind.Angle);
+    // }
+    // else
+    // {
+	// 	Weather.Wind.Angle = frand(PIm2);
+	// }
 	pchar.wind.angle = Weather.Wind.Angle;
 
-	Weather.Wind.Speed = Whr_GetFloat(aCurWeather,"Wind.Speed");
+	// Weather.Wind.Speed = Whr_GetFloat(aCurWeather,"Wind.Speed");
 	pchar.wind.speed = Weather.Wind.Speed;
 
 	pchar.quest.EraseWind.win_condition.l1 = "ExitFromSea";

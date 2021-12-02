@@ -2407,13 +2407,44 @@ int AddSeaTimeToCurrent()
 			// LDH this is where the weather is updated when on ship - 04Jan09
 			bool oldIsNight = Whr_IsNight();
 			bool oldIsRain = Whr_IsRain();		// LDH 20Feb09
+			Whr_UpdateWeatherHour();
 			Whr_UpdateWeather(false);
+			Weather.Time.time = GetTime();
 			// LDH update the music if day/night changes - 20Jan09
 			// turn off the rain sounds if it's no longer raining - 20Feb09
 			if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain)
 				SetSchemeForSea();
 		}
 	}
+
+	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
+	// addProceduralWeather(iCurWeatherNum);	
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	iNextWeatherNum = iBlendWeatherNum;
+
+	// update weather: sun lighting
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
+	//update rain: rain drops, rain colors, rain size, rainbow
+	//navy -- 5.03.07
+	if (WeathersNH.Rain == true)
+	{
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
+	}
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	SunGlow.isDone = true;
+
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	// update sky: fog
+	Sky.TimeUpdate = Environment.time;
+
 	return minutes;
 }
 // NK <--
