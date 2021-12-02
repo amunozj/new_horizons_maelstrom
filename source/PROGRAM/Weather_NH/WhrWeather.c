@@ -804,11 +804,11 @@ void Whr_UpdateWeatherHour()
 int daytimeLights()
 {
 	// Turn on lights due to time
-	bool Lights = false;
+	int Lights = 0;
 	int Hour = MakeInt(GetHour())
 	if (Hour < 8 || Hour > 21)
 	{
-		Lights = true;
+		Lights = 1;
 	}
 	return Lights;
 }
@@ -818,8 +818,8 @@ void doShipLightChange(ref aCurWeather)
     int j, iCharIdx;
 
 	// Combine time and weather
-    Sea.Lights = aCurWeather.Lights;
-	if (daytimeLights()) Sea.Lights = true;
+    Sea.Lights =  Whr_GetLong(aCurWeather, "Lights");
+	if (daytimeLights() == 1) Sea.Lights = 1;
 
     ref rChar;
     for(j = 0; j < iNumShips; j++) {

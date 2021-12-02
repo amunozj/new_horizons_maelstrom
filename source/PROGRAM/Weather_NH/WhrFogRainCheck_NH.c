@@ -92,7 +92,7 @@ void Whr_FogRainCheck(){
 		}
 	}
 //<-- JRH
-	WeathersNH.Lights = false;
+	WeathersNH.Lights = 0;
 
 //  LDH more fog during rain - 26Feb09
 	if (wRain > 75 && fog < 10) fog += (wRain-75)/2;
@@ -128,7 +128,7 @@ void Whr_FogRainCheck(){
 	}
 
 	if (fog > 10){
-		WeathersNH.Lights = true;
+		WeathersNH.Lights = 1;
 	}
 
 	fog = tempFog;		// LDH 26Feb09
@@ -212,7 +212,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Rain.DropLength = (2.12);
 			WeathersNH.Storm = true;
 			WeatherParams.Storm = true;
-			WeathersNH.Lights = true;			
+			WeathersNH.Lights = 1;			
 			bWeatherIsStorm = true;			
 			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";
 			WeathersNH.Lightning.FlickerTime = 32;
