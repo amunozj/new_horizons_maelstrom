@@ -169,8 +169,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.BumpScale = 0.08; //������ �����
 	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
 
-	Weathers[n].Sea2.WaterColor = argb(0, 0, 144, 138);
-	Weathers[n].Bak.Sea2.WaterColor = argb(0, 0, 144, 138);
+	Weathers[n].Sea2.WaterColor = argb(0, 2, 103, 165);
+	Weathers[n].Bak.Sea2.WaterColor = argb(0, 2, 103, 165);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.6;
