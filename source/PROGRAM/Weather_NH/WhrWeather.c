@@ -397,8 +397,8 @@ void CreateWeatherEnvironment()
 
 	trace("Weather wind speed: " + Whr_GetFloat(Weather, "Wind.Speed"));
 
-	pchar.Wind.Angle = Whr_GetFloat(Weather,"Wind.Angle");
-	pchar.Wind.Speed = Whr_GetFloat(Weather,"Wind.Speed");
+	pchar.Wind.Angle = fWeatherAngle;
+	pchar.Wind.Speed = fWeatherSpeed;
 
 	if (WeathersNH.Rain == true)
 	{
@@ -440,8 +440,8 @@ void CreateWeatherEnvironment()
 	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
 	fWeatherDelta = 0.0;
-	fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
-	fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
+	// fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
+	// fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
 
     // boal -->
 	bRain = true; // Whr_isRainEnable();
@@ -584,11 +584,11 @@ void Whr_OnWindChange()
 	float fDeltaTime = MakeFloat(GetDeltaTime()) * 0.001;
 	fWeatherDelta = fWeatherDelta + fDeltaTime;
 
-	float fSpd = (fWeatherSpeed / 6.0) * 0.1 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
-	float fAng = 0.02 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
+	float fSpd = fWeatherSpeed + (fWeatherSpeed / 6.0) * 0.1 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
+	float fAng = fWeatherAngle + 0.02 * (sin(fWeatherDelta) + sin(0.2 * fWeatherDelta) + sin(PI + 0.8 * fWeatherDelta) + cos(1.5 * fWeatherDelta));
 
-	Weather.Wind.Angle = Whr_GetFloat(Weather, "Wind.Angle") + fAng;
-	Weather.Wind.Speed = Whr_GetFloat(Weather, "Wind.Speed") + fSpd;
+	Weather.Wind.Angle = fAng;
+	Weather.Wind.Speed = fSpd;
 }
 
 int Whr_OnCalcFogColor()
@@ -828,6 +828,7 @@ void Whr_ChangeDayNight()
 
 void FillWeatherData(int nw1, int nw2)
 {
+	float angle1, angle2, blendedAngle;
 	if( nw1<0 || nw1>=MAX_WEATHERS ) {return;}
 
 	string sCurFog = Whr_GetCurrentFog();
@@ -846,8 +847,8 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Sun.AzimuthAngle = Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle");
 		Weather.Sun.Ambient = Whr_GetColor(&Weathers[nw1],"Sun.Ambient");
 
-		Weather.Wind.Angle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
-		Weather.Wind.Speed = Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed");
+		fWeatherAngle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
+		fWeatherSpeed = Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed");
 
 	}
 	else
@@ -865,13 +866,24 @@ void FillWeatherData(int nw1, int nw2)
 		Weather.Sun.AzimuthAngle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1],"Sun.AzimuthAngle"), Whr_GetFloat(&Weathers[nw2],"Sun.AzimuthAngle") );
 		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
 
-		trace("w1 angle: " + Whr_GetFloat(&Weathers[nw1], "Wind.Angle") + "w2 angle: " + Whr_GetFloat(&Weathers[nw2], "Wind.Angle"));
+		// trace("w1 angle: " + Whr_GetFloat(&Weathers[nw1], "Wind.Angle") + "w2 angle: " + Whr_GetFloat(&Weathers[nw2], "Wind.Angle"));
 
-		// Weather.Wind.Angle = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.Angle"), Whr_GetFloat(&Weathers[nw2], "Wind.Angle") );
-		Weather.Wind.Speed = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed"), Whr_GetFloat(&Weathers[nw2], "Wind.seaWindSpeed") );
-		Weather.Wind.Angle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
+		// 
+		fWeatherSpeed = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed"), Whr_GetFloat(&Weathers[nw2], "Wind.seaWindSpeed") );
 
-		trace("Resulting angle: " + stf(Weather.Wind.Angle));
+		angle1 =  Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
+		angle2 =  Whr_GetFloat(&Weathers[nw2], "Wind.Angle");
+
+		if (abs(angle1-angle2) > PI)
+		{
+			if (angle1 > PI) angle1 = angle1 - PIm2;
+			if (angle2 > PI) angle2 = angle1 - PIm2;
+		}
+		blendedAngle = Whr_BlendFloat( fBlend, angle1, angle2);
+		if (blendedAngle < 0) blendedAngle = blendedAngle + PIm2;
+
+		fWeatherAngle = blendedAngle;
+		// trace("Resulting angle: " + fWeatherAngle);
 
 	}
 }
@@ -1308,8 +1320,8 @@ void Whr_WindChange()
 	pchar.quest.EraseWind.win_condition.l1 = "ExitFromSea";
 	pchar.quest.EraseWind.win_condition = "EraseWind";
 
-	fWeatherAngle = stf(Weather.Wind.Angle);
-	fWeatherSpeed = stf(Weather.Wind.Speed);
+	// fWeatherAngle = stf(Weather.Wind.Angle);
+	// fWeatherSpeed = stf(Weather.Wind.Speed);
 
 	// CheckIslandChange();
 }
