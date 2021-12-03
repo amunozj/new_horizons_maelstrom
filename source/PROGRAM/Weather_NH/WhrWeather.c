@@ -129,16 +129,16 @@ void SetNextWeather(string sWeatherID)
 		break;
 
 	case "Heavy Rain":
-		wRain = 90;		// rain starts at 75, storm starts at 95
-		ORain = 90;		// rain starts at 75, storm starts at 95
+		wRain = 85;		// rain starts at 75, storm starts at 95
+		ORain = 85;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Stormy":		// this produces lightning
-		wRain = 97;		// storm starts at 95
-		ORain = 97;		// storm starts at 95
-		OWind = 25;		// twisters start at minwind >= 28
+		wRain = 95;		// storm starts at 95
+		ORain = 95;		// storm starts at 95
+		OWind = 15;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
@@ -256,6 +256,7 @@ void makeCurrentFutureRealizations(int iHour)
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	Whr_Generator();
 	addProceduralWeather(iBlendWeatherNum);
+
 }
 
 void WeatherInit()
@@ -267,13 +268,13 @@ void WeatherInit()
 		iTotalNumWeathers = InitWeather();
 		UnloadSegment("Weather_NH\WhrInit.c");
 	}
-	int iHour = MakeInt(GetHour());
-	Whr_Generator();
-	iCurWeatherNum = FindWeatherByHour(iHour);
-	addProceduralWeather(iCurWeatherNum);
-	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-	Whr_Generator();
-	addProceduralWeather(iBlendWeatherNum);
+	// int iHour = MakeInt(GetHour());
+	// Whr_Generator();
+	// iCurWeatherNum = FindWeatherByHour(iHour);
+	// addProceduralWeather(iCurWeatherNum);
+	// iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	// Whr_Generator();
+	// addProceduralWeather(iBlendWeatherNum);
 
 }
 
@@ -328,31 +329,43 @@ void CreateWeatherEnvironment()
 	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
 	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 
-	if (iNextWeatherNum != -1)
-	{
-		if (iPrevWeather == -1) { iPrevWeather = iCurWeatherNum; }
-		iCurWeatherHour = iHour;
-		iCurWeatherNum = iNextWeatherNum;
-		// iNextWeatherNum = -1;
-	}
-	else
-	{
-		// Whr_Generator();
-		iCurWeatherHour = iHour;
-		iCurWeatherNum = FindWeatherByHour(iHour);
-		// addProceduralWeather(iCurWeatherNum);
-	}
+	// if (iNextWeatherNum != -1)
+	// {
+	// 	if (iPrevWeather == -1) { iPrevWeather = iCurWeatherNum; }
+	// 	iCurWeatherHour = iHour;
+	// 	iCurWeatherNum = iNextWeatherNum;
+	// 	// iNextWeatherNum = -1;
+	// }
+	// else
+	// {
+	// 	// Whr_Generator();
+	// 	iCurWeatherHour = iHour;
+	// 	iCurWeatherNum = FindWeatherByHour(iHour);
+	// 	// addProceduralWeather(iCurWeatherNum);
+	// }
 
-	if (DEBUG_SEA_OPTICAL){
-		Whr_Generator();
-		addProceduralWeather(iCurWeatherNum);
-	}
+	// // Initializing weathersNH for the first time and imprinting weather
+	// if (DEBUG_SEA_OPTICAL || !CheckAttribute(WeathersNH, "initialized")){
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	WeathersNH.initialized = true;
+	// }
 
-	
-	// Whr_Generator();
+	iCurWeatherHour = iHour;
+	iCurWeatherNum = FindWeatherByHour(iHour);
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
+
+	if (!CheckAttribute(&Weathers[iCurWeatherNum], "lastImprint") || Weathers[iCurWeatherNum].lastImprint != GetDataDay() || DEBUG_SEA_OPTICAL)
+	{
+		trace("Imprint weather on weathers")
+		makeCurrentFutureRealizations(iHour);
+		Weathers[iCurWeatherNum].lastImprint = GetDataDay();
+	}
+	else
+	{
+		trace("Current weather has been imprinted this day");
+	}
 
 	int iCurLocation;
 	int iTestWeather;
@@ -616,7 +629,7 @@ int Whr_OnCalcFogColor()
 	int iFogColor = Whr_GetLong(Weather, "Fog.Color");
 	iColor = or(shl(iAlpha, 24), iFogColor);
 
-	trace("Return Color: " + iColor);
+	// trace("Return Color: " + iColor);
 
 	return iColor;
 }
