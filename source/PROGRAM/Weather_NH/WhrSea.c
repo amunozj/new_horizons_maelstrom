@@ -235,6 +235,7 @@ void FillSeaData(int nw1, int nw2)
 	{
 		Sea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
 		Sea.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
+		Sea.Fog.Color = Whr_GetColor(&Weathers[nw1], "Fog.Color");		
 
 		Sea.Sea2.Reflection = Whr_GetFloat(aSea2, "Reflection");
 		Sea.Sea2.Transparency = Whr_GetFloat(aSea2, "Transparency");
@@ -249,6 +250,7 @@ void FillSeaData(int nw1, int nw2)
 
 		Sea.Sea2.WaterColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "WaterColor"), Whr_GetColor(aSea22, "WaterColor") );
 		Sea.Sea2.SkyColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "SkyColor"), Whr_GetColor(aSea22, "SkyColor") );
+		Sea.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], "Fog.Color"), Whr_GetColor(&Weathers[nw2], "Fog.Color") );
 
 		Sea.Sea2.Reflection = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Reflection"), Whr_GetFloat(aSea22, "Reflection") );
 		Sea.Sea2.Transparency = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Transparency"), Whr_GetFloat(aSea22, "Transparency") );
@@ -257,7 +259,6 @@ void FillSeaData(int nw1, int nw2)
 
 	}
 
-	Sea.Fog.Color = Whr_GetColor(Weather, "Fog.Color");
 	Sea.Fog.Enable = Whr_GetLong(Weather, "Fog.Enable");
 	Sea.Fog.Start = Whr_GetFloat(Weather, "Fog.Start");
 	Sea.Fog.Density = Whr_GetFloat(Weather, "Fog.Density");

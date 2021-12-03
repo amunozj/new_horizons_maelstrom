@@ -328,8 +328,11 @@ void CreateWeatherEnvironment()
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
 
-	Trace("lastImprint exists: " + !CheckAttribute(&Weathers[iCurWeatherNum], "lastImprint") + " Last imprint: " + Weathers[iCurWeatherNum].lastImprint + " GetDataDay: " + GetDataDay())
-	if (!CheckAttribute(&Weathers[iCurWeatherNum], "lastImprint") || Weathers[iCurWeatherNum].lastImprint != GetDataDay()  || Weathers[iCurWeatherNum].lastImprint != (GetDataDay()+1) || DEBUG_SEA_OPTICAL)
+	Trace("lastImprint exists: " + CheckAttribute(&Weathers[iCurWeatherNum], "lastImprint") + " Last imprint: " + Weathers[iCurWeatherNum].lastImprint + " GetDataDay: " + GetDataDay());
+	// Trace("Last imprint bool: " + Weathers[iCurWeatherNum].lastImprint + " GetDataDay: " + GetDataDay());
+	int day = GetDataDay();
+	int daym1 = GetDataDay()-1;
+	if ( sti(Weathers[iCurWeatherNum].lastImprint) != day && sti(Weathers[iCurWeatherNum].lastImprint) != daym1 )
 	{
 		trace("Imprint weather on weathers")
 		makeCurrentFutureRealizations(iHour);
@@ -925,9 +928,9 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
 	Weathers[iTmp].SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
 
-	int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
+	// int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
 	// tint fog with sky color
-	fogcolor = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
+	// fogcolor = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
 
 	// // Add sunrise/sunset
 	// if (Weathers[iTmp].Hour.Min == 5 || Weathers[iTmp].Hour.Min == 21)
@@ -937,7 +940,7 @@ void addProceduralWeather(int iTmp)
 	// }
 
 
-	Weathers[iTmp].Fog.Color = fogcolor;
+	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
 
 	// Sea Definition -----------------------------------------------------

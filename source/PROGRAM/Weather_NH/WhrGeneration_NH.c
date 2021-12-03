@@ -235,30 +235,42 @@ void Whr_Generator(int iHour){
 	int darkWater = argb(0,28,28,28);
 	int grayWater = argb(0,100,100,100);
 	float fblend = 0;
+	float fblend2 = 0;
 
 	float transparency  = 0.5;
 
 	// Evening
+	if (curTime>21)
+	{
+		fblend = (MakeFloat(curTime) - 21)/3.0;
+	}
 	if (curTime>18)
 	{
-		fblend = (MakeFloat(curTime) - 18)/NIGHTCOLORBLEND;
 		transparency  = 0.5 - 0.5*(MakeFloat(curTime) - 18)/5.0
 	}
 	// Night
 	if (curTime < 6)
 	{
-		fblend = 6.0/NIGHTCOLORBLEND;
+		fblend = 1;
 		transparency = 0;
 	}
 	// Morning
 	if (curTime >= 6 && curTime < 11)
 	{
-		fblend = (11-MakeFloat(curTime))/NIGHTCOLORBLEND;
 		transparency  = 0.5 - 0.5*(11-MakeFloat(curTime))/5.0
 	}
+	if (curTime >= 4 && curTime < 7)
+	{
+		fblend = (6-MakeFloat(curTime))/3.0;
+	}
+
+
 
 	int darkSky = argb(0,155,155,155);
 	int lightSky = argb(0,255,255,255);
+	int dawnDuskSky = argb(0,255,162,50);
+
+	// if (curTime==22 || curTime==23 || curTime==5 || curTime==6) lightSky = dawnDuskSky;
 
 	WeathersNH.Sea2.SkyColor = Whr_BlendColor( fblend, lightSky, darkSky);
 
@@ -290,7 +302,10 @@ void Whr_Generator(int iHour){
 
 	// Blend fog between day and night
 	int lightfog = argb(0,180,180,180);
-	int darkfog = argb(0,0,0,0);	
+	int darkfog = argb(0,0,0,0);
+	int dawnduskfog = argb(0,143,68,58);
+
+	// if (curTime==22 || curTime==23 || curTime==5 || curTime==6) lightfog = dawnduskfog;	
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
 	
 	// Tint it with the water color
