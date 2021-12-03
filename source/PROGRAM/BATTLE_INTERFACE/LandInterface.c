@@ -1944,7 +1944,7 @@ void ReloadFromLandToSea()
 	ref pchar = GetMainCharacter();
 	Reload(chrWaitReloadRef, chrWaitReloadLocator, pchar.location);
 	DeleteAttribute(pchar,"reloadStatus");
-	// DirectsailCheck(true);
+	DirectsailCheck(true);
 
 	bAbordageStarted = false;
 	bDeckStarted = false;

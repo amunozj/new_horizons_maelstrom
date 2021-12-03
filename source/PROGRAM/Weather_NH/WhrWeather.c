@@ -383,7 +383,7 @@ void CreateWeatherEnvironment()
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
-	trace("Weather wind speed: " + Whr_GetFloat(Weather, "Wind.Speed"));
+	// trace("Weather wind speed: " + Whr_GetFloat(Weather, "Wind.Speed"));
 
 	pchar.Wind.Angle = fWeatherAngle;
 	pchar.Wind.Speed = fWeatherSpeed;
@@ -524,7 +524,7 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	{
 		PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
 
-		if (GetSeaTime()>60) DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
+		DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
 	}
 }
 
@@ -891,9 +891,9 @@ void FillWeatherData(int nw1, int nw2)
 
 	}
 
-	trace(sCurFog);
-	trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
-	trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
+	// trace(sCurFog);
+	// trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
+	// trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
 }
 
 int FindWeatherByHour(int nHour)
