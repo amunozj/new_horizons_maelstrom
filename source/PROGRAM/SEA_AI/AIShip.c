@@ -2417,13 +2417,17 @@ int AddSeaTimeToCurrent()
 		}
 	}
 
+	// trace("addseatime: Find weather");
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 
+	// trace("addseatime: Fill weather");
 	// update weather: sun lighting
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
+	// trace("addseatime: Fill rain");
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07
@@ -2432,18 +2436,26 @@ int AddSeaTimeToCurrent()
 		FillRainData(iCurWeatherNum, iBlendWeatherNum);
 		Rain.isDone = "";
 	}
+
+	// trace("addseatime: Fill sun");
+
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
 
+	// trace("addseatime: Fill sea");
 	// Fill Sea data
 	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
 
+	// trace("addseatime: Fill sky");	
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
+	// trace("addseatime: update fog");
 	// update sky: fog
-	Sky.TimeUpdate = Environment.time;
+	// Sky.TimeUpdate = Environment.time;
+
+	// trace("addseatime: done");
 
 	return minutes;
 }
