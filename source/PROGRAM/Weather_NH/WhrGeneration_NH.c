@@ -28,7 +28,7 @@
 #define NIGHTCOLORBLEND 6.0
 #define FOG2TRANSPARENCY 150.0
 
-// #define REALISTIC_WAVES 1
+#define RANDOMDEBUG 1
 
 void Whr_ResetOvrd(){
 	OWeatherAngle = -50.0;
@@ -301,7 +301,7 @@ void Whr_Generator(int iHour){
 
 
 	// Blend fog between day and night
-	int lightfog = argb(0,180,180,180);
+	int lightfog = argb(0,120,120,120);
 	int darkfog = argb(0,0,0,0);
 	int dawnduskfog = argb(0,143,68,58);
 
@@ -314,6 +314,27 @@ void Whr_Generator(int iHour){
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
+	// Determine the skybox to use
+	string skydir;
+
+
+	// Night
+	if (curTime >= 1 && curTime <= 3 ) skydir = skydir_night();
+
+	//Twilight
+	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
+		if (wRain > 80) skydir_night();
+		else skydir = skydir_twilight();
+	}
+
+	// Morning day and afternoon
+	if (curTime >= 6 && curTime <= 10 ) skydir = skydir_morningAFternoon();
+	if (curTime >= 18 && curTime <= 22 ) skydir = skydir_morningAFternoon();
+	if (curTime >= 11 && curTime <= 17 ) skydir = skydir_day();
+
+	if (curTime >= 6 && curTime <= 22 && wRain >60 ) skydir = skydir_day_overcast();
+
+	WeathersNH.Sky.Dir = skydir;
 
 	if (GENERATIONDEBUG){
 
@@ -348,4 +369,131 @@ string f2s(float fl,int nDigAfterPoint)
 	while (strRight(retval,1) == "0") retval = strLeft(retval, strLen(retval)-1);
 	if (strRight(retval,1) == ".")    retval = strLeft(retval, strLen(retval)-1);
 	return retval;
+}
+
+//--------------------------------------------------------------------------------
+// Sky randomizers
+
+string skydir_twilight()
+{
+
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = rand(4);
+	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber)
+
+	string skydir;
+	switch(skyNumber)
+    {
+    case 0:
+        skydir = "weather\skies\01\";
+        break;
+    case 1:
+        skydir = "weather\skies\05\";
+        break;
+    case 3:
+        skydir = "weather\skies\24\";
+        break;
+    case 3:
+        skydir = "weather\skies\22\";
+        break;
+    case 4:
+        skydir = "weather\skies\23\";
+        break;
+	}
+
+	return skydir;
+}
+
+string skydir_morningAFternoon()
+{
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = rand(3);
+	if (RANDOMDEBUG) Trace("skydir_morningAFternoon random number: " + skyNumber)
+
+	string skydir;
+	switch(skyNumber)
+    {
+    case 0:
+        skydir = "weather\skies\07\";
+        break;
+    case 1:
+        skydir = "weather\skies\08\";
+        break;
+    case 2:
+        skydir = "weather\skies\09\";
+        break;
+    case 3:
+        skydir = "weather\skies\20\";
+        break;
+	}
+
+	return skydir;
+}
+
+string skydir_day()
+{
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = rand(3);
+	if (RANDOMDEBUG) Trace("skydir_day random number: " + skyNumber)
+
+	string skydir;
+	switch(skyNumber)
+    {
+    case 0:
+        skydir = "weather\skies\10\";
+        break;
+    case 1:
+        skydir = "weather\skies\13\";
+        break;
+    case 2:
+        skydir = "weather\skies\16\";
+        break;
+    case 3:
+        skydir = "weather\skies\18\";
+        break;
+	}
+
+	return skydir;
+}
+
+string skydir_night()
+{
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = 0;  // Zero for a single option
+	string skydir;
+	switch(skyNumber)
+    {
+    case 0:
+        skydir = "weather\skies\03\";
+        break;
+	}
+
+	return skydir;
+}
+
+
+string skydir_day_overcast()
+{
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = rand(3);
+	if (RANDOMDEBUG) Trace("skydir_day_overcast random number: " + skyNumber)
+	
+	string skydir;
+	switch(skyNumber)
+    {
+    case 0:
+        skydir = "weather\skies\storm1\";
+        break;
+    case 1:
+        skydir = "weather\skies\storm2\";
+        break;
+    case 2:
+        skydir = "weather\skies\storm3\";
+        break;
+    case 3:
+        skydir = "weather\skies\storm4\";
+        break;		
+	}
+
+	return skydir;
 }

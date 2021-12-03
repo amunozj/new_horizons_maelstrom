@@ -972,6 +972,7 @@ void addProceduralWeather(int iTmp)
 	//Sky definition
 
 	Weathers[iTmp].Sea2.SkyColor = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
+	Weathers[iTmp].Sky.Dir = Whr_GetString(WeathersNH, "Sky.Dir");
 
 	// Rain definition
 	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");

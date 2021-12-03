@@ -33,13 +33,16 @@ void WhrCreateSkyEnvironment()
             LayerAddObject("sea_reflection", &Sky, 11);
 	}
 
-	FillSkyDir(&Sky);
+	// FillSkyDir(&Sky);
 	// Sky.Dir = Whr_GetString(aSky, "Dir");
 
-	if (wRain > 60)
-	{
-		Sky.Dir = "weather\skies\Storm01\";
-	}
+	Sky.Dir.d1 = aCurWeather.Sky.Dir;
+	Sky.Dir = GetHour();
+
+	// if (wRain > 60)
+	// {
+	// 	Sky.Dir = "weather\skies\Storm01\";
+	// }
 
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 	// Sky.Color = Whr_GetColor(aSky, "Color");
