@@ -25,7 +25,7 @@
 #define SCALERANDOM 0.4
 #define FOAMRANDOM 0.025
 
-#define NIGHTCOLORBLEND 7.0
+#define NIGHTCOLORBLEND 6.0
 #define FOG2TRANSPARENCY 150.0
 
 // #define REALISTIC_WAVES 1
@@ -42,7 +42,7 @@ void Whr_ResetOvrd(){
 	gWeatherOvrd = false;
 }
 
-void Whr_Generator(){
+void Whr_Generator(int iHour){
 // ====================================================================
 // JL - Less Random Weather Generator -- hopefully
 // ====================================================================
@@ -64,7 +64,7 @@ void Whr_Generator(){
 	}
 
 	//Logit("BugTracker - goldFog: " + goldFog + " goldRain: " + goldRain + " oldWind: " + oldWind + " gWeatherInit: " + gWeatherInit);
-	curTime = MakeInt(GetHour()); //Causing problems
+	curTime = iHour; //Causing problems
 	bWeatherIsStorm = false; // screwface
 	bWeatherIsRain = false; // screwface
 
@@ -169,11 +169,6 @@ void Whr_Generator(){
 
 	trace("winds: " + winds + " Realized winds" + seaWindSpeed);
 
-	direction1 = fts(fSeaB, 4);
-	direction2 = fts((fSeaB + (PId2 / 2.0)), 4);
-	direction3 = fts((fSeaB - (PId2 / 2.0)), 4);
-
-
 	float effectiveRain = (wRain-70)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
@@ -228,7 +223,6 @@ void Whr_Generator(){
 	WeathersNH.Sea2.Attenuation = 0.5;
 
 	// Pick random water color
-	int futureHour = MakeInt(GetHour()) + 1;
 	int randomPick, itmp;
 
 	randomPick = rand(23-10) + 10;
@@ -245,27 +239,32 @@ void Whr_Generator(){
 	float transparency  = 0.5;
 
 	// Evening
-	if (futureHour>18)
+	if (curTime>18)
 	{
-		fblend = (MakeFloat(futureHour) - 18)/NIGHTCOLORBLEND;
-		transparency  = 0.5 - 0.5*(MakeFloat(futureHour) - 18)/5.0
+		fblend = (MakeFloat(curTime) - 18)/NIGHTCOLORBLEND;
+		transparency  = 0.5 - 0.5*(MakeFloat(curTime) - 18)/5.0
 	}
 	// Night
-	if (futureHour < 6)
+	if (curTime < 6)
 	{
 		fblend = 6.0/NIGHTCOLORBLEND;
 		transparency = 0;
 	}
 	// Morning
-	if (futureHour >= 6 && futureHour < 11)
+	if (curTime >= 6 && curTime < 11)
 	{
-		fblend = (11-MakeFloat(futureHour))/NIGHTCOLORBLEND;
-		transparency  = 0.5 - 0.5*(11-MakeFloat(futureHour))/5.0
+		fblend = (11-MakeFloat(curTime))/NIGHTCOLORBLEND;
+		transparency  = 0.5 - 0.5*(11-MakeFloat(curTime))/5.0
 	}
 
-	if (futureHour>9 && futureHour<19)
+	int darkSky = argb(0,155,155,155);
+	int lightSky = argb(0,255,255,255);
+
+	WeathersNH.Sea2.SkyColor = Whr_BlendColor( fblend, lightSky, darkSky);
+
+	if (curTime>9 && curTime<19)
 	{
-		transparency = 0.4 + 0.5*abs(14-MakeFloat(futureHour))/5.0;
+		transparency = 0.4 + 0.5*abs(14-MakeFloat(curTime))/5.0;
 	}
 
 	// Apply fog and rain to transparency
@@ -297,48 +296,8 @@ void Whr_Generator(){
 	// Tint it with the water color
 	fogcolor = Whr_BlendColor(0.2, fogcolor, WaterColor);
 
-	// // Blend sea and Sky color
-	// int currenthour = MakeInt(GetHour());
-	// itmp = FindWeatherByHour(currenthour);
-
-
-	// int skycolor2 =  Whr_BlendColor(0.5, Weathers[iTmp].Bak.Fog.Color, WaterColor);
-
-	// int rainfogcolor;
-	// if (futureHour<6 || futureHour>20){
-	// 	rainfogcolor = argb(0,20,15,15);
-	// }else{
-	// 	int lightfog = argb(0,220,220,220);
-	// 	int darkfog = argb(0,50,50,50);
-	// 	fblend = MakeFloat(wRain-75)/25.0;
-	// 	trace("fblend: " + fblend);
-	// 	if (fblend < 0) fblend = 0.0; 
-	// 	rainfogcolor =  Whr_BlendColor(fblend, lightfog, darkfog);
-	// }
-
-	// int fogColor = Whr_BlendColor(fog2trans, skycolor2, rainfogcolor);
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
-
-
-	// float tmpdensity = Whr_GetFloat(WeathersNH, "Fog.Density");
-	// float fblend2 = Clampf(tmpdensity*50.0);
-	// int rainfogcolor2 =  Whr_BlendColor(fblend2, Weathers[iTmp].Bak.Fog.Color, rainfogcolor);
-
-	// Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
-	// Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
-
-	// if (futureHour>9 && futureHour<19)
-	// {
-	// 	randomPick = rand(18-10) + 10;
-	// 	itmp = FindWeatherByHour(randomPick);
-	// 	trace("Random number: " + randomPick + " weather index: " + itmp + " Weather id: " + Weathers[itmp].id)
-	// 	WeathersNH.Sea2.WaterColor = Whr_GetColor(Weathers[itmp], "Bak.Sea2.WaterColor");
-	// }else
-	// {
-	// 	itmp = FindWeatherByHour(futureHour);
-	// 	WeathersNH.Sea2.WaterColor = Whr_GetColor(Weathers[itmp], "Sea2.WaterColor");
-	// }
 
 
 	if (GENERATIONDEBUG){
