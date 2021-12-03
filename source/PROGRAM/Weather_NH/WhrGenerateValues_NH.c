@@ -2,8 +2,9 @@ void Whr_GenerateValues(int fogCheck){
 
 // Screwface : Chance to have weather conditions degrade is according to the month and seasons in Caribbean
 	int month = GetDataMonth();
-	int rainrisk = 100;
+	int rainrisk = 5;
 
+	// trace("Month: " + month);
 	switch(month)
 	{
 		case 1:  rainrisk = 10; break;
