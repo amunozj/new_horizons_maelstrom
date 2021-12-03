@@ -123,7 +123,7 @@ void WhrCreateSeaEnvironment()
 	Sea.Sun.HeightAngle = Whr_GetFloat(aCurWeather,"Sun.HeightAngle");
 	Sea.Sun.AzimuthAngle = Whr_GetFloat(aCurWeather,"Sun.AzimuthAngle");
 
-	// string sCurFog = Whr_GetCurrentFog();
+	string sCurFog = Whr_GetCurrentFog();
 	// Sea.Fog.Color = Whr_GetColor(aCurWeather, sCurFog + ".Color");
 	// Sea.Fog.Enable = Whr_GetLong(aCurWeather, sCurFog + ".Enable");
 	// Sea.Fog.Start = Whr_GetFloat(aCurWeather, sCurFog + ".Start");
@@ -228,6 +228,7 @@ void WhrCreateSeaEnvironment()
 void FillSeaData(int nw1, int nw2)
 {
 	if( nw1 < 0 || nw1 >= MAX_WEATHERS ) {return;}
+	string sCurFog = Whr_GetCurrentFog();
 
 	aref aSea2; makearef(aSea2, Weathers[nw1].Sea2);
 
@@ -235,12 +236,16 @@ void FillSeaData(int nw1, int nw2)
 	{
 		Sea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
 		Sea.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
-		Sea.Fog.Color = Whr_GetColor(&Weathers[nw1], "Fog.Color");		
+		Sea.Fog.Color = Whr_GetColor(&Weathers[nw1], sCurFog + ".Color");		
+		Sea.Fog.Density = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density");
+		Sea.Fog.SeaDensity = Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity");
 
 		Sea.Sea2.Reflection = Whr_GetFloat(aSea2, "Reflection");
 		Sea.Sea2.Transparency = Whr_GetFloat(aSea2, "Transparency");
 		Sea.Sea2.Attenuation = Whr_GetFloat(aSea2, "Attenuation");
 		Sea.Sea2.Frenel = Whr_GetFloat(aSea2, "Frenel");
+
+
 
 	}
 	else
@@ -250,7 +255,10 @@ void FillSeaData(int nw1, int nw2)
 
 		Sea.Sea2.WaterColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "WaterColor"), Whr_GetColor(aSea22, "WaterColor") );
 		Sea.Sea2.SkyColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "SkyColor"), Whr_GetColor(aSea22, "SkyColor") );
-		Sea.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], "Fog.Color"), Whr_GetColor(&Weathers[nw2], "Fog.Color") );
+		Sea.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], sCurFog + ".Color"), Whr_GetColor(&Weathers[nw2], sCurFog + ".Color") );
+		Sea.Fog.Density = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".Density") );
+		Sea.Fog.SeaDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".SeaDensity") );
+
 
 		Sea.Sea2.Reflection = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Reflection"), Whr_GetFloat(aSea22, "Reflection") );
 		Sea.Sea2.Transparency = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Transparency"), Whr_GetFloat(aSea22, "Transparency") );
@@ -260,9 +268,7 @@ void FillSeaData(int nw1, int nw2)
 	}
 
 	Sea.Fog.Enable = Whr_GetLong(Weather, "Fog.Enable");
-	Sea.Fog.Start = Whr_GetFloat(Weather, "Fog.Start");
-	Sea.Fog.Density = Whr_GetFloat(Weather, "Fog.Density");
-	Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");	
+	Sea.Fog.Start = Whr_GetFloat(Weather, "Fog.Start");	
 
 	// trace("Sea Frenel: " + Whr_GetFloat(Sea, "Sea2.Frenel"));
 }

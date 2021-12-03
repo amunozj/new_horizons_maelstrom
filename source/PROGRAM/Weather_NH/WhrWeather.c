@@ -599,6 +599,7 @@ int Whr_OnCalcFogColor()
 	}
 
 	// trace("Fog Height: " + Whr_GetFloat(Weather, "Fog.Height"));
+	// trace("Fog color: " + Whr_GetLong(Weather, "Fog.Color"));
 
 	// 	//iColor = argb(0,0,0,0);
 	int iFogColor = Whr_GetLong(Weather, "Fog.Color");
@@ -664,12 +665,7 @@ void Whr_TimeUpdate()
 		sCurrentFog = "SpecialSeaFog";
 	}	
 
-	if (bSeaActive)
-	{
-		Island.LightingPath = GetLightingPath();
-		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
-		Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
-	}
+
 
 	if (WeathersNH.Rain == true)
 	{
@@ -706,6 +702,22 @@ void Whr_TimeUpdate()
 
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	if (bSeaActive)
+	{
+		Island.LightingPath = GetLightingPath();
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+		Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
+		
+	}
+
+	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
+
+	aref aCurWeather = GetCurrentWeather();
+	doShipLightChange(aCurWeather);	
+
+	Sky.TimeUpdate = GetTime();
 
 }
 
@@ -759,7 +771,7 @@ void Whr_UpdateWeatherHour()
         // if(doLightChange && isSeaEnt) {
         //     doShipLightChange(aCurWeather);
         // }
-		doShipLightChange(aCurWeather);
+
  	}
 
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
@@ -878,6 +890,10 @@ void FillWeatherData(int nw1, int nw2)
 		// trace("Resulting angle: " + fWeatherAngle);
 
 	}
+
+	trace(sCurFog);
+	trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
+	trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
 }
 
 int FindWeatherByHour(int nHour)
@@ -942,6 +958,7 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
+	trace("Fog Color: " + Whr_GetColor(WeathersNH, "Fog.Color") + " Special fog color: " + Whr_GetColor(WeathersNH, "SpecialSeaFog.Color"));
 
 	// Sea Definition -----------------------------------------------------
 	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");

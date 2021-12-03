@@ -2417,6 +2417,12 @@ int AddSeaTimeToCurrent()
 		}
 	}
 
+	sCurrentFog = "Fog";
+	if (bSeaActive)
+	{
+		sCurrentFog = "SpecialSeaFog";
+	}		
+
 	// trace("addseatime: Find weather");
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -2456,6 +2462,17 @@ int AddSeaTimeToCurrent()
 	// Sky.TimeUpdate = Environment.time;
 
 	// trace("addseatime: done");
+
+	if (bSeaActive)
+	{
+		Island.LightingPath = GetLightingPath();
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+		Sea.Fog.SeaDensity =  Whr_GetFloat(Weather, "Fog.SeaDensity");
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
+		
+	}	
+
+	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
 	return minutes;
 }
