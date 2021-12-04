@@ -861,7 +861,7 @@ void procUpdateTime()
 					// Trace("== Directsail called at " + timestring);
 					mchr.directsail.count = stf(mchr.directsail.count) + DirectsailCheckFrequency/60.0; // update encounter frequency count
 					// TraceAndLog("Directsail encounter check = " + stf(mchr.directsail.count));
-					DirectsailCheck(true);
+					if (GetSeaTime()>60) DirectsailCheck(true);
 					bIslandChecked = true;
 				}
 			}

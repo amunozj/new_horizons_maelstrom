@@ -514,7 +514,11 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	// LDH cleanup 16Feb09
 //	Traceandlog("Whr_UpdateWeather start weather update " + "Time: " + GetStringTime(GetTime()) +" reinit: " +reinit_weather);	// LDH 05Sep06 trace for CTD
 
-	if(reinit_weather) WeatherInit(); // NK 04-09-21
+	if(reinit_weather)
+	{
+		WeatherInit(); // NK 04-09-21
+		clearImprintedWeather();
+	}
 	CreateWeatherEnvironment();
 	MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
 
@@ -524,7 +528,7 @@ void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 	{
 		PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
 
-		DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
+		if (GetSeaTime()>60) DirectsailCheck(true);	//  triggers change to other island and ship encounters, necessary to run here
 	}
 }
 
@@ -751,7 +755,7 @@ void Whr_UpdateWeatherHour()
 		//#20190211-01
         doLightChange = true;
  	}
-	trace("Weather hourly update before wind change");
+	// trace("Weather hourly update before wind change");
  	if (bSeaActive && !bAbordageStarted)
 	{
 	    bool isSeaEnt = false;
@@ -778,10 +782,10 @@ void Whr_UpdateWeatherHour()
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
-	trace("Weather hourly update before generator");
+	// trace("Weather hourly update before generator");
 	Whr_Generator(makeint(Environment.time)+1);
 	addProceduralWeather(iBlendWeatherNum);	
-	trace("Weather hourly update done");
+	// trace("Weather hourly update done");
 	 
 }
 
@@ -901,7 +905,7 @@ int FindWeatherByHour(int nHour)
 	// trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
 	for (int n=0; n<MAX_WEATHERS; n++)
 	{
-		if (WeathersNH.StormSky==false){
+		if (!CheckAttribute(WeathersNH, "StormSky") || WeathersNH.StormSky==false){
 			// trace("Calm weather");
 
 			if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
@@ -958,7 +962,7 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
 	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
-	trace("Fog Color: " + Whr_GetColor(WeathersNH, "Fog.Color") + " Special fog color: " + Whr_GetColor(WeathersNH, "SpecialSeaFog.Color"));
+	// trace("Fog Color: " + Whr_GetColor(WeathersNH, "Fog.Color") + " Special fog color: " + Whr_GetColor(WeathersNH, "SpecialSeaFog.Color"));
 
 	// Sea Definition -----------------------------------------------------
 	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
@@ -990,6 +994,7 @@ void addProceduralWeather(int iTmp)
 
 	Weathers[iTmp].Sea2.SkyColor = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
 	Weathers[iTmp].Sky.Dir = Whr_GetString(WeathersNH, "Sky.Dir");
+	Trace("Imprint weather sky.dir: " + Whr_GetString(WeathersNH, "Sky.Dir"));
 
 	// Rain definition
 	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
@@ -1408,4 +1413,13 @@ string Whr_getMoonTexture(){
 	}
 
 	return moonpic;
+}
+
+void clearImprintedWeather(){
+
+	for (int i=0; i<MAX_WEATHERS; i++)
+	{
+		Weathers[i].lastImprint = -1;
+	}
+
 }

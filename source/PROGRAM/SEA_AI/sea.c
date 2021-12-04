@@ -126,6 +126,7 @@ void DeleteSeaEnvironment()
 	DeleteSeaGoodsEnvironment();
 
 	DeleteWeatherEnvironment();
+	clearImprintedWeather();
 	DeleteCoastFoamEnvironment();
 
 	DeleteAttribute(&AISea,"");
@@ -428,6 +429,7 @@ void Sea_MapLoad()
 {
 	worldMap.playerInStorm = 0;
 	SetNextWeather("Clear");
+	clearImprintedWeather();
 	//int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	if(GetSeaTime() < 3 && !bSkipSeaLogin) {
 		LogIt(TranslateString("","Wait a sec while I get out the chart, captain!"));
@@ -634,6 +636,8 @@ void SeaLogin(ref Login)
 		}
 	}
 // <-- KK
+
+	// DirectsailCheck(true);
 
 	// create all sea modules
 	CreateSeaEnvironment();

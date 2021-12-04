@@ -28,6 +28,8 @@
 #define NIGHTCOLORBLEND 6.0
 #define FOG2TRANSPARENCY 150.0
 
+#define SHORECOLORDISTANCE 30.0
+
 #define RANDOMDEBUG 1
 
 void Whr_ResetOvrd(){
@@ -77,7 +79,7 @@ void Whr_Generator(int iHour){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	// wRain = 95;
+	wRain = 0;
 	// fog = 0;
 	//curTime = 6;
 	// winds = 30;
@@ -167,13 +169,13 @@ void Whr_Generator(int iHour){
 	float seaWindSpeed = Whr_GetFloat(WeathersNH,"Wind.Speed");
 	WeathersNH.Wind.seaWindSpeed = seaWindSpeed;
 
-	trace("winds: " + winds + " Realized winds" + seaWindSpeed);
+	// trace("winds: " + winds + " Realized winds" + seaWindSpeed);
 
 	float effectiveRain = (wRain-70)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	// Bupmscale the sea grainyness
-	float bumpscale = 0.07 + frnd()*0.05;
+	float bumpscale = 0.05 + frnd()*0.05;
 	WeathersNH.Sea2.BumpScale = bumpscale;
 	WeathersNH.Sea2.PosShift = 1.0;
 
@@ -222,51 +224,39 @@ void Whr_Generator(int iHour){
 	// Sea properties
 	WeathersNH.Sea2.Attenuation = 0.5;
 
-	// Pick random water color
-	int randomPick, itmp;
-
-	randomPick = rand(23-10) + 10;
-	itmp = FindWeatherByHour(randomPick);
-	// trace("Random number: " + randomPick + " weather index: " + itmp + " Weather id: " + Weathers[itmp].id)
-	int WaterColor = Whr_GetColor(Weathers[itmp], "Bak.Sea2.WaterColor")
-
-
-	// Darken and make opaque it for evening and night
-	int darkWater = argb(0,28,28,28);
-	int grayWater = argb(0,100,100,100);
 	float fblend = 0;
 	float fblend2 = 0;
 
 	float transparency  = 0.5;
 
 	// Evening
-	if (curTime>21)
+	if (curTime==23 || curTime==5)
 	{
-		fblend = (MakeFloat(curTime) - 21)/3.0;
+		fblend = 0.5;
 	}
-	if (curTime>18)
-	{
-		transparency  = 0.5 - 0.5*(MakeFloat(curTime) - 18)/5.0
-	}
+	// if (curTime>18)
+	// {
+	// 	transparency  = 0.5 - 0.5*(MakeFloat(curTime) - 18)/5.0
+	// }
 	// Night
-	if (curTime < 6)
+	if (curTime <=4)
 	{
 		fblend = 1;
 		transparency = 0;
 	}
 	// Morning
-	if (curTime >= 6 && curTime < 11)
-	{
-		transparency  = 0.5 - 0.5*(11-MakeFloat(curTime))/5.0
-	}
-	if (curTime >= 4 && curTime < 7)
-	{
-		fblend = (6-MakeFloat(curTime))/3.0;
-	}
+	// if (curTime >= 6 && curTime < 11)
+	// {
+	// 	transparency  = 0.5 - 0.5*(11-MakeFloat(curTime))/5.0
+	// }
+	// if (curTime == 5)
+	// {
+	// 	fblend = (6-MakeFloat(curTime))/3.0;
+	// }
 
 
 
-	int darkSky = argb(0,155,155,155);
+	int darkSky = argb(0,60,60,60);
 	int lightSky = argb(0,255,255,255);
 	int dawnDuskSky = argb(0,255,162,50);
 
@@ -290,14 +280,45 @@ void Whr_Generator(int iHour){
 	if (transparency < 0) transparency = 0.0;
 	if (fog2trans > 1) fog2trans = 1.0;
 
+	
+	// trace("Random number: " + randomPick + " weather index: " + itmp + " Weather id: " + Weathers[itmp].id)
+	int WaterColor = waterColor_shore()
+
+	// Darken and make opaque it for evening and night
+	int darkWater = argb(0,28,28,28);
+	int grayWater = argb(0,100,100,100);
+
 	WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, grayWater);
+
+	int darkgrayWater = argb(0,70,70,70);
+
+	float closestdist = 0.0;
+	if (CheckAttribute(worldMap, "directsail1.closestdist")){
+		trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
+		closestdist = worldMap.directsail1.closestdist;
+		trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
+	}else{
+		trace("weather Char location: " + pchar.location);
+	}
+
+	if (pchar.location == WDM_NONE_ISLAND || closestdist > SHORECOLORDISTANCE)
+	{
+		WaterColor = waterColor_openSea();
+		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
+	}
+
 	WaterColor = Whr_BlendColor( fblend, WaterColor, darkWater);
+
+
+
 	WeathersNH.Sea2.WaterColor = WaterColor;
 	WeathersNH.Sea2.Transparency = transparency;
 
 	// Apply fog to Frenel and Reflection
-	WeathersNH.Sea2.Frenel = 0.5 + frnd()*0.25 - fog2trans*0.5;
+	WeathersNH.Sea2.Frenel = 0.75 + frnd()*0.25 - fog2trans*0.25;
 	WeathersNH.Sea2.Reflection = 0.75 + frnd()*0.25 - fog2trans*0.75;
+
+	if (RANDOMDEBUG) Trace("Done with watercolor");
 
 
 	// Blend fog between day and night
@@ -314,27 +335,34 @@ void Whr_Generator(int iHour){
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
+	if (RANDOMDEBUG) Trace("Done with fog");
+
 	// Determine the skybox to use
 	string skydir;
 
 
+	trace("CurTime: " + curTime);
 	// Night
-	if (curTime >= 1 && curTime <= 3 ) skydir = skydir_night();
+	if (curTime >= 1 && curTime <= 3 ) {skydir = skydir_night();}
 
 	//Twilight
+	if (curTime==23 || curTime==5) {skydir = skydir_twilight1();}
+	if (curTime==0 || curTime==4) {skydir = skydir_twilight2();}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) skydir_night();
-		else skydir = skydir_twilight();
 	}
 
 	// Morning day and afternoon
-	if (curTime >= 6 && curTime <= 10 ) skydir = skydir_morningAFternoon();
-	if (curTime >= 18 && curTime <= 22 ) skydir = skydir_morningAFternoon();
-	if (curTime >= 11 && curTime <= 17 ) skydir = skydir_day();
+	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
+	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
+	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
 
-	if (curTime >= 6 && curTime <= 22 && wRain >60 ) skydir = skydir_day_overcast();
+	if (curTime >= 6 && curTime <= 22 && wRain >60 ) {skydir = skydir_day_overcast();}
 
 	WeathersNH.Sky.Dir = skydir;
+
+	if (RANDOMDEBUG) Trace("Sky.Dir generation: " + Whr_GetString(WeathersNH, "Sky.Dir"));
+	if (RANDOMDEBUG) Trace("Done with skybox");
 
 	if (GENERATIONDEBUG){
 
@@ -372,103 +400,118 @@ string f2s(float fl,int nDigAfterPoint)
 }
 
 //--------------------------------------------------------------------------------
-// Sky randomizers
+// Sky randomizers (Quiet-Sun)
 
-string skydir_twilight()
+string skydir_twilight1()
 {
 
 	// Random number for the case, if you add more skies be sure to match the number of cases
-	int skyNumber = rand(4);
-	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber)
+	int skyNumber = rand(1);
+	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber);
 
-	string skydir;
+	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydir = "weather\skies\01\";
+        skydirr = "weather\skies\22\";
         break;
     case 1:
-        skydir = "weather\skies\05\";
-        break;
-    case 3:
-        skydir = "weather\skies\24\";
-        break;
-    case 3:
-        skydir = "weather\skies\22\";
-        break;
-    case 4:
-        skydir = "weather\skies\23\";
+        skydirr = "weather\skies\23\";
         break;
 	}
 
-	return skydir;
+	return skydirr;
+}
+
+string skydir_twilight2()
+{
+
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int skyNumber = rand(3);
+	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber);
+
+	string skydirr;
+	switch(skyNumber)
+    {
+    case 0:
+        skydirr = "weather\skies\01\";
+        break;
+    case 1:
+        skydirr = "weather\skies\05\";
+        break;
+    case 3:
+        skydirr = "weather\skies\24\";
+        break;
+	}
+
+	return skydirr;
 }
 
 string skydir_morningAFternoon()
 {
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = rand(3);
-	if (RANDOMDEBUG) Trace("skydir_morningAFternoon random number: " + skyNumber)
+	if (RANDOMDEBUG) Trace("skydir_morningAFternoon random number: " + skyNumber);
 
-	string skydir;
+	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydir = "weather\skies\07\";
+        skydirr = "weather\skies\07\";
         break;
     case 1:
-        skydir = "weather\skies\08\";
+        skydirr = "weather\skies\08\";
         break;
     case 2:
-        skydir = "weather\skies\09\";
+        skydirr = "weather\skies\09\";
         break;
     case 3:
-        skydir = "weather\skies\20\";
+        skydirr = "weather\skies\20\";
         break;
 	}
 
-	return skydir;
+	return skydirr;
 }
 
 string skydir_day()
 {
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = rand(3);
-	if (RANDOMDEBUG) Trace("skydir_day random number: " + skyNumber)
+	if (RANDOMDEBUG) Trace("skydir_day random number: " + skyNumber);
 
-	string skydir;
+	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydir = "weather\skies\10\";
+        skydirr = "weather\skies\10\";
         break;
     case 1:
-        skydir = "weather\skies\13\";
+        skydirr = "weather\skies\13\";
         break;
     case 2:
-        skydir = "weather\skies\16\";
+        skydirr = "weather\skies\16\";
         break;
     case 3:
-        skydir = "weather\skies\18\";
+        skydirr = "weather\skies\18\";
         break;
 	}
 
-	return skydir;
+	return skydirr;
 }
 
 string skydir_night()
 {
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = 0;  // Zero for a single option
-	string skydir;
+	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydir = "weather\skies\03\";
+        skydirr = "weather\skies\03\";
         break;
 	}
 
-	return skydir;
+	return skydirr;
 }
 
 
@@ -476,24 +519,109 @@ string skydir_day_overcast()
 {
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = rand(3);
-	if (RANDOMDEBUG) Trace("skydir_day_overcast random number: " + skyNumber)
+	if (RANDOMDEBUG) Trace("skydir_day_overcast random number: " + skyNumber);
 	
-	string skydir;
+	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydir = "weather\skies\storm1\";
+        skydirr = "weather\skies\storm1\";
         break;
     case 1:
-        skydir = "weather\skies\storm2\";
+        skydirr = "weather\skies\storm2\";
         break;
     case 2:
-        skydir = "weather\skies\storm3\";
+        skydirr = "weather\skies\storm3\";
         break;
     case 3:
-        skydir = "weather\skies\storm4\";
+        skydirr = "weather\skies\storm4\";
         break;		
 	}
 
-	return skydir;
+	return skydirr;
+}
+
+//--------------------------------------------------------------------------------
+// Color randomizers (Quiet-Sun)
+
+int waterColor_shore()
+{
+
+	// Random number for the case, if you add more colors be sure to match the number of cases
+	int colorNumber = rand(7);
+	if (RANDOMDEBUG) Trace("waterColor_shore random number: " + colorNumber);
+
+	int waterColor;
+	switch(colorNumber)
+    {
+    case 0:
+        waterColor = argb(0,0,145,137);
+        break;
+    case 1:
+        waterColor = argb(0,2,147,153);
+        break;
+    case 2:
+        waterColor = argb(0,2,147,153);
+        break;
+    case 3:
+        waterColor = argb(0,8,144,177);
+        break;
+    case 4:
+        waterColor = argb(0,5,138,181);
+        break;
+    case 5:
+        waterColor = argb(0,12,134,183);
+        break;
+    case 6:
+        waterColor = argb(0,18,133,190);
+        break;
+    case 7:
+        waterColor = argb(0,94,123,151);
+        break;
+	}
+
+	return waterColor;
+}
+
+
+int waterColor_openSea()
+{
+
+	// Random number for the case, if you add more colors be sure to match the number of cases
+	int colorNumber = rand(8);
+	if (RANDOMDEBUG) Trace("waterColor_openSea random number: " + colorNumber);
+
+	int waterColor;
+	switch(colorNumber)
+    {
+    case 0:
+        waterColor = argb(0,0,85,92);
+        break;
+    case 1:
+        waterColor = argb(0,0,83,103);
+        break;
+    case 2:
+        waterColor = argb(0,0,88,114);
+        break;
+    case 3:
+        waterColor = argb(0,1,82,118);
+        break;
+    case 4:
+        waterColor = argb(0,0,85,147);
+        break;
+    case 5:
+        waterColor = argb(0,0,77,139);
+        break;
+    case 6:
+        waterColor = argb(0,49,78,104);
+        break;
+    case 7:
+        waterColor = argb(0,28,68,104);
+        break;
+    case 8:
+        waterColor = argb(0,69,87,108);
+        break;
+	}
+
+	return waterColor;
 }

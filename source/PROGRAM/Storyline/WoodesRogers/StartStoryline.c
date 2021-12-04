@@ -1497,8 +1497,8 @@ void StartStoryLine()
 
 				//SetCurrentTime(12, 0);		//closed to Maltains
 			SetCurrentTime(2, 0);				//open to Maltains if info from Hands (given in "start_Maltains" below)
-				//SetNextWeather("Clear");
-			SetNextWeather("Heavy Rain");
+			SetNextWeather("Clear");
+			// SetNextWeather("Heavy Rain");
 
 				SetModel(PChar, "Howard_Pyle", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 				
@@ -3117,7 +3117,7 @@ void StartStoryLine()
 				Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.go = "wr_library";			
 				Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.emerge = "reload6";
 				Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.autoreload = "0";
-				Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.label = "Woodes Rogers´ library.";
+				Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.label = "Woodes Rogersï¿½ library.";
 
 				Locations[FindLocation("Redmond_Town_01")].reload.l26.name = "door_7";
 				Locations[FindLocation("Redmond_Town_01")].reload.l26.go = "Tavern_storeroom";
