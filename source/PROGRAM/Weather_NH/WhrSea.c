@@ -88,7 +88,7 @@ void WhrCreateSeaEnvironment()
 		{
 		    SetSeaSettings();
 			fMaxSeaHeight = 200.0;
-			Log_TestInfo("����� �������, ����� �� ��� ���������");
+			// Log_TestInfo("����� �������, ����� �� ��� ���������");
 		}
 		else
 		{
