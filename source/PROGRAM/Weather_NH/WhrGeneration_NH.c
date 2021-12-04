@@ -175,7 +175,7 @@ void Whr_Generator(int iHour){
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	// Bupmscale the sea grainyness
-	float bumpscale = 0.05 + frnd()*0.05;
+	float bumpscale = 0.04 + frnd()*0.075;
 	WeathersNH.Sea2.BumpScale = bumpscale;
 	WeathersNH.Sea2.PosShift = 1.0;
 
