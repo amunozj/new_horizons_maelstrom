@@ -3,6 +3,7 @@
 #include "Weather_NH\WhrDebugInfo_NH.c"
 
 #define GENERATIONDEBUG 0
+#define RANDOMDEBUG 0
 
 #define WIND2WAVESPEED 0.25
 #define WIND2WAVELENGTH 6.0
@@ -30,7 +31,6 @@
 
 #define SHORECOLORDISTANCE 30.0
 
-#define RANDOMDEBUG 1
 
 void Whr_ResetOvrd(){
 	OWeatherAngle = -50.0;
@@ -290,7 +290,7 @@ void Whr_Generator(int iHour){
 
 	WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, grayWater);
 
-	int darkgrayWater = argb(0,70,70,70);
+	int darkgrayWater = argb(0,20,20,20);
 
 	float closestdist = 0.0;
 	if (CheckAttribute(worldMap, "directsail1.closestdist")){
@@ -337,22 +337,45 @@ void Whr_Generator(int iHour){
 
 	if (RANDOMDEBUG) Trace("Done with fog");
 
+
+	// Stars and planets
+	WeathersNH.Planets.enable = false;
+	WeathersNH.Stars.Enable = false;
+	WeathersNH.Stars.Size = 25.0;
+
+	WeathersNH.Stars.Texture = "weather\astronomy\stars.tga.tx";
+	WeathersNH.Stars.Color = argb(0, 255, 255, 255);
+	WeathersNH.Stars.Radius = 2000.0;
+	WeathersNH.Stars.HeightFade = 200.0;
+	WeathersNH.Stars.SunFade = 1.0;
+	WeathersNH.Stars.VisualMagnitude = 8.0;	
+
 	// Determine the skybox to use
 	string skydir;
 
-
 	trace("CurTime: " + curTime);
 	// Night
-	if (curTime >= 1 && curTime <= 3 ) {skydir = skydir_night();}
+	if (curTime >= 1 && curTime <= 3 ) {
+		skydir = skydir_night();
+		WeathersNH.Planets.enable = true;
+		WeathersNH.Stars.Enable = true;	
+	}
 
 	//Twilight
 	if (curTime==23 || curTime==5) {skydir = skydir_twilight1();}
 	if (curTime==0 || curTime==4) {skydir = skydir_twilight2();}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) skydir_night();
+		WeathersNH.Planets.enable = true;
+		WeathersNH.Stars.Enable = true;		
 	}
 
 	// Morning day and afternoon
+	if (curTime == 6 && curTime == 22 ) {
+		WeathersNH.Planets.enable = true;
+		WeathersNH.Stars.Enable = true;
+		WeathersNH.Stars.Size = 15.0;		
+	}
 	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
@@ -363,6 +386,7 @@ void Whr_Generator(int iHour){
 
 	if (RANDOMDEBUG) Trace("Sky.Dir generation: " + Whr_GetString(WeathersNH, "Sky.Dir"));
 	if (RANDOMDEBUG) Trace("Done with skybox");
+
 
 	if (GENERATIONDEBUG){
 

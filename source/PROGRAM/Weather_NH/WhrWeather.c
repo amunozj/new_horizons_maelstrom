@@ -1022,6 +1022,19 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
 
+	// Stars and planets
+
+	Weathers[iTmp].Planets.enable = Whr_GetLong(WeathersNH, "Planets.enable");
+	Weathers[iTmp].Stars.Enable = Whr_GetLong(WeathersNH, "Stars.Enable");
+	Weathers[iTmp].Stars.Texture = Whr_GetString(WeathersNH, "Stars.Texture");
+	Weathers[iTmp].Stars.Color = Whr_GetColor(WeathersNH, "Stars.Color");
+	Weathers[iTmp].Stars.Radius = Whr_GetFloat(WeathersNH, "Stars.Radius");
+	Weathers[iTmp].Stars.Size = Whr_GetFloat(WeathersNH, "Stars.Size");
+	Weathers[iTmp].Stars.HeightFade = Whr_GetFloat(WeathersNH, "Stars.HeightFade");
+	Weathers[iTmp].Stars.SunFade = Whr_GetFloat(WeathersNH, "Stars.SunFade");
+	Weathers[iTmp].Stars.VisualMagnitude = Whr_GetFloat(WeathersNH, "Stars.VisualMagnitude");
+
+
 	// Weather lights
 	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
 
@@ -1034,6 +1047,7 @@ void addProceduralWeather(int iTmp)
 
 	// Storing day of imprint
 	Weathers[iTmp].lastImprint = GetDataDay();
+
 
 }
 
