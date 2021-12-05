@@ -725,6 +725,14 @@ void Whr_TimeUpdate()
 
 	Sky.TimeUpdate = GetTime();
 
+	//#20191020-01
+	aref aStars;
+	makearef(aStars, aCurWeather.Stars);
+	FillStars(aStars);
+	// FillAstronomyFadeValue();
+	Astronomy.isDone = true;
+	Astronomy.TimeUpdate = GetTime();	
+
 }
 
 #event_handler("eChangeDayNight", "eChangeDayNight");
@@ -746,7 +754,7 @@ void Whr_UpdateWeatherHour()
 	aref aStars;
 	makearef(aStars, aCurWeather.Stars);
 	FillStars(aStars);
-	//FillAstronomyFadeValue();
+	FillAstronomyFadeValue();
 	Astronomy.isDone = true;
 	Astronomy.TimeUpdate = 1;
 
