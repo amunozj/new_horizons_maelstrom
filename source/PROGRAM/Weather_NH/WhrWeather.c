@@ -342,6 +342,8 @@ void CreateWeatherEnvironment()
 		trace("Current weather has been imprinted this day");
 	}
 
+	if (DEBUG_SEA_OPTICAL){makeCurrentFutureRealizations(iHour);}
+
 	int iCurLocation;
 	int iTestWeather;
     float fGetTime = GetTime();

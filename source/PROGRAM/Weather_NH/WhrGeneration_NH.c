@@ -3,7 +3,7 @@
 #include "Weather_NH\WhrDebugInfo_NH.c"
 
 #define GENERATIONDEBUG 0
-#define RANDOMDEBUG 0
+#define RANDOMDEBUG 1
 
 #define WIND2WAVESPEED 0.25
 #define WIND2WAVELENGTH 6.0
@@ -29,7 +29,7 @@
 #define NIGHTCOLORBLEND 6.0
 #define FOG2TRANSPARENCY 150.0
 
-#define SHORECOLORDISTANCE 30.0
+#define SHORECOLORDISTANCE 20.0
 
 
 void Whr_ResetOvrd(){
@@ -79,8 +79,8 @@ void Whr_Generator(int iHour){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	wRain = 0;
-	// fog = 0;
+	// wRain = 0;
+	// fog = 20;
 	//curTime = 6;
 	// winds = 30;
 	//rainBallast = 20;
@@ -222,7 +222,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Sea2.FoamTexDisturb = 0.2;
 
 	// Sea properties
-	WeathersNH.Sea2.Attenuation = 0.5;
+	WeathersNH.Sea2.Attenuation = 0.2;
 
 	float fblend = 0;
 	float fblend2 = 0;
@@ -234,40 +234,17 @@ void Whr_Generator(int iHour){
 	{
 		fblend = 0.5;
 	}
-	// if (curTime>18)
-	// {
-	// 	transparency  = 0.5 - 0.5*(MakeFloat(curTime) - 18)/5.0
-	// }
-	// Night
 	if (curTime <=4)
 	{
 		fblend = 1;
 		transparency = 0;
 	}
-	// Morning
-	// if (curTime >= 6 && curTime < 11)
-	// {
-	// 	transparency  = 0.5 - 0.5*(11-MakeFloat(curTime))/5.0
-	// }
-	// if (curTime == 5)
-	// {
-	// 	fblend = (6-MakeFloat(curTime))/3.0;
-	// }
 
-
-
+	// Light brightness
 	int darkSky = argb(0,60,60,60);
 	int lightSky = argb(0,255,255,255);
 	int dawnDuskSky = argb(0,255,162,50);
-
-	// if (curTime==22 || curTime==23 || curTime==5 || curTime==6) lightSky = dawnDuskSky;
-
 	WeathersNH.Sea2.SkyColor = Whr_BlendColor( fblend, lightSky, darkSky);
-
-	if (curTime>9 && curTime<19)
-	{
-		transparency = 0.4 + 0.5*abs(14-MakeFloat(curTime))/5.0;
-	}
 
 	// Apply fog and rain to transparency
 	effectiveRain = (wRain-70)/30.0;
@@ -275,14 +252,17 @@ void Whr_Generator(int iHour){
 
 	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-0.001*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
 	transparency = transparency - fog2trans;
-	// trace("Fog to transparency: " + fog2trans);
+	trace("Fog to transparency: " + fog2trans);
 
 	if (transparency < 0) transparency = 0.0;
 	if (fog2trans > 1) fog2trans = 1.0;
 
-	
-	// trace("Random number: " + randomPick + " weather index: " + itmp + " Weather id: " + Weathers[itmp].id)
-	int WaterColor = waterColor_shore()
+	// Create blending constant for water color and fog color
+	fblend2 = 0.33 - fog2trans;
+
+
+	// Assume that the water is shore water	
+	int WaterColor = waterColor_shore();
 
 	// Darken and make opaque it for evening and night
 	int darkWater = argb(0,28,28,28);
@@ -290,33 +270,35 @@ void Whr_Generator(int iHour){
 
 	WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, grayWater);
 
-	int darkgrayWater = argb(0,20,20,20);
-
+	// Correct it, if it open sea
 	float closestdist = 0.0;
 	if (CheckAttribute(worldMap, "directsail1.closestdist")){
-		trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
+		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
 		closestdist = worldMap.directsail1.closestdist;
-		trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
+		if (RANDOMDEBUG) trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
 	}else{
-		trace("weather Char location: " + pchar.location);
-	}
+		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location);
+	}	
 
+	int darkgrayWater = argb(0,20,20,20);
 	if (pchar.location == WDM_NONE_ISLAND || closestdist > SHORECOLORDISTANCE)
 	{
 		WaterColor = waterColor_openSea();
 		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
+	}else{
+		// If not open sea reduce the amount of water color and fog color
+		transparency = 1.2;
+		fblend2 = fblend2 - 0.13;
 	}
 
+
 	WaterColor = Whr_BlendColor( fblend, WaterColor, darkWater);
-
-
-
 	WeathersNH.Sea2.WaterColor = WaterColor;
 	WeathersNH.Sea2.Transparency = transparency;
 
 	// Apply fog to Frenel and Reflection
-	WeathersNH.Sea2.Frenel = 0.75 + frnd()*0.25 - fog2trans*0.25;
-	WeathersNH.Sea2.Reflection = 0.75 + frnd()*0.25 - fog2trans*0.75;
+	WeathersNH.Sea2.Frenel = 0.25 + frnd()*0.25;
+	WeathersNH.Sea2.Reflection = 0.8 + frnd()*0.25 - fog2trans*0.5;
 
 	if (RANDOMDEBUG) Trace("Done with watercolor");
 
@@ -330,13 +312,13 @@ void Whr_Generator(int iHour){
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
 	
 	// Tint it with the water color
-	fogcolor = Whr_BlendColor(0.2, fogcolor, WaterColor);
+	if (fblend2<0.0) fblend2 = 0.0;
+	fogcolor = Whr_BlendColor(fblend2, fogcolor, WaterColor);
 
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
 	if (RANDOMDEBUG) Trace("Done with fog");
-
 
 	// Stars and planets
 	WeathersNH.Planets.enable = false;
@@ -572,7 +554,7 @@ int waterColor_shore()
 {
 
 	// Random number for the case, if you add more colors be sure to match the number of cases
-	int colorNumber = rand(7);
+	int colorNumber = rand(6);
 	if (RANDOMDEBUG) Trace("waterColor_shore random number: " + colorNumber);
 
 	int waterColor;
@@ -597,9 +579,6 @@ int waterColor_shore()
         waterColor = argb(0,12,134,183);
         break;
     case 6:
-        waterColor = argb(0,18,133,190);
-        break;
-    case 7:
         waterColor = argb(0,94,123,151);
         break;
 	}
@@ -612,38 +591,26 @@ int waterColor_openSea()
 {
 
 	// Random number for the case, if you add more colors be sure to match the number of cases
-	int colorNumber = rand(8);
+	int colorNumber = rand(3);
 	if (RANDOMDEBUG) Trace("waterColor_openSea random number: " + colorNumber);
 
 	int waterColor;
 	switch(colorNumber)
     {
     case 0:
-        waterColor = argb(0,0,85,92);
+        waterColor = argb(0,25,55,80);
         break;
     case 1:
-        waterColor = argb(0,0,83,103);
+        waterColor = argb(0,23,84,128);
         break;
     case 2:
-        waterColor = argb(0,0,88,114);
+        waterColor = argb(0,70,95,120);
         break;
     case 3:
-        waterColor = argb(0,1,82,118);
+        waterColor = argb(0,33,49,73);
         break;
     case 4:
-        waterColor = argb(0,0,85,147);
-        break;
-    case 5:
-        waterColor = argb(0,0,77,139);
-        break;
-    case 6:
-        waterColor = argb(0,49,78,104);
-        break;
-    case 7:
-        waterColor = argb(0,28,68,104);
-        break;
-    case 8:
-        waterColor = argb(0,69,87,108);
+        waterColor = argb(0,11,53,64);
         break;
 	}
 
