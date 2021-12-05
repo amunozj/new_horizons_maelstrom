@@ -591,7 +591,7 @@ int waterColor_openSea()
 {
 
 	// Random number for the case, if you add more colors be sure to match the number of cases
-	int colorNumber = rand(4);
+	int colorNumber = rand(9);
 	if (RANDOMDEBUG) Trace("waterColor_openSea random number: " + colorNumber);
 
 	int waterColor;
@@ -611,6 +611,21 @@ int waterColor_openSea()
         break;
     case 4:
         waterColor = argb(0,11,53,64);
+        break;
+    case 5:
+        waterColor = argb(0,50,70,90);
+        break;
+    case 6:
+        waterColor = argb(0,45,80,90);
+        break;
+    case 7:
+        waterColor = argb(0,20,65,90);
+        break;
+    case 8:
+        waterColor = argb(0,60,95,110);
+        break;
+    case 9:
+        waterColor = argb(0,55,85,95);
         break;
 	}
 
