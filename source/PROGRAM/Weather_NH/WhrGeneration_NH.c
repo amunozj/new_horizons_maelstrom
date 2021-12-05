@@ -363,6 +363,11 @@ void Whr_Generator(int iHour){
 	}
 	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
+	// Hand picked sunset sometimes
+	if (curTime == 22 || curTime == 6) {
+		if (rand(100)<20){skydir = "weather\skies\22\";}
+	}
+
 	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
 
 	if (curTime >= 6 && curTime <= 22 && wRain >60 ) {skydir = skydir_day_overcast();}
@@ -415,16 +420,13 @@ string skydir_twilight1()
 {
 
 	// Random number for the case, if you add more skies be sure to match the number of cases
-	int skyNumber = rand(1);
+	int skyNumber = 0; //rand(1);
 	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber);
 
 	string skydirr;
 	switch(skyNumber)
     {
     case 0:
-        skydirr = "weather\skies\22\";
-        break;
-    case 1:
         skydirr = "weather\skies\23\";
         break;
 	}
