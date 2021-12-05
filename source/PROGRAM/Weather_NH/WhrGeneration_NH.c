@@ -433,7 +433,7 @@ string skydir_twilight2()
 {
 
 	// Random number for the case, if you add more skies be sure to match the number of cases
-	int skyNumber = rand(3);
+	int skyNumber = rand(2);
 	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber);
 
 	string skydirr;
@@ -445,7 +445,7 @@ string skydir_twilight2()
     case 1:
         skydirr = "weather\skies\05\";
         break;
-    case 3:
+    case 2:
         skydirr = "weather\skies\24\";
         break;
 	}
