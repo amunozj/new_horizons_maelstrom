@@ -79,7 +79,7 @@ void Whr_Generator(int iHour){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	// wRain = 0;
+	wRain = 100;
 	// fog = 20;
 	//curTime = 6;
 	// winds = 30;
@@ -287,7 +287,10 @@ void Whr_Generator(int iHour){
 		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
 	}else{
 		// If not open sea reduce the amount of water color and fog color
-		transparency = 1.2;
+		fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-0.001*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
+		transparency = 1.2 - fog2trans;
+		if (transparency < 0) transparency = 0.0;
+		if (fog2trans > 1) fog2trans = 1.0;		
 		fblend2 = fblend2 - 0.05;
 	}
 
@@ -347,7 +350,7 @@ void Whr_Generator(int iHour){
 	if (curTime==23 || curTime==5) {skydir = skydir_twilight1();}
 	if (curTime==0 || curTime==4) {skydir = skydir_twilight2();}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
-		if (wRain > 80) skydir_night();
+		if (wRain > 80) {skydir_night();}
 		WeathersNH.Planets.enable = true;
 		WeathersNH.Stars.Enable = true;		
 	}
@@ -434,7 +437,7 @@ string skydir_twilight2()
 
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = rand(2);
-	if (RANDOMDEBUG) Trace("skydir_twilight random number: " + skyNumber);
+	if (RANDOMDEBUG) Trace("skydir_twilight2 random number: " + skyNumber);
 
 	string skydirr;
 	switch(skyNumber)
