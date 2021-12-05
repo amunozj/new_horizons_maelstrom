@@ -591,7 +591,7 @@ int waterColor_openSea()
 {
 
 	// Random number for the case, if you add more colors be sure to match the number of cases
-	int colorNumber = rand(3);
+	int colorNumber = rand(4);
 	if (RANDOMDEBUG) Trace("waterColor_openSea random number: " + colorNumber);
 
 	int waterColor;
