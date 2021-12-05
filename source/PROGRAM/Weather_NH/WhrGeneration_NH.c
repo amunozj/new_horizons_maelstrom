@@ -79,7 +79,7 @@ void Whr_Generator(int iHour){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	wRain = 100;
+	// wRain = 100;
 	// fog = 20;
 	//curTime = 6;
 	// winds = 30;
