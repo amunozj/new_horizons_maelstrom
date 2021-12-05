@@ -288,7 +288,7 @@ void Whr_Generator(int iHour){
 	}else{
 		// If not open sea reduce the amount of water color and fog color
 		transparency = 1.2;
-		fblend2 = fblend2 - 0.13;
+		fblend2 = fblend2 - 0.05;
 	}
 
 
