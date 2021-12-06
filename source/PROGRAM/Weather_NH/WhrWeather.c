@@ -254,7 +254,11 @@ void makeCurrentFutureRealizations(int iHour)
 	iCurWeatherNum = FindWeatherByHour(iHour);
 	addProceduralWeather(iCurWeatherNum);
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-	Whr_Generator(iHour+1);
+
+	int nextHour = iHour+1;
+	if (nextHour > 23) {nextHour=0;}
+
+	Whr_Generator(nextHour);
 	addProceduralWeather(iBlendWeatherNum);
 
 }
@@ -740,6 +744,7 @@ void Whr_TimeUpdate()
 void Whr_UpdateWeatherHour()
 {
 
+	int iHour = makeint(Environment.time); 
 	bool bOldIsDay = Whr_IsDay();
 	//#20190211-01
 	bool doLightChange = false;
@@ -788,12 +793,17 @@ void Whr_UpdateWeatherHour()
 
  	}
 
-	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
+	iCurWeatherNum = FindWeatherByHour(iHour);
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 	// trace("Weather hourly update before generator");
-	Whr_Generator(makeint(Environment.time)+1);
+
+	int nextHour = iHour+1;
+	if (nextHour > 23) {nextHour=0;}
+
+	trace("Current hour in hourly update:" + iHour + " Next weather hour used in generator: " + nextHour);
+	Whr_Generator(nextHour);
 	addProceduralWeather(iBlendWeatherNum);	
 	// trace("Weather hourly update done");
 	 
@@ -1065,7 +1075,7 @@ int FindBlendWeather(int nHour)
 {
 
 	nHour = nHour + 1;
-	if( nHour>=24 ) {nHour = 0;}
+	if( nHour>23 ) {nHour = 0;}
 
 	int iTmp = FindWeatherByHour(nHour);
 

@@ -1,13 +1,36 @@
 ﻿#define FOGFACTOR 0.5
 #define FOGHEIGHTFACTOR 1.0
 
+bool morningFogChecked = false; 
+bool morningFog = false; 
+
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------
 
 //  LDH more fog in mornings - 26Feb09
 	int tempFog = fog;
 	int theHour = GetHour();
-	if (theHour >= 5 && theHour < 9) fog += 7-abs(theHour-7);	// +8, 7, 6, 5, don't use random number here
+	int fogchance = 0;
+
+	if (theHour <= 4 || theHour >= 10){
+		morningFogChecked = false;
+		morningFog = false;
+	}
+	if (theHour >= 5 && theHour <= 9){
+
+		if (!morningFogChecked){
+			fogchance = rand(100);
+			morningFogChecked = true;
+		}
+
+		if (fogchance<65){
+			morningFog = true;
+		}else{
+			morningFog = false;
+		}
+
+		if (morningfog){fog += 10-abs(theHour-7);}	// +8, 7, 6, 5, don't use random number here
+	} 
 
 //JRH -->
 	ref PChar = GetMainCharacter();

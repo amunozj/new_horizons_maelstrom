@@ -240,11 +240,7 @@ void Whr_Generator(int iHour){
 		transparency = 0;
 	}
 
-	// Light brightness
-	int darkSky = argb(0,60,60,60);
-	int lightSky = argb(0,255,255,255);
-	int dawnDuskSky = argb(0,255,162,50);
-	WeathersNH.Sea2.SkyColor = Whr_BlendColor( fblend, lightSky, darkSky);
+
 
 	// Apply fog and rain to transparency
 	effectiveRain = (wRain-70)/30.0;
@@ -309,15 +305,36 @@ void Whr_Generator(int iHour){
 	// Blend fog between day and night
 	int lightfog = argb(0,120,120,120);
 	int darkfog = argb(0,0,0,0);
-	int dawnduskfog = argb(0,143,68,58);
 
-	// if (curTime==22 || curTime==23 || curTime==5 || curTime==6) lightfog = dawnduskfog;	
+
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
 	
 	// Tint it with the water color
 	if (fblend2<0.0) fblend2 = 0.0;
 	fogcolor = Whr_BlendColor(fblend2, fogcolor, WaterColor);
 
+	// Sky color including dawn and dusk
+
+	// Light brightness
+	int darkSky = argb(0,60,60,60);
+	int lightSky = argb(0,255,255,255);
+	int SkyColor = Whr_BlendColor(fblend, lightSky, darkSky);
+	
+
+	int dawnduskfogcolor;
+	int dawnDuskSky;
+	// Dawn or dusk fogs and sun color
+	if (!morningFog){
+		if (curTime == 22 || curTime == 6)
+		{
+			dawndusk_fog(&dawnduskfogcolor, &dawnDuskSky);
+			fogcolor = Whr_BlendColor(fog2trans, dawnduskfogcolor, fogcolor);
+			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
+			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height")/4.0;
+		} 
+	}
+
+	WeathersNH.Sea2.SkyColor = SkyColor;
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
@@ -363,7 +380,7 @@ void Whr_Generator(int iHour){
 	}
 	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
-	// Hand picked sunset sometimes
+	// Hand picked sunset skybox sometimes (currently 20%)
 	if (curTime == 22 || curTime == 6) {
 		if (rand(100)<20){skydir = "weather\skies\22\";}
 	}
@@ -635,4 +652,28 @@ int waterColor_openSea()
 	}
 
 	return waterColor;
+}
+
+
+//--------------------------------------------------------------------------------
+// Dawn/dusk randomizers (Quiet-Sun)
+
+void dawndusk_fog(ref dawnDuskFogColor, ref dawnDuskskyColor)
+{
+	// Random number for the case, if you add more skies be sure to match the number of cases
+	int fogNumber = rand(1);
+	if (RANDOMDEBUG) Trace("dawndusk_fog random number: " + fogNumber);
+
+	switch(fogNumber)
+    {
+    case 0:
+        dawnDuskFogColor = argb(0,143,68,58);
+		dawnDuskskyColor = argb(0,255,221,179);
+        break;
+    case 1:
+        dawnDuskFogColor = argb(0,85,85,105);
+		dawnDuskskyColor = argb(0,216,216,255);
+        break;
+	}
+
 }
