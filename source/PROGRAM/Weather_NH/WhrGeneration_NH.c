@@ -303,7 +303,7 @@ void Whr_Generator(int iHour){
 
 
 	// Blend fog between day and night
-	int lightfog = argb(0,120,120,120);
+	int lightfog = argb(0,150,150,150);
 	int darkfog = argb(0,0,0,0);
 
 
@@ -412,6 +412,11 @@ void Whr_Generator(int iHour){
 
 	WeathersNH.Night = false;
 	if (curTime <= 4) {WeathersNH.Night = true;}
+
+	// Sun angle
+
+	// WeathersNH.Sun.HeightAngle = GetSunHeightAngle(curTime);
+
 
 	if (GENERATIONDEBUG){
 
