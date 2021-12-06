@@ -1,6 +1,7 @@
 object Astronomy;
 
-#define ASTRONOMYDEBUG 1
+#define ASTRONOMYDEBUG 0
+#define PLANETSCALE 1.5
 
 void WhrDeleteAstronomyEnvironment()
 {
@@ -112,19 +113,20 @@ void FillStars(ref aStars)
 	{
 		Astronomy.Stars.Catalog = "hic.dat";
 		Astronomy.Stars.Texture = Whr_GetString(aStars, "Texture");
-		if (ASTRONOMYDEBUG) Trace("Astronomy Texture: " + Whr_GetString(aStars, "Texture"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy Texture: " + Whr_GetString(Astronomy, "Stars.Texture"));		
 		Astronomy.Stars.Color = Whr_GetColor(aStars, "Color");
-		if (ASTRONOMYDEBUG) Trace("Astronomy Color: " + Whr_GetColor(aStars, "Color"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy Color: " + Whr_GetColor(Astronomy, "Stars.Color"));		
 		Astronomy.Stars.Radius = Whr_GetFloat(aStars, "Radius");
-		if (ASTRONOMYDEBUG) Trace("Astronomy Radius: " + Whr_GetFloat(aStars, "Radius"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy Radius: " + Whr_GetFloat(Astronomy, "Stars.Radius"));		
 		Astronomy.Stars.Size = Whr_GetFloat(aStars, "Size");
-		if (ASTRONOMYDEBUG) Trace("Astronomy Size: " + Whr_GetFloat(aStars, "Size"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy Size: " + Whr_GetFloat(Astronomy, "Stars.Size"));		
 		Astronomy.Stars.HeightFade = Whr_GetFloat(aStars, "HeightFade");
-		if (ASTRONOMYDEBUG) Trace("Astronomy HeightFade: " + Whr_GetFloat(aStars, "HeightFade"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy HeightFade: " + Whr_GetFloat(Astronomy, "Stars.HeightFade"));		
 		Astronomy.Stars.SunFade = Whr_GetFloat(aStars, "SunFade");
-		if (ASTRONOMYDEBUG) Trace("Astronomy SunFade: " + Whr_GetFloat(aStars, "SunFade"));		
+		if (ASTRONOMYDEBUG) Trace("Astronomy SunFade: " + Whr_GetFloat(Astronomy, "Stars.SunFade"));		
 
 		Astronomy.Stars.VisualMagnitude = Whr_GetFloat(aStars, "VisualMagnitude");
+		if (ASTRONOMYDEBUG) Trace("Astronomy VisualMagnitude: " + Whr_GetFloat(Astronomy, "Stars.VisualMagnitude"));		
 		Astronomy.Stars.TelescopeMagnitude = 10.0;
 
 		Astronomy.Stars.TextureX = 4;
@@ -149,7 +151,7 @@ void FillAstronomyFadeValue()
 	Astronomy.Planets.Enable = Whr_GetLong(&Weathers[iCurWeatherNum],"Planets.Enable");
 	if (sti(Astronomy.Planets.Enable))
 	{
-		Astronomy.Planets.Scale = 1.0;
+		Astronomy.Planets.Scale = PLANETSCALE;
 		Astronomy.Planets.Speed = 10.0;
 
 		Astronomy.Planets.FadeValue = 1.0;
@@ -160,7 +162,7 @@ void FillAstronomyFadeValue()
 		}
 		Astronomy.Planets.FadeTime = -0.2;
 	} else {
-		Astronomy.Planets.Scale = 1.0;
+		Astronomy.Planets.Scale = PLANETSCALE;
 		Astronomy.Planets.Speed = 10.0;
 
 		Astronomy.Planets.FadeValue = 0.0;
@@ -172,11 +174,11 @@ void FillAstronomyFadeValue()
 		Astronomy.Planets.FadeTime = 0.2;
 	}
 	Astronomy.Stars.Enable = Whr_GetLong(&Weathers[iCurWeatherNum], "Stars.Enable");
-	if (ASTRONOMYDEBUG) Trace("FillAstronomy enable: " + Whr_GetLong(&Weathers[iCurWeatherNum], "Stars.Enable"));
+	if (ASTRONOMYDEBUG) Trace("FillAstronomy enable: " + Whr_GetLong(Astronomy, "Stars.Enable"));
 	if (sti(Astronomy.Stars.Enable))
 	{
 		Astronomy.Stars.Radius = Whr_GetFloat(&Weathers[iCurWeatherNum], "Stars.Radius");
-		if (ASTRONOMYDEBUG) Trace("FillAstronomy Radius: " + Whr_GetFloat(&Weathers[iCurWeatherNum], "Stars.Radius"));		
+		if (ASTRONOMYDEBUG) Trace("FillAstronomy Radius: " + Whr_GetFloat(Astronomy, "Stars.Radius"));		
 		Astronomy.Stars.HeightFade = Whr_GetFloat(&Weathers[iCurWeatherNum], "Stars.HeightFade");
 
 		Astronomy.Stars.FadeValue = 1.0;
@@ -200,6 +202,8 @@ void FillAstronomyFadeValue()
 		}
 		Astronomy.Stars.FadeTime = 0.2;
 	}
+
+	if (ASTRONOMYDEBUG) Trace("FillAstronomy done"));
 }
 
 void MoveAstronomyToLayers(string sExecuteLayer, string sRealizeLayer)
