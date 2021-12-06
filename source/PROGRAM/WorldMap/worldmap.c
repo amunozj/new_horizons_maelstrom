@@ -153,7 +153,7 @@ void wdmCreateMap(float dx, float dz, float ay)
 	// ccc maptweak
 	//worldMap.date.hourPerSec = MAP_VOYAGELENGTH;	// ccc maptweak original 4.0
 	SetTimeScale(MAPSPEED);			// slow motion
-	SetWeatherScheme("seashore_weather");
+	//SetWeatherScheme("seashore_weather");
 	// ccc maptweak end
 }
 

@@ -389,6 +389,7 @@ void CreateWeatherEnvironment()
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
+
 	// trace("Weather wind speed: " + Whr_GetFloat(Weather, "Wind.Speed"));
 
 	pchar.Wind.Angle = fWeatherAngle;
@@ -495,7 +496,16 @@ void CreateWeatherEnvironment()
 	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
 
 	// Fill Sky data
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);	
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	// Run astronomy 
+	aref aStars;
+	makearef(aStars, aCurWeather.Stars);
+	FillStars(aStars);
+	// FillAstronomyFadeValue();
+	Astronomy.isDone = true;
+	Astronomy.TimeUpdate = 1;
+
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
@@ -666,6 +676,7 @@ void Whr_TimeUpdate()
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
 
+	Weather.Time.time = GetTime();
 
 	if( iBlendWeatherNum < 0 ) {return;}
 
@@ -727,15 +738,18 @@ void Whr_TimeUpdate()
 	aref aCurWeather = GetCurrentWeather();
 	doShipLightChange(aCurWeather);	
 
-	Sky.TimeUpdate = GetTime();
-
 	//#20191020-01
 	aref aStars;
 	makearef(aStars, aCurWeather.Stars);
 	FillStars(aStars);
 	// FillAstronomyFadeValue();
 	Astronomy.isDone = true;
-	Astronomy.TimeUpdate = GetTime();	
+	Astronomy.TimeUpdate = GetTime();
+
+	// update sky: fog
+	Sky.TimeUpdate = GetTime();
+
+	
 
 }
 
@@ -759,7 +773,7 @@ void Whr_UpdateWeatherHour()
 	aref aStars;
 	makearef(aStars, aCurWeather.Stars);
 	FillStars(aStars);
-	FillAstronomyFadeValue();
+	// FillAstronomyFadeValue();
 	Astronomy.isDone = true;
 	Astronomy.TimeUpdate = 1;
 
@@ -1057,6 +1071,8 @@ void addProceduralWeather(int iTmp)
 
 	// Weather lights
 	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
+	Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
+	
 
 	// Wind parameters
 	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");

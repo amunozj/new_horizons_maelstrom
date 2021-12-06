@@ -79,7 +79,7 @@ void Whr_Generator(int iHour){
 	
 	//--Testing Settings--------------------------------------------------------
 	
-	// wRain = 100;
+	// wRain = 0;
 	// fog = 20;
 	//curTime = 6;
 	// winds = 30;
@@ -330,7 +330,7 @@ void Whr_Generator(int iHour){
 			dawndusk_fog(&dawnduskfogcolor, &dawnDuskSky);
 			fogcolor = Whr_BlendColor(fog2trans, dawnduskfogcolor, fogcolor);
 			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
-			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height")/4.0;
+			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height")/5.0;
 		} 
 	}
 
@@ -343,14 +343,14 @@ void Whr_Generator(int iHour){
 	// Stars and planets
 	WeathersNH.Planets.enable = false;
 	WeathersNH.Stars.Enable = false;
-	WeathersNH.Stars.Size = 25.0;
 
 	WeathersNH.Stars.Texture = "weather\astronomy\stars.tga.tx";
 	WeathersNH.Stars.Color = argb(0, 255, 255, 255);
 	WeathersNH.Stars.Radius = 2000.0;
 	WeathersNH.Stars.HeightFade = 200.0;
 	WeathersNH.Stars.SunFade = 1.0;
-	WeathersNH.Stars.VisualMagnitude = 8.0;	
+	float starSize = 40.0;
+	float VisualMagnitude = 15.0;
 
 	// Determine the skybox to use
 	string skydir;
@@ -364,19 +364,31 @@ void Whr_Generator(int iHour){
 	}
 
 	//Twilight
-	if (curTime==23 || curTime==5) {skydir = skydir_twilight1();}
-	if (curTime==0 || curTime==4) {skydir = skydir_twilight2();}
+	if (curTime==23 || curTime==5) {
+		skydir = skydir_twilight1();
+		VisualMagnitude = 5.0;
+		starSize = 20.0;
+
+	}
+	if (curTime==0 || curTime==4) {
+		skydir = skydir_twilight2();
+		VisualMagnitude = 10.0;
+		starSize = 30.0;
+	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) {skydir_night();}
 		WeathersNH.Planets.enable = true;
 		WeathersNH.Stars.Enable = true;		
 	}
 
+	if (wRain >60){
+		WeathersNH.Planets.enable = false;
+		WeathersNH.Stars.Enable = false;			
+	}
+
 	// Morning day and afternoon
 	if (curTime == 6 && curTime == 22 ) {
-		WeathersNH.Planets.enable = true;
-		WeathersNH.Stars.Enable = true;
-		WeathersNH.Stars.Size = 15.0;		
+		WeathersNH.Planets.enable = true;	
 	}
 	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
@@ -384,6 +396,10 @@ void Whr_Generator(int iHour){
 	if (curTime == 22 || curTime == 6) {
 		if (rand(100)<20){skydir = "weather\skies\22\";}
 	}
+
+	WeathersNH.Stars.Size = starSize + frnd()*15.0;
+	WeathersNH.Stars.VisualMagnitude = VisualMagnitude + frnd()*10.0;	
+
 
 	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
 
@@ -394,6 +410,8 @@ void Whr_Generator(int iHour){
 	if (RANDOMDEBUG) Trace("Sky.Dir generation: " + Whr_GetString(WeathersNH, "Sky.Dir"));
 	if (RANDOMDEBUG) Trace("Done with skybox");
 
+	WeathersNH.Night = false;
+	if (curTime <= 4) {WeathersNH.Night = true;}
 
 	if (GENERATIONDEBUG){
 
@@ -667,7 +685,8 @@ void dawndusk_fog(ref dawnDuskFogColor, ref dawnDuskskyColor)
 	switch(fogNumber)
     {
     case 0:
-        dawnDuskFogColor = argb(0,143,68,58);
+        // dawnDuskFogColor = argb(0,143,68,58);
+        dawnDuskFogColor = argb(0,153,113,107);
 		dawnDuskskyColor = argb(0,255,221,179);
         break;
     case 1:
