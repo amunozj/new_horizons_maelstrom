@@ -1000,7 +1000,7 @@ void addProceduralWeather(int iTmp)
 
 	// Sea Definition -----------------------------------------------------
 	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
-	Weathers[iTmp].Sea2.PosShift = Whr_GetFloat(WeathersNH, "ea2.PosShift");
+	Weathers[iTmp].Sea2.PosShift = Whr_GetFloat(WeathersNH, "Sea2.PosShift");
 
 	Weathers[iTmp].Sea2.Amp1 = Whr_GetFloat(WeathersNH, "Sea2.Amp1");
 	Weathers[iTmp].Sea2.AnimSpeed1 = Whr_GetFloat(WeathersNH, "Sea2.AnimSpeed1");
@@ -1073,6 +1073,8 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
 	Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
 	
+	// Sun angle
+	// Weathers[iTmp].Sun.HeightAngle = Whr_GetFloat(WeathersNH, "Sun.HeightAngle");
 
 	// Wind parameters
 	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");
