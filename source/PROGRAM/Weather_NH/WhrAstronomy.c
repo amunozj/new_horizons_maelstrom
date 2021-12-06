@@ -2,6 +2,7 @@ object Astronomy;
 
 #define ASTRONOMYDEBUG 0
 #define PLANETSCALE 1.5
+#define STARCOLORBLEND 0.9
 
 void WhrDeleteAstronomyEnvironment()
 {
@@ -132,16 +133,18 @@ void FillStars(ref aStars)
 		Astronomy.Stars.TextureX = 4;
 		Astronomy.Stars.TextureY = 4;
 
-		Astronomy.Stars.Spectr.W = argb(0, 150, 243, 220);
-		Astronomy.Stars.Spectr.O = argb(0, 150, 243, 220);
-		Astronomy.Stars.Spectr.B = argb(0, 226, 244, 223);
-		Astronomy.Stars.Spectr.A = argb(0, 255, 243, 213);
-		Astronomy.Stars.Spectr.F = argb(0, 255, 243, 170);
-		Astronomy.Stars.Spectr.G = argb(0, 255, 244, 123);
-		Astronomy.Stars.Spectr.K = argb(0, 255, 187, 117);
-		Astronomy.Stars.Spectr.M = argb(0, 249, 142, 117);
-		Astronomy.Stars.Spectr.L = argb(0, 223, 142, 117);
-		Astronomy.Stars.Spectr.T = argb(0, 209, 155, 123);
+		Astronomy.Stars.Spectr.W = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 150, 243, 220));
+		Astronomy.Stars.Spectr.O = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 150, 243, 220));
+		Astronomy.Stars.Spectr.B = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 226, 244, 223));
+		Astronomy.Stars.Spectr.A = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 255, 243, 213));
+		Astronomy.Stars.Spectr.F = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 255, 243, 170));
+		Astronomy.Stars.Spectr.G = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 255, 244, 123));
+		Astronomy.Stars.Spectr.K = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 255, 187, 117));
+		Astronomy.Stars.Spectr.M = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 249, 142, 117));
+		Astronomy.Stars.Spectr.L = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 223, 142, 117));
+		Astronomy.Stars.Spectr.T = Whr_BlendColor( STARCOLORBLEND, argb(0, 255, 255, 255), argb(0, 209, 155, 123));
+
+		
 	}
 	FillAstronomyFadeValue();
 }
