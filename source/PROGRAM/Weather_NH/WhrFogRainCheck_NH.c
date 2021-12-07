@@ -193,6 +193,9 @@ void Whr_FogRainCheck(){
 	WeathersNH.Lightning.Enable = false;
 
 	WeathersNH.Sun.Glow.Enable = true;
+	WeathersNH.Sun.Flare.Enable = true;
+	WeathersNH.Sun.Overflow.Enable = true;
+	WeathersNH.Sun.Reflection.Enable = true;
 	WeathersNH.Rainbow.Enable = false;
 
 	if (wRain > 75)
@@ -237,6 +240,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sun.Glow.Enable = false;
 			WeathersNH.Sun.Flare.Enable = false;
 			WeathersNH.Sun.Overflow.Enable = false;
+			WeathersNH.Sun.Reflection.Enable = false;
 	        WeathersNH.LightingLm = "storm";
 	        WeathersNH.InsideBack = "n";
 			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
@@ -264,6 +268,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sun.Glow.Enable = false;
 			WeathersNH.Sun.Flare.Enable = false;
 			WeathersNH.Sun.Overflow.Enable = false;
+			WeathersNH.Sun.Reflection.Enable = false;
 	        WeathersNH.LightingLm = "storm";
 	        WeathersNH.InsideBack = "n";
 			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);

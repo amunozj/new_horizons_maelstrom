@@ -427,7 +427,6 @@ void CreateWeatherEnvironment()
 			Weather.Time.updatefrequence = 12;
 		}
 	}
-	Weather.isDone = "";
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -506,6 +505,8 @@ void CreateWeatherEnvironment()
 	Astronomy.isDone = true;
 	Astronomy.TimeUpdate = 1;
 
+
+	Weather.isDone = "";
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
@@ -1048,10 +1049,14 @@ void addProceduralWeather(int iTmp)
 		Weathers[iTmp].Lightning.ScaleY = 1.0;
 		Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
 
+		Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 		Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
 
-		Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
+		// Sun glow and flare
 		Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
+		Weathers[iTmp].Sun.Reflection.Enable = Whr_GetLong(WeathersNH, "Sun.Reflection.Enable");
+		Weathers[iTmp].Sun.Overflow.Enable = Whr_GetLong(WeathersNH, "Sun.Overflow.Enable");
+		Weathers[iTmp].Sun.Flare.Enable = Whr_GetLong(WeathersNH, "Sun.Flare.Enable");
 
 		// Stars and planets
 
