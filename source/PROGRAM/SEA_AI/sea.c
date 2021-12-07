@@ -648,13 +648,7 @@ void SeaLogin(ref Login)
 	int iHour = MakeInt(GetHour());
 	iCurWeatherNum = FindWeatherByHour(iHour);
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
-	// update sun glow: sun\moon, flares
-	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
-	// Fill Sea data
-	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
-	// Fill Sky data
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
 
 
 
@@ -1088,7 +1082,19 @@ void SeaLogin(ref Login)
 	SetCorrectWorldMapPosition(); //Screwface
 
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather);			
+	doShipLightChange(aCurWeather);
+
+
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	Weather.isDone = "";
+	
+		
 
 	iRDTSC = RDTSC_E(iRDTSC);
 	//Trace("SeaLogin RDTSC = " + iRDTSC);
