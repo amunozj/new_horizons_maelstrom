@@ -228,10 +228,21 @@ void Whr_Generator(int iHour){
 	float transparency  = 0.5;
 
 	// Evening
+
+	if (curTime>=18 || curTime<=22)
+	{
+		fblend = 0.3;
+	}	
 	if (curTime==23 || curTime==5)
 	{
 		fblend = 0.75;
 	}
+	// Morning
+	if (curTime>=6 || curTime<=10)
+	{
+		fblend = 0.3;
+	}
+	// Night
 	if (curTime <=4)
 	{
 		fblend = 1;
@@ -308,7 +319,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Stars.Radius = 2000.0;
 	WeathersNH.Stars.HeightFade = 200.0;
 	WeathersNH.Stars.SunFade = 1.0;
-	float starSize = 40.0;
+	float starSize = 35.0;
 	float VisualMagnitude = 15.0;
 
 	// Determine the skybox to use
@@ -326,7 +337,7 @@ void Whr_Generator(int iHour){
 	if (curTime==23 || curTime==5) {
 		skydir = skydir_twilight1();
 		VisualMagnitude = 5.0;
-		starSize = 20.0;
+		starSize = 25.0;
 
 	}
 	if (curTime==0 || curTime==4) {
@@ -393,8 +404,8 @@ void Whr_Generator(int iHour){
 			dawndusk_fog(&dawnduskfogcolor, &dawnDuskSky);
 			fogcolor = Whr_BlendColor(fog2trans, dawnduskfogcolor, fogcolor);
 			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
-			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height") + 800.0;
-			WeathersNH.SpecialSeaFog.Height = Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height") + 800.0;
+			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height") + 1000.0;
+			WeathersNH.SpecialSeaFog.Height = Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height") + 1000.0;
 		} 
 	}
 
