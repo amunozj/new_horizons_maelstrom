@@ -9,11 +9,6 @@
 #define WIND2WAVELENGTH 6.0
 #define WIND2AMPLITUDE 0.3
 
-// #define RAIN2AMPLITUDE 0.15
-// #define RAIN2WAVELENGTH 0.25
-// #define RAIN2ANIM 0.01
-// #define RAIN2FOAMV 0.025
-// #define RAIN2BUMPSCALE 0.35
 #define RAIN2AMPLITUDE 2.0
 #define RAIN2WIND 1.0
 
@@ -27,9 +22,12 @@
 #define FOAMRANDOM 0.025
 
 #define NIGHTCOLORBLEND 6.0
-#define FOG2TRANSPARENCY 150.0
 
 #define SHORECOLORDISTANCE 20.0
+
+#define MINIMUMFOG 2
+#define FOGFACTOR 0.0003
+#define FOG2TRANSPARENCY 150.0
 
 
 void Whr_ResetOvrd(){
@@ -109,7 +107,7 @@ void Whr_Generator(int iHour){
 		winds = 25;
 		windBallast = 10;
 		rainBallast = 10;
-		fog = 75;
+		fog = 40;
 		bWeatherIsStorm = true; // screwface
 	}
 	if(bWhrTornado){
@@ -117,7 +115,7 @@ void Whr_Generator(int iHour){
 		winds = 30;
 		windBallast = 20;
 		rainBallast = 20;
-		fog = 75;
+		fog = 60;
 	}
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
@@ -137,9 +135,9 @@ void Whr_Generator(int iHour){
 	
 	if(wRain >= 85 && winds <= 10){ windBallast = 15;}
 	if(winds <= 25 && wRain >= 90){ rainBallast = -15;}
-	if(fog > 0 && curTime >= 7 && curTime <= 20 && wRain <= 75){fogBallast = -30;}
-	if(fogBallast < 0 && curTime > 20 || curTime < 7){fogBallast = 0;}
-	if(fogBallast < 0 && curTime >= 7 && curTime <=20 && wRain > 75){fogBallast = 0;}
+	if(fog > 0 && curTime >= 6 && curTime <= 22 && wRain <= 60){fogBallast = -30;}
+	if(fogBallast < 0 && curTime > 22 || curTime < 6){fogBallast = 0;}
+	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}
 	
 	minwind = winds - rand(2);
 	maxwind = winds + rand(2);
@@ -232,7 +230,7 @@ void Whr_Generator(int iHour){
 	// Evening
 	if (curTime==23 || curTime==5)
 	{
-		fblend = 0.5;
+		fblend = 0.75;
 	}
 	if (curTime <=4)
 	{
@@ -246,7 +244,7 @@ void Whr_Generator(int iHour){
 	effectiveRain = (wRain-70)/30.0;
 	if (effectiveRain < 0) effectiveRain = 0;
 
-	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-0.001*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
+	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
 	transparency = transparency - fog2trans;
 	trace("Fog to transparency: " + fog2trans);
 
@@ -254,7 +252,7 @@ void Whr_Generator(int iHour){
 	if (fog2trans > 1) fog2trans = 1.0;
 
 	// Create blending constant for water color and fog color
-	fblend2 = 0.33 - fog2trans;
+	fblend2 = 0.40 - fog2trans;
 
 
 	// Assume that the water is shore water	
@@ -283,7 +281,7 @@ void Whr_Generator(int iHour){
 		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
 	}else{
 		// If not open sea reduce the amount of water color and fog color
-		fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-0.001*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
+		fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
 		transparency = 1.2 - fog2trans;
 		if (transparency < 0) transparency = 0.0;
 		if (fog2trans > 1) fog2trans = 1.0;		
@@ -300,45 +298,6 @@ void Whr_Generator(int iHour){
 	WeathersNH.Sea2.Reflection = 0.8 + frnd()*0.25 - fog2trans*0.5;
 
 	if (RANDOMDEBUG) Trace("Done with watercolor");
-
-
-	// Blend fog between day and night
-	int lightfog = argb(0,150,150,150);
-	int darkfog = argb(0,0,0,0);
-
-
-	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
-	
-	// Tint it with the water color
-	if (fblend2<0.0) fblend2 = 0.0;
-	fogcolor = Whr_BlendColor(fblend2, fogcolor, WaterColor);
-
-	// Sky color including dawn and dusk
-
-	// Light brightness
-	int darkSky = argb(0,60,60,60);
-	int lightSky = argb(0,255,255,255);
-	int SkyColor = Whr_BlendColor(fblend, lightSky, darkSky);
-	
-
-	int dawnduskfogcolor;
-	int dawnDuskSky;
-	// Dawn or dusk fogs and sun color
-	if (!morningFog){
-		if (curTime == 22 || curTime == 6)
-		{
-			dawndusk_fog(&dawnduskfogcolor, &dawnDuskSky);
-			fogcolor = Whr_BlendColor(fog2trans, dawnduskfogcolor, fogcolor);
-			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
-			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height")/5.0;
-		} 
-	}
-
-	WeathersNH.Sea2.SkyColor = SkyColor;
-	WeathersNH.Fog.Color = fogColor;
-	WeathersNH.SpecialSeaFog.Color = fogColor;
-
-	if (RANDOMDEBUG) Trace("Done with fog");
 
 	// Stars and planets
 	WeathersNH.Planets.enable = false;
@@ -397,10 +356,6 @@ void Whr_Generator(int iHour){
 		if (rand(100)<20){skydir = "weather\skies\22\";}
 	}
 
-	WeathersNH.Stars.Size = starSize + frnd()*15.0;
-	WeathersNH.Stars.VisualMagnitude = VisualMagnitude + frnd()*10.0;	
-
-
 	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
 
 	if (curTime >= 6 && curTime <= 22 && wRain >60 ) {skydir = skydir_day_overcast();}
@@ -408,14 +363,55 @@ void Whr_Generator(int iHour){
 	WeathersNH.Sky.Dir = skydir;
 
 	if (RANDOMDEBUG) Trace("Sky.Dir generation: " + Whr_GetString(WeathersNH, "Sky.Dir"));
-	if (RANDOMDEBUG) Trace("Done with skybox");
+	// if (RANDOMDEBUG) Trace("Done with skybox");
+
+	// Blend fog between day and night
+	int lightfog = argb(0,160,160,180);
+	int darkfog = argb(0,0,0,0);
+
+
+	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
+	
+	// Tint it with the water color
+	if (fblend2<0.0) fblend2 = 0.0;
+	fogcolor = Whr_BlendColor(fblend2, fogcolor, WaterColor);
+
+	// Sky color including dawn and dusk
+
+	// Light brightness
+	int darkSky = argb(0,60,60,60);
+	int lightSky = argb(0,255,255,255);
+	int SkyColor = Whr_BlendColor(fblend, lightSky, darkSky);
+	
+
+	int dawnduskfogcolor;
+	int dawnDuskSky;
+	// Dawn or dusk fogs and sun color
+	if (!morningFog){
+		if (curTime == 22 || curTime == 6)
+		{
+			dawndusk_fog(&dawnduskfogcolor, &dawnDuskSky);
+			fogcolor = Whr_BlendColor(fog2trans, dawnduskfogcolor, fogcolor);
+			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
+			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height") + 800.0;
+			WeathersNH.SpecialSeaFog.Height = Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height") + 800.0;
+		} 
+	}
+
+	WeathersNH.Sea2.SkyColor = SkyColor;
+	WeathersNH.Fog.Color = fogColor;
+	WeathersNH.SpecialSeaFog.Color = fogColor;
+
+	if (RANDOMDEBUG) Trace("Done with fog");
+
+
+	WeathersNH.Stars.Size = starSize + frnd()*15.0;
+	WeathersNH.Stars.VisualMagnitude = VisualMagnitude + frnd()*10.0;	
+
 
 	WeathersNH.Night = false;
 	if (curTime <= 4) {WeathersNH.Night = true;}
 
-	// Sun angle
-
-	// WeathersNH.Sun.HeightAngle = GetSunHeightAngle(curTime);
 
 
 	if (GENERATIONDEBUG){

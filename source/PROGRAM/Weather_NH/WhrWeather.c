@@ -968,35 +968,6 @@ void addProceduralWeather(int iTmp)
 {
 
 	trace("addProceduralWeather ID: " + Weathers[iTmp].id);
-	// Fog deffinition ---------------------------------------------------------------------
-	Weathers[iTmp].Fog.Enable = Whr_GetLong(WeathersNH, "Fog.Enable");
-	Weathers[iTmp].Fog.Start =  Whr_GetFloat(WeathersNH, "Fog.Start");
-	Weathers[iTmp].Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height");
-	Weathers[iTmp].Fog.Density = Whr_GetFloat(WeathersNH, "Fog.Density");
-	Weathers[iTmp].Fog.SeaDensity = Whr_GetFloat(WeathersNH, "Fog.SeaDensity");
-	Weathers[iTmp].Fog.IslandDensity = Whr_GetFloat(WeathersNH, "Fog.IslandDensity");
-
-	Weathers[iTmp].SpecialSeaFog.Enable =  Whr_GetLong(WeathersNH, "SpecialSeaFog.Enable");
-	Weathers[iTmp].SpecialSeaFog.Height =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height");		
-	Weathers[iTmp].SpecialSeaFog.Start =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Start");
-	Weathers[iTmp].SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
-	Weathers[iTmp].SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
-
-	// int fogcolor = Whr_GetColor(WeathersNH, "Fog.Color");
-	// tint fog with sky color
-	// fogcolor = Whr_BlendColor(0.2, fogcolor, Weathers[iTmp].Bak.Fog.Color);
-
-	// // Add sunrise/sunset
-	// if (Weathers[iTmp].Hour.Min == 5 || Weathers[iTmp].Hour.Min == 21)
-	// {
-	// 	fogcolor = Whr_BlendColor(0.4, fogcolor, argb(0,0,161,43));
-	// 	Weathers[iTmp].Sun.Color = argb(0,0,161,43);
-	// }
-
-
-	Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
-	Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
-	// trace("Fog Color: " + Whr_GetColor(WeathersNH, "Fog.Color") + " Special fog color: " + Whr_GetColor(WeathersNH, "SpecialSeaFog.Color"));
 
 	// Sea Definition -----------------------------------------------------
 	Weathers[iTmp].Sea2.BumpScale = Whr_GetFloat(WeathersNH, "Sea2.BumpScale");
@@ -1022,59 +993,83 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.Attenuation = Whr_GetFloat(WeathersNH, "Sea2.Attenuation");
 	Weathers[iTmp].Sea2.Transparency = Whr_GetFloat(WeathersNH, "Sea2.Transparency");
 
-	Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
-
-	//Sky definition
-
-	Weathers[iTmp].Sea2.SkyColor = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
-	Weathers[iTmp].Sky.Dir = Whr_GetString(WeathersNH, "Sky.Dir");
-	Trace("Imprint weather sky.dir: " + Whr_GetString(WeathersNH, "Sky.Dir"));
-
-	// Rain definition
-	Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
-	Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
-	Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
-	Weathers[iTmp].Rain.Height = Whr_GetFloat(WeathersNH, "Rain.Height");
-	Weathers[iTmp].Rain.Radius = Whr_GetFloat(WeathersNH, "Rain.Radius");
-	Weathers[iTmp].Rain.Speed = Whr_GetFloat(WeathersNH, "Rain.Speed");
-	Weathers[iTmp].Rain.Jitter = Whr_GetFloat(WeathersNH, "Rain.Jitter");
-	Weathers[iTmp].Rain.WindSpeedJitter = Whr_GetFloat(WeathersNH, "Rain.WindSpeedJitter");
-	Weathers[iTmp].Rain.MaxBlend = Whr_GetLong(WeathersNH, "Rain.MaxBlend");
-	Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
-	Weathers[iTmp].Rain.DropsTexture = "weather\rain_drops.tga.tx";
-
-	Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
-	Weathers[iTmp].Lightning.FlickerTime = 32;
-	Weathers[iTmp].Lightning.SubTexX = 4;
-	Weathers[iTmp].Lightning.SubTexY = 1;
-	Weathers[iTmp].Lightning.ScaleX = 0.7;
-	Weathers[iTmp].Lightning.ScaleY = 1.0;
-	Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
-
-	Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
-
-	Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
-	Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
-
-	// Stars and planets
-
-	Weathers[iTmp].Planets.enable = Whr_GetLong(WeathersNH, "Planets.enable");
-	Weathers[iTmp].Stars.Enable = Whr_GetLong(WeathersNH, "Stars.Enable");
-	Weathers[iTmp].Stars.Texture = Whr_GetString(WeathersNH, "Stars.Texture");
-	Weathers[iTmp].Stars.Color = Whr_GetColor(WeathersNH, "Stars.Color");
-	Weathers[iTmp].Stars.Radius = Whr_GetFloat(WeathersNH, "Stars.Radius");
-	Weathers[iTmp].Stars.Size = Whr_GetFloat(WeathersNH, "Stars.Size");
-	Weathers[iTmp].Stars.HeightFade = Whr_GetFloat(WeathersNH, "Stars.HeightFade");
-	Weathers[iTmp].Stars.SunFade = Whr_GetFloat(WeathersNH, "Stars.SunFade");
-	Weathers[iTmp].Stars.VisualMagnitude = Whr_GetFloat(WeathersNH, "Stars.VisualMagnitude");
 
 
-	// Weather lights
-	Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
-	Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
-	
-	// Sun angle
-	// Weathers[iTmp].Sun.HeightAngle = Whr_GetFloat(WeathersNH, "Sun.HeightAngle");
+
+	if (!CheckAttribute(&Weathers[iTmp],"Special") || !Weathers[iTmp].Special)
+	{
+
+		// Fog deffinition ---------------------------------------------------------------------
+		Weathers[iTmp].Fog.Enable = Whr_GetLong(WeathersNH, "Fog.Enable");
+		Weathers[iTmp].Fog.Start =  Whr_GetFloat(WeathersNH, "Fog.Start");
+		Weathers[iTmp].Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height");
+		Weathers[iTmp].Fog.Density = Whr_GetFloat(WeathersNH, "Fog.Density");
+		Weathers[iTmp].Fog.SeaDensity = Whr_GetFloat(WeathersNH, "Fog.SeaDensity");
+		Weathers[iTmp].Fog.IslandDensity = Whr_GetFloat(WeathersNH, "Fog.IslandDensity");
+
+		Weathers[iTmp].SpecialSeaFog.Enable =  Whr_GetLong(WeathersNH, "SpecialSeaFog.Enable");
+		Weathers[iTmp].SpecialSeaFog.Height =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height");		
+		Weathers[iTmp].SpecialSeaFog.Start =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Start");
+		Weathers[iTmp].SpecialSeaFog.Density =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.Density");
+		Weathers[iTmp].SpecialSeaFog.SeaDensity =  Whr_GetFloat(WeathersNH, "SpecialSeaFog.SeaDensity");	
+
+		Weathers[iTmp].Fog.Color = Whr_GetColor(WeathersNH, "Fog.Color");
+		Weathers[iTmp].SpecialSeaFog.Color = Whr_GetColor(WeathersNH, "SpecialSeaFog.Color");
+		// trace("Fog Color: " + Whr_GetColor(WeathersNH, "Fog.Color") + " Special fog color: " + Whr_GetColor(WeathersNH, "SpecialSeaFog.Color"));
+
+
+		// Sea Definition -----------------------------------------------------
+		Weathers[iTmp].Sea2.WaterColor = Whr_GetColor(WeathersNH, "Sea2.WaterColor");
+
+		//Sky definition
+
+		Weathers[iTmp].Sea2.SkyColor = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
+		Weathers[iTmp].Sky.Dir = Whr_GetString(WeathersNH, "Sky.Dir");
+		Trace("Imprint weather sky.dir: " + Whr_GetString(WeathersNH, "Sky.Dir"));
+
+		// Rain definition
+		Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
+		Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
+		Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
+		Weathers[iTmp].Rain.Height = Whr_GetFloat(WeathersNH, "Rain.Height");
+		Weathers[iTmp].Rain.Radius = Whr_GetFloat(WeathersNH, "Rain.Radius");
+		Weathers[iTmp].Rain.Speed = Whr_GetFloat(WeathersNH, "Rain.Speed");
+		Weathers[iTmp].Rain.Jitter = Whr_GetFloat(WeathersNH, "Rain.Jitter");
+		Weathers[iTmp].Rain.WindSpeedJitter = Whr_GetFloat(WeathersNH, "Rain.WindSpeedJitter");
+		Weathers[iTmp].Rain.MaxBlend = Whr_GetLong(WeathersNH, "Rain.MaxBlend");
+		Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
+		Weathers[iTmp].Rain.DropsTexture = "weather\rain_drops.tga.tx";
+
+		Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
+		Weathers[iTmp].Lightning.FlickerTime = 32;
+		Weathers[iTmp].Lightning.SubTexX = 4;
+		Weathers[iTmp].Lightning.SubTexY = 1;
+		Weathers[iTmp].Lightning.ScaleX = 0.7;
+		Weathers[iTmp].Lightning.ScaleY = 1.0;
+		Weathers[iTmp].Lightning.Flash.Texture = "Weather\lightning\flash.tga.tx";
+
+		Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
+
+		Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
+		Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
+
+		// Stars and planets
+
+		Weathers[iTmp].Planets.enable = Whr_GetLong(WeathersNH, "Planets.enable");
+		Weathers[iTmp].Stars.Enable = Whr_GetLong(WeathersNH, "Stars.Enable");
+		Weathers[iTmp].Stars.Texture = Whr_GetString(WeathersNH, "Stars.Texture");
+		Weathers[iTmp].Stars.Color = Whr_GetColor(WeathersNH, "Stars.Color");
+		Weathers[iTmp].Stars.Radius = Whr_GetFloat(WeathersNH, "Stars.Radius");
+		Weathers[iTmp].Stars.Size = Whr_GetFloat(WeathersNH, "Stars.Size");
+		Weathers[iTmp].Stars.HeightFade = Whr_GetFloat(WeathersNH, "Stars.HeightFade");
+		Weathers[iTmp].Stars.SunFade = Whr_GetFloat(WeathersNH, "Stars.SunFade");
+		Weathers[iTmp].Stars.VisualMagnitude = Whr_GetFloat(WeathersNH, "Stars.VisualMagnitude");
+
+
+		// Weather lights
+		Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
+		Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
+	}
 
 	// Wind parameters
 	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");

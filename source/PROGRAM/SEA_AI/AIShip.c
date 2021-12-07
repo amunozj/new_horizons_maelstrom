@@ -1,5 +1,4 @@
 #define LIFETIMEFACTOR 1.0
-#define TRACKFACTOR 1.0
 
 
 object	Sail, Rope, Flag, Vant;
@@ -965,12 +964,12 @@ void Ship_SetTrackSettings(ref rCharacter)
 	rCharacter.Ship.Track1.ZStart = rShip.Track1.ZStart;
 	rCharacter.Ship.Track1.LifeTime = rShip.Track1.LifeTime*LIFETIMEFACTOR;
 	rCharacter.Ship.Track1.Width = rShip.Track1.Width;
-	rCharacter.Ship.Track1.Speed = rShip.Track1.Speed*TRACKFACTOR;
+	rCharacter.Ship.Track1.Speed = rShip.Track1.Speed;
 
 	rCharacter.Ship.Track2.ZStart = rShip.Track2.ZStart;
 	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime*LIFETIMEFACTOR;
 	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
-	rCharacter.Ship.Track2.Speed = rShip.Track2.Speed*TRACKFACTOR;
+	rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
 
 	// Trace("track wake properties " + rCharacter.Ship.Track.Enable + " " + rCharacter.Ship.Track2.ZStart);
 

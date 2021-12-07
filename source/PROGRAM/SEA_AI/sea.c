@@ -656,6 +656,8 @@ void SeaLogin(ref Login)
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
+
+
 	Sea.MaxSeaHeight = 50.0;
 
 	ReloadProgressUpdate();
@@ -1085,6 +1087,9 @@ void SeaLogin(ref Login)
 
 	SetCorrectWorldMapPosition(); //Screwface
 
+	aref aCurWeather = GetCurrentWeather();
+	doShipLightChange(aCurWeather);			
+
 	iRDTSC = RDTSC_E(iRDTSC);
 	//Trace("SeaLogin RDTSC = " + iRDTSC);
 	//Trace("iNumShips = " + iNumShips);
@@ -1094,7 +1099,7 @@ void SeaLogin(ref Login)
 	Trace("SEA: SeaLogin end");
 
 
-PostEvent("Sea_FirstInit", 100);
+	PostEvent("Sea_FirstInit", 100);
 	StartPostInitChars();
 	Trace("SEA: SeaLogin end");
 }
