@@ -50,8 +50,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 				SunGlow.Glow.Size = Whr_GetFloat(aGlow1,"Size");
 				SunGlow.Glow.Texture = Whr_GetString(aGlow1,"Texture");
 				SunGlow.Glow.Color = Whr_GetColor(aGlow1,"Color");
-				SunGlow.Glow.RotateSpeed = Whr_GetColor(aGlow1,"RotateSpeed");
-				SunGlow.Glow.DecayTime = Whr_GetColor(aGlow1,"DecayTime");
+				SunGlow.Glow.RotateSpeed = Whr_GetFloat(aGlow1,"RotateSpeed");
+				SunGlow.Glow.DecayTime = Whr_GetFloat(aGlow1,"DecayTime");
 				SunGlow.Glow.TechniqueZ = Whr_GetString(aGlow1,"TechniqueZ");
 				SunGlow.Glow.TechniqueNoZ = Whr_GetString(aGlow1,"TechniqueNoZ");
 			}
@@ -62,8 +62,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 				SunGlow.Flare.Technique = Whr_GetString(aFlare1,"Technique");
 				SunGlow.Flare.Scale = Whr_GetFloat(aFlare1,"Scale");
 				SunGlow.Flare.Texture = Whr_GetString(aFlare1,"Texture");
-				SunGlow.Flare.TexSizeX = Whr_GetString(aFlare1,"TexSizeX");
-				SunGlow.Flare.TexSizeY = Whr_GetString(aFlare1,"TexSizeY");
+				SunGlow.Flare.TexSizeX = Whr_GetLong(aFlare1,"TexSizeX");
+				SunGlow.Flare.TexSizeY = Whr_GetLong(aFlare1,"TexSizeY");
 
 				makearef(aFlares,aSun1.Flares);
 				iNumFlares = GetAttributesNum(aFlares);
@@ -102,8 +102,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 			SunGlow.Glow.Size = Whr_GetFloat(aGlow1,"Size");
 			SunGlow.Glow.Texture = Whr_GetString(aGlow1,"Texture");
 			SunGlow.Glow.Color = Whr_GetColor(aGlow1,"Color");
-			SunGlow.Glow.RotateSpeed = Whr_GetColor(aGlow1,"RotateSpeed");
-			SunGlow.Glow.DecayTime = Whr_GetColor(aGlow1,"DecayTime");
+			SunGlow.Glow.RotateSpeed = Whr_GetFloat(aGlow1,"RotateSpeed");
+			SunGlow.Glow.DecayTime = Whr_GetFloat(aGlow1,"DecayTime");
 			SunGlow.Glow.TechniqueZ = Whr_GetString(aGlow1,"TechniqueZ");
 			SunGlow.Glow.TechniqueNoZ = Whr_GetString(aGlow1,"TechniqueNoZ");
 		}
@@ -113,8 +113,8 @@ void WhrFillSunGlowData(int nw1, int nw2)
 			SunGlow.Flare.Technique = Whr_GetString(aFlare1,"Technique");
 			SunGlow.Flare.Scale = Whr_GetFloat(aFlare1,"Scale");
 			SunGlow.Flare.Texture = Whr_GetString(aFlare1,"Texture");
-			SunGlow.Flare.TexSizeX = Whr_GetString(aFlare1,"TexSizeX");
-			SunGlow.Flare.TexSizeY = Whr_GetString(aFlare1,"TexSizeY");
+			SunGlow.Flare.TexSizeX = Whr_GetLong(aFlare1,"TexSizeX");
+			SunGlow.Flare.TexSizeY = Whr_GetLong(aFlare1,"TexSizeY");
 
 			makearef(aFlares,aSun1.Flares);
 			iNumFlares = GetAttributesNum(aFlares);

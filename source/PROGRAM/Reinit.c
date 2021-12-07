@@ -165,6 +165,7 @@ void Reinit(bool start, bool show)
 		}
 
 		WeatherInit();
+		makeCurrentFutureRealizations(MakeInt(GetHour()));
 
 		if(show) Log_SetStringToLog(TranslateString("","Weather..."));
 

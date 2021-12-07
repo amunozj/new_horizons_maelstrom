@@ -33,11 +33,11 @@ void WhrCreateSkyEnvironment()
             LayerAddObject("sea_reflection", &Sky, 11);
 	}
 
-	// FillSkyDir(&Sky);
+	FillSkyDir(&Sky);
 	// Sky.Dir = Whr_GetString(aSky, "Dir");
 
-	Sky.Dir.d1 = aCurWeather.Sky.Dir;
-	Sky.Dir = GetHour();
+	// Sky.Dir.d1 = aCurWeather.Sky.Dir;
+	// Sky.Dir = GetHour();
 
 	// if (wRain > 60)
 	// {
@@ -139,15 +139,7 @@ void FillSkyDir(aref aSky)
 
 //navy -->
 			sDir = Weathers[i].Sky.Dir;
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay))
-			{
-				nStart = sti(WeatherParams.Rain.StartTime);
-				nDur = MakeInt(sti(WeatherParams.Rain.Duration)/60 + 0.5);
-				if (sti(Weathers[i].Hour.Min) >= nStart  && sti(Weathers[i].Hour.Max) <= (nStart + nDur))
-				{
-					sDir = "weather\skies\Storm01\";
-				}
-			}
+			// trace("Skydir in fillskydir: " + sDir);
 //navy <--
 			aSky.Dir.(satr) = sDir;
 		}

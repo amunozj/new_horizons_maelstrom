@@ -1,3 +1,6 @@
+#define MAXFOG 20
+#define FOGDECAY 2.0
+
 void Whr_GenerateValues(int fogCheck){
 
 // Screwface : Chance to have weather conditions degrade is according to the month and seasons in Caribbean
@@ -47,21 +50,17 @@ void Whr_GenerateValues(int fogCheck){
 	
 	if(fogCheck != 0){
 		if(rand(100) > (50 - fogBallast)){
-			if(goldFog <= (20-rFog) || (goldFog - rFog) < 0){ fog = goldFog + rFog;}
-			else{ fog = 20; }
+			if(goldFog <= (MAXFOG-rFog) || (goldFog - rFog) < 0){ goldFog = goldFog + rFog;}
+			else{ goldFog = MAXFOG; }
 			fogBallast += rFog;
 		}
 		else{
-			if(goldFog >= rFog){ fog = goldFog - rFog;}
-			else{ fog = 0; }
+			if(goldFog >= rFog){ goldFog = goldFog - rFog;}
+			else{ goldFog = 0; }
 			fogBallast -= rFog;
 		}
-		if(curTime >= 7 && curTime <= 20 && wRain <= 75){
-			if(goldFog >= 2){ fog = goldFog/2;}
-			else{ fog = 0; }
-		}
-		if(curTime >= 23 || curTime <= 5 && wRain <= 75){
-			if(goldFog >= 2){ fog = goldFog/2;}
+		if(wRain <= 60){
+			if(goldFog >= 2){ fog = goldFog/FOGDECAY;}
 			else{ fog = 0; }
 		}
 	}

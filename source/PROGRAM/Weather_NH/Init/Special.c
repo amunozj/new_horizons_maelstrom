@@ -11,6 +11,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].LightingLm = "inside";
 	Weathers[n].InsideBack = "";
 	Weathers[n].Skip = true;
+	Weathers[n].Special = true;
 
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
@@ -179,6 +180,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].LightingLm = "evening";
 	Weathers[n].InsideBack = "e";
 	Weathers[n].Skip = true;
+	Weathers[n].Special = true;
 
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
@@ -346,6 +348,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].LightingLm = "morning";
 	Weathers[n].InsideBack = "m";
 	Weathers[n].Skip = true;
+	Weathers[n].Special = true;
 
 	Weathers[n].Storm = false;
 	Weathers[n].Tornado = false;
