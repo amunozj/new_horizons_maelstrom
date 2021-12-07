@@ -107,7 +107,7 @@ void Whr_Generator(int iHour){
 		winds = 25;
 		windBallast = 10;
 		rainBallast = 10;
-		fog = 40;
+		fog = 30;
 		bWeatherIsStorm = true; // screwface
 	}
 	if(bWhrTornado){
@@ -115,7 +115,7 @@ void Whr_Generator(int iHour){
 		winds = 30;
 		windBallast = 20;
 		rainBallast = 20;
-		fog = 60;
+		fog = 40;
 	}
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
@@ -320,7 +320,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Stars.HeightFade = 200.0;
 	WeathersNH.Stars.SunFade = 1.0;
 	float starSize = 35.0;
-	float VisualMagnitude = 15.0;
+	float VisualMagnitude = 12.0;
 
 	// Determine the skybox to use
 	string skydir;
@@ -421,9 +421,15 @@ void Whr_Generator(int iHour){
 
 
 	WeathersNH.Night = false;
-	if (curTime <= 4) {WeathersNH.Night = true;}
+	if (curTime <= 5 || curTime==23) {WeathersNH.Night = true;}
 
-
+	// New moon reflection
+	if (getMoonState() == NEW_MOON){
+		if (curTime <= 5 || curTime==23){
+			WeathersNH.Sun.Reflection.Enable = false;
+			WeathersNH.Sun.Flare.Enable = false;
+			WeathersNH.Sun.Overflow.Enable = false;		}
+	}
 
 	if (GENERATIONDEBUG){
 
@@ -643,7 +649,7 @@ int waterColor_openSea()
 {
 
 	// Random number for the case, if you add more colors be sure to match the number of cases
-	int colorNumber = rand(9);
+	int colorNumber = rand(11);
 	if (RANDOMDEBUG) Trace("waterColor_openSea random number: " + colorNumber);
 
 	int waterColor;
@@ -678,6 +684,12 @@ int waterColor_openSea()
         break;
     case 9:
         waterColor = argb(0,55,85,95);
+        break;
+    case 10:
+        waterColor = argb(0,2,77,141);
+        break;
+    case 11:
+        waterColor = argb(0,7,84,103);
         break;
 	}
 
