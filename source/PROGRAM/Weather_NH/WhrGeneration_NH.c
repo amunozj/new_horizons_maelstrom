@@ -173,7 +173,7 @@ void Whr_Generator(int iHour){
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	// Bupmscale the sea grainyness
-	float bumpscale = 0.05 + frnd()*0.05;
+	float bumpscale = 0.04 + frnd()*0.075;
 	WeathersNH.Sea2.BumpScale = bumpscale;
 	WeathersNH.Sea2.PosShift = 1.0;
 
@@ -308,8 +308,6 @@ void Whr_Generator(int iHour){
 	WeathersNH.Sea2.Frenel = 0.25 + frnd()*0.25;
 	WeathersNH.Sea2.Reflection = 0.8 + frnd()*0.25 - fog2trans*0.5;
 
-	if (RANDOMDEBUG) Trace("Done with watercolor");
-
 	// Stars and planets
 	WeathersNH.Planets.enable = false;
 	WeathersNH.Stars.Enable = false;
@@ -374,7 +372,6 @@ void Whr_Generator(int iHour){
 	WeathersNH.Sky.Dir = skydir;
 
 	if (RANDOMDEBUG) Trace("Sky.Dir generation: " + Whr_GetString(WeathersNH, "Sky.Dir"));
-	// if (RANDOMDEBUG) Trace("Done with skybox");
 
 	// Blend fog between day and night
 	int lightfog = argb(0,160,160,180);
@@ -413,7 +410,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
-	if (RANDOMDEBUG) Trace("Done with fog");
+	if (RANDOMDEBUG) Whr_DebugInfo();
 
 
 	WeathersNH.Stars.Size = starSize + frnd()*15.0;
@@ -444,7 +441,7 @@ void Whr_Generator(int iHour){
 		trace("WeathersNH.Sea2.FoamTexDisturb:" + WeathersNH.Sea2.FoamTexDisturb);
 
 
-		Whr_DebugInfo();
+		
 	}
 
 }

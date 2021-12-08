@@ -738,6 +738,7 @@ void BS_Reinit()
 		IslandsInit();
 		trace("Gauging: islands");
 		WeatherInit();
+		makeCurrentFutureRealizations(MakeInt(GetHour()));		
 		trace("Gauging: weather");
 		Alias_Init();
 		trace("Gauging: Aliases");

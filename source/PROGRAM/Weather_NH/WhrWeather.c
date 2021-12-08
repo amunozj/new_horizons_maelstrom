@@ -361,6 +361,11 @@ void CreateWeatherEnvironment()
 		CreateEntity(&Weather, "Weather");
 	}
 
+	Weather.Sun.BeginAngle = 3.14159265358979323846;
+    Weather.Sun.EndAngle = 0.0;
+    Weather.Moon.BeginAngle = 3.14159265358979323846;
+    Weather.Moon.EndAngle = 0.0;	
+
 	aref aCurWeather = GetCurrentWeather();
 
 	sLightingPath = Whr_GetString(aCurWeather,"Lighting");
