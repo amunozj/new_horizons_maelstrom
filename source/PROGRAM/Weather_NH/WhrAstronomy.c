@@ -1,7 +1,7 @@
 object Astronomy;
 
 #define ASTRONOMYDEBUG 0
-#define PLANETSCALE 1.5
+#define PLANETSCALE 1.25
 #define STARCOLORBLEND 0.1
 
 void WhrDeleteAstronomyEnvironment()

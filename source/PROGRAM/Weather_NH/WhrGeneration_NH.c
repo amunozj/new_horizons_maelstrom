@@ -318,7 +318,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Stars.HeightFade = 200.0;
 	WeathersNH.Stars.SunFade = 1.0;
 	float starSize = 30.0;
-	float VisualMagnitude = 12.0;
+	float VisualMagnitude = 15;
 
 	// Determine the skybox to use
 	string skydir;
@@ -336,18 +336,23 @@ void Whr_Generator(int iHour){
 		skydir = skydir_twilight1();
 		VisualMagnitude = 5.0;
 		starSize = 20.0;
-
+		WeathersNH.Sun.Flare.Enable = false;			
+		WeathersNH.Sun.Overflow.Enable = false;			
 	}
 	if (curTime==0 || curTime==4) {
 		skydir = skydir_twilight2();
 		VisualMagnitude = 10.0;
 		starSize = 25.0;
+		WeathersNH.Sun.Flare.Enable = false;			
+		WeathersNH.Sun.Overflow.Enable = false;			
 	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) {skydir_night();}
 		WeathersNH.Planets.enable = true;
-		WeathersNH.Stars.Enable = true;		
-	}
+		WeathersNH.Stars.Enable = true;
+		WeathersNH.Sun.Flare.Enable = false;			
+		WeathersNH.Sun.Overflow.Enable = false;
+		}
 
 	if (wRain >60){
 		WeathersNH.Planets.enable = false;
@@ -424,7 +429,6 @@ void Whr_Generator(int iHour){
 	if (getMoonState() == NEW_MOON){
 		if (curTime <= 5 || curTime==23){
 			WeathersNH.Sun.Reflection.Enable = false;
-			WeathersNH.Sun.Flare.Enable = false;
 			WeathersNH.Sun.Overflow.Enable = false;		}
 	}
 
