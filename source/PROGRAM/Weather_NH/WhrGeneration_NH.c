@@ -317,7 +317,7 @@ void Whr_Generator(int iHour){
 	WeathersNH.Stars.Radius = 2000.0;
 	WeathersNH.Stars.HeightFade = 200.0;
 	WeathersNH.Stars.SunFade = 1.0;
-	float starSize = 35.0;
+	float starSize = 30.0;
 	float VisualMagnitude = 12.0;
 
 	// Determine the skybox to use
@@ -335,13 +335,13 @@ void Whr_Generator(int iHour){
 	if (curTime==23 || curTime==5) {
 		skydir = skydir_twilight1();
 		VisualMagnitude = 5.0;
-		starSize = 25.0;
+		starSize = 20.0;
 
 	}
 	if (curTime==0 || curTime==4) {
 		skydir = skydir_twilight2();
 		VisualMagnitude = 10.0;
-		starSize = 30.0;
+		starSize = 25.0;
 	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) {skydir_night();}
@@ -410,11 +410,11 @@ void Whr_Generator(int iHour){
 	WeathersNH.Fog.Color = fogColor;
 	WeathersNH.SpecialSeaFog.Color = fogColor;
 
-	if (RANDOMDEBUG) Whr_DebugInfo();
+	// if (RANDOMDEBUG) Whr_DebugInfo();
 
 
 	WeathersNH.Stars.Size = starSize + frnd()*15.0;
-	WeathersNH.Stars.VisualMagnitude = VisualMagnitude + frnd()*10.0;	
+	WeathersNH.Stars.VisualMagnitude = VisualMagnitude;	
 
 
 	WeathersNH.Night = false;
