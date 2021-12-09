@@ -2,14 +2,20 @@
 
 bool morningFogChecked = false; 
 bool morningFog = false; 
+int randomFog = 0; 
 
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------
 
 //  LDH more fog in mornings - 26Feb09
+
+
 	int tempFog = fog;
 	int theHour = GetHour();
 	int fogchance = 0;
+
+	trace("Fog value: " + fog + "weather hour: " + theHour);
+
 
 	if (theHour <= 4 || theHour >= 10){
 		morningFogChecked = false;
@@ -20,6 +26,7 @@ void Whr_FogRainCheck(){
 		if (!morningFogChecked){
 			fogchance = rand(100);
 			morningFogChecked = true;
+			randomFog = rand(6);
 		}
 
 		if (fogchance<65){
@@ -28,7 +35,7 @@ void Whr_FogRainCheck(){
 			morningFog = false;
 		}
 
-		if (morningfog){fog += 6-abs(theHour-7);}	// +8, 7, 6, 5, don't use random number here
+		if (morningfog){fog += 4 + randomFog - abs(theHour-7);}	// +8, 7, 6, 5, don't use random number here
 	} 
 
 //JRH -->
