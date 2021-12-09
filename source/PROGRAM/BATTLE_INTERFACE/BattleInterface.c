@@ -1271,6 +1271,7 @@ void BI_LaunchCommand()
 			while(Whr_IsStorm())
 			{
 				SetNextWind(-1, 20);
+				SetNextWeather("Clear");
 				CreateWeatherEnvironment();
 				MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
 			}

@@ -861,7 +861,7 @@ void procUpdateTime()
 					// Trace("== Directsail called at " + timestring);
 					mchr.directsail.count = stf(mchr.directsail.count) + DirectsailCheckFrequency/60.0; // update encounter frequency count
 					// TraceAndLog("Directsail encounter check = " + stf(mchr.directsail.count));
-					DirectSailCheck(true);
+					if (GetSeaTime()>60) DirectsailCheck(true);
 					bIslandChecked = true;
 				}
 			}
@@ -930,8 +930,9 @@ void procUpdateTime()
 			}
 
 			// Screwface : lagoon colour mod close to seashore reload locator
-			if(mchr.location !="")
+			if(mchr.location != WDM_NONE_ISLAND)
 			{
+				// trace("Check for lagoon")
 				string island = mchr.location;
 				int li = Findisland(island);
 				//logit("island : " + island);

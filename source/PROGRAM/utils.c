@@ -791,40 +791,40 @@ string touppereng(string c)
 		case "y": return "Y"; break;
 		case "z": return "Z"; break;
 
-		case "а": return "А"; break;
-		case "б": return "Б"; break;
-		case "в": return "В"; break;
-		case "г": return "Г"; break;
-		case "Э": return "Г"; break; // PB: Needed to display this properly
-		case "д": return "Д"; break;
-		case "е": return "Е"; break;
-		case "ё": return "Ё"; break;
-		case "ж": return "Ж"; break;
-		case "з": return "З"; break;
-		case "и": return "И"; break;
-		case "й": return "Й"; break;
-		case "к": return "К"; break;
-		case "л": return "Л"; break;
-		case "м": return "М"; break;
-		case "н": return "Н"; break;
-		case "о": return "О"; break;
-		case "п": return "П"; break;
-		case "р": return "Р"; break;
-		case "с": return "С"; break;
-		case "т": return "Т"; break;
-		case "у": return "У"; break;
-		case "ф": return "Ф"; break;
-		case "х": return "Х"; break;
-		case "ц": return "Ц"; break;
-		case "ч": return "Ч"; break;
-		case "ш": return "Ш"; break;
-		case "щ": return "Щ"; break;
-		case "ъ": return "Ъ"; break;
-		case "ы": return "Ы"; break;
-		case "ь": return "Ь"; break;
-		case "э": return "Э"; break;
-		case "ю": return "Ю"; break;
-		case "я": return "Я"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break; // PB: Needed to display this properly
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 
 		case "1": return "!"; break;
 		case "2": return "@"; break;
@@ -892,43 +892,43 @@ string toupperrus (string c)
 {
 	switch(c)
 	{
-		case "а": return "А"; break;
-		case "б": return "Б"; break;
-		case "в": return "В"; break;
-		case "г": return "Г"; break;
-		case "д": return "Д"; break;
-		case "е": return "Е"; break;
-		case "ё": return "Ё"; break;
-		case "ж": return "Ж"; break;
-		case "з": return "З"; break;
-		case "и": return "И"; break;
-		case "й": return "Й"; break;
-		case "к": return "К"; break;
-		case "л": return "Л"; break;
-		case "м": return "М"; break;
-		case "н": return "Н"; break;
-		case "о": return "О"; break;
-		case "п": return "П"; break;
-		case "р": return "Р"; break;
-		case "с": return "С"; break;
-		case "т": return "Т"; break;
-		case "у": return "У"; break;
-		case "ф": return "Ф"; break;
-		case "х": return "Х"; break;
-		case "ц": return "Ц"; break;
-		case "ч": return "Ч"; break;
-		case "ш": return "Ш"; break;
-		case "щ": return "Щ"; break;
-		case "ъ": return "Ъ"; break;
-		case "ы": return "Ы"; break;
-		case "ь": return "Ь"; break;
-		case "э": return "Э"; break;
-		case "ю": return "Ю"; break;
-		case "я": return "Я"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 
 		case "1": return "!"; break;
 		case "2": return "''"; break;
-		case "3": return "№"; break;
+		case "3": return "пїЅ"; break;
 		case "4": return ";"; break;
 		case "5": return "%"; break;
 		case "6": return ":"; break;
@@ -948,39 +948,39 @@ string tolowerrus(string c)
 {
 	switch(c)
 	{
-		case "а": return "а"; break;
-		case "б": return "б"; break;
-		case "в": return "в"; break;
-		case "г": return "г"; break;
-		case "д": return "д"; break;
-		case "е": return "е"; break;
-		case "ё": return "ё"; break;
-		case "ж": return "ж"; break;
-		case "з": return "з"; break;
-		case "и": return "и"; break;
-		case "й": return "й"; break;
-		case "к": return "к"; break;
-		case "л": return "л"; break;
-		case "м": return "м"; break;
-		case "н": return "н"; break;
-		case "о": return "о"; break;
-		case "п": return "п"; break;
-		case "р": return "р"; break;
-		case "с": return "с"; break;
-		case "т": return "т"; break;
-		case "у": return "у"; break;
-		case "ф": return "ф"; break;
-		case "х": return "х"; break;
-		case "ц": return "ц"; break;
-		case "ч": return "ч"; break;
-		case "ш": return "ш"; break;
-		case "щ": return "щ"; break;
-		case "ъ": return "ъ"; break;
-		case "ы": return "ы"; break;
-		case "ь": return "ь"; break;
-		case "э": return "э"; break;
-		case "ю": return "ю"; break;
-		case "я": return "я"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 
 		case ".": return "."; break;
 	}
@@ -993,22 +993,22 @@ string toupperfra(string c)
 {
 	switch(c)
 	{
-		case "а": return "А"; break;
-		case "в": return "В"; break;
-		case "з": return "З"; break;
-		case "и": return "И"; break;
-		case "й": return "Й"; break;
-		case "л": return "Л"; break;
-		case "к": return "К"; break;
-		case "ж": return "Ж"; break;
-		case "п": return "П"; break;
-		case "о": return "О"; break;
-		case "ф": return "Ф"; break;
-		case "с": return "С"; break;
-		case "њ": return "Њ"; break;
-		case "ь": return "Ь"; break;
-		case "Е": return "Г"; break;
-		case "щ": return "Щ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return touppereng(c);
 }
@@ -1017,22 +1017,22 @@ string tolowerfra(string c)
 {
 	switch(c)
 	{
-		case "А": return "а"; break;
-		case "В": return "в"; break;
-		case "З": return "з"; break;
-		case "И": return "и"; break;
-		case "И": return "й"; break;
-		case "Л": return "л"; break;
-		case "Л": return "к"; break;
-		case "Ж": return "ж"; break;
-		case "П": return "п"; break;
-		case "О": return "о"; break;
-		case "Ф": return "ф"; break;
-		case "С": return "с"; break;
-		case "Њ": return "њ"; break;
-		case "Ь": return "ь"; break;
-		case "Г": return "Е"; break;
-		case "Щ": return "щ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return tolowereng(c);
 }
@@ -1041,10 +1041,10 @@ string toupperger(string c)
 {
 	switch(c)
 	{
-		case "д": return "Д"; break;
-		case "ц": return "Ц"; break;
-		case "Я": return "Я"; break;
-		case "ь": return "Ь"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return touppereng(c);
 }
@@ -1053,10 +1053,10 @@ string tolowerger(string c)
 {
 	switch(c)
 	{
-		case "Д": return "д"; break;
-		case "Ц": return "ц"; break;
-		case "Я": return "Я"; break;
-		case "Ь": return "ь"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return tolowereng(c);
 }
@@ -1065,13 +1065,13 @@ string toupperspa(string c)
 {
 	switch(c)
 	{
-		case "б": return "Б"; break;
-		case "й": return "Й"; break;
-		case "н": return "Н"; break;
-		case "с": return "С"; break;
-		case "у": return "У"; break;
-		case "ъ": return "Ъ"; break;
-		case "ь": return "Ь"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return touppereng(c);
 }
@@ -1080,13 +1080,13 @@ string tolowerspa(string c)
 {
 	switch(c)
 	{
-		case "Б": return "б"; break;
-		case "Й": return "й"; break;
-		case "Н": return "н"; break;
-		case "С": return "с"; break;
-		case "У": return "у"; break;
-		case "Ъ": return "ъ"; break;
-		case "Ь": return "ь"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return tolowereng(c);
 }
@@ -1095,15 +1095,15 @@ string toupperpol(string c)
 {
 	switch(c)
 	{
-		case "№": return "Ґ"; break;
-		case "е": return "ю"; break;
-		case "Ч": return "Ѕ"; break;
-		case "і": return "Ј"; break;
-		case "р": return "э"; break;
-		case "у": return "У"; break;
-		case "›": return "Ќ"; break;
-		case "џ": return "Џ"; break;
-		case "ћ": return "Ї"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return touppereng(c);
 }
@@ -1112,15 +1112,15 @@ string tolowerpol(string c)
 {
 	switch(c)
 	{
-		case "Ґ": return "№"; break;
-		case "ю": return "е"; break;
-		case "Ѕ": return "Ч"; break;
-		case "Ј": return "і"; break;
-		case "э": return "р"; break;
-		case "У": return "у"; break;
-		case "Ќ": return "›"; break;
-		case "Џ": return "џ"; break;
-		case "Ї": return "ћ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return tolowereng(c);
 }
@@ -1129,9 +1129,9 @@ string toupperswe(string c)
 {
 	switch(c)
 	{
-		case "е": return "§"; break;
-		case "д": return "Д"; break;
-		case "ц": return "Ц"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return touppereng(c);
 }
@@ -1140,9 +1140,9 @@ string tolowerswe(string c)
 {
 	switch(c)
 	{
-		case "§": return "е"; break;
-		case "Д": return "д"; break;
-		case "Ц": return "ц"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
+		case "пїЅ": return "пїЅ"; break;
 	}
 	return tolowereng(c);
 }
@@ -1152,55 +1152,55 @@ string GetDiacriticalChar(string c, string lang)
 	switch (lang) {
 		case "French":
 			switch (c) {
-				case "a": return "а"; break;
-				case "s": return "в"; break;
-				case "c": return "з"; break;
-				case "w": return "и"; break;
-				case "e": return "й"; break;
-				case "d": return "к"; break;
-				case "i": return "п"; break;
-				case "q": return "ж"; break;
-				case "r": return "л"; break;
-				case "t": return "њ"; break;
-				case "n": return "с"; break;
-				case "o": return "ф"; break;
-				case "h": return "ь"; break;
-				case "y": return "Е"; break;
-				case "u": return "щ"; break;
+				case "a": return "пїЅ"; break;
+				case "s": return "пїЅ"; break;
+				case "c": return "пїЅ"; break;
+				case "w": return "пїЅ"; break;
+				case "e": return "пїЅ"; break;
+				case "d": return "пїЅ"; break;
+				case "i": return "пїЅ"; break;
+				case "q": return "пїЅ"; break;
+				case "r": return "пїЅ"; break;
+				case "t": return "пїЅ"; break;
+				case "n": return "пїЅ"; break;
+				case "o": return "пїЅ"; break;
+				case "h": return "пїЅ"; break;
+				case "y": return "пїЅ"; break;
+				case "u": return "пїЅ"; break;
 			}
 		break;
 		case "German":
 			switch (c) {
-				case "a": return "д"; break;
-				case "o": return "ц"; break;
-				case "s": return "Я"; break;
-				case "u": return "ь"; break;
+				case "a": return "пїЅ"; break;
+				case "o": return "пїЅ"; break;
+				case "s": return "пїЅ"; break;
+				case "u": return "пїЅ"; break;
 			}
 		break;
 		case "Spanish":
 			switch (c) {
-				case "a": return "б"; break;
-				case "e": return "й"; break;
-				case "i": return "н"; break;
-				case "n": return "с"; break;
-				case "o": return "у"; break;
-				case "u": return "ъ"; break;
-				case "y": return "ь"; break;
-				case "/": return "ї"; break;
-				case "1": return "Ў"; break;
+				case "a": return "пїЅ"; break;
+				case "e": return "пїЅ"; break;
+				case "i": return "пїЅ"; break;
+				case "n": return "пїЅ"; break;
+				case "o": return "пїЅ"; break;
+				case "u": return "пїЅ"; break;
+				case "y": return "пїЅ"; break;
+				case "/": return "пїЅ"; break;
+				case "1": return "пїЅ"; break;
 			}
 		break;
 		case "Polish":
 			switch (c) {
-				case "a": return "№"; break;
-				case "c": return "е"; break;
-				case "e": return "Ч"; break;
-				case "l": return "і"; break;
-				case "n": return "р"; break;
-				case "o": return "у"; break;
-				case "s": return "›"; break;
-				case "x": return "џ"; break;
-				case "z": return "ћ"; break;
+				case "a": return "пїЅ"; break;
+				case "c": return "пїЅ"; break;
+				case "e": return "пїЅ"; break;
+				case "l": return "пїЅ"; break;
+				case "n": return "пїЅ"; break;
+				case "o": return "пїЅ"; break;
+				case "s": return "пїЅ"; break;
+				case "x": return "пїЅ"; break;
+				case "z": return "пїЅ"; break;
 			}
 		break;
 	}
@@ -1318,121 +1318,121 @@ string ChrFromCode(int code)
 		case 137: return ""; break;
 		case 138: return ""; break;
 		case 139: return ""; break;
-		case 140: return "Њ"; break;
-		case 141: return "Ќ"; break;
+		case 140: return "пїЅ"; break;
+		case 141: return "пїЅ"; break;
 		case 142: return ""; break;
-		case 143: return "Џ"; break;
+		case 143: return "пїЅ"; break;
 		case 144: return ""; break;
-		case 145: return "‘"; break;
-		case 146: return "’"; break;
-		case 147: return "“"; break;
-		case 148: return "”"; break;
+		case 145: return "пїЅ"; break;
+		case 146: return "пїЅ"; break;
+		case 147: return "пїЅ"; break;
+		case 148: return "пїЅ"; break;
 		case 149: return ""; break;
-		case 150: return "–"; break;
-		case 151: return "—"; break;
+		case 150: return "пїЅ"; break;
+		case 151: return "пїЅ"; break;
 		case 152: return ""; break;
 		case 153: return ""; break;
 		case 154: return ""; break;
-		case 155: return "›"; break;
-		case 156: return "њ"; break;
+		case 155: return "пїЅ"; break;
+		case 156: return "пїЅ"; break;
 		case 157: return ""; break;
-		case 158: return "ћ"; break;
-		case 159: return "џ"; break;
+		case 158: return "пїЅ"; break;
+		case 159: return "пїЅ"; break;
 		case 160: return ""; break;
-		case 161: return "Ў"; break;
+		case 161: return "пїЅ"; break;
 		case 162: return ""; break;
-		case 163: return "Ј"; break;
-		case 164: return "¤"; break;
-		case 165: return "Ґ"; break;
+		case 163: return "пїЅ"; break;
+		case 164: return "пїЅ"; break;
+		case 165: return "пїЅ"; break;
 		case 166: return ""; break;
-		case 167: return "§"; break;
-		case 168: return "Ё"; break;
+		case 167: return "пїЅ"; break;
+		case 168: return "пїЅ"; break;
 		case 169: return ""; break;
 		case 170: return ""; break;
-		case 171: return "«"; break;
+		case 171: return "пїЅ"; break;
 		case 172: return ""; break;
-		case 173: return "­"; break;
+		case 173: return "пїЅ"; break;
 		case 174: return ""; break;
-		case 175: return "Ї"; break;
+		case 175: return "пїЅ"; break;
 		case 176: return ""; break;
 		case 177: return ""; break;
 		case 178: return ""; break;
-		case 179: return "і"; break;
+		case 179: return "пїЅ"; break;
 		case 180: return ""; break;
 		case 181: return ""; break;
 		case 182: return ""; break;
 		case 183: return ""; break;
 		case 184: return ""; break;
-		case 185: return "№"; break;
+		case 185: return "пїЅ"; break;
 		case 186: return ""; break;
-		case 187: return "»"; break;
+		case 187: return "пїЅ"; break;
 		case 188: return ""; break;
-		case 189: return "Ѕ"; break;
+		case 189: return "пїЅ"; break;
 		case 190: return ""; break;
-		case 191: return "ї"; break;
-		case 192: return "А"; break;
-		case 193: return "Б"; break;
-		case 194: return "В"; break;
-		case 195: return "Г"; break;
-		case 196: return "Д"; break;
-		case 197: return "Е"; break;
-		case 198: return "Ж"; break;
-		case 199: return "З"; break;
-		case 200: return "И"; break;
-		case 201: return "Й"; break;
-		case 202: return "К"; break;
-		case 203: return "Л"; break;
-		case 204: return "М"; break;
-		case 205: return "Н"; break;
-		case 206: return "О"; break;
-		case 207: return "П"; break;
-		case 208: return "Р"; break;
-		case 209: return "С"; break;
-		case 210: return "Т"; break;
-		case 211: return "У"; break;
-		case 212: return "Ф"; break;
-		case 213: return "Х"; break;
-		case 214: return "Ц"; break;
-		case 215: return "Ч"; break;
-		case 216: return "Ш"; break;
-		case 217: return "Щ"; break;
-		case 218: return "Ъ"; break;
-		case 219: return "Ы"; break;
-		case 220: return "Ь"; break;
-		case 221: return "Э"; break;
-		case 222: return "Ю"; break;
-		case 223: return "Я"; break;
-		case 224: return "а"; break;
-		case 225: return "б"; break;
-		case 226: return "в"; break;
-		case 227: return "г"; break;
-		case 228: return "д"; break;
-		case 229: return "е"; break;
-		case 230: return "ж"; break;
-		case 231: return "з"; break;
-		case 232: return "и"; break;
-		case 233: return "й"; break;
-		case 234: return "к"; break;
-		case 235: return "л"; break;
-		case 236: return "м"; break;
-		case 237: return "н"; break;
-		case 238: return "о"; break;
-		case 239: return "п"; break;
-		case 240: return "р"; break;
-		case 241: return "с"; break;
-		case 242: return "т"; break;
-		case 243: return "у"; break;
-		case 244: return "ф"; break;
-		case 245: return "х"; break;
-		case 246: return "ц"; break;
-		case 247: return "ч"; break;
-		case 248: return "ш"; break;
-		case 249: return "щ"; break;
-		case 250: return "ъ"; break;
-		case 251: return "ы"; break;
-		case 252: return "ь"; break;
-		case 253: return "э"; break;
-		case 254: return "ю"; break;
+		case 191: return "пїЅ"; break;
+		case 192: return "пїЅ"; break;
+		case 193: return "пїЅ"; break;
+		case 194: return "пїЅ"; break;
+		case 195: return "пїЅ"; break;
+		case 196: return "пїЅ"; break;
+		case 197: return "пїЅ"; break;
+		case 198: return "пїЅ"; break;
+		case 199: return "пїЅ"; break;
+		case 200: return "пїЅ"; break;
+		case 201: return "пїЅ"; break;
+		case 202: return "пїЅ"; break;
+		case 203: return "пїЅ"; break;
+		case 204: return "пїЅ"; break;
+		case 205: return "пїЅ"; break;
+		case 206: return "пїЅ"; break;
+		case 207: return "пїЅ"; break;
+		case 208: return "пїЅ"; break;
+		case 209: return "пїЅ"; break;
+		case 210: return "пїЅ"; break;
+		case 211: return "пїЅ"; break;
+		case 212: return "пїЅ"; break;
+		case 213: return "пїЅ"; break;
+		case 214: return "пїЅ"; break;
+		case 215: return "пїЅ"; break;
+		case 216: return "пїЅ"; break;
+		case 217: return "пїЅ"; break;
+		case 218: return "пїЅ"; break;
+		case 219: return "пїЅ"; break;
+		case 220: return "пїЅ"; break;
+		case 221: return "пїЅ"; break;
+		case 222: return "пїЅ"; break;
+		case 223: return "пїЅ"; break;
+		case 224: return "пїЅ"; break;
+		case 225: return "пїЅ"; break;
+		case 226: return "пїЅ"; break;
+		case 227: return "пїЅ"; break;
+		case 228: return "пїЅ"; break;
+		case 229: return "пїЅ"; break;
+		case 230: return "пїЅ"; break;
+		case 231: return "пїЅ"; break;
+		case 232: return "пїЅ"; break;
+		case 233: return "пїЅ"; break;
+		case 234: return "пїЅ"; break;
+		case 235: return "пїЅ"; break;
+		case 236: return "пїЅ"; break;
+		case 237: return "пїЅ"; break;
+		case 238: return "пїЅ"; break;
+		case 239: return "пїЅ"; break;
+		case 240: return "пїЅ"; break;
+		case 241: return "пїЅ"; break;
+		case 242: return "пїЅ"; break;
+		case 243: return "пїЅ"; break;
+		case 244: return "пїЅ"; break;
+		case 245: return "пїЅ"; break;
+		case 246: return "пїЅ"; break;
+		case 247: return "пїЅ"; break;
+		case 248: return "пїЅ"; break;
+		case 249: return "пїЅ"; break;
+		case 250: return "пїЅ"; break;
+		case 251: return "пїЅ"; break;
+		case 252: return "пїЅ"; break;
+		case 253: return "пїЅ"; break;
+		case 254: return "пїЅ"; break;
 	}
 	return "";
 }
@@ -1536,105 +1536,105 @@ int ascii(string chr)
 		case "{": return 123; break;
 		case "|": return 124; break;
 		case "}": return 125; break;
-		case "Њ": return 140; break;
-		case "Ќ": return 141; break;
-		case "Џ": return 143; break;
-		case "‘": return 145; break;
-		case "’": return 146; break;
-		case "“": return 147; break;
-		case "”": return 148; break;
-		case "–": return 150; break;
-		case "—": return 151; break;
-		case "›": return 155; break;
-		case "њ": return 156; break;
-		case "ћ": return 158; break;
-		case "џ": return 159; break;
-		case "Ў": return 161; break;
-		case "Ј": return 163; break;
-		case "¤": return 164; break;
-		case "Ґ": return 165; break;
-		case "§": return 167; break;
-		case "Ё": return 168; break;
-		case "«": return 171; break;
-		case "­": return 173; break;
-		case "Ї": return 175; break;
-		case "і": return 179; break;
-		case "№": return 185; break;
-		case "»": return 187; break;
-		case "Ѕ": return 189; break;
-		case "ї": return 191; break;
-		case "А": return 192; break;
-		case "Б": return 193; break;
-		case "В": return 194; break;
-		case "Г": return 195; break;
-		case "Д": return 196; break;
-		case "Е": return 197; break;
-		case "Ж": return 198; break;
-		case "З": return 199; break;
-		case "И": return 200; break;
-		case "Й": return 201; break;
-		case "К": return 202; break;
-		case "Л": return 203; break;
-		case "М": return 204; break;
-		case "Н": return 205; break;
-		case "О": return 206; break;
-		case "П": return 207; break;
-		case "Р": return 208; break;
-		case "С": return 209; break;
-		case "Т": return 210; break;
-		case "У": return 211; break;
-		case "Ф": return 212; break;
-		case "Х": return 213; break;
-		case "Ц": return 214; break;
-		case "Ч": return 215; break;
-		case "Ш": return 216; break;
-		case "Щ": return 217; break;
-		case "Ъ": return 218; break;
-		case "Ы": return 219; break;
-		case "Ь": return 220; break;
-		case "Э": return 221; break;
-		case "Ю": return 222; break;
-		case "Я": return 223; break;
-		case "а": return 224; break;
-		case "б": return 225; break;
-		case "в": return 226; break;
-		case "г": return 227; break;
-		case "д": return 228; break;
-		case "е": return 229; break;
-		case "ж": return 230; break;
-		case "з": return 231; break;
-		case "и": return 232; break;
-		case "й": return 233; break;
-		case "к": return 234; break;
-		case "л": return 235; break;
-		case "м": return 236; break;
-		case "н": return 237; break;
-		case "о": return 238; break;
-		case "п": return 239; break;
-		case "р": return 240; break;
-		case "с": return 241; break;
-		case "т": return 242; break;
-		case "у": return 243; break;
-		case "ф": return 244; break;
-		case "х": return 245; break;
-		case "ц": return 246; break;
-		case "ч": return 247; break;
-		case "ш": return 248; break;
-		case "щ": return 249; break;
-		case "ъ": return 250; break;
-		case "ы": return 251; break;
-		case "ь": return 252; break;
-		case "э": return 253; break;
-		case "ю": return 254; break;
-		case "я": return 255; break; // was lost
+		case "пїЅ": return 140; break;
+		case "пїЅ": return 141; break;
+		case "пїЅ": return 143; break;
+		case "пїЅ": return 145; break;
+		case "пїЅ": return 146; break;
+		case "пїЅ": return 147; break;
+		case "пїЅ": return 148; break;
+		case "пїЅ": return 150; break;
+		case "пїЅ": return 151; break;
+		case "пїЅ": return 155; break;
+		case "пїЅ": return 156; break;
+		case "пїЅ": return 158; break;
+		case "пїЅ": return 159; break;
+		case "пїЅ": return 161; break;
+		case "пїЅ": return 163; break;
+		case "пїЅ": return 164; break;
+		case "пїЅ": return 165; break;
+		case "пїЅ": return 167; break;
+		case "пїЅ": return 168; break;
+		case "пїЅ": return 171; break;
+		case "пїЅ": return 173; break;
+		case "пїЅ": return 175; break;
+		case "пїЅ": return 179; break;
+		case "пїЅ": return 185; break;
+		case "пїЅ": return 187; break;
+		case "пїЅ": return 189; break;
+		case "пїЅ": return 191; break;
+		case "пїЅ": return 192; break;
+		case "пїЅ": return 193; break;
+		case "пїЅ": return 194; break;
+		case "пїЅ": return 195; break;
+		case "пїЅ": return 196; break;
+		case "пїЅ": return 197; break;
+		case "пїЅ": return 198; break;
+		case "пїЅ": return 199; break;
+		case "пїЅ": return 200; break;
+		case "пїЅ": return 201; break;
+		case "пїЅ": return 202; break;
+		case "пїЅ": return 203; break;
+		case "пїЅ": return 204; break;
+		case "пїЅ": return 205; break;
+		case "пїЅ": return 206; break;
+		case "пїЅ": return 207; break;
+		case "пїЅ": return 208; break;
+		case "пїЅ": return 209; break;
+		case "пїЅ": return 210; break;
+		case "пїЅ": return 211; break;
+		case "пїЅ": return 212; break;
+		case "пїЅ": return 213; break;
+		case "пїЅ": return 214; break;
+		case "пїЅ": return 215; break;
+		case "пїЅ": return 216; break;
+		case "пїЅ": return 217; break;
+		case "пїЅ": return 218; break;
+		case "пїЅ": return 219; break;
+		case "пїЅ": return 220; break;
+		case "пїЅ": return 221; break;
+		case "пїЅ": return 222; break;
+		case "пїЅ": return 223; break;
+		case "пїЅ": return 224; break;
+		case "пїЅ": return 225; break;
+		case "пїЅ": return 226; break;
+		case "пїЅ": return 227; break;
+		case "пїЅ": return 228; break;
+		case "пїЅ": return 229; break;
+		case "пїЅ": return 230; break;
+		case "пїЅ": return 231; break;
+		case "пїЅ": return 232; break;
+		case "пїЅ": return 233; break;
+		case "пїЅ": return 234; break;
+		case "пїЅ": return 235; break;
+		case "пїЅ": return 236; break;
+		case "пїЅ": return 237; break;
+		case "пїЅ": return 238; break;
+		case "пїЅ": return 239; break;
+		case "пїЅ": return 240; break;
+		case "пїЅ": return 241; break;
+		case "пїЅ": return 242; break;
+		case "пїЅ": return 243; break;
+		case "пїЅ": return 244; break;
+		case "пїЅ": return 245; break;
+		case "пїЅ": return 246; break;
+		case "пїЅ": return 247; break;
+		case "пїЅ": return 248; break;
+		case "пїЅ": return 249; break;
+		case "пїЅ": return 250; break;
+		case "пїЅ": return 251; break;
+		case "пїЅ": return 252; break;
+		case "пїЅ": return 253; break;
+		case "пїЅ": return 254; break;
+		case "пїЅ": return 255; break; // was lost
 	}
 	return 0;
 }
 
 string GetCursorSymbol()
 {
-	if (bKeyboardOverwriteMode) return "Ђ";
-	return "я";
+	if (bKeyboardOverwriteMode) return "пїЅ";
+	return "пїЅ";
 }
 // <-- KK
 
@@ -2617,7 +2617,7 @@ void DeleteGrass()
 {
 	if (IsEntity(&objGrass))
 	{
-		DeleteClass(&objGrass); // boal грохнуть конкретный объект
+		DeleteClass(&objGrass); // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 	DeleteEntitiesByType("Grass");
 }
@@ -2649,10 +2649,10 @@ void CalcLocalTime(float _inc)
 		/*int hour = GetHour();
 		if (AddTimeToCurrent(0, makeint(locTmpTime / _inc)) > 0)
 		{
-			//вызов уже внутри метода времени PostEvent("NextDay", 20); // наступил новый день
+			//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ PostEvent("NextDay", 20); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		}        */
         locTmpTime = 0.0;
-        /*if (hour != GetHour() && !bStorm && !bTornado && !bDisableMapEnter && !LAi_grp_alarmactive) // не в бою
+        /*if (hour != GetHour() && !bStorm && !bTornado && !bDisableMapEnter && !LAi_grp_alarmactive) // пїЅпїЅ пїЅ пїЅпїЅпїЅ
 		{
             RefreshWeather();
 		} */
@@ -2660,20 +2660,20 @@ void CalcLocalTime(float _inc)
 }
 void RefreshWeather()
 {
-    Whr_UpdateWeather(true);
-	// звуки
+    Whr_UpdateWeather(false);
+	// пїЅпїЅпїЅпїЅпїЅ
 	/*
 	if (bSeaActive && !bAbordageStarted)
 	{
 	    SetSchemeForSea();
 	    if (Whr_IsDay() && sti(pchar.Ship.Lights) == 1)
 	    {
-	        //выключаем фонари.
+	        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			Ship_SetLightsOff(pchar, 15.0, true, true, false);
 	    }
 	}
 	else
-	{ // суша
+	{ // пїЅпїЅпїЅпїЅ
 	    LoadSceneSound();
 	} */
 }
@@ -2696,13 +2696,13 @@ void FreeChangeFlagMode(string _tmp)
 	DeleteAttribute(pchar, "DisableChangeFlagMode");
 }
 
-string  xiStr(string _str) // просто сокращение
+string  xiStr(string _str) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	return XI_ConvertString(_str);
 }
 
 
-string  xiDStr(string _str) // просто сокращение
+string  xiDStr(string _str) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	//return GetConvertStr(_str, "DialogSource.txt");
 }

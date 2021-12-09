@@ -132,14 +132,14 @@ void setIslandSmugglingPauses(ref sisland)
 			{
 				sisland.smuggling.pause.(id).start = 10.0+((30+rand(5)*5)/60.0);
 				sisland.smuggling.pause.(id).end = 11.0+((30+rand(5)*5)/60.0);
-				sisland.smuggling.pause.(id).name = "petit déjeuner";
+				sisland.smuggling.pause.(id).name = "petit dï¿½jeuner";
 			}
 			id = 1;
 			if(pickpauses[sti(id)] == TRUE)
 			{
 				sisland.smuggling.pause.(id).start = 15.0+((rand(5)*5)/60.0);
 				sisland.smuggling.pause.(id).end = 16.0+((rand(5)*5)/60.0);
-				sisland.smuggling.pause.(id).name = "déjeuner";
+				sisland.smuggling.pause.(id).name = "dï¿½jeuner";
 			}
 			id = 2;
 			if(pickpauses[sti(id)] == TRUE)
@@ -163,7 +163,7 @@ void setIslandSmugglingPauses(ref sisland)
 			{
 				sisland.smuggling.pause.(id).start = 16.0+((rand(5)*5)/60.0);
 				sisland.smuggling.pause.(id).end = 18.0+((rand(5)*5)/60.0);
-				sisland.smuggling.pause.(id).name = "siësta";
+				sisland.smuggling.pause.(id).name = "siï¿½sta";
 			}
 			id = 2;
 			if(pickpauses[sti(id)] == TRUE)
@@ -229,7 +229,7 @@ void setIslandSmugglingPauses(ref sisland)
 			{
 				sisland.smuggling.pause.(id).start = 16.0+((rand(5)*5)/60.0);
 				sisland.smuggling.pause.(id).end = 18.0+((rand(5)*5)/60.0);
-				sisland.smuggling.pause.(id).name = "siësta";
+				sisland.smuggling.pause.(id).name = "siï¿½sta";
 			}
 			id = 2;
 			if(pickpauses[sti(id)] == TRUE)
@@ -258,7 +258,7 @@ void setIslandSmugglingPauses(ref sisland)
 				if(pickpauses[sti(id)] == TRUE){
 					sisland.smuggling.pause.(id).start = 20.0+((30+rand(5)*5)/60.0);
 					sisland.smuggling.pause.(id).end = 21.0+((30+rand(5)*5)/60.0);
-					sisland.smuggling.pause.(id).name = "kvällsvard";
+					sisland.smuggling.pause.(id).name = "kvï¿½llsvard";
 				}
 			}
 			if(GetCurrentPeriod() >= PERIOD_REVOLUTIONS){
@@ -329,7 +329,7 @@ void setIslandSmugglingPauses(ref sisland)
 				if(pickpauses[sti(id)] == TRUE){
 					sisland.smuggling.pause.(id).start = 20.0+((30+rand(5)*5)/60.0);
 					sisland.smuggling.pause.(id).end = 21.0+((30+rand(5)*5)/60.0);
-					sisland.smuggling.pause.(id).name = "kvällsvard";
+					sisland.smuggling.pause.(id).name = "kvï¿½llsvard";
 				}
 			break;
 		}
@@ -1035,15 +1035,16 @@ float getCoastGuardEncounterChance()
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING isday: "+isDay()+" chance: "+chance_get_caught);
 	//Check for weather
 	aref aCurWeather = GetCurrentWeather();
-	if(aCurWeather.id == "Blue Sky") chance_get_caught = chance_get_caught * 1.2;
-	if(aCurWeather.id == "Day Storm") chance_get_caught = chance_get_caught * 0.5;
-	if(aCurWeather.id == "Rainy") chance_get_caught = chance_get_caught * 0.8;
-	if(aCurWeather.id == "Heavy Rain") chance_get_caught = chance_get_caught * 0.6;
-	if(aCurWeather.id == "Stormy") chance_get_caught = chance_get_caught * 0.4;
-	if(aCurWeather.id == "Heavy Storm") chance_get_caught = chance_get_caught * 0.2;
-	if(aCurWeather.id == "Foggy") chance_get_caught = chance_get_caught * 0.8;
-	if(aCurWeather.id == "Heavy Fog") chance_get_caught = chance_get_caught * 0.2;
-	if(aCurWeather.id == "Super Fog") chance_get_caught = chance_get_caught * 0.05;
+	if (wRain < 75 && fog < 5) chance_get_caught = chance_get_caught * 1.2;
+	if (wRain >= 75 && wRain < 80) chance_get_caught = chance_get_caught * 0.8;
+	if (wRain >= 80 && wRain < 85) chance_get_caught = chance_get_caught * 0.7;
+	if (wRain >= 85 && wRain < 90) chance_get_caught = chance_get_caught * 0.6;
+	if (wRain >= 90 && wRain < 95) chance_get_caught = chance_get_caught * 0.5;
+	if (wRain >= 95) chance_get_caught = chance_get_caught * 0.4;
+	if (fog > 20) chance_get_caught = chance_get_caught * 0.2;
+	if (fog > 15) chance_get_caught = chance_get_caught * 0.4;
+	if (fog > 10) chance_get_caught = chance_get_caught * 0.6;
+
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING weather: "+aCurWeather.id+" chance: "+chance_get_caught);
 	//Check for difficulty
 	int difficulty = GetDifficulty();

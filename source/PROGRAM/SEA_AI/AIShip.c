@@ -1,3 +1,6 @@
+#define LIFETIMEFACTOR 1.0
+
+
 object	Sail, Rope, Flag, Vant;
 // KK -->
 object Pennant, MerchantFlag, MerchantPennant, FortFlag;
@@ -959,12 +962,12 @@ void Ship_SetTrackSettings(ref rCharacter)
 	rCharacter.Ship.Track2.TrackWidthSteps = 4.0;
 
 	rCharacter.Ship.Track1.ZStart = rShip.Track1.ZStart;
-	rCharacter.Ship.Track1.LifeTime = rShip.Track1.LifeTime;
+	rCharacter.Ship.Track1.LifeTime = rShip.Track1.LifeTime*LIFETIMEFACTOR;
 	rCharacter.Ship.Track1.Width = rShip.Track1.Width;
 	rCharacter.Ship.Track1.Speed = rShip.Track1.Speed;
 
 	rCharacter.Ship.Track2.ZStart = rShip.Track2.ZStart;
-	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime;
+	rCharacter.Ship.Track2.LifeTime = rShip.Track2.LifeTime*LIFETIMEFACTOR;
 	rCharacter.Ship.Track2.Width = rShip.Track2.Width;
 	rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
 
@@ -2407,13 +2410,73 @@ int AddSeaTimeToCurrent()
 			// LDH this is where the weather is updated when on ship - 04Jan09
 			bool oldIsNight = Whr_IsNight();
 			bool oldIsRain = Whr_IsRain();		// LDH 20Feb09
+			Whr_UpdateWeatherHour();
 			Whr_UpdateWeather(false);
+			Weather.Time.time = GetTime();
 			// LDH update the music if day/night changes - 20Jan09
 			// turn off the rain sounds if it's no longer raining - 20Feb09
 			if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain)
 				SetSchemeForSea();
 		}
 	}
+
+	sCurrentFog = "Fog";
+	if (bSeaActive)
+	{
+		sCurrentFog = "SpecialSeaFog";
+	}		
+
+	// trace("addseatime: Find weather");
+	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
+	// addProceduralWeather(iCurWeatherNum);	
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	iNextWeatherNum = iBlendWeatherNum;
+
+	// trace("addseatime: Fill weather");
+	// update weather: sun lighting
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
+	// trace("addseatime: Fill rain");
+
+	//update rain: rain drops, rain colors, rain size, rainbow
+	//navy -- 5.03.07
+	if (WeathersNH.Rain == true)
+	{
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
+	}
+
+	// trace("addseatime: Fill sun");
+
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	SunGlow.isDone = true;
+
+	// trace("addseatime: Fill sea");
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+
+	// trace("addseatime: Fill sky");	
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	// trace("addseatime: update fog");
+	// update sky: fog
+	// Sky.TimeUpdate = Environment.time;
+
+	// trace("addseatime: done");
+
+	if (bSeaActive)
+	{
+		Island.LightingPath = GetLightingPath();
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+		Sea.Fog.SeaDensity =  Whr_GetFloat(Weather, "Fog.SeaDensity");
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
+		
+	}	
+
+	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
+
 	return minutes;
 }
 // NK <--

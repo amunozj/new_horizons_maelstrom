@@ -126,6 +126,7 @@ void DeleteSeaEnvironment()
 	DeleteSeaGoodsEnvironment();
 
 	DeleteWeatherEnvironment();
+	clearImprintedWeather();
 	DeleteCoastFoamEnvironment();
 
 	DeleteAttribute(&AISea,"");
@@ -426,6 +427,9 @@ void Sea_MapLoadXZ_AY(float x, float z, float ay)
 
 void Sea_MapLoad()
 {
+	worldMap.playerInStorm = 0;
+	SetNextWeather("Clear");
+	clearImprintedWeather();
 	//int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	if(GetSeaTime() < 3 && !bSkipSeaLogin) {
 		LogIt(TranslateString("","Wait a sec while I get out the chart, captain!"));
@@ -456,6 +460,8 @@ void Sea_MapLoad()
 	SeaMapLoadX = stf(worldMap.playerShipX);
 	SeaMapLoadZ = stf(worldMap.playerShipZ);
 	SeaMapLoadAY = stf(rPlayer.Ship.Ang.y);
+
+	// trace("Seamapload coordinates: " + SeaMapLoadX + " , " + SeaMapLoadZ);
 	//LanguageCloseFile(tmpLangFileID);
 //	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
 }
@@ -631,8 +637,20 @@ void SeaLogin(ref Login)
 	}
 // <-- KK
 
+	// DirectsailCheck(true);
+
 	// create all sea modules
 	CreateSeaEnvironment();
+
+	// Whr_TimeUpdate()
+	sCurrentFog = "SpecialSeaFog";
+
+	int iHour = MakeInt(GetHour());
+	iCurWeatherNum = FindWeatherByHour(iHour);
+	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+
+
+
 
 	Sea.MaxSeaHeight = 50.0;
 
@@ -644,10 +662,14 @@ void SeaLogin(ref Login)
 	if (sIslandID != "")
 	{
 		trace("SEA: sealogin loading island " + sIslandID);
+		
 		CreateEntity(&Island, "Island");
 		Island.LightingPath = GetLightingPath();
+		// trace("Island lighting path: " + Island.LightingPath);
 		//20180715
-		Island.FogDensity = Weather.Fog.IslandDensity;
+		// trace("WeathersNH IslandDensity: " + Whr_GetFloat(WeathersNH, "Fog.IslandDensity") + " Weather IslandDensity: " + Whr_GetFloat(Weather, "Fog.IslandDensity"))
+		
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
         Island.ImmersionDistance = 450000.0;
 		Island.ImmersionDepth = 0.0;
 		if (GetTargetPlatform() != "xbox")
@@ -683,7 +705,8 @@ void SeaLogin(ref Login)
 		CreateCoastFoamEnvironment(sIslandID, SEA_EXECUTE, SEA_REALIZE);
 		Fort_Login(iIslandIndex);
 
-		if(!bstorm) Sea.MaxSeaHeight = 3.0; // screwface : allow big waves around island in storm conditions
+		if(bSeaActive && !ownDeckStarted()) {Sea.MaxSeaHeight = 50.0;}
+		else {Sea.MaxSeaHeight = 3.0;} // screwface : allow big waves around island in storm conditions
 		// WM base coords for fleets 05-05-02 -->
 		// 05-05-03 get correct wdm name for island.
 		string wdmisland = wdmGetIslandNameFromID(sIslandID);
@@ -1058,6 +1081,21 @@ void SeaLogin(ref Login)
 
 	SetCorrectWorldMapPosition(); //Screwface
 
+	aref aCurWeather = GetCurrentWeather();
+	doShipLightChange(aCurWeather);
+
+
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// update sun glow: sun\moon, flares
+	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	// Fill Sky data
+	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	Weather.isDone = "";
+	
+		
+
 	iRDTSC = RDTSC_E(iRDTSC);
 	//Trace("SeaLogin RDTSC = " + iRDTSC);
 	//Trace("iNumShips = " + iNumShips);
@@ -1067,7 +1105,7 @@ void SeaLogin(ref Login)
 	Trace("SEA: SeaLogin end");
 
 
-PostEvent("Sea_FirstInit", 100);
+	PostEvent("Sea_FirstInit", 100);
 	StartPostInitChars();
 	Trace("SEA: SeaLogin end");
 }
@@ -1201,7 +1239,7 @@ void Sea_LoginShip(ref chr)
 		rGroup.AlreadyLoaded = "";
 		ref Pchar = GetMainCharacter();
 		//trace ("ile : " + Pchar.location);
-		if(Pchar.location != "" && Pchar.location != "error") rGroup.location = Pchar.location;
+		if(Pchar.location != WDM_NONE_ISLAND && Pchar.location != "error") rGroup.location = Pchar.location;
 	}
 	RecalculateCargoLoad(chr); // PB: Check if ship is overweight
 	if(CheckAttribute(chr,"fallen")) // Screwface : Need to restore the fallen mast(s) to avoid crashes with set flags
@@ -1874,20 +1912,29 @@ void SetCorrectWorldMapPosition()
 {
 	ref Pchar = GetMaincharacter();
 
-	if(Pchar.location != "" && Pchar.location != "error")
+	float psX = MakeFloat(pchar.Ship.Pos.x);
+	float psZ = MakeFloat(pchar.Ship.Pos.z);	
+
+	// trace("Sea instance char.pos: " + psX + " , " + psZ);
+
+	float ix, iz;
+	if(Pchar.location != WDM_NONE_ISLAND && Pchar.location != "error")
 	{
 		string island = Pchar.location;
-		float psX = MakeFloat(pchar.Ship.Pos.x);
-		float psZ = MakeFloat(pchar.Ship.Pos.z);
-		float ix = MakeFloat(worldMap.islands.(Island).position.rx);
-		float iz = MakeFloat(worldMap.islands.(Island).position.rz);
+		ix = MakeFloat(worldMap.islands.(Island).position.rx);
+		iz = MakeFloat(worldMap.islands.(Island).position.rz);
 
-		//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
-		worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
-		worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
-
-		Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
 	}
+	else
+	{
+		ix = worldMap.seaEntryX;
+		iz = worldMap.seaEntryZ;
+	}
+	//REAL CONVERTION OF YOUR SEAVIEW COORDS IN WORLD MAP COORDS
+	worldMap.playerShipX = (psX/WDM_MAP_TO_SEA_SCALE) + ix;
+	worldMap.playerShipZ = (psZ/WDM_MAP_TO_SEA_SCALE) + iz;
+	// Trace("SetCorrectWorldMapPosition: x=" + worldMap.playerShipX + ", z=" + worldMap.playerShipZ)
+
 }
 
 //Boyer add
@@ -1919,7 +1966,7 @@ ref SeaLoad_GetPointer()
 float SetMaxSeaHeight(int islandIdx)
 {
 	if (!bSeaActive) return   6.0; // ??????? ????? ??? ????, ??? ????????? pchar.Ship.Pos.x
-	if (bStorm) return 200.0;
+	if(bSeaActive && !ownDeckStarted()) return 50.0;
 	string sIslandID = Islands[islandIdx].id;
 
 
