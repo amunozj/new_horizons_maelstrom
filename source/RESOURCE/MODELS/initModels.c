@@ -1015,7 +1015,7 @@ void InitModels(bool isstart)
 	model.price	=  2000;
 	model.assigned	=  true;
 	model.sex	=  "woman";
-	model.ani	=  "man_woman_sit";
+	model.ani	=  "woman_sit";
 	model.height	=  1.75;
 //	model.name = "Claire";
 //	model.lastname = "Larrouse";
@@ -2168,7 +2168,7 @@ void InitModels(bool isstart)
 	model.id	   =  "beatrise";
 	model.FaceId	= 204;
 	model.sex		 =  "woman";
-	model.ani		 =  "man_woman_sit";
+	model.ani		 =  "woman_sit";
 	model.height	  =  1.75;
 	model.nation	  =  PORTUGAL;
 	model.price	   =  1200;
