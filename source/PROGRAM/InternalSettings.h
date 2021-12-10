@@ -197,7 +197,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define CANNON_RANGE_SCALAR 		1.0			// 0.3 - 2.0 : The higher the value the longer the cannon range OF SHIPS
 												// SET TO 1.0 IF USING REAL CANNONS!
 #define FORT_RANGE_SCALAR 			0.5			// 0.3 - 2.0 : The higher the value the longer the cannon range OF FORTS
-#define CANNON_DAMAGE_SCALAR 		0.5;		// 0.3 - 2.0 : The higher the value the more damage cannons do
+#define CANNON_DAMAGE_SCALAR 		1.25;		// 0.3 - 2.0 : The higher the value the more damage cannons do
 #define ARCADE_MULT_CANNONS			0.5		 	// INT - Cannon reload time if you set the menu "Options/Sailing mode" to ARCADE MODE
 												// 1.0: Same speed as in "Realistic Mode"
 												// 0.5: Half as much reload time

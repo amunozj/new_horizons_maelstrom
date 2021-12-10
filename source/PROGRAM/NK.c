@@ -5099,9 +5099,9 @@ void InitOpenSeaMod()
 	}
 	else
 	{
-		DIRECTENCOUNTERCHANCE =								35;		// chance in percent that an encounter fleet appears every hour
+		DIRECTENCOUNTERCHANCE =								40;		// chance in percent that an encounter fleet appears every hour
 		DIRECTENCOUNTERDISTANCE =							1500;	// distance from player at which random ships appear
-		ENCOUNTERBREAK =									1.5;	// LDH - Changed to float, number is hours per encounter, directsail is called every 5 minutes occasionally
+		ENCOUNTERBREAK =									1.25;	// LDH - Changed to float, number is hours per encounter, directsail is called every 5 minutes occasionally
 		// so you can let the clock run faster (by increasing TIMESCALAR_SEA below), meaning longer voyagetimes, without getting too many encounters.
 
 		TIMESCALAR_SEA =									 5;		// INT - how many seconds of gametime one second of realtime is at sea
@@ -5122,7 +5122,7 @@ void InitOpenSeaMod()
 		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3000;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =							30;	// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_SCALE =							40;	// orig 19.607843 for this and next line
 		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =				90;	// was 60 in build, 10.0 in stock. NK 05-04-30
 	}
 }
