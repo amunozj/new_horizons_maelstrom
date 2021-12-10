@@ -2156,7 +2156,7 @@ int GetStorylinesQuantity()
 {
 	ref storyline; makeref(storyline, Storylines);
 	aref sl; makearef(sl, storyline.list);
-	return GetAttributesNum(sl);
+	return GetAttributesNum(sl) + 1;
 }
 
 int FindDefaultStoryline()
@@ -2390,11 +2390,13 @@ object SaveProfiles;
 void InitProfiles()
 {
 	int SLinesNum = GetStorylinesQuantity();
+	// trace("InitProfiles: Number of storylines: " + SLinesNum);
 	string storyline;
 	ref rSP; makeref(rSP, SaveProfiles);
 	for (int i = 0; i < SLinesNum; i++) {
 		storyline = GetStoryline(i);
-		GameInterface.SavePath = GetSaveDirectory() + GetStorylineDir(i);
+		GameInterface.SavePath = "SAVE\" + GetStorylineDir(i);
+		// trace("InitProfiles: Savepath: " + "SAVE\" + GetStorylineDir(i));
 		string saveName = "";
 		int fSize = 0;
 		int j = 0;
@@ -2403,6 +2405,7 @@ void InitProfiles()
 				j++;
 				continue;
 			}
+			// trace("InitProfiles: Savename: " + saveName);
 			string profile = "";
 			if (strcut(saveName, 0, 1) == "-=") {
 				int epos = findSubStr(saveName, "=", 3);
