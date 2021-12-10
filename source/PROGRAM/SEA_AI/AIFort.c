@@ -363,7 +363,7 @@ float Fort_CannonDamage()
 // <-- KK
 	}
 
-	if (iNumDamagedCannons > 0.9 * iNumAllCannons) Fort_SetAbordageMode(rBallCharacter, rFortCharacter); // KK
+	if (iNumDamagedCannons > 0.75 * iNumAllCannons) Fort_SetAbordageMode(rBallCharacter, rFortCharacter); // KK
 
 	return fDamage;
 }
