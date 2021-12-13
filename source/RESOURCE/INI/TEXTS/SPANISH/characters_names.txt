@@ -1,8 +1,10 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 Portadmiral{Almirante del puerto}
 Lord Barham{Lord Barham}
 Regulating{Capitán}
 RCaptain{de regulación}
+
 Hendrick{Hendrick}
 van der Kuylen{van der Kuylen}
 Nicolaas{Nicolaas}
@@ -32,6 +34,7 @@ Chief{Jefe}
 Arawak Indian{Indio arawak}
 Arawak IndianF{India arawak}
 Arawak Chief{Jefe arawak}
+
 Edmund{Edmund}
 Christobel{Christobel}
 Shaw{Shaw}
@@ -46,6 +49,7 @@ Ranger{Ranger}
 Jenna{Jenna}
 Valentine{Valentine}
 Coxon{Coxon}
+
 Gregorio{Gregorio}
 Montavez{Montavez}
 Jose{Jose}
@@ -91,6 +95,13 @@ Native{Native}
 Colombian Indian{Indio colombiano}
 Colombian IndianF{India colombiana}
 Colombian Chief{Jefe colombiano}
+Chima{Chima}
+Alejandro{Alejandro}
+de Mendoza{de Mendoza}
+Arturo{Arturo}
+de Cádiz{de Cádiz}
+Librarian{Librarian}
+
 Malcolm{Malcolm}
 Hatcher{Hatcher}
 Blackbeard{Barbanegra}
@@ -103,11 +114,15 @@ Vas{Vas}
 de Torres{de Torres}
 Reginald{Reginald}
 de Boeuf{de Boeuf}
+Björn{Björn}
+Roos af Hjelmsäter{Roos af Hjelmsäter}
 Charlie{Charlie}
 Allen{Allen}
 Edgar{Edgar}
 Luís{Luís}
 Buchinho{Buchinho}
+Abelard{Abelard}
+Laviniere{Laviniere}
 Deadly{Pirata}
 Pirate{asesino}
 Smuggler{Contrabandista}
@@ -118,6 +133,7 @@ Raymond{Raymond}
 Bouchez{Bouchez}
 Emellio{Emellio}
 Fernandez{Fernandez}
+
 Jacinto{Jacinto}
 Arcibaldo{Arcibaldo}
 Barreto{Barreto}
@@ -166,6 +182,7 @@ Evaristo{Evaristo}
 Macario{Macario}
 Regalo{Regalo}
 Uargo{Uargo}
+
 Felipe{Felipe}
 Cisneros{Cisneros}
 Horacio{Horacio}
@@ -209,6 +226,8 @@ Figueroa{Figueroa}
 Magarino{Magarino}
 Micael{Micael}
 Salinas{Salinas}
+Mahala{Mahala}
+
 Hans{Hans}
 Kloss{Kloss}
 Pelgrem{Pelgrem}
@@ -226,6 +245,7 @@ Marja{Marja}
 Fixe{Fixe}
 Piet{Piet}
 Heyn{Heyn}
+
 Patrick{Patrick}
 Webster{Webster}
 Dockyard{Comisario}
@@ -274,6 +294,7 @@ Bogardus{Bogardus}
 Vanderdecken{Vanderdecken}
 Ricardo{Ricardo}
 Ordiales{Ordiales}
+
 Todredus{Todredus}
 Ordialds{Ordialds}
 Toff{Toff}
@@ -337,6 +358,7 @@ Severin{Severin}
 Bonvoisin{Bonvoisin}
 Alistair{Alistair}
 Garcilaso{Garcilaso}
+
 Kermit{Kermit}
 Brazier{Brazier}
 Alicia{Alicia}
@@ -363,6 +385,7 @@ Arrowsmith{Arrowsmith}
 Slave{Esclavo}
 Worker{Trabajador}
 Slaver{Esclavista}
+
 Milon{Milon}
 Blacque{Blacque}
 Orable{Orable}
@@ -389,6 +412,8 @@ Claude{Claude}
 Le Moigne{Le Moigne}
 Hardouin{Hardouin}
 Aufort{Aufort}
+Hortensio{Hortensio}
+Crespo{Crespo}
 Turpin{Turpin}
 Cabanel{Cabanel}
 Gris{Gris}
@@ -448,6 +473,7 @@ Elzire{Elzire}
 Ayarai{Ayarai}
 Tomasina{Tomasina}
 Pickfurt{Pickfurt}
+
 Rauf{Rauf}
 Mallard{Mallard}
 Stanley{Stanley}
@@ -489,6 +515,7 @@ Oranjestad Fort{Fuerte de Oranjestad}
 Commandant{Commandant}
 de Heredia{de Heredia}
 Smith{Smith}
+
 Remy{Remy}
 Gatien{Gatien}
 Dominic{Dominic}
@@ -499,6 +526,7 @@ Sinclair{Sinclair}
 Dubois{Dubois}
 François{François}
 de Vigny{de Vigny}
+
 Jehan{Jehan}
 Labbe{Labbe}
 Puebla{Puebla}
@@ -552,10 +580,14 @@ Bloody{Norm Kidd}
 Norm Kidd{el Sangriento}
 Iguaran{Iguaran}
 Escriva{Escriva}
+Aubert{Aubert}
+de La Chesnaye{de La Chesnaye}
+
 Randolf{Randolf}
 Blecher{Blecher}
 Wilfred{Wilfred}
 Burman{Burman}
+
 Sylvie{Sylvie}
 Bondies{Bondies}
 Zaid{Zaid}
@@ -614,10 +646,13 @@ Edinho{Edinho}
 Cervano{Cervano}
 Robierto{Robierto}
 Cabellodoferro{Cabellodoferro}
+
+
 First{Primero}
 Last{Último}
 Ye Keeper{El Guardián}
 o' ye Hoarde{del Botín}
+
 Fred{Fred}
 Bob{Bob}
 Baldewyn{Baldewyn}
@@ -640,8 +675,10 @@ Attwood{Attwood}
 Blood{Blood}
 Txiki{Txiki}
 Pijuan{Pijuan}
+
 Boat{Boat}
 Character{Character}
+
 Bartholomew{Bartholomew}
 Pardner{Pardner}
 Olyver{Olyver}
@@ -698,6 +735,8 @@ Ballester{Ballester}
 Steven{Steven}
 Mather-Wren{Mather-Wren}
 Hacepoco{Hacepoco}
+
+
 Terry{Terry}
 Snider{Snider}
 Gilles{Gilles}
@@ -746,6 +785,7 @@ Goyle{Goyle}
 Stone{Stone}
 Luna{Luna}
 Grange{Grange}
+
 Henry{Henry}
 Laurence{Laurence}
 Wellman{Wellman}
@@ -790,6 +830,7 @@ McGillicutty{McGillicutty}
 Sullivan{Sullivan}
 James{James}
 Lancaster{Lancaster}
+
 Dickman{Dickman}
 de Rivarol{de Rivarol}
 Travers{Travers}
@@ -810,7 +851,9 @@ Hannes{Hannes}
 Jansen{Jansen}
 Jana{Jana}
 Smit{Smit}
+
 Crewmember{Tripulante}
+
 Rian{Rian}
 Dekkers{Dekkers}
 Janneke{Janneke}
@@ -857,6 +900,7 @@ Elizabeth{Elizabeth}
 Palafico{Palafico}
 Jimmy{Jimmy}
 Legs{Legs}
+Penrod{Penrod}
 Bart{Bart}
 Cooke{Cooke}
 Wally{Wally}
@@ -971,6 +1015,7 @@ Kicking{Cuervo}
 Raven{Que Patea}
 Lewis{Lewis}
 Vickers{Vickers}
+
 Agent-Victualler{Agente de avituallamiento}
 Eugene{Eugene}
 Martinho{Martinho}
@@ -1010,6 +1055,7 @@ Dawg{Dawg}
 Bennett{Bennett}
 Augustin{Augustin}
 Frechilla{Frechilla}
+
 Street{Callejero}
 Merchant{Mercader}
 Street Merchant{Mercader callejero}
@@ -1037,7 +1083,9 @@ Pinto{Pinto}
 Hugo{Hugo}
 Aguayo{Aguayo}
 Zambrano{Zambrano}
+
 Crewmember{Crewmember}
+
 Wicker{Wicker}
 Moods{Moods}
 Andress{Andress}
@@ -1083,6 +1131,8 @@ Castrilli{Castrilli}
 Fadrique{Fadrique}
 Leonor{Leonor}
 Esperanza{Esperanza}
+Ramón{Ramón}
+Figueras{Figueras}
 Figaux{Figaux}
 Sophie{Sophie}
 Neveu{Neveu}
@@ -1128,6 +1178,7 @@ Tolman{Tolman}
 Voyant{Voyant}
 Fructoso{Fructoso}
 Juana{Juana}
+García{García}
 Ramos{Ramos}
 Fabiao{Fabiao}
 Dunga{Dunga}
@@ -1159,6 +1210,7 @@ Ussica{Ussica}
 Salvadore{Salvadore}
 Jimena{Jimena}
 López{López}
+
 Dante{Dante}
 Siciliano{Siciliano}
 LeNoir{LeNoir}
@@ -1175,6 +1227,7 @@ Hoppe{Hoppe}
 Admiral{Almirante}
 Coastbrother{Hermano de la Costa}
 Leading{Leading}
+
 Robyn{Robyn}
 Corrick{Corrick}
 Archibald{Archibald}
@@ -1203,6 +1256,7 @@ Cojuango{Cojuango}
 Jacquotte{Jacquotte}
 Delahaye{Delahaye}
 Corrales{Corrales}
+
 Vickery{Vickery}
 Cuthbert{Cuthbert}
 Collingwood{Collingwood}
@@ -1218,7 +1272,18 @@ Osborne{Osborne}
 Edwards{Edwards}
 Mowett{Mowett}
 Orswood{Orswood}
+
+
 Maltese{Caballero}
 Knight{de Malta}
 Weird{Extraño}
 Warriormonk{monje guerrero}
+Maccus{Maccus}
+Hadras{Hadras}
+Angler{Angler}
+Ogilvey{Ogilvey}
+Clanker{Clanker}
+Urchin{Urchin}
+Wheelback{Wheelback}
+Wyvern{Wyvern}
+Quittance{Quittance}

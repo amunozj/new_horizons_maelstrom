@@ -413,7 +413,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.id		= "Susan Shaypen";
 	ch.model = "Daniell3"; // GR: was "Daniell1"
 	ch.sex = "woman";
-	ch.model.animation = "woman_sit";
+	ch.model.animation = "woman";
 	ch.location	= "";
 	ch.location.group = "";
 	ch.location.locator = "";
@@ -600,7 +600,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = TranslateString("", "Dalma");
 	ch.id		= "Tia Dalma";
 	ch.model	= "TiaDalma"; // Damski
-	ch.model.animation = "woman_sit"; // Damski
+	ch.model.animation = "TiaDalma"; // Damski
 	ch.sex = "woman";
 //	ch.sound_type = "female_citizen";
 	ch.FaceId      =  226;
@@ -1164,7 +1164,8 @@ void CreateTempQuestCharacters(ref n)
 	ch.name = TranslateString("", "Davy");
 	ch.lastname = TranslateString("", "Jones");
 	ch.id		= "Davy Jones";
-	ch.model = "DavyJones"; // Damski62
+	ch.model = "DavyJones"; // NikK
+	ch.model.animation = "Rousselet";
 	ch.sex = "man";
 //	ch.sound_type = "pirate";
 //	ch.greeting = "Gr_Davy Jones";
@@ -1825,7 +1826,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = TranslateString("", "Maximus");
 	ch.id		= "Captain Maximus";
 	ch.model	= "Espinosa";
-	ch.model.animation = "man"; // PB
+	ch.model.animation = "new_man"; // PB
 	ch.sex = "man";
 	ch.loyality = 15;
 	ch.alignment = "good";
@@ -1883,7 +1884,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = TranslateString("", "Philippe");
 	ch.id		= "Captain Philippe";
 	ch.model = "33_Ronald";
-	ch.model.animation = "man";
+	ch.model.animation = "33_Ronald";
 	ch.sex = "man";
 	ch.loyality = 15;
 	ch.alignment = "good";
@@ -3099,7 +3100,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-				//Yedam Kinne - Г¤ГЁГўГҐГІ Гў ГѓГ°ГЁГ­ГґГ®Г°Г¤ГҐ - ГЇГ®Г¤Г¤ГҐГ«Г»ГўГ ГҐГІ Г¤Г®ГЄГіГ¬ГҐГ­ГІГ» ГЁ ГЇГ®Г¤Г·ГҐГ°ГЄГЁ.
+				//Yedam Kinne - дивет в Гринфорде - подделывает документы и подчерки.
 	ch.old.name = "Yedam";
 	ch.old.lastname = "Kinne";
 	ch.name = TranslateString("", "Yedam");
@@ -3189,7 +3190,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = "";
 	ch.id		= "Sao Feng's body1";
 	ch.model	= "SaoFeng_guard";	//JRH
-	ch.model.animation = "woman_sit"; // PB
+	ch.model.animation = "33_Blazie"; // PB
 	ch.sex	  =  "woman";
 	LAi_NoRebirthEnable(ch);
 	ch.sound_type = "female_citizen";
@@ -3227,7 +3228,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = "";
 	ch.id		= "Sao Feng's body2";
 	ch.model	= "SaoFeng_guard";	//JRH
-	ch.model.animation = "woman_sit"; // PB
+	ch.model.animation = "33_Blazie"; // PB
 	ch.sex	  =  "woman";
 	LAi_NoRebirthEnable(ch);
 	ch.sound_type = "female_citizen";
@@ -3330,7 +3331,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-					// Mergildo Hurtado - ГЄГ ГЇГЁГІГ Г­ ГЎГ Г°ГЄГ  Г±Г® Г±ГўГїГ№ГҐГ­Г­ГЁГЄГ Г¬ГЁ
+					// Mergildo Hurtado - капитан барка со священниками
 	ch.old.name = "Mergildo";
 	ch.old.lastname = "Hurtado";
 	ch.name = TranslateString("", "Mergildo");
@@ -3377,7 +3378,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-				// Jordano - Г±Г»Г­ ГЄГіГ§Г­ГҐГ¶Г  Г­Г  ГЊГіГЅГ«ГҐ
+				// Jordano - сын кузнеца на Муэле
 	ch.old.name = "Jordano";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Jordano");
@@ -3421,7 +3422,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = "";
 	ch.id		= "Mystery_Man_01";
 	ch.model	= "33_Ronal2";
-	ch.model.animation = "man";
+	ch.model.animation = "33_Ronald";
 	ch.sex = "man";
 	ch.sound_type = "priest";
 	ch.act.escape = 0;
@@ -4882,7 +4883,8 @@ void CreateTempQuestCharacters(ref n)
 	ch.name = TranslateString("", "Palafico"); // PB
 	ch.lastname = "";
 	ch.id		= "Davycrew_01";
-	ch.model	= "davy4";
+	ch.model	= "Palafico";
+	ch.model.animation = "Rousselet";
 	ch.sex = "man";
 	ch.sound_type = "pirate";
 	GiveItem2Character(ch, "blade1");
@@ -4919,12 +4921,13 @@ void CreateTempQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 	//  Davy's crewmember2
-	ch.old.name = "Jimmy";
-	ch.old.lastname = "Legs";
-	ch.name = TranslateString("", "Jimmy"); // PB
-	ch.lastname = TranslateString("", "Legs"); // PB
+	ch.old.name = "Penrod";		// was "Jimmy"
+	ch.old.lastname = "";		// was "Legs"
+	ch.name = TranslateString("", "Penrod");
+	ch.lastname = "";
 	ch.id		= "Davycrew_02";
-	ch.model	= "davy5";
+	ch.model	= "Penrod";	// New models don't include Jimmy Legs. (Penrod has an extra leg.)
+	ch.model.animation = "Rousselet";
 	ch.sex = "man";
 	ch.sound_type = "pirate";
 	GiveItem2Character(ch, "blade4");
@@ -4990,7 +4993,7 @@ void CreateTempQuestCharacters(ref n)
 	LAi_SetHP(ch, 200.0, 200.0);
 	AddGameCharacter(n, ch);
 
-				//Soldier Г­Г  ГўГµГ®Г¤ГҐ Гў ГЈГ®Г°Г®Г¤
+				//Soldier на входе в город
 	ch.old.name = "Soldier";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Soldier");
@@ -5028,7 +5031,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.greeting = "Gr_Redmond Soldier";
 	AddGameCharacter(n, ch);
 
-			//Soldier Г­Г  ГўГµГ®Г¤ГҐ Гў ГЈГ®Г°Г®Г¤
+			//Soldier на входе в город
 	ch.old.name = "Soldier";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Soldier");
