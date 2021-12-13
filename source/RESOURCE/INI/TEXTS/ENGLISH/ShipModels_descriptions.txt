@@ -114,7 +114,7 @@ design with decorated green and yellow hull.}
 
 Sloop1_Descr{Common for both merchants and navy.
 This blue painted ship sails good against the wind.}
-FR_Sloop_Descr{'Le Rêve' sails well against the wind.
+FR_Sloop_Descr{'Le Rï¿½ve' sails well against the wind.
 Agile vessel of the French Navy.}
 Sloop2_Descr{Adaptable vessel in pale red,
 sails good against the wind.}
@@ -184,8 +184,26 @@ French trade vessel is painted brown and red.}
 
 Pinnace1_Descr{Decent speed but not too agile.
 Highly decorated trader, brown with a white stripe.}
+Pinnace1_kanyl_Descr{Decent speed but not too agile.
+Common trading vessel, with blue decorations.}
+Pinnace1_white_Descr{Decent speed but not too agile.
+Common trading vessel, with white decorations.}
 Pinnace2_Descr{Decent speed but not too agile.
 Higly decorated trader, painted mostly brown.}
+Pinnace3_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple red striping.}
+Pinnace4_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple black striping.}
+Pinnace5_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple blue striping.}
+Pinnace12_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a white top painting.}
+Pinnace13_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a red top painting.}
+Pinnace14_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a blue top painting.}
+Pinnace15_Descr{Decent speed but not too agile.
+Common trading vessel. Hull is painted white with a blue topping.}
 
 NL_Pinnace_Descr{Decent speed but not too agile.
 Decorated Dutch trader with some green paint.}
@@ -193,21 +211,27 @@ Decorated Dutch trader with some green paint.}
 SP_Pinnace50_Descr{Trader with decent speed but not too agile.
 This decorated Spanish vessel is painted red.}
 
-HMS_Indefatigable_Descr{'HMS Indefatigable', a razéed Ardent-class warship
+HMS_Indefatigable_Descr{'HMS Indefatigable', a razï¿½ed Ardent-class warship
 built to the design of Sir Thomas Slade.}
-RN_Indefatigable_Descr{A razéed warship bearing a British
+RN_Indefatigable_Descr{A razï¿½ed warship bearing a British
 cream and black paint scheme.}
-GEN_Indefatigable_Descr{A razéed warship bearing a generic
+GEN_Indefatigable_Descr{A razï¿½ed warship bearing a generic
 yellow and black paint scheme.}
-FR_Indefatigable_Descr{A razéed warship bearing a French
+FR_Indefatigable_Descr{A razï¿½ed warship bearing a French
 red and black paint scheme.}
-SP_Indefatigable_Descr{A razéed warship bearing a Spanish
+SP_Indefatigable_Descr{A razï¿½ed warship bearing a Spanish
 dark red and black paint scheme.}
 NL_PinnaceofWar47_Descr{Capacious naval vessel.
 This Dutch ship is painted green, brown and white.}
 
 WallerPinnace_Descr{Decent speed but not too agile.
 Capacious naval vessel in gold, brown and white.}
+WallerPinnace2_Descr{Decent speed but not too agile.
+Capacious naval vessel various colors, mostly white and gold.}
+WallerPinnace3_Descr{Decent speed but not too agile.
+Capacious naval vessel with a black hull and red and golden decorations.}
+WallerPinnace_RN_Descr{Decent speed but not too agile.
+Capacious naval vessel in colors of the Royal Navy.}
 
 Galeon1_Descr{You don't expect agility from a galleon.
 Of Spanish design, this one is brown painted.}
@@ -357,11 +381,25 @@ Hull bears colours of France.}
 
 SwedishIndiaman1_Descr{Lightly armed trader, very fast with good
 cargo capacity.}
+swedishIndiaman_b_w_Descr{Lightly armed trader, very fast with good
+cargo capacity. Painted with a dark hull and white decoration.}
+swedishIndiaman_blue_Descr{Lightly armed trader, very fast with good
+cargo capacity. Hull is not painted with blue decoration.}
+swedishIndiaman_eitc_Descr{Lightly armed trader, very fast with good
+cargo capacity. Painted as an EITC transatlantic trading vessel.}
+swedishIndiaman_red_Descr{Lightly armed trader, very fast with good
+cargo capacity. Hull is not painted with red decoration.}
+swedishIndiaman_gren_Descr{Lightly armed trader, very fast with good
+cargo capacity. A green hull with black decorations marks a common
+trading vessel.}
+swedishIndiaman_FR_Descr{Lightly armed trader, very fast with good
+cargo capacity. Red hull with black decorations, resembling a french
+paint scheme.}
 
 NL_Batavia_Descr{Performance comes second for the 'Batavia'.
 Armed trader in Dutch colours.}
 
-NL_SevenProvincien_Descr{Dutch vessel 'Seven Provinciën', built
+NL_SevenProvincien_Descr{Dutch vessel 'Seven Provinciï¿½n', built
 to the design of Salomon Jansz van den Tempel.}
 
 NL_Lineship_Descr{For a ship-of-the-line, performance comes second.
@@ -374,7 +412,11 @@ NL_Amsterdam_Descr{The 'Amsterdam', famous vessel of
 the Vereenigde Oost-Indische Compagnie!}
 
 Battleship1_Descr{For a ship-of-the-line, performance comes second.
-Hull is red painted.}
+Dark Hull is decorated red.}
+Battleship1b_Descr{For a ship-of-the-line, performance comes second.
+Black Hull is decorated red.}
+Battleship1w_Descr{For a ship-of-the-line, performance comes second.
+Unpainted Hull is decorated red.}
 Battleship2_Descr{For a ship-of-the-line, performance comes second.
 Hull is painted black, white and red.}
 RN_Battleship_Descr{For a ship-of-the-line, performance comes second.
@@ -470,7 +512,7 @@ a bright red and black paint scheme.}
 SP_FirstRate_Descr{A mighty first rate ship-of-the-line bearing
 a dark red and black paint scheme.}
 
-FR_Superbe_Descr{A third rate ship of the famous Téméraire class, the 
+FR_Superbe_Descr{A third rate ship of the famous Tï¿½mï¿½raire class, the 
 most numerous class of capital ship ever built, 
 bearing a red and black paint scheme.}
 RN_Superbe_Descr{A formidable third rate ship-of-the-line, 
@@ -507,11 +549,11 @@ and white paint scheme.}
 FR_Couronne_Descr{A large, emblematic French Navy galleon,
 and the first of her kind to be built in France.}
 
-Couronne_pirate_Descr{A large former French Navy galleon,
-now taken over by pirates.}
+Couronne_pirate_Descr{Captured French Galleon,
+repainted to resemble a true Pirate Lord Flagship.}
 
-SP_ApostolFelipe_Descr{'Apóstol Felipe', one of the six galleons
-built by Martín de Arana for King Felipe IV.}
+SP_ApostolFelipe_Descr{'Apï¿½stol Felipe', one of the six galleons
+built by Martï¿½n de Arana for King Felipe IV.}
 
 US_Hannah_Descr{A small American schooner hired into service
 by General George Washington.}
@@ -544,6 +586,8 @@ SP_SanFelipe_Descr{Built by the King of Spain in 1690, the San Felipe
 was Spain's most majestic ship fighting the French.}
 FR_SoleilRoyal_Descr{French ship-of-the-line 'Soleil Royal', built in 1670.
 Elaborately decorated baroque flagship.}
+SoleilRoyal_crimson_Descr{French ship-of-the-line 'Soleil Royal', built in 1670.
+Elaborately decorated baroque flagship in a more sinister look.}
 
 RN_RevengeM_Descr{Merchant version of a 4-masted Elizabethan Galleon.
 Dark brown hull with green-with-yellow decorations.}
