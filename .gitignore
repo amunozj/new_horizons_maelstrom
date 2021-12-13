@@ -38,6 +38,7 @@ options
 *.xlsx
 *.xps
 *.zap
+*.wrl
 
 launch.json
 

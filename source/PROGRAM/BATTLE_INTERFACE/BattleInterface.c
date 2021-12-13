@@ -2422,7 +2422,7 @@ void SetParameterData()
     string sOff = "iconoffset";
     int fTmp3 = RecalculateVIcon(70);
     if(bRealBattleInterface) {
-        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(59);
+        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(255); //59);
         if(nCmpNum == 1) {
             BattleInterface.ShipIcon.iconoffset1 = fTmp + "," + fTmp2;
         }

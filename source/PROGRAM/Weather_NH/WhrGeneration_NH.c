@@ -49,16 +49,16 @@ void Whr_Generator(int iHour){
 
 	bool bWhrTornado = false;
 	bool bWhrStorm = false;
-	
+
 	if(gWeatherInit == 1){
 		goldRain = rand(100);
 		goldFog = rand(20);
 		oldWind = rand(25) + 5;		// LDH 09Feb09
 		fWeatherAngleOld = frand(PIm2);
 		gWeatherInit = 0;
-		fogBallast = 0; 
-		rainBallast = 0; 
-		windBallast = 0; 
+		fogBallast = 0;
+		rainBallast = 0;
+		windBallast = 0;
 		windABallast = 0;
 		Trace(" !gWeatherInit Whr_Generator() - Initialized ");
 	}
@@ -69,14 +69,14 @@ void Whr_Generator(int iHour){
 	bWeatherIsRain = false; // screwface
 
 	rWind = rand(MAX_WINDCHANGE);
-	rFog = rand(MAX_FOGCHANGE); 
+	rFog = rand(MAX_FOGCHANGE);
 	rRain = rand(MAX_RAINCHANGE);
 	rWindA = frand(MAX_ANGLECHANGE);
-	
+
 	Whr_GenerateValues(FREE_FOG);
-	
+
 	//--Testing Settings--------------------------------------------------------
-	
+
 	// wRain = 0;
 	// fog = 20;
 	//curTime = 6;
@@ -84,7 +84,7 @@ void Whr_Generator(int iHour){
 	//rainBallast = 20;
 
 	//--Testing Settings--------------------------------------------------------
-	
+
 	if(gWeatherOvrd){
 		if(oWeatherAngle != -50.0){fWindA = OWeatherAngle;	}
 		if(OWABallast != -50.0){windABallast = OWABallast; }
@@ -96,12 +96,12 @@ void Whr_Generator(int iHour){
 		if(OWBallast != -50){windBallast = OWBallast;}
 		Whr_ResetOvrd();
 	}
-	
-	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); } 
-	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); } 
+
+	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
+	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 	WeatherParams.Storm = false;
 	WeatherParams.Tornado = false;
-	
+
 	if(bWhrStorm){
 		wRain = 95;
 		winds = 25;
@@ -119,12 +119,12 @@ void Whr_Generator(int iHour){
 	}
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
-	
-	goldRain = wRain;	
+
+	goldRain = wRain;
 	goldFog = fog;
 	oldWind = winds;
 	fWeatherAngleOld = fWindA;
-	
+
 	if(windABallast >=  MAX_ABALLAST || windABallast <= -MAX_ABALLAST ){ windABallast = 0;}
 	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = -MAX_RBALLAST;}
 	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast =  MAX_RBALLAST;}
@@ -132,19 +132,19 @@ void Whr_Generator(int iHour){
 	if(windBallast  <= -MAX_WBALLAST )                                 { windBallast =  MAX_WBALLAST;}
 	if(fogBallast   >=  MAX_FBALLAST )                                 { fogBallast  = -MAX_FBALLAST;}
 	if(fogBallast   <= -MAX_FBALLAST )                                 { fogBallast  =  MAX_FBALLAST;}
-	
+
 	if(wRain >= 85 && winds <= 10){ windBallast = 15;}
 	if(winds <= 25 && wRain >= 90){ rainBallast = -15;}
 	if(fog > 0 && curTime >= 6 && curTime <= 22 && wRain <= 60){fogBallast = -30;}
 	if(fogBallast < 0 && curTime > 22 || curTime < 6){fogBallast = 0;}
 	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}
-	
+
 	minwind = winds - rand(2);
 	maxwind = winds + rand(2);
 	if(minwind < 5){minwind = 5;}	// LDH up from 0 - 12Feb09
 	if(maxwind > 30){maxwind = 30;}
 	if(minwind > maxwind){ minwind = maxwind; } // JL - Temporary catch all for weird wind bug
-	
+
 	// Whr_InitGValues(); //Setup generic values based on ToD
 	Whr_FogRainCheck();	 //Set wRain and fog values
 
@@ -187,7 +187,7 @@ void Whr_Generator(int iHour){
 	float Scale1rand = 2.0*(frnd()-0.5)*SCALERANDOM + 1.0;
 	float scale1 = WIND2WAVELENGTH/(seaWindSpeed + effectiveRain);
 	if (scale1 > 1.0) {scale1 = 1.0;}
-	scale1 = scale1*Scale1rand; 
+	scale1 = scale1*Scale1rand;
 	WeathersNH.Sea2.Scale1 = scale1;
 
 
@@ -232,7 +232,7 @@ void Whr_Generator(int iHour){
 	if (curTime>=18 || curTime<=22)
 	{
 		fblend = 0.3;
-	}	
+	}
 	if (curTime==23 || curTime==5)
 	{
 		fblend = 0.75;
@@ -266,7 +266,7 @@ void Whr_Generator(int iHour){
 	fblend2 = 0.40 - fog2trans;
 
 
-	// Assume that the water is shore water	
+	// Assume that the water is shore water
 	int WaterColor = waterColor_shore();
 
 	// Darken and make opaque it for evening and night
@@ -276,6 +276,7 @@ void Whr_Generator(int iHour){
 	WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, grayWater);
 
 	// Correct it, if it open sea
+	pchar = GetMainCharacter();
 	float closestdist = 0.0;
 	if (CheckAttribute(worldMap, "directsail1.closestdist")){
 		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
@@ -283,19 +284,19 @@ void Whr_Generator(int iHour){
 		if (RANDOMDEBUG) trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
 	}else{
 		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location);
-	}	
+	}
 
 	int darkgrayWater = argb(0,20,20,20);
 	if (pchar.location == WDM_NONE_ISLAND || closestdist > SHORECOLORDISTANCE)
 	{
 		WaterColor = waterColor_openSea();
-		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
+		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);
 	}else{
 		// If not open sea reduce the amount of water color and fog color
 		fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
 		transparency = 1.2 - fog2trans;
 		if (transparency < 0) transparency = 0.0;
-		if (fog2trans > 1) fog2trans = 1.0;		
+		if (fog2trans > 1) fog2trans = 1.0;
 		fblend2 = fblend2 - 0.05;
 	}
 
@@ -328,7 +329,7 @@ void Whr_Generator(int iHour){
 	if (curTime >= 1 && curTime <= 3 ) {
 		skydir = skydir_night();
 		WeathersNH.Planets.enable = true;
-		WeathersNH.Stars.Enable = true;	
+		WeathersNH.Stars.Enable = true;
 	}
 
 	//Twilight
@@ -336,32 +337,32 @@ void Whr_Generator(int iHour){
 		skydir = skydir_twilight1();
 		VisualMagnitude = 5.0;
 		starSize = 20.0;
-		WeathersNH.Sun.Flare.Enable = false;			
-		WeathersNH.Sun.Overflow.Enable = false;			
+		WeathersNH.Sun.Flare.Enable = false;
+		WeathersNH.Sun.Overflow.Enable = false;
 	}
 	if (curTime==0 || curTime==4) {
 		skydir = skydir_twilight2();
 		VisualMagnitude = 10.0;
 		starSize = 25.0;
-		WeathersNH.Sun.Flare.Enable = false;			
-		WeathersNH.Sun.Overflow.Enable = false;			
+		WeathersNH.Sun.Flare.Enable = false;
+		WeathersNH.Sun.Overflow.Enable = false;
 	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain > 80) {skydir_night();}
 		WeathersNH.Planets.enable = true;
 		WeathersNH.Stars.Enable = true;
-		WeathersNH.Sun.Flare.Enable = false;			
+		WeathersNH.Sun.Flare.Enable = false;
 		WeathersNH.Sun.Overflow.Enable = false;
 		}
 
 	if (wRain >60){
 		WeathersNH.Planets.enable = false;
-		WeathersNH.Stars.Enable = false;			
+		WeathersNH.Stars.Enable = false;
 	}
 
 	// Morning day and afternoon
 	if (curTime == 6 && curTime == 22 ) {
-		WeathersNH.Planets.enable = true;	
+		WeathersNH.Planets.enable = true;
 	}
 	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
 	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
@@ -384,7 +385,7 @@ void Whr_Generator(int iHour){
 
 
 	int fogcolor = Whr_BlendColor(fblend, lightfog, darkfog);
-	
+
 	// Tint it with the water color
 	if (fblend2<0.0) fblend2 = 0.0;
 	fogcolor = Whr_BlendColor(fblend2, fogcolor, WaterColor);
@@ -395,7 +396,7 @@ void Whr_Generator(int iHour){
 	int darkSky = argb(0,60,60,60);
 	int lightSky = argb(0,255,255,255);
 	int SkyColor = Whr_BlendColor(fblend, lightSky, darkSky);
-	
+
 
 	int dawnduskfogcolor;
 	int dawnDuskSky;
@@ -408,7 +409,7 @@ void Whr_Generator(int iHour){
 			SkyColor = Whr_BlendColor(fog2trans, dawnDuskSky, SkyColor);
 			WeathersNH.Fog.Height = Whr_GetFloat(WeathersNH, "Fog.Height") + 1000.0;
 			WeathersNH.SpecialSeaFog.Height = Whr_GetFloat(WeathersNH, "SpecialSeaFog.Height") + 1000.0;
-		} 
+		}
 	}
 
 	WeathersNH.Sea2.SkyColor = SkyColor;
@@ -419,7 +420,7 @@ void Whr_Generator(int iHour){
 
 
 	WeathersNH.Stars.Size = starSize + frnd()*15.0;
-	WeathersNH.Stars.VisualMagnitude = VisualMagnitude;	
+	WeathersNH.Stars.VisualMagnitude = VisualMagnitude;
 
 
 	WeathersNH.Night = false;
@@ -445,7 +446,7 @@ void Whr_Generator(int iHour){
 		trace("WeathersNH.Sea2.FoamTexDisturb:" + WeathersNH.Sea2.FoamTexDisturb);
 
 
-		
+
 	}
 
 }
@@ -585,7 +586,7 @@ string skydir_day_overcast()
 	// Random number for the case, if you add more skies be sure to match the number of cases
 	int skyNumber = rand(3);
 	if (RANDOMDEBUG) Trace("skydir_day_overcast random number: " + skyNumber);
-	
+
 	string skydirr;
 	switch(skyNumber)
     {
@@ -600,7 +601,7 @@ string skydir_day_overcast()
         break;
     case 3:
         skydirr = "weather\skies\storm4\";
-        break;		
+        break;
 	}
 
 	return skydirr;
