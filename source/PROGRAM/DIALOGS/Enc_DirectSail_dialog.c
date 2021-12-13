@@ -321,18 +321,18 @@ string InfoReloadToSea(ref mc)
 
 void DialogDirectSailExit(ref char)
 {
-	//���� ������� ��� �� ������, ������
+	//Åñëè äèàëîãà óæå íå âåä¸òñÿ, âûéäåì
 	if(dialogRun == false) return;
 	DelEventHandler("frame", "DialogPlayGreeting");
-	//����������� �������
+	//Îñâîáîæäàåì ðåñóðñû
 	DeleteClass(&Dialog);
 	if(FullDialogPath!="") UnloadSegment(FullDialogPath);
 	if(PathDlgLngExtn!="") UnloadSegment(PathDlgLngExtn);
 	if(dialogSelf == false)
 	{
-		//������ �� �������� ���������
+		//Ññûëêà íà ãëàâíîãî ïåðñîíàæà
 		ref mainChr = GetMainCharacter();
-		//�������, ��� ��������� ������������ �� �������
+		//Îòìåòèì, ÷òî ïåðñîíàæè îñâîáîäèëèñü îò äèàëîãà
 		LAi_Character_EndDialog(mainChr, char);
 		LAi_Character_EndDialog(char, mainChr);
 		SendMessage(mainChr, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
@@ -344,6 +344,6 @@ void DialogDirectSailExit(ref char)
 	}
 	DeleteAttribute(GetMainCharacter(), "forcedlg");
 	dialogRun = false;
-	//������� �� ��������� �������
+	//Ñîîáùèì îá îêîí÷àíèè äèàëîãà
 	PostEvent(EVENT_DIALOG_EXIT, 1, "l", sti(char.index));
 }

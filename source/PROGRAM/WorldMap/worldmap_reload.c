@@ -118,10 +118,10 @@ void wdmReloadToSea()
                 //End Boyer add
 				isShipEncounterType = true;
 				/*
-				// boal ����� ��������� ������, � �� � ���������� ������� -->
+				// boal íóæíî ïåðåíåñòè íàâåðõ, à òî â òåððèòîðèè îñòðîâà -->
 				wdmLoginToSea.island = "";
 				wdmCurrentIsland = WDM_NONE_ISLAND;
-				// boal ����� ��������� ������, � �� � ���������� ������� <--
+				// boal íóæíî ïåðåíåñòè íàâåðõ, à òî â òåððèòîðèè îñòðîâà <--
 				*/
 				grp = "group" + i;
 				encX = MakeFloat(worldMap.encounter.x);
@@ -271,26 +271,26 @@ bool WdmAddEncountersData()
     float psX = MakeFloat(worldMap.playerShipX);
 	float psZ = MakeFloat(worldMap.playerShipZ);
 	bool isShipEncounter = false;
-	//������ ��� ������������ ������ �� ������� �����������
+	//Óäàëèì âñå ñóùåñòâóþùèå çàïèñè îá ìîðñêèõ ýíêîóíòåðàõ
 	ReleaseMapEncounters();
-	//���������� ����������� ����������� � �����
+	//Êîëè÷åñòâî êîðàáåëüíûõ ýíêîóíòåðîâ â êàðòå
 	int numEncounters = wdmGetNumberShipEncounters();
 	trace("wdmaddenc numEncounters = " + numEncounters);
-	//������� ������ �� �����
+	//Ïîçèöèÿ èãðîêà íà êàðòå
 	float mpsX = MakeFloat(worldMap.playerShipX);
 	float mpsZ = MakeFloat(worldMap.playerShipZ);
-	//������� ������ � ����
+	//Ïîçèöèÿ èãðîêà â ìèðå
 	float wpsX = MakeFloat(wdmLoginToSea.playerGroup.x);
 	float wpsZ = MakeFloat(wdmLoginToSea.playerGroup.z);
 	if (CheckAttribute(WorldMap, "QuestToSeaLogin") == false || sti(WorldMap.QuestToSeaLogin) == false) {
         for(int i = 0; i < numEncounters; i++)
         {
-            //������� ���������� � ������ ����������
+            //Ïîëó÷èì èíôîðìàöèþ î äàííîì ýíêîóíòåðå
             if(wdmSetCurrentShipData(i))
             {
-                //���� �� �������, �� ��������� ���
+                //Åñëè íå àêòèâåí, òî ïðîïóñòèì åãî
                 if(MakeInt(worldMap.encounter.select) == 0) continue;
-                //��������� ���������� �� ������� ����������
+                //Äîáàâëÿåì èíôîðìàöèþ îá ìîðñêèõ ýíêîóíòåðå
                 string encStringID = worldMap.encounter.id;
                 if(encStringID == "") continue;
                 encStringID = "encounters." + encStringID + ".encdata";
@@ -301,9 +301,9 @@ bool WdmAddEncountersData()
                 aref encDataForSlot;
                 makearef(encDataForSlot, worldMap.(encStringID));
                 CopyAttributes(mapEncSlotRef, encDataForSlot);
-                //�������� ��������� ������������ ����������
+                //Îòìå÷àåì ñâåðøåíèå êîðàáåëüíîãî ýíêîóíòåðà
                 isShipEncounter = true;
-                //��������� ��� ���������
+                //Îïèñûâàåì åãî ïàðàìåòðû
                 string grp; grp = "group" + i;
                 float encX = MakeFloat(worldMap.encounter.x);
                 float encZ = MakeFloat(worldMap.encounter.z);
@@ -312,7 +312,7 @@ bool WdmAddEncountersData()
                 wdmLoginToSea.encounters.(grp).ay = worldMap.encounter.ay;
                 wdmLoginToSea.encounters.(grp).type = mapEncSlot;
                 wdmLoginToSea.encounters.(grp).id = worldMap.encounter.id;
-                //�������� ���������� �� ��������
+                //Ïîìå÷àåì ýíêîóíòåðà íà óäàëåíèå
                 encStringID = worldMap.encounter.id;
                 encStringID = "encounters." + encStringID;
                 if(CheckAttribute(&worldMap, encStringID + ".quest") == 0)

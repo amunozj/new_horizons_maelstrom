@@ -83,7 +83,7 @@ trace("Prisoned_dialog: locationNation = " + locationNation);
 	
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------������ ������ - ������ �������
+		// -----------------------------------Äèàëîã ïåðâûé - ïåðâàÿ âñòðå÷à
 		case "First time":
 			Dialog.defAni = "dialog_stay1";
 			Dialog.defCam = "1";

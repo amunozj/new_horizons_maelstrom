@@ -3099,7 +3099,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-				//Yedam Kinne - ����� � ��������� - ����������� ��������� � ��������.
+				//Yedam Kinne - äèâåò â Ãðèíôîðäå - ïîääåëûâàåò äîêóìåíòû è ïîä÷åðêè.
 	ch.old.name = "Yedam";
 	ch.old.lastname = "Kinne";
 	ch.name = TranslateString("", "Yedam");
@@ -3330,7 +3330,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-					// Mergildo Hurtado - ������� ����� �� ������������
+					// Mergildo Hurtado - êàïèòàí áàðêà ñî ñâÿùåííèêàìè
 	ch.old.name = "Mergildo";
 	ch.old.lastname = "Hurtado";
 	ch.name = TranslateString("", "Mergildo");
@@ -3377,7 +3377,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
-				// Jordano - ��� ������� �� �����
+				// Jordano - ñûí êóçíåöà íà Ìóýëå
 	ch.old.name = "Jordano";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Jordano");
@@ -4990,7 +4990,7 @@ void CreateTempQuestCharacters(ref n)
 	LAi_SetHP(ch, 200.0, 200.0);
 	AddGameCharacter(n, ch);
 
-				//Soldier �� ����� � �����
+				//Soldier íà âõîäå â ãîðîä
 	ch.old.name = "Soldier";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Soldier");
@@ -5028,7 +5028,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.greeting = "Gr_Redmond Soldier";
 	AddGameCharacter(n, ch);
 
-			//Soldier �� ����� � �����
+			//Soldier íà âõîäå â ãîðîä
 	ch.old.name = "Soldier";
 	ch.old.lastname = "";
 	ch.name = TranslateString("", "Soldier");

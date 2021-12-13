@@ -226,11 +226,11 @@ void LAi_CharacterAttack()
 	string attackType = GetEventData();
 	bool isBlocked = GetEventData();
 
-	//??????? ???? ?? ?????
+	//Реакция груп на атаку
 	LAi_group_Attack(attack, enemy);
-	//?????????? ???????????
+	//Начисление повреждений
 	LAi_ApplyCharacterAttackDamage(attack, enemy, attackType, isBlocked);
-	//??????? ???? ?????
+	//Обновим цель сразу
 	LAi_group_UpdateTargets(enemy);
 	string func = enemy.chr_ai.type;
 	if(func == "") return;
@@ -238,7 +238,6 @@ void LAi_CharacterAttack()
 	call func(enemy, attack);
 	func = "LAi_type_" + enemy.chr_ai.type + "_CharacterUpdate";
 	call func(enemy, 0.0001);
-
 }
 
 void LAi_CharacterFire()
@@ -336,8 +335,10 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 			if(GetAttribute(weapon,"model") == "blunder1_10")	PostEvent("bbuss_on_back", 1000, "i", attack);
 			if(GetAttribute(weapon,"model") == "pistol13")		PostEvent("pistol13_on_back", 1000, "i", attack);
 			if(GetAttribute(weapon,"model") == "LongRifle_C")	PostEvent("LongRifle_C_on_back", 1000, "i", attack);
+			if(GetAttribute(weapon,"model") == "LongRifle_H")	PostEvent("LongRifle_H_on_back", 1000, "i", attack);
+			if(GetAttribute(weapon,"model") == "LongRifle_W")	PostEvent("LongRifle_W_on_back", 1000, "i", attack);
 
-			if(GetAttribute(weapon,"model") == "maquahuitl")
+			if(GetAttribute(weapon,"model") == "maquahuitl_cursed")
 			{
 				CreateParticleSystem("blast" , u, v+1.2, w, 0.0, 0.0, 0.0, sti(20) );		//effect on pchar
 				PlaySound("NATURE\thunder1.wav");
@@ -349,8 +350,13 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 				weapon.model = "whip_out";
 				RemoveCharacterEquip(attack, GUN_ITEM_TYPE );
 				EquipCharacterByItem(attack, "pistolwhip");
-
+			
 				LAi_QuestDelay("reset_whip_rolled_pchar", 1.0);
+			}
+
+			if(GetAttribute(weapon, "id") == "pistolbladeBB")
+			{
+				PlaySound("OBJECTS\duel\sword_wind.wav");
 			}
 
 			if(GetAttribute(weapon, "id") == "pistolcenser")
@@ -376,6 +382,8 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 			if(GetAttribute(weapon,"model") == "blunder1_10")	PostEvent("bbuss_on_back", 1000, "i", attack);
 			if(GetAttribute(weapon,"model") == "pistol13")		PostEvent("pistol13_on_back", 1000, "i", attack);
 			if(GetAttribute(weapon,"model") == "LongRifle_C")	PostEvent("LongRifle_C_on_back", 1000, "i", attack);
+			if(GetAttribute(weapon,"model") == "LongRifle_H")	PostEvent("LongRifle_H_on_back", 1000, "i", attack);
+			if(GetAttribute(weapon,"model") == "LongRifle_W")	PostEvent("LongRifle_W_on_back", 1000, "i", attack);
 
 			if(GetAttribute(weapon, "id") == "pistolwhip")
 			{
@@ -721,15 +729,6 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 						if(gp >=2 && pb >= 2)
 						{
 							//ok
-							//additional sounds for long rifles here
-							if(CheckAttribute(weapon, "id"))
-							{
-								if(weapon.id == "LongRifle_C" || weapon.id == "LongRifle_CT"
-								|| weapon.id == "LongRifle_W" || weapon.id == "LongRifle_WT")
-								{
-									PlaySound("OBJECTS\duel\pistol_big2.wav");
-								}
-							}
 						}
 						else
 						{
@@ -742,6 +741,8 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 
 								if(GetAttribute(weapon,"model") == "pisto13") PostEvent("pistol13_on_back", 1000, "i", attack);
 								if(GetAttribute(weapon,"model") == "LongRifle_C") PostEvent("LongRifle_C_on_back", 1000, "i", attack);
+								if(GetAttribute(weapon,"model") == "LongRifle_H") PostEvent("LongRifle_H_on_back", 1000, "i", attack);
+								if(GetAttribute(weapon,"model") == "LongRifle_W") PostEvent("LongRifle_W_on_back", 1000, "i", attack);
 							}
 						}
 					}
@@ -1083,6 +1084,7 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 
 				if(GetAttribute(weapon, "id") == "pistolmaquahuitl")
 				{
+					LAi_SetImmortal(enemy, false);
 					CreateParticleSystem("blast" , u, v+1.2, w, 0.0, 0.0, 0.0, sti(20) );		//effect on pchar
 					CreateParticleSystem("canfire2" , x, y+2.0, z, 5.1, y+1.2, 0.0, sti(20) );
 					CreateParticleSystem("gunfire" , x, y+1.8, z, 0.0, 0.0, 0.0, sti(20) );//smoke puff
@@ -1130,6 +1132,62 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 
 						LAi_QuestDelay("reset_whip_rolled_officer", 1.0);
 					}
+				}
+
+				if(GetAttribute(weapon, "id") == "pistolbladeBB")
+				{
+					if(dist <= 3.0)		//this value corresponds best to the range of a right hand blade
+					{
+						If(enemy_blade != "bladearrows" && enemy_blade != "bladeX4" && LAi_IsFightMode(enemy) && !IsMainCharacter(enemy) && !IsOfficer(enemy))
+						{
+							int fenc = makeint(enemy.skill.Fencing);
+							int BlockChance = fenc + 2;
+							if(BlockChance > 9) BlockChance = 9;
+
+							if(rand(10) <= BlockChance)
+							{
+								//no dmg
+								switch(rand(2))
+								{
+									case 0: PlaySound("OBJECTS\duel\sword_hit1.wav"); PlaySound("OBJECTS\duel\sword_wind.wav"); break;
+									case 1: PlaySound("OBJECTS\duel\sword_hit2.wav"); PlaySound("OBJECTS\duel\sword_wind.wav"); break;
+									case 2: PlaySound("OBJECTS\duel\sword_hit3.wav"); PlaySound("OBJECTS\duel\sword_wind.wav"); break;
+								}
+							}
+							else
+							{
+								LAi_ApplyCharacterDamage(enemy, 22.0 + rand(15));
+								switch(rand(2))
+								{
+									case 0: PlaySound("OBJECTS\duel\sword_inbody.wav"); break;
+									case 1: PlaySound("OBJECTS\duel\sword_inbody.wav"); break;
+									case 2: PlaySound("OBJECTS\duel\sword_inbody2.wav"); break;
+								}
+							}
+						}
+
+						if(!LAi_IsFightMode(enemy))
+						{
+							LAi_ApplyCharacterDamage(enemy, 22.0 + rand(15));
+							switch(rand(2))
+							{
+								case 0: PlaySound("OBJECTS\duel\sword_inbody.wav"); break;
+								case 1: PlaySound("OBJECTS\duel\sword_inbody.wav"); break;
+								case 2: PlaySound("OBJECTS\duel\sword_inbody2.wav"); break;
+							}
+						}
+
+						if(LAi_IsDead(enemy))
+						{
+							if(!IsOfficer(enemy)) LAi_KillCharacter(enemy);
+						}
+					}
+					else 
+					{
+						PlaySound("OBJECTS\duel\sword_wind.wav");
+					}
+
+					return;		//yes: skips the extra 1 dmg always this way
 				}
 			}
 		}
@@ -1203,6 +1261,19 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 				}
 			}
 			//<-- JRH added for NPC:s bows
+
+			//JRH added for NPC:s rockets -->
+			if(GetAttribute(weapon, "shottype") == "ro")
+			{
+				gp = GetCharacterItem(attack, "gunpowder");
+				ro = GetCharacterItem(attack, "rockets");
+				if(gp >= 3 && ro >= 1)
+				{
+					TakeNItems(attack,"gunpowder", -3);
+					TakeNItems(attack,"rockets", -1);
+				}
+			}
+			//<-- JRH added for NPC:s rockets
 		}
 
 		//this goes for all (mainchar, officers, NPC:s)
@@ -1239,6 +1310,20 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 				LAi_QuestDelay("close_crypt1_box", 1.5);
 			}
 		}
+
+		if(weapon.id == "LongRifle_H" || weapon.id == "LongRifle_W" || weapon.id == "LongRifle_WT")
+		{
+			PlaySound("OBJECTS\duel\pistol_musket2.wav");
+			PlaySound("OBJECTS\duel\pistol_musket2.wav");
+		}
+		if(CheckAttribute(weapon, "id"))
+		{
+			if(weapon.id == "LongRifle_C" || weapon.id == "LongRifle_CT")
+			{
+				PlaySound("OBJECTS\duel\pistol_big2.wav");
+			}
+		}
+		
 	}
 
 	//click-shot, normally this will NOT show up, just in case
@@ -1630,7 +1715,16 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 			Play3DSound(weapon.sound, u, v, w);
 			Play3DSound(weapon.sound, u, v, w);
 		}
-		else PlaySound( weapon.sound );
+		else
+		{
+			if(GetAttribute(attack,"location") == "Tortuga_port" && !IsMainCharacter(attack) && !IsMainCharacter(enemy))
+			{
+				Play3DSound(weapon.sound, u, v, w);		//JRH
+				Play3DSound(weapon.sound, u, v, w);
+				Play3DSound(weapon.sound, u, v, w);
+			}
+			else PlaySound( weapon.sound );
+		}
 	}
 	else
 	{
@@ -1744,11 +1838,11 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 				bPlayer = false;
 				if(CheckAttribute(enemy, "chr_ai.group") && enemy.chr_ai.group==LAI_GROUP_PLAYER)
 				{
-					if(sti(mainCh.skill.Leadership)>sti(enemy.skill.Leadership)) bPlayer = true;
+					if(sti(mainCh.skill.Leadership)>sti(GetAttribute(enemy, "skill.Leadership"))) bPlayer = true;
 				}
 				else
 				{
-					if(sti(mainCh.skill.Leadership)<sti(enemy.skill.Leadership)) bPlayer = true;
+					if(sti(mainCh.skill.Leadership)<sti(GetAttribute(enemy, "skill.Leadership"))) bPlayer = true;
 				}
 				LAi_Stunned_StunCharacter(enemy, duration, true, STUN_STARS, bPlayer);
 				//MAXIMUS: during fight, character can join to his crew. Sometimes it may be helpful <--
@@ -2096,6 +2190,18 @@ void LAi_CharacterFireExecute(aref attack, aref enemy, float kDist, int isFinded
 		PostEvent("LongRifle_C_on_back", 1000, "i", attack);
 		PostEvent("mguns_fight_check", 1000, "i", attack);
 	}
+
+	if(IsEquipCharacterByItem(attack, "LongRifle_H"))
+	{
+		PostEvent("LongRifle_H_on_back", 1000, "i", attack);
+		PostEvent("mguns_fight_check", 1000, "i", attack);
+	}
+
+	if(IsEquipCharacterByItem(attack, "LongRifle_W"))
+	{
+		PostEvent("LongRifle_W_on_back", 1000, "i", attack);
+		PostEvent("mguns_fight_check", 1000, "i", attack);
+	}
     //<--- JRH switch rifles
 
 	if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0) LAi_QuestDelay("pistol20_ammo_check", 0.1);		//JRH: see quest_reaction
@@ -2421,6 +2527,15 @@ void LAi_Character_Dead_Event() // should never be run when CORPSEMODE == 3. NK 
 					if(chr.id == "maroon1") chr.money = 4;
 					if(chr.id == "maroon_girl") chr.money = 2;
 					if(chr.id == "deserter_us1") chr.money = 1;
+				}
+			}
+
+			if(chr.location == "Cloister_inside")
+			{
+				if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0)
+				{
+					DeleteAttribute(chr, "items");
+					chr.money = 0;
 				}
 			}
 

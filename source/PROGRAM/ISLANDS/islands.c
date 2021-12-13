@@ -14,9 +14,9 @@ void IslandsInit()
 }
 // <-- KK
 
-ref GetIslandByIndex(int iIslandIndex) 
+ref GetIslandByIndex(int iIslandIndex)
 {
-	return &Islands[iIslandIndex]; 
+	return &Islands[iIslandIndex];
 }
 
 ref GetIslandByID(string sIslandID)

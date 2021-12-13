@@ -15,7 +15,7 @@ void ProcessDialogEvent()
 	
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------������ ������ - ������ �������
+		// -----------------------------------Äèàëîã ïåðâûé - ïåðâàÿ âñòðå÷à
 		
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode; //"First time";

@@ -74,11 +74,11 @@ void Return2SeaAfterDeck()
 		SetEventHandler("FaderEvent_EndFade", "DeckToSea_ReloadEndFadeAfter", 0);
 	} else {
 // <-- KK
-		//���������� �������� ��� ���������
+		//Óñòàíîâèòü õåíäëåðû äëÿ îáðàáîòêè
 		SetEventHandler("FaderEvent_StartFade", "Deck_ReloadStartFadeAfter", 0);
 		SetEventHandler("FaderEvent_EndFade", "Deck_ReloadEndFadeAfter", 0);
 	}
-	//������ ������ � ���������
+	//Ñîçäà¸ì ôåéäåð è çàïóñêàåì
 	CreateEntity(&boarding_fader, "fader");
 	SendMessage(&boarding_fader, "ls", FADER_PICTURE, FindReloadPicture("sea.tga")); // KK
 
@@ -160,7 +160,7 @@ void Deck_Start()
 	ResetSound();
 	PauseAllSounds();
 	int i, idx;
-	//=������� ���������
+	//=àñòðîèì èíòåðôåéñ
 	if (LandLocationIdx == -1) DeleteBattleInterface(); // KK
 	InitBattleLandInterface();
 	StartBattleLandInterface();
@@ -179,7 +179,7 @@ void Deck_Start()
 
 	SetUpDeckReloadMap(); // KK
 
-	//T�������  � �������� ������
+	//Tûñòàâèì  è çàïîìíèì àäðåñà
 	boarding_adr[0].location = mchr.location;
 	boarding_adr[0].group = mchr.location.group;
 	boarding_adr[0].locator = mchr.location.locator;
@@ -198,21 +198,21 @@ void Deck_Start()
 		boarding_adr[i].group = Characters[idx].location.group;
 		boarding_adr[i].locator = Characters[idx].location.locator;
 	}
-	//��������
+	//Ñòàðòóåì
 	Deck_LoadLocation(DeckID); // KK //MAXIMUS
 }
 
-//��������� ������� ��������
+//Çàãðóçèòü ëîêàöèþ àáîðäàæà
 void Deck_LoadLocation(string locID) // KK //MAXIMUS
 {
 	ReloadProgressStart();
-	//L��� ������|
+	//Lùåì ëîêàöè|
 	int locIndex = FindLocation(locID);
 	ref mchr = GetMainCharacter();
 	if(locIndex >= 0)
 	{
 		if(!bCanEnterToLand && HasSubStr(locID,"ShipDeck")) locations[locIndex].coxswain = true;//MAXIMUS: added for placing monster near steering-wheel
-		//������������� �������� ���������
+		//Óñòàíàâëèâàåì ãëàâíîãî ïåðñîíàæà
 		mchr.location = locID;
 
 	// SCREWFACE : locators to load nathaniel are different for different model
@@ -397,7 +397,7 @@ void Deck_LoadLocation(string locID) // KK //MAXIMUS
 /////////////
 void Deck_ReloadStartFadeAfter()
 {
-	//T�������� ������|
+	//Tûãðóæàåì ëîêàöè|
 	//ResetSoundScheme();
 	ResetSound();
 	PauseAllSounds();
@@ -411,14 +411,14 @@ void Deck_ReloadEndFadeAfter()
 {
 	int i, idx;
 	ReloadProgressStart(); // KK
-	//��������� �����|��| ������|
+	//Çàãðóæàåì ñëåäó|ùó| ëîêàöè|
 	DelEventHandler("FaderEvent_EndFade", "Deck_ReloadEndFadeAfter");
 	SendMessage(&boarding_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 	boarding_location = -1;
-	//=������� ���������
+	//=àñòðîèì èíòåðôåéñ
 	Log_SetActiveAction("Nothing");
 	EndBattleLandInterface();
-	//T��������� ������
+	//Tîñòàíîâèì àäðåñà
 	ref mchr = GetMainCharacter();
 	mchr.location = boarding_adr[0].location;
 	mchr.location.group = boarding_adr[0].group;
@@ -575,7 +575,7 @@ void Cabin_Start()
 	ResetSound();
 	PauseAllSounds();
 	int i, idx;
-	//=������� ���������
+	//=àñòðîèì èíòåðôåéñ
 	if (LandLocationIdx == -1) DeleteBattleInterface(); // KK
 	InitBattleLandInterface();
 	StartBattleLandInterface();
@@ -602,7 +602,7 @@ void Cabin_Start()
 	SetUpCabin(GetCharacter(iShipCaptain)); // KK
 	SetUpDeckReloadMap(); // KK
 
-	//T�������  � �������� ������
+	//Tûñòàâèì  è çàïîìíèì àäðåñà
 	boarding_adr[0].location = mchr.location;
 	boarding_adr[0].group = mchr.location.group;
 	boarding_adr[0].locator = mchr.location.locator;
@@ -619,20 +619,20 @@ void Cabin_Start()
 		boarding_adr[i].group = Characters[idx].location.group;
 		boarding_adr[i].locator = Characters[idx].location.locator;
 	}
-	//��������
+	//Ñòàðòóåì
 	Cabin_LoadLocation();
 }
 
-//��������� ������| ��������
+//Çàãðóçèòü ëîêàöè| àáîðäàæà
 void Cabin_LoadLocation()
 {
 	ReloadProgressStart();
-	//L��� ������|
+	//Lùåì ëîêàöè|
 	int locIndex = FindLocation(DeckID);
 	if(locIndex >= 0)
 	{
 // KK -->
-		//������������� �������� ���������
+		//Óñòàíàâëèâàåì ãëàâíîãî ïåðñîíàæà
 		ref mchr = GetMainCharacter();
 		mchr.location = DeckID;
 		if (FromDeckIdx == -1) {
@@ -654,16 +654,16 @@ void Cabin_LoadLocation()
 		current_locator_name = "";
 // <-- KK
 
-		//������������� � ������|
+		//Ïåðåãðóæàåìñÿ â ëîêàöè|
 		boarding_location = locIndex;
 		Locations[locIndex].boarding = "true";
 		if(LoadLocation(&Locations[locIndex]))
 		{
 			PlaceOfficersToDeck("Cabin");// MAXIMUS
 			BLI_UpdateOfficers();//MAXIMUS: officers-icons fixed
-			//����������� ����������
+			//Ðàññòàâëÿåì ïåðñîíàæåé
 			//SetEventHandler(EVENT_LOCATION_LOAD,"qprocEndReload",0);
-			//�������� ������
+			//Çàïðåòèì äèàëîã
 			dialogDisable = false;
 		}else{
 			Trace("Boarding: Boarding location not loaded, current loc <" + DeckID + ">");

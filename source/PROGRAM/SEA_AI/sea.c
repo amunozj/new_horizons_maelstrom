@@ -581,7 +581,7 @@ void SeaLogin(ref Login)
 
 	// Island
 	int iIslandIndex = FindIsland(Login.Island);
-	Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
+	//Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
 	string sIslandID = "";
 	if (iIslandIndex != -1) sIslandID = Islands[iIslandIndex].id;
 
@@ -668,7 +668,7 @@ void SeaLogin(ref Login)
 		// trace("Island lighting path: " + Island.LightingPath);
 		//20180715
 		// trace("WeathersNH IslandDensity: " + Whr_GetFloat(WeathersNH, "Fog.IslandDensity") + " Weather IslandDensity: " + Whr_GetFloat(Weather, "Fog.IslandDensity"))
-		
+
 		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
         Island.ImmersionDistance = 450000.0;
 		Island.ImmersionDepth = 0.0;

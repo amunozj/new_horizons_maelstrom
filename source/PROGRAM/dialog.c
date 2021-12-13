@@ -27,7 +27,6 @@ void DialogsInit()
 //Начать диалог
 bool DialogMain(ref Character)
 {
-	trace("Character " + Character.id + " belongs to " + Character.chr_ai.group);
 	//Add the debug dialog files for everyone
 	Character.Dialog.Filename.Debug = "Debug.c";
 	if(CheckAttribute(Character, "condition") && Character.condition=="reload") return false;//MAXIMUS: prevents from dialogs start during reload -->

@@ -178,7 +178,7 @@ void InitBattleInterface()
 	SetEventHandler("DoSailHole","ProcessSailDamage",0);
 	SetEventHandler("evntBISelectShip","procBISelectShip",0);
 
-	procLoadIntoNew(); // ��������� ������� �������� ������
+	procLoadIntoNew(); // Ïðîèíèòèì òàáëèöó àêòèâíûõ ïåðêîâ
 	SetEventHandler("Control Activation","BI_ProcessControlPress",0);
 
 	RefreshFlags();
@@ -1126,11 +1126,11 @@ void BI_LaunchCommand()
 // <-- KK
 	case "BI_SailTo":
 		if(targetNum==-1)
-		{ // �������� � ������� � ������ locName
+		{ // ïðèïëûòü â ëîêàòîð ñ èìåíåì locName
 			SeaAI_SailToLocator(locName);
 		}
 		else
-		{ // ������� ����� � �������� targetNum
+		{ // äîãíàòü ïåðñà ñ èíäåêñîì targetNum
 			SeaAI_SailToCharacter(targetNum);
 		}
 	break;
@@ -1154,7 +1154,7 @@ void BI_LaunchCommand()
 	break;
 	case "BI_ImmDeath":
 		if(targetNum==-1)
-		{ // ������ �����
+		{ // ñìåðòü ôîðòà
 			targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
 			if(targetNum>=0)
 			{
@@ -1498,7 +1498,7 @@ void BI_SetPossibleCommands()
 		return;
 	}
 
-	// ��� �������� ���������
+	// äëÿ ãëàâíîãî ïåðñîíàæà
 	if(mainIdx==chIdx)
 	{
 		BattleInterface.Commands.Moor.enable				= bCanEnterToLand;
@@ -1541,7 +1541,7 @@ void BI_SetPossibleCommands()
 		BattleInterface.Commands.CCommand.enable		= GetCompanionQuantity(mainCh)>1;
 		BattleInterface.Commands.Ability.enable			= true;
 	}
-	// ��� ���������
+	// äëÿ ñïóòíèêîâ
 	else
 	{
 		BattleInterface.Commands.Moor.enable				= false;
@@ -1933,7 +1933,7 @@ ref BI_GetData()
 
 	switch (dataType)
 	{
-	// �������� ����� �������� �������
+	// Ïîëó÷àåì íîìåð êàðòèíêè êîðàáëÿ
 		case BIDT_SHIPPICTURE:
 			enable = distance < GetCharVisibilityRange(GetMainCharacter(), 1); // PB: Ship type is visible inside LONG range
 			if (CheckAttribute(chRef, "unknownShip") == true && sti(chRef.unknownShip) == true) {
@@ -2422,7 +2422,7 @@ void SetParameterData()
     string sOff = "iconoffset";
     int fTmp3 = RecalculateVIcon(70);
     if(bRealBattleInterface) {
-        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(255); //59);
+        fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(59);
         if(nCmpNum == 1) {
             BattleInterface.ShipIcon.iconoffset1 = fTmp + "," + fTmp2;
         }
@@ -2484,19 +2484,19 @@ void SetParameterData()
 
 ref ProcessSailDamage()
 {
-	// �� ���� ����
+	// îò êîãî óäàð
 	int shootIdx = GetEventData();
-	// ����
+	// ïåðñ
 	int chrIdx = GetEventData();
 	string sMastName = GetEventData();
-	// ���������� ������
+	// êîîðäèíàòû ïàðóñà
 	string reyName = GetEventData();
 	int groupNum = GetEventData();
-	// ������ � ������
+	// äàííûå î äûðêàõ
 	int holeCount = GetEventData();
 	int holeData = GetEventData();
 	int maxHoleCount = GetEventData();
-	// �������� ������
+	// ìîùíîñòü ïàðóñà
 	float sailPower = GetEventData();
 
 // KK -->
@@ -2563,7 +2563,7 @@ void ProcessDayRepair()
 		chref = GetCharacter(cn);
 		RepairAllCannons(&chref); // NK can qty. For now repair all fixable guns. Later go back and set repair rates. 05-04-19
 
-		// ������ ������� �������
+		// ðàñ÷åò ïî÷èíêè êîðïóñà
 		if( GetHullPercent(chref)<100.0 )
 		{
 			repPercent = GetHullRPD(chref);
@@ -2575,7 +2575,7 @@ void ProcessDayRepair()
 			RemoveRepairGoods(true,chref,matQ);
 		}
 
-		// ������ ������� �������
+		// ðàñ÷åò ïî÷èíêè ïàðóñîâ
 		if( GetSailPercent(chref)<100.0 )
 		{
 			repPercent = GetSailRPD(chref);
@@ -2912,7 +2912,7 @@ void procSetUsingAbility()
 		return;
 	}
 
-	// ��� �������� ���������
+	// äëÿ ãëàâíîãî ïåðñîíàæà
 	if (mainIdx == chIdx)
 	{
 		BattleInterface.AbilityIcons.Brander.enable			= false;
@@ -3200,7 +3200,7 @@ ref BI_GetLandData()
 	}
 	// NK <--
 
-	// ��������
+	// Çàãëóøêà
 	if( BI_intNRetValue[2]<0 || BI_intNRetValue[3]<0 )
 	{
 		BI_intNRetValue[2] = AddTextureToList( &BattleInterface, "battle_interface\LandTarget1.tga.tx", 4, 2 ); // KK

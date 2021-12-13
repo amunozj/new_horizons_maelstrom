@@ -208,7 +208,7 @@ void CreateOfficersCharacters(ref n)
 	ch.isOfficer = true;
 	AddGameCharacter(n, ch);
 
-	// Claire Larrouse ����������� ����� � ������� ���� ������.
+	// Claire Larrouse ôðàíöóçñêèé ïèðàò â òàâåðíå Èñëà Ìóýëëå.
 	ch.old.name = "Claire";
 	ch.old.lastname = "Larrouse";
 	ch.name = TranslateString("","Claire"); // was Clair
@@ -265,7 +265,7 @@ void CreateOfficersCharacters(ref n)
 	ch.isOfficer = true;
 	AddGameCharacter(n, ch);
 
-	// Jaoquin De Masse  ����������� ������.
+	// Jaoquin De Masse  ìàëüòèéñêèé ðûöàðü.
 	ch.old.name = "Jaoquin";
 	ch.old.lastname = "De Masse";
 	ch.name = TranslateString("","Jaoquin");
@@ -516,7 +516,7 @@ void CreateOfficersCharacters(ref n)
 	ch.quest.officertype = OFFIC_TYPE_BOATSWAIN;
 	AddGameCharacter(n, ch);
 
-	// Edgar Attwood �������� �� �������� - �������.
+	// Edgar Attwood òþðåìùèê íà ðåäìîíäå - êàíîíèð.
 	ch.old.name = "Edgar";
 	ch.old.lastname = "Attwood";
 	ch.name = TranslateString("","Edgar");

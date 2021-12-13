@@ -86,9 +86,9 @@ object	GameInterface;
 object	LanguageObject;
 object  Interfaces[INTERFACE_QUANTITY];
 
-// ��������� ����������
+// ñîñòîÿíèå èíòåðôåéñà
 object InterfaceStates;
-// ������� ������
+// ïðîôèëü èãðîêà
 // KK -->
 object GlobalSettings;
 object ProfileSettings;
@@ -1386,7 +1386,7 @@ void EndCancelInterface(bool bYesRelease)
 	if(bYesRelease)	PostEvent("evntQuestsCheck",1);
 }
 
-// ���� ��� ��������� �����������
+// ñòåê äëÿ âëîæåííûõ èíòåðôåéñîâ
 object InterfaceStack;
 void ClearInterfaceStack()
 {
@@ -1911,7 +1911,7 @@ void IProcEventSetGameTime()
 }
 
 //==============================================================
-//	������ ������������ ����� ���� ���� �� ������
+//	Ñåêöèÿ Ïîêàçûâàþùàÿ êàêóþ ëèáî èíôî íà ýêðàíå
 //==============================================================
 #event_handler("DoInfoShower", "procInfoShow");
 object objInfoList[10];
