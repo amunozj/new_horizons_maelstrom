@@ -543,6 +543,12 @@ itmdescr_blade51
 Ornate Dress Sword from the Royal Courts of Paris. Maybe you can impress your opponent into submission.
 }
 
+itmname_bladeMesser	{Langes Messer}
+itmdescr_bladeMesser
+{
+A German single edged weapon with high cutting power. Not classified as sword but rather as knife to bypass restrictions for manufacturers and folk. Can be used with one or two hands, very versatile and very deadly.
+}
+
 // KevAtl SLiB Special Weapon blades -->
 
 itmname_bladeFD	{Francis Drake's Sword}

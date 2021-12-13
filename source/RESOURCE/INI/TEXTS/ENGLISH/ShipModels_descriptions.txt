@@ -181,8 +181,18 @@ French trade vessel is painted brown and red.}
 
 Pinnace1_Descr{Decent speed but not too agile.
 Highly decorated trader, brown with a white stripe.}
+Pinnace1_kanyl_Descr{Decent speed but not too agile.
+Common trading vessel, with blue decorations.}
+Pinnace1_white_Descr{Decent speed but not too agile.
+Common trading vessel, with white decorations.}
 Pinnace2_Descr{Decent speed but not too agile.
 Higly decorated trader, painted mostly brown.}
+Pinnace3_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple red striping.}
+Pinnace4_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple black striping.}
+Pinnace5_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a simple blue striping.}
 
 NL_Pinnace_Descr{Decent speed but not too agile.
 Decorated Dutch trader with some green paint.}
@@ -354,6 +364,14 @@ Hull bears colours of France.}
 
 SwedishIndiaman1_Descr{Lightly armed trader, very fast with good
 cargo capacity.}
+swedishIndiaman_b_w_Descr{Lightly armed trader, very fast with good
+cargo capacity. Painted with a dark hull and white decoration.}
+swedishIndiaman_blue_Descr{Lightly armed trader, very fast with good
+cargo capacity. Hull is not painted with blue decoration.}
+swedishIndiaman_eitc_Descr{Lightly armed trader, very fast with good
+cargo capacity. Painted as an EITC transatlantic trading vessel.}
+swedishIndiaman_red_Descr{Lightly armed trader, very fast with good
+cargo capacity. Hull is not painted with red decoration.}
 
 NL_Batavia_Descr{Performance comes second for the 'Batavia'.
 Armed trader in Dutch colours.}
@@ -371,7 +389,11 @@ NL_Amsterdam_Descr{The 'Amsterdam', famous vessel of
 the Vereenigde Oost-Indische Compagnie!}
 
 Battleship1_Descr{For a ship-of-the-line, performance comes second.
-Hull is red painted.}
+Dark Hull is decorated red.}
+Battleship1b_Descr{For a ship-of-the-line, performance comes second.
+Black Hull is decorated red.}
+Battleship1w_Descr{For a ship-of-the-line, performance comes second.
+Unpainted Hull is decorated red.}
 Battleship2_Descr{For a ship-of-the-line, performance comes second.
 Hull is painted black, white and red.}
 RN_Battleship_Descr{For a ship-of-the-line, performance comes second.
@@ -504,6 +526,9 @@ and white paint scheme.}
 FR_Couronne_Descr{A large, emblematic French Navy galleon,
 and the first of her kind to be built in France.}
 
+Couronne_pirate_Descr{Captured French Galleon,
+repainted to resemble a true Pirate Lord Flagship.}
+
 SP_ApostolFelipe_Descr{'Apóstol Felipe', one of the six galleons
 built by Martín de Arana for King Felipe IV.}
 
@@ -538,6 +563,8 @@ SP_SanFelipe_Descr{Built by the King of Spain in 1690, the San Felipe
 was Spain's most majestic ship fighting the French.}
 FR_SoleilRoyal_Descr{French ship-of-the-line 'Soleil Royal', built in 1670.
 Elaborately decorated baroque flagship.}
+SoleilRoyal_crimson_Descr{French ship-of-the-line 'Soleil Royal', built in 1670.
+Elaborately decorated baroque flagship in a more sinister look.}
 
 RN_RevengeM_Descr{Merchant version of a 4-masted Elizabethan Galleon.
 Dark brown hull with green-with-yellow decorations.}
