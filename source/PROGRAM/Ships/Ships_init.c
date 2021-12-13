@@ -759,7 +759,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.02; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -872,7 +872,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.02; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -982,7 +982,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.5; //
@@ -1093,7 +1093,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -1204,7 +1204,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -1421,7 +1421,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.37; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -2641,7 +2641,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.4; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.4; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.4; //
@@ -2865,7 +2865,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -3087,7 +3087,7 @@ void InitShips()
 	refShip.france = 0.3; //
 	refShip.holland = 0.3; //
 	refShip.portugal = 0.3; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.3; //
 	refShip.america = 0.3; //
 	refShip.sweden = 0.3; //
@@ -3198,7 +3198,7 @@ void InitShips()
 	refShip.france = 0.3; //
 	refShip.holland = 0.3; //
 	refShip.portugal = 0.3; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.3; //
 	refShip.america = 0.3; //
 	refShip.sweden = 0.3; //
@@ -3307,7 +3307,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.05; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.5; //
 	refShip.sweden = 0.5; //
@@ -3642,7 +3642,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.05; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.5; //
 	refShip.sweden = 0.5; //
@@ -3751,7 +3751,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.05; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.5; //
 	refShip.sweden = 0.5; //
@@ -4419,7 +4419,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.2; //
 	refShip.sweden = 0.0; //
@@ -4642,7 +4642,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.25; //
 	refShip.portugal = 0.25; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -4857,7 +4857,7 @@ void InitShips()
 	refShip.france = 0.3; //
 	refShip.holland = 0.3; //
 	refShip.portugal = 0.3; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.2; //
 	refShip.spain = 0.3; //
 	refShip.america = 0.3; //
 	refShip.sweden = 0.3; //
@@ -6428,7 +6428,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.4; //
 	refShip.sweden = 0.0; //
@@ -7254,7 +7254,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.4; //
 	refShip.sweden = 0.0; //
@@ -7465,7 +7465,7 @@ void InitShips()
 	refShip.france = 0.5; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.5; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.3; //
 	refShip.spain = 0.2; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.1; //
@@ -7569,7 +7569,7 @@ void InitShips()
 	refShip.france = 0.2; //
 	refShip.holland = 0.2; //
 	refShip.portugal = 0.2; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.2; //
 	refShip.spain = 0.5; //
 	refShip.america = 0.4; //
 	refShip.sweden = 0.2; //
@@ -7672,7 +7672,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.4; //
 	refShip.portugal = 0.2; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.05; //
 	refShip.spain = 0.2; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.2; //
@@ -7777,7 +7777,7 @@ void InitShips()
 	refShip.france = 0.2; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.2; //
@@ -7891,7 +7891,7 @@ void InitShips()
 	refShip.france = 0.0 //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.2; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
 	refShip.spain = 0.2; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -7995,7 +7995,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.4; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -8398,7 +8398,7 @@ void InitShips()
 	refShip.france = 0.35; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -8503,7 +8503,643 @@ void InitShips()
 	refShip.france = 0.3; //
 	refShip.holland = 0.4; //
 	refShip.portugal = 0.36; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.01; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1 Kalmar Nyckel
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace1_kanyl";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.3; //
+	refShip.holland = 0.64; //
+	refShip.portugal = 0.36; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1 white decorations
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace1_white";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.53; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.66; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1.2
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace12";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.53; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.66; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1.3
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace13";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.53; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.66; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1.4
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace14";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.53; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.66; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.3;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace1.5
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace15";
+	refShip.SName	 		= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.5; //
+	refShip.france = 0.53; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.66; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -8610,8 +9246,329 @@ void InitShips()
 	refShip.france = 0.35; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.3; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.3;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace3
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace3";
+	refShip.SName	 		= "Pinnace1";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.3; //
+	refShip.france = 0.35; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.4; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.5; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.3;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace4
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace4";
+	refShip.SName	 		= "Pinnace1";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.3; //
+	refShip.france = 0.35; //
+	refShip.holland = 0.2; //
+	refShip.portugal = 0.2; //
+	refShip.pirate = 0.3; //
+	refShip.spain = 0.3; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = false;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.3;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+// Pinnace5
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 088> (WBT4)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Pinnace5";
+	refShip.SName	 		= "Pinnace1";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 4;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS9;
+	refShip.MaxCaliber		= 9;
+	refShip.Weight			= Tonnes2CWT(750);
+	refShip.Capacity		= 5000;
+	refShip.CannonsQuantity = 24;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.08;
+	refShip.Track1.LifeTime = 72;
+	refShip.Track1.Width = "5.4, 6.8";
+	refShip.Track1.Speed = "6.3, 7.7";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 40;
+	refShip.Track2.Width = "7.2, 9.1";
+	refShip.Track2.Speed = "0.15, 0.24";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 108;
+	refShip.MinCrew		 = 35;
+	refShip.Price		   = 51200;
+	refShip.HP			  = 3500;
+	refShip.SP			  = 200;
+	refShip.Jetty			= false; // PB
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 116;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag2 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.2; //
+	refShip.france = 0.45; //
+	refShip.holland = 0.6; //
+	refShip.portugal = 0.1; //
+	refShip.pirate = 0.1; //
+	refShip.spain = 0.1; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
 
@@ -8716,7 +9673,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.37; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -8822,7 +9779,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.1; //
 	refShip.spain = 0.4; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -8928,7 +9885,328 @@ void InitShips()
 	refShip.france = 0.3; //
 	refShip.holland = 0.0; //
 	refShip.portugal = 0.3; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.2; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "Heavy Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = true;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 8.5;
+		refShip.TurnRate		= 42;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4H)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+//      Waller Pinnace 2 (WallerPinnace) by Captain Hawk
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> (WBT4H)  - high topweight - performance decreased!
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "WallerPinnace2";
+	refShip.sname			= "PinnaceWH";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 1;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS24;
+	refShip.MaxCaliber		= 24;
+	refShip.Weight			= Tonnes2CWT(1300);//BB increased vs normal pinnace
+	refShip.Capacity		= 4000;
+	refShip.CannonsQuantity = 54;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.09;
+	refShip.Track1.LifeTime = 74;
+	refShip.Track1.Width = "5.4, 5.8";
+	refShip.Track1.Speed = "6.9, 8.2";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.7, 9.2";
+	refShip.Track2.Speed = "0.24, 0.45";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 540;
+	refShip.MinCrew		 = 108;
+	refShip.Price		   = 272000;
+	refShip.HP			  = 7000;
+	refShip.SP			  = 200;
+	refShip.Jetty = false; // CTM
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 54;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast5.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.4; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.4; //
+	refShip.france = 0.3; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.3; //
+	refShip.pirate = 0.2; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "Heavy Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = true;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 8.5;
+		refShip.TurnRate		= 42;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4H)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+//      Waller Pinnace 3 (WallerPinnace) by Captain Hawk
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> (WBT4H)  - high topweight - performance decreased!
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "WallerPinnace3";
+	refShip.sname			= "PinnaceWH";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 1;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS24;
+	refShip.MaxCaliber		= 24;
+	refShip.Weight			= Tonnes2CWT(1300);//BB increased vs normal pinnace
+	refShip.Capacity		= 4000;
+	refShip.CannonsQuantity = 54;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.09;
+	refShip.Track1.LifeTime = 74;
+	refShip.Track1.Width = "5.4, 5.8";
+	refShip.Track1.Speed = "6.9, 8.2";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.7, 9.2";
+	refShip.Track2.Speed = "0.24, 0.45";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 540;
+	refShip.MinCrew		 = 108;
+	refShip.Price		   = 272000;
+	refShip.HP			  = 7000;
+	refShip.SP			  = 200;
+	refShip.Jetty = false; // CTM
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 54;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast5.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.4; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.4; //
+	refShip.france = 0.3; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.3; //
+	refShip.pirate = 0.2; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "Heavy Pinnace"; // KK
+	refShip.Type.Trade = true;
+	refShip.Type.War = true;
+	refShip.CanBuy		= true;
+	refShip.CanEncounter	= true;
+
+	refShip.WaterLine = 0.5;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 1.1;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 8.5;
+		refShip.TurnRate		= 42;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.9;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.6;
+		refShip.TurnRate		= 29;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 3.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, moderate turn circle (WBT4H)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> is henceforth complete
+// on this day and date Jan 1 2010, 1046h
+
+//-------------------------------------------------------------------------
+//      Waller Pinnace (Royal Navy) (WallerPinnace) by Captain Hawk
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 094> (WBT4H)  - high topweight - performance decreased!
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "WallerPinnace_RN";
+	refShip.sname			= "PinnaceWH";
+	refShip.All				= "Pinnace1";
+	refShip.id				= refShip.Name;
+	refShip.Class		   = 1;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS24;
+	refShip.MaxCaliber		= 24;
+	refShip.Weight			= Tonnes2CWT(1300);//BB increased vs normal pinnace
+	refShip.Capacity		= 4000;
+	refShip.CannonsQuantity = 54;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.09;
+	refShip.Track1.LifeTime = 74;
+	refShip.Track1.Width = "5.4, 5.8";
+	refShip.Track1.Speed = "6.9, 8.2";
+
+	refShip.Track2.ZStart = -0.16;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.7, 9.2";
+	refShip.Track2.Speed = "0.24, 0.45";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 6;
+	// NK <--
+	refShip.MaxCrew		 = 540;
+	refShip.MinCrew		 = 108;
+	refShip.Price		   = 272000;
+	refShip.HP			  = 7000;
+	refShip.SP			  = 200;
+	refShip.Jetty = false; // CTM
+
+	refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 54;
+	refShip.QDeck = "ShipDeck6";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast5.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.4; //
+	refShip.period.2 = 0.7; //
+	refShip.period.3 = 0.4; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.4; //
+	refShip.france = 0.3; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.3; //
+	refShip.pirate = 0.2; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.1; //
@@ -9870,7 +11148,7 @@ void InitShips()
 	refShip.france = 0.0; //
 	refShip.holland = 0.5; //
 	refShip.portugal = 0.0; //
-	refShip.pirate = 0.0; //
+	refShip.pirate = 0.05; //
 	refShip.spain = 0.0; //
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
@@ -15159,6 +16437,636 @@ void InitShips()
 // high seas cruiser, deep draft V-hull, better turn circle (WBT4)
 //     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
 // on this day and date Jan 2 2010, 1146h
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_b_w";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.3; //
+	refShip.france = 0.1; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.2; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.3; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_blue";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.3; //
+	refShip.france = 0.6; //
+	refShip.holland = 0.1; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.0; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.3; //
+	refShip.sweden = 0.5; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_eitc";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.9; //
+	refShip.france = 0.0; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.0; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_red";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.1; //
+	refShip.france = 0.2; //
+	refShip.holland = 0.2; //
+	refShip.portugal = 0.4; //
+	refShip.pirate = 0.0; //
+	refShip.spain = 0.4; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_gren";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.4; //
+	refShip.france = 0.1; //
+	refShip.holland = 0.4; //
+	refShip.portugal = 0.1; //
+	refShip.pirate = 0.01; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
+//-------------------------------------------------------------------------
+// Swedish East Indiaman by Philipjn, ported by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 087> (WBT4)
+//-------------------------------------------------------------------------
+    makeref(refShip,ShipsTypes[n]);
+    n++;
+    refShip.Name            = "swedishIndiaman_FR";
+    refShip.All                = "Fleut1";
+    refShip.SName             = "Indiaman1";
+    refShip.id                = refShip.Name;
+    refShip.Walk            = "";
+    refShip.Class           = 4;
+    refShip.Cannon            = CANNON_TYPE_LONG_LBS12;
+    refShip.MaxCaliber        = 12;
+    refShip.Weight            = Tonnes2CWT(1100);
+    refShip.Capacity        = 4500;
+    refShip.CannonsQuantity = 32;
+    // NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = -0.06;
+	refShip.Track1.LifeTime = 68;
+	refShip.Track1.Width = "5.3, 6.5";
+	refShip.Track1.Speed = "6.7, 8.0";
+
+	refShip.Track2.ZStart = -0.15;
+	refShip.Track2.LifeTime = 41;
+	refShip.Track2.Width = "7.2, 9.0";
+	refShip.Track2.Speed = "0.2, 0.35";
+
+    refShip.Cannons.Borts.cannonf.qty = 0;
+    refShip.Cannons.Borts.cannonb.qty = 2;
+    // NK <--
+    refShip.MaxCrew         = 170;
+    refShip.MinCrew         = 40
+    refShip.Price           = 75000;
+    refShip.HP              = 3000;
+    refShip.SP              = 200;
+    refShip.Jetty            = false; // PB
+
+    refShip.BigPicTexName = "SHIPS4"; //Armada
+// KK -->
+    refShip.BI.Tex = 16;
+    refShip.BI.Pic = 116;
+    refShip.QDeck = "ShipDeck6";
+    refShip.CannonsDeck = 1;
+    refShip.CargoHold = 1;
+    refShip.Cabin = "Cabin2";
+    refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+    refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.1; //
+	refShip.france = 0.6; //
+	refShip.holland = 0.1; //
+	refShip.portugal = 0.4; //
+	refShip.pirate = 0.01; //
+	refShip.spain = 0.5; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.1; //
+
+	refShip.Model = "SwedishIndiaman"; // KK
+	refShip.CanEncounter	= true;
+	refShip.CanBuy		= true;
+	refShip.Type.Trade		= true;
+	refShip.Type.War		= false;
+
+	refShip.WaterLine		= 0.3;
+	refShip.SpeedDependWeight	= 0.3;
+	refShip.SubSeaDependWeight	= 0.9;
+	refShip.TurnDependWeight	= 0.8;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.7;
+		refShip.TurnRate		= 65;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 11.5;
+		refShip.TurnRate		= 30;
+		refShip.InertiaAccelerationX = 0.2;		refShip.InertiaBrakingX = 2.0;
+		refShip.InertiaAccelerationY = 7;		refShip.InertiaBrakingY = 6;
+		refShip.InertiaAccelerationZ = 4.0;		refShip.InertiaBrakingZ = 2.0;
+	}
+
+// Review: Vessel configured as: East Indiaman
+// high seas cruiser, deep draft V-hull, better turn circle (WBT4)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 159> is henceforth complete
+// on this day and date Jan 2 2010, 1146h
+
 
 //-------------------------------------------------------------------------
 // Batavia by Yo Ho Ho and Thomas the Terror, based on original texture by Petros
@@ -16124,6 +18032,220 @@ void InitShips()
 	makeref(refShip,ShipsTypes[n]);
 	n++;
 	refShip.Name			= "Battleship1";
+	refShip.id				= refShip.Name;
+	refShip.SName			= "SoL3R2";
+	refShip.walk			= "Battleship1"; // PB
+	refShip.Class			= 3;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS24;
+	refShip.MaxCaliber		= 24;
+
+	refShip.Weight			= Tonnes2CWT(2500);
+	refShip.Capacity		= 3000;
+	refShip.CannonsQuantity = 70;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = 0.0;
+	refShip.Track1.LifeTime = 58;
+	refShip.Track1.Width = "5.2, 5.5";
+	refShip.Track1.Speed = "8.1, 9.1";
+
+	refShip.Track2.ZStart = -0.12;
+	refShip.Track2.LifeTime = 43;
+	refShip.Track2.Width = "7.9, 8.9";
+	refShip.Track2.Speed = "0.4, 0.77";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 4;
+	// NK <--
+	refShip.MaxCrew		 = 700;
+	refShip.MinCrew		 = 140;
+	refShip.Price		   = 400000;
+	refShip.HP			  = 10000;
+	refShip.SP			  = 200;
+
+	refShip.BigPicTexName	= "SHIPS1"; // Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 86;
+	refShip.QDeck = "ShipDeck2";
+	refShip.CannonsDeck = 2;
+	refShip.CargoHold = 2;
+	refShip.Cabin = "Cabin1";
+	refShip.Flags.Mast1.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast2.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag2 = FLAG_PENNANT;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.1; //
+	refShip.france = 0.1; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.0; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Battleship"; // KK
+	refShip.Type.Trade = false;
+	refShip.Type.War = true;
+	refShip.CanEncounter		= true;
+	refShip.CanBuy			= true;
+
+	refShip.WaterLine = 0.75;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 0.55;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.0;
+		refShip.TurnRate		= 50;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.73;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 10.0;
+		refShip.TurnRate		= 25;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 1.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, LARGE turn circle (WBT4XL)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 212> is henceforth complete
+// on this day and date Jan 1 2010, 1711h
+
+//-------------------------------------------------------------------------
+// Battleship1b - 70-Gun 3rd Rate
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 212> (WBT4XL)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Battleship1b";
+	refShip.id				= refShip.Name;
+	refShip.SName			= "SoL3R2";
+	refShip.walk			= "Battleship1"; // PB
+	refShip.Class			= 3;
+	refShip.Cannon			= CANNON_TYPE_LONG_LBS24;
+	refShip.MaxCaliber		= 24;
+
+	refShip.Weight			= Tonnes2CWT(2500);
+	refShip.Capacity		= 3000;
+	refShip.CannonsQuantity = 70;
+	// NK cannon qtys 05-04-18 -->
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = 0.0;
+	refShip.Track1.LifeTime = 58;
+	refShip.Track1.Width = "5.2, 5.5";
+	refShip.Track1.Speed = "8.1, 9.1";
+
+	refShip.Track2.ZStart = -0.12;
+	refShip.Track2.LifeTime = 43;
+	refShip.Track2.Width = "7.9, 8.9";
+	refShip.Track2.Speed = "0.4, 0.77";
+
+	refShip.Cannons.Borts.cannonf.qty = 2;
+	refShip.Cannons.Borts.cannonb.qty = 4;
+	// NK <--
+	refShip.MaxCrew		 = 700;
+	refShip.MinCrew		 = 140;
+	refShip.Price		   = 400000;
+	refShip.HP			  = 10000;
+	refShip.SP			  = 200;
+
+	refShip.BigPicTexName	= "SHIPS1"; // Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 86;
+	refShip.QDeck = "ShipDeck2";
+	refShip.CannonsDeck = 2;
+	refShip.CargoHold = 2;
+	refShip.Cabin = "Cabin1";
+	refShip.Flags.Mast1.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast2.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast3.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast4.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag2 = FLAG_PENNANT;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.0; //
+	refShip.period.2 = 0.3; //
+	refShip.period.3 = 0.2; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.1; //
+	refShip.france = 0.1; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.0; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "Battleship"; // KK
+	refShip.Type.Trade = false;
+	refShip.Type.War = true;
+	refShip.CanEncounter		= true;
+	refShip.CanBuy			= true;
+
+	refShip.WaterLine = 0.75;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 0.55;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 10.0;
+		refShip.TurnRate		= 50;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.73;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 10.0;
+		refShip.TurnRate		= 25;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 1.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, LARGE turn circle (WBT4XL)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 212> is henceforth complete
+// on this day and date Jan 1 2010, 1711h
+
+//-------------------------------------------------------------------------
+// Battleship1w - 70-Gun 3rd Rate
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 212> (WBT4XL)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			= "Battleship1w";
 	refShip.id				= refShip.Name;
 	refShip.SName			= "SoL3R2";
 	refShip.walk			= "Battleship1"; // PB
@@ -21550,6 +23672,7 @@ void InitShips()
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
 
+	refShip.Model = "couronne";
 	refShip.Type.Trade = false;
 	refShip.Type.War = true;
 	refShip.CanEncounter		= true;
@@ -21577,6 +23700,104 @@ void InitShips()
 
 		refShip.RigType = "Bat";
 	}
+
+//-------------------------------------------------------------------------
+//	La Couronne 1636 by pgargon - Pirate Lord Flagship Edition
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name				= "Couronne_pirate";
+	refShip.id					= refShip.Name;
+	refShip.walk				= "Couronne";
+	refShip.SName				= "Couronne_pirate";
+	refShip.all					= "Galeon1";
+	refShip.Class				= 3;
+	refShip.Cannon				= CANNON_TYPE_CARRONADE_LBS32;
+	refShip.MaxCaliber			= 32;
+	refShip.Weight				= Tonnes2CWT(2750);
+	refShip.Capacity			= 3250;
+	refShip.CannonsQuantity		= 64;
+	refShip.Cannons.Borts.cannonf.qty = 8;
+	refShip.Cannons.Borts.cannonb.qty = 8;
+	refShip.MaxCrew				 = 640;
+	refShip.MinCrew				 = 128;
+	refShip.Price				= 364000;
+	refShip.HP					= 8900;
+	refShip.SP					= 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = 0.02;
+	refShip.Track1.LifeTime = 58;
+	refShip.Track1.Width = "5.4, 5.7";
+	refShip.Track1.Speed = "8.2, 9.2";
+
+	refShip.Track2.ZStart = -0.12;
+	refShip.Track2.LifeTime = 44;
+	refShip.Track2.Width = "8.3, 9.3";
+	refShip.Track2.Speed = "0.43, 0.82";
+
+	refShip.BigPicTexName	= "SHIPS5"; // Armada
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 86;
+	refShip.QDeck = "ShipDeck2";
+	refShip.CannonsDeck = 1;
+	refShip.CargoHold = 1;
+	refShip.Cabin = "Cabin2";
+	refShip.Flags.Mast1.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast5.Flag1 = FLAG_ENSIGN;
+
+	refShip.EmblemedSails.normalTex = "sail_DeathVessel_whole.tga";
+	refShip.EmblemedSails.nationFileName = "sail_DeathVessel_whole1.tga";
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.6; //
+	refShip.period.2 = 0.1; //
+	refShip.period.3 = 0.0; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.0; //
+	refShip.france = 0.0; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.03; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "couronne";
+	refShip.Type.Trade = false;
+	refShip.Type.War = true;
+	refShip.CanEncounter		= true;
+	refShip.CanBuy			= true;
+
+	refShip.WaterLine = 0.1;
+	refShip.SpeedDependWeight = 0.35;
+	refShip.SubSeaDependWeight = 0.75;
+
+	refShip.GeraldSails.rey_b2 = 1;
+	refShip.GeraldSails.rey_b3 = 1;
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 12.5;
+		refShip.TurnRate		= 60;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.8;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 12.5;
+		refShip.TurnRate		= 32;
+		refship.InertiaAccelerationX	= 3.5;	refship.InertiaBrakingX		= 3.0;
+		refship.InertiaAccelerationY	= 2.5;	refship.InertiaBrakingY		= 2.5;
+		refship.InertiaAccelerationZ	= 3.5;	refship.InertiaBrakingZ		= 3.0;
+
+		refShip.RigType = "Bat";
+	}
+
 
 //-------------------------------------------------------------------------
 // Apost�l Felipe 1626 by pgargon
@@ -22900,10 +25121,119 @@ void InitShips()
 	refShip.america = 0.0; //
 	refShip.sweden = 0.0; //
 
+	refShip.Model = "SoleilRoyal";
 	refShip.Type.Trade = false;
 	refShip.Type.War = true;
 	refShip.CanEncounter		= true;
 	refShip.CanBuy			= true;
+
+	refShip.WaterLine = 0.0;
+	refShip.SpeedDependWeight = 0.3;
+	refShip.SubSeaDependWeight = 0.9;
+
+	refShip.GeraldSails.rey_a2	= 1;
+	refShip.GeraldSails.rey_a3	= 1;
+	refShip.GeraldSails.rey_b2	= 1;
+	refShip.GeraldSails.rey_b3	= 1;
+
+	refShip.RigType = "Bat";
+
+	if(iRealismMode>0 || REALISTIC_SHIP_INERTIA){
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 45;
+		refShip.InertiaAccelerationX	= 4;	refShip.InertiaBrakingX		= 0.5;
+		refShip.InertiaAccelerationY	= 1.73;	refShip.InertiaBrakingY		= 0.5;
+		refShip.InertiaAccelerationZ	= 2.5;	refShip.InertiaBrakingZ		= 2.0;
+	}else{
+		refShip.SpeedRate		= 9.0;
+		refShip.TurnRate		= 25;
+		refShip.InertiaAccelerationX	= 0.2;	refShip.InertiaBrakingX		= 2.0;
+		refShip.InertiaAccelerationY	= 7;	refShip.InertiaBrakingY		= 6;
+		refShip.InertiaAccelerationZ	= 4.0;	refShip.InertiaBrakingZ		= 1.0;
+
+	}
+
+// Review: Vessel configured as:
+// high seas cruiser, deep draft V-hull, LARGE turn circle (WBT4XL)
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 096> is henceforth complete
+// on this day and date Jan 1 2010, 1711h
+
+//-------------------------------------------------------------------------
+// Soleil Royal Crimson by red10october; additional work by Armada
+//     <SWS - Willemstad Builders' Trials Winter 09 S/N 211> (WBT4XL)
+//-------------------------------------------------------------------------
+	makeref(refShip,ShipsTypes[n]);
+	n++;
+	refShip.Name			 = "SoleilRoyal_crimson";
+	refShip.SName			 = "SoleilRoyal";
+	refShip.All				 = "HMS_Endeavour";
+	refShip.id				 = refShip.Name;
+	refShip.Class		     = 1;
+	refShip.Walk			 = "";
+	refShip.Cannon			 = CANNON_TYPE_LONG_LBS32;
+	refShip.MaxCaliber	     = 32;
+	refShip.Weight			 = Tonnes2CWT(4000);
+	refShip.Capacity		 = 4500;
+	refShip.CannonsQuantity  = 112;
+	refShip.Cannons.Borts.cannonf.qty = 4;
+	refShip.Cannons.Borts.cannonb.qty = 4;
+	refShip.MaxCrew			 = 1100;
+	refShip.MinCrew			 = 200;
+	refShip.Price            = 600000;
+	refShip.HP               = 17000;
+	refShip.SP               = 200;
+
+	refShip.Track.Enable = true;
+	refShip.Track1.ZStart = 0.04;
+	refShip.Track1.LifeTime = 64;
+	refShip.Track1.Width = "6.6, 6.5";
+	refShip.Track1.Speed = "8.9, 9.6";
+
+	refShip.Track2.ZStart = -0.11;
+	refShip.Track2.LifeTime = 49;
+	refShip.Track2.Width = "10.8, 11.7";
+	refShip.Track2.Speed = "0.56, 1.09";
+
+	refShip.BigPicTexName	= "SHIPS3"; // Armada
+// KK -->
+	refShip.BI.Tex = 16;
+	refShip.BI.Pic = 40;
+	refShip.QDeck = "ShipDeck3";
+	refShip.CannonsDeck = 2;
+	refShip.CargoHold = 2;
+	refShip.Cabin = "Cabin1";
+	refShip.Flags.Mast0.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast1.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast2.Flag1 = FLAG_PENNANT;
+	refShip.Flags.Mast3.Flag1 = FLAG_ENSIGN;
+	refShip.Flags.Mast4.Flag1 = FLAG_PENNANT;
+// <-- KK
+
+	//Period
+	refShip.period.0 = 0.0; //
+	refShip.period.1 = 0.2; //
+	refShip.period.2 = 0.4; //
+	refShip.period.3 = 0.0; //
+	refShip.period.4 = 0.0; //
+	refShip.period.5 = 0.0; //
+	//Nation
+	refShip.england = 0.0; //
+	refShip.france = 0.00; //
+	refShip.holland = 0.0; //
+	refShip.portugal = 0.0; //
+	refShip.pirate = 0.01; //
+	refShip.spain = 0.0; //
+	refShip.america = 0.0; //
+	refShip.sweden = 0.0; //
+
+	refShip.Model = "SoleilRoyal";
+	refShip.Type.Trade = false;
+	refShip.Type.War = true;
+	refShip.CanEncounter		= true;
+	refShip.CanBuy			= true;
+
+	refShip.EmblemedSails.normalTex = "sail_DeathVessel_whole.tga";
+	refShip.EmblemedSails.nationFileName = "sail_DeathVessel_whole1.tga";
 
 	refShip.WaterLine = 0.0;
 	refShip.SpeedDependWeight = 0.3;

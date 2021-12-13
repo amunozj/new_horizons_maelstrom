@@ -193,6 +193,14 @@ Pinnace4_Descr{Decent speed but not too agile.
 Common trading vessel. Unpainted hull with a simple black striping.}
 Pinnace5_Descr{Decent speed but not too agile.
 Common trading vessel. Unpainted hull with a simple blue striping.}
+Pinnace12_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a white top painting.}
+Pinnace13_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a red top painting.}
+Pinnace14_Descr{Decent speed but not too agile.
+Common trading vessel. Unpainted hull with a blue top painting.}
+Pinnace15_Descr{Decent speed but not too agile.
+Common trading vessel. Hull is painted white with a blue topping.}
 
 NL_Pinnace_Descr{Decent speed but not too agile.
 Decorated Dutch trader with some green paint.}
@@ -215,6 +223,12 @@ This Dutch ship is painted green, brown and white.}
 
 WallerPinnace_Descr{Decent speed but not too agile.
 Capacious naval vessel in gold, brown and white.}
+WallerPinnace2_Descr{Decent speed but not too agile.
+Capacious naval vessel various colors, mostly white and gold.}
+WallerPinnace3_Descr{Decent speed but not too agile.
+Capacious naval vessel with a black hull and red and golden decorations.}
+WallerPinnace_RN_Descr{Decent speed but not too agile.
+Capacious naval vessel in colors of the Royal Navy.}
 
 Galeon1_Descr{You don't expect agility from a galleon.
 Of Spanish design, this one is brown painted.}
@@ -372,6 +386,12 @@ swedishIndiaman_eitc_Descr{Lightly armed trader, very fast with good
 cargo capacity. Painted as an EITC transatlantic trading vessel.}
 swedishIndiaman_red_Descr{Lightly armed trader, very fast with good
 cargo capacity. Hull is not painted with red decoration.}
+swedishIndiaman_gren_Descr{Lightly armed trader, very fast with good
+cargo capacity. A green hull with black decorations marks a common
+trading vessel.}
+swedishIndiaman_FR_Descr{Lightly armed trader, very fast with good
+cargo capacity. Red hull with black decorations, resembling a french
+paint scheme.}
 
 NL_Batavia_Descr{Performance comes second for the 'Batavia'.
 Armed trader in Dutch colours.}
