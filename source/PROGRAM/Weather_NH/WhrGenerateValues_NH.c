@@ -48,11 +48,11 @@ void Whr_GenerateValues(int fogCheck){
 			maxwRain = WRAINTORNADO + 5;
 			break;
 		case 9:  
-			extraBallast = 15;
+			extraBallast = 10;
 			maxwRain = 100;
 			break;
 		case 10: 
-			extraBallast = 15;
+			extraBallast = 10;
 			maxwRain = 100;
 			break;
 		// beginning of the dry season
