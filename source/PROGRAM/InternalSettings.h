@@ -165,7 +165,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define AUTOCREATE_CR 			1 			// BOOL - Set to 1 to create new coastships every time you leave or approach an island. 0 will create ships only if you ask a citizen about them.
 #define DEAD_GENNEW_CR 			0.33 			// FLOAT - chance to make new coastal ship for character if character is dead.
 #define CR_PERSIST 			5 			// INT - number of days until new coastal ship is generated
-#define DS_MULTIFLEET			0.0			// FLOAT - percentage chance of an extra group in a direct-sail encounter.  Default 0.0, no additional groups.  Likely to cause crashes if set above 0.0
+#define DS_MULTIFLEET			35.0			// FLOAT - percentage chance of an extra group in a direct-sail encounter.  Default 0.0, no additional groups.  Likely to cause crashes if set above 0.0
 
 
 // ======================================
@@ -178,7 +178,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 
 #define USE_REAL_CANNONS			1			// BOOL - 0: Stock PotC: guns fire in a high arc, wide left-right traversing
 												//        1: More realistic, direct fire; less left-right traversing possible
-#define EXTRA_HIT_CHECK				1			// BOOL - Enable stray shot hits on friendly ships to cause hostility
+#define EXTRA_HIT_CHECK				0			// BOOL - Enable stray shot hits on friendly ships to cause hostility
 												//        USE_REAL_CANNONS must be set to 1 for this setting to take effect
 												//        1: Yes, when a ship is hit, reduce relation to you
 												//        0: No, accidental hits won't cause hostilities

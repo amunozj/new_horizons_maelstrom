@@ -738,7 +738,7 @@ void procUpdateTime()
 	string timeString;
 	int theHour;
 	int theMinute;
-	bool AddHour = true;
+	bool AddHour = false;
 
 	if (CheckAttribute(mchr, "DisplayTime"))		// LDH changed from BaseCurrentTime - 15Jan09
 	{
