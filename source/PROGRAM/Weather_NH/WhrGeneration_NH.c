@@ -127,8 +127,8 @@ void Whr_Generator(int iHour){
 	fWeatherAngleOld = fWindA;
 
 	if(windABallast >=  MAX_ABALLAST || windABallast <= -MAX_ABALLAST ){ windABallast = 0;}
-	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = MAX_RBALLAST;}
-	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast = -MAX_RBALLAST;}
+	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = 0;}
+	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast = 0;}
 	if(windBallast  >=  MAX_WBALLAST )                                 { windBallast = -MAX_WBALLAST;}
 	if(windBallast  <= -MAX_WBALLAST )                                 { windBallast =  MAX_WBALLAST;}
 	if(fogBallast   >=  MAX_FBALLAST )                                 { fogBallast  = -MAX_FBALLAST;}

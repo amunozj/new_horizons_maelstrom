@@ -96,7 +96,7 @@ void Whr_FogRainCheck(){
 			break;
 
 			case  "Black Pearl Fight":
-				wRain = RAINSTORM + 10;
+				wRain = WRAINSTORM + 10;
 				Fog = 15;
 			//	OWind = 25;
 			break;

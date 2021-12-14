@@ -44,6 +44,8 @@ void ShowMap()
 	fakeMap.X = fakeMapPosX;
 	fakeMap.Y = fakeMapPosY;
 
+	SetCorrectWorldMapPosition();
+
 	fakeMap.poz.X = makefloat(makefloat(worldMap.playerShipX)/FAKE_MAP_TO_SEA_SCALE_X);
 	fakeMap.poz.Y = makefloat(makefloat(worldMap.playerShipZ)/FAKE_MAP_TO_SEA_SCALE_Y);
 
@@ -52,7 +54,7 @@ void ShowMap()
 
 	ref shipRef = GetShipByType(GetCharacterShipType(chm));
 	aref arship; makearef(arship, chm.ship);
-	int picScale = 7;
+	int picScale = 5;
 
 	// PB: Legend -->
 	if(bAnimation)
