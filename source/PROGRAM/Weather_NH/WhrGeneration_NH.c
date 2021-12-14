@@ -142,8 +142,8 @@ void Whr_Generator(int iHour){
 
 	// Reverse rain ballast when maximum rain has been reached
 	if (wRain >= maxwRain){
-		wRain = maxwRain;
-		rainBallast = -MAX_RBALLAST+10;
+		wRain = 0;
+		rainBallast = 0;
 	}
 
 
