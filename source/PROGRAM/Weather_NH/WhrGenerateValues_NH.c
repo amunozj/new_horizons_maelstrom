@@ -18,11 +18,11 @@ void Whr_GenerateValues(int fogCheck){
 			maxwRain = WRAINRAIN + 5;
 			break;
 		case 2:  
-			extraBallast = -20;
+			extraBallast = -15;
 			maxwRain = WRAINOVERCAST - 5;
 			break;
 		case 3:  
-			extraBallast = -20;
+			extraBallast = -15;
 			maxwRain = WRAINOVERCAST - 5;
 			break;
 		case 4:  
@@ -35,24 +35,24 @@ void Whr_GenerateValues(int fogCheck){
 			maxwRain = WRAINSTORM + 5;
 			break; 
 		case 6:  
-			extraBallast = 10;
+			extraBallast = 5;
 			maxwRain = WRAINSTORM + 10;
 			break;
 		case 7:  
-			extraBallast = 10;
+			extraBallast = 5;
 			maxwRain = WRAINSTORM + 15;
 			break;
 		// Twisters possible
 		case 8:  
-			extraBallast = 15;
+			extraBallast = 10;
 			maxwRain = WRAINTORNADO + 5;
 			break;
 		case 9:  
-			extraBallast = 20;
+			extraBallast = 15;
 			maxwRain = 100;
 			break;
 		case 10: 
-			extraBallast = 20;
+			extraBallast = 15;
 			maxwRain = 100;
 			break;
 		// beginning of the dry season
