@@ -5106,7 +5106,7 @@ void InitOpenSeaMod()
 
 		TIMESCALAR_SEA =									 30;		// INT - how many seconds of gametime one second of realtime is at sea
 		MAX_WBALLAST =										25;		// INT - how far the weighting will swing in favor of current trend.. use positive integer between 0 and 50 - 0 is no swing - 50 is major swing.. this is for Windspeed
-		MAX_RBALLAST =										25;		// ^^DITTO for rain
+		MAX_RBALLAST =										30;		// ^^DITTO for rain
 		MAX_FBALLAST =										25;		// ^^DITTO for fog
 		MAX_ABALLAST =										25.0;	// FLOAT - ^^DITTO for wind angle
 
