@@ -519,13 +519,13 @@ void CreateWeatherEnvironment()
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
-	// Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	// Particles.winddirection.x = sin(Whr_GetWindAngle());
-	// Particles.winddirection.z = cos(Whr_GetWindAngle());
-
-	// ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	// ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-	// ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
+	Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	Particles.winddirection.x = sin(Whr_GetWindAngle());
+	Particles.winddirection.z = cos(Whr_GetWindAngle());
+	
+	ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
 
