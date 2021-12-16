@@ -15,7 +15,7 @@
 
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
-#define PARTICLESPOWER 1.0
+#define PARTICLESPOWER 0.0
 
 #define DEBUG_SEA_OPTICAL 0
 
