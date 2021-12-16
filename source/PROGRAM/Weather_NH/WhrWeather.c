@@ -15,7 +15,7 @@
 
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
-#define PARTICLESPOWER 0.0
+#define PARTICLESPOWER 1.0
 
 #define DEBUG_SEA_OPTICAL 0
 
@@ -445,7 +445,6 @@ void CreateWeatherEnvironment()
 
     // boal -->'
 	WhrCreateRainEnvironment();
-
 	bRain = bWeatherIsRain; // Whr_isRainEnable();
     string sLocation = "";
     int iLocation = -1;
@@ -453,6 +452,7 @@ void CreateWeatherEnvironment()
        sLocation = pchar.location;
        iLocation = FindLocation(sLocation);
     }
+
 	if(iLocation != -1)
 	{
 		ref rLoc;
@@ -479,6 +479,7 @@ void CreateWeatherEnvironment()
 			}
 		}
 	}
+
 	if (!bRain)
 	{
 		ClearRainEnvironment();
@@ -518,12 +519,13 @@ void CreateWeatherEnvironment()
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
-	Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	Particles.winddirection.x = sin(Whr_GetWindAngle());
-	Particles.winddirection.z = cos(Whr_GetWindAngle());
-	ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
+	// Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	// Particles.winddirection.x = sin(Whr_GetWindAngle());
+	// Particles.winddirection.z = cos(Whr_GetWindAngle());
+
+	// ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	// ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+	// ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
 
