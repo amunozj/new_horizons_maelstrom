@@ -286,28 +286,35 @@ void Whr_Generator(int iHour){
 	// Correct it, if it open sea
 	pchar = GetMainCharacter();
 	float closestdist = 0.0;
-	if (CheckAttribute(worldMap, "directsail1.closestdist")){
-		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
-		closestdist = worldMap.directsail1.closestdist;
-		if (RANDOMDEBUG) trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
-	}else{
-		if (RANDOMDEBUG) trace("weather Char location: " + pchar.location);
-	}
+	// if (CheckAttribute(worldMap, "directsail1.closestdist")){
+	// 	if (RANDOMDEBUG) trace("weather Char location: " + pchar.location + " closest island: " + worldMap.closestisland + "Closest distance: " + worldMap.directsail1.closestdist);
+	// 	closestdist = worldMap.directsail1.closestdist;
+	// 	if (RANDOMDEBUG) trace("closestdist: " + closestdist + "conditional: " + SHORECOLORDISTANCE);
+	// }else{
+	// 	if (RANDOMDEBUG) trace("weather Char location: " + pchar.location);
+	// }
 
 	int darkgrayWater = argb(0,20,20,20);
-	if (pchar.location == WDM_NONE_ISLAND || closestdist > SHORECOLORDISTANCE)
-	{
-		WaterColor = waterColor_openSea();
-		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);
-	}else{
-		// If not open sea reduce the amount of water color and fog color
-		fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
-		transparency = 1.2 - fog2trans;
-		if (transparency < 0) transparency = 0.0;
-		if (fog2trans > 1) fog2trans = 1.0;
-		fblend2 = fblend2 - 0.05;
-	}
 
+	if (CheckAttribute(pchar, "location")){
+
+		if (pchar.location == WDM_NONE_ISLAND || closestdist > SHORECOLORDISTANCE)
+		{
+			WaterColor = waterColor_openSea();
+			WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);
+		}else{
+			// If not open sea reduce the amount of water color and fog color
+			fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
+			transparency = 1.2 - fog2trans;
+			if (transparency < 0) transparency = 0.0;
+			if (fog2trans > 1) fog2trans = 1.0;
+			fblend2 = fblend2 - 0.05;
+		}
+
+	}else{
+		WaterColor = waterColor_openSea();
+		WaterColor = Whr_BlendColor( fog2trans*0.8, WaterColor, darkgrayWater);		
+	}
 
 	WaterColor = Whr_BlendColor( fblend, WaterColor, darkWater);
 	WeathersNH.Sea2.WaterColor = WaterColor;
