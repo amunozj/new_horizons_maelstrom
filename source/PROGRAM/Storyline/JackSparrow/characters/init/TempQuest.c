@@ -2316,7 +2316,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Ragetti_dialog.c";
 	ch.rank 	= 28;
 	ch.reputation = "15";
-	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));;
+	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));
 	ch.skill.Leadership = "5";
 	ch.skill.Fencing = "8";
 	ch.skill.Sailing = "5";
@@ -2351,7 +2351,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Pintel_dialog.c";
 	ch.rank 	= 28;
 	ch.reputation = "15";
-	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));;
+	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));
 	ch.skill.Leadership = "5";
 	ch.skill.Fencing = "8";
 	ch.skill.Sailing = "5";
@@ -4460,7 +4460,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Bos'un_dialog.c";
 	ch.rank 	= 28;
 	ch.reputation = "15";
-	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));;
+	ch.experience = CalculateExperienceFromRank(28)+ (CalculateExperienceFromRank(28)/10 + rand(28000));
 	ch.skill.Leadership = "5";
 	ch.skill.Fencing = "8";
 	ch.skill.Sailing = "5";

@@ -31460,7 +31460,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar, "bladebottle_CT2_sulf_w", -20); TakeNItems(Pchar, "bladebottle_CT2_sulf_c", -20); TakeNItems(Pchar, "bladebottle_CT2_hydr", -20);
 			TakeNItems(Pchar, "bladebottle_CT2_hydrnitr", -20); TakeNItems(Pchar, "bladebottle_CA2", -20); TakeNItems(Pchar, "bladebottle_CG2", -20);
 			TakeNItems(Pchar, "bladebottle_CP2", -20); TakeNItems(Pchar, "bladetop", -20); TakeNItems(Pchar, "bladebottle_CT2_nitr_w", -20)
-			TakeNItems(Pchar, "bladebottle_CB1", -20);;
+			TakeNItems(Pchar, "bladebottle_CB1", -20);
 
 			TakeNItems(Pchar, "pistolretort", -20); TakeNItems(Pchar, "pistolglass_tube", -20); TakeNItems(Pchar, "pistolcopperas", -20);
 			TakeNItems(Pchar, "pistolnitre", -20); TakeNItems(Pchar, "pistolsalt", -20);

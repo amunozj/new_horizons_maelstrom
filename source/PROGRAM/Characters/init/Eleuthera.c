@@ -502,7 +502,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetGuardianType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
-	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");;
+	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
 	ch.greeting = "Gr_Redmond Soldier";
 	AddGameCharacter(n, ch);
 
