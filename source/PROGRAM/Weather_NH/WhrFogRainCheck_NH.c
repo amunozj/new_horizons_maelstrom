@@ -1,4 +1,8 @@
 #define FOGHEIGHTFACTOR 40.0
+#define WRAINOVERCAST 30
+#define WRAINRAIN 50
+#define WRAINSTORM 70
+#define WRAINTORNADO 90
 
 bool morningFogChecked = false; 
 bool morningFog = false; 
@@ -14,7 +18,7 @@ void Whr_FogRainCheck(){
 	int theHour = GetHour();
 	int fogchance = 0;
 
-	trace("Fog value: " + fog + "weather hour: " + theHour);
+	// trace("Fog value: " + fog + "weather hour: " + theHour);
 
 
 	if (theHour <= 4 || theHour >= 10){
@@ -57,22 +61,22 @@ void Whr_FogRainCheck(){
 			break;
 
 			case "Overcast":
-				wRain = 70;
+				wRain = WRAINOVERCAST + 10;
 				//Log_SetStringToLog("JRH_rain = Overcast");
 			break;
 
 			case "Rainy":
-				wRain = 80;
+				wRain = WRAINRAIN + 10;
 				//Log_SetStringToLog("JRH_rain = Rainy");
 			break;
 
 			case  "Heavy Rain":
-				wRain = 90;
+				wRain = WRAINSTORM;
 				//Log_SetStringToLog("JRH_rain = Heavy Rain");
 			break;
 
 			case  "Stormy":
-				wRain = 97;
+				wRain = WRAINSTORM + 10;
 			break;
 
 			case "Heavy Storm":
@@ -90,7 +94,7 @@ void Whr_FogRainCheck(){
 			break;
 
 			case  "Black Pearl Fight":
-				wRain = 90;
+				wRain = WRAINSTORM + 10;
 				Fog = 15;
 			//	OWind = 25;
 			break;
@@ -124,7 +128,7 @@ void Whr_FogRainCheck(){
 	WeathersNH.Lights = 0;
 
 //  LDH more fog during rain - 26Feb09
-	if (wRain > 75 && fog < 10) fog += (wRain-75);
+	if (wRain > WRAINRAIN && fog < 10) fog += (wRain - WRAINRAIN)/2.0;
 
 	if (fog < MINIMUMFOG){fog=MINIMUMFOG}
 
@@ -141,37 +145,6 @@ void Whr_FogRainCheck(){
 	WeathersNH.SpecialSeaFog.Start = 0.0;
 	WeathersNH.SpecialSeaFog.Density = fog*FOGFACTOR;
 	WeathersNH.SpecialSeaFog.SeaDensity = fog*FOGFACTOR;
-
-
-// 	if ( fog >= MINIMUMFOG ){
-// 		WeathersNH.Fog.Enable = true;
-// 		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09
-// 		WeathersNH.Fog.Start = 0.0;
-// //		WeathersNH.Fog.Density = (fog*0.00025);
-// 		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
-// 		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.Enable = true;
-// 		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
-// 		WeathersNH.SpecialSeaFog.Start = 0.0;
-// 		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-// 	}
-// 	else{
-// 		WeathersNH.Fog.Enable = true;
-// 		WeathersNH.Fog.Height = 300.0*FOGHEIGHTFACTOR;
-// 		WeathersNH.Fog.Start = 0.0;
-// 		WeathersNH.Fog.Density = 0.001*FOGFACTOR;
-// 		WeathersNH.Fog.SeaDensity = 0.001*FOGFACTOR;
-// 		WeathersNH.Fog.IslandDensity = 0.001*FOGFACTOR;
-
-// 		WeathersNH.SpecialSeaFog.Enable = true;
-// 		WeathersNH.SpecialSeaFog.Height = 500.0*FOGHEIGHTFACTOR;
-// 		WeathersNH.SpecialSeaFog.Start = 0.0;
-// 		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
-		
-// 	}
 
 	if (fog > 10){
 		WeathersNH.Lights = 1;
@@ -205,13 +178,12 @@ void Whr_FogRainCheck(){
 	WeathersNH.Sun.Reflection.Enable = true;
 	WeathersNH.Rainbow.Enable = false;
 
-	if (wRain > 75)
+	if (wRain >= WRAINRAIN)
 	{
 		WeatherParams.Rain = true;
 		bWeatherIsRain = true; // screwface
 		WeathersNH.Lightning.Enable = false;
-		WeathersNH.Sky.Dir = "weather\skies\7\\";
-		WeathersNH.Rain.NumDrops = ((wRain-75)*400);
+		WeathersNH.Rain.NumDrops = ((wRain-WRAINRAIN)*400);
 		WeathersNH.Rain.Color = argb(0,73,73,73);
 		WeathersNH.Rain.DropLength = (1.12);
 		WeathersNH.Rain.Height = 30.0;
@@ -226,7 +198,7 @@ void Whr_FogRainCheck(){
 
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
-		if(wRain > 80 && wRain < 85){
+		if(wRain >= WRAINSTORM && wRain < WRAINSTORM + 10){
 			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 14.0;
 			WeathersNH.Rain.MaxBlend = 95;
@@ -238,7 +210,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.Water.Color = argb(0,24,44,78);
 			WeathersNH.Sky.Color = argb(0,220,220,255);
 		}
-		if(wRain >= 85 && wRain < 95){
+		if(wRain >= WRAINSTORM + 10 && wRain < WRAINTORNADO){
 			WeathersNH.Rain.Speed = 16.0;
 			WeathersNH.Rain.MaxBlend = 115;
 			WeathersNH.Rain.DropLength = (1.75);
@@ -255,7 +227,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
 			WeathersNH.Sky.Color = argb(0,210,210,255);
 		}
-		if(wRain >= 95){
+		if(wRain >= WRAINTORNADO){
 			WeathersNH.StormSky = true;
 			WeathersNH.Rain.Speed = 18.0;
 			WeathersNH.Rain.MaxBlend = 129;
@@ -289,7 +261,7 @@ void Whr_FogRainCheck(){
 				WeatherParams.Storm = true;
 				WeatherParams.tornado = true;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
-				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
+				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Seï¿½or or similar
 					string PCCaptainTitle;
 					if(PChar.sex == "woman")
 						PCCaptainTitle = "Ma'am";

@@ -4763,11 +4763,11 @@ void UpdateShipPower()
 }
 
 // Capsizing -->
-#define ROLL_ANGLE_WARNING 11 // Armada: For testing purposes, you can decrease any of the values on the left
-#define ROLL_ANGLE_MORALE  12 // to make the various events occur more easily.
-#define ROLL_ANGLE_GOODS   13
-#define ROLL_ANGLE_DAMAGE  14
-#define ROLL_ANGLE_CAPSIZE 15
+#define ROLL_ANGLE_WARNING 21 // Armada: For testing purposes, you can decrease any of the values on the left
+#define ROLL_ANGLE_MORALE  22 // to make the various events occur more easily.
+#define ROLL_ANGLE_GOODS   33
+#define ROLL_ANGLE_DAMAGE  34
+#define ROLL_ANGLE_CAPSIZE 45
 
 void UpdateShipRoll()
 {
@@ -5090,8 +5090,8 @@ void InitOpenSeaMod()
 																	// 0.0 : Stock PotC, no local ships at all
 																	// 0.1 - 0.9 : The higher that value the more pirates instead of merchants appear
 		NAVYRAIDER_CHANCE = 								2.0; 	// FLOAT - Ditto, but chance that raider is a foreign warship. Chance for that is coastraider_chance * navyraider_chance
-		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			100.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
-		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	100.0;	// FLOAT - original value is 500
+		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			750.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
+		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3500;	// INT - in feet/yards/whatever unit the game uses.
 
 		WDM_MAP_TO_SEA_SCALE =								60.0;		// orig 19.607843 for this and next line
@@ -5104,9 +5104,9 @@ void InitOpenSeaMod()
 		ENCOUNTERBREAK =									1.25;	// LDH - Changed to float, number is hours per encounter, directsail is called every 5 minutes occasionally
 		// so you can let the clock run faster (by increasing TIMESCALAR_SEA below), meaning longer voyagetimes, without getting too many encounters.
 
-		TIMESCALAR_SEA =									 5;		// INT - how many seconds of gametime one second of realtime is at sea
+		TIMESCALAR_SEA =									 30;		// INT - how many seconds of gametime one second of realtime is at sea
 		MAX_WBALLAST =										25;		// INT - how far the weighting will swing in favor of current trend.. use positive integer between 0 and 50 - 0 is no swing - 50 is major swing.. this is for Windspeed
-		MAX_RBALLAST =										25;		// ^^DITTO for rain
+		MAX_RBALLAST =										30;		// ^^DITTO for rain
 		MAX_FBALLAST =										25;		// ^^DITTO for fog
 		MAX_ABALLAST =										25.0;	// FLOAT - ^^DITTO for wind angle
 
@@ -5118,11 +5118,11 @@ void InitOpenSeaMod()
 																	// 0.0 : Stock PotC, no local ships at all
 																	// 0.1 - 0.9 : The higher that value the more pirates instead of merchants appear
 		NAVYRAIDER_CHANCE = 								0.4; 	// FLOAT - Ditto, but chance that raider is a foreign warship. Chance for that is coastraider_chance * navyraider_chance
-		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			500.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
+		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			750.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
 		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3000;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =							40;	// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_SCALE =							60;	// orig 19.607843 for this and next line
 		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =				90;	// was 60 in build, 10.0 in stock. NK 05-04-30
 	}
 }

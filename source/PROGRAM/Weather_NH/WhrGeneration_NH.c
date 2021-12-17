@@ -3,14 +3,15 @@
 #include "Weather_NH\WhrDebugInfo_NH.c"
 
 #define GENERATIONDEBUG 0
-#define RANDOMDEBUG 1
+#define RANDOMDEBUG 0
+#define RAINDEBUG 1
 
 #define WIND2WAVESPEED 0.25
 #define WIND2WAVELENGTH 6.0
 #define WIND2AMPLITUDE 0.3
 
 #define RAIN2AMPLITUDE 2.0
-#define RAIN2WIND 1.0
+#define RAIN2WIND 0.75
 
 #define WIND2WAVELENGTH2 1.5
 #define WIND2AMPLITUDE2 0.1
@@ -105,16 +106,16 @@ void Whr_Generator(int iHour){
 	if(bWhrStorm){
 		wRain = 95;
 		winds = 25;
-		windBallast = 10;
-		rainBallast = 10;
+		windBallast = 25;
+		rainBallast = 25;
 		fog = 30;
 		bWeatherIsStorm = true; // screwface
 	}
 	if(bWhrTornado){
 		wRain = 100;
 		winds = 30;
-		windBallast = 20;
-		rainBallast = 20;
+		windBallast = 25;
+		rainBallast = 25;
 		fog = 40;
 	}
 	btornado = bWhrTornado; //screwface
@@ -126,18 +127,25 @@ void Whr_Generator(int iHour){
 	fWeatherAngleOld = fWindA;
 
 	if(windABallast >=  MAX_ABALLAST || windABallast <= -MAX_ABALLAST ){ windABallast = 0;}
-	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = -MAX_RBALLAST;}
-	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast =  MAX_RBALLAST;}
+	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = 0;}
+	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast = 0;}
 	if(windBallast  >=  MAX_WBALLAST )                                 { windBallast = -MAX_WBALLAST;}
 	if(windBallast  <= -MAX_WBALLAST )                                 { windBallast =  MAX_WBALLAST;}
 	if(fogBallast   >=  MAX_FBALLAST )                                 { fogBallast  = -MAX_FBALLAST;}
 	if(fogBallast   <= -MAX_FBALLAST )                                 { fogBallast  =  MAX_FBALLAST;}
 
-	if(wRain >= 85 && winds <= 10){ windBallast = 15;}
-	if(winds <= 25 && wRain >= 90){ rainBallast = -15;}
+	if(wRain >= WRAINSTORM && winds <= 10){ windBallast = 15;}
+	if(winds <= 25 && wRain >= WRAINSTORM){ rainBallast = -15;}
 	if(fog > 0 && curTime >= 6 && curTime <= 22 && wRain <= 60){fogBallast = -30;}
 	if(fogBallast < 0 && curTime > 22 || curTime < 6){fogBallast = 0;}
 	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}
+
+	// Reverse rain ballast when maximum rain has been reached
+	if (wRain >= maxwRain){
+		wRain = 0;
+		rainBallast = 0;
+	}
+
 
 	minwind = winds - rand(2);
 	maxwind = winds + rand(2);
@@ -169,7 +177,7 @@ void Whr_Generator(int iHour){
 
 	// trace("winds: " + winds + " Realized winds" + seaWindSpeed);
 
-	float effectiveRain = (wRain-70)*RAIN2WIND;
+	float effectiveRain = (wRain-WRAINRAIN)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	// Bupmscale the sea grainyness
@@ -252,7 +260,7 @@ void Whr_Generator(int iHour){
 
 
 	// Apply fog and rain to transparency
-	effectiveRain = (wRain-70)/30.0;
+	effectiveRain = (wRain-WRAINRAIN)/(100 - WRAINRAIN);
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
@@ -348,14 +356,14 @@ void Whr_Generator(int iHour){
 		WeathersNH.Sun.Overflow.Enable = false;
 	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
-		if (wRain > 80) {skydir_night();}
+		if (wRain >= WRAINOVERCAST) {skydir_night();}
 		WeathersNH.Planets.enable = true;
 		WeathersNH.Stars.Enable = true;
 		WeathersNH.Sun.Flare.Enable = false;
 		WeathersNH.Sun.Overflow.Enable = false;
 		}
 
-	if (wRain >60){
+	if (wRain >= WRAINOVERCAST){
 		WeathersNH.Planets.enable = false;
 		WeathersNH.Stars.Enable = false;
 	}
@@ -373,7 +381,7 @@ void Whr_Generator(int iHour){
 
 	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
 
-	if (curTime >= 6 && curTime <= 22 && wRain >60 ) {skydir = skydir_day_overcast();}
+	if (curTime >= 6 && curTime <= 22 && wRain >= WRAINOVERCAST ) {skydir = skydir_day_overcast();}
 
 	WeathersNH.Sky.Dir = skydir;
 
