@@ -3,47 +3,47 @@ TEXT	{
 Hostilidades en el mar:
 
 Los fuertes y los barcos en el mar pueden ser hostiles hacia ti por las siguientes razones:
-- Si son hostiles hacia la naci√≥n cuya bandera llevas izada.
+- Si son hostiles hacia la naciÛn cuya bandera llevas izada.
 - Si son hostiles hacia ti personalmente, y te han reconocido bajo una bandera falsa.
 - Si recuerdan que has sido hostil hacia ellos en un encuentro anterior.
 - Si has abierto fuego sobre ellos deliberadamente.
 
-Abrir fuego deliberadamente sobre barcos amistosos o alcanzarlos accidentalmente reduce tu reputaci√≥n.
+Abrir fuego deliberadamente sobre barcos amistosos o alcanzarlos accidentalmente reduce tu reputaciÛn.
 
 -----------------------------------------
 Banderas falsas:
 
-El uso de una bandera falsa para para obtener una ventaja t√°ctica antes de una batalla, o para entrar en un puerto enemigo clandestinamente, es perfectamente aceptable. Pero siempre debes izar tu propia bandera (o al menos la bandera de una naci√≥n que el objetivo ocnsidere hostil) antes de abrir fuego.
+El uso de una bandera falsa para para obtener una ventaja t·ctica antes de una batalla, o para entrar en un puerto enemigo clandestinamente, es perfectamente aceptable. Pero siempre debes izar tu propia bandera (o al menos la bandera de una naciÛn que el objetivo ocnsidere hostil) antes de abrir fuego.
 
-Los fuertes y otros barcos pueden verte cambiar la bandera si est√°s en su campo de visi√≥n. Ten en cuenta que los fuertes pueden ver a mucha distancia. Si un fuerte te ve bajo una bandera hostil, lo recordar√° y te reconocer√°. Por lo tanto, si tienes la intenci√≥n de entrar en un puerto hostil bajo una bandera falsa, aseg√∫rate de izar tu bandera falsa a buena distancia de la costa.
+Los fuertes y otros barcos pueden verte cambiar la bandera si est·s en su campo de visiÛn. Ten en cuenta que los fuertes pueden ver a mucha distancia. Si un fuerte te ve bajo una bandera hostil, lo recordar· y te reconocer·. Por lo tanto, si tienes la intenciÛn de entrar en un puerto hostil bajo una bandera falsa, aseg˙rate de izar tu bandera falsa a buena distancia de la costa.
 
 Si te han reconocido, hay varias formas de evitar que te sigan reconociendo como hostil en el futuro:
-- Hacer las peces con esa naci√≥n, incluso si es solo durante el tiempo necesario para resolver tus asuntos en el puerto y marcharte.
-- Adquirir un barco diferente. El fuerte recuerda tu barco, por lo que si ya no tienes un barco del mismo tipo, el fuerte ya no te reconocer√° (No basta con repintar el barco o ocn d√°rselo a un oficial subordinado. Si el fuerte ve ese barco, o cualquier barco del mismo tipo dentro de tu flota, te reconocer√°).
+- Hacer las peces con esa naciÛn, incluso si es solo durante el tiempo necesario para resolver tus asuntos en el puerto y marcharte.
+- Adquirir un barco diferente. El fuerte recuerda tu barco, por lo que si ya no tienes un barco del mismo tipo, el fuerte ya no te reconocer· (No basta con repintar el barco o ocn d·rselo a un oficial subordinado. Si el fuerte ve ese barco, o cualquier barco del mismo tipo dentro de tu flota, te reconocer·).
 
 -----------------------------------------
 Actos deshonrosos:
 
-Dependiendo de la situaci√≥n, puede que est√©s cometiendo un acto deshonroso cuando captures o hundas cualquier barco que no sea pirata. Los siguientes actos se consideran criminales por parte de las naciones civilizadas del mundo. Por orden de menor a mayor graverdad:
-- No contar con una patente de corso o un nombramiento de la Armada, y por lo tanto no tener raz√≥n legal para el ataque.
+Dependiendo de la situaciÛn, puede que estÈs cometiendo un acto deshonroso cuando captures o hundas cualquier barco que no sea pirata. Los siguientes actos se consideran criminales por parte de las naciones civilizadas del mundo. Por orden de menor a mayor graverdad:
+- No contar con una patente de corso o un nombramiento de la Armada, y por lo tanto no tener razÛn legal para el ataque.
 - Atacar bajo bandera pirata.
-- Atacar a una naci√≥n neutral o aliada.
+- Atacar a una naciÛn neutral o aliada.
 - Atacar bajo una bandera que el barco atacado considere amistosa.
 
-Dependiendo de la gravedad de tus acciones, puede que se te reconozca como traidor en ciudades no controladas por piratas. Por actos deshonrosos leves, esto puede tardar un tiempo en ocurrir. Pero las ofensas graves se consideran actos de pirater√≠a y afectan a tu relaci√≥n con todas las naciones.
+Dependiendo de la gravedad de tus acciones, puede que se te reconozca como traidor en ciudades no controladas por piratas. Por actos deshonrosos leves, esto puede tardar un tiempo en ocurrir. Pero las ofensas graves se consideran actos de piraterÌa y afectan a tu relaciÛn con todas las naciones.
 
-Siempre puedes cambiar la bandera que llevas izada al entrar en combate, lo que puede significar la diferencia entre que tus acciones sean consideradas legales o un grave acto de pirater√≠a. Conviene tener cuidado, especialmente, cuando te reconocen navegando bajo bandera falsa.
+Siempre puedes cambiar la bandera que llevas izada al entrar en combate, lo que puede significar la diferencia entre que tus acciones sean consideradas legales o un grave acto de piraterÌa. Conviene tener cuidado, especialmente, cuando te reconocen navegando bajo bandera falsa.
 
 -----------------------------------------
 Relaciones internacionales:
 
-Obtener puntos con cualquier naci√≥n requiere que te unas a sus filas como corsario u oficial de la Armada, o que te unas a la Hermandad Pirata. Mientras sirvas a una √∫nica naci√≥n, tus relaciones con las dem√°s estar√°n dictadas por las relaciones de tu naci√≥n. Aunque puedes unirte a tantas naciones como desees al mismo tiempo, esto reducir√° los puntos que ganas por tus acciones con cada una de ellas.
+Obtener puntos con cualquier naciÛn requiere que te unas a sus filas como corsario u oficial de la Armada, o que te unas a la Hermandad Pirata. Mientras sirvas a una ˙nica naciÛn, tus relaciones con las dem·s estar·n dictadas por las relaciones de tu naciÛn. Aunque puedes unirte a tantas naciones como desees al mismo tiempo, esto reducir· los puntos que ganas por tus acciones con cada una de ellas.
 
-Las naciones del mundo no ven con buenos ojos ninguna acci√≥n hostil contra sus aliados. Por ello, es importante mantenerse al d√≠a con las noticias de las tabernas. Esto puede volverse especialmente complicado si sirves a varias naciones a la vez.
+Las naciones del mundo no ven con buenos ojos ninguna acciÛn hostil contra sus aliados. Por ello, es importante mantenerse al dÌa con las noticias de las tabernas. Esto puede volverse especialmente complicado si sirves a varias naciones a la vez.
 
 -----------------------------------------
 Prisioneros de guerra:
 
-Los oficiales de la Armada y los corsarios est√°n obligados a tratar a los prisioneros con respeto. Exigir un rescate por su liberaci√≥n es aceptable. Ejecutarlos no lo es. Si adquieres el h√°bito de ejecutar prisioneros, puedes perder ascensos y, en √∫ltimo t√©rmino, puedes llegar a ser expulsado del servicio (sin embargo, tanto oficiales de la Armada como corsarios pueden ahorcar piratas sin ninguna penalizaci√≥n).
+Los oficiales de la Armada y los corsarios est·n obligados a tratar a los prisioneros con respeto. Exigir un rescate por su liberaciÛn es aceptable. Ejecutarlos no lo es. Si adquieres el h·bito de ejecutar prisioneros, puedes perder ascensos y, en ˙ltimo tÈrmino, puedes llegar a ser expulsado del servicio (sin embargo, tanto oficiales de la Armada como corsarios pueden ahorcar piratas sin ninguna penalizaciÛn).
 
 }

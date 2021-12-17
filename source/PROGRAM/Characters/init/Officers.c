@@ -208,7 +208,7 @@ void CreateOfficersCharacters(ref n)
 	ch.isOfficer = true;
 	AddGameCharacter(n, ch);
 
-	// Claire Larrouse ГґГ°Г Г­Г¶ГіГ§Г±ГЄГЁГ© ГЇГЁГ°Г ГІ Гў ГІГ ГўГҐГ°Г­ГҐ Г€Г±Г«Г  ГЊГіГЅГ«Г«ГҐ.
+	// Claire Larrouse французский пират в таверне Исла Муэлле.
 	ch.old.name = "Claire";
 	ch.old.lastname = "Larrouse";
 	ch.name = TranslateString("","Claire"); // was Clair
@@ -265,7 +265,7 @@ void CreateOfficersCharacters(ref n)
 	ch.isOfficer = true;
 	AddGameCharacter(n, ch);
 
-	// Jaoquin De Masse  Г¬Г Г«ГјГІГЁГ©Г±ГЄГЁГ© Г°Г»Г¶Г Г°Гј.
+	// Jaoquin De Masse  мальтийский рыцарь.
 	ch.old.name = "Jaoquin";
 	ch.old.lastname = "De Masse";
 	ch.name = TranslateString("","Jaoquin");
@@ -516,7 +516,7 @@ void CreateOfficersCharacters(ref n)
 	ch.quest.officertype = OFFIC_TYPE_BOATSWAIN;
 	AddGameCharacter(n, ch);
 
-	// Edgar Attwood ГІГѕГ°ГҐГ¬Г№ГЁГЄ Г­Г  Г°ГҐГ¤Г¬Г®Г­Г¤ГҐ - ГЄГ Г­Г®Г­ГЁГ°.
+	// Edgar Attwood тюремщик на редмонде - канонир.
 	ch.old.name = "Edgar";
 	ch.old.lastname = "Attwood";
 	ch.name = TranslateString("","Edgar");

@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 
 	switch(Dialog.CurrentNode)
 	{
-		//-----------------------------------������ ������ - ������ �������
+		//-----------------------------------?????? ?????? - ?????? ???????
 		case "First time":
 			Dialog.defAni = "dialog_stay1";
 			Dialog.defCam = "1";

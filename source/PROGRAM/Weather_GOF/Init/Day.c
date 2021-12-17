@@ -122,7 +122,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//����, �������, ������ ����� � ������, ��������� ������� �����, �������� �����
+	//????, ???????, ?????? ????? ? ??????, ????????? ??????? ?????, ???????? ?????
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.5, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 5.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 8.0, 2.5, 0.0, 200.00";
@@ -136,8 +136,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
-	Weathers[n].Sea2.PosShift = 0.0; //��������������� ����
+	Weathers[n].Sea2.BumpScale = 0.05; //?????? ?????
+	Weathers[n].Sea2.PosShift = 0.0; //??????????????? ????
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 10, 90, 120);
 	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
@@ -150,10 +150,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.45;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 7.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.30; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 7.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.30; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.1;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -292,7 +292,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//����, �������, ������ ����� � ������, ��������� ������� �����, �������� �����
+	//????, ???????, ?????? ????? ? ??????, ????????? ??????? ?????, ???????? ?????
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.5, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 5.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 8.0, 2.5, 0.0, 200.00";
@@ -306,8 +306,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
-	Weathers[n].Sea2.PosShift = 2.0; //��������������� ����
+	Weathers[n].Sea2.BumpScale = 0.05; //?????? ?????
+	Weathers[n].Sea2.PosShift = 2.0; //??????????????? ????
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
@@ -320,10 +320,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.35;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 7.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.30; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 7.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.30; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "2.0, 0.0, 0.0"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.1;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -470,10 +470,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.8; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 6.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.8; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -620,10 +620,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.8; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 6.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.8; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -770,10 +770,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.8; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 6.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.8; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "0.0, 0.0, 3.0"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
@@ -905,7 +905,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//����, �������, ������ ����� � ������, ��������� ������� �����, �������� �����
+	//????, ???????, ?????? ????? ? ??????, ????????? ??????? ?????, ???????? ?????
 	Weathers[n].Sea.Harmonics.h1 = "90.0, 2.0, 4.5, 0.0, 10.0";
 	Weathers[n].Sea.Harmonics.h2 = "45.0, 1.0, 6.0, 0.0, 50.0";
 	Weathers[n].Sea.Harmonics.h2 = "0.0, 4.0, 2.0, 0.0, 150.0";
@@ -918,8 +918,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
-	Weathers[n].Sea2.PosShift = 0.1; //��������������� ����
+	Weathers[n].Sea2.BumpScale = 0.05; //?????? ?????
+	Weathers[n].Sea2.PosShift = 0.1; //??????????????? ????
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 175, 255, 255);
@@ -932,10 +932,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.08; 
 	Weathers[n].Sea2.Attenuation = 0.2;
 
-	Weathers[n].Sea2.Amp1 = 12.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.25; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 12.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.25; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.5;
 	Weathers[n].Sea2.AnimSpeed2 = 9.0;
@@ -1067,7 +1067,7 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,128,55,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,255,200,150);
 	Weathers[n].Sea.SunRoad.Power = 0.2;
-	//����, �������, ������ ����� � ������, ��������� ������� �����, �������� �����
+	//????, ???????, ?????? ????? ? ??????, ????????? ??????? ?????, ???????? ?????
 	Weathers[n].Sea.Harmonics.h1 = "90.0, 2.0, 4.5, 0.0, 10.0";
 	Weathers[n].Sea.Harmonics.h2 = "45.0, 1.0, 6.0, 0.0, 50.0";
 	Weathers[n].Sea.Harmonics.h2 = "0.0, 4.0, 2.0, 0.0, 150.0";
@@ -1080,8 +1080,8 @@ int Whr_InitDay(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //������ �����
-	Weathers[n].Sea2.PosShift = 0.1; //��������������� ����
+	Weathers[n].Sea2.BumpScale = 0.05; //?????? ?????
+	Weathers[n].Sea2.PosShift = 0.1; //??????????????? ????
 
 	//Weathers[n].Sea2.WaterColor = argb(0, 25, 55, 80);
 	//Weathers[n].Sea2.SkyColor = argb(0, 175, 255, 255);
@@ -1094,10 +1094,10 @@ int Whr_InitDay(int n)
 	Weathers[n].Sea2.Frenel = 0.08; 
 	Weathers[n].Sea2.Attenuation = 0.2;
 
-	Weathers[n].Sea2.Amp1 = 12.0; //��������� 1 �����
-	Weathers[n].Sea2.AnimSpeed1 = 2.0; //�������� ��������
-	Weathers[n].Sea2.Scale1 = 0.25; //������� �����
-	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //�������� ��������
+	Weathers[n].Sea2.Amp1 = 12.0; //????????? 1 ?????
+	Weathers[n].Sea2.AnimSpeed1 = 2.0; //???????? ????????
+	Weathers[n].Sea2.Scale1 = 0.25; //??????? ?????
+	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 7.5"; //???????? ????????
 
 	Weathers[n].Sea2.Amp2 = 1.5;
 	Weathers[n].Sea2.AnimSpeed2 = 9.0;

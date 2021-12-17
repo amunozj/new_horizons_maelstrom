@@ -1,4 +1,4 @@
-Ôªø// MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+// MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
 {=====| standard.c |=====}
 Nathaniel{Nathaniel}
 Hawk{Hawk}
@@ -55,8 +55,8 @@ Tobias{Tobias}
 Ewan{Ewan}
 Glover{Glover}
 Wilfred{Wilfred}
-English Soldier{Soldado ingl√©s}
-French Soldier{Soldado franc√©s}
+English Soldier{Soldado inglÈs}
+French Soldier{Soldado francÈs}
 Rabel{Rabel}
 Yverneau{Yverneau}
 Anacleto{Anacleto}
@@ -103,11 +103,11 @@ Ragetti{Ragetti}
 Pintel{Pintel}
 
 {=====| TempQuestEnemy.c |=====}
-Captain{Capit√°n}
+Captain{Capit·n}
 Kalen{Kalen}
 Mottram{Mottram}
 French Patrol{Patrulla francesa}
-French{Franc√©s}
+French{FrancÈs}
 Sapper{Zapador}
 Simon{Simon}
 Buck{Buck}

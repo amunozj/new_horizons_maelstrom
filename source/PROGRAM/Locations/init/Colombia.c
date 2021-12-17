@@ -1,4 +1,4 @@
-﻿void LocationInitColombia(ref n)
+void LocationInitColombia(ref n)
 {
 	// -------------------------------------------------
 	Locations[n].id = "Residence_Cartagena";
@@ -3393,7 +3393,7 @@
 	n = n + 1;
 
 	//--------------------------------------------------------------------------
-//pär
+//p�r
 	Locations[n].id = "New_cloister_library";
 	locations[n].id.label = "Library";
 	Locations[n].filespath.models = "locations\inside\Dungeon_2\\";

@@ -1346,7 +1346,7 @@ int FindWeather(string sWeatherID)
 	return -1;
 }
 
-//navy --> Rain ������
+//navy --> Rain ??????
 void Whr_SetRainSound(bool _set, bool _isNight)
 {
 //	return;
@@ -1430,7 +1430,7 @@ void Whr_WindChange()
 bool Whr_isRainEnable()
 {
 	bool bRain  = true;
-	if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(&loadedLocation)) // pchar ����������� ��� �� ����
+	if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(&loadedLocation)) // pchar ??????????? ??? ?? ????
 	{
         if (CheckAttribute(&loadedLocation, "environment.weather.rain") && !sti(loadedLocation.environment.weather.rain))
 		{

@@ -1,10 +1,8 @@
-﻿#define FOGHEIGHTFACTOR 40.0
+#define FOGHEIGHTFACTOR 40.0
 #define WRAINOVERCAST 30
 #define WRAINRAIN 50
 #define WRAINSTORM 70
 #define WRAINTORNADO 90
-
-
 
 bool morningFogChecked = false; 
 bool morningFog = false; 
@@ -263,7 +261,7 @@ void Whr_FogRainCheck(){
 				WeatherParams.Storm = true;
 				WeatherParams.tornado = true;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
-				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
+				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Se�or or similar
 					string PCCaptainTitle;
 					if(PChar.sex == "woman")
 						PCCaptainTitle = "Ma'am";
