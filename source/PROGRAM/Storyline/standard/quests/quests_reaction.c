@@ -54,21 +54,21 @@ void QuestComplete(string sQuestName)
 			if (CheckQuestAttribute("StartAdventure", "begin")) LAi_QuestDelay("Story_leavingOxbay", 0.0); // KK
 		break;
 
-		//�������� �������� ������ � ������ ��� - ��������� ������� ��������� ������
+		//???????? ???????? ?????? ? ?????? ??? - ????????? ??????? ????????? ??????
 		case "Story_leavingOxbay":
 		//	ChangeCharacterAddress(characterFromID("Guy Gilroy"), "none", ""); // NK 05-07-20 - PB: Not necessary
 
 			Locations[FindLocation("Oxbay_town_exit")].locators_radius.goto.citizen08 = 12.0;
 			Locations[FindLocation("Falaise_De_Fleur_location_03")].reload.l3.disable = 0; // NK
-			//��������� �������� ��� �������� ������������� ������
+			//????????? ???????? ??? ???????? ????????????? ??????
 			PChar.Quest.Story_OxbayCaptured = "1";
-			//����� �������������� ����� ������
+			//????? ?????????????? ????? ??????
 			// KK Characters[GetCharacterIndex("Oxbay Commander")].nation = FRANCE;
 			// KK Characters[GetCharacterIndex("Oxbay Commander")].model = "Soldier_fra";
 			// NK - LAi_SetImmortal(characterFromID("Oxbay Commander"), true);
 			// KK SetTownNation("Oxbay", FRANCE); // NK
-			//����� ���������� ������ � ������ �� �����������
-			//�������� ����������
+			//????? ?????????? ?????? ? ?????? ?? ???????????
+			//???????? ??????????
 			CaptureTownForNation("Oxbay", FRANCE);	// KK
 
 			// KK: Set French Soldiers for Oxbay -->
@@ -125,15 +125,15 @@ void QuestComplete(string sQuestName)
 
 // KK -->
 			if (!CheckQuestAttribute("StartAdventure", "begin")) {
-				//����������� ������ � ���������� �����������
+				//??????????? ?????? ? ?????????? ???????????
 				ChangeCharacterAddress(characterFromID("Raoul Rheims"), "Redmond_residence", "goto1");
 
-				//��������� ������ �� ������� � ������� � ���������� ����������� � ���� ������
+				//????????? ?????? ?? ??????? ? ??????? ? ?????????? ??????????? ? ???? ??????
 				Pchar.quest.Story_First_Meeting_with_Rheims.win_condition.l1 = "location";
 				Pchar.quest.Story_First_Meeting_with_Rheims.win_condition.l1.location = "redmond_residence";
 				Pchar.quest.Story_First_Meeting_with_Rheims.win_condition = "Story_First_Meeting_with_Rheims";
 
-				//��������� ������ �� ������ �� ����������
+				//????????? ?????? ?? ?????? ?? ??????????
 				if(GetServedNation() == ENGLAND || GetServedNation() == PERSONAL_NATION)
 				{
 					pchar.quest.first_time_to_redmond_townhall.win_condition.l1 = "locator";
@@ -215,33 +215,33 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("Eng_soldier_5"), "ENGLAND_SOLDIERS");
 		break;
 
-		//��� ������ ������ � ���������� �������� ����� �������� ��
+		//??? ?????? ?????? ? ?????????? ???????? ????? ???????? ??
 		case "Story_First_Meeting_with_Rheims":
 			pchar.quest.first_time_to_redmond_townhall.over = "yes";
 			LAi_SetActorType(Pchar);
 			LAi_SetActorType(characterFromID("Raoul Rheims"));
-			//����������� ������ ������ ����
+			//??????????? ?????? ?????? ????
 			Characters[GetCharacterIndex("Raoul Rheims")].Dialog.CurrentNode = "First_meeting";
 			LAi_ActorFollow(pchar, characterFromID("Raoul Rheims"), "", 1.0);
 			LAi_ActorFollow(characterFromID("Raoul Rheims"), pchar, "Story_First_Meeting_with_Rheims_2", 1.0);
 		break;
 
 		case "Story_First_Meeting_with_Rheims_2":
-			//----------------����� �������� � ������ ��� ����������!
+			//----------------????? ???????? ? ?????? ??? ??????????!
 			LAi_ActorWaitDialog(Pchar, characterFromID("Raoul Rheims"));
 			LAi_ActorDialog(characterFromID("Raoul Rheims"), Pchar, "", 5.0, 0);
 		break;
 
 		case "Rheims_away_from_residence":
 			Locations[FindLocation("Redmond_Residence")].reload.l1.disable = 0;
-			//----------------���������� ������ � �������� �������, ����� �� �� ����� ������ �����
+			//----------------?????????? ?????? ? ???????? ???????, ????? ?? ?? ????? ?????? ?????
 			LAi_ActorGoToLocator(PChar, "goto", "goto7", "", 4.0);
-			//----------------���������� ������ � �������
+			//----------------?????????? ?????? ? ???????
 			LAi_ActorGoToLocator(CharacterFromID("Raoul Rheims"), "Reload", "reload1", "Story_Rheims_leaves", 2.0);
 		break;
 
 		case "Story_Rheims_leaves":
-			//------------����� ��������������� � ������
+			//------------????? ??????????????? ? ??????
 			ChangeCharacterAddress(characterFromID("Raoul Rheims"), "None", "");
 			LAi_SetPlayerType(pchar);
 			PChar.quest.Silehard_meeting = "thefirst"; // SJG Jan 09
@@ -284,7 +284,7 @@ void QuestComplete(string sQuestName)
 			DisableTownCapture("Conceicao", true);
 			DisableTownCapture("Quebradas Costillas", true);
 
-			//��������� ������ �� ������ � ��������� � ����� � ����� ������ � �������
+			//????????? ?????? ?? ?????? ? ????????? ? ????? ? ????? ?????? ? ???????
 			Pchar.quest.Story_FraSoldiers_attack_in_jungles.win_condition.l1 = "location";
 			Pchar.quest.Story_FraSoldiers_attack_in_jungles.win_condition.l1.location = "Oxbay_town_exit";
 			Pchar.quest.Story_FraSoldiers_attack_in_jungles.win_condition = "Story_FraSoldiers_attack_in_jungles";
@@ -316,7 +316,7 @@ void QuestComplete(string sQuestName)
 			SetCurrentTime(23, 0);
 			LAi_NoRebirthDisable(characterFromID("Ox_Soldier_7")); // KK
 			LAi_NoRebirthDisable(characterFromID("Ox_Soldier_8")); // KK
-			//���������� ����� �� ����� ������ � ��������
+			//?????????? ????? ?? ????? ?????? ? ????????
 			PChar.Quest.Story_FraSoldiers_attack_in_jungles.over = "yes";
 
 			Locations[FindLocation("Oxbay_town")].reload.l1.disable = 1;
@@ -328,18 +328,18 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_Massony_Reload_to_Town":
-			//����� ������� ���������� �� �������
+			//????? ??????? ?????????? ?? ???????
 			Characters[GetCharacterIndex("Ox_Soldier_5")].Dialog.Filename = "Story_French Occupant_2_dialog.c"; // KK
 			Characters[GetCharacterIndex("Ox_Soldier_6")].Dialog.Filename = "Story_French Occupant_2_dialog.c"; // KK
-			//��������� �� ���� ���������� ����������
+			//????????? ?? ???? ?????????? ??????????
 			LAi_SetImmortal(characterFromID("Ox_Soldier_5"), true); // KK
 			LAi_SetImmortal(characterFromID("Ox_Soldier_6"), true); // KK
 			LAi_SetImmortal(characterFromID("Valentin Massoni"), true);
 			LAi_SetStayType(pchar);
-			//����� ���� ��������� �������
+			//????? ???? ????????? ???????
 			LAi_SetActorType(characterFromID("Valentin Massoni"));
 
-			//����������� ������� � ������ � ������ �� ������
+			//??????????? ??????? ? ?????? ? ?????? ?? ??????
 // KK -->
 			ChangeCharacterAddress(characterFromID("Valentin Massoni"), "Oxbay_suburb", "locator11");
 			DoQuestReloadToLocation("Oxbay_suburb", "goto", "locator12", "Story_Check_Blaze_And_Massoni");
@@ -381,25 +381,25 @@ void QuestComplete(string sQuestName)
 			pchar.quest.massoni_died.win_condition = "massoni_died";
 
 			LAi_SetPlayerType(pchar);
-			//����� �������� ����� ����� �� �������
+			//????? ???????? ????? ????? ?? ???????
 			Pchar.quest.Story_Walk_Away_with_Massoni.win_condition.l1 = "location";
 			Pchar.quest.Story_Walk_Away_with_Massoni.win_condition.l1.location = "Oxbay_town_exit";
 			Pchar.quest.Story_Walk_Away_with_Massoni.win_condition = "Story_Walk_Away_with_Massoni";
 
-			//������� ������ � ������ ������
+			//??????? ?????? ? ?????? ??????
 // KK -->
 			LAi_ActorGoToLocation(characterFromID("Valentin Massoni"), "reload", "Falaise_de_fleur_location_02_01", "Oxbay_town_exit", "goto", "Citizen08", "", 5.0);
 			LAi_SetImmortal(characterFromID("Ox_Soldier_11"), false);
 			LAi_SetImmortal(characterFromID("Ox_Soldier_12"), false);
-			//������� ������������ �� ���� �����
+			//??????? ???????????? ?? ???? ?????
 			LAi_ActorGoToLocator(characterFromID("Ox_Soldier_12"), "goto", "locator35", "Story_Fra_Occupant_01_ReturnedToPost", 5.0);
 // <-- KK
-			//����������� ������ ������������ ��������
+			//??????????? ?????? ???????????? ????????
 			Locations[FindLocation("Oxbay_town_exit")].locators_radius.goto.citizen018 = 2.0;
 			Locations[FindLocation("Oxbay_town_exit")].locators_radius.goto.citizen05 = 3.0;
-			//��������������� ������ ��� �������
+			//??????????????? ?????? ??? ???????
 			Characters[GetCharacterIndex("Valentin Massoni")].Dialog.CurrentNode = "What_are_you_waiting_for";
-			//����� ������� ���������� �� �������
+			//????? ??????? ?????????? ?? ???????
 // KK -->
 			Characters[GetCharacterIndex("Ox_Soldier_11")].Dialog.Filename = "Story_French Occupant_dialog.c";
 			Characters[GetCharacterIndex("Ox_Soldier_12")].Dialog.Filename = "Story_French Occupant_dialog.c";
@@ -435,7 +435,7 @@ void QuestComplete(string sQuestName)
 // <-- KK
 		break;
 
-		//����� ������� � ������� ����� �� �������
+		//????? ??????? ? ??????? ????? ?? ???????
 		case "Story_Walk_Away_with_Massoni":
 			LAi_SetImmortal(characterFromID("Ox_Soldier_5"), false); // KK
 			LAi_SetImmortal(characterFromID("Ox_Soldier_6"), false); // KK
@@ -478,7 +478,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.Story_Massoni_order_attack_Blaze_denied.win_condition = "Story_Massoni_order_attack_Blaze_denied";
 		break;
 
-		//����� � ������ ������� ���� � ��������, � ����� �� ��������, ������� �������� ������
+		//????? ? ?????? ??????? ???? ? ????????, ? ????? ?? ????????, ??????? ???????? ??????
 		case "Story_Massoni_go_walking":
 			LAi_ActorDialog(characterFromID("Valentin Massoni"), Pchar, "", 20.0, 1.0);
 		break;
@@ -487,7 +487,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(characterFromID("Valentin Massoni"), "goto", "citizen05", "Story_Massoni_found_Cheating", 20.0);
 		break;
 
-		//����� ������� �� �������� ��� ������� ������������ ���� ������
+		//????? ??????? ?? ???????? ??? ??????? ???????????? ???? ??????
 		case "Story_Massoni_found_Cheating":
 			Characters[GetCharacterIndex("Valentin Massoni")].Dialog.CurrentNode = "Final_talk";
 			PChar.quest.Story_Massoni_go_walking.over = "yes";
@@ -502,13 +502,13 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Oxbay_town_exit")].reload.l3.disable = false;
 			Locations[FindLocation("Oxbay_town_exit")].reload.l4.disable = false;
 			Locations[FindLocation("Oxbay_town_exit")].reload.l5.disable = false;
-			//������� ����� � ������
+			//??????? ????? ? ??????
 			pchar.quest.massoni_died.over = "yes";
 			LAi_ActorRunToLocator(characterFromID("Valentin Massoni"), "reload", "reload3", "Story_Massoni_order_attack_Blaze", 30.0);
 			Pchar.quest.Story_1stTaskComplete = 1;
 			ChangeCharacterAddress(characterFromID("Faust Gasquet"), "Falaise_de_fleur_port_01", "goto13");
 			SetCharacterShipLocation(characterFromID("Virgile boon"), "Falaise_de_Fleur_port_01");
-			//����� �� ��������� ������ �� ���� �� ����
+			//????? ?? ????????? ?????? ?? ???? ?? ????
 			Pchar.quest.Story_Appear_on_Falaise.win_condition.l1 = "location";
 			Pchar.quest.Story_Appear_on_Falaise.win_condition.l1.location = "Falaise_de_Fleur_port_01";
 			Pchar.quest.Story_Appear_on_Falaise.win_condition = "Story_Appear_on_Falaise";
@@ -516,7 +516,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition.l1 = "location";
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition.l1.location = "Falaise_de_fleur_shore";
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition = "Story_Appear_on_Falaise_shore";
-			//����� �� ���������� ����� "����"
+			//????? ?? ?????????? ????? "????"
 		// TIH --> alternate method - allows capturing him from boarding, or killing him, to win the quest
 			Pchar.quest.Story_Sink_Oiseau1.win_condition.l1 = "Ship_HP";
 			Pchar.quest.Story_Sink_Oiseau1.win_condition.l1.character = "Virgile Boon";
@@ -562,7 +562,7 @@ void QuestComplete(string sQuestName)
 
 			ChangeCharacterAddress(CharacterFromID("Faust Gasquet"), "Falaise_de_fleur_port_01", "goto1");
 			SetCharacterShipLocation(characterFromID("Virgile boon"), "Falaise_de_Fleur_port_01");
-			//����� �� ��������� ������ �� ���� �� ����
+			//????? ?? ????????? ?????? ?? ???? ?? ????
 			Pchar.quest.Story_Appear_on_Falaise.win_condition.l1 = "location";
 			Pchar.quest.Story_Appear_on_Falaise.win_condition.l1.location = "Falaise_de_Fleur_port_01";
 			Pchar.quest.Story_Appear_on_Falaise.win_condition = "Story_Appear_on_Falaise";
@@ -570,7 +570,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition.l1 = "location";
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition.l1.location = "Falaise_de_fleur_shore";
 			Pchar.quest.Story_Appear_on_Falaise_shore.win_condition = "Story_Appear_on_Falaise_shore";
-			//����� �� ���������� ����� "����"
+			//????? ?? ?????????? ????? "????"
 		// TIH --> alternate method - allows capturing him from boarding, or killing him, to win the quest
 			Pchar.quest.Story_Sink_Oiseau1.win_condition.l1 = "Ship_HP";
 			Pchar.quest.Story_Sink_Oiseau1.win_condition.l1.character = "Virgile Boon";
@@ -587,7 +587,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.Story_Massoni_order_attack_Blaze_denied.win_condition = "Story_Massoni_order_attack_Blaze_denied";
 		break;
 
-		//������� �������� �� ����� � ����������� ����������, ���� ��� ��� ����, ����� ������
+		//??????? ???????? ?? ????? ? ??????????? ??????????, ???? ??? ??? ????, ????? ??????
 		case "Story_Massoni_order_attack_Blaze":
 			LAi_group_SetRelation("FRANCE_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			ChangeCharacterAddress(characterFromID("Valentin Massoni"), "none", "");
@@ -597,7 +597,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Valentin Massoni"), "none", "");
 		break;
 
-		//������� ���������� � ������� ����������, ����� �� �������� � ������ � ����.
+		//??????? ?????????? ? ??????? ??????????, ????? ?? ???????? ? ?????? ? ????.
 		case "Story_FraSoldiers_attack_in_jungles":
 			LAi_SetCheckMinHP(characterFromID("Ox_Soldier_7"), LAi_GetCharacterHP(characterFromID("Ox_Soldier_7"))-1.0, false, "fight_before_enter_to_oxbay"); // KK
 			LAi_SetCheckMinHP(characterFromID("Ox_Soldier_8"), LAi_GetCharacterHP(characterFromID("Ox_Soldier_8"))-1.0, false, "fight_before_enter_to_oxbay"); // KK
@@ -659,7 +659,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "fra_soldiers_in_oxbay_exit_returned_to_post":
-			//���������� ������ ����� �� �����
+			//?????????? ?????? ????? ?? ?????
 			LAi_ActorGoToLocator(characterFromID("Ox_Soldier_7"), "goto", "citizen09", "Fra_occupant_07_return_to_post", -1); // KK
 			LAi_ActorGoToLocator(characterFromID("Ox_Soldier_8"), "goto", "citizen010", "Fra_occupant_08_return_to_post", -1); // KK
 		break;
@@ -674,7 +674,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("Ox_Soldier_8"), "FRANCE_SOLDIERS"); // KK
 		break;
 
-		//����� � ������ ��� ���������� �� ���� �� ����, ����� ���������� � ���������
+		//????? ? ?????? ??? ?????????? ?? ???? ?? ????, ????? ?????????? ? ?????????
 		case "Story_Appear_on_Falaise":
 			DeleteAttribute(&Locations[FindLocation("Oxbay_town_exit")],"vcskip"); // PB
 			pchar.quest.Story_Appear_on_Falaise_shore.over = "yes";
@@ -772,7 +772,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.story_askaboutberangere.over = "yes";
 		break;
 
-		//����� ���������� � ������ ���� �� ����� ������.
+		//????? ?????????? ? ?????? ???? ?? ????? ??????.
 		case "Convoy_Virgile_Boon":
 			SetCharacterRemovable(characterFromID("Virgile Boon"), true);
 			pchar.quest.Convoy_Virgile_Boon2.over = "yes";
@@ -862,7 +862,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Amiel Berangere"), Pchar, "player_back", 1.0, 1.0);
 		break;
 
-		//����� ������� ����� ���������
+		//????? ??????? ????? ?????????
 		case "Story_BlazeStartsThinkAboutGramota":
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 			Pchar.Dialog.CurrentNode = "Story_FindBerangereDocuments";
@@ -889,23 +889,23 @@ void QuestComplete(string sQuestName)
 			Event("QuestSceneCommand", "ssass", "turnbylocator", "Story_FoundGramotaAndLebrettonAppeared", PChar, "goto", "goto5");*/
 			// PB: Simplify to prevent CTD <--
 			//Event("QuestSceneCommand", "ssas", "action", "Story_FoundGramotaAndLebrettonAppeared", PChar, "");
-			//------- !!!!!!!! �������� ������������ ����� ������������� �����
+			//------- !!!!!!!! ???????? ???????????? ????? ????????????? ?????
 			PostEvent("startAfterWaitScene",0,"a",PChar);
 			if(AUTO_SKILL_SYSTEM) { AddPartyExpChar(pchar, "Sneak", 2000); }
 			else { AddPartyExp(pchar, 2000); }
 		break;
 
 		case "Story_FoundGramotaAndLebrettonAppeared":
-			//--------��������� ��������
+			//--------????????? ????????
 			GiveItem2Character(Pchar,"Story_Gramota");
-			//--------���������� �������� ���� � ������ ���� ���� �� ����
+			//--------?????????? ???????? ???? ? ?????? ???? ???? ?? ????
 			ChangeCharacterAddress(characterFromID("Virgile Boon"), "Falaise_de_Fleur_port_01", "goto1");
-			//-------- ��������� ������� ����������
+			//-------- ????????? ??????? ??????????
 			Characters[GetCharacterIndex("antoine lebretton")].dialog.CurrentNode = "Story_Berangere_killed";
 			Locations[FindLocation("Falaise_De_Fleur_tavern_upstairs")].reload.l1.disable = 0;
 			ChangeCharacterAddressGroup(characterFromID("antoine lebretton"), "Falaise_De_Fleur_tavern_upstairs", "reload","reload1");
 			LAi_SetActorType(characterFromID("antoine lebretton"));
-			//------- ������� ��������� ������ �����
+			//------- ??????? ????????? ?????? ?????
 			ChangeCharacterAddress(characterFromID("Faust Gasquet"), "none", "");
 			LAi_ActorGoToLocator(pchar, "goto", "goto3", "before_lebretton_talk_with_us_in_upstairs", 4.0);
 			LAi_ActorDialog(characterFromID("antoine lebretton"), Pchar, "", 3.0, 1.0);
@@ -917,9 +917,9 @@ void QuestComplete(string sQuestName)
 
 		case "Story_Lebretton_leaves_upstairs":
 			LAi_SetPlayerType(pchar);
-			//---------���������� ���������� ������� �� ������ � �������.
+			//---------?????????? ?????????? ??????? ?? ?????? ? ???????.
 			ChangeCharacterAddressGroup(characterFromID("antoine lebretton"), "Falaise_De_Fleur_tavern", "merchant","goto1");
-			//---------��������� ���������� � ������� ����������
+			//---------????????? ?????????? ? ??????? ??????????
 			LAi_SetMerchantType(characterFromID("antoine lebretton"));
 			LAi_group_MoveCharacter(characterFromID("antoine lebretton"), "FRANCE_CITIZENS");
 		break;
@@ -956,7 +956,7 @@ void QuestComplete(string sQuestName)
 		case "Story_Blaze_and_Boon_leaving":
 			characters[GetCharacterIndex("Virgile Boon")].location = "none";
 			Characters[GetCharacterIndex("Virgile Boon")].nation = FRANCE; // RM
-			//------------������ ������� �� ��������� ���� �� ������
+			//------------?????? ??????? ?? ????????? ???? ?? ??????
 			Pchar.quest.Story_Convoy_Virgile_Boon_1.win_condition.l1 = "location";
 			Pchar.quest.Story_Convoy_Virgile_Boon_1.win_condition.l1.location = "Oxbay";
 			Pchar.quest.Story_Convoy_Virgile_Boon_1.win_condition = "Convoy_Virgile_Boon";
@@ -997,7 +997,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_Meeting_Ewan_Glover":
-			//---------������� ���������� ����� ���� ������� �������� � ������ ����������
+			//---------??????? ?????????? ????? ???? ??????? ???????? ? ?????? ??????????
 			LAi_SetActorType(characterFromID("Ewan Glover"));
 			Locations[FindLocation("Greenford_port")].reload.l1.disable = 1;
 			LAi_SetImmortal(characterFromID("Ewan Glover"), true);
@@ -1008,17 +1008,17 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Ewan_Once_Again_exit_no_join":
-			//---------���������� �������� � ��������
+			//---------?????????? ???????? ? ????????
 			LAi_ActorGoToLocator(characterFromID("Ewan Glover"), "goto", "goto2", "", -1);
 		break;
 
 		case "Ewan_exit_no_join":
-			//---------���������� �������� � ��������
+			//---------?????????? ???????? ? ????????
 			LAi_ActorGoToLocator(characterfromID("Ewan Glover"), "reload", "reload_1_2", "Story_Glover_goes_to_tavern", -1);
 		break;
 
 		case "Ewan_Exit_need_some_walk":
-			//---------���������� �������� � ��������
+			//---------?????????? ???????? ? ????????
 			LAi_ActorRunToLocator(characterfromID("Ewan Glover"),"Reload","reload4", "Story_Glover_to_tavern_on_Greenford", 20.0);
 			pchar.quest.checker_for_greenford_tavern_for_meet_with_evan_glover.win_condition.l1 = "location";
 			pchar.quest.checker_for_greenford_tavern_for_meet_with_evan_glover.win_condition.l1.location = "Greenford_tavern";
@@ -1051,9 +1051,9 @@ void QuestComplete(string sQuestName)
 		case "Ewan_exit_business":
 			Locations[FindLocation("Greenford_town")].reload.l4.disable = 1;
 
-			//---------���������� ����� ��� �������.
+			//---------?????????? ????? ??? ???????.
 			LAi_SetCitizenType(characterfromID("Ewan Glover"));
-			//---------�������� �������� �� ��������� ������ � �������� � �������� ������ �������
+			//---------???????? ???????? ?? ????????? ?????? ? ???????? ? ???????? ?????? ???????
 			Pchar.quest.Story_Blaze_and_Glover_Land_troops.win_condition.l1 = "location";
 			Pchar.quest.Story_Blaze_and_Glover_Land_troops.win_condition.l1.location = "Oxbay_shore_02";
 			Pchar.quest.Story_Blaze_and_Glover_Land_troops.win_condition.l2 = "Ship_location";
@@ -1066,15 +1066,15 @@ void QuestComplete(string sQuestName)
 
 			if (pchar.location == "Greenford_tavern")
 			{
-				//---------���������� ����� �� �����
+				//---------?????????? ????? ?? ?????
 				SetCurrentTime(23, 0);
 				LAi_SetPlayerType(pchar);
-				//---------������������� �������� � ������, � ������ �� �������� ���������
+				//---------????????????? ???????? ? ??????, ? ?????? ?? ???????? ?????????
 				ChangeCharacterAddress(characterFromID("Ewan Glover"), "none", "");
 
 				DoReloadCharacterToLocation("Greenford_port", "Reload", "Reload4");
 			}
-			//��������� ����� � �����
+			//????????? ????? ? ?????
 			//bQuestDisableMapEnter = true;
 		break;
 
@@ -1096,18 +1096,18 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Ewan_Glover_exit_join":
-			//----------������������ ����� �������� � ������
+			//----------???????????? ????? ???????? ? ??????
 			SetCompanionIndex(Pchar, -1, GetCharacterIndex("Ewan Glover"));
 			SetCharacterRemovable(characterFromID("Ewan Glover"), false);
-			//----------���������� ����� �� ���������� ������� �����
+			//----------?????????? ????? ?? ?????????? ??????? ?????
 			Pchar.quest.Story_Convoy_Glover_to_Greenford.win_condition.l1 = "NPC_Death";
 			Pchar.quest.Story_Convoy_Glover_to_Greenford.win_condition.l1.character = "Ewan Glover";
 			Pchar.quest.Story_Convoy_Glover_to_Greenford.win_condition = "Story_Glover_Sunk2";
-			//---------���������� �������� � ��������
+			//---------?????????? ???????? ? ????????
 			LAi_ActorRunToLocator(characterFromID("Ewan Glover"), "reload", "sea_1", "Story_Glover_leaves_tavern", 75.0);
-			//-------���������� �������� ������ � ������� ���������
+			//-------?????????? ???????? ?????? ? ??????? ?????????
 			ChangeCharacterAddress(characterFromID("Wilfred"), "Greenford_port", "goto20");
-			//-------������� ����� �� ��������� ������ � ���� ���������
+			//-------??????? ????? ?? ????????? ?????? ? ???? ?????????
 			Pchar.quest.Story_Blaze_reaches_Greenford.win_condition.l1 = "location";
 			Pchar.quest.Story_Blaze_reaches_Greenford.win_condition.l1.location = "Greenford_port";
 			Pchar.quest.Story_Blaze_reaches_Greenford.win_condition = "Story_Blaze_reaches_Greenford";
@@ -1144,13 +1144,13 @@ void QuestComplete(string sQuestName)
 		case "prepare_Story_ReloadedtoGreenfordTavernWithGlover":
 			SetCurrentTime(23, 0);
 			Locations[FindLocation("Greenford_tavern")].vcskip = true; // GR
-			//---------������������� �������� � ������ � ������� ���������
+			//---------????????????? ???????? ? ?????? ? ??????? ?????????
 			ChangeCharacterAddressGroup(characterFromID("Ewan Glover"), "Greenford_tavern", "Sit", "Sit4");
 			DoQuestReloadToLocation("Greenford_tavern", "candles", "sit3", "Story_ReloadedtoGreenfordTavernWithGlover");
 		break;
 
 		case "prepare_Story_ReloadedtoGreenfordTavernWithGlover_1":
-			//---------������������� �������� � ������ � ������� ���������
+			//---------????????????? ???????? ? ?????? ? ??????? ?????????
 			Locations[FindLocation("Greenford_tavern")].vcskip = true; // GR
 			ChangeCharacterAddressGroup(characterFromID("Ewan Glover"), "Greenford_tavern", "Sit", "Sit4");
 			//DoQuestReloadToLocation("Greenford_tavern", "candles", "sit3", "Story_ReloadedtoGreenfordTavernWithGlover");
@@ -1181,13 +1181,13 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_Glover_goes_to_tavern":
-			//--------���������� ����� �������� � ������... ����������������, �� � ������� ��������
+			//--------?????????? ????? ???????? ? ??????... ????????????????, ?? ? ??????? ????????
 			ChangeCharacterAddress(characterFromID("Ewan Glover"), "None", "");
 			Pchar.Quest.Story_Ask_for_Glover = "1";
 		break;
 
 		case "Story_Glover_leaves_tavern":
-			//--------���������� ����� �������� � ������... ����������������, �� �� ����� �������
+			//--------?????????? ????? ???????? ? ??????... ????????????????, ?? ?? ????? ???????
 			ChangeCharacterAddressGroup(characterFromID("Ewan Glover"), "Greenford_port", "Goto", "goto21");
 			LAi_SetImmortal(characterFromID("Ewan Glover"), false);
 			DeleteAttribute(&Locations[FindLocation("Greenford_tavern")],"vcskip"); // NK
@@ -1195,7 +1195,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_Glover_goes_to_ship":
-			//--------���������� ����� �������� � ������... ����������������, �� �� ����� �������
+			//--------?????????? ????? ???????? ? ??????... ????????????????, ?? ?? ????? ???????
 			ChangeCharacterAddress(characterFromID("Ewan Glover"), "None", "");
 			LAi_SetImmortal(characterFromID("Ewan Glover"), false);
 		break;
@@ -1208,7 +1208,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.Story_Blaze_reaches_shore3.over = "yes";
 
 			Lai_SetStayType(pchar);
-			//---------������ ����� � ������� ����� ��������
+			//---------?????? ????? ? ??????? ????? ????????
 			if (!LAi_IsDead(characterFromID("Ewan Glover")))
 			{
 				//AddQuestRecord("Story_2ndTask", 8); // NK
@@ -1227,12 +1227,12 @@ void QuestComplete(string sQuestName)
 		case "Story_Blaze_reaches_Greenford_2":
 			LAi_SetActorType(characterFromID("Wilfred"));
 			LAi_ActorDialog(characterFromID("Wilfred"), Pchar, "", 4.0, 1.0);
-			//---------�� ������ ������ ������ ��� �����������
+			//---------?? ?????? ?????? ?????? ??? ???????????
 			LAi_SetImmortal(characterFromID("Wilfred"), true);
 		break;
 
 		case "Wilfred_exit_failed":
-			//--------�������� �������� � ������ ���������.
+			//--------???????? ???????? ? ?????? ?????????.
 			LAi_ActorRunToLocator(characterFromID("Wilfred"), "Reload","reload4", "Story_Wilfred_leaves_forever", 15.0);
 			LAi_SetPlayerType(pchar);
 			Pchar.quest.Story_2ndTask = "Second_part";
@@ -1242,21 +1242,21 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Wilfred_Exit_failed_in_last_moment":
-			//--------�������� �������� � �������� �������.
+			//--------???????? ???????? ? ???????? ???????.
 			LAi_ActorRunToLocator(characterFromID("Wilfred"), "Reload","reload2", "Story_Wilfred_leaves_forever", 15.0);
 			LAi_SetPlayerType(pchar);
 		break;
 
 		case "Story_Wilfred_leaves_forever":
-			//---------���������� �������� � ������, ������ ��� �� �� ���� ������ �����
+			//---------?????????? ???????? ? ??????, ?????? ??? ?? ?? ???? ?????? ?????
 			ChangeCharacterAddress(characterFromID("Wilfred"), "None", "");
 		break;
 
 		case "Story_Convoy_Glover_to_Greenford":
 			AddQuestRecord("Story_2ndTask", 4);
-			//--------��������� ������ ����������� �����
+			//--------????????? ?????? ??????????? ?????
 			Pchar.quest.Story_Glover_sunk = true;
-			//--------�������� ������ �������� �������
+			//--------???????? ?????? ???????? ???????
 			Pchar.quest.Story_2ndTask = "Second_part";
 			LAi_SetSitType(characterFromID("CounterSpy"));
 			ChangeCharacterAddressGroup(characterFromID("CounterSpy"), "Oxbay_tavern", "Sit", "Sit6");
@@ -1266,18 +1266,18 @@ void QuestComplete(string sQuestName)
 		case "Story_Wilfred_go_to_shore_prepare":
 			if(AUTO_SKILL_SYSTEM) { AddPartyExpChar(pchar, "Sneak", 2500); }
 			else { AddPartyExp(pchar, 2500); }
-			//---------��������� ������� ����� ��������
+			//---------????????? ??????? ????? ????????
 			Characters[GetCharacterIndex("Ewan Glover")].Dialog.CurrentNode = "Are_you_ready";
 			LAi_type_actor_Reset(characterFromID("Ewan Glover"));
 			LAi_ActorDialog(characterFromID("Ewan Glover"), Pchar, "player_back", 3.0, 5.0);
-			//--------������ � ������
+			//--------?????? ? ??????
 			AddQuestRecord("Story_2ndTask",6);
-			//--------�������� �������� � ������ ���������.
+			//--------???????? ???????? ? ?????? ?????????.
 			LAi_ActorRunToLocator(characterFromID("Wilfred"), "Reload", "reload4", "Story_Wilfred_go_to_shore", 60.0);
 		break;
 
 		case "Story_Wilfred_go_to_shore":
-			//---------���������� �������� � ������, ������ ��� �� ���������� �� ����� ��������� ������
+			//---------?????????? ???????? ? ??????, ?????? ??? ?? ?????????? ?? ????? ????????? ??????
 			ChangeCharacterAddress(characterFromID("Wilfred"), "None", "");
 		break;
 
@@ -1289,32 +1289,32 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("Fra_patrolman_02"), "FRANCE_SOLDIERS");
 			LAi_group_MoveCharacter(characterFromID("Fra_patrolman_03"), "FRANCE_SOLDIERS");
 			LAi_group_MoveCharacter(characterFromID("Fra_patrolman_04"), "FRANCE_SOLDIERS");
-			//--------��������� ����������� ������
+			//--------????????? ??????????? ??????
 			ChangeCharacterAddressGroup(characterFromID("Fra_patrolman_01"), "Oxbay_shore_02", "reload", "reload2_back");
 			ChangeCharacterAddress(characterFromID("Fra_patrolman_02"), "Oxbay_shore_02", "locator27");
 			ChangeCharacterAddress(characterFromID("Fra_patrolman_03"), "Oxbay_shore_02", "locator26");
 			ChangeCharacterAddress(characterFromID("Fra_patrolman_04"), "Oxbay_shore_02", "locator13");
-			//-----------����� ���� ���������� ��������
+			//-----------????? ???? ?????????? ????????
 			LAi_group_MoveCharacter(characterFromID("Eng_land_soldier_01"), LAI_GROUP_PLAYER);
 			LAi_group_MoveCharacter(characterFromID("Eng_land_soldier_02"), LAI_GROUP_PLAYER);
 			LAi_group_MoveCharacter(characterFromID("Eng_land_soldier_03"), LAI_GROUP_PLAYER);
 			LAi_group_MoveCharacter(characterFromID("Eng_land_soldier_04"), LAI_GROUP_PLAYER);
-			//--------��������� �� �� ������ ������
+			//--------????????? ?? ?? ?????? ??????
 			LAi_group_SetRelation("FRANCE_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("FRANCE_SOLDIERS", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("FRANCE_SOLDIERS", "Story_kill_french_patrol");
 
-			//--------�������� �������� � ��������, ��� �� ����� �������.
+			//--------???????? ???????? ? ????????, ??? ?? ????? ???????.
 			LAi_SetImmortal(characterFromID("Wilfred"), true);
 			Locations[FindLocation("Oxbay_shore_02")].reload.l3.disable = 1;
 		break;
 
 		case "Story_Glover_to_tavern_on_Greenford":
-			//----------���������� �������� ������� �������.
+			//----------?????????? ???????? ??????? ???????.
 			Locations[FindLocation("Greenford_tavern")].vcskip = true; // GR
 			LAi_type_actor_Reset(characterFromID("Ewan Glover"));
 			LAi_SetSitType(characterFromID("Ewan Glover"));
-			//---------����������� ����� �������� � ������� ���������, ��� �� ����� ����� ������.
+			//---------??????????? ????? ???????? ? ??????? ?????????, ??? ?? ????? ????? ??????.
 			ChangeCharacterAddressGroup(characterFromID("Ewan Glover"), "Greenford_tavern", "sit", "sit4");
 			Characters[GetCharacterIndex("Ewan Glover")].Dialog.CurrentNode = "Are_you_ready_again";
 		break;
@@ -1339,14 +1339,14 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("Greenford_town")].reload.l4.disable = 0;
 				if (!LAi_IsDead(characterFromID("Ewan Glover")))
 				{
-					//----------���������� ���������� ������ ������ � �������
+					//----------?????????? ?????????? ?????? ?????? ? ???????
 					ChangeCharacterAddress(characterFromID("Eng_land_soldier_01"), "Oxbay_shore_02", "locator7");
 					ChangeCharacterAddress(characterFromID("Eng_land_soldier_02"), "Oxbay_shore_02", "locator23");
 					ChangeCharacterAddress(characterFromID("Eng_land_soldier_03"), "Oxbay_shore_02", "locator24");
 					ChangeCharacterAddress(characterFromID("Eng_land_soldier_04"), "Oxbay_shore_02", "locator25");
 					Characters[GetCharacterIndex("Wilfred")].Dialog.CurrentNode = "Warning";
 				}
-				//----------�������� �������� ������.
+				//----------???????? ???????? ??????.
 				LAi_type_actor_Reset(characterFromID("Wilfred"));
 				LAi_type_actor_Reset(characterFromID("Wilfred"));
 				ChangeCharacterAddress(characterFromID("Wilfred"), "Oxbay_shore_02", "locator8");
@@ -1375,9 +1375,9 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Greenford_town")].reload.l4.disable = 0;
 			bQuestDisableMapEnter = false;
 			AddQuestRecord("Story_2ndTask", 8);
-			//--------��������� ������ ����������� �����
+			//--------????????? ?????? ??????????? ?????
 			Pchar.quest.Story_Glover_sunk = true;
-			//--------�������� ������ �������� �������
+			//--------???????? ?????? ???????? ???????
 			Pchar.quest.Story_2ndTask = "Second_part";
 			LAi_SetSitType(characterFromID("Counterspy"));
 			ChangeCharacterAddressGroup(characterFromID("CounterSpy"), "Oxbay_tavern", "Sit", "Sit6");
@@ -1391,7 +1391,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Wilfred_exit_complete":
-			//-----------���������� ������ � ������� ��������� �� ����. ����
+			//-----------?????????? ?????? ? ??????? ????????? ?? ????. ????
 			LAi_SetImmortal(characterFromID("Wilfred"), false);
 			ChangeCharacterAddress(characterFromID("Eng_land_soldier_01"), "None", "");
 			ChangeCharacterAddress(characterFromID("Eng_land_soldier_02"), "None", "");
@@ -1438,9 +1438,9 @@ void QuestComplete(string sQuestName)
 			pchar.quest.story_glover_to_tavern_on_greenford.over = "yes";
 			pchar.quest.story_convoy_glover_to_greenford.over = "yes";
 
-			//-----------���������� ����������� ������ � �����
+			//-----------?????????? ??????????? ?????? ? ?????
 			//bQuestDisableMapEnter = false;
-			//-----------���� ������� �������� ������ � �������.
+			//-----------???? ??????? ???????? ?????? ? ???????.
 			LAi_SetActorType(characterFromID("Ewan Glover"));
 			LAi_SetActorType(pchar);
 			LAi_ActorWaitDialog(pchar, characterFromID("Ewan Glover"));
@@ -1659,7 +1659,7 @@ void QuestComplete(string sQuestName)
 
 		case "Blaze_and_Counterspy_exit_from_shipyard":
 			RemovePassenger(Pchar, characterFromID("Counterspy"));
-			//----------------����������� ������ � ������ ������ �����
+			//----------------??????????? ?????? ? ?????? ?????? ?????
 			LAi_Fade("Blaze_and_Counterspy_exit_from_shipyard_2", "Story_HiddenInShipyardWatch");
 		break;
 
@@ -1699,16 +1699,16 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_HiddenInShipyardWatch":
-			//----------------��������� ������ � ������ ��������
+			//----------------????????? ?????? ? ?????? ????????
 			LAi_QuestDelay("Story_HiddenInShipyardWatch_2", 1.0);
 		break;
 
 		case "Story_HiddenInShipyardWatch_2":
-			//----------------- ����� ������ ������ �����.
+			//----------------- ????? ?????? ?????? ?????.
 			ChangeCharacterAddressGroup(characterFromID("Fra_arrester_04"),"Oxbay_Shipyard", "Reload","reload1");
 			ChangeCharacterAddressGroup(characterFromID("Fra_arrester_05"),"Oxbay_Shipyard", "Reload","reload1");
 			ChangeCharacterAddressGroup(characterFromID("Fra_arrester_06"),"Oxbay_Shipyard", "Reload","reload1");
-			//----------------������ ������ ����� ��������� � ������
+			//----------------?????? ?????? ????? ????????? ? ??????
 			LAi_SetActorType(characterFromID("Fra_arrester_04"));
 			LAi_SetActorType(characterFromID("Fra_arrester_05"));
 			LAi_SetActorType(characterFromID("Fra_arrester_06"));
@@ -1898,7 +1898,7 @@ void QuestComplete(string sQuestName)
 		case "Story_LeaveOxbayWithRabelAndCounterspy":
 			Locations[FindLocation("Oxbay_port")].reload.l2.disable = 1;
 			Locations[FindLocation("Oxbay_port")].reload.l3.disable = 1;
-			//---------�� ������, ���� ����� ������ ������� �� �����.
+			//---------?? ??????, ???? ????? ?????? ??????? ?? ?????.
 			PlaceCharacter(characterFromID("Counterspy"), "officers");
 			PlaceCharacter(characterFromID("Rabel Iverneau"), "officers");
 
@@ -2539,7 +2539,7 @@ void QuestComplete(string sQuestName)
 			iForceDetectionFalseFlag = 1; // KK
 
 			bQuestDisableMapEnter = true;
-			//--------------���������� ����������� ����������� �� ������
+			//--------------?????????? ??????????? ??????????? ?? ??????
 			Island_SetReloadEnableGlobal("Oxbay", false);*/
 
 			//Group_SetAddress("Story_English_Squadron", "Oxbay", "Quest_Ships","Quest_ship_23");
@@ -2564,9 +2564,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Story_FightingInGreenfordPort":
-			//-----------------����������� ��������� �������� ������� ������ � �������������� ������ � �����
+			//-----------------??????????? ????????? ???????? ??????? ?????? ? ?????????????? ?????? ? ?????
 			Island_SetReloadEnableGlobal("Oxbay", true);
-			//�������������� ������ �������� ���������� � ���� ��������� ������ ��������� ���������
+			//?????????????? ?????? ???????? ?????????? ? ???? ????????? ?????? ????????? ?????????
 // KK -->
 			Islands[FindIsland("Oxbay")].reload.l2.name = "reload_1";
 			Islands[FindIsland("Oxbay")].reload.l2.go = "Greenford_port";
@@ -2781,7 +2781,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Researcher"), "Oxbay_lighthouse", "goto23");
 
 			DoQuestReloadToLocation("Oxbay_lighthouse", "Goto", "goto24", "Story_TalkWithResearcherAfterSaving");
-			//������� ���������� ������ �� ���������
+			//??????? ?????????? ?????? ?? ?????????
 			/*ChangeCharacterAddress(characterFromID("Eng_soldier_38"), "None", "");
 			ChangeCharacterAddress(characterFromID("Eng_soldier_39"), "None", "");
 			ChangeCharacterAddress(characterFromID("Eng_soldier_40"), "None", "");
@@ -2917,12 +2917,12 @@ void QuestComplete(string sQuestName)
 			DisableFastTravel(false);
 			DisableMenuLaunch(false);
 			CloseQuestHeader("Repel_English_Attack");
-			//-----------------����������� ��������� �������� ������� ������ � �������������� ������ � �����
+			//-----------------??????????? ????????? ???????? ??????? ?????? ? ?????????????? ?????? ? ?????
 			Island_SetReloadEnableGlobal("oxbay",true);
 
 			bQuestDisableSeaEnter = false; // KK
 			bQuestDisableMapEnter = false;
-			//-----------------����������� ��������� ������� ������ �� ������������ �������
+			//-----------------??????????? ????????? ??????? ?????? ?? ???????????? ???????
 			/*Locations[FindLocation("Greenford_tavern")].reload.l1.name = "reload1";
 			Locations[FindLocation("Greenford_tavern")].reload.l1.go = "Greenford_Town";
 			Locations[FindLocation("Greenford_tavern")].reload.l1.emerge = "reload7";
@@ -3617,7 +3617,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Eng_soldier_5"), pchar, "", -1);
 		break;
 
-		//������� �� �����������
+		//??????? ?? ???????????
 		case "exit_from_silehard_complete":
 			pchar.quest.main_line = "talk_in_tavern_begin";
 			if(AUTO_SKILL_SYSTEM) { AddPartyExpChar(pchar, "Leadership", 7000); }
@@ -3635,7 +3635,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Danielle"), "Quest_redmond_tavern", "goto2");
 			ChangeCharacterAddress(characterFromID("Ralph Fawn"), "Quest_redmond_tavern", "goto3");
 			ChangeCharacterAddressGroup(characterFromID("Charles Windem"), "Quest_redmond_tavern", "merchant", "goto1");
-			//������ ������������� ���� �� �������
+			//?????? ????????????? ???? ?? ???????
 			locations[FindLocation("Redmond_port")].reload.l2.disable = 1;
 			locations[FindLocation("Redmond_port")].reload.l3.disable = 1;
 			locations[FindLocation("Redmond_Shore_01")].reload.l2.disable = 1;
@@ -3658,14 +3658,14 @@ void QuestComplete(string sQuestName)
 			pchar.quest.to_quest_redmond_tavern.win_condition.l1 = "location";
 			pchar.quest.to_quest_redmond_tavern.win_condition.l1.location = "Quest_Redmond_tavern";
 			pchar.quest.to_quest_redmond_tavern.win_condition = "to_quest_redmond_tavern_complete";
-			//������� ����� �� �������
+			//??????? ????? ?? ???????
 			locations[FindLocation("quest_redmond_tavern")].reload.l1.disable = 1;
 			// KK worldMap.islands.Oxbay.locations.city.label.icon = ENGLAND;
 		break;
 
-		// ������� � ��������� �������.
+		// ??????? ? ????????? ???????.
 		case "to_quest_redmond_tavern_complete":
-			//��������������� ������ �� ������
+			//??????????????? ?????? ?? ??????
 			locations[FindLocation("Redmond_port")].reload.l2.disable = 0;
 			locations[FindLocation("Redmond_port")].reload.l3.disable = 0;
 			locations[FindLocation("Redmond_Shore_01")].reload.l2.disable = 0;
@@ -3721,7 +3721,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(pchar, characterFromID("soldier1"));
 		break;
 
-		//������ � ������� ���� ��� �� ����e
+		//?????? ? ??????? ???? ??? ?? ????e
 		case "kicked_by_soldier_complete":
 			LAi_ActorAnimation(characterFromID("soldier1"), "attack_fast_2", "kicked_by_soldier_2_complete", 0.5);
 		break;
@@ -3749,7 +3749,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("danielle"));
 			LAi_SetOfficerType(characterFromID("ralph fawn"));
 			LAi_group_FightGroups("ENGLAND_TAVERN_SOLDIERS", LAI_GROUP_PLAYER, true);
-			//���������� ������� � ������� (�� ��������� �������)
+			//?????????? ??????? ? ??????? (?? ????????? ???????)
 			LAi_SetActorType(characterFromID("Charles Windem"));
 			LAi_ActorRunToLocator(characterFromID("Charles Windem"), "merchant", "reload2", "Charles_escape_from_quest_redmond_tavern_complete", -1);
 			LAi_group_SetCheck("ENGLAND_TAVERN_SOLDIERS", "out_from_quest_tavern_complete");
@@ -3760,7 +3760,7 @@ void QuestComplete(string sQuestName)
 			LAi_KillCharacter(characterFromID("ralph fawn"));
 		break;
 
-		//������ ���� ������ � �������
+		//?????? ???? ?????? ? ???????
 		case "out_from_quest_tavern_complete":
 			LAi_LocationFightDisable(&Locations[FindLocation("Quest_redmond_tavern")], true);
 			pchar.quest.main_line = "fawn_death";
@@ -3791,9 +3791,9 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Danielle"), pchar, "player_back", 3.0, 1.0);
 		break;
 
-		//������� ������� �� �������, �������� ��� ������
+		//??????? ??????? ?? ???????, ???????? ??? ??????
 		case "danielle_escape_from_quest_redmond_tavern_complete":
-			//������� �������
+			//??????? ???????
 			ChangeCharacterAddress(characterFromID("Danielle"), "none", "none");
 			LAi_QuestDelay("danielle_escape_from_quest_redmond_tavern_2_complete", 1.0);
 		break;
@@ -3824,9 +3824,9 @@ void QuestComplete(string sQuestName)
 			locCameraToPos(locx, locy, locz, false);
 		break;
 
-		//���������� ������� �� ��������� �������
+		//?????????? ??????? ?? ????????? ???????
 		case "Charles_escape_from_quest_redmond_tavern_complete":
-			//������� �����������
+			//??????? ???????????
 			ChangeCharacterAddressGroup(characterFromID("Charles Windem"), "Redmond_Tavern", "merchant", "goto1");
 			LAi_SetMerchantType(characterFromID("Charles Windem"));
 		break;
@@ -3850,17 +3850,17 @@ void QuestComplete(string sQuestName)
 			Preprocessor_Remove("Danielle");
 			SetQuestHeader("Blaze_in_prison");
 			AddQuestRecord("Blaze_in_prison", 1);
-			//��������� ����� �� ������
+			//????????? ????? ?? ??????
 			locations[FindLocation("Redmond_prison")].reload.l1.disable = 1;
-			//������� ������� ������ � ������ � ������ ��������
+			//??????? ??????? ?????? ? ?????? ? ?????? ????????
 			LAi_ActorGoToLocator(characterFromID("Edgar Attwood"), "goto", "goto23", "Edgar_to_Blaze_complete", -1);
-			//�������� ������� �������
+			//???????? ??????? ???????
 			locations[FindLocation("Redmond_town_01")].reload.l11.go = "Redmond_tavern";
-			//�� ������ ������ ��� ��� ����������� �����������
+			//?? ?????? ?????? ??? ??? ??????????? ???????????
 			ChangeCharacterAddressGroup(characterFromID("Charles Windem"), "Redmond_Tavern", "merchant", "goto1");
 		break;
 
-		//����� �������� � ������
+		//????? ???????? ? ??????
 		case "Edgar_to_Blaze_complete":
 			locx = stf(loadedLocation.locators.camera.camera13.x);
 			locy = stf(loadedLocation.locators.camera.camera13.y);
@@ -3878,7 +3878,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.to_locator_where_soldiers_in_prison_see_you.win_condition = "to_locator_where_soldiers_in_prison_see_you_complete";
 		break;
 
-		//����� ������� �� ������
+		//????? ??????? ?? ??????
 		case "wait_for_night_in_prison_complete":
 			pchar.quest.main_line = "inside_redmond_prison";
 			ChangeCharacterAddressGroup(characterFromID("Robert Christopher Silehard"), "Redmond_Prison", "merchant", "reload13");
@@ -3892,26 +3892,26 @@ void QuestComplete(string sQuestName)
 			LAi_Fade("blaze_exit_from_cam_complete", "second_speak_with_edgar_complete");
 		break;
 
-		//����� ������� �� ������
+		//????? ??????? ?? ??????
 		case "blaze_exit_from_cam_complete":
 			EnableEquip(pchar, BLADE_ITEM_TYPE, true);
 			EnableEquip(pchar, GUN_ITEM_TYPE, true);
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
-			//������ ������ ����� � �������
+			//?????? ?????? ????? ? ???????
 			locCameraFollow();
 			ChangeCharacterAddress(pchar, "Redmond_prison", "goto12");
 			pchar.quest.main_line = "escape_from_redmond_prison";
 			ChangeCharacterAddress(characterFromID("Edgar Attwood"), "redmond_prison", "goto23");
-			//���� ����� �� �������� ���� ���������� � ������
+			//???? ????? ?? ???????? ???? ?????????? ? ??????
 			pchar.quest.kill_all_soldiers_in_prison.win_condition.l1 = "NPC_Death";
 			pchar.quest.kill_all_soldiers_in_prison.win_condition.l1.character = "Eng_soldier_35";
 			pchar.quest.kill_all_soldiers_in_prison.win_condition.l2 = "NPC_Death";
 			pchar.quest.kill_all_soldiers_in_prison.win_condition.l2.character = "Eng_soldier_36";
 			pchar.quest.kill_all_soldiers_in_prison.win_condition = "kill_all_soldiers_in_prison_complete";
-			//���������� ��������, ��� �������, ��� ����� ����� ������ �� ������.
+			//?????????? ????????, ??? ???????, ??? ????? ????? ?????? ?? ??????.
 			characters[GetCharacterIndex("Robert Christopher Silehard")].dialog.CurrentNode = "escape_from_prison_node";
-			//�������� ������ �����������
+			//???????? ?????? ???????????
 			ChangeCharacterAddress(characterFromID("Robert Christopher Silehard"), "none", "none");
 			LAi_LocationFightDisable(&Locations[FindLocation("redmond_prison")], false);
 		break;
@@ -3922,7 +3922,7 @@ void QuestComplete(string sQuestName)
 				LAi_SetPlayerType(pchar);
 				pchar.quest.edgar_life = "death";
 				AddQuestRecord("Blaze_in_prison", 4);
-				//������� ������ ��� � ���� ������� ������.
+				//??????? ?????? ??? ? ???? ??????? ??????.
 				LAi_group_SetRelation("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 				OfficersReaction("bad");
 			}
@@ -3932,7 +3932,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Edgar Attwood"), pchar, "", 1.0, 1.0);
 		break;
 
-		//�������� �������� � ������
+		//???????? ???????? ? ??????
 		case "Silehard_to_Blaze_complete":
 			LAi_SetCitizenType(characterFromID("Edgar Attwood"));
 			LAi_ActorDialogNow(characterFromID("Robert Christopher Silehard"), pchar, "", -1);
@@ -3955,7 +3955,7 @@ void QuestComplete(string sQuestName)
 			RecalculateJumpTable();
 		break;
 
-		//�������� �� ���������� � ��� �������
+		//???????? ?? ?????????? ? ??? ???????
 		case "blaze_from_prison_to_residence_complete":
 			ReStorePassengers(PChar.id); // KK
 			LAi_group_SetRelation("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
@@ -3981,13 +3981,13 @@ void QuestComplete(string sQuestName)
 			// KK SetTownNation("Oxbay", ENGLAND);
 			CaptureTownForNation("Oxbay", ENGLAND); // KK
 		//	DeleteAttribute(characterFromID("Oxbay Commander"), "recognized"); // PB: Added to 'CaptureTownForNation' function itself
-			//����� �������������� ����� ������
+			//????? ?????????????? ????? ??????
 			// KK Characters[GetCharacterIndex("Oxbay Commander")].nation = ENGLAND;
 			// KK Characters[GetCharacterIndex("Oxbay Commander")].model = "Soldier_Eng";
-			//����� ����������� ������ � ������ �� ����������
-			//�������� �����������
+			//????? ??????????? ?????? ? ?????? ?? ??????????
+			//???????? ???????????
 
-			//�������� �� ������ ������ �������� ����������� �������
+			//???????? ?? ?????? ?????? ???????? ??????????? ???????
 			Group_SetAddress("Story_French_Squadron", "none", "Quest_Ships","Quest_Ship_7");
 			Group_DeleteGroup("Story_French_Squadron"); // KK
 			LAi_SetImmortal(characterFromID("FalaiseDeFleur Commander"), false);
@@ -4008,10 +4008,10 @@ void QuestComplete(string sQuestName)
 			LAi_SetHuberStayType(characterFromID("Robert Christopher Silehard"));
 		break;
 
-		//����� ���� ������ � ������
+		//????? ???? ?????? ? ??????
 		case "kill_all_soldiers_in_prison_complete":
 			LAi_group_SetRelation("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
-			//��������� ����������� �� ����������� � ������ ���������
+			//????????? ??????????? ?? ??????????? ? ?????? ?????????
 			LAi_QuestDelay("Silehard_in_prison_complete", 3.0);
 		break;
 
@@ -4024,13 +4024,13 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Robert Christopher Silehard"), pchar, "", 5.0, 0);
 		break;
 
-		//����� ��������� �������� � ������, �� ������� ��� ����� ���������
+		//????? ????????? ???????? ? ??????, ?? ??????? ??? ????? ?????????
 		case "to_locator_where_soldiers_in_prison_see_you_complete":
 			if (pchar.quest.main_line == "escape_from_redmond_prison")
 			{
 				LAi_group_SetRelation("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 				LAi_group_FightGroups("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, true);
-				//������� �������� �������
+				//??????? ???????? ???????
 				ChangeCharacterAddress(characterFromID("Redmond prison commendant"), "none", "none");
 			}
 		break;
@@ -4041,7 +4041,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Edgar Attwood"), pchar, "", 3.0, 1.0);
 		break;
 
-		//��������� ������, ������� ���������� � ��������������� ������
+		//????????? ??????, ??????? ?????????? ? ??????????????? ??????
 		case "ines_denied_exit_from_tavern_complete":
 			pchar.quest.kill_pirate_for_rheims_lore.win_condition.l1 = "NPC_death";
 			pchar.quest.kill_pirate_for_rheims_lore.win_condition.l1.character = "quest_pirate_01";
@@ -4084,7 +4084,7 @@ void QuestComplete(string sQuestName)
 		case "kill_pirate_for_rheims_lore_complete":
 			AddQuestRecord("Blaze_search_Rheims", 13);
 			pchar.quest.main_line = "blaze_talk_with_innes_diaz_complete_21";
-			//���������� ������ ��� ��������� ������
+			//?????????? ?????? ??? ????????? ??????
 			characters[getCharacterIndex("quest_pirate_01")].location = "none";
 			LAi_SetCurHP(characterFromID("quest_pirate_01"), 80.0);
 
@@ -4094,7 +4094,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(&PChar,"vcskip"); // NK 04-08
 		break;
 
-		//������� ��������������� ������� ������ � ������ ������
+		//??????? ??????????????? ??????? ?????? ? ?????? ??????
 		case "exit_from_duarte_complete":
 			PlaceCharacter(characterFromID("quest_smuggler_01"), "goto");
 
@@ -4110,7 +4110,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("quest_smuggler_01"),  pchar, "player_back", 5.0, 1.0);
 		break;
 
-		//������ ��� �������� � ��� � ������
+		//?????? ??? ???????? ? ??? ? ??????
 		case "blaze_first_speak_with_beltrop_complete":
 			Locations[FindLocation("Rheims_house_in_smugglers")].reload.l1.disable = 1;
 			Locations[FindLocation("Rheims_house_in_smugglers")].vcskip = true; // NK
@@ -4130,25 +4130,25 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("Desmond Ray Beltrop"), "SMUGGLERS_CITIZENS");
 		break;
 
-		//����� ���� ���� � �������
+		//????? ???? ???? ? ???????
 		case "wait_for_night_complete":
-			//�������� ����.
+			//???????? ????.
 			pchar.quest.main_line = "night_for_rheims_house_complete";
 			Locations[FindLocation("Smugglers_Lair")].reload.l6.disable = 0;
 			AddQuestrecord("Blaze_search_Rheims", 8);
 		break;
 
-		//����� ���� ���� � �������
+		//????? ???? ???? ? ???????
 		case "wait_for_night_in_room_complete":
 			pchar.quest.main_line = "night_for_rheims_house";
 		break;
 
-		//����� ��������� � ��� ������
+		//????? ????????? ? ??? ??????
 		case "blaze_to_rheims_house_in_smugglers_complete":
 			LAi_QuestDelay("blaze_to_rheims_house_in_smugglers_find_book_complete", 2.0);
 		break;
 
-		//����� ����� �����.
+		//????? ????? ?????.
 		case "blaze_to_rheims_house_in_smugglers_find_book_complete":
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(pchar, "goto", "goto2", "blaze_to_rheims_house_in_smugglers_find_book_complete_2", 2.0);
@@ -4157,7 +4157,7 @@ void QuestComplete(string sQuestName)
 		case "blaze_to_rheims_house_in_smugglers_find_book_complete_2":
 			characters[GetCharacterIndex("Robert Christopher Silehard")].dialog.CurrentNode = "blaze_return_to_silehard_node";
 			pchar.quest.main_line = "blaze_found_book_in_rheims_house";
-			//��������� �������
+			//????????? ???????
 			GiveItem2Character(pchar, "rheims_journal");
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -4166,7 +4166,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Rheims_house_in_smugglers")].reload.l1.disable = 0;
 			if (LAi_IsDead(characterFromID("Macario Regalo")) && LAi_IsDead(characterFromID("Evaristo Filho")))
 			{
-				//�������� ������ ����������
+				//???????? ?????? ??????????
 				ChangeCharacterAddressGroup(characterFromID("Fernam  Barrios"), "Rheims_house_in_smugglers", "reload", "reload1");
 				ChangeCharacterAddressGroup(characterFromID("Leborio Violate"), "Rheims_house_in_smugglers", "reload", "reload1");
 				LAi_SetActorType(characterfromID("Leborio Violate"));
@@ -4175,7 +4175,7 @@ void QuestComplete(string sQuestName)
 			}
 			else
 			{
-				//�������� ���������� � ���� ������
+				//???????? ?????????? ? ???? ??????
 				ChangeCharacterAddressGroup(characterFromID("Macario Regalo"), "Rheims_house_in_smugglers", "reload", "reload1");
 				ChangeCharacterAddressGroup(characterFromID("Evaristo Filho"), "Rheims_house_in_smugglers", "reload", "reload1");
 				LAi_SetActorType(characterfromID("Evaristo Filho"));
@@ -4208,7 +4208,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(&Locations[FindLocation("Rheims_house_in_smugglers")],"vcskip"); // NK
 		break;
 
-		//����� ������� ����������
+		//????? ??????? ??????????
 		case "kill_guards_in_rheims_house_smugglers_complete":
 			if (pchar.location == "Rheims_house_in_smugglers")
 			{
@@ -4225,7 +4225,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetHP(characterFromID("quest_pirate_01"), 80.0, 80.0);
 		break;
 
-		//����� ������� ����������
+		//????? ??????? ??????????
 		case "kill_guards_in_rheims_house_smugglers_2_complete":
 			LAi_group_SetRelation("SMUGGLERS_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
 			AddQuestrecord("Blaze_search_Rheims", 9);
@@ -4238,7 +4238,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(characterfromID("Friedrich Corleis"), "Merchant", "reload3", "blaze_to_incas_collection_begin_1_complete", -1);
 		break;
 
-		//���������� �� �������� ������ �� �������
+		//?????????? ?? ???????? ?????? ?? ???????
 		case "blaze_to_incas_collection_begin_1_complete":
 			ChangeCharacterAddress(characterFromID("Friedrich Corleis"), "none", "");
 			LAi_QuestDelay("wait_for_pirate_in_tavern_complete", 2.0);
@@ -4272,7 +4272,7 @@ void QuestComplete(string sQuestName)
 			reStorePassengers(pchar.id);
 		break;
 
-		//����� ��������� ��� ��� ������� � ������ �������
+		//????? ????????? ??? ??? ??????? ? ?????? ???????
 		case "incas_collection_to_douwesen_town_exit":
 			LAi_ActorDialog(characterFromID("quest_pirate_01"), pchar, "", 2.0, 1.0);
 		break;
@@ -4459,7 +4459,7 @@ void QuestComplete(string sQuestName)
 			SetCharacterShipLocation(&characters[GetCharacterIndex("Pirate Captain 05")], "none");
 		break;
 
-		//���������� ������ � �������������
+		//?????????? ?????? ? ?????????????
 		case "prepare_for_first_meeting_with_researcher":
 			pchar.quest.prepare_fighting_on_deck_complete.over = "yes";		// LDH appears to be an error, part of different quest - 14Apr09
 			ChangeCharacterAddress(characterFromID("Bernard Gosling"), "none", "none");
@@ -4600,7 +4600,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(pchar);
 			Locations[FindLocation("Greenford_town")].reload.l9.disable = 0;
 			pchar.quest.main_line = "resque_researcher_complete";
-			//������� �����.
+			//??????? ?????.
 
 			Locations[FindLocation("Greenford_town")].models.always.koster = "";
 			Locations[FindLocation("Greenford_town")].models.always.koster.locator.group = "";
@@ -4616,7 +4616,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.main_line = "resque_researcher_complete";
 			LAi_type_actor_Reset(characterFromID("researcher"));
 			ChangeCharacterAddressGroup(pchar, "Greenford_town", "reload", "reload1");
-			//������� �����.
+			//??????? ?????.
 			Locations[FindLocation("Greenford_town")].models.always.koster = "";
 			Locations[FindLocation("Greenford_town")].models.always.koster.locator.group = "";
 			Locations[FindLocation("Greenford_town")].models.always.koster.locator.name = "";
@@ -4778,14 +4778,14 @@ void QuestComplete(string sQuestName)
 			CloseQuestHeader("blaze_to_incas_collection");
 		break;
 
-		//������������ �� ���� ��� ��������� ������� � �������� �� �������
+		//???????????? ?? ???? ??? ????????? ??????? ? ???????? ?? ???????
 		case "return_to_lighthouse_search_rheims_complete":
 			PlaceCharacter(characterFromID("Danielle"), "goto");
 			LAi_SetActorType(characterFromID("danielle"));
 			LAi_ActorDialog(characterFromID("Danielle"), pchar, "", 50, 0);
 		break;
 
-		//��������� � ���� ��������
+		//????????? ? ???? ????????
 		case "to_douwesen_port_search_blaze_complete":
 			if (pchar.quest.main_line == "blaze_goto_douwesen_with_danielle")
 			{
@@ -4804,7 +4804,7 @@ void QuestComplete(string sQuestName)
 			}
 		break;
 
-		//��������� �� ������ ���� ��������
+		//????????? ?? ?????? ???? ????????
 		case "to_douwesen_shore_1_search_blaze_complete":
 			if (pchar.quest.main_line == "blaze_goto_douwesen_with_danielle")
 			{
@@ -4822,7 +4822,7 @@ void QuestComplete(string sQuestName)
 			}
 		break;
 
-		//��������� �� ������ ���� ��������
+		//????????? ?? ?????? ???? ????????
 		case "to_douwesen_shore_2_search_blaze_complete":
 			if (pchar.quest.main_line == "blaze_goto_douwesen_with_danielle")
 			{
@@ -4863,7 +4863,7 @@ void QuestComplete(string sQuestName)
 			SetCharacterRemovable(characterFromID("danielle"), false);
 		break;
 
-		//������� � ������� �� ��������, ������� ������� ��� ������
+		//??????? ? ??????? ?? ????????, ??????? ??????? ??? ??????
 		case "goto_with_danielle_to_douwesen_tavern_for_rheims_complete":
 			LAi_SetActorType(characterFromID("vincent bethune"));
 			LAi_SetActorType(pchar);
@@ -4877,7 +4877,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Vincent Bethune"), pchar, "goto_with_danielle_to_douwesen_tavern_for_rheims_complete_3", 1.0, 1.0);
 		break;
 
-		//������� ���� �� ������ ������������
+		//??????? ???? ?? ?????? ????????????
 		case "vincent_away_from_tavern_complete":
 			ChangeCharacterAddress(characterFromID("Vincent Bethune"), "none", "none");
 		break;
@@ -4908,7 +4908,7 @@ void QuestComplete(string sQuestName)
 			Preprocessor_Remove("Danielle");
 		break;
 
-		//������� � ����� � �� ��� ������� ����������
+		//??????? ? ????? ? ?? ??? ??????? ??????????
 		case "from_town_to_jungle_to_rheims_house_complete":
 			PlaceCharacter(characterFromID("danielle"), "goto");
 			PlaceCharacter(characterFromID("Raoul Rheims"), "goto");
@@ -4936,7 +4936,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.prepare_dagger.win_condition = "prepare_dagger";
 		break;
 
-		//������� � ������� �������
+		//??????? ? ??????? ???????
 		case "danielle_with_rheims_runaway_complete":
 			ChangeCharacterAddressGroup(characterFromID("Danielle"), "Rheims_house_inside", "item", "item1");
 			LAi_NoRebirthDisable(characterFromID("Raoul Rheims")); // PB: Just in case he somehow died
@@ -5005,7 +5005,7 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("Douwesen_town_exit")].reload.l2.disable = 0;
 		break;
 
-		//����� ������ ������ ������� � �������
+		//????? ?????? ?????? ??????? ? ???????
 		case "start_quest_movie_speak_with_rheims_complete":
 			locx = stf(loadedLocation.locators.camera.locator4.x);
 			locy = stf(loadedLocation.locators.camera.locator4.y);
@@ -5036,7 +5036,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.kill_ferro_cerezo_complete.over = "yes";
 		break;
 
-		//������ ���� �� �����
+		//?????? ???? ?? ?????
 		case "to_oxbay_mine_complete":
 			if (pchar.location.locator == "reload1")
 			{
@@ -5149,7 +5149,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("mine_soldier_01"), "ENGLAND_SOLDIERS");
 		break;
 
-		//�������� �����, ����������� ���� ����������.
+		//???????? ?????, ??????????? ???? ??????????.
 		case "movie_with_fight_complete":
 			SetCurrentTime(23, 0);
 			characters[GetCharacterIndex("danielle")].skill.fencing = "7";
@@ -5259,14 +5259,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "blaze_to_map_complete":
-			//������������ ����� �� �����
+			//???????????? ????? ?? ?????
 			pchar.location.from_sea = "Redmond_shore_01";
 			SetFleetInTown(GetTownIDFromLocID(pchar.location.from_sea), "pchar"); // NK 05-04-02 WM/IT set fleet.
 			DoReloadFromSeaToLocation("Redmond_shore_01", "reload", "reload1");
 			pchar.quest.to_secret_oxbay_shore_complete.win_condition.l1 = "location";
 			pchar.quest.to_secret_oxbay_shore_complete.win_condition.l1.location = "Redmond_shore_01";
 			pchar.quest.to_secret_oxbay_shore_complete.win_condition = "to_secret_oxbay_shore_complete";
-			//��������� ����� �� �����
+			//????????? ????? ?? ?????
 		break;
 
 		case "to_secret_oxbay_shore_complete":
@@ -6079,7 +6079,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Lisebet Schefold"), pchar, "", 5.0, 1.0);
 		break;
 
-		case "OnUse_Idol": //���������� ������ ���������.
+		case "OnUse_Idol": //?????????? ?????? ?????????.
 			bMainMenuLaunchAfterVideo = true;
 			PostVideoAndQuest("standard\idol", 100, "OnUse_Idol_2");
 		break;
@@ -6283,12 +6283,12 @@ void QuestComplete(string sQuestName)
 
 		case "blaze_fighting_with_amiel_berangere":
 			LAi_LocationFightDisable(&Locations[FindLocation("Falaise_de_fleur_tavern_upstairs")], false);
-			//---����� �������� �� ������
+			//---????? ???????? ?? ??????
 			LAi_SetImmortal(characterFromID("Amiel Berangere"), false);
 			LAi_ActorAttack(characterFromID("Amiel Berangere"), PChar, "");
 			locations[FindLocation("Falaise_De_Fleur_tavern_upstairs")].reload.l1.disable = 1;
-			//----����������� ������� ������ �� �������
-			//-------�������� ��������� ������ �����
+			//----??????????? ??????? ?????? ?? ???????
+			//-------???????? ????????? ?????? ?????
 			ChangeCharacterAddress(characterFromID("Faust Gasquet"), "None", "");
 
 			Pchar.quest.Story_BlazeStartsThinkAboutGramota.win_condition.l1 = "NPC_death";
@@ -6331,7 +6331,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Counterspy_Exit_fight":
-			//----------��������� ������ � �������
+			//----------????????? ?????? ? ???????
 			LAi_group_SetRelation(LAI_DEFAULT_GROUP, "FRANCE_SOLDIERS", LAI_GROUP_NEUTRAL);
 			ChangeCharacterAddressGroup(characterFromID("Fra_arrester_01"), "Oxbay_Tavern", "Reload", "Reload1");
 			ChangeCharacterAddressGroup(characterFromID("Fra_arrester_02"), "Oxbay_Tavern", "Reload", "Reload1");
@@ -6354,17 +6354,17 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Counterspy_After_Fight_Exit":
-			//-------------��������� ����� �� ��������� � ����� ������
+			//-------------????????? ????? ?? ????????? ? ????? ??????
 			Pchar.quest.Story_Goto_Oxbay_shipyard_with_Counterspy.win_condition.l1 = "location";
 			Pchar.quest.Story_Goto_Oxbay_shipyard_with_Counterspy.win_condition.l1.location = "Oxbay_shipyard";
 			Pchar.quest.Story_Goto_Oxbay_shipyard_with_Counterspy.win_condition = "Story_Goto_Oxbay_shipyard_with_Counterspy";
 
-			//-------------��������� ����� �� ������� ������� �� ������ � �������
+			//-------------????????? ????? ?? ??????? ??????? ?? ?????? ? ???????
 			Pchar.quest.Story_PlayerTriesToRunFromOxbay.win_condition.l1 = "location";
 			Pchar.quest.Story_PlayerTriesToRunFromOxbay.win_condition.l1.location = "Oxbay_town_exit";
 			Pchar.quest.Story_PlayerTriesToRunFromOxbay.win_condition = "Story_PlayerTriesToRunFromOxbay";
 
-			//-----------������������� ������ � �������� �������
+			//-----------????????????? ?????? ? ???????? ???????
 			SetOfficersIndex(Pchar, 3, GetCharacterIndex("CounterSpy"));
 			SetCharacterRemovable(characterFromID("Counterspy"), false);
 			LAi_SetActorType(characterFromID("Oweyn McDorey"));
@@ -6663,7 +6663,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.main_line = "return_idol_from_greenford_1";
 
 			AddQuestRecord("Revenge_for_Silehard", 7);
-			//���������� ������ ����������.
+			//?????????? ?????? ??????????.
 			LAi_group_SetRelation("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 
 			LAi_group_FightGroups("ENGLAND_SOLDIERS", LAI_GROUP_PLAYER, true);

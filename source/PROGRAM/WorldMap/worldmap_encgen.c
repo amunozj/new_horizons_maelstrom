@@ -1,16 +1,16 @@
 
 
 //--------------------------------------------------------------------------------------
-//ГѓГҐГ­ГҐГ°Г Г¶ГЁГї ГЅГ­ГЄГ®ГіГ­ГІГҐГ°Г®Гў
+//Генерация энкоунтеров
 //--------------------------------------------------------------------------------------
 
-//Г—Г Г±ГІГ®ГІГ  ГёГІГ®Г°Г¬Г®Гў Гў Г±ГҐГЄГіГ­Г¤Гі
+//Частота штормов в секунду
 #define WDM_STORM_RATE			0.002
-//Г—Г Г±ГІГ®ГІГ  ГІГ®Г°ГЈГ®ГўГ¶ГҐГў Гў Г±ГҐГЄГіГ­Г¤Гі
+//Частота торговцев в секунду
 #define WDM_MERCHANTS_RATE		0.3 // NK upped to 0.3, was 0.2. I will now use them as also warfleets (with simple orders, not chase-player orders)  05-06-27
-//Г—Г Г±ГІГ®ГІГ  ГўГ®ГѕГЁГ№ГЁГµ ГЄГ®Г°Г ГЎГ«ГҐГ© Гў Г±ГҐГЄГіГ­Г¤Гі
+//Частота воюищих кораблей в секунду
 #define WDM_WARRING_RATE		0.04 // NK upped slightly. We _are_ at war, folks. Was 0.03
-//Г—Г Г±ГІГ®ГІГ  Г­Г ГЇГ Г¤Г ГѕГ№ГЁГµ ГЄГ®Г°Г ГЎГ«ГҐГ© Гў Г±ГҐГЄГіГ­Г¤Гі
+//Частота нападающих кораблей в секунду
 #define WDM_FOLLOW_RATE			0.04 // was 0.06; because of using merchant as also warfleet
 
 #define ENC_NONFOLLOW_WARFLEET_CHANCE 0.25 // chance for merchant (i.e. nonfollow) enc to be warfleet minding its own business...a chance for non-hostile warfleets.
@@ -68,16 +68,16 @@ void wdmShipEncounter(float dltTime, float playerShipX, float playerShipZ, float
 	if(numShips < 5)
 	{
 		rand(1001);
-		//Г‚ГҐГ°Г®ГїГІГ­Г®Г±ГІГЁ ГЇГ®ГїГўГ«ГҐГ­ГЁГї
+		//Вероятности появления
 		wdmTimeOfLastMerchant = wdmTimeOfLastMerchant + dltTime*WDM_MERCHANTS_RATE*1000.0;
 		wdmTimeOfLastWarring = wdmTimeOfLastWarring + dltTime*WDM_WARRING_RATE*1000.0;
 		wdmTimeOfLastFollow = wdmTimeOfLastFollow + dltTime*WDM_FOLLOW_RATE*1000.0;
-		//Г‚ГҐГ°Г®ГїГІГ­Г®Г±ГІГј Г®ГІ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ  Г±Г®Г§Г¤Г Г­Г­Г»Гµ
+		//Вероятность от количества созданных
 		float nump = 1.0 - numShips*0.15;
-		//Г€Г¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г°Г» ГЅГ­ГЄГ®ГіГ­ГІГҐГ°Г®Гў
+		//Идентификаторы энкоунтеров
 		int i1 = -1;
 		int i2 = -1;
-		//Г‚Г»ГЎГЁГ°Г ГҐГ¬
+		//Выбираем
 		ref mc = GetMainCharacter();
 		bool encoff = false;
 		if(GetAttribute(mc,"worldmapencountersoff") == 1)	return;

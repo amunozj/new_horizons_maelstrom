@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 	
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------������ ������ - ������ �������
+		// -----------------------------------?????? ?????? - ?????? ???????
 		
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;

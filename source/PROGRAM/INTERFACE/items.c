@@ -3378,7 +3378,7 @@ void I_ExamineItem()
 			LAi_QuestDelay("secret_room_finished_check", 0.1);
 		}
 	}
-//p√§r BB1
+//p‰r BB1
 	if(itmName == "sealed_map")
 	{
 		if(IsEquipCharacterByItem(Pchar, "folding_knife"))

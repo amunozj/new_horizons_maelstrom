@@ -438,7 +438,7 @@ void SetDefaultFight(ref character)
 	
 	// mitrokosta add COAS actions
 	if (GetAttribute(character,"model.animation") == "man" || GetAttribute(character,"model.animation") == "woman_sit") {
-		//�������� � ������ ���
+		//???????? ? ?????? ???
 		//Fast (max 3) --------------------------------------------------
 		character.actions.attack_fast.a1 = "attack_fast_1";
 		character.actions.attack_fast.a2 = "attack_fast_2";
@@ -488,12 +488,12 @@ void SetDefaultFight(ref character)
 		character.actions.parry.p3 = "parry_3";
 		character.actions.parry.p4 = "parry_4";
 		//Strafes--------------------------------------------------------------------
-		character.actions.recoil = "recoil";					//�����
-		character.actions.strafeleft = "straif_weapon_left";	//�����
-		character.actions.straferight = "straif_weapon_right";	//������
+		character.actions.recoil = "recoil";					//?????
+		character.actions.strafeleft = "straif_weapon_left";	//?????
+		character.actions.straferight = "straif_weapon_right";	//??????
 		//Death
 		SetDefaultFightDead(character);
-		//Idle �������� � ������ ���
+		//Idle ???????? ? ?????? ???
 		character.actions.fightidle.i1 = "fight stand_1";
 		character.actions.fightidle.i2 = "fight stand_2";
 		character.actions.fightidle.i3 = "fight stand_3";
@@ -540,7 +540,7 @@ void SetDefaultFight(ref character)
 
 		SetDefaultFightDead(character);
 
-		//Idle �������� � ������ ���
+		//Idle ???????? ? ?????? ???
 		character.actions.fightidle.i1 = "fight stand_1";
 		character.actions.fightidle.i2 = "fight stand_2";
 		character.actions.fightidle.i3 = "fight stand_3";
