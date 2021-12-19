@@ -468,6 +468,24 @@ void AddTimeToCurrent(int hour,int minute)
 	nexttime = (nexttime - stf(Environment.date.hour))*60.0;
 	Environment.date.min = makeint(nexttime);
 	worldMap.date.min = makeint(nexttime);
+
+	// Also evolve weather if adding more than one hour.
+	int n;
+	if (hour+(makefloat(minute)/60.0) > 2.0)
+	{
+
+		Trace("Evolving weather " + (hour+(makefloat(minute)/60.0)) + " hours");		
+		for(n = 0; n < makeint(hour+(makefloat(minute)/60.0)); n++){
+			nexttime = curtime + n;
+			while(nexttime>=24.0)
+			{
+				nexttime = nexttime - 24.0;
+			}		
+			Whr_Generator(makeint(nexttime));
+		}
+
+		// makeCurrentFutureRealizations(nexttime+1);
+	}		
 }
 void AddDataToCurrent(int addYear,int addMonth,int addDay, bool doupdate)
 {
@@ -522,6 +540,12 @@ void AddDataToCurrent(int addYear,int addMonth,int addDay, bool doupdate)
 		}
 	}
 	// NK <--
+
+	// Set wether to clear if more than one day passes.
+	if (addYear>0 || addMonth>0 || addDay>1){
+		Trace("Setting weather to clear because more than one day was added");
+		SetNextWeather("Clear");
+	}
 }
 
 // NK 05-05-04

@@ -990,6 +990,7 @@ int FindWeatherByHour(int nHour)
 void addProceduralWeather(int iTmp)
 {
 
+	if (iTmp < 0) return;
 	trace("addProceduralWeather ID: " + Weathers[iTmp].id);
 
 	// Sea Definition -----------------------------------------------------
