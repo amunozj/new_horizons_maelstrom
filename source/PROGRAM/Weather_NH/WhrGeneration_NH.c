@@ -140,9 +140,13 @@ void Whr_Generator(int iHour){
 	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}
 
 	// Reverse rain ballast when maximum rain has been reached
+	if (RAINDEBUG) trace("Maxrain: " + maxwRain + "wRain: " + wRain);
 	if (wRain >= maxwRain){
+		goldRain = 0;
 		wRain = 0;
 		rainBallast = 0;
+		fog = 0;
+		goldFog = 0;
 	}
 
 	minwind = winds - rand(2);
@@ -362,11 +366,13 @@ void Whr_Generator(int iHour){
 	}
 	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
 		if (wRain >= WRAINOVERCAST) {skydir_night();}
-		WeathersNH.Planets.enable = true;
-		WeathersNH.Stars.Enable = true;
-		WeathersNH.Sun.Flare.Enable = false;
-		WeathersNH.Sun.Overflow.Enable = false;
+		else{
+			WeathersNH.Planets.enable = true;
+			WeathersNH.Stars.Enable = true;
+			WeathersNH.Sun.Flare.Enable = false;
+			WeathersNH.Sun.Overflow.Enable = false;
 		}
+	}
 
 	if (wRain >= WRAINOVERCAST){
 		WeathersNH.Planets.enable = false;
