@@ -642,6 +642,7 @@ void wdmInitWorldMap()
 	//Camera
 	worldMap.wdmCameraAY = 0.0;					//Rotation angle of the camera
 	worldMap.wdmCameraY = 250.0;				//Camera Height
+	worldMap.wdmCameraRotLock = 1;				//Lock camera
 	//Enemy ship
 	worldMap.enemyshipViewDistMin = 60.0;		//Distance at which the ship starts to fade
 	worldMap.enemyshipViewDistMax = 120.0;		//Distance at which the ship disappears completely

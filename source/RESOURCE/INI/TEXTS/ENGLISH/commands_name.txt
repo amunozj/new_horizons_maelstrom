@@ -41,6 +41,14 @@ sea_PearlSweeps {Run Out Sweeps}
 sea_QARSword {Speed Burst}
 sea_TritonAttack {Rigging Attack}
 sea_NeptuneTrident {Neptune's Trident}
+sea_Brander {Brander}
+sea_FastReload {Immediate Reload}
+sea_InstantBoarding {Instant Boarding}
+sea_LightRepair {Light Repair}
+sea_InstantRepair {Instant Repair}
+sea_Turn180 {Turn 180}
+sea_SandbankManeuver {Sandbank Maneuver}
+sea_Troopers {Troopers}
 
 sea_EnglishFlag {England}
 sea_SpainFlag {Spain}
