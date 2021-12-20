@@ -406,32 +406,9 @@ void CreateWeatherEnvironment()
 		Rain.isDone = "";
 	}
 
-
-	if (iBlendWeatherNum < 0 )
-	{
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 350.0;
-		Weather.Time.updatefrequence = 12;
-	} else {
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 450;
-		Weather.Time.updatefrequence = 15;
-		if (bSeaActive && !bAbordageStarted)
-		{
-			/*
-			if (iArcadeSails == 1)
-            {
-                Weather.Time.speed = 250;
-                Weather.Time.updatefrequence = 10;
-            }
-		*/
-		}
-		else
-		{
-			Weather.Time.speed = 350;
-			Weather.Time.updatefrequence = 12;
-		}
-	}
+	Weather.Time.time = fGetTime;
+	Weather.Time.speed = 1.0/makeFloat(TIMESCALAR_SEA);
+	Weather.Time.updatefrequence = 10;
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -668,8 +645,27 @@ int Whr_BlendColor(float fBlend, int col1, int col2)
 
 void Whr_TimeUpdate()
 {
+	float fTime = GetEventData();
+	//float fBlend = fTime - makeint(fTime);
 
-    if( iBlendWeatherNum < 0 ) {return;}
+	//
+	Environment.time = fTime;
+	int nOldHour = sti(Environment.date.hour);
+	int nNewHour = makeint(fTime);
+	int nNewMin = makeint((fTime - nNewHour)*60);
+	int nNewSec = makeint(((fTime - nNewHour)*60 - nNewMin)*60);
+	Environment.date.min = nNewMin;
+	Environment.date.hour = nNewHour;
+	Environment.date.sec = nNewSec;
+	worldMap.date.hour = nNewHour;
+	worldMap.date.min  = nNewMin;
+	if( nNewHour < nOldHour )
+	{
+		AddDataToCurrent(0,0,1,true);
+		Weather.Time.time = GetTime();
+	} // to_do CalcLocalTime
+
+    // if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
 	string sTmp;
 	int iTmp, iTime;
@@ -692,8 +688,6 @@ void Whr_TimeUpdate()
 		sCurrentFog = "SpecialSeaFog";
 	}	
 
-
-
 	if (WeathersNH.Rain == true)
 	{
 		WeatherParams.Rain.Sound = true;
@@ -706,6 +700,11 @@ void Whr_TimeUpdate()
 			WeatherParams.Rain.Sound = false;
 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
 		}
+	}
+
+	if( nNewHour != nOldHour )
+	{
+		Whr_UpdateWeatherHour();
 	}
 
 	Weather.isDone = "";
