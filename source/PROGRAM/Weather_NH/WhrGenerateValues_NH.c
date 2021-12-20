@@ -136,17 +136,17 @@ void Whr_GenerateValues(int fogCheck){
 	//wRain = wRain + 20; // to test the coming of a storm
 	//winds = 30;
 	// screwface
-	if(wRain >= 95)
+	if(wRain >= WRAINSTORM)
 	{
 		WeatherParams.Storm = true;
 	}
-	if(wRain >= 98 && winds >= 28)
+	if(wRain >= WRAINTORNADO && winds >= 28)
 	{
 		WeatherParams.tornado = true;
 	}
-	else 
-	{
-		WhrDeleteTornadoEnvironment();
-	}
+	// else 
+	// {
+	// 	WhrDeleteTornadoEnvironment();
+	// }
 	// screwface : end
 }
