@@ -731,7 +731,7 @@ void AccumSailTime()
 		mchr.SailingMinutes = sti(mchr.SailingMinutes) + 1;		// Note: do we want to add more if in battle?
 	}
 
-	trace("Sailing minutes: " + mchr.SailingMinutes);
+	// trace("Sailing minutes: " + mchr.SailingMinutes);
 //	}
 }
 
