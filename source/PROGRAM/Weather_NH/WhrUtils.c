@@ -4,6 +4,7 @@
 
 int Whr_GetColor(aref arRef, string sAttribute)
 {
+	if (!CheckAttribute(arRef, sAttribute)) return 0;	
 	return sti(arRef.(sAttribute));
 }
 
@@ -77,6 +78,7 @@ int Whr_GetLong(aref arRef, string sAttribute)
 
 string Whr_GetString(aref arRef, string sAttribute)
 {
+	if (!CheckAttribute(arRef, sAttribute)) return "";
 	return arRef.(sAttribute);
 }
 

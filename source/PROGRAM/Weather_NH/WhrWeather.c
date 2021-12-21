@@ -15,6 +15,7 @@
 
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
+#define PARTICLESPOWER 0.0
 
 #define DEBUG_SEA_OPTICAL 0
 
@@ -401,11 +402,11 @@ void CreateWeatherEnvironment()
 	pchar.Wind.Angle = fWeatherAngle;
 	pchar.Wind.Speed = fWeatherSpeed;
 
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
+	// if (WeathersNH.Rain == true)
+	// {
+	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+	// 	Rain.isDone = "";
+	// }
 
 	Weather.Time.time = fGetTime;
 	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);
@@ -422,14 +423,16 @@ void CreateWeatherEnvironment()
 	// fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
 	// fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
 
-    // boal -->
-	bRain = true; // Whr_isRainEnable();
+    // boal -->'
+	WhrCreateRainEnvironment();
+	bRain = bWeatherIsRain; // Whr_isRainEnable();
     string sLocation = "";
     int iLocation = -1;
     if(CheckAttribute(pchar, "location")) {
        sLocation = pchar.location;
        iLocation = FindLocation(sLocation);
     }
+
 	if(iLocation != -1)
 	{
 		ref rLoc;
@@ -456,13 +459,23 @@ void CreateWeatherEnvironment()
 			}
 		}
 	}
-	if (bRain)
+
+	if (bRain == false)
 	{
-		WhrCreateRainEnvironment();
+		ClearRainEnvironment();
+		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+		{
+			WeatherParams.Rain = false;
+			WeatherParams.Rain.Sound = false;
+			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+		}			
 	}
 	else
 	{
-		ClearRainEnvironment();
+		WeatherParams.Rain.Sound = true;
+		WeatherParams.Rain = true;		
+		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+		Rain.isDone = "";
 	}
 	// boal <--
 
@@ -493,11 +506,18 @@ void CreateWeatherEnvironment()
 
 	Weather.isDone = "";
 
-	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
+	if (Weather.Tornado==true) { WhrCreateTornadoEnvironment(); }
+	else{
+		WhrDeleteTornadoEnvironment();
+	}
 
-	Particles.windpower = 0.0005 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
+	
+	ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
 
@@ -683,8 +703,7 @@ void Whr_TimeUpdate()
 	//navy --> Rain
 	string sTmp;
 	int iTmp, iTime;
-	bool bRain = false;
-	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
+
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -702,18 +721,30 @@ void Whr_TimeUpdate()
 		sCurrentFog = "SpecialSeaFog";
 	}	
 
-	if (WeathersNH.Rain == true)
+	WhrCreateRainEnvironment();
+	bool bRain = bWeatherIsRain;	
+	if (bRain == false)
 	{
-		WeatherParams.Rain.Sound = true;
-		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-	}else
-	{
+		ClearRainEnvironment();
 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
 		{
 			WeatherParams.Rain = false;
 			WeatherParams.Rain.Sound = false;
 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-		}
+		}		
+	}
+	else
+	{
+		WeatherParams.Rain.Sound = true;
+		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+		Particles.winddirection.x = sin(Whr_GetWindAngle());
+		Particles.winddirection.z = cos(Whr_GetWindAngle());
+		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
+
+		Rain.isDone = "";
 	}
 
 	if( nNewHour != nOldHour )
@@ -728,11 +759,11 @@ void Whr_TimeUpdate()
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
+	// if (WeathersNH.Rain == true)
+	// {
+	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+	// 	Rain.isDone = "";
+	// }
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
@@ -953,6 +984,8 @@ void FillWeatherData(int nw1, int nw2)
 
 	}
 
+	Weather.Tornado = Whr_GetLong(&Weathers[nw1], "Tornado");
+
 	// trace(sCurFog);
 	// trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
 	// trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
@@ -991,6 +1024,7 @@ int FindWeatherByHour(int nHour)
 void addProceduralWeather(int iTmp)
 {
 
+	if (iTmp < 0) return;
 	trace("addProceduralWeather ID: " + Weathers[iTmp].id);
 
 	// Sea Definition -----------------------------------------------------
@@ -1064,6 +1098,7 @@ void addProceduralWeather(int iTmp)
 		Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
 		Weathers[iTmp].Rain.DropsTexture = "weather\rain_drops.tga.tx";
 
+		// Storm and tornados
 		Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
 		Weathers[iTmp].Lightning.FlickerTime = 32;
 		Weathers[iTmp].Lightning.SubTexX = 4;
@@ -1074,6 +1109,8 @@ void addProceduralWeather(int iTmp)
 
 		Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 		Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
+
+		Weathers[iTmp].Tornado = Whr_GetLong(WeathersNH, "Tornado");
 
 		// Sun glow and flare
 		Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
@@ -1098,6 +1135,10 @@ void addProceduralWeather(int iTmp)
 		Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
 		Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
 	}
+
+	Weathers[iTmp].Sun.Overflow.Technique = "sunoverflow";
+	Weathers[iTmp].Sun.Glow.Color = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
+	Weathers[iTmp].Sun.Overflow.Color = argb(0, 100, 100, 100);
 
 	// Wind parameters
 	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");

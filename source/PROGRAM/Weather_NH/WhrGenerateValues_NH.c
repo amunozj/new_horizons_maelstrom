@@ -1,27 +1,75 @@
 #define MAXFOG 20
 #define FOGDECAY 2.0
 
+#define WRAINOVERCAST 30
+#define WRAINRAIN 50
+#define WRAINSTORM 70
+#define WRAINTORNADO 90
+
+#define RAINDEBUG 1
+
+int extraBallast = 5;
+int maxwRain = 5;
+
 void Whr_GenerateValues(int fogCheck){
 
 // Screwface : Chance to have weather conditions degrade is according to the month and seasons in Caribbean
 	int month = GetDataMonth();
-	int rainrisk = 5;
 
 	// trace("Month: " + month);
 	switch(month)
 	{
-		case 1:  rainrisk = 10; break;
-		case 2:  rainrisk = 5; break;
-		case 3:  rainrisk = 5; break;
-		case 4:  rainrisk = 5; break;
-		case 5:  rainrisk = 15; break; // beginning of the wet season
-		case 6:  rainrisk = 20; break;
-		case 7:  rainrisk = 30; break;
-		case 8:  rainrisk = 45; break;
-		case 9:  rainrisk =100; break; // twister maximal risk
-		case 10: rainrisk = 95; break; // twister maximal risk
-		case 11: rainrisk = 35; break;
-		case 12: rainrisk = 15; break; // dry season
+		case 1:  
+			extraBallast = -5;
+			maxwRain = WRAINRAIN + 5;
+			break;
+		case 2:  
+			extraBallast = -10;
+			maxwRain = WRAINOVERCAST - 5;
+			break;
+		case 3:  
+			extraBallast = -10;
+			maxwRain = WRAINOVERCAST - 5;
+			break;
+		case 4:  
+			extraBallast = 0;
+			maxwRain = WRAINRAIN + 5;
+			break;
+		// beginning of the wet season
+		case 5:  
+			extraBallast = 5;
+			maxwRain = WRAINSTORM + 5;
+			break; 
+		case 6:  
+			extraBallast = 5;
+			maxwRain = WRAINSTORM + 10;
+			break;
+		case 7:  
+			extraBallast = 5;
+			maxwRain = WRAINSTORM + 15;
+			break;
+		// Twisters possible
+		case 8:  
+			extraBallast = 10;
+			maxwRain = WRAINTORNADO + 5;
+			break;
+		case 9:  
+			extraBallast = 10;
+			maxwRain = 100;
+			break;
+		case 10: 
+			extraBallast = 10;
+			maxwRain = 100;
+			break;
+		// beginning of the dry season
+		case 11: 
+			extraBallast = 0;
+			maxwRain = WRAINRAIN + 5;
+			break;
+		case 12: 
+			extraBallast = -5;
+			maxwRain = WRAINRAIN + 5;
+			break; 
 	}
 // Screwface : end
 
@@ -37,9 +85,12 @@ void Whr_GenerateValues(int fogCheck){
 		
 	}
 	
-	if(rand(100) > (50 - rainBallast) && RAND(100) <= rainrisk){
-		if(goldRain <= 100-rRain || (goldRain - rRain) < 0){wRain = goldRain + rRain; }
-		else{ wRain = 100; }
+	int randomRain = rand(100);
+	if (RAINDEBUG) Trace("Month: " + month + " RainBallast : " + rainBallast + " ExtraBallast: " + extraBallast + " randomRain: " + randomRain);
+	
+	if( randomRain > (50 - rainBallast - extraBallast)){
+		if(goldRain <= maxwRain-rRain || (goldRain - rRain) < 0){wRain = goldRain + rRain; }
+		else{ wRain = maxwRain; }
 		rainBallast += rRain;
 	}
 	else{
@@ -47,6 +98,8 @@ void Whr_GenerateValues(int fogCheck){
 		else{ wRain = 0; }
 		rainBallast -= rRain;
 	}
+
+	if (RAINDEBUG) Trace("wRain: " + wRain);
 	
 	if(fogCheck != 0){
 		if(rand(100) > (50 - fogBallast)){
@@ -83,17 +136,17 @@ void Whr_GenerateValues(int fogCheck){
 	//wRain = wRain + 20; // to test the coming of a storm
 	//winds = 30;
 	// screwface
-	if(wRain >= 95)
+	if(wRain >= WRAINSTORM)
 	{
 		WeatherParams.Storm = true;
 	}
-	if(wRain >= 98 && winds >= 28)
+	if(wRain >= WRAINTORNADO && winds >= 28)
 	{
 		WeatherParams.tornado = true;
 	}
-	else 
-	{
-		WhrDeleteTornadoEnvironment();
-	}
+	// else 
+	// {
+	// 	WhrDeleteTornadoEnvironment();
+	// }
 	// screwface : end
 }
