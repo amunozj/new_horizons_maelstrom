@@ -757,21 +757,21 @@ void procUpdateTime()
 				bCheckForAiupdate = true;
 			}
 		}
-		if (iSeaTime >= sti(mchr.TimeSeconds)+60.0/TIMESCALAR_SEA)	// 12 seconds, this is approximate, but works
+		// if (iSeaTime >= sti(mchr.TimeSeconds)+60.0/TIMESCALAR_SEA)	// 12 seconds, this is approximate, but works
+		// {
+		// 	mchr.TimeSeconds = iSeaTime;
+		// 	float CurrentTime = stf(mchr.CurrentTime);
+		// 	CurrentTime += (1.0/60.0);								// add one minute to current time
+		// 	if (CurrentTime >= 24.0) CurrentTime -= 24.0;			// LDH 16Oct06 - 24:01 should be 00:01 for example
+		// 	mchr.CurrentTime = CurrentTime;
+		AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
+		if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
 		{
-			mchr.TimeSeconds = iSeaTime;
-			float CurrentTime = stf(mchr.CurrentTime);
-			CurrentTime += (1.0/60.0);								// add one minute to current time
-			if (CurrentTime >= 24.0) CurrentTime -= 24.0;			// LDH 16Oct06 - 24:01 should be 00:01 for example
-			mchr.CurrentTime = CurrentTime;
-			AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
-			if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
-			{
-				bCheckForBells = true;
-				bCheckForIslandChange = true;
-				bCheckForAiupdate = true;
-			}
+			bCheckForBells = true;
+			bCheckForIslandChange = true;
+			bCheckForAiupdate = true;
 		}
+		// }
 
 		if (bCheckForBells)
 		{
@@ -1010,14 +1010,14 @@ void procUpdateTime()
 		// DeathDaisy: approximate time of day when not having a clock
 		else{
 			string TimeOfDay;
-			if(GetTime() >= 22 || GetTime() < 3) TimeOfDay = XI_ConvertString("Night");
+			if(GetTime() >= 23 || GetTime() < 3) TimeOfDay = XI_ConvertString("Night");
 			if(GetTime() >= 3 && GetTime() < 6) TimeOfDay = XI_ConvertString("Small Hours");
 			if(GetTime() >= 6 && GetTime() < 7) TimeOfDay = XI_ConvertString("Dawn");
 			if(GetTime() >= 7 && GetTime() < 10) TimeOfDay = XI_ConvertString("Morning");
 			if(GetTime() >= 10 && GetTime() < 14) TimeOfDay = XI_ConvertString("Midday");
-			if(GetTime() >= 14 && GetTime() < 18) TimeOfDay = XI_ConvertString("Afternoon");
-			if(GetTime() >= 18 && GetTime() < 21) TimeOfDay = XI_ConvertString("Evening");
-			if(GetTime() >= 21 && GetTime() < 22) TimeOfDay = XI_ConvertString("Dusk");
+			if(GetTime() >= 14 && GetTime() < 19) TimeOfDay = XI_ConvertString("Afternoon");
+			if(GetTime() >= 19 && GetTime() < 22) TimeOfDay = XI_ConvertString("Evening");
+			if(GetTime() >= 22 && GetTime() < 23) TimeOfDay = XI_ConvertString("Dusk");
 			sDateTimeDisplay += ", " + FirstLetterUp(TimeOfDay);
 		}
 		// PB: Only show this if Various Logs are enabled -->

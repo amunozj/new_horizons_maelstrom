@@ -47,6 +47,7 @@ int OWBallast = -50;				 //Value between 0 and the MAX defined in InternalSettin
 bool gWeatherOvrd = false;			 //This is the bool checked by the weather system, set to to if you've changed one of the above variables
 //To set specific weather set the desired variables to the desired values in your code and set gWeatherOvrd to true the system takes care of the rest
 
+int shipsLights = false;
 
 object	Weather, WeatherParams, WhrCommonParams;
 int		iNextWeatherNum = -1;
@@ -407,8 +408,10 @@ void CreateWeatherEnvironment()
 	}
 
 	Weather.Time.time = fGetTime;
-	Weather.Time.speed = 1.0/makeFloat(TIMESCALAR_SEA);
-	Weather.Time.updatefrequence = 10;
+	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);
+	float updateFactor = GetTimeScale()+2.0;
+	if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -659,11 +662,22 @@ void Whr_TimeUpdate()
 	Environment.date.sec = nNewSec;
 	worldMap.date.hour = nNewHour;
 	worldMap.date.min  = nNewMin;
-	if( nNewHour < nOldHour )
-	{
-		AddDataToCurrent(0,0,1,true);
-		Weather.Time.time = GetTime();
-	} // to_do CalcLocalTime
+
+	ref mchr = GetMainCharacter();
+	mchr.CurrentTime = fTime;
+	
+	// if( nNewHour < nOldHour )
+	// {
+	// 	AddDataToCurrent(0,0,1,true);
+	// 	Weather.Time.time = GetTime();
+	// } // to_do CalcLocalTime
+	float updateFactor = GetTimeScale()+2.0;
+	if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+
+	trace("Environment.time: " + fTime + " Weather update frequency: " + Weather.Time.updatefrequence + " Timescale: " + GetTimeScale());
+
+	Weather.Time.time = fTime;
 
     // if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
@@ -848,14 +862,19 @@ void doShipLightChange(ref aCurWeather)
     Sea.Lights =  Whr_GetLong(aCurWeather, "Lights");
 	if (daytimeLights() == 1) Sea.Lights = 1;
 
-    ref rChar;
-    for(j = 0; j < iNumShips; j++) {
-        iCharIdx = Ships[j];
-        if (iCharIdx < 0 || iCharIdx >= TOTAL_CHARACTERS) continue;
-        rChar = GetCharacter(Ships[j]);
-        Ship_SetLightsAndFlares(rChar);
-        SendMessage(&characters[iCharIdx], "l", MSG_SHIP_LIGHTSRESET);
-    }
+	if (shipsLights != Whr_GetLong(Sea, "Lights"))
+	{
+		ref rChar;
+		for(j = 0; j < iNumShips; j++) {
+			iCharIdx = Ships[j];
+			if (iCharIdx < 0 || iCharIdx >= TOTAL_CHARACTERS) continue;
+			rChar = GetCharacter(Ships[j]);
+			Ship_SetLightsAndFlares(rChar);
+			SendMessage(&characters[iCharIdx], "l", MSG_SHIP_LIGHTSRESET);
+		}
+
+		shipsLights =  Whr_GetLong(Sea, "Lights");
+	}
 }
 
 void Whr_ChangeDayNight()
