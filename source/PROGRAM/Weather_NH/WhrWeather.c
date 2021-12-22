@@ -677,6 +677,7 @@ int Whr_BlendColor(float fBlend, int col1, int col2)
 
 void Whr_TimeUpdate()
 {
+	// trace("High precision time timeupdate start: " + fHighPrecisionDeltaTime);
 	float fTime = GetEventData();
 	//float fBlend = fTime - makeint(fTime);
 
@@ -700,11 +701,12 @@ void Whr_TimeUpdate()
 	// 	AddDataToCurrent(0,0,1,true);
 	// 	Weather.Time.time = GetTime();
 	// } // to_do CalcLocalTime
-	float updateFactor = GetTimeScale()+2.0;
-	if (GetTimeScale()==1.0){updateFactor = 1.0;}
-	Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	// float updateFactor = GetTimeScale()+2.0;
+	// if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	// Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	// Weather.Time.updatefrequence = 60;		
 
-	trace("Environment.time: " + fTime + " Weather update frequency: " + Weather.Time.updatefrequence + " Timescale: " + GetTimeScale());
+	// trace("Environment.time: " + fTime + " Weather update frequency: " + Weather.Time.updatefrequence + " Timescale: " + GetTimeScale());
 
 	Weather.Time.time = fTime;
 
@@ -717,6 +719,8 @@ void Whr_TimeUpdate()
 	string sTmp;
 	int iTmp, iTime;
 
+	// trace("Whr_TimeUpdate: find current and next weather");
+
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -724,7 +728,7 @@ void Whr_TimeUpdate()
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
 
-	Weather.Time.time = GetTime();
+	// Weather.Time.time = GetTime();
 
 	if( iBlendWeatherNum < 0 ) {return;}
 
@@ -733,6 +737,8 @@ void Whr_TimeUpdate()
 	{
 		sCurrentFog = "SpecialSeaFog";
 	}	
+
+	// trace("Whr_TimeUpdate: update rain");
 
 	WhrCreateRainEnvironment();
 	bool bRain = bWeatherIsRain; // Whr_isRainEnable();
@@ -760,6 +766,9 @@ void Whr_TimeUpdate()
 		Rain.isDone = "";
 	}
 
+	// trace("Whr_TimeUpdate: update sound");
+
+
 	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
 	{
 		bWStormStatus = bWeatherIsStorm;
@@ -768,13 +777,18 @@ void Whr_TimeUpdate()
 	}
 
 
-	if( hourChange == true )
+	// trace("Whr_TimeUpdate: hourly update");
+
+
+	if( nNewHour != nOldHour )
 	{
-		hourChange = false;
 		Whr_UpdateWeatherHour();
 	}
 
 	Weather.isDone = "";
+
+
+	// trace("Whr_TimeUpdate: Fill weather");
 
 	// update weather: sun lighting
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
@@ -786,15 +800,24 @@ void Whr_TimeUpdate()
 	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
 	// 	Rain.isDone = "";
 	// }
+
+	// trace("Whr_TimeUpdate: Fill Sun");	
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
 
+
+	// trace("Whr_TimeUpdate: Fill Sea");	
+
 	// Fill Sea data
 	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
 
+	// trace("Whr_TimeUpdate: Fill Sky");	
+
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	// trace("Whr_TimeUpdate: Set fog");	
 
 	if (bSeaActive)
 	{
@@ -807,24 +830,27 @@ void Whr_TimeUpdate()
 
 	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
+	// trace("Whr_TimeUpdate: change lights");	
 	aref aCurWeather = GetCurrentWeather();
 	doShipLightChange(aCurWeather);	
 
+	// trace("Whr_TimeUpdate: do astronomy");	
 	//#20191020-01
 	aref aStars;
 	makearef(aStars, aCurWeather.Stars);
 	FillStars(aStars);
+
+	// trace("Whr_TimeUpdate: Mark astronomy done");
 	// FillAstronomyFadeValue();
 	Astronomy.isDone = true;
-	Astronomy.TimeUpdate = GetTime();
+	Astronomy.TimeUpdate = 1;
 
+	// trace("High precision time timeupdate end: " + fHighPrecisionDeltaTime);
+
+	// trace("Whr_TimeUpdate: update sky time: " + isEntity(&Sky));
 	// update sky: fog
-	Sky.TimeUpdate = GetTime();
-
-	// timeapi = api->GetDeltaTime();
-	// trace("Timeapi end: " + timeapi);
+	Sky.TimeUpdate = ftime;
 	
-
 }
 
 #event_handler("eChangeDayNight", "eChangeDayNight");
