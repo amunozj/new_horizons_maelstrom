@@ -12,6 +12,7 @@ void WhrDeleteRainEnvironment()
 void WhrCreateRainEnvironment()
 {
 	bWeatherIsRain = false;
+	bWeatherIsStorm = Whr_GetLong(Weather,"Storm");
 
 	if (!isEntity(&Rain))
 	{

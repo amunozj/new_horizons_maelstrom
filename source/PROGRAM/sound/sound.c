@@ -9,6 +9,8 @@ int music_scheme = 0;
 // <-- KK
 
 #event_handler ("LoadSceneSound", "LoadSceneSound")
+#event_handler ("ReloadStaticSound", "LoadSceneSound")
+
 // PLAY
 int Play3DSound(string name, float x, float y, float z)
 {
@@ -1665,4 +1667,5 @@ void Change_MainThemeMusic_Chance(float value)
 		pchar.main_theme.value = z;
 	}
 }
+
 //ASVS <---
