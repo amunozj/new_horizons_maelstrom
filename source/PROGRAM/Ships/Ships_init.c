@@ -122,6 +122,9 @@ void InitShips()
 		refShip.InertiaAccelerationY = 0.4;		refShip.InertiaBrakingY = 0.4;
 		refShip.InertiaAccelerationZ = 1.0;		refShip.InertiaBrakingZ = 1.0;
 
+        refShip.Rocking.y = 0.5;
+        refShip.Rocking.az = 0.05;		
+
 		refShip.WaterLine = 0.0;
 		refShip.SpeedDependWeight = 0.0;
 		refShip.SubSeaDependWeight = 0.0;
