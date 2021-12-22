@@ -73,6 +73,8 @@ bool	bWeatherIsNight = false;
 bool	bWeatherIsLight = false;
 bool	bWeatherIsRain = false;
 bool	bWeatherIsStorm = false;
+bool	bWRainStatus = false;
+bool	bWStormStatus = false;
 bool	Whr_IsFog() { return stf(Weather.Fog.SeaDensity)>0.01; }
 
 object Weathers[MAX_WEATHERS];
@@ -109,37 +111,36 @@ void SetNextWeather(string sWeatherID)
 		break;
 
 	case "Cloudy":
-		wRain = 60;		// clouds start at 50, overcast starts at 65
-		ORain = 60;		// clouds start at 50, overcast starts at 65
+		wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+		ORain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
 		gWeatherOvrd = true;
-		sWeatherID = "21 Rain";
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Overcast":
-		wRain = 70;		// overcast starts at 65, rain starts at 75
-		ORain = 70;		// overcast starts at 65, rain starts at 75
+		wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+		ORain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Rainy":
-		wRain = 80;		// rain starts at 75, storm starts at 95
-		ORain = 80;		// rain starts at 75, storm starts at 95
+		wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+		ORain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Rain":
-		wRain = 85;		// rain starts at 75, storm starts at 95
-		ORain = 85;		// rain starts at 75, storm starts at 95
+		wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+		ORain = WRAINSTORM;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Stormy":		// this produces lightning
-		wRain = 95;		// storm starts at 95
-		ORain = 95;		// storm starts at 95
+		wRain = WRAINSTORM+10;		// storm starts at 95
+		ORain = WRAINSTORM+10;		// storm starts at 95
 		OWind = 15;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
@@ -170,7 +171,7 @@ void SetNextWeather(string sWeatherID)
 		break;
 
 	case "Black Pearl Fight":
-		wRain = 90;
+		wRain = WRAINSTORM;
 		Fog = 25;
 		OFog = 25;
 		OWind = 25;
@@ -410,9 +411,10 @@ void CreateWeatherEnvironment()
 
 	Weather.Time.time = fGetTime;
 	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);
-	float updateFactor = GetTimeScale()+2.0;
-	if (GetTimeScale()==1.0){updateFactor = 1.0;}
-	Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	// float updateFactor = GetTimeScale()+2.0;
+	// if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	// Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	Weather.Time.updatefrequence = 60;	
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -477,6 +479,13 @@ void CreateWeatherEnvironment()
 		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
 		Rain.isDone = "";
 	}
+
+	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
+	{
+		bWStormStatus = bWeatherIsStorm;
+		bWRainStatus = bWeatherIsRain;
+		LoadSceneSound();		
+	}	
 	// boal <--
 
 	WhrCreateSunGlowEnvironment();
@@ -699,6 +708,10 @@ void Whr_TimeUpdate()
 
 	Weather.Time.time = fTime;
 
+	if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
+	{
+		AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
+	}
     // if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
 	string sTmp;
@@ -722,7 +735,7 @@ void Whr_TimeUpdate()
 	}	
 
 	WhrCreateRainEnvironment();
-	bool bRain = bWeatherIsRain;	
+	bool bRain = bWeatherIsRain; // Whr_isRainEnable();
 	if (bRain == false)
 	{
 		ClearRainEnvironment();
@@ -731,24 +744,33 @@ void Whr_TimeUpdate()
 			WeatherParams.Rain = false;
 			WeatherParams.Rain.Sound = false;
 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-		}		
+		}			
 	}
 	else
 	{
 		WeatherParams.Rain.Sound = true;
+		WeatherParams.Rain = true;		
 		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
 		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 		Particles.winddirection.x = sin(Whr_GetWindAngle());
 		Particles.winddirection.z = cos(Whr_GetWindAngle());
 		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
-
+		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());		
 		Rain.isDone = "";
 	}
 
-	if( nNewHour != nOldHour )
+	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
 	{
+		bWStormStatus = bWeatherIsStorm;
+		bWRainStatus = bWeatherIsRain;
+		LoadSceneSound();		
+	}
+
+
+	if( hourChange == true )
+	{
+		hourChange = false;
 		Whr_UpdateWeatherHour();
 	}
 
@@ -799,6 +821,8 @@ void Whr_TimeUpdate()
 	// update sky: fog
 	Sky.TimeUpdate = GetTime();
 
+	// timeapi = api->GetDeltaTime();
+	// trace("Timeapi end: " + timeapi);
 	
 
 }
@@ -870,6 +894,7 @@ void Whr_UpdateWeatherHour()
 	Whr_Generator(nextHour);
 	addProceduralWeather(iBlendWeatherNum);	
 	// trace("Weather hourly update done");
+	Whr_UpdateWeather(false);
 	 
 }
 
@@ -946,6 +971,9 @@ void FillWeatherData(int nw1, int nw2)
 		fWeatherAngle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
 		fWeatherSpeed = Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed");
 
+		Weather.Rain = Whr_GetLong(&Weathers[nw1], "Rain");
+
+
 	}
 	else
 	{
@@ -982,10 +1010,14 @@ void FillWeatherData(int nw1, int nw2)
 		fWeatherAngle = blendedAngle;
 		// trace("Resulting angle: " + fWeatherAngle);
 
+		if (Whr_GetLong(&Weathers[nw1], "Rain") == 1 || Whr_GetLong(&Weathers[nw2], "Rain")){Weather.Rain = true;}
+		else{Weather.Rain = false;}
+
 	}
 
-	Weather.Tornado = Whr_GetLong(&Weathers[nw1], "Tornado");
 
+	Weather.Tornado = Whr_GetLong(&Weathers[nw1], "Tornado");
+	Weather.Storm = Whr_GetLong(&Weathers[nw1], "Storm");
 	// trace(sCurFog);
 	// trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
 	// trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
