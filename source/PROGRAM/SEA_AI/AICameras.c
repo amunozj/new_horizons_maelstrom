@@ -26,9 +26,11 @@ void CreateSeaCamerasEnvironment()
 	CreateEntity(&SeaDeckCamera, "DECK_CAMERA");
 
 	LayerAddObject("system_messages", &SeaCameras, 1);
-	LayerAddObject(SEA_EXECUTE, &SeaShipCamera, 1);
+	//LayerAddObject(SEA_EXECUTE, &SeaShipCamera, 1);
+	LayerAddObject(SEA_EXECUTE, &SeaShipCamera, iShipPriorityExecute + 5);
 	LayerAddObject(SEA_EXECUTE, &SeaFreeCamera, 1);
-	LayerAddObject(SEA_EXECUTE, &SeaDeckCamera, 1);
+	//LayerAddObject(SEA_EXECUTE, &SeaDeckCamera, 1);
+	LayerAddObject(SEA_EXECUTE, &SeaDeckCamera, iShipPriorityExecute + 5);
 
 	SeaFreeCamera.Perspective = 1.285;
 
