@@ -480,12 +480,19 @@ void CreateWeatherEnvironment()
 		Rain.isDone = "";
 	}
 
-	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
-	{
-		bWStormStatus = bWeatherIsStorm;
-		bWRainStatus = bWeatherIsRain;
+	// if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
+	// {
+	bWStormStatus = bWeatherIsStorm;
+	bWRainStatus = bWeatherIsRain;
+	LoadSceneSound();
 		LoadSceneSound();		
-	}	
+	LoadSceneSound();
+		LoadSceneSound();		
+	LoadSceneSound();
+
+	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+	// Rain.isDone = "";		
+	// }	
 	// boal <--
 
 	WhrCreateSunGlowEnvironment();
@@ -539,6 +546,32 @@ void CreateWeatherEnvironment()
 	}
 	//Trace("Whr: Select id = " + aCurWeather.id);
 }
+
+
+void Whr_UpdateSea() // NK 04-09-21
+{
+	// LDH cleanup 16Feb09
+//	Traceandlog("Whr_UpdateWeather start weather update " + "Time: " + GetStringTime(GetTime()) +" reinit: " +reinit_weather);	// LDH 05Sep06 trace for CTD
+
+
+	WhrCreateSeaEnvironment();
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+
+	if (bSeaActive)
+	{
+		Island.LightingPath = GetLightingPath();
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+		Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));		
+	}
+	// if(bSeaActive && !ownDeckStarted())
+	// {
+	// 	PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
+	// }
+}
+
 
 void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 {
@@ -773,7 +806,8 @@ void Whr_TimeUpdate()
 	{
 		bWStormStatus = bWeatherIsStorm;
 		bWRainStatus = bWeatherIsRain;
-		LoadSceneSound();		
+		LoadSceneSound();
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
 	}
 
 
@@ -920,7 +954,8 @@ void Whr_UpdateWeatherHour()
 	Whr_Generator(nextHour);
 	addProceduralWeather(iBlendWeatherNum);	
 	// trace("Weather hourly update done");
-	Whr_UpdateWeather(false);
+	// Whr_UpdateWeather(false);
+	Whr_UpdateSea();
 	 
 }
 
@@ -1036,8 +1071,10 @@ void FillWeatherData(int nw1, int nw2)
 		fWeatherAngle = blendedAngle;
 		// trace("Resulting angle: " + fWeatherAngle);
 
-		if (Whr_GetLong(&Weathers[nw1], "Rain") == 1 || Whr_GetLong(&Weathers[nw2], "Rain")){Weather.Rain = true;}
+		if (Whr_GetLong(&Weathers[nw1], "Rain") == true || Whr_GetLong(&Weathers[nw2], "Rain") == true){Weather.Rain = true;}
 		else{Weather.Rain = false;}
+
+		// trace("Weather 1 rain: " + Whr_GetLong(&Weathers[nw1], "Rain") + " Weather 2 rain: " + Whr_GetLong(&Weathers[nw2], "Rain") + "Weather rain: " + Whr_GetLong(Weather, "Rain") );
 
 	}
 

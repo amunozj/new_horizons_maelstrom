@@ -5112,7 +5112,7 @@ void InitOpenSeaMod()
 
 		MAX_WINDCHANGE =									5;		// INT - How much the wind CAN change in one hour - use positive integer between 0 and 20
 		MAX_FOGCHANGE =										10;		// INT - ^^DITTO for fog
-		MAX_RAINCHANGE =									3;		// INT - ^^DITTO for rain
+		MAX_RAINCHANGE =									5;		// INT - ^^DITTO for rain
 
 		COASTRAIDER_CHANCE = 								0.2;	// FLOAT - Generates local ships in ports and around the islands. Some are local merchants, others pirates.
 																	// 0.0 : Stock PotC, no local ships at all
