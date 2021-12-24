@@ -176,7 +176,7 @@ void wdmLoadSavedMap()
 
 void wdmRemoveOldEncounters()
 {
-	//Ïîìåòèì ïðîòóõøèå ýíêàóíòåðû
+	//Ýîìåòèì ïðîòóõøèå ýíêàóíòåðû
 	wdmMarkDeleteEncounters();
 	//Ñîáèðàåì âñåõ æåëàþùèõ
 	aref encs;
@@ -222,14 +222,14 @@ float wdmGetDays(int year, int month, int day, int hour)
 
 void wdmMarkDeleteEncounters()
 {
-	//Ïîëó÷àåì äàòó
+	//Ýîëó÷àåì äàòó
 	int year = sti(worldMap.date.year);
 	int month = sti(worldMap.date.month);
 	int day = sti(worldMap.date.day);
 	int hour = sti(worldMap.date.hour);
 	float days = wdmGetDays(year, month, day, hour);
 	int encYear, encMonth, encDay, encHour;
-	//Ïåðåáèðàåì âñå ýíêîóíòåðû, ïîìå÷àÿ íà óäàëåíèå
+	//Ýåðåáèðàåì âñå ýíêîóíòåðû, ïîìå÷àÿ íà óäàëåíèå
 	aref encs;
 	makearef(encs, worldMap.encounters);
 	int num = GetAttributesNum(encs);
@@ -358,7 +358,7 @@ void wdmSetIcon(string town, string new_name, int iNation)
 	//Boyer change
 	//makearef(wdmislandlocs, worldMap.islands.(wdmisland).locations);
 	if (!CheckAttribute(worldMap, "labels")) return;
-	makearef(wdmislandlocs, worldMap.labels));
+	makearef(wdmislandlocs, worldMap.labels);
 	num = GetAttributesNum(wdmislandlocs);
 	for (i = 0; i < num; i++) {
 		loc = GetAttributeN(wdmislandlocs, i);
