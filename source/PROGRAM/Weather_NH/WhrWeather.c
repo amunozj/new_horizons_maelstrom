@@ -376,7 +376,8 @@ void CreateWeatherEnvironment()
 	sInsideBack = Whr_GetString(aCurWeather,"InsideBack");
 	bWeatherIsNight = Whr_GetLong(aCurWeather,"Night");
 	bWeatherIsLight = Whr_GetLong(aCurWeather,"Lights");
-	if (daytimeLights()) bWeatherIsLight = true;
+	if (daytimeLights()) bWeatherIsLight = true;	
+	doShipLightChange(aCurWeather, true);	
 
 	// Weather.Wind.Angle = Whr_GetFloat(WeathersNH,"Wind.Angle");
 	// Weather.Wind.Speed = Whr_GetFloat(WeathersNH,"Wind.Speed");
@@ -866,7 +867,7 @@ void Whr_TimeUpdate()
 
 	// trace("Whr_TimeUpdate: change lights");	
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather);	
+	doShipLightChange(aCurWeather, false);	
 
 	// trace("Whr_TimeUpdate: do astronomy");	
 	//#20191020-01
@@ -971,7 +972,7 @@ int daytimeLights()
 	return Lights;
 }
 
-void doShipLightChange(ref aCurWeather)
+void doShipLightChange(ref aCurWeather, bool forceUpdate)
 {
     int j, iCharIdx;
 
@@ -979,7 +980,7 @@ void doShipLightChange(ref aCurWeather)
     Sea.Lights =  Whr_GetLong(aCurWeather, "Lights");
 	if (daytimeLights() == 1) Sea.Lights = 1;
 
-	if (shipsLights != Whr_GetLong(Sea, "Lights"))
+	if (shipsLights != Whr_GetLong(Sea, "Lights") || forceUpdate == true)
 	{
 		ref rChar;
 		for(j = 0; j < iNumShips; j++) {

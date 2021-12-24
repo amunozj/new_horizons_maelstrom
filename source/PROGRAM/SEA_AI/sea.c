@@ -1082,7 +1082,7 @@ void SeaLogin(ref Login)
 	SetCorrectWorldMapPosition(); //Screwface
 
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather);
+	// doShipLightChange(aCurWeather, true);
 
 
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
