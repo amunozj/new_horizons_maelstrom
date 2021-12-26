@@ -177,7 +177,7 @@ void wdmLoadSavedMap()
 
 void wdmRemoveOldEncounters()
 {
-	//ГќГ®Г¬ГҐГІГЁГ¬ ГЇГ°Г®ГІГіГµГёГЁГҐ ГЅГ­ГЄГ ГіГ­ГІГҐГ°Г»
+	//Эометим протухшие энкаунтеры
 	wdmMarkDeleteEncounters();
 	//????????????????????????????????? ???????????????? ????????????????????????????????
 	aref encs;
@@ -223,14 +223,14 @@ float wdmGetDays(int year, int month, int day, int hour)
 
 void wdmMarkDeleteEncounters()
 {
-	//ГќГ®Г«ГіГ·Г ГҐГ¬ Г¤Г ГІГі
+	//Эолучаем дату
 	int year = sti(worldMap.date.year);
 	int month = sti(worldMap.date.month);
 	int day = sti(worldMap.date.day);
 	int hour = sti(worldMap.date.hour);
 	float days = wdmGetDays(year, month, day, hour);
 	int encYear, encMonth, encDay, encHour;
-	//ГќГҐГ°ГҐГЎГЁГ°Г ГҐГ¬ ГўГ±ГҐ ГЅГ­ГЄГ®ГіГ­ГІГҐГ°Г», ГЇГ®Г¬ГҐГ·Г Гї Г­Г  ГіГ¤Г Г«ГҐГ­ГЁГҐ
+	//Эеребираем все энкоунтеры, помечая на удаление
 	aref encs;
 	makearef(encs, worldMap.encounters);
 	int num = GetAttributesNum(encs);
