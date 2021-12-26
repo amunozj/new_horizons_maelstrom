@@ -86,6 +86,7 @@ land_UseCorpse {Looting corpse}
 land_UseBarrel {Look into barrel}
 land_UseStorage {Gunpowder storage}
 land_GoToTeachHead {Blackbeard's head}
+land_Cancel {Cancel}
 
 go_store {Store}
 go_shipyard {Shipyard}
