@@ -1,13 +1,13 @@
-#define FOGHEIGHTFACTOR 40.0
+#include "Weather_NH\WhrWeather.h"
 
 bool morningFogChecked = false; 
 bool morningFog = false; 
 int randomFog = 0; 
 
 void Whr_FogRainCheck(){
-//JL -------------------------------------------------------------
+	//JL -------------------------------------------------------------
 
-//  LDH more fog in mornings - 26Feb09
+	//  LDH more fog in mornings - 26Feb09
 
 
 	int tempFog = fog;
@@ -38,7 +38,7 @@ void Whr_FogRainCheck(){
 		if (morningfog){fog += 4 + randomFog - abs(theHour-7);}	// +8, 7, 6, 5, don't use random number here
 	} 
 
-//JRH -->
+	//JRH -->
 	ref PChar = GetMainCharacter();
 	if(CheckAttribute(Pchar,"quest.JRH_rain"))
 	{
@@ -120,11 +120,11 @@ void Whr_FogRainCheck(){
 			//Log_SetStringToLog("JRH_rain = Default");
 		}
 	}
-//<-- JRH
+	//<-- JRH
 	WeathersNH.Lights = 0;
 
-//  LDH more fog during rain - 26Feb09
-	if (wRain > WRAINRAIN) fog += (wRain - WRAINRAIN)/2.0;
+	//  LDH more fog during rain - 26Feb09
+	if (wRain > WRAINRAIN){fog += (wRain - WRAINRAIN)/2.0;}
 
 	if (fog < MINIMUMFOG){fog=MINIMUMFOG}
 

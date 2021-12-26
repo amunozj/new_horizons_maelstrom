@@ -2,6 +2,7 @@
 // NH 2021
 /////////////////////////
 
+#include "Weather_NH\WhrWeather.h"
 #include "Weather_NH\WhrUtils.c"
 #include "Weather_NH\WhrLightning.c"
 #include "Weather_NH\WhrRain.c"
@@ -95,129 +96,117 @@ void SetNextWeather(string sWeatherID)
 {
 
 	int iHour = MakeInt(GetHour());
-	Trace("SetNextWeathr: " + sWeatherID)
+	// Trace("SetNextWeathr: " + sWeatherID)
 	string sWeather = sWeatherID;
-	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
-	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";	
-	if (sWeatherID == "alcove") sWeather = "inside";
+	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") {sWeather = "Clear";}
+	if (sWeatherID == "Day Storm") {sWeather = "Heavy Storm";}	
+	if (sWeatherID == "alcove") {sWeather = "inside";}
 	
 	switch (sWeather)
 	{
-	case "Clear":
-		wRain = 0;
-		goldRain = 0;
-		ORBallast = 0;
-		Fog = 0;
-		goldFog = 0;
-		bWStormStatus = false;
-		bWRainStatus = false;		
-		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Clear":
+			wRain = 0;
+			goldRain = 0;
+			ORBallast = 0;
+			fog = 0;
+			goldFog = 0;
+			gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Cloudy":
-		wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
-		goldRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = false;
-		bWRainStatus = false;
-		makeCurrentFutureRealizations(iHour);
-		break;
+			case "Cloudy":
+				wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				goldRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				gWeatherOvrd = true;
+				ignoreSeasons = true;
+				makeCurrentFutureRealizations(iHour);
+				break;
 
-	case "Overcast":
-		wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
-		goldRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = false;
-		bWRainStatus = false;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Overcast":
+			wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+			goldRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Rainy":
-		wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
-		goldRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = false;
-		bWRainStatus = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Rainy":
+			wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+			goldRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Heavy Rain":
-		wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
-		goldRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = true;
-		bWRainStatus = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Heavy Rain":
+			wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			goldRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Stormy":		// this produces lightning
-		wRain = WRAINSTORM+10;		// storm starts at 95
-		goldRain = WRAINSTORM+10;		// storm starts at 95
-		oldWind = 15;		// twisters start at minwind >= 28
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = true;
-		bWRainStatus = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Stormy":		// this produces lightning
+			wRain = WRAINSTORM+10;		// storm starts at 95
+			goldRain = WRAINSTORM+10;		// storm starts at 95
+			oldWind = 15;		// twisters start at minwind >= 28
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Heavy Storm":	// this produces twisters, "Day Storm"
-		wRain = WRAINTORNADO+5;	// storm starts at 95
-		goldRain = WRAINTORNADO+5;	// storm starts at 95
-		ORBallast = 15;
-		oldWind = 30;		// twisters start at minwind >= 28
-		OWBallast = 15;
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = true;
-		bWRainStatus = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "Heavy Storm":	// this produces twisters, "Day Storm"
+	// 	wRain = WRAINTORNADO+5;	// storm starts at 95
+	// 	goldRain = WRAINTORNADO+5;	// storm starts at 95
+	// 	ORBallast = 15;
+	// 	oldWind = 30;		// twisters start at minwind >= 28
+	// 	OWBallast = 15;
+	// 	gWeatherOvrd = true;
+	// 	ignoreSeasons = true;
+	// 	bWStormStatus = true;
+	// 	bWRainStatus = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
-	case "Foggy":
-		Fog = 25;		// produces fog density of 0.00375
-		goldFog = 25;		// produces fog density of 0.00375
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "Foggy":
+	// 	Fog = 25;		// produces fog density of 0.00375
+	// 	goldFog = 25;		// produces fog density of 0.00375
+	// 	gWeatherOvrd = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
-	case "Heavy Fog":
-		Fog = 40;		// produces fog density of 0.00625
-		goldFog = 40;		// produces fog density of 0.00625
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "Heavy Fog":
+	// 	Fog = 40;		// produces fog density of 0.00625
+	// 	goldFog = 40;		// produces fog density of 0.00625
+	// 	gWeatherOvrd = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
-	case "Black Pearl Fight":
-		wRain = WRAINSTORM;
-		Fog = 25;
-		goldFog = 25;
-		oldWind = 25;
-		gWeatherOvrd = true;
-		ignoreSeasons = true;
-		bWStormStatus = true;
-		bWRainStatus = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "Black Pearl Fight":
+	// 	wRain = WRAINSTORM;
+	// 	Fog = 25;
+	// 	goldFog = 25;
+	// 	oldWind = 25;
+	// 	gWeatherOvrd = true;
+	// 	ignoreSeasons = true;
+	// 	bWStormStatus = true;
+	// 	bWRainStatus = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
-	case "IslaDeMuerte":
-		Fog = 80;		// produces fog density of 0.02
-		goldFog = 80;		// produces fog density of 0.02
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "IslaDeMuerte":
+	// 	Fog = 80;		// produces fog density of 0.02
+	// 	goldFog = 80;		// produces fog density of 0.02
+	// 	gWeatherOvrd = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
-	case "Super Fog":
-		Fog = 999;
-		goldFog = 999;
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+	// case "Super Fog":
+	// 	Fog = 999;
+	// 	goldFog = 999;
+	// 	gWeatherOvrd = true;
+	// 	makeCurrentFutureRealizations(iHour);
+	// 	break;
 
 	}
 
@@ -810,7 +799,7 @@ void Whr_TimeUpdate()
 
 	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
 	{
-		Trace("Change rain status.  Rain: " + bWeatherIsRain + " rain status: " + bWRainStatus + " Storm: " + bWeatherIsStorm + " storm status: " + bWStormStatus);
+		// Trace("Change rain status.  Rain: " + bWeatherIsRain + " rain status: " + bWRainStatus + " Storm: " + bWeatherIsStorm + " storm status: " + bWStormStatus);
 		if (bWeatherIsRain == true && bWRainStatus == false){
 			WhrCreateRainEnvironment();
 			WeatherParams.Rain.Sound = true;
@@ -895,48 +884,6 @@ void Whr_TimeUpdate()
 		PostEvent("LoadSceneSound", 0);				
 	}	
 
-	// if (bRain == true){
-
-	// 	WhrCreateRainEnvironment();
-	// 	// bool bRain = bWeatherIsRain; // Whr_isRainEnable();
-	// 	if (bRain == false)
-	// 	{
-	// 		ClearRainEnvironment();
-	// 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
-	// 		{
-	// 			WeatherParams.Rain = false;
-	// 			WeatherParams.Rain.Sound = false;
-	// 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-	// 		}			
-	// 	}
-	// 	else
-	// 	{
-	// 		WeatherParams.Rain.Sound = true;
-	// 		WeatherParams.Rain = true;		
-	// 		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-	// 		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	// 		Particles.winddirection.x = sin(Whr_GetWindAngle());
-	// 		Particles.winddirection.z = cos(Whr_GetWindAngle());
-	// 		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	// 		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-	// 		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());		
-	// 		Rain.isDone = "";
-	// 	}
-
-	// }
-
-
-
-
-	// trace("Whr_TimeUpdate: update sound");
-
-
-
-
-
-	// trace("Whr_TimeUpdate: hourly update");
-
-
 	if( nNewHour != nOldHour )
 	{
 		
@@ -948,21 +895,6 @@ void Whr_TimeUpdate()
 
 	Weather.isDone = "";
 
-
-	// trace("Whr_TimeUpdate: Fill weather");
-
-	// update weather: sun lighting
-
-
-	//update rain: rain drops, rain colors, rain size, rainbow
-	//navy -- 5.03.07
-	// if (WeathersNH.Rain == true)
-	// {
-	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
-	// 	Rain.isDone = "";
-	// }
-
-	// trace("Whr_TimeUpdate: Fill Sun");	
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;

@@ -1,12 +1,4 @@
-#define MAXFOG 20
-#define FOGDECAY 2.0
-
-#define WRAINOVERCAST 30
-#define WRAINRAIN 50
-#define WRAINSTORM 70
-#define WRAINTORNADO 90
-
-#define RAINDEBUG 1
+#include "Weather_NH\WhrWeather.h"
 
 int extraBallast = 5;
 int maxwRain = 5;
