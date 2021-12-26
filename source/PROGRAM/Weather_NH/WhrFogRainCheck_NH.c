@@ -257,7 +257,7 @@ void Whr_FogRainCheck(){
 				WeathersNH.Tornado = true;
 				WeatherParams.Storm = true;
 				WeatherParams.tornado = true;
-				btornado = true;
+				// btornado = true;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
 				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
 					string PCCaptainTitle;

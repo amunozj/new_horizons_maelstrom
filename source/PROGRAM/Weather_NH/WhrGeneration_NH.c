@@ -118,8 +118,8 @@ void Whr_Generator(int iHour){
 	// 	fog = 40;
 	// 	bWeatherIsStorm = true; // screwface		
 	// }
-	btornado = bWhrTornado; //screwface
-	bstorm = bWhrStorm; //screwface
+	// btornado = bWhrTornado; //screwface
+	// bstorm = bWhrStorm; //screwface
 
 	goldRain = wRain;
 	goldFog = fog;

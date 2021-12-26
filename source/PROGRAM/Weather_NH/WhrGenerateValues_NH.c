@@ -72,8 +72,12 @@ void Whr_GenerateValues(int fogCheck){
 			break; 
 	}
 
+	// Make sure that set weather is not overriden by random generator
 	if (ignoreSeasons == true){
 		maxwRain = 100;
+		rWind = 0;
+		rRain = 0;
+		rFog = 0;
 	}
 // Screwface : end
 

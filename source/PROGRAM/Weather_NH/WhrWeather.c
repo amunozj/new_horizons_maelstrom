@@ -105,10 +105,10 @@ void SetNextWeather(string sWeatherID)
 	{
 	case "Clear":
 		wRain = 0;
-		ORain = 0;
+		goldRain = 0;
 		ORBallast = 0;
 		Fog = 0;
-		OFog = 0;
+		goldFog = 0;
 		bWStormStatus = false;
 		bWRainStatus = false;		
 		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
@@ -117,7 +117,7 @@ void SetNextWeather(string sWeatherID)
 
 	case "Cloudy":
 		wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
-		ORain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+		goldRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = false;
@@ -127,7 +127,7 @@ void SetNextWeather(string sWeatherID)
 
 	case "Overcast":
 		wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
-		ORain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+		goldRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = false;
@@ -137,7 +137,7 @@ void SetNextWeather(string sWeatherID)
 
 	case "Rainy":
 		wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
-		ORain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+		goldRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = false;
@@ -147,7 +147,7 @@ void SetNextWeather(string sWeatherID)
 
 	case "Heavy Rain":
 		wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
-		ORain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+		goldRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = true;
@@ -157,8 +157,8 @@ void SetNextWeather(string sWeatherID)
 
 	case "Stormy":		// this produces lightning
 		wRain = WRAINSTORM+10;		// storm starts at 95
-		ORain = WRAINSTORM+10;		// storm starts at 95
-		OWind = 15;		// twisters start at minwind >= 28
+		goldRain = WRAINSTORM+10;		// storm starts at 95
+		oldWind = 15;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = true;
@@ -168,9 +168,9 @@ void SetNextWeather(string sWeatherID)
 
 	case "Heavy Storm":	// this produces twisters, "Day Storm"
 		wRain = WRAINTORNADO+5;	// storm starts at 95
-		ORain = WRAINTORNADO+5;	// storm starts at 95
+		goldRain = WRAINTORNADO+5;	// storm starts at 95
 		ORBallast = 15;
-		OWind = 30;		// twisters start at minwind >= 28
+		oldWind = 30;		// twisters start at minwind >= 28
 		OWBallast = 15;
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
@@ -181,14 +181,14 @@ void SetNextWeather(string sWeatherID)
 
 	case "Foggy":
 		Fog = 25;		// produces fog density of 0.00375
-		OFog = 25;		// produces fog density of 0.00375
+		goldFog = 25;		// produces fog density of 0.00375
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Fog":
 		Fog = 40;		// produces fog density of 0.00625
-		OFog = 40;		// produces fog density of 0.00625
+		goldFog = 40;		// produces fog density of 0.00625
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
@@ -196,8 +196,8 @@ void SetNextWeather(string sWeatherID)
 	case "Black Pearl Fight":
 		wRain = WRAINSTORM;
 		Fog = 25;
-		OFog = 25;
-		OWind = 25;
+		goldFog = 25;
+		oldWind = 25;
 		gWeatherOvrd = true;
 		ignoreSeasons = true;
 		bWStormStatus = true;
@@ -207,14 +207,14 @@ void SetNextWeather(string sWeatherID)
 
 	case "IslaDeMuerte":
 		Fog = 80;		// produces fog density of 0.02
-		OFog = 80;		// produces fog density of 0.02
+		goldFog = 80;		// produces fog density of 0.02
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Super Fog":
 		Fog = 999;
-		OFog = 999;
+		goldFog = 999;
 		gWeatherOvrd = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
@@ -352,8 +352,8 @@ void CreateWeatherEnvironment()
 	bool bWhrTornado = false;
 	bool bRain = false;
 
-	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
-	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
+	// if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
+	// if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 
 	iCurWeatherHour = iHour;
 	iCurWeatherNum = FindWeatherByHour(iHour);
@@ -525,7 +525,7 @@ void CreateWeatherEnvironment()
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
 
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 
@@ -544,7 +544,12 @@ void CreateWeatherEnvironment()
 	Astronomy.TimeUpdate = 1;
 
 
-	Weather.isDone = "";
+	btornado = Whr_GetLong(Weather, "Tornado"); //screwface
+	bstorm = Whr_GetLong(Weather, "Storm") //screwface
+
+	WeatherParams.Storm = Whr_GetLong(Weather, "Storm");
+	WeatherParams.Tornado = Whr_GetLong(Weather, "Tornado");	
+
 
 	if (Whr_GetLong(Weather, "Tornado") == true) { WhrCreateTornadoEnvironment(); }
 	else{
@@ -560,6 +565,8 @@ void CreateWeatherEnvironment()
 	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
+	Weather.isDone = "";
+
 
 	if (bSeaActive)
 	{
@@ -855,6 +862,12 @@ void Whr_TimeUpdate()
 		Seafoam.storm = "false";
 		mchr.Capsize.Warning = 100;
 	}
+
+	btornado = Whr_GetLong(Weather, "Tornado"); //screwface
+	bstorm = Whr_GetLong(Weather, "Storm") //screwface
+
+	WeatherParams.Storm = Whr_GetLong(Weather, "Storm");
+	WeatherParams.Tornado = Whr_GetLong(Weather, "Tornado");		
 
 	if (Whr_GetLong(Weather, "Lightning.Enable") != bLightningStatus){
 		bLightningStatus = Whr_GetLong(Weather, "Lightning.Enable");
