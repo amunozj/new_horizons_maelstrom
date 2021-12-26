@@ -2420,62 +2420,62 @@ int AddSeaTimeToCurrent()
 		// }
 	}
 
-	sCurrentFog = "Fog";
-	if (bSeaActive)
-	{
-		sCurrentFog = "SpecialSeaFog";
-	}		
+	// sCurrentFog = "Fog";
+	// if (bSeaActive)
+	// {
+	// 	sCurrentFog = "SpecialSeaFog";
+	// }		
 
-	// trace("addseatime: Find weather");
-	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
-	// addProceduralWeather(iCurWeatherNum);	
-	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-	iNextWeatherNum = iBlendWeatherNum;
+	// // trace("addseatime: Find weather");
+	// iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
+	// // addProceduralWeather(iCurWeatherNum);	
+	// iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
+	// iNextWeatherNum = iBlendWeatherNum;
 
-	// trace("addseatime: Fill weather");
-	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// // trace("addseatime: Fill weather");
+	// // update weather: sun lighting
+	// FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 
-	// trace("addseatime: Fill rain");
+	// // trace("addseatime: Fill rain");
 
-	//update rain: rain drops, rain colors, rain size, rainbow
-	//navy -- 5.03.07
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
+	// //update rain: rain drops, rain colors, rain size, rainbow
+	// //navy -- 5.03.07
+	// if (WeathersNH.Rain == true)
+	// {
+	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+	// 	Rain.isDone = "";
+	// }
 
-	// trace("addseatime: Fill sun");
+	// // trace("addseatime: Fill sun");
 
-	// update sun glow: sun\moon, flares
-	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
-	SunGlow.isDone = true;
+	// // update sun glow: sun\moon, flares
+	// WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	// SunGlow.isDone = true;
 
-	// trace("addseatime: Fill sea");
-	// Fill Sea data
-	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	// // trace("addseatime: Fill sea");
+	// // Fill Sea data
+	// FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
 
-	// trace("addseatime: Fill sky");	
-	// Fill Sky data
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	// // trace("addseatime: Fill sky");	
+	// // Fill Sky data
+	// FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 
-	// trace("addseatime: update fog");
-	// update sky: fog
-	// Sky.TimeUpdate = Environment.time;
+	// // trace("addseatime: update fog");
+	// // update sky: fog
+	// // Sky.TimeUpdate = Environment.time;
 
-	// trace("addseatime: done");
+	// // trace("addseatime: done");
 
-	if (bSeaActive)
-	{
-		Island.LightingPath = GetLightingPath();
-		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
-		Sea.Fog.SeaDensity =  Whr_GetFloat(Weather, "Fog.SeaDensity");
-		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
+	// if (bSeaActive)
+	// {
+	// 	Island.LightingPath = GetLightingPath();
+	// 	Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+	// 	Sea.Fog.SeaDensity =  Whr_GetFloat(Weather, "Fog.SeaDensity");
+	// 	SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
 		
-	}	
+	// }	
 
-	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
+	// fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
 	return minutes;
 }
