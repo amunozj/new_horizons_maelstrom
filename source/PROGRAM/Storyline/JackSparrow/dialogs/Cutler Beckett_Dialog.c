@@ -55,7 +55,7 @@ void ProcessDialogEvent()
 			if(CheckQuestAttribute("Beckett", "First_mission_reckoning"))
 			{
 				//Locations[FindLocation("EITC_Office")].reload.l1.disable = 0;
-				dialog.text = DLG_TEXT[44] + Pchar.lastname + DLG_TEXT[45];;
+				dialog.text = DLG_TEXT[44] + Pchar.lastname + DLG_TEXT[45];
 				Link.l1 = DLG_TEXT[46];
 				Link.l1.go = "The_First_Reckoning";
 			}

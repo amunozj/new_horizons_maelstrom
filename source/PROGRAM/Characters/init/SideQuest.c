@@ -7043,7 +7043,7 @@ void CreateSideQuestCharacters(ref n)
 	ch.lastname = TranslateString("","Angulo");
 	ch.id		= "CS_Spanish_Captain3";
 	ch.nation	= SPAIN;
-	ch.model	= GetRandomModelForTypeExSubCheck(true, "Captains", "man", SPAIN);;
+	ch.model	= GetRandomModelForTypeExSubCheck(true, "Captains", "man", SPAIN);
 	ch.sound_type = "soldier";
 	LAi_NoRebirthEnable(ch);
 	ch.sex = "man";
@@ -7107,7 +7107,7 @@ void CreateSideQuestCharacters(ref n)
 	ch.lastname = TranslateString("","Elcano");
 	ch.id		= "CS_Spanish_Captain4";
 	ch.nation	= SPAIN;
-	ch.model	= GetRandomModelForTypeExSubCheck(true, "Captains", "man", SPAIN);;
+	ch.model	= GetRandomModelForTypeExSubCheck(true, "Captains", "man", SPAIN);
 	ch.sound_type = "soldier";
 	LAi_NoRebirthEnable(ch);
 	ch.sex = "man";

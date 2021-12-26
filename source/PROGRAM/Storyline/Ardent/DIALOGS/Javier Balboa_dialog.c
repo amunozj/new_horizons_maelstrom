@@ -802,7 +802,7 @@ void ProcessDialogEvent()
 
 		case "convoy_return_from_trade2":
 			dialog.text = DLG_TEXT[236] + GetMyName(PChar) + "?";
-			link.l1 = DLG_TEXT[237] + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[238] + GetMyFullName(characterFromID("Hans Kloss")) + DLG_TEXT[239];;
+			link.l1 = DLG_TEXT[237] + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[238] + GetMyFullName(characterFromID("Hans Kloss")) + DLG_TEXT[239];
 			link.l1.go = "convoy_return_from_trade3";
 		break;
 

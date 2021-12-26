@@ -3053,7 +3053,7 @@ void QuestComplete(string sQuestName)
 			Group_DeleteGroup("Tripper_Ship");
 			Group_DeleteGroup("English_Captain2_Ship");
 			Group_DeleteGroup("English_Captain3_Ship");
-			Group_DeleteGroup("English_Captain4_Ship");;
+			Group_DeleteGroup("English_Captain4_Ship");
 
             ChangeCharacterAddressGroup(characterFromID("spanish_soldat_09"), "Havana_House_03", "reload", "reload1");			
 	        LAi_SetActorType(characterFromID("spanish_soldat_09"));

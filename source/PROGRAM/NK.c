@@ -3987,7 +3987,7 @@ void GivePromotionOfficers(int PlayerRank, int iNation)
 					else							// otherwise create a fake one
 					{
 						ch = CreateOfficer_Cheat(OFFIC_TYPE_CARPENTER, "brtlut2_18", 3, iNation, false);
-						ch.name = TranslateString("","Lieutenant");;
+						ch.name = TranslateString("","Lieutenant");
 						ch.lastname = TranslateString("","Gerard");
 						SetRank(ch, ENGLAND, 3);
 					}

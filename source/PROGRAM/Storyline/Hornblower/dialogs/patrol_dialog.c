@@ -44,13 +44,13 @@ void ProcessDialogEvent()
 			if(CheckQuestAttribute("Players_rank", "Lieutenant"))
 			{				
 				dialog.text = DLG_TEXT[3];
-				link.l1 = DLG_TEXT[4] + GetMyFullName(PChar) + DLG_TEXT[2] + GetMyShipNameShow(PChar) + ".";;
+				link.l1 = DLG_TEXT[4] + GetMyFullName(PChar) + DLG_TEXT[2] + GetMyShipNameShow(PChar) + ".";
 				link.l1.go = "Continue Chatter Lieutenant";
 			}
 			if(CheckQuestAttribute("Players_rank", "Commander"))
 			{
 				dialog.text = DLG_TEXT[18];
-				link.l1 = DLG_TEXT[19] + GetMyFullName(PChar) + DLG_TEXT[2] + GetMyShipNameShow(PChar) + ".";;
+				link.l1 = DLG_TEXT[19] + GetMyFullName(PChar) + DLG_TEXT[2] + GetMyShipNameShow(PChar) + ".";
 				link.l1.go = "Continue Chatter Commander";
 			}
 		break;

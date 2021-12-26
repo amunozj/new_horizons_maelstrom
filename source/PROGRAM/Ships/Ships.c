@@ -250,7 +250,7 @@ void SetUpShip(ref chr, string ftype, bool isgen)
 	}*/
 	//Levis moved this to already existing functions
 	chr.quest.officertype = GetCaptainType(chr);
-	mult *= CaptainMultFromOfficerType(chr.quest.officertype);;
+	mult *= CaptainMultFromOfficerType(chr.quest.officertype);
 	int iMCShipClass = makeint(GetCharacterShipClass(GetMainCharacter()));
 	//Log_SetStringToLog("Mult 1 = " + mult);
 	if(makeint(Shiptype.Class) < iMCShipClass) mult *= 1.5;

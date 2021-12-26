@@ -3003,7 +3003,7 @@ void UpdateFourImages()
 		GameInterface.FourImage.(tmpStr).img1		= "ship back";
 		GameInterface.FourImage.(tmpStr).img2		= GetShipPicName(tmpShipType); // PS
 		GameInterface.FourImage.(tmpStr).str1		= "#"+tmp1;
-		GameInterface.FourImage.(tmpStr).str2		= GetShipString(tmpShipType); //PS tempfix XI_ConvertString(tmp2);;
+		GameInterface.FourImage.(tmpStr).str2		= GetShipString(tmpShipType); //PS tempfix XI_ConvertString(tmp2);
 		GameInterface.FourImage.(tmpStr).tex1		= 0;
 		GameInterface.FourImage.(tmpStr).tex2		= 1+GetShipTexture(tmpShipType); // PS
     }
