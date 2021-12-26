@@ -15,7 +15,6 @@
 
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
-#define PARTICLESPOWER 0.0
 
 #define DEBUG_SEA_OPTICAL 0
 
@@ -402,11 +401,11 @@ void CreateWeatherEnvironment()
 	pchar.Wind.Angle = fWeatherAngle;
 	pchar.Wind.Speed = fWeatherSpeed;
 
-	// if (WeathersNH.Rain == true)
-	// {
-	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
-	// 	Rain.isDone = "";
-	// }
+	if (WeathersNH.Rain == true)
+	{
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
+	}
 
 
 	if (iBlendWeatherNum < 0 )
@@ -444,16 +443,14 @@ void CreateWeatherEnvironment()
 	// fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
 	// fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
 
-    // boal -->'
-	WhrCreateRainEnvironment();
-	bRain = bWeatherIsRain; // Whr_isRainEnable();
+    // boal -->
+	bRain = true; // Whr_isRainEnable();
     string sLocation = "";
     int iLocation = -1;
     if(CheckAttribute(pchar, "location")) {
        sLocation = pchar.location;
        iLocation = FindLocation(sLocation);
     }
-
 	if(iLocation != -1)
 	{
 		ref rLoc;
@@ -480,14 +477,13 @@ void CreateWeatherEnvironment()
 			}
 		}
 	}
-
-	if (!bRain)
+	if (bRain)
 	{
-		ClearRainEnvironment();
+		WhrCreateRainEnvironment();
 	}
 	else
 	{
-		Rain.isDone = "";
+		ClearRainEnvironment();
 	}
 	// boal <--
 
@@ -520,13 +516,9 @@ void CreateWeatherEnvironment()
 
 	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
 
-	Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	Particles.windpower = 0.0005 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
-	
-	ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-	ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
 
@@ -682,7 +674,8 @@ void Whr_TimeUpdate()
 	//navy --> Rain
 	string sTmp;
 	int iTmp, iTime;
-
+	bool bRain = false;
+	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
@@ -700,30 +693,20 @@ void Whr_TimeUpdate()
 		sCurrentFog = "SpecialSeaFog";
 	}	
 
-	WhrCreateRainEnvironment();
-	bool bRain = bWeatherIsRain;	
-	if (!bRain)
+
+
+	if (WeathersNH.Rain == true)
 	{
-		ClearRainEnvironment();
+		WeatherParams.Rain.Sound = true;
+		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+	}else
+	{
 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
 		{
 			WeatherParams.Rain = false;
 			WeatherParams.Rain.Sound = false;
 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-		}		
-	}
-	else
-	{
-		WeatherParams.Rain.Sound = true;
-		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-		Particles.winddirection.x = sin(Whr_GetWindAngle());
-		Particles.winddirection.z = cos(Whr_GetWindAngle());
-		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
-
-		Rain.isDone = "";
+		}
 	}
 
 	Weather.isDone = "";
@@ -733,11 +716,11 @@ void Whr_TimeUpdate()
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07
-	// if (WeathersNH.Rain == true)
-	// {
-	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
-	// 	Rain.isDone = "";
-	// }
+	if (WeathersNH.Rain == true)
+	{
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
+	}
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;

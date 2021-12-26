@@ -7,6 +7,7 @@
 #include "battle_interface\ActivePerksShow.c"
 #include "battle_interface\procGetSailTextureData.c"		// the function procGetSailTextureData() is now moved into a separate file
 #include "battle_interface\flags.c" // KK
+#include "battle_interface\WmInterface.c"
 
 #define BI_ICONS_TEXTURE_SHIP1		1
 
@@ -178,7 +179,7 @@ void InitBattleInterface()
 	SetEventHandler("DoSailHole","ProcessSailDamage",0);
 	SetEventHandler("evntBISelectShip","procBISelectShip",0);
 
-	procLoadIntoNew(); // Проинитим таблицу активных перков
+	procLoadIntoNew(); // ?????????????????? ?????????????? ???????????????? ????????????
 	SetEventHandler("Control Activation","BI_ProcessControlPress",0);
 
 	RefreshFlags();
@@ -1126,11 +1127,11 @@ void BI_LaunchCommand()
 // <-- KK
 	case "BI_SailTo":
 		if(targetNum==-1)
-		{ // приплыть в локатор с именем locName
+		{ // ???????????????? ?? ?????????????? ?? ???????????? locName
 			SeaAI_SailToLocator(locName);
 		}
 		else
-		{ // догнать перса с индексом targetNum
+		{ // ?????????????? ?????????? ?? ???????????????? targetNum
 			SeaAI_SailToCharacter(targetNum);
 		}
 	break;
@@ -1154,7 +1155,7 @@ void BI_LaunchCommand()
 	break;
 	case "BI_ImmDeath":
 		if(targetNum==-1)
-		{ // смерть форта
+		{ // ???????????? ??????????
 			targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
 			if(targetNum>=0)
 			{
@@ -1498,7 +1499,7 @@ void BI_SetPossibleCommands()
 		return;
 	}
 
-	// для главного персонажа
+	// ?????? ???????????????? ??????????????????
 	if(mainIdx==chIdx)
 	{
 		BattleInterface.Commands.Moor.enable				= bCanEnterToLand;
@@ -1541,7 +1542,7 @@ void BI_SetPossibleCommands()
 		BattleInterface.Commands.CCommand.enable		= GetCompanionQuantity(mainCh)>1;
 		BattleInterface.Commands.Ability.enable			= true;
 	}
-	// для спутников
+	// ?????? ??????????????????
 	else
 	{
 		BattleInterface.Commands.Moor.enable				= false;
@@ -1775,41 +1776,49 @@ void BI_InitializeCommands()
 	BattleInterface.AbilityIcons.Brander.selPicNum				= 4;
 	BattleInterface.AbilityIcons.Brander.texNum				= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.Brander.event				= "BI_Brander";
+	BattleInterface.AbilityIcons.Brander.note				= LanguageConvertString(idLngFile, "sea_Brander");
 	BattleInterface.AbilityIcons.ImmediateReload.enable		= false;
 	BattleInterface.AbilityIcons.ImmediateReload.picNum		= 10;
 	BattleInterface.AbilityIcons.ImmediateReload.selPicNum		= 14;
 	BattleInterface.AbilityIcons.ImmediateReload.texNum		= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.ImmediateReload.event		= "BI_ImmediateReload";
+	BattleInterface.AbilityIcons.ImmediateReload.note		= LanguageConvertString(idLngFile, "sea_FastReload");
 	BattleInterface.AbilityIcons.InstantBoarding.enable		= false;
 	BattleInterface.AbilityIcons.InstantBoarding.picNum		= 11;
 	BattleInterface.AbilityIcons.InstantBoarding.selPicNum		= 15;
 	BattleInterface.AbilityIcons.InstantBoarding.texNum		= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.InstantBoarding.event		= "BI_InstantBoarding";
+	BattleInterface.AbilityIcons.InstantBoarding.note		= LanguageConvertString(idLngFile, "sea_InstantBoarding");
 	BattleInterface.AbilityIcons.LightRepair.enable			= false;
 	BattleInterface.AbilityIcons.LightRepair.picNum			= 9;
 	BattleInterface.AbilityIcons.LightRepair.selPicNum			= 13;
 	BattleInterface.AbilityIcons.LightRepair.texNum			= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.LightRepair.event			= "BI_LightRepair";
+	BattleInterface.AbilityIcons.LightRepair.note			= LanguageConvertString(idLngFile, "sea_LightRepair");
 	BattleInterface.AbilityIcons.InstantRepair.enable		= false;
 	BattleInterface.AbilityIcons.InstantRepair.picNum		= 1;
 	BattleInterface.AbilityIcons.InstantRepair.selPicNum		= 5;
 	BattleInterface.AbilityIcons.InstantRepair.texNum		= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.InstantRepair.event		= "BI_InstantRepair";
+	BattleInterface.AbilityIcons.InstantRepair.note			= LanguageConvertString(idLngFile, "sea_InstantRepair");
 	BattleInterface.AbilityIcons.Turn180.enable				= false;
 	BattleInterface.AbilityIcons.Turn180.picNum				= 2;
 	BattleInterface.AbilityIcons.Turn180.selPicNum				= 6;
 	BattleInterface.AbilityIcons.Turn180.texNum				= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.Turn180.event				= "BI_Turn180";
+	BattleInterface.AbilityIcons.Turn180.note				= LanguageConvertString(idLngFile, "sea_Turn180");
 	BattleInterface.AbilityIcons.SandbankManeuver.enable	= false;
 	BattleInterface.AbilityIcons.SandbankManeuver.picNum	= 3;
 	BattleInterface.AbilityIcons.SandbankManeuver.selPicNum	= 7;
 	BattleInterface.AbilityIcons.SandbankManeuver.texNum	= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.SandbankManeuver.event		= "BI_SandbankManeuver";
+	BattleInterface.AbilityIcons.SandbankManeuver.note		= LanguageConvertString(idLngFile, "sea_SandbankManeuver");
 	BattleInterface.AbilityIcons.Troopers.enable			= false;
 	BattleInterface.AbilityIcons.Troopers.picNum			= 8;
 	BattleInterface.AbilityIcons.Troopers.selPicNum			= 12;
 	BattleInterface.AbilityIcons.Troopers.texNum			= BI_ICONS_TEXTURE_ABILITY;
 	BattleInterface.AbilityIcons.Troopers.event				= "BI_Troopers";
+	BattleInterface.AbilityIcons.Troopers.note				= LanguageConvertString(idLngFile, "sea_Troopers");
 
 // MAXIMUS Deck -->
 // KK -->
@@ -1933,7 +1942,7 @@ ref BI_GetData()
 
 	switch (dataType)
 	{
-	// Получаем номер картинки корабля
+	// ???????????????? ?????????? ???????????????? ??????????????
 		case BIDT_SHIPPICTURE:
 			enable = distance < GetCharVisibilityRange(GetMainCharacter(), 1); // PB: Ship type is visible inside LONG range
 			if (CheckAttribute(chRef, "unknownShip") == true && sti(chRef.unknownShip) == true) {
@@ -2484,19 +2493,19 @@ void SetParameterData()
 
 ref ProcessSailDamage()
 {
-	// от кого удар
+	// ???? ???????? ????????
 	int shootIdx = GetEventData();
-	// перс
+	// ????????
 	int chrIdx = GetEventData();
 	string sMastName = GetEventData();
-	// координаты паруса
+	// ???????????????????? ????????????
 	string reyName = GetEventData();
 	int groupNum = GetEventData();
-	// данные о дырках
+	// ???????????? ?? ????????????
 	int holeCount = GetEventData();
 	int holeData = GetEventData();
 	int maxHoleCount = GetEventData();
-	// мощность паруса
+	// ???????????????? ????????????
 	float sailPower = GetEventData();
 
 // KK -->
@@ -2563,7 +2572,7 @@ void ProcessDayRepair()
 		chref = GetCharacter(cn);
 		RepairAllCannons(&chref); // NK can qty. For now repair all fixable guns. Later go back and set repair rates. 05-04-19
 
-		// расчет починки корпуса
+		// ???????????? ?????????????? ??????????????
 		if( GetHullPercent(chref)<100.0 )
 		{
 			repPercent = GetHullRPD(chref);
@@ -2575,7 +2584,7 @@ void ProcessDayRepair()
 			RemoveRepairGoods(true,chref,matQ);
 		}
 
-		// расчет починки парусов
+		// ???????????? ?????????????? ??????????????
 		if( GetSailPercent(chref)<100.0 )
 		{
 			repPercent = GetSailRPD(chref);
@@ -2912,7 +2921,7 @@ void procSetUsingAbility()
 		return;
 	}
 
-	// для главного персонажа
+	// ?????? ???????????????? ??????????????????
 	if (mainIdx == chIdx)
 	{
 		BattleInterface.AbilityIcons.Brander.enable			= false;
@@ -3200,7 +3209,7 @@ ref BI_GetLandData()
 	}
 	// NK <--
 
-	// Заглушка
+	// ????????????????
 	if( BI_intNRetValue[2]<0 || BI_intNRetValue[3]<0 )
 	{
 		BI_intNRetValue[2] = AddTextureToList( &BattleInterface, "battle_interface\LandTarget1.tga.tx", 4, 2 ); // KK
