@@ -330,8 +330,7 @@ void SetSchemeForLocation(ref loc)
 				case PIRATE: SetMusicAlarm("music_tavern_pirate"); break;
 				case HOLLAND: SetMusicAlarm("music_tavern"); break;
 				case PORTUGAL: SetMusicAlarm("music_tavern"); break;
-				case GUEST1_NATION: SetMusicAlarm("music_tavern"); break;
-				case PERSONAL_NATION: SetMusicAlarm("music_tavern_personal"); break;
+				case AMERICA: SetMusicAlarm("music_tavern"); break;
 			}
 // <-- KK
 			//a simple virtual sailor change <--
@@ -1163,13 +1162,17 @@ void SetSchemeForAbordage()
 
 void SetSchemeForSea()
 {
+
+	int rainSoundID;
+	// Trace("SSfS: Reset sound");
 	ResetSoundScheme();
 
+	// Trace("SSfS: Set Scheme");
 	AddSoundScheme("sea");
 	if (Whr_IsStorm())
 	{
 		AddSoundScheme("sea_weather_storm");
-		int rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm");
+		rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm");
 		SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
 		SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 		int windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm");
@@ -1216,7 +1219,9 @@ void SetSchemeForSea()
 		if (Whr_IsRain())
 		{
 			AddSoundScheme("sea_weather_rain");
-			PlayStereoSoundLooped("rain");
+			rainSoundID = PlayStereoSoundLooped_JustCache("rain");
+			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+			SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 			int waterSoundID = PlayStereoSoundLooped_JustCache("water_sea");
 			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
 			SendMessage(Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
@@ -1229,6 +1234,7 @@ void SetSchemeForSea()
 			SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 		}
 	}
+	// Trace("SSfS: Resume sounds");
 	ResumeAllSounds();
 }
 
@@ -1531,14 +1537,18 @@ void ResetSound()
 
 void LoadSceneSound()
 {
-	int i = FindLoadedLocation();
-// KK -->
-	if (i != -1) {
-		SetSchemeForLocation(&Locations[i]);
-	} else {
-		if (bSeaActive) SetSchemeForSea();
+	Trace("Load Scene Sound");
+	if (bSeaActive && !bAbordageStarted) {
+		Trace("Set Scheme for sea");
+		SetSchemeForSea();
+		}
+	else{
+		int i = FindLoadedLocation();
+
+		if (i != -1) {
+			SetSchemeForLocation(&Locations[i]);
+		}
 	}
-// <-- KK
 }
 
 // KK -->
