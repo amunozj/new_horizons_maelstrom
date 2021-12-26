@@ -5,7 +5,8 @@
 #include "Weather_NH\Init\Night.c"
 #include "Weather_NH\Init\DayStorm.c"
 #include "Weather_NH\Init\Special.c"
-#include "Weather_NH\Init\Rain.c" //navy
+#include "Weather_NH\Init\Rain.c"
+#include "Weather_NH\Init\StateVariable.c"
 
 int InitWeather()
 {
@@ -20,6 +21,7 @@ int InitWeather()
 	n = Whr_InitRain(n);
 
 	Whr_InitCommon();
+	Whr_InitStateVariable();
 
 	Trace("Init weathers complete. " + n + " weathers found.");
 

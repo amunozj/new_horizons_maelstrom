@@ -1,9 +1,5 @@
 #include "Weather_NH\WhrWeather.h"
 
-bool morningFogChecked = false; 
-bool morningFog = false; 
-int randomFog = 0; 
-
 void Whr_FogRainCheck(){
 	//JL -------------------------------------------------------------
 
@@ -38,7 +34,7 @@ void Whr_FogRainCheck(){
 		if (morningfog){fog += 4 + randomFog - abs(theHour-7);}	// +8, 7, 6, 5, don't use random number here
 	} 
 
-	//JRH -->
+	// //JRH -->
 	ref PChar = GetMainCharacter();
 	if(CheckAttribute(Pchar,"quest.JRH_rain"))
 	{
@@ -154,8 +150,8 @@ void Whr_FogRainCheck(){
 	// bWeatherIsStorm = false;
 	// bWeatherIsRain = false;
 
-	WeatherParams.Storm = false;
-	WeatherParams.tornado = false;	
+	// WeatherParams.Storm = false;
+	// WeatherParams.tornado = false;	
 
 	WeathersNH.Rain.DropsNearNum = 500;
 	WeathersNH.Rain.DropsFarNum = 500;

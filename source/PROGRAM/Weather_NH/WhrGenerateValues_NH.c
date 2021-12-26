@@ -1,7 +1,5 @@
 #include "Weather_NH\WhrWeather.h"
 
-int extraBallast = 5;
-int maxwRain = 5;
 
 void Whr_GenerateValues(int fogCheck){
 

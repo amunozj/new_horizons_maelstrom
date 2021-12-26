@@ -51,6 +51,11 @@ bool gWeatherOvrd = false;			 //This is the bool checked by the weather system, 
 
 int shipsLights = false;
 bool ignoreSeasons = false;
+int extraBallast = 5;
+int maxwRain = 5;
+bool morningFogChecked = false; 
+bool morningFog = false; 
+int randomFog = 0; 
 
 object	Weather, WeatherParams, WhrCommonParams;
 int		iNextWeatherNum = -1;
@@ -155,58 +160,57 @@ void SetNextWeather(string sWeatherID)
 			makeCurrentFutureRealizations(iHour);
 			break;
 
-	// case "Heavy Storm":	// this produces twisters, "Day Storm"
-	// 	wRain = WRAINTORNADO+5;	// storm starts at 95
-	// 	goldRain = WRAINTORNADO+5;	// storm starts at 95
-	// 	ORBallast = 15;
-	// 	oldWind = 30;		// twisters start at minwind >= 28
-	// 	OWBallast = 15;
-	// 	gWeatherOvrd = true;
-	// 	ignoreSeasons = true;
-	// 	bWStormStatus = true;
-	// 	bWRainStatus = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "Heavy Storm":	// this produces twisters, "Day Storm"
+			wRain = WRAINTORNADO+5;	// storm starts at 95
+			goldRain = WRAINTORNADO+5;	// storm starts at 95
+			ORBallast = 15;
+			oldWind = 30;		// twisters start at minwind >= 28
+			OWBallast = 15;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	// case "Foggy":
-	// 	Fog = 25;		// produces fog density of 0.00375
-	// 	goldFog = 25;		// produces fog density of 0.00375
-	// 	gWeatherOvrd = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "Foggy":
+			Fog = 25;		// produces fog density of 0.00375
+			goldFog = 25;		// produces fog density of 0.00375
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	// case "Heavy Fog":
-	// 	Fog = 40;		// produces fog density of 0.00625
-	// 	goldFog = 40;		// produces fog density of 0.00625
-	// 	gWeatherOvrd = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "Heavy Fog":
+			Fog = 40;		// produces fog density of 0.00625
+			goldFog = 40;		// produces fog density of 0.00625
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	// case "Black Pearl Fight":
-	// 	wRain = WRAINSTORM;
-	// 	Fog = 25;
-	// 	goldFog = 25;
-	// 	oldWind = 25;
-	// 	gWeatherOvrd = true;
-	// 	ignoreSeasons = true;
-	// 	bWStormStatus = true;
-	// 	bWRainStatus = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "Black Pearl Fight":
+			wRain = WRAINSTORM;
+			Fog = 25;
+			goldFog = 25;
+			oldWind = 25;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	// case "IslaDeMuerte":
-	// 	Fog = 80;		// produces fog density of 0.02
-	// 	goldFog = 80;		// produces fog density of 0.02
-	// 	gWeatherOvrd = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "IslaDeMuerte":
+			Fog = 80;		// produces fog density of 0.02
+			goldFog = 80;		// produces fog density of 0.02
+			gWeatherOvrd = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	// case "Super Fog":
-	// 	Fog = 999;
-	// 	goldFog = 999;
-	// 	gWeatherOvrd = true;
-	// 	makeCurrentFutureRealizations(iHour);
-	// 	break;
+		case "Super Fog":
+			Fog = 999;
+			goldFog = 999;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
 	}
 
@@ -1202,6 +1206,7 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.Scale2 = Whr_GetFloat(WeathersNH, "Sea2.Scale2");
 	Weathers[iTmp].Sea2.MoveSpeed2 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed2");
 
+	Weathers[iTmp].Sea2.FoamEnable = Whr_GetLong(WeathersNH, "Sea2.FoamEnable");
 	Weathers[iTmp].Sea2.FoamV = Whr_GetFloat(WeathersNH, "Sea2.FoamV");
 	Weathers[iTmp].Sea2.FoamK = Whr_GetFloat(WeathersNH, "Sea2.FoamK");
 	Weathers[iTmp].Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
