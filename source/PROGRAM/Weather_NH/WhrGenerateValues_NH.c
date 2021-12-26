@@ -71,6 +71,10 @@ void Whr_GenerateValues(int fogCheck){
 			maxwRain = WRAINRAIN + 5;
 			break; 
 	}
+
+	if (ignoreSeasons == true){
+		maxwRain = 100;
+	}
 // Screwface : end
 
 	if(rand(100) > (50 - windABallast)){

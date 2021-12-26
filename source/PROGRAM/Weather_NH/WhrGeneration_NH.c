@@ -65,8 +65,8 @@ void Whr_Generator(int iHour){
 
 	//Logit("BugTracker - goldFog: " + goldFog + " goldRain: " + goldRain + " oldWind: " + oldWind + " gWeatherInit: " + gWeatherInit);
 	curTime = iHour; //Causing problems
-	bWeatherIsStorm = false; // screwface
-	bWeatherIsRain = false; // screwface
+	// bWeatherIsStorm = false; // screwface
+	// bWeatherIsRain = false; // screwface
 
 	rWind = rand(MAX_WINDCHANGE);
 	rFog = rand(MAX_FOGCHANGE);
@@ -102,21 +102,22 @@ void Whr_Generator(int iHour){
 	WeatherParams.Storm = false;
 	WeatherParams.Tornado = false;
 
-	if(bWhrStorm){
-		wRain = 95;
-		winds = 25;
-		windBallast = -MAX_RBALLAST + 5;
-		rainBallast = -MAX_RBALLAST + 5;
-		fog = 30;
-		bWeatherIsStorm = true; // screwface
-	}
-	if(bWhrTornado){
-		wRain = 100;
-		winds = 30;
-		windBallast = -MAX_RBALLAST + 5;
-		rainBallast = -MAX_RBALLAST + 5;
-		fog = 40;
-	}
+	// if(bWhrStorm){
+	// 	wRain = WRAINSTORM+10;
+	// 	winds = 25;
+	// 	windBallast = -MAX_RBALLAST + 5;
+	// 	rainBallast = -MAX_RBALLAST + 5;
+	// 	fog = 30;
+	// 	bWeatherIsStorm = true; // screwface
+	// }
+	// if(bWhrTornado){
+	// 	wRain = WRAINTORNADO+5;
+	// 	winds = 30;
+	// 	windBallast = -MAX_RBALLAST + 5;
+	// 	rainBallast = -MAX_RBALLAST + 5;
+	// 	fog = 40;
+	// 	bWeatherIsStorm = true; // screwface		
+	// }
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
 
@@ -134,7 +135,7 @@ void Whr_Generator(int iHour){
 	if(fogBallast   <= -MAX_FBALLAST )                                 { fogBallast  =  MAX_FBALLAST;}
 
 	if(wRain >= WRAINSTORM && winds <= 10){ windBallast = 15;}
-	if(winds <= 25 && wRain >= WRAINSTORM){ rainBallast = -15;}
+	// if(winds <= 25 && wRain >= WRAINSTORM){ rainBallast = -15;}
 	if(fog > 0 && curTime >= 6 && curTime <= 22 && wRain <= 60){fogBallast = -30;}
 	if(fogBallast < 0 && curTime > 22 || curTime < 6){fogBallast = 0;}
 	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}

@@ -124,7 +124,7 @@ void Whr_FogRainCheck(){
 	WeathersNH.Lights = 0;
 
 //  LDH more fog during rain - 26Feb09
-	if (wRain > WRAINRAIN && fog < 10) fog += (wRain - WRAINRAIN)/2.0;
+	if (wRain > WRAINRAIN) fog += (wRain - WRAINRAIN)/2.0;
 
 	if (fog < MINIMUMFOG){fog=MINIMUMFOG}
 
@@ -151,9 +151,8 @@ void Whr_FogRainCheck(){
 	WeathersNH.Rain = false;
 	WeathersNH.Storm = false;
 	WeathersNH.Tornado = false;
-	WeathersNH.StormSky = false;
-	bWeatherIsStorm = false;
-	bWeatherIsRain = false;
+	// bWeatherIsStorm = false;
+	// bWeatherIsRain = false;
 
 	WeatherParams.Storm = false;
 	WeatherParams.tornado = false;	
@@ -177,7 +176,8 @@ void Whr_FogRainCheck(){
 	if (wRain >= WRAINRAIN)
 	{
 		WeatherParams.Rain = true;
-		bWeatherIsRain = true; // screwface
+		WeathersNH.Rain = true;
+		// bWeatherIsRain = true; // screwface
 		WeathersNH.Lightning.Enable = false;
 		WeathersNH.Rain.NumDrops = ((wRain-WRAINRAIN)*400);
 		WeathersNH.Rain.Color = argb(0,73,73,73);
@@ -195,7 +195,7 @@ void Whr_FogRainCheck(){
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
 		if(wRain >= WRAINSTORM && wRain < WRAINSTORM + 10){
-			WeathersNH.StormSky = true;
+			WeathersNH.Storm = true;
 			WeathersNH.Rain.Speed = 14.0;
 			WeathersNH.Rain.MaxBlend = 95;
 			WeathersNH.Rain.DropLength = (1.5);
@@ -205,8 +205,10 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
 			WeathersNH.Sea.Water.Color = argb(0,24,44,78);
 			WeathersNH.Sky.Color = argb(0,220,220,255);
+			WeathersNH.Rainbow.Enable = false;
 		}
 		if(wRain >= WRAINSTORM + 10 && wRain < WRAINTORNADO){
+			WeathersNH.Storm = true;
 			WeathersNH.Rain.Speed = 16.0;
 			WeathersNH.Rain.MaxBlend = 115;
 			WeathersNH.Rain.DropLength = (1.75);
@@ -222,16 +224,16 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
 			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
 			WeathersNH.Sky.Color = argb(0,210,210,255);
+			WeathersNH.Rainbow.Enable = false;
 		}
 		if(wRain >= WRAINTORNADO){
-			WeathersNH.StormSky = true;
+			WeathersNH.Storm = true;
 			WeathersNH.Rain.Speed = 18.0;
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);
-			WeathersNH.Storm = true;
 			WeatherParams.Storm = true;
 			WeathersNH.Lights = 1;			
-			bWeatherIsStorm = true;			
+			// bWeatherIsStorm = true;			
 			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";
 			WeathersNH.Lightning.FlickerTime = 32;
 			WeathersNH.Lightning.SubTexX = 4;
@@ -252,10 +254,10 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sky.Color = argb(0,200,200,255);
 			WeathersNH.Rainbow.Enable = false;
 			if(minwind >= 28){
-				WeathersNH.Storm = true;
 				WeathersNH.Tornado = true;
 				WeatherParams.Storm = true;
 				WeatherParams.tornado = true;
+				btornado = true;
 				if(!CheckAttribute(PChar, "skipWeatherLogs")) // PB
 				// DeathDaisy added a string here instead off GetMyAddressForm, because I thought it would be weird if your crew called you Señor or similar
 					string PCCaptainTitle;

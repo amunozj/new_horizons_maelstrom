@@ -49,6 +49,7 @@ bool gWeatherOvrd = false;			 //This is the bool checked by the weather system, 
 //To set specific weather set the desired variables to the desired values in your code and set gWeatherOvrd to true the system takes care of the rest
 
 int shipsLights = false;
+bool ignoreSeasons = false;
 
 object	Weather, WeatherParams, WhrCommonParams;
 int		iNextWeatherNum = -1;
@@ -75,6 +76,8 @@ bool	bWeatherIsRain = false;
 bool	bWeatherIsStorm = false;
 bool	bWRainStatus = false;
 bool	bWStormStatus = false;
+bool	bLightningStatus = false;
+bool	bTornadoStatus = false;
 bool	Whr_IsFog() { return stf(Weather.Fog.SeaDensity)>0.01; }
 
 object Weathers[MAX_WEATHERS];
@@ -106,6 +109,8 @@ void SetNextWeather(string sWeatherID)
 		ORBallast = 0;
 		Fog = 0;
 		OFog = 0;
+		bWStormStatus = false;
+		bWRainStatus = false;		
 		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
 		makeCurrentFutureRealizations(iHour);
 		break;
@@ -114,6 +119,9 @@ void SetNextWeather(string sWeatherID)
 		wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
 		ORain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = false;
+		bWRainStatus = false;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -121,6 +129,9 @@ void SetNextWeather(string sWeatherID)
 		wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
 		ORain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = false;
+		bWRainStatus = false;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -128,6 +139,9 @@ void SetNextWeather(string sWeatherID)
 		wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
 		ORain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = false;
+		bWRainStatus = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -135,6 +149,9 @@ void SetNextWeather(string sWeatherID)
 		wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
 		ORain = WRAINSTORM;		// rain starts at 75, storm starts at 95
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = true;
+		bWRainStatus = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -143,16 +160,22 @@ void SetNextWeather(string sWeatherID)
 		ORain = WRAINSTORM+10;		// storm starts at 95
 		OWind = 15;		// twisters start at minwind >= 28
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = true;
+		bWRainStatus = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
 	case "Heavy Storm":	// this produces twisters, "Day Storm"
-		wRain = 100;	// storm starts at 95
-		ORain = 100;	// storm starts at 95
+		wRain = WRAINTORNADO+5;	// storm starts at 95
+		ORain = WRAINTORNADO+5;	// storm starts at 95
 		ORBallast = 15;
 		OWind = 30;		// twisters start at minwind >= 28
 		OWBallast = 15;
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = true;
+		bWRainStatus = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -176,6 +199,9 @@ void SetNextWeather(string sWeatherID)
 		OFog = 25;
 		OWind = 25;
 		gWeatherOvrd = true;
+		ignoreSeasons = true;
+		bWStormStatus = true;
+		bWRainStatus = true;
 		makeCurrentFutureRealizations(iHour);
 		break;
 
@@ -468,16 +494,17 @@ void CreateWeatherEnvironment()
 		ClearRainEnvironment();
 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
 		{
-			WeatherParams.Rain = false;
 			WeatherParams.Rain.Sound = false;
 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-		}			
+		}
+		WeatherParams.Rain = false;			
 	}
 	else
 	{
 		WeatherParams.Rain.Sound = true;
 		WeatherParams.Rain = true;		
 		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
 		Rain.isDone = "";
 	}
 
@@ -485,13 +512,9 @@ void CreateWeatherEnvironment()
 	// {
 	bWStormStatus = bWeatherIsStorm;
 	bWRainStatus = bWeatherIsRain;
-	LoadSceneSound();
-		LoadSceneSound();		
-	LoadSceneSound();
-		LoadSceneSound();		
-	LoadSceneSound();
+	PostEvent("LoadSceneSound", 10);
 
-	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+
 	// Rain.isDone = "";		
 	// }	
 	// boal <--
@@ -523,7 +546,7 @@ void CreateWeatherEnvironment()
 
 	Weather.isDone = "";
 
-	if (Weather.Tornado==true) { WhrCreateTornadoEnvironment(); }
+	if (Whr_GetLong(Weather, "Tornado") == true) { WhrCreateTornadoEnvironment(); }
 	else{
 		WhrDeleteTornadoEnvironment();
 	}
@@ -774,42 +797,128 @@ void Whr_TimeUpdate()
 
 	// trace("Whr_TimeUpdate: update rain");
 
-	WhrCreateRainEnvironment();
-	bool bRain = bWeatherIsRain; // Whr_isRainEnable();
-	if (bRain == false)
+	// if( sti(Rain.NumDrops) > 0 ) {bWeatherIsRain = true;}
+
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
+	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
 	{
-		ClearRainEnvironment();
-		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
-		{
-			WeatherParams.Rain = false;
-			WeatherParams.Rain.Sound = false;
-			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
-		}			
+		Trace("Change rain status.  Rain: " + bWeatherIsRain + " rain status: " + bWRainStatus + " Storm: " + bWeatherIsStorm + " storm status: " + bWStormStatus);
+		if (bWeatherIsRain == true && bWRainStatus == false){
+			WhrCreateRainEnvironment();
+			WeatherParams.Rain.Sound = true;
+			WeatherParams.Rain = true;		
+			Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+			Rain.isDone = "";			
+		}
+		
+		if (bWeatherIsRain == false && bWRainStatus == true){
+			ClearRainEnvironment();
+		} 
+
+		if (bWeatherIsRain == true){
+
+			Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+			Particles.winddirection.x = sin(Whr_GetWindAngle());
+			Particles.winddirection.z = cos(Whr_GetWindAngle());
+			ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+			ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+			ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
+
+			FillRainData(iCurWeatherNum, iBlendWeatherNum);				
+		}else{
+
+			if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+			{
+				WeatherParams.Rain.Sound = false;
+				Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+			}
+			WeatherParams.Rain = false;	
+		}
+
+		bWStormStatus = bWeatherIsStorm;
+		bWRainStatus = bWeatherIsRain;
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);
 	}
-	else
-	{
-		WeatherParams.Rain.Sound = true;
-		WeatherParams.Rain = true;		
-		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-		Particles.winddirection.x = sin(Whr_GetWindAngle());
-		Particles.winddirection.z = cos(Whr_GetWindAngle());
-		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
-		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
-		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());		
-		Rain.isDone = "";
+
+	if (bWeatherIsRain == true && nNewMin%15 == 0){
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+			Rain.isDone = "";	
 	}
+
+	if (bWeatherIsStorm == true){
+		Seafoam.storm = "true";
+		mchr.Capsize.Warning = ROLL_ANGLE_WARNING;
+	}else{
+		Seafoam.storm = "false";
+		mchr.Capsize.Warning = 100;
+	}
+
+	if (Whr_GetLong(Weather, "Lightning.Enable") != bLightningStatus){
+		bLightningStatus = Whr_GetLong(Weather, "Lightning.Enable");
+
+		if (bLightningStatus == true){
+			WhrCreateLightningEnvironment();
+		}else{
+			WhrDeleteLightningEnvironment();
+		}
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);			
+	}
+
+	if (Whr_GetLong(Weather, "Tornado") != bTornadoStatus){
+		bTornadoStatus = Whr_GetLong(Weather, "Tornado");
+
+		if (bTornadoStatus == true){
+			WhrCreateTornadoEnvironment();
+		}else{
+			WhrDeleteTornadoEnvironment();
+		}
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);				
+	}	
+
+	// if (bRain == true){
+
+	// 	WhrCreateRainEnvironment();
+	// 	// bool bRain = bWeatherIsRain; // Whr_isRainEnable();
+	// 	if (bRain == false)
+	// 	{
+	// 		ClearRainEnvironment();
+	// 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+	// 		{
+	// 			WeatherParams.Rain = false;
+	// 			WeatherParams.Rain.Sound = false;
+	// 			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+	// 		}			
+	// 	}
+	// 	else
+	// 	{
+	// 		WeatherParams.Rain.Sound = true;
+	// 		WeatherParams.Rain = true;		
+	// 		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+	// 		Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	// 		Particles.winddirection.x = sin(Whr_GetWindAngle());
+	// 		Particles.winddirection.z = cos(Whr_GetWindAngle());
+	// 		ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	// 		ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+	// 		ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());		
+	// 		Rain.isDone = "";
+	// 	}
+
+	// }
+
+
+
 
 	// trace("Whr_TimeUpdate: update sound");
 
 
-	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
-	{
-		bWStormStatus = bWeatherIsStorm;
-		bWRainStatus = bWeatherIsRain;
-		LoadSceneSound();
-		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
-	}
+
 
 
 	// trace("Whr_TimeUpdate: hourly update");
@@ -817,7 +926,11 @@ void Whr_TimeUpdate()
 
 	if( nNewHour != nOldHour )
 	{
+		
+		ignoreSeasons = false;
 		Whr_UpdateWeatherHour();
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		// PostEvent("LoadSceneSound", 10);
 	}
 
 	Weather.isDone = "";
@@ -826,7 +939,7 @@ void Whr_TimeUpdate()
 	// trace("Whr_TimeUpdate: Fill weather");
 
 	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
 
 	//update rain: rain drops, rain colors, rain size, rainbow
 	//navy -- 5.03.07
@@ -1082,37 +1195,44 @@ void FillWeatherData(int nw1, int nw2)
 
 	Weather.Tornado = Whr_GetLong(&Weathers[nw1], "Tornado");
 	Weather.Storm = Whr_GetLong(&Weathers[nw1], "Storm");
-	// trace(sCurFog);
-	// trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
-	// trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
+	Weather.Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
+
+	if (Whr_GetLong(Weather, "Rain") == true){
+		bWeatherIsRain = true;
+	}
+	else{
+		bWeatherIsRain = false;
+	}
+
+	if (Whr_GetLong(Weather, "Storm") == true){
+		bWeatherIsStorm = true;
+		WeatherParams.Storm = true;
+		// bWhrStorm = true;
+	}else{
+		bWeatherIsStorm = false;
+		WeatherParams.Storm = false;
+	}
+
+	if (Whr_GetLong(Weather, "Tornado") == true){
+		WeatherParams.tornado = true;
+		// bWhrStorm = true;
+		// bWhrTornado = true;
+	}else{
+		WeatherParams.tornado = false;
+	}
+
+
 }
 
 int FindWeatherByHour(int nHour)
 {
-	// trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
 	for (int n=0; n<MAX_WEATHERS; n++)
 	{
-		if (!CheckAttribute(WeathersNH, "StormSky") || WeathersNH.StormSky==false){
-			// trace("Calm weather");
 
 			if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
 			if (CheckAttribute(&Weathers[n], "skip") && sti(Weathers[n].skip)==true) {continue;}
-			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==true) {continue;}
 			if( sti(Weathers[n].hour.min) == nHour ) {return n;}
 
-		}else{
-			// trace("Stormy weather");
-
-			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==false) {continue;}
-			if (sti(Weathers[n].hour.min) > sti(Weathers[n].hour.max))
-			{
-				if (nHour < sti(Weathers[n].hour.min) && nHour > sti(Weathers[n].hour.max)) {return n;}
-			}
-			if (sti(Weathers[n].hour.min) < sti(Weathers[n].hour.max))
-			{
-				if (nHour < sti(Weathers[n].hour.min) || nHour > sti(Weathers[n].hour.max)) {return n;}
-			}
-		}
 	}
 	return -1;
 }
@@ -1182,6 +1302,10 @@ void addProceduralWeather(int iTmp)
 		Trace("Imprint weather sky.dir: " + Whr_GetString(WeathersNH, "Sky.Dir"));
 
 		// Rain definition
+		Weathers[iTmp].Rain = Whr_GetLong(WeathersNH , "Rain");
+		Weathers[iTmp].Storm = Whr_GetLong(WeathersNH , "Storm");
+		Weathers[iTmp].Tornado = Whr_GetLong(WeathersNH , "Tornado");
+
 		Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
 		Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
 		Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
