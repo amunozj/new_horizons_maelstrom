@@ -5,6 +5,7 @@ extern void CreateLandActionsEnvironment_BART(); // PB: Create external function
 
 #define LOG_FOR_SEA		1
 #define LOG_FOR_LAND	2
+#define LOG_FOR_WORLDMAP 3
 
 object showWindow;
 
@@ -147,6 +148,10 @@ void CreateILogAndActions(int loadType)
 	if(loadType==LOG_FOR_LAND)
 	{
 		CreateLandActionsEnvironment();
+	}
+	if(loadType==LOG_FOR_WORLDMAP)
+	{
+		CreateWorldMapActionsEnvironment();
 	}
 // KK -->
 	ref rLog; makeref(rLog, ILog);
@@ -745,7 +750,7 @@ void procUpdateTime()
 	string timeString;
 	int theHour;
 	int theMinute;
-	bool AddHour = false;
+	bool AddHour = true;
 
 	if (CheckAttribute(mchr, "DisplayTime"))		// LDH changed from BaseCurrentTime - 15Jan09
 	{
@@ -1036,3 +1041,39 @@ void procUpdateTime()
 	}
 }
 // <-- KK
+void CreateWorldMapActionsEnvironment()
+{
+    IActions.type = "map";
+
+	IActions.ActiveActions.TextureName = "battle_interface\WorldMapCommands.tga.tx";
+	IActions.ActiveActions.horzQ = 8;
+	IActions.ActiveActions.vertQ = 2;
+	IActions.ActiveActions.width = RecalculateHIcon(48);
+	IActions.ActiveActions.height = RecalculateVIcon(48);
+	IActions.ActiveActions.left = sti(showWindow.right) - RecalculateHIcon(284);
+	IActions.ActiveActions.top = sti(showWindow.top) + RecalculateVIcon(32);
+
+	IActions.ActiveActions.text1.font = "interface_normal";
+	IActions.ActiveActions.text1.scale = 1.5;
+	IActions.ActiveActions.text1.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
+	IActions.ActiveActions.text1.pos.y = sti(showWindow.top) + RecalculateVIcon(86);
+	IActions.ActiveActions.text1.text = XI_ConvertString("Press_F3");
+	IActions.ActiveActions.text2.font = "interface_normal";
+	IActions.ActiveActions.text2.scale = 1.5;
+	IActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
+	IActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);//RecalculateVIcon(102);
+	IActions.ActiveActions.text2.text = XI_ConvertString("for_quick_action");
+
+	IActions.ActiveActions.EnterToSea.IconNum	= 1;
+	IActions.ActiveActions.EnterToSea.Text = XI_ConvertString("for_quick_action_EnterToSea");
+	IActions.ActiveActions.EnterToIsland.IconNum = 0;
+	IActions.ActiveActions.EnterToIsland.Text = XI_ConvertString("for_quick_action_EnterToIsland");
+	IActions.ActiveActions.EnterToShip.IconNum = 4;
+	IActions.ActiveActions.EnterToShip.Text = XI_ConvertString("for_quick_action_EnterToShip");
+	IActions.ActiveActions.EnterToStorm.IconNum = 5;
+	IActions.ActiveActions.EnterToStorm.Text = XI_ConvertString("for_quick_action_EnterToStorm");
+	IActions.ActiveActions.EnterToAttack.IconNum = 2;
+	IActions.ActiveActions.EnterToAttack.Text = XI_ConvertString("for_quick_action_EnterToAttack");
+	IActions.ActiveActions.EnterToEnemy.IconNum	= 3;
+	IActions.ActiveActions.EnterToEnemy.Text = XI_ConvertString("for_quick_action_EnterToEnemy");
+}
