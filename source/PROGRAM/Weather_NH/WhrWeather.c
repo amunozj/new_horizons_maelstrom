@@ -1,4 +1,7 @@
 /////////////////////////
+// NH 2021
+/////////////////////////
+
 #include "Weather_NH\WhrWeather.h"
 #include "Weather_NH\WhrUtils.c"
 #include "Weather_NH\WhrLightning.c"
@@ -210,7 +213,6 @@ void SetNextWeather(string sWeatherID)
 			break;
 
 	}
-
 
 	// find weather
 	iNextWeatherNum = -1;
@@ -569,6 +571,7 @@ void CreateWeatherEnvironment()
 	//Trace("Whr: Select id = " + aCurWeather.id);
 }
 
+
 void Whr_UpdateSea() // NK 04-09-21
 {
 	// LDH cleanup 16Feb09
@@ -592,6 +595,7 @@ void Whr_UpdateSea() // NK 04-09-21
 	// 	PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
 	// }
 }
+
 
 void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 {
@@ -748,27 +752,40 @@ void Whr_TimeUpdate()
 
 	ref mchr = GetMainCharacter();
 	mchr.CurrentTime = fTime;
+	
+	// if( nNewHour < nOldHour )
+	// {
+	// 	AddDataToCurrent(0,0,1,true);
+	// 	Weather.Time.time = GetTime();
+	// } // to_do CalcLocalTime
+	// float updateFactor = GetTimeScale()+2.0;
+	// if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	// Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	// Weather.Time.updatefrequence = 60;		
+
+	// trace("Environment.time: " + fTime + " Weather update frequency: " + Weather.Time.updatefrequence + " Timescale: " + GetTimeScale());
+
 	Weather.Time.time = fTime;
 
 	if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
 	{
 		AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
 	}
-
-
-
-    if( iBlendWeatherNum < 0 ) {return;}
+    // if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
 	string sTmp;
 	int iTmp, iTime;
-	bool bRain = false;
-	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
+
+	// trace("Whr_TimeUpdate: find current and next weather");
+
 	//navy <-- Rain
 	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
 	// addProceduralWeather(iCurWeatherNum);	
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
+
+	// Weather.Time.time = GetTime();
 
 	if( iBlendWeatherNum < 0 ) {return;}
 
@@ -778,43 +795,126 @@ void Whr_TimeUpdate()
 		sCurrentFog = "SpecialSeaFog";
 	}	
 
+	// trace("Whr_TimeUpdate: update rain");
 
+	// if( sti(Rain.NumDrops) > 0 ) {bWeatherIsRain = true;}
 
-	if (WeathersNH.Rain == true)
+	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+
+	if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
 	{
-		WeatherParams.Rain.Sound = true;
-		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
-	}else
-	{
-		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
-		{
-			WeatherParams.Rain = false;
-			WeatherParams.Rain.Sound = false;
-			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+		// Trace("Change rain status.  Rain: " + bWeatherIsRain + " rain status: " + bWRainStatus + " Storm: " + bWeatherIsStorm + " storm status: " + bWStormStatus);
+		if (bWeatherIsRain == true && bWRainStatus == false){
+			WhrCreateRainEnvironment();
+			WeatherParams.Rain.Sound = true;
+			WeatherParams.Rain = true;		
+			Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+			Rain.isDone = "";			
 		}
+		
+		if (bWeatherIsRain == false && bWRainStatus == true){
+			ClearRainEnvironment();
+		} 
+
+		if (bWeatherIsRain == true){
+
+			Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+			Particles.winddirection.x = sin(Whr_GetWindAngle());
+			Particles.winddirection.z = cos(Whr_GetWindAngle());
+			ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+			ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+			ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
+
+			FillRainData(iCurWeatherNum, iBlendWeatherNum);				
+		}else{
+
+			if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+			{
+				WeatherParams.Rain.Sound = false;
+				Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+			}
+			WeatherParams.Rain = false;	
+		}
+
+		bWStormStatus = bWeatherIsStorm;
+		bWRainStatus = bWeatherIsRain;
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);
+	}
+
+	if (bWeatherIsRain == true && nNewMin%15 == 0){
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+			Rain.isDone = "";	
+	}
+
+	if (bWeatherIsStorm == true){
+		Seafoam.storm = "true";
+		mchr.Capsize.Warning = ROLL_ANGLE_WARNING;
+	}else{
+		Seafoam.storm = "false";
+		mchr.Capsize.Warning = 100;
+	}
+
+	btornado = Whr_GetLong(Weather, "Tornado"); //screwface
+	bstorm = Whr_GetLong(Weather, "Storm") //screwface
+
+	WeatherParams.Storm = Whr_GetLong(Weather, "Storm");
+	WeatherParams.Tornado = Whr_GetLong(Weather, "Tornado");		
+
+	if (Whr_GetLong(Weather, "Lightning.Enable") != bLightningStatus){
+		bLightningStatus = Whr_GetLong(Weather, "Lightning.Enable");
+
+		if (bLightningStatus == true){
+			WhrCreateLightningEnvironment();
+		}else{
+			WhrDeleteLightningEnvironment();
+		}
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);			
+	}
+
+	if (Whr_GetLong(Weather, "Tornado") != bTornadoStatus){
+		bTornadoStatus = Whr_GetLong(Weather, "Tornado");
+
+		if (bTornadoStatus == true){
+			WhrCreateTornadoEnvironment();
+		}else{
+			WhrDeleteTornadoEnvironment();
+		}
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		StopSound(0,0);
+		PostEvent("LoadSceneSound", 0);				
+	}	
+
+	if( nNewHour != nOldHour )
+	{
+		
+		ignoreSeasons = false;
+		Whr_UpdateWeatherHour();
+		MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+		// PostEvent("LoadSceneSound", 10);
 	}
 
 	Weather.isDone = "";
 
-	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
-
-	//update rain: rain drops, rain colors, rain size, rainbow
-	//navy -- 5.03.07
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
 
+
+	// trace("Whr_TimeUpdate: Fill Sea");	
+
 	// Fill Sea data
 	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
 
+	// trace("Whr_TimeUpdate: Fill Sky");	
+
 	// Fill Sky data
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+
+	// trace("Whr_TimeUpdate: Set fog");	
 
 	if (bSeaActive)
 	{
@@ -827,20 +927,27 @@ void Whr_TimeUpdate()
 
 	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
+	// trace("Whr_TimeUpdate: change lights");	
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather, false);
+	doShipLightChange(aCurWeather, false);	
 
+	// trace("Whr_TimeUpdate: do astronomy");	
 	//#20191020-01
 	aref aStars;
 	makearef(aStars, aCurWeather.Stars);
 	FillStars(aStars);
+
+	// trace("Whr_TimeUpdate: Mark astronomy done");
 	// FillAstronomyFadeValue();
 	Astronomy.isDone = true;
-	Astronomy.TimeUpdate = GetTime();
+	Astronomy.TimeUpdate = 1;
 
+	// trace("High precision time timeupdate end: " + fHighPrecisionDeltaTime);
+
+	// trace("Whr_TimeUpdate: update sky time: " + isEntity(&Sky));
 	// update sky: fog
-	Sky.TimeUpdate = GetTime();
-
+	Sky.TimeUpdate = ftime;
+	
 }
 
 #event_handler("eChangeDayNight", "eChangeDayNight");
