@@ -569,6 +569,30 @@ void CreateWeatherEnvironment()
 	//Trace("Whr: Select id = " + aCurWeather.id);
 }
 
+void Whr_UpdateSea() // NK 04-09-21
+{
+	// LDH cleanup 16Feb09
+//	Traceandlog("Whr_UpdateWeather start weather update " + "Time: " + GetStringTime(GetTime()) +" reinit: " +reinit_weather);	// LDH 05Sep06 trace for CTD
+
+
+	WhrCreateSeaEnvironment();
+	// Fill Sea data
+	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	MoveWeatherToLayers(sNewExecuteLayer, sNewRealizeLayer);
+
+	if (bSeaActive)
+	{
+		Island.LightingPath = GetLightingPath();
+		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
+		Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
+		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));		
+	}
+	// if(bSeaActive && !ownDeckStarted())
+	// {
+	// 	PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
+	// }
+}
+
 void Whr_UpdateWeather(bool reinit_weather) // NK 04-09-21
 {
 	// LDH cleanup 16Feb09
@@ -886,6 +910,8 @@ void Whr_UpdateWeatherHour()
 	Whr_Generator(nextHour);
 	addProceduralWeather(iBlendWeatherNum);	
 	// trace("Weather hourly update done");
+	// Whr_UpdateWeather(false);
+	Whr_UpdateSea();
 	 
 }
 
