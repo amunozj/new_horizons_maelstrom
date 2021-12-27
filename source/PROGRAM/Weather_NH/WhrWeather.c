@@ -962,6 +962,9 @@ void FillWeatherData(int nw1, int nw2)
 		fWeatherAngle = Whr_GetFloat(&Weathers[nw1], "Wind.Angle");
 		fWeatherSpeed = Whr_GetFloat(&Weathers[nw1], "Wind.seaWindSpeed");
 
+		Weather.Rain = Whr_GetLong(&Weathers[nw1], "Rain");
+
+
 	}
 	else
 	{
@@ -998,11 +1001,43 @@ void FillWeatherData(int nw1, int nw2)
 		fWeatherAngle = blendedAngle;
 		// trace("Resulting angle: " + fWeatherAngle);
 
+		if (Whr_GetLong(&Weathers[nw1], "Rain") == true || Whr_GetLong(&Weathers[nw2], "Rain") == true){Weather.Rain = true;}
+		else{Weather.Rain = false;}
+
+		// trace("Weather 1 rain: " + Whr_GetLong(&Weathers[nw1], "Rain") + " Weather 2 rain: " + Whr_GetLong(&Weathers[nw2], "Rain") + "Weather rain: " + Whr_GetLong(Weather, "Rain") );
+
 	}
 
-	// trace(sCurFog);
-	// trace("weather Fog Color: " + Whr_GetColor(Weather, "Fog.Color"));
-	// trace("weather Fog density: " + Whr_GetFloat(Weather, "Fog.Density") + " weather seafog density: " + Whr_GetFloat(Weather, "Fog.SeaDensity"));
+
+	Weather.Tornado = Whr_GetLong(&Weathers[nw1], "Tornado");
+	Weather.Storm = Whr_GetLong(&Weathers[nw1], "Storm");
+	Weather.Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
+
+	if (Whr_GetLong(Weather, "Rain") == true){
+		bWeatherIsRain = true;
+	}
+	else{
+		bWeatherIsRain = false;
+	}
+
+	if (Whr_GetLong(Weather, "Storm") == true){
+		bWeatherIsStorm = true;
+		WeatherParams.Storm = true;
+		// bWhrStorm = true;
+	}else{
+		bWeatherIsStorm = false;
+		WeatherParams.Storm = false;
+	}
+
+	if (Whr_GetLong(Weather, "Tornado") == true){
+		WeatherParams.tornado = true;
+		// bWhrStorm = true;
+		// bWhrTornado = true;
+	}else{
+		WeatherParams.tornado = false;
+	}
+
+
 }
 
 int FindWeatherByHour(int nHour)
