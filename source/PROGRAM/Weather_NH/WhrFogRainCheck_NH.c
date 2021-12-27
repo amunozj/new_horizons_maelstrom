@@ -42,78 +42,100 @@ void Whr_FogRainCheck(){
 		{
 			case "Clear":
 				wRain = 0;
-				Fog = 0;
-				//Log_SetStringToLog("JRH_rain = Clear");
-				WhrDeleteRainEnvironment();			//JRH added june 2019	
+				goldRain = 0;
+				ORBallast = 0;
+				fog = 0;
+				goldFog = 0;
 			break;
 
 			case "Cloudy":
-				wRain = 60;
-				//Log_SetStringToLog("JRH_rain = Cloudy");
+				wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				goldRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				ignoreSeasons = true;
 			break;
 
 			case "Overcast":
-				wRain = 70;
-				//Log_SetStringToLog("JRH_rain = Overcast");
+				wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+				goldRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+				ignoreSeasons = true;
 			break;
 
 			case "Rainy":
-				wRain = 80;
+				wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+				goldRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+				ignoreSeasons = true;
 				//Log_SetStringToLog("JRH_rain = Rainy");
 			break;
 
 			case  "Heavy Rain":
-				wRain = 90;
-				//Log_SetStringToLog("JRH_rain = Heavy Rain");
+			wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			goldRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			ignoreSeasons = true;
 			break;
 
 			case  "Stormy":
-				wRain = 97;
+				wRain = WRAINSTORM+10;		// storm starts at 95
+				goldRain = WRAINSTORM+10;		// storm starts at 95
+				oldWind = 15;		// twisters start at minwind >= 28
+				ignoreSeasons = true;
 			break;
 
 			case "Heavy Storm":
-				wRain = 100;
-				Winds = 30;	// twisters start at minwind >= 28
+				wRain = WRAINTORNADO+5;	// storm starts at 95
+				goldRain = WRAINTORNADO+5;	// storm starts at 95
+				ORBallast = 15;
+				oldWind = 30;		// twisters start at minwind >= 28
+				OWBallast = 15;
+				ignoreSeasons = true;
 			break;
 
 			case  "Foggy":
-				Fog = 15;		// produces fog density of 0.00375
-				//Log_SetStringToLog("JRH_rain = Foggy");
+				Fog = 25;		// produces fog density of 0.00375
+				goldFog = 25;		// produces fog density of 0.00375
+				ignoreSeasons = true;
 			break;
 
 			case  "Heavy Fog":
-				Fog = 25;		// produces fog density of 0.00625
+				Fog = 40;		// produces fog density of 0.00625
+				goldFog = 40;		// produces fog density of 0.00625
+				ignoreSeasons = true;
 			break;
 
 			case  "Black Pearl Fight":
-				wRain = 90;
-				Fog = 15;
-			//	OWind = 25;
+				wRain = WRAINSTORM;
+				Fog = 25;
+				goldFog = 25;
+				oldWind = 25;
+				ignoreSeasons = true;
 			break;
 
 			case  "IslaDeMuerte":
 				Fog = 80;		// produces fog density of 0.02
+				goldFog = 80;		// produces fog density of 0.02
 				//Log_SetStringToLog("JRH_rain = IslaDeMuerte");
 			break;
 
 			case  "Mine Fog 1":
-				wRain = 0;
+				wRain = 0;	// storm starts at 95
+				goldRain = 0;	// storm starts at 95
 				Fog = 200;
+				goldFog = 200;		// produces fog density of 0.02
 				WeathersNH.Sea.Water.Color = argb(0,0,0,0);
 			break;
 
 			case  "Mine Fog 2":
-				wRain = 0;
-				Fog = 650;
+				wRain = 0;	// storm starts at 95
+				goldRain = 0;	// storm starts at 95
+				Fog = 600;
+				goldFog = 600;		// produces fog density of 0.02
 				WeathersNH.Sea.Water.Color = argb(0,0,0,0);
 			break;
 
 			case  "Super Fog":
 				Fog = 999;
+				goldFog = 999;
 			break;
 
-			//Default
-			//Log_SetStringToLog("JRH_rain = Default");
 		}
 	}
 //<-- JRH
