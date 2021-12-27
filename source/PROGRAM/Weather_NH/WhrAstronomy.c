@@ -177,11 +177,11 @@ void FillAstronomyFadeValue()
 		Astronomy.Planets.FadeTime = 0.2;
 	}
 	Astronomy.Stars.Enable = Whr_GetLong(&Weathers[iCurWeatherNum], "Stars.Enable");
-	if (ASTRONOMYDEBUG) Trace("FillAstronomy enable: " + Whr_GetLong(Astronomy, "Stars.Enable"));
+	if (ASTRONOMYDEBUG) {Trace("FillAstronomy enable: " + Whr_GetLong(Astronomy, "Stars.Enable"));}
 	if (sti(Astronomy.Stars.Enable))
 	{
 		Astronomy.Stars.Radius = Whr_GetFloat(&Weathers[iCurWeatherNum], "Stars.Radius");
-		if (ASTRONOMYDEBUG) Trace("FillAstronomy Radius: " + Whr_GetFloat(Astronomy, "Stars.Radius"));		
+		if (ASTRONOMYDEBUG) {Trace("FillAstronomy Radius: " + Whr_GetFloat(Astronomy, "Stars.Radius"));}		
 		Astronomy.Stars.HeightFade = Whr_GetFloat(&Weathers[iCurWeatherNum], "Stars.HeightFade");
 
 		Astronomy.Stars.FadeValue = 1.0;
@@ -191,8 +191,8 @@ void FillAstronomyFadeValue()
 			Astronomy.Stars.FadeStartTime = makefloat(sti(Environment.Time)) + 0.2;
 		}
 		Astronomy.Stars.FadeTime = -0.2;
-		if (ASTRONOMYDEBUG) Trace("FillAstronomy FadeStartTime: " + Whr_GetFloat(Astronomy, "Stars.FadeStartTime"));		
-		if (ASTRONOMYDEBUG) Trace("FillAstronomy FadeTime: " + Whr_GetFloat(Astronomy, "Stars.FadeTime"));		
+		if (ASTRONOMYDEBUG) {Trace("FillAstronomy FadeStartTime: " + Whr_GetFloat(Astronomy, "Stars.FadeStartTime"));}		
+		if (ASTRONOMYDEBUG) {Trace("FillAstronomy FadeTime: " + Whr_GetFloat(Astronomy, "Stars.FadeTime"));}		
 		
 	}
 	else
@@ -206,7 +206,7 @@ void FillAstronomyFadeValue()
 		Astronomy.Stars.FadeTime = 0.2;
 	}
 
-	if (ASTRONOMYDEBUG) Trace("FillAstronomy done"));
+	if (ASTRONOMYDEBUG) {Trace("FillAstronomy done")};
 }
 
 void MoveAstronomyToLayers(string sExecuteLayer, string sRealizeLayer)
