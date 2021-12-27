@@ -1068,30 +1068,13 @@ void FillWeatherData(int nw1, int nw2)
 
 int FindWeatherByHour(int nHour)
 {
-	// trace("getting weather by hour.  Stormy sky: " + WeathersNH.StormSky);
 	for (int n=0; n<MAX_WEATHERS; n++)
 	{
-		if (!CheckAttribute(WeathersNH, "StormSky") || WeathersNH.StormSky==false){
-			// trace("Calm weather");
 
 			if (!CheckAttribute(&Weathers[n], "hour")) {continue;}
 			if (CheckAttribute(&Weathers[n], "skip") && sti(Weathers[n].skip)==true) {continue;}
-			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==true) {continue;}
 			if( sti(Weathers[n].hour.min) == nHour ) {return n;}
 
-		}else{
-			// trace("Stormy weather");
-
-			if (CheckAttribute(&Weathers[n], "Storm") && sti(Weathers[n].Storm)==false) {continue;}
-			if (sti(Weathers[n].hour.min) > sti(Weathers[n].hour.max))
-			{
-				if (nHour < sti(Weathers[n].hour.min) && nHour > sti(Weathers[n].hour.max)) {return n;}
-			}
-			if (sti(Weathers[n].hour.min) < sti(Weathers[n].hour.max))
-			{
-				if (nHour < sti(Weathers[n].hour.min) || nHour > sti(Weathers[n].hour.max)) {return n;}
-			}
-		}
 	}
 	return -1;
 }
