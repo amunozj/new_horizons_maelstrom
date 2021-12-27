@@ -98,109 +98,119 @@ void SetNextWeather(string sWeatherID)
 {
 
 	int iHour = MakeInt(GetHour());
-	Trace("SetNextWeathr: " + sWeatherID)
+	// Trace("SetNextWeathr: " + sWeatherID)
 	string sWeather = sWeatherID;
-	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
-	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";	
-	if (sWeatherID == "alcove") sWeather = "inside";
+	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") {sWeather = "Clear";}
+	if (sWeatherID == "Day Storm") {sWeather = "Heavy Storm";}	
+	if (sWeatherID == "alcove") {sWeather = "inside";}
 	
 	switch (sWeather)
 	{
-	case "Clear":
-		wRain = 0;
-		ORain = 0;
-		ORBallast = 0;
-		Fog = 0;
-		OFog = 0;
-		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Clear":
+			wRain = 0;
+			goldRain = 0;
+			ORBallast = 0;
+			fog = 0;
+			goldFog = 0;
+			gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Cloudy":
-		wRain = 60;		// clouds start at 50, overcast starts at 65
-		ORain = 60;		// clouds start at 50, overcast starts at 65
-		gWeatherOvrd = true;
-		sWeatherID = "21 Rain";
-		makeCurrentFutureRealizations(iHour);
-		break;
+			case "Cloudy":
+				wRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				goldRain = WRAINOVERCAST;		// clouds start at 50, overcast starts at 65
+				gWeatherOvrd = true;
+				ignoreSeasons = true;
+				makeCurrentFutureRealizations(iHour);
+				break;
 
-	case "Overcast":
-		wRain = 70;		// overcast starts at 65, rain starts at 75
-		ORain = 70;		// overcast starts at 65, rain starts at 75
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Overcast":
+			wRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+			goldRain = WRAINOVERCAST+10;		// overcast starts at 65, rain starts at 75
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Rainy":
-		wRain = 80;		// rain starts at 75, storm starts at 95
-		ORain = 80;		// rain starts at 75, storm starts at 95
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Rainy":
+			wRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+			goldRain = WRAINRAIN+10;		// rain starts at 75, storm starts at 95
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Heavy Rain":
-		wRain = 85;		// rain starts at 75, storm starts at 95
-		ORain = 85;		// rain starts at 75, storm starts at 95
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Heavy Rain":
+			wRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			goldRain = WRAINSTORM;		// rain starts at 75, storm starts at 95
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Stormy":		// this produces lightning
-		wRain = 95;		// storm starts at 95
-		ORain = 95;		// storm starts at 95
-		OWind = 15;		// twisters start at minwind >= 28
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Stormy":		// this produces lightning
+			wRain = WRAINSTORM+10;		// storm starts at 95
+			goldRain = WRAINSTORM+10;		// storm starts at 95
+			oldWind = 15;		// twisters start at minwind >= 28
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Heavy Storm":	// this produces twisters, "Day Storm"
-		wRain = 100;	// storm starts at 95
-		ORain = 100;	// storm starts at 95
-		ORBallast = 15;
-		OWind = 30;		// twisters start at minwind >= 28
-		OWBallast = 15;
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Heavy Storm":	// this produces twisters, "Day Storm"
+			wRain = WRAINTORNADO+5;	// storm starts at 95
+			goldRain = WRAINTORNADO+5;	// storm starts at 95
+			ORBallast = 15;
+			oldWind = 30;		// twisters start at minwind >= 28
+			OWBallast = 15;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Foggy":
-		Fog = 25;		// produces fog density of 0.00375
-		OFog = 25;		// produces fog density of 0.00375
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Foggy":
+			Fog = 25;		// produces fog density of 0.00375
+			goldFog = 25;		// produces fog density of 0.00375
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Heavy Fog":
-		Fog = 40;		// produces fog density of 0.00625
-		OFog = 40;		// produces fog density of 0.00625
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Heavy Fog":
+			Fog = 40;		// produces fog density of 0.00625
+			goldFog = 40;		// produces fog density of 0.00625
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Black Pearl Fight":
-		wRain = 90;
-		Fog = 25;
-		OFog = 25;
-		OWind = 25;
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Black Pearl Fight":
+			wRain = WRAINSTORM;
+			Fog = 25;
+			goldFog = 25;
+			oldWind = 25;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "IslaDeMuerte":
-		Fog = 80;		// produces fog density of 0.02
-		OFog = 80;		// produces fog density of 0.02
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "IslaDeMuerte":
+			Fog = 80;		// produces fog density of 0.02
+			goldFog = 80;		// produces fog density of 0.02
+			gWeatherOvrd = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
-	case "Super Fog":
-		Fog = 999;
-		OFog = 999;
-		gWeatherOvrd = true;
-		makeCurrentFutureRealizations(iHour);
-		break;
+		case "Super Fog":
+			Fog = 999;
+			goldFog = 999;
+			gWeatherOvrd = true;
+			ignoreSeasons = true;
+			makeCurrentFutureRealizations(iHour);
+			break;
 
 	}
+
 
 	// find weather
 	iNextWeatherNum = -1;
