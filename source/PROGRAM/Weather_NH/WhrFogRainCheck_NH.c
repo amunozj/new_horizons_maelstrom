@@ -1,8 +1,4 @@
-#define FOGHEIGHTFACTOR 40.0
-
-bool morningFogChecked = false; 
-bool morningFog = false; 
-int randomFog = 0; 
+#include "Weather_NH\WhrWeather.h"
 
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------

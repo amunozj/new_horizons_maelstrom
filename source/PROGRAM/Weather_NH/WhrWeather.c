@@ -1,7 +1,5 @@
 /////////////////////////
-// NH 2021
-/////////////////////////
-
+#include "Weather_NH\WhrWeather.h"
 #include "Weather_NH\WhrUtils.c"
 #include "Weather_NH\WhrLightning.c"
 #include "Weather_NH\WhrRain.c"
@@ -15,6 +13,7 @@
 
 #define WIND_NORMAL_POWER		20.0 // NK
 #define MAX_WEATHERS   36
+#define PARTICLESPOWER 0.0
 
 #define DEBUG_SEA_OPTICAL 0
 
@@ -47,6 +46,13 @@ int OWBallast = -50;				 //Value between 0 and the MAX defined in InternalSettin
 bool gWeatherOvrd = false;			 //This is the bool checked by the weather system, set to to if you've changed one of the above variables
 //To set specific weather set the desired variables to the desired values in your code and set gWeatherOvrd to true the system takes care of the rest
 
+int shipsLights = false;
+bool ignoreSeasons = false;
+int extraBallast = 5;
+int maxwRain = 5;
+bool morningFogChecked = false; 
+bool morningFog = false; 
+int randomFog = 0; 
 
 object	Weather, WeatherParams, WhrCommonParams;
 int		iNextWeatherNum = -1;
@@ -59,8 +65,7 @@ string	sLightingPath = "day";
 string	sLmLightingPath = "day";
 string	sInsideBack = "";
 string	sNewExecuteLayer, sNewRealizeLayer;
-string	sCurrentFog = "Fog";
-string	sCurFog = "Fog";
+string	sCurrentFog;
 float	fWeatherDelta = 0.0;
 float	fWeatherAngle, fWeatherSpeed;
 float	fFogDensity;
@@ -72,6 +77,10 @@ bool	bWeatherIsNight = false;
 bool	bWeatherIsLight = false;
 bool	bWeatherIsRain = false;
 bool	bWeatherIsStorm = false;
+bool	bWRainStatus = false;
+bool	bWStormStatus = false;
+bool	bLightningStatus = false;
+bool	bTornadoStatus = false;
 bool	Whr_IsFog() { return stf(Weather.Fog.SeaDensity)>0.01; }
 
 object Weathers[MAX_WEATHERS];

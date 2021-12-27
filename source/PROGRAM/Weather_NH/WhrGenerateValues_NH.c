@@ -1,5 +1,4 @@
-#define MAXFOG 20
-#define FOGDECAY 2.0
+#include "Weather_NH\WhrWeather.h"
 
 void Whr_GenerateValues(int fogCheck){
 
