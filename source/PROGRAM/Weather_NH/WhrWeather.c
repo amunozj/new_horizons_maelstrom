@@ -1099,6 +1099,7 @@ int FindWeatherByHour(int nHour)
 void addProceduralWeather(int iTmp)
 {
 
+	if (iTmp < 0) return;
 	trace("addProceduralWeather ID: " + Weathers[iTmp].id);
 
 	// Sea Definition -----------------------------------------------------
@@ -1115,6 +1116,7 @@ void addProceduralWeather(int iTmp)
 	Weathers[iTmp].Sea2.Scale2 = Whr_GetFloat(WeathersNH, "Sea2.Scale2");
 	Weathers[iTmp].Sea2.MoveSpeed2 = Whr_GetString(WeathersNH, "Sea2.MoveSpeed2");
 
+	Weathers[iTmp].Sea2.FoamEnable = Whr_GetLong(WeathersNH, "Sea2.FoamEnable");
 	Weathers[iTmp].Sea2.FoamV = Whr_GetFloat(WeathersNH, "Sea2.FoamV");
 	Weathers[iTmp].Sea2.FoamK = Whr_GetFloat(WeathersNH, "Sea2.FoamK");
 	Weathers[iTmp].Sea2.FoamUV = Whr_GetFloat(WeathersNH, "Sea2.FoamUV");
@@ -1160,6 +1162,10 @@ void addProceduralWeather(int iTmp)
 		Trace("Imprint weather sky.dir: " + Whr_GetString(WeathersNH, "Sky.Dir"));
 
 		// Rain definition
+		Weathers[iTmp].Rain = Whr_GetLong(WeathersNH , "Rain");
+		Weathers[iTmp].Storm = Whr_GetLong(WeathersNH , "Storm");
+		Weathers[iTmp].Tornado = Whr_GetLong(WeathersNH , "Tornado");
+
 		Weathers[iTmp].Rain.NumDrops = Whr_GetLong(WeathersNH , "Rain.NumDrops");
 		Weathers[iTmp].Rain.Color = Whr_GetLong(WeathersNH, "Rain.Color");
 		Weathers[iTmp].Rain.DropLength = Whr_GetFloat(WeathersNH, "Rain.DropLength");
@@ -1172,6 +1178,7 @@ void addProceduralWeather(int iTmp)
 		Weathers[iTmp].Rain.TimeBlend = Whr_GetLong(WeathersNH, "Rain.TimeBlend");
 		Weathers[iTmp].Rain.DropsTexture = "weather\rain_drops.tga.tx";
 
+		// Storm and tornados
 		Weathers[iTmp].Lightning.Texture = "Weather\lightning\lightning_storm.tga.tx";	
 		Weathers[iTmp].Lightning.FlickerTime = 32;
 		Weathers[iTmp].Lightning.SubTexX = 4;
@@ -1182,6 +1189,8 @@ void addProceduralWeather(int iTmp)
 
 		Weathers[iTmp].Lightning.Enable = Whr_GetLong(WeathersNH, "Lightning.Enable");
 		Weathers[iTmp].Rainbow.Enable = Whr_GetLong(WeathersNH , "Rainbow.Enable");
+
+		Weathers[iTmp].Tornado = Whr_GetLong(WeathersNH, "Tornado");
 
 		// Sun glow and flare
 		Weathers[iTmp].Sun.Glow.Enable = Whr_GetLong(WeathersNH, "Sun.Glow.Enable");
@@ -1206,6 +1215,10 @@ void addProceduralWeather(int iTmp)
 		Weathers[iTmp].Lights = Whr_GetLong(WeathersNH, "Lights");
 		Weathers[iTmp].Night = Whr_GetLong(WeathersNH, "Night");
 	}
+
+	Weathers[iTmp].Sun.Overflow.Technique = "sunoverflow";
+	Weathers[iTmp].Sun.Glow.Color = Whr_GetColor(WeathersNH, "Sea2.SkyColor");
+	Weathers[iTmp].Sun.Overflow.Color = argb(0, 100, 100, 100);
 
 	// Wind parameters
 	if (CheckAttribute(WeathersNH,"Wind.seaWindSpeed"))  Weathers[iTmp].Wind.seaWindSpeed = Whr_GetFloat(WeathersNH, "Wind.seaWindSpeed");
