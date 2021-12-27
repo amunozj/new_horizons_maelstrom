@@ -728,8 +728,15 @@ void AccumSailTime()
 //  PB: No need to limit this
 //	if ( ! IsPerkIntoList("TimeSpeed"))		// not in compressed time
 //	{
-		if (!CheckAttribute(mchr, "SailingMinutes")) mchr.SailingMinutes = 0;
+	if (!CheckAttribute(mchr, "SailingMinutes")) mchr.SailingMinutes = 0;
+
+	if (!CheckAttribute(Weather, "Time.updatefrequence")){
+		mchr.SailingMinutes = sti(mchr.SailingMinutes) + 60.0/makeFloat(Whr_GetLong(Weather, "Time.updatefrequence"));
+	}else{
 		mchr.SailingMinutes = sti(mchr.SailingMinutes) + 1;		// Note: do we want to add more if in battle?
+	}
+
+	// trace("Sailing minutes: " + mchr.SailingMinutes);
 //	}
 }
 
@@ -756,27 +763,27 @@ void procUpdateTime()
 			mchr.TimeSeconds = iSeaTime;
 			if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
 			{
-				AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
+				// AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
 				bCheckForBells = true;
 				bCheckForIslandChange = true;
 				bCheckForAiupdate = true;
 			}
 		}
-		if (iSeaTime >= sti(mchr.TimeSeconds)+60.0/TIMESCALAR_SEA)	// 12 seconds, this is approximate, but works
+		// if (iSeaTime >= sti(mchr.TimeSeconds)+60.0/TIMESCALAR_SEA)	// 12 seconds, this is approximate, but works
+		// {
+		// 	mchr.TimeSeconds = iSeaTime;
+		// 	float CurrentTime = stf(mchr.CurrentTime);
+		// 	CurrentTime += (1.0/60.0);								// add one minute to current time
+		// 	if (CurrentTime >= 24.0) CurrentTime -= 24.0;			// LDH 16Oct06 - 24:01 should be 00:01 for example
+		// 	mchr.CurrentTime = CurrentTime;
+		// AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
+		if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
 		{
-			mchr.TimeSeconds = iSeaTime;
-			float CurrentTime = stf(mchr.CurrentTime);
-			CurrentTime += (1.0/60.0);								// add one minute to current time
-			if (CurrentTime >= 24.0) CurrentTime -= 24.0;			// LDH 16Oct06 - 24:01 should be 00:01 for example
-			mchr.CurrentTime = CurrentTime;
-			AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
-			if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
-			{
-				bCheckForBells = true;
-				bCheckForIslandChange = true;
-				bCheckForAiupdate = true;
-			}
+			bCheckForBells = true;
+			bCheckForIslandChange = true;
+			bCheckForAiupdate = true;
 		}
+		// }
 
 		if (bCheckForBells)
 		{
@@ -934,75 +941,75 @@ void procUpdateTime()
 				}
 			}
 
-			// Screwface : lagoon colour mod close to seashore reload locator
-			if(mchr.location != WDM_NONE_ISLAND)
-			{
-				// trace("Check for lagoon")
-				string island = mchr.location;
-				int li = Findisland(island);
-				//logit("island : " + island);
-				if(li >= 0)
-				{
-					aref aCurWeather = GetCurrentWeather();
-					float psX = MakeFloat(mchr.Ship.Pos.x);
-					float psZ = MakeFloat(mchr.Ship.Pos.z);
-					float isR = 450.0;
-					//logit("ship pos x : " + psx);
-					//logit("ship pos z : " + psz);
-					aref rl;
-					makearef(rl, Islands[li].reload);
-					num = GetAttributesNum(rl);
-					for(int j = 0; j < num; j++)
-					{
-						string tempattrname = GetAttributeName(GetAttributeN(rl,j));
-						//sLandfallName = rl.(tempattrname).label;
-						if (CheckAttribute(rl, tempattrname+".x"))
-						{
-							float ix = stf(rl.(tempattrname).x);
-							float iz = stf(rl.(tempattrname).z);
-							if(aCurWeather.id == "Blue Sky")
-							{
-								if(wRain < 75)
-								{
-									if(GetDistance2D(psX, psZ, ix, iz) <= isR && Locations[FindLocation(rl.(tempattrname).go)].type =="seashore")
-									{
-										//logit("loc pos x : " + ix);
-										//logit("loc pos z : " + iz);
-										if(!Checkattribute(rl, tempattrname+".inlagoon"))
-										{
-											//Logit("i'm in a lagoon !");
-											//Sea.GF3.WaterColor = argb(0,45,129,153);
-											Refreshseacolor_in();
-											rl.(tempattrname).inlagoon = 1;
-											break;
-										}
-									}
-									else
-									{
-										if(CheckAttribute(rl, tempattrname+".inlagoon"))
-										{
-											//Logit("i'm not in a lagoon !");
-											aCurWeather.Sea.inlagoon = 0;
-											Refreshseacolor_out();
-											//Sea.GF3.WaterColor = argb(0,30,55,100);
-											DeleteAttribute(rl, tempattrname+".inlagoon");
-										}
-									}
-								}
-								else
-								{
-									//Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
-									//Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
-									//Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
-									Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
-									Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
-									Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
-								}
-							}
-						}
-					}
-				}
-			} // Screwface : Lagoon colour mod end
+			// // Screwface : lagoon colour mod close to seashore reload locator
+			// if(mchr.location != WDM_NONE_ISLAND)
+			// {
+			// 	// trace("Check for lagoon")
+			// 	string island = mchr.location;
+			// 	int li = Findisland(island);
+			// 	//logit("island : " + island);
+			// 	if(li >= 0)
+			// 	{
+			// 		aref aCurWeather = GetCurrentWeather();
+			// 		float psX = MakeFloat(mchr.Ship.Pos.x);
+			// 		float psZ = MakeFloat(mchr.Ship.Pos.z);
+			// 		float isR = 450.0;
+			// 		//logit("ship pos x : " + psx);
+			// 		//logit("ship pos z : " + psz);
+			// 		aref rl;
+			// 		makearef(rl, Islands[li].reload);
+			// 		num = GetAttributesNum(rl);
+			// 		for(int j = 0; j < num; j++)
+			// 		{
+			// 			string tempattrname = GetAttributeName(GetAttributeN(rl,j));
+			// 			//sLandfallName = rl.(tempattrname).label;
+			// 			if (CheckAttribute(rl, tempattrname+".x"))
+			// 			{
+			// 				float ix = stf(rl.(tempattrname).x);
+			// 				float iz = stf(rl.(tempattrname).z);
+			// 				if(aCurWeather.id == "Blue Sky")
+			// 				{
+			// 					if(wRain < 75)
+			// 					{
+			// 						if(GetDistance2D(psX, psZ, ix, iz) <= isR && Locations[FindLocation(rl.(tempattrname).go)].type =="seashore")
+			// 						{
+			// 							//logit("loc pos x : " + ix);
+			// 							//logit("loc pos z : " + iz);
+			// 							if(!Checkattribute(rl, tempattrname+".inlagoon"))
+			// 							{
+			// 								//Logit("i'm in a lagoon !");
+			// 								//Sea.GF3.WaterColor = argb(0,45,129,153);
+			// 								Refreshseacolor_in();
+			// 								rl.(tempattrname).inlagoon = 1;
+			// 								break;
+			// 							}
+			// 						}
+			// 						else
+			// 						{
+			// 							if(CheckAttribute(rl, tempattrname+".inlagoon"))
+			// 							{
+			// 								//Logit("i'm not in a lagoon !");
+			// 								aCurWeather.Sea.inlagoon = 0;
+			// 								Refreshseacolor_out();
+			// 								//Sea.GF3.WaterColor = argb(0,30,55,100);
+			// 								DeleteAttribute(rl, tempattrname+".inlagoon");
+			// 							}
+			// 						}
+			// 					}
+			// 					else
+			// 					{
+			// 						//Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
+			// 						//Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
+			// 						//Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
+			// 						Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
+			// 						Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
+			// 						Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
+			// 					}
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// } // Screwface : Lagoon colour mod end
 		}
 		// SCREWFACE : END
 
@@ -1015,14 +1022,14 @@ void procUpdateTime()
 		// DeathDaisy: approximate time of day when not having a clock
 		else{
 			string TimeOfDay;
-			if(GetTime() >= 22 || GetTime() < 3) TimeOfDay = XI_ConvertString("Night");
+			if(GetTime() >= 23 || GetTime() < 3) TimeOfDay = XI_ConvertString("Night");
 			if(GetTime() >= 3 && GetTime() < 6) TimeOfDay = XI_ConvertString("Small Hours");
 			if(GetTime() >= 6 && GetTime() < 7) TimeOfDay = XI_ConvertString("Dawn");
 			if(GetTime() >= 7 && GetTime() < 10) TimeOfDay = XI_ConvertString("Morning");
 			if(GetTime() >= 10 && GetTime() < 14) TimeOfDay = XI_ConvertString("Midday");
-			if(GetTime() >= 14 && GetTime() < 18) TimeOfDay = XI_ConvertString("Afternoon");
-			if(GetTime() >= 18 && GetTime() < 21) TimeOfDay = XI_ConvertString("Evening");
-			if(GetTime() >= 21 && GetTime() < 22) TimeOfDay = XI_ConvertString("Dusk");
+			if(GetTime() >= 14 && GetTime() < 19) TimeOfDay = XI_ConvertString("Afternoon");
+			if(GetTime() >= 19 && GetTime() < 22) TimeOfDay = XI_ConvertString("Evening");
+			if(GetTime() >= 22 && GetTime() < 23) TimeOfDay = XI_ConvertString("Dusk");
 			sDateTimeDisplay += ", " + FirstLetterUp(TimeOfDay);
 		}
 		// PB: Only show this if Various Logs are enabled -->
@@ -1030,7 +1037,7 @@ void procUpdateTime()
 		else SendMessage(&IDateTimeDisplay, "lls", LOG_ADD_STRING, true, "");
 		// PB: Only show this if Various Logs are enabled <--
 
-		PostEvent("evntUpdateTime", 250.0);	// when DisplayTime attribute is deleted, this will stop calling itself
+		PostEvent("evntUpdateTime", 1000.0);	// when DisplayTime attribute is deleted, this will stop calling itself
 	}
 }
 // <-- KK

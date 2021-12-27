@@ -408,31 +408,10 @@ void CreateWeatherEnvironment()
 	}
 
 
-	if (iBlendWeatherNum < 0 )
-	{
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 350.0;
-		Weather.Time.updatefrequence = 12;
-	} else {
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 450;
-		Weather.Time.updatefrequence = 15;
-		if (bSeaActive && !bAbordageStarted)
-		{
-			/*
-			if (iArcadeSails == 1)
-            {
-                Weather.Time.speed = 250;
-                Weather.Time.updatefrequence = 10;
-            }
-		*/
-		}
-		else
-		{
-			Weather.Time.speed = 350;
-			Weather.Time.updatefrequence = 12;
-		}
-	}
+	Weather.Time.time = fGetTime;
+	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);	
+	Weather.Time.updatefrequence = 60;
+	
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -669,6 +648,32 @@ int Whr_BlendColor(float fBlend, int col1, int col2)
 
 void Whr_TimeUpdate()
 {
+	// trace("High precision time timeupdate start: " + fHighPrecisionDeltaTime);
+	float fTime = GetEventData();
+	//float fBlend = fTime - makeint(fTime);
+
+	//
+	Environment.time = fTime;
+	int nOldHour = sti(Environment.date.hour);
+	int nNewHour = makeint(fTime);
+	int nNewMin = makeint((fTime - nNewHour)*60);
+	int nNewSec = makeint(((fTime - nNewHour)*60 - nNewMin)*60);
+	Environment.date.min = nNewMin;
+	Environment.date.hour = nNewHour;
+	Environment.date.sec = nNewSec;
+	worldMap.date.hour = nNewHour;
+	worldMap.date.min  = nNewMin;
+
+	ref mchr = GetMainCharacter();
+	mchr.CurrentTime = fTime;
+	Weather.Time.time = fTime;
+
+	if (bSeaActive && !bAbordageStarted)					// PB: Not while on a ship deck!
+	{
+		AccumSailTime();	// LDH accumulate sailing experience - 21Dec08
+	}
+
+
 
     if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
@@ -682,8 +687,6 @@ void Whr_TimeUpdate()
 	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
 	iNextWeatherNum = iBlendWeatherNum;
 	// addProceduralWeather(iBlendWeatherNum);
-
-	Weather.Time.time = GetTime();
 
 	if( iBlendWeatherNum < 0 ) {return;}
 
@@ -755,8 +758,6 @@ void Whr_TimeUpdate()
 
 	// update sky: fog
 	Sky.TimeUpdate = GetTime();
-
-	
 
 }
 

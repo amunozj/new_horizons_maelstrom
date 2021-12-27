@@ -1082,7 +1082,7 @@ void SeaLogin(ref Login)
 	SetCorrectWorldMapPosition(); //Screwface
 
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather);
+	// doShipLightChange(aCurWeather, true);
 
 
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
@@ -1094,20 +1094,21 @@ void SeaLogin(ref Login)
 	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
 	Weather.isDone = "";
 	
-		
 
+	StopSound(0,0);
+	PostEvent("LoadSceneSound", 0);
 	iRDTSC = RDTSC_E(iRDTSC);
 	//Trace("SeaLogin RDTSC = " + iRDTSC);
 	//Trace("iNumShips = " + iNumShips);
     DeleteAttribute(pchar, "SkipEshipIndex");// boal
-	PostEvent("Sea_FirstInit", 1);
+	PostEvent("Sea_FirstInit", 10);
 	//StartPostInitChars();
 	Trace("SEA: SeaLogin end");
 
 
-	PostEvent("Sea_FirstInit", 100);
-	StartPostInitChars();
-	Trace("SEA: SeaLogin end");
+	// PostEvent("Sea_FirstInit", 100);
+	// StartPostInitChars();
+	// Trace("SEA: SeaLogin end");
 }
 
 // KK -->
@@ -1429,11 +1430,11 @@ void Sea_FirstInit()
         LayerAddObject(SEA_EXECUTE, &Seafoam, -1);
         LayerAddObject(SEA_REALIZE, &Seafoam, -1);
 	}
-	if (Whr_IsStorm())
-	{
-		Seafoam.storm = "true";
-		rPlayer.Capsize.Warning = ROLL_ANGLE_WARNING;		// PB: Reset capsize danger
-	}
+	// if (Whr_IsStorm())
+	// {
+	// 	Seafoam.storm = "true";
+	// 	rPlayer.Capsize.Warning = ROLL_ANGLE_WARNING;		// PB: Reset capsize danger
+	// }
 
 	trace("Sea_FirstInit done");
 }
