@@ -343,8 +343,8 @@ void CreateWeatherEnvironment()
 	bool bWhrTornado = false;
 	bool bRain = false;
 
-	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
-	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
+	// if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
+	// if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 
 	iCurWeatherHour = iHour;
 	iCurWeatherNum = FindWeatherByHour(iHour);
@@ -393,7 +393,8 @@ void CreateWeatherEnvironment()
 	sInsideBack = Whr_GetString(aCurWeather,"InsideBack");
 	bWeatherIsNight = Whr_GetLong(aCurWeather,"Night");
 	bWeatherIsLight = Whr_GetLong(aCurWeather,"Lights");
-	if (daytimeLights()) bWeatherIsLight = true;
+	if (daytimeLights()) bWeatherIsLight = true;	
+	doShipLightChange(aCurWeather, true);	
 
 	// Weather.Wind.Angle = Whr_GetFloat(WeathersNH,"Wind.Angle");
 	// Weather.Wind.Speed = Whr_GetFloat(WeathersNH,"Wind.Speed");
@@ -420,17 +421,18 @@ void CreateWeatherEnvironment()
 	pchar.Wind.Angle = fWeatherAngle;
 	pchar.Wind.Speed = fWeatherSpeed;
 
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
-
+	// if (WeathersNH.Rain == true)
+	// {
+	// 	FillRainData(iCurWeatherNum, iBlendWeatherNum);
+	// 	Rain.isDone = "";
+	// }
 
 	Weather.Time.time = fGetTime;
-	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);	
-	Weather.Time.updatefrequence = 60;
-	
+	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);
+	// float updateFactor = GetTimeScale()+2.0;
+	// if (GetTimeScale()==1.0){updateFactor = 1.0;}
+	// Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
+	Weather.Time.updatefrequence = 60;	
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
 	SetEventHandler("frame","Whr_OnWindChange",0);
@@ -441,14 +443,16 @@ void CreateWeatherEnvironment()
 	// fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
 	// fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
 
-    // boal -->
-	bRain = true; // Whr_isRainEnable();
+    // boal -->'
+	WhrCreateRainEnvironment();
+	bRain = bWeatherIsRain; // Whr_isRainEnable();
     string sLocation = "";
     int iLocation = -1;
     if(CheckAttribute(pchar, "location")) {
        sLocation = pchar.location;
        iLocation = FindLocation(sLocation);
     }
+
 	if(iLocation != -1)
 	{
 		ref rLoc;
@@ -475,14 +479,35 @@ void CreateWeatherEnvironment()
 			}
 		}
 	}
-	if (bRain)
+
+	if (bRain == false)
 	{
-		WhrCreateRainEnvironment();
+		ClearRainEnvironment();
+		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
+		{
+			WeatherParams.Rain.Sound = false;
+			Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
+		}
+		WeatherParams.Rain = false;			
 	}
 	else
 	{
-		ClearRainEnvironment();
+		WeatherParams.Rain.Sound = true;
+		WeatherParams.Rain = true;		
+		Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
+		FillRainData(iCurWeatherNum, iBlendWeatherNum);
+		Rain.isDone = "";
 	}
+
+	// if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
+	// {
+	bWStormStatus = bWeatherIsStorm;
+	bWRainStatus = bWeatherIsRain;
+	PostEvent("LoadSceneSound", 10);
+
+
+	// Rain.isDone = "";		
+	// }	
 	// boal <--
 
 	WhrCreateSunGlowEnvironment();
@@ -491,7 +516,7 @@ void CreateWeatherEnvironment()
 	WhrCreateSkyEnvironment();
 	WhrCreateSeaEnvironment();
 
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	// FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
 	// update sun glow: sun\moon, flares
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 
@@ -510,15 +535,29 @@ void CreateWeatherEnvironment()
 	Astronomy.TimeUpdate = 1;
 
 
-	Weather.isDone = "";
+	btornado = Whr_GetLong(Weather, "Tornado"); //screwface
+	bstorm = Whr_GetLong(Weather, "Storm") //screwface
 
-	if (WeathersNH.Tornado==true) { WhrCreateTornadoEnvironment(); }
+	WeatherParams.Storm = Whr_GetLong(Weather, "Storm");
+	WeatherParams.Tornado = Whr_GetLong(Weather, "Tornado");	
 
-	Particles.windpower = 0.0005 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+
+	if (Whr_GetLong(Weather, "Tornado") == true) { WhrCreateTornadoEnvironment(); }
+	else{
+		WhrDeleteTornadoEnvironment();
+	}
+
+	Particles.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
 	Particles.winddirection.z = cos(Whr_GetWindAngle());
+	
+	ParticlesXPS.windpower = PARTICLESPOWER * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
+	ParticlesXPS.winddirection.x = sin(Whr_GetWindAngle());
+	ParticlesXPS.winddirection.z = cos(Whr_GetWindAngle());
 
 	bWeatherLoaded = true;
+	Weather.isDone = "";
+
 
 	if (bSeaActive)
 	{
@@ -765,7 +804,7 @@ void Whr_TimeUpdate()
 	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
 	aref aCurWeather = GetCurrentWeather();
-	doShipLightChange(aCurWeather);	
+	doShipLightChange(aCurWeather, false);
 
 	//#20191020-01
 	aref aStars;
@@ -862,7 +901,7 @@ int daytimeLights()
 	return Lights;
 }
 
-void doShipLightChange(ref aCurWeather)
+void doShipLightChange(ref aCurWeather, bool forceUpdate)
 {
     int j, iCharIdx;
 
@@ -870,14 +909,19 @@ void doShipLightChange(ref aCurWeather)
     Sea.Lights =  Whr_GetLong(aCurWeather, "Lights");
 	if (daytimeLights() == 1) Sea.Lights = 1;
 
-    ref rChar;
-    for(j = 0; j < iNumShips; j++) {
-        iCharIdx = Ships[j];
-        if (iCharIdx < 0 || iCharIdx >= TOTAL_CHARACTERS) continue;
-        rChar = GetCharacter(Ships[j]);
-        Ship_SetLightsAndFlares(rChar);
-        SendMessage(&characters[iCharIdx], "l", MSG_SHIP_LIGHTSRESET);
-    }
+	if (shipsLights != Whr_GetLong(Sea, "Lights") || forceUpdate == true)
+	{
+		ref rChar;
+		for(j = 0; j < iNumShips; j++) {
+			iCharIdx = Ships[j];
+			if (iCharIdx < 0 || iCharIdx >= TOTAL_CHARACTERS) continue;
+			rChar = GetCharacter(Ships[j]);
+			Ship_SetLightsAndFlares(rChar);
+			SendMessage(&characters[iCharIdx], "l", MSG_SHIP_LIGHTSRESET);
+		}
+
+		shipsLights =  Whr_GetLong(Sea, "Lights");
+	}
 }
 
 void Whr_ChangeDayNight()
