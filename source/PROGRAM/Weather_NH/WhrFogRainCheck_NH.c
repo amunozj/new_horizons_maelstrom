@@ -142,7 +142,7 @@ void Whr_FogRainCheck(){
 	WeathersNH.Lights = 0;
 
 //  LDH more fog during rain - 26Feb09
-	if (wRain > 75 && fog < 10) fog += (wRain-75);
+	if (wRain > WRAINRAIN){fog += (wRain - WRAINRAIN)/2.0;}
 
 	if (fog < MINIMUMFOG){fog=MINIMUMFOG}
 
@@ -161,36 +161,6 @@ void Whr_FogRainCheck(){
 	WeathersNH.SpecialSeaFog.SeaDensity = fog*FOGFACTOR;
 
 
-// 	if ( fog >= MINIMUMFOG ){
-// 		WeathersNH.Fog.Enable = true;
-// 		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09
-// 		WeathersNH.Fog.Start = 0.0;
-// //		WeathersNH.Fog.Density = (fog*0.00025);
-// 		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
-// 		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.Enable = true;
-// 		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
-// 		WeathersNH.SpecialSeaFog.Start = 0.0;
-// 		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-// 	}
-// 	else{
-// 		WeathersNH.Fog.Enable = true;
-// 		WeathersNH.Fog.Height = 300.0*FOGHEIGHTFACTOR;
-// 		WeathersNH.Fog.Start = 0.0;
-// 		WeathersNH.Fog.Density = 0.001*FOGFACTOR;
-// 		WeathersNH.Fog.SeaDensity = 0.001*FOGFACTOR;
-// 		WeathersNH.Fog.IslandDensity = 0.001*FOGFACTOR;
-
-// 		WeathersNH.SpecialSeaFog.Enable = true;
-// 		WeathersNH.SpecialSeaFog.Height = 500.0*FOGHEIGHTFACTOR;
-// 		WeathersNH.SpecialSeaFog.Start = 0.0;
-// 		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
-// 		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
-		
-// 	}
-
 	if (fog > 10){
 		WeathersNH.Lights = 1;
 	}
@@ -200,19 +170,18 @@ void Whr_FogRainCheck(){
 	WeathersNH.Rain = false;
 	WeathersNH.Storm = false;
 	WeathersNH.Tornado = false;
-	WeathersNH.StormSky = false;
-	bWeatherIsStorm = false;
-	bWeatherIsRain = false;
+	// bWeatherIsStorm = false;
+	// bWeatherIsRain = false;
 
-	WeatherParams.Storm = false;
-	WeatherParams.tornado = false;	
+	// WeatherParams.Storm = false;
+	// WeatherParams.tornado = false;	
 
 	WeathersNH.Rain.DropsNearNum = 500;
 	WeathersNH.Rain.DropsFarNum = 500;
 	WeathersNH.Rain.DropsNearRadius = 25.0;
 	WeathersNH.Rain.DropsFarRadius = 75.0;
 	WeathersNH.Rain.DropsLifeTime = 0.25;
-	WeathersNH.Rain.DropsSize = 0.06;
+	WeathersNH.Rain.DropsSize = 0.04;
 	WeathersNH.Rain.DropsTexture = "weather\rain_drops.tga.tx";
 	WeathersNH.Rain.DropsColor = argb(63,255,255,255);
 	WeathersNH.Lightning.Enable = false;
@@ -223,13 +192,13 @@ void Whr_FogRainCheck(){
 	WeathersNH.Sun.Reflection.Enable = true;
 	WeathersNH.Rainbow.Enable = false;
 
-	if (wRain > 75)
+	if (wRain >= WRAINRAIN)
 	{
 		WeatherParams.Rain = true;
-		bWeatherIsRain = true; // screwface
+		WeathersNH.Rain = true;
+		// bWeatherIsRain = true; // screwface
 		WeathersNH.Lightning.Enable = false;
-		WeathersNH.Sky.Dir = "weather\skies\7\\";
-		WeathersNH.Rain.NumDrops = ((wRain-75)*400);
+		WeathersNH.Rain.NumDrops = ((wRain-WRAINRAIN)*400);
 		WeathersNH.Rain.Color = argb(0,73,73,73);
 		WeathersNH.Rain.DropLength = (1.12);
 		WeathersNH.Rain.Height = 30.0;
@@ -239,6 +208,7 @@ void Whr_FogRainCheck(){
 		WeathersNH.Rain.WindSpeedJitter = (0.5);
 		WeathersNH.Rain.MaxBlend = 75;
 		WeathersNH.Rain.TimeBlend = 2000;
+		WeathersNH.Rain.DropsSize = 0.05;
 
 		if(theHour >= 5 && theHour < 23) {WeathersNH.Rainbow.Enable = true;}		//UZVER
 
@@ -255,6 +225,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
 			WeathersNH.Sea.Water.Color = argb(0,24,44,78);
 			WeathersNH.Sky.Color = argb(0,220,220,255);
+			WeathersNH.Rain.DropsSize = 0.06;
 		}
 		if(wRain >= 85 && wRain < 95){
 			WeathersNH.Rain.Speed = 16.0;
@@ -272,6 +243,7 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
 			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
 			WeathersNH.Sky.Color = argb(0,210,210,255);
+			WeathersNH.Rain.DropsSize = 0.07;
 		}
 		if(wRain >= 95){
 			WeathersNH.StormSky = true;
@@ -301,6 +273,8 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.Water.Color = argb(0,20,35,63);
 			WeathersNH.Sky.Color = argb(0,200,200,255);
 			WeathersNH.Rainbow.Enable = false;
+			WeathersNH.Rain.DropsSize = 0.08;
+
 			if(minwind >= 28){
 				WeathersNH.Storm = true;
 				WeathersNH.Tornado = true;

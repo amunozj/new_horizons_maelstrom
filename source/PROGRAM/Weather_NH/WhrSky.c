@@ -20,8 +20,6 @@ void WhrCreateSkyEnvironment()
 	aref aSky;
 	makearef(aSky, aCurWeather.Sky);
 
-	trace("Sky weather: " + aCurWeather.id);
-
 	DeleteAttribute(&Sky, "")
 	if(!isEntity(&Sky))
 	{
@@ -44,16 +42,16 @@ void WhrCreateSkyEnvironment()
 	// 	Sky.Dir = "weather\skies\Storm01\";
 	// }
 
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	FillSkyData();
 	// Sky.Color = Whr_GetColor(aSky, "Color");
-	Sky.RotateSpeed = Whr_GetFloat(aSky, "Rotate"); // Warship 02.06.09
+	Sky.RotateSpeed = 0.05; // Warship 02.06.09
 	Sky.Angle = Whr_GetFloat(aSky, "Angle");
-	Sky.Size = Whr_GetFloat(aSky, "Size");
+	Sky.Size = 2048;
 
 	//#20180615-01
 
     if(bSeaActive) {
-        Sky.Size = Whr_GetFloat(aSky, "Size");
+        Sky.Size = 2048;
         Sky.techSky = "Sky";
         Sky.techSkyBlend = "SkyBlend";
         Sky.techskyAlpha = "skyblend_alpha";
@@ -70,25 +68,26 @@ void WhrCreateSkyEnvironment()
 	Sky.isDone = "";
 }
 
-void FillSkyData(int nw1, int nw2)
+void FillSkyData()
 {
-	if( nw1 < 0 || nw1 >= MAX_WEATHERS ) {return;}
 
-	aref aSky; makearef(aSky,  Weathers[nw1].Sky);
+	aref aSky; makearef(aSky,  currentWeather.Sky);
 
 	float waveSpeedXf, waveSpeedZf, waveSpeed2Xf, waveSpeed2Zf;
 
-	if( nw2 < 0 )
-	{
-		Sky.Color = Whr_GetColor(aSky, "Color");
-	}
-	else
-	{
-		aref aSky2; makearef(aSky2, Weathers[nw2].Sky);
-		float fBlend = stf(Environment.Time) - sti(Environment.Time);
+	aref aSky2; makearef(aSky2, nextWeather.Sky);
+	float fBlend = stf(Environment.Time) - sti(Environment.Time);
 
-		Sky.Color =  Whr_BlendColor( fBlend, Whr_GetColor(aSky, "Color"), Whr_GetColor(aSky2, "Color") );	
-	}
+	Sky.Color =  Whr_BlendColor( fBlend, Whr_GetColor(aSky, "Color"), Whr_GetColor(aSky2, "Color") );
+
+	int iHour = MakeInt(GetHour());
+	int nextHour = iHour+1;
+	if (nextHour > 23) {nextHour=0;}
+
+	string satr = "d" + sti(iHour);
+	aSky.Dir.(satr) = currentWeather.Sky.Dir;
+	satr = "d" + sti(nextHour);
+	aSky.Dir.(satr) = nextWeather.Sky.Dir;
 
 }
 
@@ -117,34 +116,65 @@ void UpdateSky()
 
 void FillSkyDir(aref aSky)
 {
-	int i, nStart, nDur;
+// 	int i, nStart, nDur;
+// 	string satr;
+// 	aref aCurWeather = GetCurrentWeather();
+// 	string sDir;
+
+// 	DeleteAttribute(aSky,"Dir");
+// 	if( iBlendWeatherNum < 0 )
+// 	{
+// 		aSky.Dir.d1 = aCurWeather.Sky.Dir;
+// 		aSky.Dir = GetHour();
+// 	} else {
+// 		for (i=0;i<MAX_WEATHERS;i++)
+// 		{
+// 			if (!CheckAttribute(&Weathers[i], "Hour")) {continue;}
+// 			if (CheckAttribute(&Weathers[i], "Skip") && sti(Weathers[i].Skip)==true) {continue;}
+// 			if (CheckAttribute(&Weathers[i], "Storm")&& sti(Weathers[i].Storm)==true) {continue;}
+
+// 			satr = "d" + sti(Weathers[i].Hour.Min);
+// 			if( satr=="d24" ) {continue;}
+
+// //navy -->
+// 			sDir = Weathers[i].Sky.Dir;
+// 			// trace("aSky.Dir.(satr) in fillskydir: " + sDir);
+// //navy <--
+// 			aSky.Dir.(satr) = sDir;
+// 		}
+// 		aSky.Dir = GetTime();
+// 	}
+
+
+
 	string satr;
-	aref aCurWeather = GetCurrentWeather();
-	string sDir;
+	int i;
 
-	DeleteAttribute(aSky,"Dir");
-	if( iBlendWeatherNum < 0 )
-	{
-		aSky.Dir.d1 = aCurWeather.Sky.Dir;
-		aSky.Dir = GetHour();
-	} else {
-		for (i=0;i<MAX_WEATHERS;i++)
-		{
-			if (!CheckAttribute(&Weathers[i], "Hour")) {continue;}
-			if (CheckAttribute(&Weathers[i], "Skip") && sti(Weathers[i].Skip)==true) {continue;}
-			if (CheckAttribute(&Weathers[i], "Storm")&& sti(Weathers[i].Storm)==true) {continue;}
+	for (i=0;i<24;i++){
+		satr = "d" + i;
 
-			satr = "d" + sti(Weathers[i].Hour.Min);
-			if( satr=="d24" ) {continue;}
-
-//navy -->
-			sDir = Weathers[i].Sky.Dir;
-			// trace("Skydir in fillskydir: " + sDir);
-//navy <--
-			aSky.Dir.(satr) = sDir;
+		if (i==23 || i==5) {
+			aSky.Dir.(satr) = skydir_twilight1();
 		}
-		aSky.Dir = GetTime();
+		if (i==0 || i==4) {
+			aSky.Dir.(satr) = skydir_twilight2();
+		}
+		if (i >= 6 && i <= 10 ) {
+			aSky.Dir.(satr) = skydir_morningAFternoon();			
+		}
+		if (i >= 18 && i <= 22 ) {
+			aSky.Dir.(satr) = skydir_morningAFternoon();			
+		}
+		if (i >= 11 && i <= 17 ) {
+			aSky.Dir.(satr) = skydir_day();		
+		}
+		if (i >= 1 && i <= 3 ) {
+			aSky.Dir.(satr) = skydir_night();
+		}
 	}
+
+	aSky.Dir = GetTime();
+
 }
 
 void MoveSkyToLayers(string sExecuteLayer, string sRealizeLayer)

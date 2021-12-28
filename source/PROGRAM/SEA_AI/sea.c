@@ -646,11 +646,6 @@ void SeaLogin(ref Login)
 	sCurrentFog = "SpecialSeaFog";
 
 	int iHour = MakeInt(GetHour());
-	iCurWeatherNum = FindWeatherByHour(iHour);
-	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-
-
-
 
 	Sea.MaxSeaHeight = 50.0;
 
@@ -1085,13 +1080,13 @@ void SeaLogin(ref Login)
 	// doShipLightChange(aCurWeather, true);
 
 
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
+	FillWeatherData();
 	// update sun glow: sun\moon, flares
-	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
+	WhrFillSunGlowData();
 	// Fill Sea data
-	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
+	FillSeaData();	
 	// Fill Sky data
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
+	FillSkyData();
 	Weather.isDone = "";
 	
 

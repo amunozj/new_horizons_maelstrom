@@ -3,6 +3,7 @@
 #include "Weather_NH\WhrFogRainCheck_NH.c"
 #include "Weather_NH\WhrDebugInfo_NH.c"
 
+
 void Whr_ResetOvrd(){
 	OWeatherAngle = -50.0;
 	OWABallast = -50.0;
@@ -38,8 +39,8 @@ void Whr_Generator(int iHour){
 
 	//Logit("BugTracker - goldFog: " + goldFog + " goldRain: " + goldRain + " oldWind: " + oldWind + " gWeatherInit: " + gWeatherInit);
 	curTime = iHour; //Causing problems
-	bWeatherIsStorm = false; // screwface
-	bWeatherIsRain = false; // screwface
+	// bWeatherIsStorm = false; // screwface
+	// bWeatherIsRain = false; // screwface
 
 	rWind = rand(MAX_WINDCHANGE);
 	rFog = rand(MAX_FOGCHANGE);
@@ -75,23 +76,24 @@ void Whr_Generator(int iHour){
 	WeatherParams.Storm = false;
 	WeatherParams.Tornado = false;
 
-	if(bWhrStorm){
-		wRain = 95;
-		winds = 25;
-		windBallast = 10;
-		rainBallast = 10;
-		fog = 30;
-		bWeatherIsStorm = true; // screwface
-	}
-	if(bWhrTornado){
-		wRain = 100;
-		winds = 30;
-		windBallast = 20;
-		rainBallast = 20;
-		fog = 40;
-	}
-	btornado = bWhrTornado; //screwface
-	bstorm = bWhrStorm; //screwface
+	// if(bWhrStorm){
+	// 	wRain = WRAINSTORM+10;
+	// 	winds = 25;
+	// 	windBallast = -MAX_RBALLAST + 5;
+	// 	rainBallast = -MAX_RBALLAST + 5;
+	// 	fog = 30;
+	// 	bWeatherIsStorm = true; // screwface
+	// }
+	// if(bWhrTornado){
+	// 	wRain = WRAINTORNADO+5;
+	// 	winds = 30;
+	// 	windBallast = -MAX_RBALLAST + 5;
+	// 	rainBallast = -MAX_RBALLAST + 5;
+	// 	fog = 40;
+	// 	bWeatherIsStorm = true; // screwface		
+	// }
+	// btornado = bWhrTornado; //screwface
+	// bstorm = bWhrStorm; //screwface
 
 	goldRain = wRain;
 	goldFog = fog;
@@ -99,18 +101,28 @@ void Whr_Generator(int iHour){
 	fWeatherAngleOld = fWindA;
 
 	if(windABallast >=  MAX_ABALLAST || windABallast <= -MAX_ABALLAST ){ windABallast = 0;}
-	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = -MAX_RBALLAST;}
-	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast =  MAX_RBALLAST;}
+	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = 0;}
+	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast = 0;}
 	if(windBallast  >=  MAX_WBALLAST )                                 { windBallast = -MAX_WBALLAST;}
 	if(windBallast  <= -MAX_WBALLAST )                                 { windBallast =  MAX_WBALLAST;}
 	if(fogBallast   >=  MAX_FBALLAST )                                 { fogBallast  = -MAX_FBALLAST;}
 	if(fogBallast   <= -MAX_FBALLAST )                                 { fogBallast  =  MAX_FBALLAST;}
 
-	if(wRain >= 85 && winds <= 10){ windBallast = 15;}
-	if(winds <= 25 && wRain >= 90){ rainBallast = -15;}
+	if(wRain >= WRAINSTORM && winds <= 10){ windBallast = 15;}
+	// if(winds <= 25 && wRain >= WRAINSTORM){ rainBallast = -15;}
 	if(fog > 0 && curTime >= 6 && curTime <= 22 && wRain <= 60){fogBallast = -30;}
 	if(fogBallast < 0 && curTime > 22 || curTime < 6){fogBallast = 0;}
 	if(fogBallast < 0 && curTime >= 6 && curTime <=22 && wRain > 60){fogBallast = 0;}
+
+	// Reverse rain ballast when maximum rain has been reached
+	if (RAINDEBUG) trace("Maxrain: " + maxwRain + "wRain: " + wRain);
+	if (wRain >= maxwRain){
+		goldRain = 0;
+		wRain = 0;
+		rainBallast = 0;
+		fog = 0;
+		goldFog = 0;
+	}
 
 	minwind = winds - rand(2);
 	maxwind = winds + rand(2);
@@ -142,7 +154,7 @@ void Whr_Generator(int iHour){
 
 	// trace("winds: " + winds + " Realized winds" + seaWindSpeed);
 
-	float effectiveRain = (wRain-70)*RAIN2WIND;
+	float effectiveRain = (wRain-WRAINRAIN)*RAIN2WIND;
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	// Bupmscale the sea grainyness
@@ -225,7 +237,7 @@ void Whr_Generator(int iHour){
 
 
 	// Apply fog and rain to transparency
-	effectiveRain = (wRain-70)/30.0;
+	effectiveRain = (wRain-WRAINRAIN)/(100 - WRAINRAIN);
 	if (effectiveRain < 0) effectiveRain = 0;
 
 	float fog2trans = (Whr_GetFloat(WeathersNH, "Fog.SeaDensity")-MINIMUMFOG*FOGFACTOR)*FOG2TRANSPARENCY + effectiveRain;
@@ -301,8 +313,16 @@ void Whr_Generator(int iHour){
 	float starSize = 30.0;
 	float VisualMagnitude = 15;
 
+
 	// Determine the skybox to use
 	string skydir;
+
+	// Weather defaults
+	WeathersNH.Sun.Glow.RotateSpeed = 1.0;
+	WeathersNH.Sun.Glow.Texture = "weather\sun\glow\sunglow.tga";
+	WeathersNH.Sun.Moon = false;	
+	WeathersNH.Sky.Color = argb(0,255,255,255);
+	WeathersNH.Sun.Reflection.Texture = "weather\sun\reflection\refl_day.tga.tx";
 
 	trace("CurTime: " + curTime);
 	// Night
@@ -310,6 +330,23 @@ void Whr_Generator(int iHour){
 		skydir = skydir_night();
 		WeathersNH.Planets.enable = true;
 		WeathersNH.Stars.Enable = true;
+		WeathersNH.Lighting = "night1";
+		WeathersNH.LightingLm = "night1";
+		WeathersNH.InsideBack = "n";
+
+		WeathersNH.Sun.Reflection.Texture = "weather\sun\reflection\refl_night.tga.tx";
+
+		WeathersNH.Sun.Color = argb(0,30,30,30);
+		WeathersNH.Sun.Ambient = argb(0,30,30,30);
+		WeathersNH.Sun.Glow.Size = 100.0;
+
+		WeathersNH.Shadow.Density.Head = argb(255,46,46,46);
+		WeathersNH.Shadow.Density.Foot = argb(255,46,46,44);
+
+		WeathersNH.Sun.Glow.RotateSpeed = 0.0;
+		WeathersNH.Sun.Glow.Texture =  "weather\sun\glow\moon.tga.tx";
+		WeathersNH.Sun.Moon = true;		
+		WeathersNH.Sky.Color = argb(0,64,64,64);
 	}
 
 	//Twilight
@@ -318,24 +355,39 @@ void Whr_Generator(int iHour){
 		VisualMagnitude = 5.0;
 		starSize = 20.0;
 		WeathersNH.Sun.Flare.Enable = false;
-		WeathersNH.Sun.Overflow.Enable = false;
+		WeathersNH.Sun.Overflow.Enable = false;	
 	}
+
 	if (curTime==0 || curTime==4) {
 		skydir = skydir_twilight2();
 		VisualMagnitude = 10.0;
 		starSize = 25.0;
 		WeathersNH.Sun.Flare.Enable = false;
 		WeathersNH.Sun.Overflow.Enable = false;
+		WeathersNH.Sun.Moon = true;
 	}
-	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
-		if (wRain > 80) {skydir_night();}
-		WeathersNH.Planets.enable = true;
-		WeathersNH.Stars.Enable = true;
-		WeathersNH.Sun.Flare.Enable = false;
-		WeathersNH.Sun.Overflow.Enable = false;
-		}
 
-	if (wRain >60){
+	if (curTime==23 || curTime==0 || curTime==4 || curTime==5){
+		WeathersNH.Lighting = "evening3";
+		WeathersNH.LightingLm = "evening3";
+		WeathersNH.InsideBack = "e";
+		WeathersNH.Sun.Color = argb(0,130,130,100);
+		WeathersNH.Sun.Ambient = argb(0,130,130,100);
+		WeathersNH.Sun.Glow.Size = 500.0;
+		WeathersNH.Shadow.Density.Head = argb(255,96,96,96);
+		WeathersNH.Shadow.Density.Foot = argb(255,96,96,64);
+		WeathersNH.Sun.Reflection.Texture = "weather\sun\reflection\refl_evening.tga.tx";				
+
+		if (wRain >= WRAINOVERCAST) {skydir_night();}
+		else{
+			WeathersNH.Planets.enable = true;
+			WeathersNH.Stars.Enable = true;
+			WeathersNH.Sun.Flare.Enable = false;
+			WeathersNH.Sun.Overflow.Enable = false;
+		}
+	}
+
+	if (wRain >= WRAINOVERCAST){
 		WeathersNH.Planets.enable = false;
 		WeathersNH.Stars.Enable = false;
 	}
@@ -344,16 +396,46 @@ void Whr_Generator(int iHour){
 	if (curTime == 6 && curTime == 22 ) {
 		WeathersNH.Planets.enable = true;
 	}
-	if (curTime >= 6 && curTime <= 10 ) {skydir = skydir_morningAFternoon();}
-	if (curTime >= 18 && curTime <= 22 ) {skydir = skydir_morningAFternoon();}
+	if (curTime >= 6 && curTime <= 10 ) {
+		skydir = skydir_morningAFternoon();
+		WeathersNH.Lighting = "day1";
+		WeathersNH.LightingLm = "day1";
+		WeathersNH.InsideBack = "d";
+		WeathersNH.Sun.Color = argb(0,116,114,94);
+		WeathersNH.Sun.Ambient = argb(0,130,130,100);
+		WeathersNH.Sun.Glow.Size = 1000.0;
+		WeathersNH.Shadow.Density.Head = argb(255,96,96,96);
+		WeathersNH.Shadow.Density.Foot = argb(255,96,96,64);			
+	}
+	if (curTime >= 18 && curTime <= 22 ) {
+		skydir = skydir_morningAFternoon();
+		WeathersNH.Lighting = "day1";
+		WeathersNH.LightingLm = "day1";
+		WeathersNH.InsideBack = "d";
+		WeathersNH.Sun.Color = argb(0,116,114,94);
+		WeathersNH.Sun.Ambient = argb(0,130,130,100);
+		WeathersNH.Sun.Glow.Size = 1000.0;
+		WeathersNH.Shadow.Density.Head = argb(255,96,96,96);
+		WeathersNH.Shadow.Density.Foot = argb(255,96,96,64);			
+	}
 	// Hand picked sunset skybox sometimes (currently 20%)
 	if (curTime == 22 || curTime == 6) {
 		if (rand(100)<20){skydir = "weather\skies\22\";}
 	}
 
-	if (curTime >= 11 && curTime <= 17 ) {skydir = skydir_day();}
+	if (curTime >= 11 && curTime <= 17 ) {
+		skydir = skydir_day();
+		WeathersNH.Lighting = "day1";
+		WeathersNH.LightingLm = "day1";
+		WeathersNH.InsideBack = "d";
+		WeathersNH.Sun.Color = argb(0,234,234,218);
+		WeathersNH.Sun.Glow.Size = 1250.0;
+		WeathersNH.Sun.Ambient = argb(0,130,130,100);
+		WeathersNH.Shadow.Density.Head = argb(255,96,96,96);
+		WeathersNH.Shadow.Density.Foot = argb(255,96,96,64);		
+	}
 
-	if (curTime >= 6 && curTime <= 22 && wRain >60 ) {skydir = skydir_day_overcast();}
+	if (curTime >= 6 && curTime <= 22 && wRain >= WRAINOVERCAST ) {skydir = skydir_day_overcast();}
 
 	WeathersNH.Sky.Dir = skydir;
 
@@ -410,7 +492,8 @@ void Whr_Generator(int iHour){
 	if (getMoonState() == NEW_MOON){
 		if (curTime <= 5 || curTime==23){
 			WeathersNH.Sun.Reflection.Enable = false;
-			WeathersNH.Sun.Overflow.Enable = false;		}
+			WeathersNH.Sun.Overflow.Enable = false;
+		}
 	}
 
 	if (GENERATIONDEBUG){

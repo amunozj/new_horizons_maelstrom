@@ -1197,10 +1197,6 @@ void ProcessControls()
 {
 	string ControlName = GetEventData();
 	float basetime = 1.0;
-	//trace("ProcessControls() : " + ControlName);
-	//if(ControlName == "WhrPrevWeather")	{ Whr_LoadNextWeather(-1); }
-	//if(ControlName == "WhrNextWeather")	{ Whr_LoadNextWeather(1); }
-	//if(ControlName == "WhrUpdateWeather")	{ Whr_UpdateWeather(true); } // NK 04-09-21 add bool to Whr_UpdateWeather
 
 	if (ControlName == "NK_Key_") return; // KK
 	if (bDisableAllCommands) return; // KK

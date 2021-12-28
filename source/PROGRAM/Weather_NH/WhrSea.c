@@ -20,10 +20,10 @@ void WhrCreateSeaEnvironment()
 
 	Sea.Clear = "";
 
-	Sea.Transparency = Whr_GetFloat(aSea,"Transparency");
-	Sea.FrenelCoefficient = Whr_GetFloat(aSea,"FrenelCoefficient");
-	Sea.WaterReflection = Whr_GetFloat(aSea,"WaterReflection");
-	Sea.WaterAttenuation = Whr_GetFloat(aSea,"WaterAttenuation");
+	// Sea.Transparency = Whr_GetFloat(aSea,"Transparency");
+	// Sea.FrenelCoefficient = Whr_GetFloat(aSea,"FrenelCoefficient");
+	// Sea.WaterReflection = Whr_GetFloat(aSea,"WaterReflection");
+	// Sea.WaterAttenuation = Whr_GetFloat(aSea,"WaterAttenuation");
 
 
 	ref mchr = GetMainCharacter();
@@ -118,11 +118,9 @@ void WhrCreateSeaEnvironment()
 	}
 	Sea.Lights = aCurWeather.Lights;
 
-	Sea.Water.Color = Whr_GetColor(aSea,"Water.Color");
+	// Sea.Water.Color = Whr_GetColor(aSea,"Water.Color");
 
 	Sea.Sun.Color = Whr_GetColor(aCurWeather,"Sun.Color");
-	Sea.Sun.HeightAngle = Whr_GetFloat(aCurWeather,"Sun.HeightAngle");
-	Sea.Sun.AzimuthAngle = Whr_GetFloat(aCurWeather,"Sun.AzimuthAngle");
 
 	string sCurFog = Whr_GetCurrentFog();
 	// Sea.Fog.Color = Whr_GetColor(aCurWeather, sCurFog + ".Color");
@@ -131,66 +129,66 @@ void WhrCreateSeaEnvironment()
 	// Sea.Fog.Density = Whr_GetFloat(aCurWeather, sCurFog + ".Density") * FogDensity;
 	// Sea.Fog.SeaDensity = Whr_GetFloat(aCurWeather, sCurFog + ".SeaDensity") * FogSeaDensity;
 
-	Sea.Pena.Color = Whr_GetColor(aSea,"Pena.Color");
-	Sea.Pena.DepthSmall = 20.0;
-	Sea.Pena.DepthBig = 20.0;
-	Sea.Pena.BigIslandMultiply = Whr_GetFloat(aCommon, "Pena.BigIslandMultiply");
-	Sea.Pena.SmallIslandMultiply = Whr_GetFloat(aCommon, "Pena.SmallIslandMultiply");
+	// Sea.Pena.Color = Whr_GetColor(aSea,"Pena.Color");
+	// Sea.Pena.DepthSmall = 20.0;
+	// Sea.Pena.DepthBig = 20.0;
+	// Sea.Pena.BigIslandMultiply = Whr_GetFloat(aCommon, "Pena.BigIslandMultiply");
+	// Sea.Pena.SmallIslandMultiply = Whr_GetFloat(aCommon, "Pena.SmallIslandMultiply");
 
-	Sea.Bump.Dir = Whr_GetString(aSea, "Bump.Dir");
-	Sea.Bump.Tile = Whr_GetFloat(aSea, "Bump.Tile");
-	Sea.Bump.Ang = Whr_GetFloat(aSea, "Bump.Ang");
-	Sea.Bump.Speed = Whr_GetFloat(aSea, "Bump.Speed");
-	Sea.Bump.Scale = Whr_GetFloat(aSea, "Bump.Scale");
-	Sea.Bump.AnimSpeed = Whr_GetFloat(aSea, "Bump.AnimSpeed");
-	Sea.Bump.MipLevels = 4;
-	Sea.Bump.Size = 128;
+	// Sea.Bump.Dir = Whr_GetString(aSea, "Bump.Dir");
+	// Sea.Bump.Tile = Whr_GetFloat(aSea, "Bump.Tile");
+	// Sea.Bump.Ang = Whr_GetFloat(aSea, "Bump.Ang");
+	// Sea.Bump.Speed = Whr_GetFloat(aSea, "Bump.Speed");
+	// Sea.Bump.Scale = Whr_GetFloat(aSea, "Bump.Scale");
+	// Sea.Bump.AnimSpeed = Whr_GetFloat(aSea, "Bump.AnimSpeed");
+	// Sea.Bump.MipLevels = 4;
+	// Sea.Bump.Size = 128;
 
-	Sea.GF2MX.BumpDir = Whr_GetString(aSea, "GF2MX.Bump.Dir");
-	Sea.GF2MX.BumpTile = Whr_GetFloat(aSea, "GF2MX.Bump.Tile");
-	Sea.GF2MX.BumpAnimSpeed = Whr_GetFloat(aSea, "GF2MX.Bump.AnimSpeed");
-	Sea.GF2MX.WaterColor = Whr_GetColor(aSea, "GF2MX.Water.Color");
-	Sea.GF2MX.SkyColor = Whr_GetColor(aSea, "GF2MX.Sky.Color");
+	// Sea.GF2MX.BumpDir = Whr_GetString(aSea, "GF2MX.Bump.Dir");
+	// Sea.GF2MX.BumpTile = Whr_GetFloat(aSea, "GF2MX.Bump.Tile");
+	// Sea.GF2MX.BumpAnimSpeed = Whr_GetFloat(aSea, "GF2MX.Bump.AnimSpeed");
+	// Sea.GF2MX.WaterColor = Whr_GetColor(aSea, "GF2MX.Water.Color");
+	// Sea.GF2MX.SkyColor = Whr_GetColor(aSea, "GF2MX.Sky.Color");
 
-	Sea.GF3.BumpDir = Whr_GetString(aSea, "Bump.Dir");
-	Sea.GF3.BumpTile = Whr_GetFloat(aSea, "Bump.Tile");
-	Sea.GF3.BumpAnimSpeed = Whr_GetFloat(aSea, "Bump.AnimSpeed");
-	Sea.GF3.WaterColor = Whr_GetColor(aSea, "Water.Color");
-	Sea.GF3.SkyColor = Whr_GetColor(aSea, "Sky.Color");
+	// Sea.GF3.BumpDir = Whr_GetString(aSea, "Bump.Dir");
+	// Sea.GF3.BumpTile = Whr_GetFloat(aSea, "Bump.Tile");
+	// Sea.GF3.BumpAnimSpeed = Whr_GetFloat(aSea, "Bump.AnimSpeed");
+	// Sea.GF3.WaterColor = Whr_GetColor(aSea, "Water.Color");
+	// Sea.GF3.SkyColor = Whr_GetColor(aSea, "Sky.Color");
 
 	// Sun road section
-	Sea.Road.Start = Whr_GetFloat(aSea, "SunRoad.Start");
-	Sea.Road.Color1 = Whr_GetColor(aSea, "SunRoad.Color1");
-	Sea.Road.Color2 = Whr_GetColor(aSea, "SunRoad.Color2");
-	Sea.Road.Power = Whr_GetFloat(aSea, "SunRoad.Power");
+	// Sea.Road.Start = Whr_GetFloat(aSea, "SunRoad.Start");
+	// Sea.Road.Color1 = Whr_GetColor(aSea, "SunRoad.Color1");
+	// Sea.Road.Color2 = Whr_GetColor(aSea, "SunRoad.Color2");
+	// Sea.Road.Power = Whr_GetFloat(aSea, "SunRoad.Power");
 
-	if (CheckAttribute(aSea, "SunRoad.Special"))
-	{
-		Sea.Sun.HeightAngle = Whr_GetFloat(aSea, "SunRoad.Special.HeightAngle");
-		Sea.Sun.AzimuthAngle = Whr_GetFloat(aSea, "SunRoad.Special.AzimuthAngle");
-	}
+	// if (CheckAttribute(aSea, "SunRoad.Special"))
+	// {
+	// 	Sea.Sun.HeightAngle = Whr_GetFloat(aSea, "SunRoad.Special.HeightAngle");
+	// 	Sea.Sun.AzimuthAngle = Whr_GetFloat(aSea, "SunRoad.Special.AzimuthAngle");
+	// }
 
-	Sea.CubeMap.Size = 512;
-	Sea.CubeMap.VectorsSize = 256;
+	// Sea.CubeMap.Size = 512;
+	// Sea.CubeMap.VectorsSize = 256;
 
-	Sea.CubeMap.Format = "r5g6b5";
+	// Sea.CubeMap.Format = "r5g6b5";
 
-	Sea.Sky.Color = Whr_GetColor(aSea, "Sky.Color");
+	// Sea.Sky.Color = Whr_GetColor(aSea, "Sky.Color");
 
 	// harmonics
 	//#20190613-02
-	aref aHarmonics; makearef(aHarmonics, aSea.Harmonics);
-	int iNumHarmonics = GetAttributesNum(aHarmonics);
-	for (i=0;i<iNumHarmonics;i++)
-	{
-		aref aHarmonic = GetAttributeN(aHarmonics,i);
-		string sTemp = "h" + i;
-		Sea.Harmonics.(sTemp) = GetAttributeValue(aHarmonic);
-	}
+	// aref aHarmonics; makearef(aHarmonics, aSea.Harmonics);
+	// int iNumHarmonics = GetAttributesNum(aHarmonics);
+	// for (i=0;i<iNumHarmonics;i++)
+	// {
+	// 	aref aHarmonic = GetAttributeN(aHarmonics,i);
+	// 	string sTemp = "h" + i;
+	// 	Sea.Harmonics.(sTemp) = GetAttributeValue(aHarmonic);
+	// }
 
 	// Advanced Sea initialize
 
-	FillSeaData(iCurWeatherNum,iBlendWeatherNum);
+	FillSeaData();
 
 	Sea.Sea2.BumpScale = Whr_GetFloat(aSea2, "BumpScale");
 	Sea.Sea2.PosShift = Whr_GetFloat(aSea2, "PosShift");
@@ -226,47 +224,27 @@ void WhrCreateSeaEnvironment()
 }
 
 
-void FillSeaData(int nw1, int nw2)
+void FillSeaData()
 {
-	if( nw1 < 0 || nw1 >= MAX_WEATHERS ) {return;}
 	string sCurFog = Whr_GetCurrentFog();
 
-	aref aSea2; makearef(aSea2, Weathers[nw1].Sea2);
+	aref aSea2; makearef(aSea2, currentWeather.Sea2);
+	aref aSea22; makearef(aSea22, nextWeather.Sea2);
+	
+	float fBlend = stf(Environment.Time) - sti(Environment.Time);
 
-	if( nw2 < 0 )
-	{
-		Sea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
-		Sea.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
-		Sea.Fog.Color = Whr_GetColor(&Weathers[nw1], sCurFog + ".Color");		
-		Sea.Fog.Density = Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density");
-		Sea.Fog.SeaDensity = Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity");
-
-		Sea.Sea2.Reflection = Whr_GetFloat(aSea2, "Reflection");
-		Sea.Sea2.Transparency = Whr_GetFloat(aSea2, "Transparency");
-		Sea.Sea2.Attenuation = Whr_GetFloat(aSea2, "Attenuation");
-		Sea.Sea2.Frenel = Whr_GetFloat(aSea2, "Frenel");
+	Sea.Sea2.WaterColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "WaterColor"), Whr_GetColor(aSea22, "WaterColor") );
+	Sea.Sea2.SkyColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "SkyColor"), Whr_GetColor(aSea22, "SkyColor") );
+	Sea.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(currentWeather, sCurFog + ".Color"), Whr_GetColor(nextWeather, sCurFog + ".Color") );
+	Sea.Fog.Density = Whr_BlendFloat( fBlend, Whr_GetFloat(currentWeather, sCurFog + ".Density"), Whr_GetFloat(nextWeather, sCurFog + ".Density") );
+	Sea.Fog.SeaDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(currentWeather, sCurFog + ".SeaDensity"), Whr_GetFloat(nextWeather, sCurFog + ".SeaDensity") );
 
 
+	Sea.Sea2.Reflection = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Reflection"), Whr_GetFloat(aSea22, "Reflection") );
+	Sea.Sea2.Transparency = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Transparency"), Whr_GetFloat(aSea22, "Transparency") );
+	Sea.Sea2.Attenuation = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Attenuation"), Whr_GetFloat(aSea22, "Attenuation") );
+	Sea.Sea2.Frenel = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Frenel"), Whr_GetFloat(aSea22, "Frenel") );
 
-	}
-	else
-	{
-		aref aSea22; makearef(aSea22, Weathers[nw2].Sea2);
-		float fBlend = stf(Environment.Time) - sti(Environment.Time);
-
-		Sea.Sea2.WaterColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "WaterColor"), Whr_GetColor(aSea22, "WaterColor") );
-		Sea.Sea2.SkyColor = Whr_BlendColor( fBlend, Whr_GetColor(aSea2, "SkyColor"), Whr_GetColor(aSea22, "SkyColor") );
-		Sea.Fog.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1], sCurFog + ".Color"), Whr_GetColor(&Weathers[nw2], sCurFog + ".Color") );
-		Sea.Fog.Density = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".Density"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".Density") );
-		Sea.Fog.SeaDensity = Whr_BlendFloat( fBlend, Whr_GetFloat(&Weathers[nw1], sCurFog + ".SeaDensity"), Whr_GetFloat(&Weathers[nw2], sCurFog + ".SeaDensity") );
-
-
-		Sea.Sea2.Reflection = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Reflection"), Whr_GetFloat(aSea22, "Reflection") );
-		Sea.Sea2.Transparency = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Transparency"), Whr_GetFloat(aSea22, "Transparency") );
-		Sea.Sea2.Attenuation = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Attenuation"), Whr_GetFloat(aSea22, "Attenuation") );
-		Sea.Sea2.Frenel = Whr_BlendFloat( fBlend, Whr_GetFloat(aSea2, "Frenel"), Whr_GetFloat(aSea22, "Frenel") );
-
-	}
 
 	Sea.Fog.Enable = Whr_GetLong(Weather, "Fog.Enable");
 	Sea.Fog.Start = Whr_GetFloat(Weather, "Fog.Start");	

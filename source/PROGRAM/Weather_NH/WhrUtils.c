@@ -4,7 +4,7 @@
 
 int Whr_GetColor(aref arRef, string sAttribute)
 {
-	if (!CheckAttribute(arRef, sAttribute)) return 0;	
+	// if (!CheckAttribute(arRef, sAttribute)) return 0;	
 	return sti(arRef.(sAttribute));
 }
 
@@ -18,7 +18,7 @@ float Whr_GetFloat(aref arRef, string sAttribute)
 		return fMin + frnd() * (fMax - fMin);
 	}
 
-	if (!CheckAttribute(&arRef, sAttribute)) return 0.0;
+	// if (!CheckAttribute(&arRef, sAttribute)) return 0.0;
 
 	return stf(arRef.(sAttribute));
 }
@@ -59,7 +59,7 @@ float Whr_GetCustWSpeedFloat(aref arRef, string sAttribute)
 	}
 
 	//No max/min range, so return existing value if available, or 0
-	if (!CheckAttribute(&arRef, sAttribute)) return 0.0;
+	// if (!CheckAttribute(&arRef, sAttribute)) return 0.0;
 
 	return stf(arRef.(sAttribute));
 }
@@ -78,7 +78,7 @@ int Whr_GetLong(aref arRef, string sAttribute)
 
 string Whr_GetString(aref arRef, string sAttribute)
 {
-	if (!CheckAttribute(arRef, sAttribute)) return "";
+	// if (!CheckAttribute(arRef, sAttribute)) return "";
 	return arRef.(sAttribute);
 }
 
