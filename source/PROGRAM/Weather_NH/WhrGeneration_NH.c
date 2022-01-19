@@ -1,4 +1,4 @@
-#include "Weather_NH\WhrWeather.h"
+// #include "Weather_NH\WhrWeather.h"
 #include "Weather_NH\WhrGenerateValues_NH.c"
 #include "Weather_NH\WhrFogRainCheck_NH.c"
 #include "Weather_NH\WhrDebugInfo_NH.c"
@@ -24,7 +24,7 @@ void Whr_Generator(int iHour){
 	bool bWhrTornado = false;
 	bool bWhrStorm = false;
 
-	if(gWeatherInit == 1){
+	if (gWeatherInit == 1){
 		goldRain = rand(100);
 		goldFog = rand(20);
 		oldWind = rand(25) + 5;		// LDH 09Feb09
@@ -216,7 +216,7 @@ void Whr_Generator(int iHour){
 
 	if (curTime>=18 || curTime<=22)
 	{
-		fblend = 0.3;
+		fblend = 0.5;
 	}
 	if (curTime==23 || curTime==5)
 	{
@@ -225,7 +225,7 @@ void Whr_Generator(int iHour){
 	// Morning
 	if (curTime>=6 || curTime<=10)
 	{
-		fblend = 0.3;
+		fblend = 0.5;
 	}
 	// Night
 	if (curTime <=4)

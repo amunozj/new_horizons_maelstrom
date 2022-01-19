@@ -1,4 +1,4 @@
-#include "Weather_NH\WhrWeather.h"
+// #include "Weather_NH\WhrWeather.h"
 
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------

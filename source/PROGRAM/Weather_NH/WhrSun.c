@@ -11,9 +11,6 @@ void WhrDeleteSunGlowEnvironment()
 
 void WhrCreateSunGlowEnvironment()
 {
-	//if (sti(aSun.Glow.Enable) == false && sti(aSun.Flare.Enable) == false)) return;
-
-	// create sunglow
 	if (!isEntity(&SunGlow))
 	{
 		CreateEntity(&SunGlow,"SunGlow");
@@ -95,7 +92,7 @@ void WhrFillSunGlowData()
 	}
 
 	SunGlow.Glow.SunTexture = "weather\sun\glow\sun.tga.tx";
-	SunGlow.Glow.MoonTexture = Whr_getMoonTexture(); //"weather\sun\glow\moon.tga.tx";
+	SunGlow.Glow.MoonTexture = Whr_getMoonTexture(); 
 	SunGlow.Glow.GlowTexture = "weather\sun\glow\sunglow.tga.tx";
 	SunGlow.Glow.SunSize = 400;
 	SunGlow.Glow.MoonSize = 110;

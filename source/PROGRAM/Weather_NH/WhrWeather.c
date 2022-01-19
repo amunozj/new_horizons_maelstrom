@@ -2,7 +2,6 @@
 // NH 2021
 /////////////////////////
 
-#include "Weather_NH\WhrWeather.h"
 #include "Weather_NH\WhrUtils.c"
 #include "Weather_NH\WhrLightning.c"
 #include "Weather_NH\WhrRain.c"
@@ -13,82 +12,7 @@
 #include "Weather_NH\WhrAstronomy.c"
 #include "weather_NH\WhrGeneration_NH.c"
 
-
-#define WIND_NORMAL_POWER		20.0 // NK
-#define MAX_WEATHERS   36
-#define PARTICLESPOWER 0.0
-
-#define DEBUG_SEA_OPTICAL 0
-
-float fWeatherAngleOld, fWeatherSpeedOld;
-int fogBallast, rainBallast, windBallast;
-float windABallast;
-int goldRain, goldFog, oldWind;
-int gWeatherInit = 1;
-int curTime, minwind, maxwind;
-int wRain = 0;
-int winds = 0;
-int fog = 0;
-int rWind, rRain, rFog;
-float fWindA = 0.0;
-float rWindA = 0.0;
-float fSeaA;
-float fSeaB;
-
-
-// Values for overriding weather or setting it
-// ----------------DO NOT CHANGE THESE VALUES HERE------------------------
-float OWeatherAngle = -50.0;		 //Value between 0.0 and PIm2 - Determines the wind angle
-float OWABallast = -50.0;			 //Value between 0.0 and the MAX defined in InternalSettings.h
-int OFog = -50; 					 //Value between 0 and 20 - Determines fog density
-int OFBallast = -50;				 //Value between 0 and the MAX defined in InternalSettings.h
-int ORain = -50;					 //Value between 0 and 100 - Determines rain density and storm occurance
-int ORBallast = -50;				 //Value between 0 and the MAX defined in InternalSettings.h
-int OWind = -50;					 //Value between 0 and 30 - Determines the Wind speed
-int OWBallast = -50;				 //Value between 0 and the MAX defined in InternalSettings.h
-bool gWeatherOvrd = false;			 //This is the bool checked by the weather system, set to to if you've changed one of the above variables
-//To set specific weather set the desired variables to the desired values in your code and set gWeatherOvrd to true the system takes care of the rest
-
-int shipsLights = false;
-bool ignoreSeasons = false;
-int extraBallast = 5;
-int maxwRain = 5;
-bool morningFogChecked = false; 
-bool morningFog = false; 
-int randomFog = 0; 
-
-object	Weather, WeatherParams, WhrCommonParams;
-int		iCurWeatherHour = -1;
-bool	bCurWeatherStorm = false;
-int		iTotalNumWeathers = 0;
-string	sLightingPath = "day";
-string	sLmLightingPath = "day";
-string	sInsideBack = "";
-string	sNewExecuteLayer, sNewRealizeLayer;
-string	sCurrentFog;
-float	fWeatherDelta = 0.0;
-float	fWeatherAngle, fWeatherSpeed;
-float	fFogDensity;
-int		iShadowDensity[2];
-int		iPrevWeather = -1;
-int		sunIsShine = true;
-bool	bWeatherLoaded = false;
-bool	bWeatherIsNight = false;
-bool	bWeatherIsLight = false;
-bool	bWeatherIsRain = false;
-bool	bWeatherIsStorm = false;
-bool	bWRainStatus = false;
-bool	bWStormStatus = false;
-bool	bLightningStatus = false;
-bool	bTornadoStatus = false;
-bool	Whr_IsFog() { return stf(Weather.Fog.SeaDensity)>0.01; }
-
-object Weathers[MAX_WEATHERS];
-object WeathersNH;
-object currentWeather;
-object nextWeather;
-
-extern int InitWeather();
+// extern int InitWeather();
 
 #event_handler("EWhr_GetWindAngle", "Whr_GetWindAngle");
 #event_handler("EWhr_GetWindSpeed", "Whr_GetWindSpeed");
@@ -212,23 +136,6 @@ void SetNextWeather(string sWeatherID)
 
 	}
 
-	// // find weather
-	// iNextWeatherNum = -1;
-	// for (int i=0; i<MAX_WEATHERS; i++)
-	// {
-	// 	if (!CheckAttribute(&Weathers[i], "id")) { continue; }
-	// 	if (Weathers[i].id == sWeatherID)
-	// 	{
-	// 		iCurWeatherNum = i;
-	// 		if (true)
-	// 		{
-	// 			Trace("iNextWeatherNum = " + iNextWeatherNum);
-	// 		}
-	// 		makeCurrentFutureRealizations(Weathers[i].Hour.Min);
-	// 		return;
-	// 	}
-	// }
-
 	makeCurrentFutureRealizations(iHour);	
 }
 
@@ -271,13 +178,17 @@ void SetNextWind(string sDir, int speed)
 void makeCurrentFutureRealizations(int iHour)
 {
 	Whr_Generator(iHour);
-	addProceduralWeather(&currentWeather);
+	aref curW, nextW;
+	makearef(curW, currentWeather);
+	makearef(nextW, nextWeather);
+
+	addProceduralWeather(curW);
 
 	int nextHour = iHour+1;
 	if (nextHour > 23) {nextHour=0;}
 
 	Whr_Generator(nextHour);
-	addProceduralWeather(&nextWeather);
+	addProceduralWeather(nextW);
 
 }
 
@@ -285,14 +196,18 @@ void WeatherInit()
 {
 	//DeleteAttribute(&WeatherParams,"");
 
-	if (LoadSegment("Weather_NH\WhrInit.c"))
-	{
-		iTotalNumWeathers = InitWeather();
-		UnloadSegment("Weather_NH\WhrInit.c");
-	}
+	// if (LoadSegment("Weather_NH\WhrInit.c"))
+	// {
+	// 	iTotalNumWeathers = InitWeather();
+	// 	UnloadSegment("Weather_NH\WhrInit.c");
+	// }
+
+
 
 	int iHour = MakeInt(GetHour());
 	makeCurrentFutureRealizations(iHour);
+
+	// CreateWeatherEnvironment();
 
 }
 
@@ -402,17 +317,8 @@ void CreateWeatherEnvironment()
 	pchar.Wind.Angle = fWeatherAngle;
 	pchar.Wind.Speed = fWeatherSpeed;
 
-	// if (WeathersNH.Rain == true)
-	// {
-	// 	FillRainData();
-	// 	Rain.isDone = "";
-	// }
-
 	Weather.Time.time = fGetTime;
 	Weather.Time.speed = 40.0*100.0/makeFloat(TIMESCALAR_SEA);
-	// float updateFactor = GetTimeScale()+2.0;
-	// if (GetTimeScale()==1.0){updateFactor = 1.0;}
-	// Weather.Time.updatefrequence = makeInt(60.0/updateFactor);	
 	Weather.Time.updatefrequence = 60;	
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
@@ -421,10 +327,8 @@ void CreateWeatherEnvironment()
 	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
 
 	fWeatherDelta = 0.0;
-	// fWeatherAngle = Whr_GetFloat(Weather,"Wind.Angle");
-	// fWeatherSpeed = Whr_GetFloat(Weather,"Wind.Speed");
 
-    // boal -->'
+    // boal -->
 	WhrCreateRainEnvironment();
 	bRain = bWeatherIsRain; // Whr_isRainEnable();
     string sLocation = "";
@@ -463,7 +367,7 @@ void CreateWeatherEnvironment()
 
 	if (bRain == false)
 	{
-		ClearRainEnvironment();
+		// ClearRainEnvironment();
 		if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
 		{
 			WeatherParams.Rain.Sound = false;
@@ -480,16 +384,9 @@ void CreateWeatherEnvironment()
 		Rain.isDone = "";
 	}
 
-	// if (bWeatherIsStorm != bWStormStatus || bWeatherIsRain != bWRainStatus)
-	// {
 	bWStormStatus = bWeatherIsStorm;
 	bWRainStatus = bWeatherIsRain;
 	PostEvent("LoadSceneSound", 10);
-
-
-	// Rain.isDone = "";		
-	// }	
-	// boal <--
 
 	WhrCreateSunGlowEnvironment();
 	WhrCreateLightningEnvironment();
@@ -569,10 +466,7 @@ void Whr_UpdateSea() // NK 04-09-21
 		Sea.Fog.SeaDensity = Whr_GetFloat(Weather, "Fog.SeaDensity");
 		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));		
 	}
-	// if(bSeaActive && !ownDeckStarted())
-	// {
-	// 	PlayStereoSound("nature\wind_sea4.wav"); // squall i.e. weatherchange
-	// }
+
 }
 
 
@@ -617,8 +511,6 @@ int Whr_OnCalcFogColor()
 	y = GetEventData();
 	z = GetEventData();
 
-	// if( iBlendWeatherNum < 0 )
-	// {
 	aref aCurWeather = GetCurrentWeather(); 
 
 	if (!CheckAttribute(Weather, "Fog.Height")){
@@ -940,7 +832,7 @@ void Whr_UpdateWeatherHour()
 	CopyAttributes(curW, nextW); //Copies from nextW to curW
 
 	Whr_Generator(nextHour);
-	addProceduralWeather(nextWeather);
+	addProceduralWeather(nextW);
 	Whr_UpdateSea();
 	 
 }

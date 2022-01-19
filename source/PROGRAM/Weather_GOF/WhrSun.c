@@ -11,7 +11,7 @@ void WhrDeleteSunGlowEnvironment()
 
 void WhrCreateSunGlowEnvironment()
 {
-	//if (sti(aSun.Glow.Enable) == false && sti(aSun.Flare.Enable) == false)) return;
+	
 
 	// create sunglow
 	if (!isEntity(&SunGlow))
