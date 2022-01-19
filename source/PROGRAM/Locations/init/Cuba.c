@@ -969,7 +969,7 @@ void LocationInitCuba(ref n)
 
 	//ID
 	Locations[n].id = "Havana_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
 	//Info
 	Locations[n].filespath.models = "locations\Fort_Inside\Fort_1";
 	Locations[n].filespath.textures = "locations\SPAIN";

@@ -32,7 +32,7 @@ void LoginCharacter(aref chr, string locID)
 	{
 	//	ResetTimeToNormal();//MAXIMUS: removes time-acceleration and sets normal time
 		if(!CheckAttribute(chr,"systemStatus")) { chr.systemStatus = "up"; systemStatus = chr.systemStatus; }//MAXIMUS: for several things
-		if(CheckAttribute(chr,"TrainingFight")) DeleteAttribute(chr,"TrainingFight");//MAXIMUS: if player leaved ShipDeck before his training was finished - this will help :)
+		if(CheckAttribute(chr,"TrainingFight")) DeleteAttribute(chr,"TrainingFight");//MAXIMUS: if player leaved ShipDeck before his training was finished - this will help 
 		if(CheckAttribute(chr,"location.first"))//MAXIMUS: checking fastreload on tutorial deck
 		{
 			if(HasSubStr(locID,"tutorial") || HasSubStr(locID,"deck") || HasSubStr(locID,"cabin"))
@@ -252,7 +252,7 @@ bool ChangeCharacterAddressGroup(ref character, string location_id, string group
 		lindex = FindIsland(location_id);
 		if(location_id != "none" && lindex < 0) // KK
 		{
-			traceif("Incorrect location id 'ChangeCharacterAddressGroup' (location " + location_id + " not found");
+			traceif("Incorrect location id 'ChangeCharacterAddressGroup' location " + location_id + " not found");
 			return false;
 		}
 		character.location = location_id;

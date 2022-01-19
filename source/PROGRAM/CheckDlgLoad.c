@@ -94,7 +94,7 @@ void CheckNextChrDialog()
 		{
 			if( LoadSegment(dlgFile) )
 			{
-				traceMsg += " ok");
+				traceMsg += " ok";
 				UnloadSegment(dlgFile);
 			}
 			else

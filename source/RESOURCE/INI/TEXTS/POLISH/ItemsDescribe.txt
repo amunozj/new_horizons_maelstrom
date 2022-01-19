@@ -1500,7 +1500,7 @@ More targets on Santos Hit List; Petros, Pieter Boelen, Pirate Sam, Rafe Bligh, 
 
 // ccc Building kit aug 05
 
-itmname_building	{Building Permit ;) }
+itmname_building	{Building Permit  }
 itmdescr_building
 {
 DON'T TOUCH! Essential for 'occupant' of this building! 

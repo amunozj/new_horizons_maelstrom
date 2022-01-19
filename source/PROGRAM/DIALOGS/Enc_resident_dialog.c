@@ -315,17 +315,17 @@ void ProcessDialogEvent()
 			if(bmax > 3) bmax=3;
 			for(int i = 0; i < bmax; i++)
 			{
-			string sound = "OBJECTS\DUEL\man_attack" + (6-i) + ".wav");
-			PlaySound(sound);
-			chr = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, "mask_" + (i+2), LAI_GROUP_MONSTERS, "");
-			LAi_SetWarriorType(chr);
-			LAi_group_MoveCharacter(chr,  LAI_GROUP_MONSTERS);
-			LAi_group_SetRelation(LAI_GROUP_PLAYER, LAI_GROUP_MONSTERS, LAI_GROUP_ENEMY);
-			string homelocation = pchar.location;
-			PlaceCharacter(chr, "reload");
-			float mx,my,mz;
-			GetCharacterPos(chr, &mx, &my, &mz);
-			TeleportCharacterToPos(chr, mx, i + my, mz);
+				string sound = "OBJECTS\DUEL\man_attack" + (6-i) + ".wav";
+				PlaySound(sound);
+				chr = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, "mask_" + (i+2), LAI_GROUP_MONSTERS, "");
+				LAi_SetWarriorType(chr);
+				LAi_group_MoveCharacter(chr,  LAI_GROUP_MONSTERS);
+				LAi_group_SetRelation(LAI_GROUP_PLAYER, LAI_GROUP_MONSTERS, LAI_GROUP_ENEMY);
+				string homelocation = pchar.location;
+				PlaceCharacter(chr, "reload");
+				float mx,my,mz;
+				GetCharacterPos(chr, &mx, &my, &mz);
+				TeleportCharacterToPos(chr, mx, i + my, mz);
 			}
 			LAi_group_SetRelation(LAI_DEFAULT_GROUP, LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
 			LAi_group_SetAlarmReaction(LAI_DEFAULT_GROUP, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY, LAI_GROUP_FRIEND);

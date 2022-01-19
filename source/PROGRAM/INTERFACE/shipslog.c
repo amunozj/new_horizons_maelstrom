@@ -510,7 +510,7 @@ void DisplayLogText()
 	{
 		tmpLogDate  = "";
 		tmpLogTitle = "Unreadable page";
-		tmpLogEntry = "This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]";
+		tmpLogEntry = "This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]";
 	}
 
 	GameInterface.strings.LogEntry_Date = tmpLogDate;

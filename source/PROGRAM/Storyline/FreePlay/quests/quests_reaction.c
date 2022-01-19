@@ -3240,7 +3240,7 @@ void QuestComplete(string sQuestName)
 		case "AgentQuest_Met_Smuggler_Agent":		// Triggered by dialog with smuggler agent
 			PChar.quest.agentquest = "found_smuggler";
 			Preprocessor_AddQuestData("town", FindTownName(PChar.quest.agentquest.original_town));
-			Preprocessor_AddQuestData("shore", Locations[FindLocation(PChar.quest.agentquest.smuggler_beach)].name));
+			Preprocessor_AddQuestData("shore", Locations[FindLocation(PChar.quest.agentquest.smuggler_beach)].name);
 			AddQuestRecord("Agent_Quest", 10);
 			Preprocessor_Remove("shore");
 			Preprocessor_Remove("town");
@@ -3275,7 +3275,7 @@ void QuestComplete(string sQuestName)
 		case "AgentQuest_smuggler_goto_beach":
 			PChar.quest.AgentQuest_smuggler_beach_early.over = "yes";
 			bQuestDisableSeaEnter = true;
-			Preprocessor_AddQuestData("shore", Locations[FindLocation(PChar.quest.agentquest.smuggler_beach)].name));
+			Preprocessor_AddQuestData("shore", Locations[FindLocation(PChar.quest.agentquest.smuggler_beach)].name);
 			AddQuestRecord("Agent_Quest", 11);
 			Preprocessor_Remove("shore");
 			NPChar = CharacterFromID("TQ_Char2");

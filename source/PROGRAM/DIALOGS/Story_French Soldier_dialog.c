@@ -72,7 +72,7 @@ void ProcessDialogEvent()
 			{
 				Dialog.snd = "voice\STFR\STFR005";
 				d.Text = DLG_TEXT[13];
-				Link.l2 = DLG_TEXT[14]);
+				Link.l2 = DLG_TEXT[14];
 				Link.l2.go = "exit_fight";
 			}
 		break;

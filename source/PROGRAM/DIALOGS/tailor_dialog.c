@@ -2052,23 +2052,23 @@ void ProcessDialogEvent()
 
 		case "AppearanceMod_Select_1":
 			SetModelfromArray(NPChar, sti(ModelSlots[0].index));
-			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[0].price));
+			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[0].price);
 		break;
 		case "AppearanceMod_Select_2":
 			SetModelfromArray(NPChar, sti(ModelSlots[1].index));
-			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[1].price));
+			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[1].price);
 		break;
 		case "AppearanceMod_Select_3":
 			SetModelfromArray(NPChar, sti(ModelSlots[2].index));
-			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[2].price));
+			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[2].price);
 		break;
 		case "AppearanceMod_Select_4":
 			SetModelfromArray(NPChar, sti(ModelSlots[3].index));
-			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[3].price));
+			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[3].price);
 		break;
 		case "AppearanceMod_Select_5":
 			SetModelfromArray(NPChar, sti(ModelSlots[4].index));
-			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[4].price));
+			AppearanceMod_AnswerLinks(PChar,d,Link,ModelSlots[4].price);
 		break;
 
 		case "AppearanceMod_CircleThroughAllModels":
@@ -2092,7 +2092,7 @@ void ProcessDialogEvent()
 			}
 			if (Models[i].assigned == true)
 			{
-				SetModelfromArray(NPChar, i));
+				SetModelfromArray(NPChar, i);
 				int tmpDescFileID = LanguageOpenFile("models_description.txt");
 				d.text = models[i].index  + ": " + models[i].model  + " : " + models[i].price + "/" + GetModelPrice(PChar, NPChar, Models[i].price)  + " : " +  LanguageConvertString(tmpDescFileID,models[i].description);
 				LanguageCloseFile(tmpDescFileID);

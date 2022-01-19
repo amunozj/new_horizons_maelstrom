@@ -1262,7 +1262,7 @@ void InitIslands()
 		rIsland.reload.l6.label = "Baie Orient";
 		rIsland.reload.l6.name = "reload_4";
 		rIsland.reload.l6.go = "SaintMartin_shore_02";
-		rIsland.reload.l6.emerge = "see";	// Akella's spelling ;)
+		rIsland.reload.l6.emerge = "see";	// Akella's spelling 
 		rIsland.reload.l6.radius = 200.0;
 		rIsland.reload.l6.pic = 34;
 		rIsland.reload.l6.selpic = 38;

@@ -272,7 +272,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_EXELLENT, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
@@ -302,7 +302,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_FINE, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -331,7 +331,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_GOOD, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -360,7 +360,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_AVERAGE, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -533,7 +533,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_EXELLENT, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
@@ -563,7 +563,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_FINE, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -592,7 +592,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_GOOD, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -621,7 +621,7 @@ void ProcessDialogEvent()
 
 		// Make the player pay
 		PlayerMoney -= makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_AVERAGE, pricemult));
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else

@@ -340,7 +340,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Next time after reject_relic";
 	        if (!CheckAttribute(PChar,"NoSave.CarryRelic"))
             {
-                PChar.NoSave.CarryRelic = "none");
+                PChar.NoSave.CarryRelic = "none";
             }
 			switch(PChar.NoSave.CarryRelic)
 			{

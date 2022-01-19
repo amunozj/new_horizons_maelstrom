@@ -219,7 +219,7 @@ void ProcessDialogEvent()
 					Link.l3.go = "playgame";
 				}
 			}
-			//if(ProfessionalNavyNation() == NPChar.nation){ //DeathDaisy: TODO: if you happen to be in the navy, outrank the soldier and they are of your nation, order them to give you the time
+			// //DeathDaisy: TODO: if you happen to be in the navy, outrank the soldier and they are of your nation, order them to give you the time
 		break;
 		
 		case "persuadeguard1":			

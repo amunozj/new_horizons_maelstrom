@@ -129,7 +129,7 @@ bool CheckQuestRecord(aref qref,string textId)
 		pos0 = 0;
 		while(true)
 		{
-			pos1 = findSubStr(qref.Text,",",pos0));
+			pos1 = findSubStr(qref.Text,",",pos0);
 			if(pos1==-1)
 			{
 			}

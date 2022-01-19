@@ -549,8 +549,8 @@ void CreateRedmondCharacters(ref n)
 /*			//Docker near Seagates of Redmond
 	ch.old.name = "";
 	ch.old.lastname = "";
-	ch.name = TranslateString("","Docker";
-	ch.lastname = TranslateString("","";
+	ch.name = TranslateString("","Docker");
+	ch.lastname = TranslateString("","");
 	ch.id		= "Eng_Docker_1";
 	ch.model	= "black_corsair";
 	ch.sex = "man";
@@ -582,8 +582,8 @@ void CreateRedmondCharacters(ref n)
 /*			//Docker near Seagates of Redmond
 	ch.old.name = "";
 	ch.old.lastname = "";
-	ch.name = TranslateString("","Docker";
-	ch.lastname = TranslateString("","";
+	ch.name = TranslateString("","Docker");
+	ch.lastname = TranslateString("","");
 	ch.id		= "Eng_Docker_2";
 	ch.model	= "man4";
 	ch.model.sex = "man";

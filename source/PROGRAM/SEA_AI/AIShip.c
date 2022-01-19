@@ -1130,7 +1130,7 @@ void Ship_Login(int iCharacterIndex)
 
 	//Update the contriblist and skill multipliers and do auto level up for NPC's
 	InitAutoSkillsSystem(rCharacter, true); //Levis, the check for autoskill will happen later.
-	if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList")); //Levis refresh contriblist on login
+	if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList"); //Levis refresh contriblist on login
 
 	ReloadProgressUpdate();
 }
@@ -3367,7 +3367,7 @@ bool ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
 			sLogEntry += "\n"+GetSailStatus(rDead)+" "+GetHullStatus(rDead)+"\n \n";
 			sLogEntry += "The "+sSunkShipName+" was loaded with the following cargo:\n"+GetCargoList(rDead);
 			if (CheckAttribute(rDead,"ShipMoney")) sLogEntry += "Additionally we found "+rDead.ShipMoney+" gold in the ship's chest.";
-			WriteNewLogEntry(sLogTitle,sLogEntry, "Battle", true);)
+			WriteNewLogEntry(sLogTitle,sLogEntry, "Battle", true);
 			UpdateStatistics("ShipsCaptured",1);
 			// <-- Sulan
 		} // NK
@@ -4750,7 +4750,7 @@ void Ship_UpdateParameters()
 // NK <--
 
 	float	fMaxSpeedZ = stf(GetLocalShipAttrib(arCharShip, &rShip, "SpeedRate")); // PRS3
-	float	fMaxSpeedY = stf(GetLocalShipAttrib(arCharShip, &rShip, "TurnRate")) / 444.444;	// cool magic number :)) //PRS3
+	float	fMaxSpeedY = stf(GetLocalShipAttrib(arCharShip, &rShip, "TurnRate")) / 444.444;	
 	float	fCurrentSpeedZ = stf(arCharShip.Speed.z);
 	if(!CheckAttribute(arCharShip,"Cargo.load")) RecalculateCargoLoad(rCharacter); // NK 04-16 bugfix
 	float	fLoad = Clampf(stf(arCharShip.Cargo.Load) / stf(GetLocalShipAttrib(arCharShip, &rShip, "Capacity"))); // PRS3
@@ -5216,98 +5216,17 @@ void Ship_UpdateTmpSkills(ref rCharacter)
 
 	aref aTmpSkill; makearef(aTmpSkill, rCharacter.TmpSkill);
 
-	// NK -->
-	//float mult = 1.0;
-	//bool bcomp = true;
-	//string tmp; // 04-09-15
-	/*if(!IsCompanion(rCharacter))
-	{
-		bcomp = false;
-		//Seeing the randofficers attribute was never removed this was set the first time you went to sea and after that it wasn't changed anymore
-		//So effectivly this never worked so for now I remove it to see how it goes -Levis
-		/*if(CheckAttribute(rCharacter, "randofficers"))
-		{
-			mult = stf(rCharacter.randofficers);
-			//unneeded, already clamped. 04-09-15
-			/*if(mult < 1.0) mult = 1.0;
-			if(mult > 4.0) mult = 4.0;*/
-		/*}
-		else
-		{
-			int sclass = GetCharacterShipClass(rCharacter);
-			sclass = 8-sclass;
-			mult += (fRand(GetOfficersQuantity(GetMainCharacter()))/3.0 + sclass/6.0 + fRand(sclass/6.0)) * (0.5 + makefloat(GetDifficulty()-1.0)/3.0);
-			if(mult < 1.0) mult = 1.0;
-			if(mult > 4.0) mult = 4.0;
-			rCharacter.randofficers = mult;
-			//Log_SetStringToLog("Fantom " + rCharacter.id + ", (" + rCharacter.name + " " + rCharacter.lastname + ") has mult " + mult);
-		}*/
-		//Every call too this goes trough the shipstatsmult object so why save it for the character? - Levis
-		/*if(!CheckAttribute(rCharacter,"skillnatmult")) // lookup to speed up national skill mults. 04-09-15
-		{
-			for(int i = 0; i < 10; i++)
-			{ tmp = GetSkillName(i); rCharacter.skillnatmult.(tmp) = GetSkillMultByNation(tmp, sti(rCharacter.nation)); }
-			/*rCharacter.skillnatmult.(SKILL_COMMERCE) = GetSkillMultByNation(SKILL_COMMERCE, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_LEADERSHIP) = GetSkillMultByNation(SKILL_LEADERSHIP, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_SNEAK) = GetSkillMultByNation(SKILL_SNEAK, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_DEFENCE) = GetSkillMultByNation(SKILL_DEFENCE, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_GRAPPLING) = GetSkillMultByNation(SKILL_GRAPPLING, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_SAILING) = GetSkillMultByNation(SKILL_SAILING, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_REPAIR) = GetSkillMultByNation(SKILL_REPAIR, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_FENCING) = GetSkillMultByNation(SKILL_FENCING, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_ACCURACY) = GetSkillMultByNation(SKILL_ACCURACY, sti(rCharacter.nation));
-			rCharacter.skillnatmult.(SKILL_CANNONS) = GetSkillMultByNation(SKILL_CANNONS, sti(rCharacter.nation));*/
-		//}
-	//}
-	// calc skills for speed optimization
-	// NK uncommented commerce and leadership 04-09-10, you never know when they'd be needed, esp. leadership.
-	// NK PRS3 04-09-10 added mult by shipstatsmult for nation
-	// 04-09-15 switched to attribute.
-	//if(IsCompanion(rCharacter))
-	//{
-	//There is no difference anymore between if character is a companion or not so this makes the function easier. -Levis
-		aTmpSkill.Commerce   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Leadership = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP)) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Sneak      = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Defence    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Grappling  = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Sailing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Repair     = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Fencing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Accuracy   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  )) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Cannons    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   )) / MAX_CHARACTER_SKILL);
-	/*{
-	else
-	{
-		aTmpSkill.Commerce   = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Leadership = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Sneak      = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Defence    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Grappling  = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Sailing    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Repair     = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Fencing    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Accuracy   = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  ))) / MAX_CHARACTER_SKILL);
-		aTmpSkill.Cannons    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   ))) / MAX_CHARACTER_SKILL);
-	}*/
-	// NK <--
-	//Seriously why ... -Levis
-	/*
-	if (SeaCameras.Camera == "SeaDeckCamera" && sti(rCharacter.index) == GetMainCharacterIndex())
-	{
-		switch (GetTargetPlatform())
-		{
-			case "xbox":
-				aTmpSkill.Accuracy = 1.0;
-			break;
-			case "pc":
-				if(iRealismMode == 0) // 1.03
-				{
-					aTmpSkill.Accuracy = Clampf(stf(aTmpSkill.Accuracy) + 0.4);
-				}
-			break;
-		}
-	}*/
+	aTmpSkill.Commerce   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Leadership = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP)) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Sneak      = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Defence    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Grappling  = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Sailing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Repair     = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Fencing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Accuracy   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  )) / MAX_CHARACTER_SKILL);
+	aTmpSkill.Cannons    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   )) / MAX_CHARACTER_SKILL);
+
 }
 
 void Ship_UpdatePerks()

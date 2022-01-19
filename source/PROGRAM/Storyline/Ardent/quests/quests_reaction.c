@@ -5443,7 +5443,7 @@ void QuestComplete(string sQuestName)
 			EndQuestMovie();
 			LAi_SetOfficerType(romance);
 			PChar.quest.romance_model = romance.model;
-			if (GetAttribute(romance, "sex") == "man") SetModelFromID(romance, "AnimistEdmundo"));
+			if (GetAttribute(romance, "sex") == "man") SetModelFromID(romance, "AnimistEdmundo");
 			else SetModelFromID(romance, "AnimistLucia");
 			PChar.location.from_sea = "Willemstad_port";
 			SetFleetInTown(GetTownIDFromLocID(pchar.location.from_sea), "PChar");
@@ -13926,7 +13926,7 @@ void QuestComplete(string sQuestName)
 
 
 		case "test":
-logit("You have been diverted here for test purposes. Normal service will be resumed as soon as possible.");
+			logit("You have been diverted here for test purposes. Normal service will be resumed as soon as possible.");
 		break;
 
 		PChar.questnotfound = true; // PB: Testing

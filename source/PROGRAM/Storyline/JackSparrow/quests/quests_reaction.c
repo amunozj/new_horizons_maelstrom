@@ -5010,7 +5010,7 @@ void QuestComplete(string sQuestName)
 			{
 				ChangeCharacterAddressGroup(CharacterFromID("Ragetti"), "ShipDeck7", "rld", "wheel");
 				ChangeCharacterAddressGroup(CharacterFromID("Pintel"), "ShipDeck7", "goto", "goto8");
-				//-->CTM (adds Ragetti and Pintel on deck when Barbossa is being a B@$T@RD
+				//-->CTM adds Ragetti and Pintel on deck when Barbossa is being a B@$T@RD
 				LAi_SetActorType(characterFromID("Ragetti"));
 				LAi_ActorWaitDialog(pchar, characterFromID("Ragetti"));
 				LAi_SetActorType(characterFromID("Pintel"));
@@ -6799,8 +6799,8 @@ void QuestComplete(string sQuestName)
 			Ship_Detonate(CharacterFromID("Mr. Gibbs"), true, false);
 			Ship_Detonate(CharacterFromID("Mr. Gibbs"), true, false);
 			// PB <--
-			ChangeCharacterAddressGroup(CharacterFromID("Elizabeth Swann"), "ShipDeck7", "reload", "reload13"); //"Black_Pearl","reload","reload2");
-			ChangeCharacterAddressGroup(CharacterFromID("Barbossa"), "ShipDeck7", "goto", "goto14"); // "Black_Pearl", "rld", "aloc12");
+			ChangeCharacterAddressGroup(CharacterFromID("Elizabeth Swann"), "ShipDeck7", "reload", "reload13");
+			ChangeCharacterAddressGroup(CharacterFromID("Barbossa"), "ShipDeck7", "goto", "goto14"); 
 			LAi_SetStayType(characterFromID("Barbossa"));
 
 //			sld = LAi_CreateFantomCharacter(true, 0, true, true, 0.25, "Black_Corsair", "rld", "loc14");

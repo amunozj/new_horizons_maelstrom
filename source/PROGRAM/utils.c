@@ -39,7 +39,7 @@ string GetRandSubString(string sStr)
 		iLastPos = iFindPos + 1;
 	}
 
-	return "If you see this, you can kick Vano :)";
+	return "If you see this, you can kick Vano ";
 }
 
 float GetDotProduct(float fA1, float fA2)
@@ -1101,8 +1101,8 @@ string toupperpol(string c)
 		case "³": return "£"; break;
 		case "ğ": return "ı"; break;
 		case "ó": return "Ó"; break;
-		case "›": return ""; break;
-		case "Ÿ": return ""; break;
+		case "›": return ""; break;
+		case "Ÿ": return ""; break;
 		case "": return "¯"; break;
 	}
 	return touppereng(c);
@@ -1118,8 +1118,8 @@ string tolowerpol(string c)
 		case "£": return "³"; break;
 		case "ı": return "ğ"; break;
 		case "Ó": return "ó"; break;
-		case "": return "›"; break;
-		case "": return "Ÿ"; break;
+		case "": return "›"; break;
+		case "": return "Ÿ"; break;
 		case "¯": return ""; break;
 	}
 	return tolowereng(c);
@@ -1319,9 +1319,9 @@ string ChrFromCode(int code)
 		case 138: return ""; break;
 		case 139: return ""; break;
 		case 140: return "Œ"; break;
-		case 141: return ""; break;
+		case 141: return ""; break;
 		case 142: return ""; break;
-		case 143: return ""; break;
+		case 143: return ""; break;
 		case 144: return ""; break;
 		case 145: return "‘"; break;
 		case 146: return "’"; break;
@@ -1537,8 +1537,8 @@ int ascii(string chr)
 		case "|": return 124; break;
 		case "}": return 125; break;
 		case "Œ": return 140; break;
-		case "": return 141; break;
-		case "": return 143; break;
+		case "": return 141; break;
+		case "": return 143; break;
 		case "‘": return 145; break;
 		case "’": return 146; break;
 		case "“": return 147; break;
@@ -2578,7 +2578,7 @@ void Log_Info(string _str)
 
 void Log_TestInfo(string logtext)
 {
-	if (true) //bBettaTestMode)
+	if (true) //bBettaTestMode
 	{
 		Log_SetStringToLog(logtext);
 		//trace("TestInfo: " + GetQuestBookDataDigit() + " " + logtext)

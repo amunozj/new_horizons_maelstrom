@@ -133,7 +133,7 @@ void CreateAnimals(ref Location)
 				}
 			}
 		}
-//JRH -->
+
 		if(Location.id == "Tortuga_port")
 		{
 			crtAnimals = true;
@@ -252,15 +252,15 @@ void CreateAnimals(ref Location)
 			crtAnimals = true;
 			if(crtAnimals) SendMessage(Location, "lsl", MSG_LOCATION_EX_MSG, "AddRats", rand(4) + rand(4));
 		}
-//<-- JRH	
+
 	}
-//JRH -->
+
 
 	//changed by MAXIMUS, completed by JRH -->
 	bool bAdd = false;
-	if(CheckAttribute(LOCATION, "boarding") && LOCATION.boarding=="true")) bAdd = true;
+	if(CheckAttribute(LOCATION, "boarding") && LOCATION.boarding=="true") bAdd = true;
 	if(CheckAttribute(LOCATION, "fastreload") && LOCATION.fastreload=="ship") bAdd = true;
-	if(CheckAttribute(LOCATION, "rats") && LOCATION.rats=="true")) bAdd = true;	//JRH
+	if(CheckAttribute(LOCATION, "rats") && LOCATION.rats=="true") bAdd = true;	//JRH
 	if(bAdd && CheckAttribute(LOCATION, "models.always.l1"))
 	{
 		string LOCATIONName = LOCATION.models.always.l1;

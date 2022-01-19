@@ -228,12 +228,12 @@ void ContinueQuickSave()
 	//PostEvent("evntSave",0,"ss", GameInterface.SavePath+"\"+curSave, sSaveDescriber);
 	PostEvent("evntSave", 0, "sss", GameInterface.SavePath, curSave + " " + n, sSaveDescriber); // KK
 }
-
+ 
 void ClearScreenShoter()
 {
 	DeleteEntitiesByType("scrshoter");
 	aref arScrShoter;
-	if(FindClass(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter));
+	if(FindClass(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter);
 	if(CheckAttribute(&InterfaceStates,"MakeScreenShot")) DeleteAttribute(&InterfaceStates,"MakeScreenShot");
 }
 

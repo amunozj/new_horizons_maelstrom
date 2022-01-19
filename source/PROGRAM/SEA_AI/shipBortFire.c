@@ -16,7 +16,7 @@ void Ship_BortFire()
 	d2y = GetEventData();
 	d2z = GetEventData();
 	// boal fix charge 29.11.03 -->
-	DeleteAttribute(rCharacter,"ship.changedammo");  //turns out we do need this after all. :} 04-09-15 NK
+	DeleteAttribute(rCharacter,"ship.changedammo");  //turns out we do need this after all.  04-09-15 NK
 	//rCharacter.BOAL_ReadyCharge = "0";
 	//Log_SetStringToLog("Ship_BortFire " + rCharacter.id + " "+ bortName);
 	// boal fix charge 29.11.03 <--

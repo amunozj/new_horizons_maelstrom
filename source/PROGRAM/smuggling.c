@@ -721,7 +721,7 @@ void setIslandSmugglingPatrols(ref sisland)
 	{
 		groups = (coastguardnum+restguards)/6;
 		sisland.smuggling.patrol.(patrol).start = hour+(minute/60.0);
-		sisland.smuggling.patrol.(patrol).end = 24.0);
+		sisland.smuggling.patrol.(patrol).end = 24.0;
 		sisland.smuggling.patrol.(patrol).groups = 0;
 		if(sti(sisland.smuggling.state)>0) sisland.smuggling.patrol.(patrol).groups = groups;
 		if(groups > (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))) sisland.smuggling.patrol.(patrol).groups = (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland));
@@ -1197,7 +1197,7 @@ string CreatePatrolBook(ref sisland)
 	//If there is no patrol set we return empty handed
 	if(Checkattribute(sisland,"smuggling.patrolversion"))
 	{
-		id = "patrolbook_"+sisland.id+"_"+sisland.smuggling.patrolversion);
+		id = "patrolbook_"+sisland.id+"_"+sisland.smuggling.patrolversion;
 		//We got the id so if the book already exist we can exit
 		if(GetItemIndex(id) == -1) //Book already exists
 		{
@@ -1370,8 +1370,7 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 		if (GetAttribute(chr,"Dialog.Filename") == "Agent_dialog.c")			continue;
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass smuggler check");
 
-	//	if (GetAttribute(chr,"abordagemode") != "1")							continue; // PB: This can only be disabled for officers, who aren't valid clients
-	//	if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass boardingmode check");
+
 
 		if (chr.lastname == "") {
 			if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS RENAMED: "+GetMySimpleName(chr));
@@ -1383,7 +1382,7 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 		pchar.quest.smuggling_guild.people.(Category).(index).name = GetMySimpleName(chr);
 		pchar.quest.smuggling_guild.people.(Category).(index).location = GetPrettyLocationName(chr.location);
 		pchar.quest.smuggling_guild.people.(Category).(index).island = GetIslandNameByLocationID(chr.location);
-		if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS PICKED: "+pchar.quest.smuggling_guild.people.(Category).(index).name+" at: "+pchar.quest.smuggling_guild.people.(Category).(index).location+" ("+chr.location+") on: "+pchar.quest.smuggling_guild.people.(Category).(index).island));
+		if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS PICKED: "+pchar.quest.smuggling_guild.people.(Category).(index).name+" at: "+pchar.quest.smuggling_guild.people.(Category).(index).location+" ("+chr.location+") on: "+pchar.quest.smuggling_guild.people.(Category).(index).island);
 		chr.Dialog.Filename.SmugglingGuild = Dialog;
 		chosen += 1;
 	}

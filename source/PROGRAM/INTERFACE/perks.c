@@ -98,7 +98,7 @@ void DoIExit(int exitCode)
 	DelEventHandler("pressdown","GoToPerksWindow"); 			//added by Levis
 
 	//Levis make sure the contriblist is updated:
-	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList"));
+	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList");
 	
 	interfaceResultCommand = exitCode;
 // MAXIMUS interface MOD -->
@@ -158,7 +158,7 @@ void SetAbilitesList()
 	//First removed the old list:
 	SendMessage(&GameInterface,"lss",MSG_INTERFACE_SET_FORMATEDTEXT,"PERKSWINDOW","");
 	if(CheckAttribute(GameInterface,"perklist")) DeleteAttribute(GameInterface,"perklist");
-	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList"));
+	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList");
 	
 	//Make the new list
 	int perksQ,i;
@@ -388,7 +388,7 @@ void DoViewDescribe()
 	//Add min level -Levis
 	if(!CheckPerkRank(refUsedCharacter, strPerkName))
 	{
-		Description = Description + " Min Level: " + GetPerkRank(strPerkName));
+		Description = Description + " Min Level: " + GetPerkRank(strPerkName);
 	}
 	//Check for captains
 	if(!isOfficerPerk(refUsedCharacter, strPerkName))

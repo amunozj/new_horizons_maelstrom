@@ -1122,7 +1122,7 @@ void FillScroll()
 			GameInterface.one_itemslist.(attributeName).img1 = GetItemPictureName(arItem.id);
 			GameInterface.one_itemslist.(attributeName).tex1 = GetItemPictureTexture("one_itemslist.ImagesGroup",arItem.id);
 			GameInterface.one_itemslist.(attributeName).itemID = arItem.id;
-			//if(CheckConsumedItem(arItem.id)) {// TIH doesnt work right?
+			
 			if (iqty > 1) {// TIH absolute check
 				GameInterface.one_itemslist.(attributeName).str1 = "#" + iqty;
 			}
@@ -1219,7 +1219,7 @@ void FillScroll()
 			GameInterface.two_itemslist.(attributeName).img1 = GetItemPictureName(arItem.id);
 			GameInterface.two_itemslist.(attributeName).tex1 = GetItemPictureTexture("two_itemslist.ImagesGroup",arItem.id);
 			GameInterface.two_itemslist.(attributeName).itemID = arItem.id;
-			//if(CheckConsumedItem(arItem.id)) {// TIH doesnt work right?
+			
 			if ( sti(GetAttributeValue(curItem)) > 1 ) {// TIH absolute check
 				GameInterface.two_itemslist.(attributeName).str1 = "#"+sti(GetAttributeValue(curItem));
 			}
@@ -1811,7 +1811,7 @@ void ChangeItemsSlot()
 	SetScrollsUsing();
 }
 
-// Sulan: Rewrote these functions to reduce the code mess :)
+// Sulan: Rewrote these functions to reduce the code mess 
 void TakeOneItem()
 {
 	TakeItems(false);
@@ -4091,7 +4091,7 @@ void SetUpDownUsed()
 		}
 	}
 
-	if(sti(GetStorylineVar(FindCurrentStoryline(), "BUG_PUZZLES")) > 0))
+	if(sti(GetStorylineVar(FindCurrentStoryline(), "BUG_PUZZLES")) > 0)
 	{
 		if(itmName1=="gunpowder" || itmName1=="pistolmtoon")
 		{

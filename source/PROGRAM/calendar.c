@@ -117,7 +117,7 @@ string GetTimeText(float time)
 	//This function returns the time in an easy to read format
 	string minutes;
 	string hours = makeint(time);
-	int iminutes = makeint((time-makeint(time))*60.0));
+	int iminutes = makeint((time-makeint(time))*60.0);
 	if(iminutes < 10) minutes = "0";
 	minutes += iminutes;
 	return hours+":"+minutes;

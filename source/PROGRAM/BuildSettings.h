@@ -166,7 +166,7 @@ int NO_THEFT = 0;
 
 int LOCK_OPEN = 0;
  	// 0- 70: the higher this value the higher your chance of picking the locks of treasurechests
-	// Above 66 chests always open, above 33 you won't hurt yourself anymore ;-)
+	// Above 66 chests always open, above 33 you won't hurt yourself anymore 
 
 // ======================================
 // LOG, LOOKS & EFFECTS:

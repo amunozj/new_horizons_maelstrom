@@ -1776,8 +1776,8 @@ if(sti(GetStorylineVar(FindCurrentStoryline(), "WR_PUZZLES")) > 0 || sti(GetStor
   itm.price                   = 110;   // BB(10)
   itm.chargeQ                 = 1;
   itm.chargespeed             = 0.5;   // for instant use after equip
-  itm.dmg_min                 = 40.0;  // BB (100.0)[wider and lower range of damage to better
-  itm.dmg_max                 = 150.0; // BB (120.0)[reflect early grenade tech and reliability.
+  itm.dmg_min                 = 40.0;  // BB (100.0)[wider and lower range of damage to better]
+  itm.dmg_max                 = 150.0; // BB (120.0)[reflect early grenade tech and reliability].
   itm.accuracy                = 70;    // BB (99)
   itm.minlevel                = 5;     // Sulan added minlevel to improve rarity.
   itm.rare                    = 0.15;  // BB (0.35)

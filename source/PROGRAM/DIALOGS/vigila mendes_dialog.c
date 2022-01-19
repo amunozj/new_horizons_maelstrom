@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 				dialog.text = DLG_TEXT[0];
 				if (npchar.quest.escort == "0")
 				{
-					link.l1 = pcharrepphrase(DLG_TEXT[1], DLG_TEXT[2]));
+					link.l1 = pcharrepphrase(DLG_TEXT[1], DLG_TEXT[2]);
 					link.l1.go = "node_1";
 				}
 				else

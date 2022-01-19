@@ -10,10 +10,7 @@ void ChangeTownNation (string townsk, int nat)		// functioncall must include tow
 	for(n = 0; n < numforts; n++)
 	{
 		ch = GetTownFortCommander(townsk, n);
-		/*ref commander = CharacterFromID(	// the fortcommander of this town
-		if (townsk == "Falaise de Fleur") commander = (characterFromID("FalaisedeFleur Commander"));	// why didn't Akella...
-		else if (townsk == "Isla Muelle") commander = (characterFromID("IslaMuelle Commander"));	// stick to one spelling system ? @@
-		else commander = (characterFromID(townsk + " Commander"));*/
+
 
 		ch.nation = nat;						// gets the nation from the functioncall
 		ch.model = SelectSoldierModelByNation(nat, "Officer");	// NK was soldier. 05-07-10 - and the appropriate charmodel

@@ -140,7 +140,7 @@ void ProcessDialogEvent()
 					Link.l2 = LanguageConvertString(tmpLangFileID,"low_trade_1");
 					Link.l2.go = "low_price";
 				}
-				if (Characters[GetCharacterIndex("Milon Blacque")].quest.son == "2") // NK - && iTest < QUEST_COUNTER)
+				if (Characters[GetCharacterIndex("Milon Blacque")].quest.son == "2") // NK - && iTest < QUEST_COUNTER
 				{
 					link.l3 = DLG_TEXT[37];
 					link.l3.go = "marc";
@@ -270,7 +270,7 @@ void ProcessDialogEvent()
 				link.l3.go = "contraband_13";
 				iTest = iTest + 1;
 			}
-			if (Characters[GetCharacterIndex("Milon Blacque")].quest.son == "2") // NK - && iTest < QUEST_COUNTER)
+			if (Characters[GetCharacterIndex("Milon Blacque")].quest.son == "2") // NK - && iTest < QUEST_COUNTER
 			{
 				link.l3 = DLG_TEXT[37];
 				link.l3.go = "marc";
@@ -718,7 +718,7 @@ void ProcessDialogEvent()
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice);
 						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string
-						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
+						//проверяем свободное место при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.text = DLG_TEXT[184];

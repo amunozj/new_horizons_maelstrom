@@ -354,7 +354,7 @@ void QuestComplete(string sQuestName)
 
 		case "Another_run_in_with_Simson":
 			Locations[FindLocation("Quest_ShipDeck6")].vcskip = true;
-			ChangeCharacterAddressGroup(characterFromID("Captain Keene"), "Quest_ShipDeck6", "goto", "goto5"); //"reload", "boatr");
+			ChangeCharacterAddressGroup(characterFromID("Captain Keene"), "Quest_ShipDeck6", "goto", "goto5"); 
 			ChangeCharacterAddressGroup(characterFromID("Clayton"), "Quest_ShipDeck6", "goto", "goto11");
 			ChangeCharacterAddressGroup(characterFromID("Jack Simpson"), "Quest_ShipDeck6", "reload", "boatl");
 			ChangeCharacterAddressGroup(characterFromID("Archie Kennedy"), "Quest_ShipDeck6", "goto", "goto4");
@@ -786,7 +786,7 @@ void QuestComplete(string sQuestName)
 		case "reprovision_Charlestown":
 			DisableFastTravel(false);
 			Characters[GetCharacterIndex("Sir Edward Pellew")].dialog.currentnode = "First time";
-			LAi_ActorGoToLocator(characterFromID("Sir Edward Pellew"), "reload", "reload10_1", "", 0.0); //"reprovision_Charlestown2", 0.0);
+			LAi_ActorGoToLocator(characterFromID("Sir Edward Pellew"), "reload", "reload10_1", "", 0.0); 
 			AddQuestRecord("My First Ship", 3);
 
 			Pchar.quest.reprovision_Charlestown2.win_condition.l1 = "location";
@@ -1211,7 +1211,7 @@ void QuestComplete(string sQuestName)
 
 		case "Bush_Leaves_Upstairs":
 			LAi_SetActorType(PChar);
-			LAi_ActorGoToLocator(characterFromID("Ebenezer Bracegirdle"), "reload", "reload1", "", 0.0); //"Bush_Leaves_Upstairs2", 0.0);
+			LAi_ActorGoToLocator(characterFromID("Ebenezer Bracegirdle"), "reload", "reload1", "", 0.0); 
 			LAi_QuestDelay("Bush_Leaves_Upstairs2", 3.0);
 		break;
 
@@ -10109,7 +10109,7 @@ void QuestComplete(string sQuestName)
 			SetRank(pchar, ENGLAND, 4);
 			GiveModel2Player("brtH3rdLt_18", true);
 			Locations[FindLocation("Mrs. Mason's House")].vcskip = true;
-			ChangeCharacterAddressGroup(characterFromID("Mrs. Mason"), "Greenford_town", "officers", "reload11_1"); //"goto", "goto16");
+			ChangeCharacterAddressGroup(characterFromID("Mrs. Mason"), "Greenford_town", "officers", "reload11_1"); 
 
 			LAi_SetActorType(characterFromID("Mrs. Mason"));
 			characters[GetCharacterIndex("Mrs. Mason")].Dialog.Filename = "Mrs. Mason_dialog.c";
@@ -10244,7 +10244,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Quelp_at_lighthouse":
-			ChangeCharacterAddressGroup(characterFromID("Lt. Uriah Quelp"), "Oxbay_Lighthouse", "goto", "goto3"); //"goto2");
+			ChangeCharacterAddressGroup(characterFromID("Lt. Uriah Quelp"), "Oxbay_Lighthouse", "goto", "goto3"); 
 			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m6, "officers", "reload2_1");
 			sld.id = "soldier1X";
 
@@ -12545,9 +12545,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("Soldier8X"));
 			Lai_KillCharacter(characterFromID("Soldier3X"));
 
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
 			LAi_ActorAnimation(characterFromID("Rifleman Tongue"), "shot", "", 1.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
 			GetCharacterPos(characterFromID("Rifleman Tongue"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
@@ -12558,7 +12558,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Harper_explains_Cooper":
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
 			LAi_SetActorType(characterFromID("Rifleman Tongue"));
 
 			LAi_SetActorType(characterFromID("Patrick Harper"));
@@ -12569,12 +12569,12 @@ void QuestComplete(string sQuestName)
 
 		case "French_pull_back":
 			LAi_ActorAnimation(characterFromID("Soldier1X"), "shot", "French_pull_back2", 1.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
 			GetCharacterPos(characterFromID("Soldier1X"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
 			LAi_ActorAnimation(characterFromID("Soldier2X"), "shot", "", 0.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
 			GetCharacterPos(characterFromID("Soldier2X"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
@@ -13747,7 +13747,7 @@ void QuestComplete(string sQuestName)
 			PChar.name = "Jack";
 			PChar.lastname = "Hammond";
 			
-			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Guadeloupe_shore_01", "goto", "seaman2"); //"citizen04");
+			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Guadeloupe_shore_01", "goto", "seaman2");
 			Characters[GetCharacterIndex("Matthews")].dialog.CurrentNode = "Were's_Captain_Hornblower";
 			DoQuestReloadToLocation("Guadeloupe_shore_01", "officers", "locator3_3", "Hammond_the_wimp_two");
 		break;
@@ -14298,7 +14298,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("soldier5X"), "goto", "goto13", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier6X"), "goto", "goto14", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier7X"), "goto", "goto15", "Soldiers_Wolfe_Beach5", 40);
-			LAi_ActorRunToLocator(characterFromID("soldier8X"), "goto", "seaman2", "",40); //"citizen04", "", 40);
+			LAi_ActorRunToLocator(characterFromID("soldier8X"), "goto", "seaman2", "",40);
 			LAi_ActorRunToLocator(characterFromID("soldier9X"), "goto", "locator14", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier10X"), "goto", "seaman1", "", 40);
 		break;
@@ -14671,8 +14671,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Lt. Chadd"), "None", "");
 			ChangeCharacterAddressGroup(characterFromID("Lt. William Bush"), "Quest_ShipDeck1", "goto", "goto7");
 			ChangeCharacterAddressGroup(characterFromID("Jack Hammond"), "Quest_ShipDeck1", "goto", "goto6");
-			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10"); //"goto1");
-			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3"); //"goto5");
+			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10");
+			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3");
 			ChangeCharacterAddressGroup(characterFromID("Oldroyd"), "Quest_ShipDeck1", "goto", "goto9");
 			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Quest_ShipDeck1", "goto", "goto8");
 			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "goto", "goto14");
@@ -14859,7 +14859,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(sld, "FRANCE_SOLDIERS");
 			sld.id = "soldier7X";
 
-			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m3, "rld", "loc6"); //"goto", "goto4"); //"rld", "loc6");
+			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m3, "rld", "loc6");
 			GiveItem2Character(sld, "blade4");
 			EquipCharacterByItem(sld, "blade4");
 			LAi_group_MoveCharacter(sld, "FRANCE_SOLDIERS");
@@ -14905,7 +14905,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Able Seaman Stanley"));
 			LAi_SetActorType(characterFromID("Able Seaman Wilks"));
 
-			LAi_ActorRunToLocator(characterFromID("soldier8X"), "rld", "loc4", "", 40); //"Destroy_the_Battery3", 40);
+			LAi_ActorRunToLocator(characterFromID("soldier8X"), "rld", "loc4", "", 40);
 
 			LAi_QuestDelay("Destroy_the_Battery2", 0.0);
 		break;
@@ -15132,13 +15132,13 @@ void QuestComplete(string sQuestName)
 
 		case "Another_Hotspur_visit2":
 			ChangeCharacterAddress(characterFromID("Lt. William Bush"), "None", "");
-			ChangeCharacterAddressGroup(characterFromID("Lt. Chadd"), "Quest_ShipDeck1", "goto", "goto14"); //"rld", "startloc");
+			ChangeCharacterAddressGroup(characterFromID("Lt. Chadd"), "Quest_ShipDeck1", "goto", "goto14"); 
 			ChangeCharacterAddressGroup(characterFromID("Jack Hammond"), "Quest_ShipDeck1", "goto", "goto7");
 			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10");
 			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3");
 			ChangeCharacterAddressGroup(characterFromID("Oldroyd"), "Quest_ShipDeck1", "goto", "goto9");
 			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Quest_ShipDeck1", "goto", "goto8");
-			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "rld", "startloc"); //"goto", "goto14");
+			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "rld", "startloc"); 
 			LAi_SetActorType(characterFromID("Jack Hammond"));
 			LAi_SetActorType(characterFromID("Lt. William Bush"));
 		break;
@@ -16552,7 +16552,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "restore_sound":
-//			locations[FindLocation("Greenford_port")].type = "port";
+	//			locations[FindLocation("Greenford_port")].type = "port";
 			ChangeCharacterAddress(CharacterFromID("Richard Sharpe"), "None", "");
 			ChangeCharacterAddress(CharacterFromID("Patrick Harper"), "None", "");
 			ChangeCharacterAddress(CharacterFromID("Rifleman Haggman"), "None", "");

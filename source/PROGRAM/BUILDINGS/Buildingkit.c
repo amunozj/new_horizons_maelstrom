@@ -31,13 +31,13 @@ void Build_here(ref user, string building, string interior, bool permanent)
 		return;
 	}
 
-//just earcandy :)
+//just earcandy 
 	PlaySound("ambient\shipyard\axe.wav");
 	PlaySound("ambient\shipyard\vehicle.wav");
 	PlaySound("ambient\shipyard\saw.wav");
 	PlaySound("ambient\shipyard\hammer.wav");
 	
-	// determine position in front of user (by NK, thanks :)  )
+	// determine position in front of user 
 	GetCharacterPos(user, &x, &y, &z); // get pos
 	GetCharacterAy(user, &ay); // get angle
 	z += cos(ay)*1; // add Z component

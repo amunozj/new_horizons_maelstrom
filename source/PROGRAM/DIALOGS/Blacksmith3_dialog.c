@@ -625,7 +625,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_EXELLENT, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -656,7 +656,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_FINE, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -687,7 +687,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_GOOD, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -718,7 +718,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(GunID, GetItemQualityByID(GunID), QUALITY_AVERAGE, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings :)
+		// ccc added makeint cause you can't calc with strings 
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else

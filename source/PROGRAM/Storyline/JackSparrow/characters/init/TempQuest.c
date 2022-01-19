@@ -254,10 +254,10 @@ void CreateTempQuestCharacters(ref n)
 	ch.Ship.Name = "China Vase";
 	ch.Ship.Type = "Frigate2";
 	ch.Ship.Stopped = true;
-	GiveItem2Character(ch, "blade21"); //"blade26+1");
-	ch.equip.blade = "blade21"; //"blade26+1";
-	GiveItem2Character(ch, "pistol4"); //"pistol5+1");
-	ch.equip.gun = "pistol4"; //"pistol5+1";
+	GiveItem2Character(ch, "blade21");
+	ch.equip.blade = "blade21";
+	GiveItem2Character(ch, "pistol4");
+	ch.equip.gun = "pistol4";
 	//JRH ammo mod -->
 	TakenItems(ch, "gunpowder", 6);
 	TakenItems(ch, "pistolbullets", 6);
@@ -1589,8 +1589,8 @@ void CreateTempQuestCharacters(ref n)
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 0;
 	ch.Flags.Pirate.texture = 0;
-	GiveItem2Character(ch, "blade21"); //"blade26+1");
-	ch.equip.blade = "blade21"; //"blade26+1";
+	GiveItem2Character(ch, "blade21"); 
+	ch.equip.blade = "blade21"; 
 	GiveItem2Character(ch, "pistol5+1");
 	ch.equip.gun = "pistol5+1";
 	// PB <--

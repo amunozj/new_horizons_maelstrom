@@ -52,5 +52,5 @@ in the night{por la noche}
 
 {=====| shipslog.c |=====}
 Unreadable page{Página ilegible}
-This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]{Esta página del cuaderno de bitácora está empapada de ron: el texto es ilegible. [ error de código :) ]}
+This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]{Esta página del cuaderno de bitácora está empapada de ron: el texto es ilegible. [ error de código  ]}
 {=====| 27 log entrys |=====}

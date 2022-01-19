@@ -241,7 +241,7 @@ void SetSpyGlassData()
 		}
 		sCaptainName = CannonTypeName + "       " + sCaptainName;
 	}
-    //sCaptainName = XI_ConvertString("Distance") + ": " + FloatToString(Ship_GetDistance2D(GetMainCharacter(), chref), 1) + "       " + sCaptainName;
+	
     float fDistance = stf(FloatToString(Ship_GetDistance2D(GetMainCharacter(), chref), 1)); //boal
 	SendMessage(&objISpyGlass,"lsslllfflllllllllllssl",MSG_ISG_UPDATE, shipName,shipType,  //boal
 		shipHull,shipSail,shipCrew,	shipSpeed, fDistance,
@@ -252,7 +252,7 @@ void SetSpyGlassData()
 	SendMessage(&objISpyGlass,"lsffff",MSG_ISG_SET_SHIPICON, sTextureName, uvLeft,uvTop,uvRight,uvBottom);
 	SendMessage(&objISpyGlass,"ll",MSG_ISG_VISIBLE,true);
 	// debug info -->
-	if (false) //bBettaTestMode)
+	if (false) //bBettaTestMode
 	{
 		ClearAllLogStrings();
 		if (CheckAttribute(chref, "SeaAI.Task"))

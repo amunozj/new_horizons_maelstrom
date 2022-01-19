@@ -912,7 +912,7 @@ string GetItemUpgradePrice(string BladeID, int CurrentQuality, int RequiredQuali
 	return ReturnPrice;
 }
 
-// NK now return -1 rather than AVERAGE as an easier check, and so I can use it in IT below. :) 05-07-19
+// NK now return -1 rather than AVERAGE as an easier check, and so I can use it in IT below.  05-07-19
 int GetItemQualityByID(string GunID)
 // Retrieves the quality of a gun by it's item id
 // Takes a gun id as parameter and returns an integer indicating the status of the gun.

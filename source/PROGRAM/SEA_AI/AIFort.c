@@ -136,11 +136,6 @@ void Fort_Login(int iIslandIndex)
 				break;
 			}
 
-			/*if (iDeadDays > 0)
-			{
-				// NK - rCharacter.Ship.Crew.Quantity = iDeadDays * 200 + rand(100);
-			}*/
-
 			if (bFortRessurect)
 			{
 				SetFortCharacterCaptured(rCharacter, false);
@@ -186,7 +181,7 @@ void Fort_Login(int iIslandIndex)
 
 			//Update the contriblist and skill multipliers and do auto level up for NPC's
 			InitAutoSkillsSystem(rCharacter, true); //Levis, the check for autoskill will happen later.
-			if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList")); //Levis refresh contriblist on login
+			if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList"); //Levis refresh contriblist on login
 
 			ReloadProgressUpdate();
 		}
@@ -287,13 +282,6 @@ float Fort_CannonDamage()
 
 // KK -->
 	fHullDamage = stf(rBall.DamageHull) * fCannonDamageMultiply * 0.4;
-// edited by MAXIMUS [was divide by zero] -->
-	/*if (GetTownNumForts(rFortCharacter.town) > 0)
-		fCrewDamage *= (0.01 * (stf(rFortCharacter.Ship.Crew.Quantity) / makefloat(GetTownSize(rFortCharacter.town) * TOWN_TROOPS_SCALAR / GetTownNumForts(rFortCharacter.town)))); // 04-09-22
-	else
-		fCrewDamage *= (0.01 * (stf(rFortCharacter.Ship.Crew.Quantity) / makefloat(GetTownSize(rFortCharacter.town) * TOWN_TROOPS_SCALAR)));*/ // 04-09-22
-// edited by MAXIMUS [was divide by zero] <--
-// <-- KK
 
 	rFortCharacter.Ship.HP = makeint((1.0 - MakeFloat(iNumDamagedCannons) / MakeFloat(iNumAllCannons)) * stf(rFortCharacter.Fort.HP));
 
@@ -310,10 +298,10 @@ float Fort_CannonDamage()
 			if (iRelation == RELATION_FRIEND)	{ fCurPlayerDamage = fCurPlayerDamage + fDamagePiece * 0.8; }
 			if (iRelation == RELATION_NEUTRAL)	{ fCurPlayerDamage = fCurPlayerDamage + fDamagePiece * 0.5; }
 
-			if (fCurPlayerDamage >= 1.0) //100.0)
+			if (fCurPlayerDamage >= 1.0)
 			{
 				SetCharacterRelationBoth(iBallCharacterIndex, iFortCharacterIndex, RELATION_ENEMY);
-				AttackRMRelation(GetMainCharacter(), sti(rFortCharacter.Nation)); // RM - SetNationRelation2MainCharacter(sti(rFortCharacter.Nation), RELATION_ENEMY);
+				AttackRMRelation(GetMainCharacter(), sti(rFortCharacter.Nation)); 
 				UpdateRelations();
 			}
 
@@ -321,7 +309,7 @@ float Fort_CannonDamage()
 		}
 	}
 
-	if (fDamage >= 1.0) //100.0)
+	if (fDamage >= 1.0)
 	{
 		bImmortal = LAi_IsImmortal(rFortCharacter);
 

@@ -2986,7 +2986,7 @@ void BothQuestComplete(string sQuestName)
 				EquipCharacterByItem(PChar, "bladeX4");
 				EquipCharacterByItem(PChar, "pistolrock");
 
-				PChar.ship.sp =     GetCharacterShipSP(PChar) * 3 / 5);				// Evil Stormy Start further damages sails
+				PChar.ship.sp =     GetCharacterShipSP(PChar) * 3 / 5;				// Evil Stormy Start further damages sails
 				PChar.ship.hp =     GetCharacterShipHP(PChar) * (rand(4)+1)/10;		// PB Storm Damage: Between 10% and 50% of previous number
 				SetCrewQuantity(PChar, 1);											// This is intentionally EVIL
 				// The Diamond: Evil Stormy Start <--

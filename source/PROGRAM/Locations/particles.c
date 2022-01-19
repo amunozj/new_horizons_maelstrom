@@ -155,45 +155,6 @@ void CreateParticles(ref Location)
 	}
 
 
-/*	if(CheckAttribute(Location, "locators.waterfall"))
-	{
-		makearef(locator_group, location.locators.waterfall);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			CreateParticleSystemX("waterfall",stf(locator.x),stf(locator.y),stf(locator.z),
-				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
-		}
-	}
-*/
-
-	// Swindler 2006-07-10 -->
-	// Commented out below if-condition because second part is senseless. Either
-	// Location has fire-locators, then first part is enough, or it has not.
-	// Even if second part evaluates to true and location has no fire-locators,
-	// first line in if-block would cause error.
-	/*if (CheckAttribute(Location, "locators.fire") || Location.id.label == "Boarding deck"))*/
-/*	if(CheckAttribute(Location, "locators.fire"))// Swindler <--
-	{
-		makearef(locator_group, location.locators.fire);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			loctrName = GetAttributeName(locator);
-			if(!CheckAttribute(Location, "locators.fire."+loctrName+".tmpLocator"))//MAXIMUS
-			{
-				if(CheckAttribute(locator,"x") && CheckAttribute(locator,"y") && CheckAttribute(locator,"z"))
-				{
-					pId = CreateParticleSystem("fire_mix", stf(locator.x), stf(locator.y), stf(locator.z),-1.57,0,0,0);
-					tmpId = "pId"+n;
-					location.locators.fire.(tmpId) = pId;
-				}
-			}
-		}
-	}*/
-
 	if(CheckAttribute(Location, "locators.candles_p"))
 	{
 		makearef(locator_group, location.locators.candles_p);
@@ -227,18 +188,6 @@ void CreateParticles(ref Location)
 		}
 	}
 
-/*
-	if(CheckAttribute(Location, "locators.reload"))
-	{
-		makearef(locator_group, location.locators.reload);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			CreateParticleSystem("fire_mix",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
-		}
-	}
-*/
 // ccc Nov05 Greater Oxbay crypt effects
 	if(Location.id=="Greenford_M_crypt" && CheckAttribute(Location, "locators.monsters")) // PB
 	{

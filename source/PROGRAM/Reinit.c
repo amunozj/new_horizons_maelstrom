@@ -626,7 +626,7 @@ void Reinit(bool start, bool show)
 }
 
 //To save typing:
-bool DebugLog(string ltext) //shamelessly ripped from Stone-D. Thanks, SD! :)
+bool DebugLog(string ltext) //shamelessly ripped from Stone-D. Thanks, SD! 
 {
 	if(DEBUGINFO) Log_SetStringToLog(ltext);
 	return DEBUGINFO;

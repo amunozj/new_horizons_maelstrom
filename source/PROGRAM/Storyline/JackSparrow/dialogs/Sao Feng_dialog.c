@@ -94,7 +94,7 @@ void ProcessDialogEvent()
 			LAi_type_actor_Reset(characterFromID("Sao Feng's Body2"));
 			LAi_SetStayType(characterFromID("Sao Feng's Body1"));
 			LAi_SetStayType(characterFromID("Sao Feng's Body2"));
-			AddMoneyToCharacter(pchar, 50000));
+			AddMoneyToCharacter(pchar, 50000);
 			AddQuestRecord("Sao Feng", 36);
 			if (Characters[GetCharacterIndex("Father Bernard")].quest.ANIMISTS == "completed")
 			{

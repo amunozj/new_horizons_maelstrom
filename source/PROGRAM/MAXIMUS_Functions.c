@@ -496,7 +496,7 @@ string FindSeaShoreForLocation(string locID)//MAXIMUS: search for nearest shore
 																			{
 																				if(locations[FindLocation(loc3.(attrName3).go)].type=="seashore") return locations[FindLocation(loc3.(attrName3).go)].id;
 																				else
-																				{//MAXIMUS: currently checks up to 4 locations, but can search more :)
+																				{//MAXIMUS: currently checks up to 4 locations, but can search more 
 																				}
 																			}
 																		}
@@ -1783,7 +1783,7 @@ void LAi_ClearIndexedLocators(string locId, string group)
 	}
 }
 
-//MAXIMUS: coded by KK, changed by MAXIMUS ;) changes made by MAXIMUS changed by KK :) and changed by MAXIMUS ;b -->
+//MAXIMUS: coded by KK, changed by MAXIMUS  changes made by MAXIMUS changed by KK  and changed by MAXIMUS ;b -->
 void CheckReloadAction(ref chr, string actionType)
 {
 	//MAXIMUS: changes made here, will prevent showing of empty-reloads and showing reloads on enemy's ship
@@ -2381,7 +2381,7 @@ bool CheckCharPosition(float posX, float posY, float posZ)
 	bool bX, bY, bZ;
 	GetCharacterPos(GetMainCharacter(), &x, &y, &z);
 
-	float curXplus = makefloat(posX+makeint(1)));
+	float curXplus = makefloat(posX+makeint(1));
 	float curYplus = makefloat(posY+makeint(1));
 	float curZplus = makefloat(posZ+makeint(1));
 	float curXminus = makefloat(posX-makeint(1));
@@ -3044,7 +3044,7 @@ void SetLanguage()
 
 void ResetKeyboardCharacters(string curLanguage)
 {
-	if(curLanguage!="Russian") curLanguage = "English";// temporary. If anyone'll want to make changes - welcome ;)
+	if(curLanguage!="Russian") curLanguage = "English";// temporary. If anyone'll want to make changes - welcome 
 	switch(curLanguage)
 	{
 		case "Russian":

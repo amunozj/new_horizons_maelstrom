@@ -330,7 +330,7 @@ void arSetRandomStatsToShip(aref chrship, int idx, int nat)
 			if(atrname == "speedrate" || atrname == "turnrate") isint = false;
 			//new local stat will be base stat * (natstat mult +/- rand(SHIPSTAT_VARIANCE))
 			if(NatStatMod) fStatMod = makefloat(natstats.(atrname)); // so we can still do random variation even if not doing nation variation.
-			arShip.(atrname) = makefloat(refShip.(atrname)) * (fStatMod * RandMult(SHIPSTAT_VARIANCE)); // 05-05-11 mult. If you prefer additive: - SHIPSTAT_VARIANCE + frnd()*SHIPSTAT_VARIANCE*2);
+			arShip.(atrname) = makefloat(refShip.(atrname)) * (fStatMod * RandMult(SHIPSTAT_VARIANCE)); // 05-05-11 mult. If you prefer additive: - SHIPSTAT_VARIANCE + frnd()*SHIPSTAT_VARIANCE*2;
 			if(isint) arShip.(atrname) = round(stf(arShip.(atrname)));
 		}
 	}
@@ -647,7 +647,7 @@ void FillShipsList(ref NPChar)
 
 	// TIH --> rpg_style Auto-sort ships by class and price Jul27'06
 	// yes this is an ugly mess... but the engine was giving me beef... so this is how it ended up
-	// this DOES work, works real good... just ugly :)
+	// this DOES work, works real good... just ugly 
 	// by all means if you see a cleaner way to do it, then PLEASE do it... no one else has!
 	if ( SY_RPG_STYLE )
 	{

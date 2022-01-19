@@ -44,7 +44,7 @@ ref GetTownFromID(string sTownName)
 	if(sTownName == "") return &NullCharacter; // just in case.
 
 	int idx = GetTownIndex(sTownName);
-	if(idx < 0 || idx >= TOWNS_QUANTITY) return &NullCharacter; // read only! But it's empty, so what. :)
+	if(idx < 0 || idx >= TOWNS_QUANTITY) return &NullCharacter; // read only! But it's empty, so what. 
 	return &Towns[idx];
 	/*ref ctown;
 	string temp;
@@ -1157,7 +1157,7 @@ void ModifyTown(ref refTown)
 	DeleteAttribute(town, "do_firstinit");
 	SetTownName(town.id, refTown.name);
 	Preprocessor_Delete(town.id);
-	Preprocessor_Save(town.id, refTown.name));
+	Preprocessor_Save(town.id, refTown.name);
 	DeleteAttribute(refTown, "");
 }
 // <-- KK
@@ -1277,10 +1277,10 @@ string GetBestTown(string id)
 	n = GetIslandTownsQuantity(IslandName);
 	if (n < 1) return "";
 
-	rel = GetNationRelation2MainCharacter(GetTownNation(GetTownIDFromIsland(IslandName, 1))));
+	rel = GetNationRelation2MainCharacter(GetTownNation(GetTownIDFromIsland(IslandName, 1)));
 	rel1 = rel;
 	for (int i = 2; i <= n; i++) {
-		rel1 = GetNationRelation2MainCharacter(GetTownNation(GetTownIDFromIsland(IslandName, i))));
+		rel1 = GetNationRelation2MainCharacter(GetTownNation(GetTownIDFromIsland(IslandName, i)));
 		if (rel < rel1) {
 			rel = rel1;
 			sel = i;

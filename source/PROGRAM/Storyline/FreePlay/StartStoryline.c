@@ -556,7 +556,7 @@ void StartStoryLine()
 		CharGood2 = getRandomImportGood(GetIslandByID(FindIslandByLocation(loadPort)));
 		// PB: Keep looping until *valid* goods are found (PW not < type 11)-->
 		if (CharGood1 < 11 || CharGood2 < 11 ) CharGood1 = CharGood2;// PW don't really want any "usable" or gold/silver goods
-		// PW also added new import goods to some islands to allow non gold/silver to occur)
+		// PW also added new import goods to some islands to allow non gold/silver to occur
 		//if (CharGood1 == GOOD_SAILCLOTH	|| CharGood2 == GOOD_SAILCLOTH	) CharGood1 = CharGood2;
 		//if (CharGood1 == GOOD_PLANKS	|| CharGood2 == GOOD_PLANKS		) CharGood1 = CharGood2;
 		//if (CharGood1 == GOOD_WHEAT		|| CharGood2 == GOOD_WHEAT		) CharGood1 = CharGood2;

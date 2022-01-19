@@ -124,21 +124,6 @@ bool AISeaGoods_ShipEatGood()
           return false;   //aborts the function so that no "oil" goods are added
        }
 	
-/* Jan07, original survivor code moved to SwimGoodEvent in CCCdirectsail.c
-	// ccc rescue survivors
-       if (sGood=="Oil" && iCharacterIndex == GetMainCharacterIndex() )   //runs only for "fake" salvage and the player
-       {
-          AddCharacterCrew(rCharacter,iQuantity);   //adds crew
-	      int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
-          Log_SetStringToLog(iQuantity + " " + LanguageConvertString(tmpLangFileID,"survivors rescued"));   //screenmessage
-          PlaySound("objects\abordage\abordage_loosing.wav");   //soundeffect
-          ChangeCharacterReputation(rCharacter, 1);   //rescuer deserves praise :)
-		  LanguageCloseFile(tmpLangFileID);	// LDH moved line above return 19Oct06
-          return false;   //aborts the function so that no "oil" goods are added
-       }
-       // ccc rescue survivors end
-*/
-// ccc Jan07 end
 
 	if (iMaxGoodAllow == 0)
 	{
