@@ -77,7 +77,6 @@ void ProcessDialogEvent()
 				{
 					dialog.snd = "Voice\ARMA\ARMA006";
 					dialog.text = DLG_TEXT[315] + DLG_TEXT[57] + GetMyFullName(&Characters[GetCharacterIndex(DLG_TEXT[58])]) + DLG_TEXT[60];
-					//dialog.text = DLG_TEXT[57] + GetMyFullName(&Characters[GetCharacterIndex(DLG_TEXT[58])]) + DLG_TEXT[60];
 					
 					link.l1 = DLG_TEXT[311];
 					Link.l1.go = "First_job_done_enemy";
@@ -670,7 +669,7 @@ void ProcessDialogEvent()
 
 		case "baldewyn_work_done":
 			PlayStereoSound("INTERFACE\took_item.wav");
-			AddMoneyToCharacter(pchar, -2500));
+			AddMoneyToCharacter(pchar, -2500);
 			dialog.snd = "Voice\ARMA\ARMA034";
 			dialog.text = DLG_TEXT[149];
 			link.l1 = pcharrepphrase(DLG_TEXT[150], DLG_TEXT[151]);
@@ -686,7 +685,7 @@ void ProcessDialogEvent()
 			npchar.quest.money = "0";
 			if (characters[GetCharacterIndex("Sabine Matton")].quest.hire == "0") Characters[GetCharacterIndex("Sabine Matton")].location = "Falaise_De_Fleur_store";
 		break;
-)
+
 		case "baldewyn_work_done_one":
 			dialog.snd = "Voice\ARMA\ARMA035";
 			dialog.text = DLG_TEXT[156];
@@ -865,7 +864,7 @@ void ProcessDialogEvent()
 						float fprice, tprice;
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice); // TIH nation fix Aug30'06 // KK
-						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
+						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string						//проверяем свободное место при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.snd = "Voice\ARMA\ARMA047";

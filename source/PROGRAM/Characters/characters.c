@@ -268,7 +268,7 @@ bool Sidestep(ref pchar, float mag, bool docheck)
 	z += cos(ay) * mag; // add Z component
 	x += sin(ay) * mag; // add X component
 	if(docheck)
-	{//MAXIMUS: low mag will not be recognized, by some reason - 0.8 minimum. So I made an additional check. But CheckLocationPosition only checks target point for characters - not checks patch :(
+	{//MAXIMUS: low mag will not be recognized, by some reason - 0.8 minimum. So I made an additional check. But CheckLocationPosition only checks target point for characters - not checks patch 
 		float chkX, chkY, chkZ, chkAY, side;
 		if(mag>=0.0) side = 1;
 		else side = -1;

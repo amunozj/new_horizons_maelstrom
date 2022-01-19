@@ -925,45 +925,45 @@ void RefreshScreen()
 				bool IsNotLocked;
 				if (slno == FindStoryline("FreePlay"))
 				{
-					IsNotLocked = CheckAttribute(arstart, "ship.lock") == false || sti(arstart.ship.lock) == false);
+					IsNotLocked = CheckAttribute(arstart, "ship.lock") == false || sti(arstart.ship.lock) == false;
 					if (CheckAttribute(model, "ship") && IsNotLocked)
 					{
 						curShip = GetShipIndex(model.ship);
 					}
-					IsNotLocked = CheckAttribute(arstart, "shipname.lock") == false || sti(arstart.shipname.lock) == false);
+					IsNotLocked = CheckAttribute(arstart, "shipname.lock") == false || sti(arstart.shipname.lock) == false;
 					if (CheckAttribute(model, "shipname") && IsNotLocked)
 					{
 						GameInterface.strings.ShipName = model.shipname;
 					}
 				}
-				IsNotLocked = CheckAttribute(arstart, "Flags.Pirate.lock") == false || sti(arstart.Flags.Pirate.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "Flags.Pirate.lock") == false || sti(arstart.Flags.Pirate.lock) == false;
 				if (CheckAttribute(model, "Flags.Pirate") && IsNotLocked)
 				{
 					pirateflagtex = makeint(stf(model.Flags.Pirate) % makefloat(FLAGS_PICTURES_QUANTITY_PER_TEXTURE));
 					pirateflagidx = sti(model.Flags.Pirate) - (pirateflagtex * makeint(FLAGS_PICTURES_QUANTITY_PER_TEXTURE));
 				}
-				IsNotLocked = CheckAttribute(arstart, "Flags.Personal.lock") == false || sti(arstart.Flags.Personal.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "Flags.Personal.lock") == false || sti(arstart.Flags.Personal.lock) == false;
 				if (CheckAttribute(model, "Flags.Personal") && IsNotLocked)
 				{
 					personalflagtex = makeint(stf(model.Flags.Personal) % makefloat(FLAGS_PICTURES_QUANTITY_PER_TEXTURE));
 					personalflagidx = sti(model.Flags.Personal) - (personalflagtex * makeint(FLAGS_PICTURES_QUANTITY_PER_TEXTURE));
 				}
-				IsNotLocked = CheckAttribute(arstart, "nation.lock") == false || sti(arstart.nation.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "nation.lock") == false || sti(arstart.nation.lock) == false;
 				if (CheckAttribute(model, "nation") && IsNotLocked)
 				{
 					CharNation = sti(model.nation);
 				}
-				IsNotLocked = CheckAttribute(arstart, "playertype.lock") == false || sti(arstart.playertype.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "playertype.lock") == false || sti(arstart.playertype.lock) == false;
 				if (CheckAttribute(model, "playertype") && IsNotLocked)
 				{
 					curPlayerType = sti(model.playertype);
 				}
-				IsNotLocked = CheckAttribute(arstart, "difficulty.lock") == false || sti(arstart.difficulty.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "difficulty.lock") == false || sti(arstart.difficulty.lock) == false;
 				if (CheckAttribute(model, "difficulty") && IsNotLocked)
 				{
 					CharDifficulty = sti(model.difficulty);
 				}
-				IsNotLocked = CheckAttribute(arstart, "date.lock") == false || sti(arstart.date.lock) == false);
+				IsNotLocked = CheckAttribute(arstart, "date.lock") == false || sti(arstart.date.lock) == false;
 				if (CheckAttribute(model, "date") && IsNotLocked)
 				{
 					if (CheckAttribute(model, "date.year") && IsNotLocked)

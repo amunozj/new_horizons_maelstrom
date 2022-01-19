@@ -386,7 +386,7 @@ void LAi_type_stunned_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 
-	//}	// ccc jul05 tools, mine
+
 
 }
 

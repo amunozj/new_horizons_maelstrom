@@ -84,7 +84,7 @@ void ProcessDialogEvent()
 					link.l1 = DLG_TEXT[20];
 					link.l1.go = "letters_2";
 				}
-				Link.l99 = DLG_TEXT[21]);
+				Link.l99 = DLG_TEXT[21];
 				Link.l99.go = "no quest";
 		break;
 

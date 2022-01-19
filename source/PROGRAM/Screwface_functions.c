@@ -31,7 +31,7 @@ int Find_nearest_inf_ship(ref chr)
 			if (rGroup.location != PChar.location) { continue; }
 			achr = Group_GetGroupCommanderR(rGroup);
 
-			if(CheckAttribute(achr,"surrendered") || CharacterIsDead(achr)){continue;} //Group_UpdateGroup(achr);continue;}
+			if(CheckAttribute(achr,"surrendered") || CharacterIsDead(achr)){continue;} 
 			if(!Checkattribute(achr,"index")){continue;}
 			if(GetNationRelation(sti(achr.nation), sti(chr.nation)) == RELATION_ENEMY)
 			{
@@ -554,7 +554,7 @@ void Improve_SeaAi(String groupe)
 		if(crgchar.fantomtype=="trade")
 		{
 			nextenemy = Find_nearest_inf_ship(crgchar);
-			if(nextenemy != -1) // && Characters[nextenemy].ship.type != SHIP_FORT_NAME ) 
+			if(nextenemy != -1) 
 			{
 				if(Check_courageous_merchant(crgchar, &Characters[nextenemy]) || GetCharacterShipClass(crgchar) < 3)
 				{

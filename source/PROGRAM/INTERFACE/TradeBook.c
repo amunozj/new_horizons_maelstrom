@@ -255,7 +255,7 @@ void SetVariable()
 	SetNewPicture("NATION", "interfaces\flags\Crest_" + GetNationFlagImage(town_nation) + ".tga");
 	SetSelectable("MANAGE_BUTTON", town_nation == PERSONAL_NATION);
 // <-- KK
-	int curStore = GetTownStoreIndex(GetTownIDFromIsland(refIsland.id, curTown));//MAXIMUS: the simplest way :) -->
+	int curStore = GetTownStoreIndex(GetTownIDFromIsland(refIsland.id, curTown));//MAXIMUS: the simplest way  -->
 
 	// LDH always display a town if possible - 03Jan09
 	if (curStore < 0)

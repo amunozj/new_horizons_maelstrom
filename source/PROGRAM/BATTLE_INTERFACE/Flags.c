@@ -24,7 +24,7 @@ ref procGetRiggingData()
 
     int locidx = FindLoadedLocation();
 	//Boyer change
-	//if (datName == "GetFlagTexNum") {
+
 	if (datName != "") {
 		//n = GetEventData();
 		//n = GetEventData();

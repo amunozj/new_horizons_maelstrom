@@ -206,7 +206,7 @@ void ProcessDialogEvent()
 			else Preprocessor_Add("pronoun", XI_ConvertString("her"));
 			d.text = DLG_TEXT[63] + GetMyName(PChar) + DLG_TEXT[64];
 			link.l1 = DLG_TEXT[65];
-			link.l1.go = "ardent_hunt_which_ship2");
+			link.l1.go = "ardent_hunt_which_ship2";
 		break;
 
 		case "ardent_hunt_which_ship2":

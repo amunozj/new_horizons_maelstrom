@@ -2311,9 +2311,9 @@ void CreateStoryCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 			//Barbossa.
-	ch.old.name = "Hector";//MAXIMUS: we know his name now ;)
+	ch.old.name = "Hector";//MAXIMUS: we know his name now 
 	ch.old.lastname = "Barbossa";
-	ch.name = TranslateString("","Hector");//MAXIMUS: we know his name now ;)
+	ch.name = TranslateString("","Hector");//MAXIMUS: we know his name now 
 	ch.lastname = TranslateString("","Barbossa");
 	ch.id		= "Barbossa";
 	ch.nation	= PIRATE;

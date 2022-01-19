@@ -391,7 +391,7 @@ void ProcessCancelExit()
 	if(daystowait > 0) // NK do day-waiting after everything 05-07-08
 	{
 		WaitDate("", 0, 0, daystowait, 0, 0);
-		PlaySound("ambient\shipyard\axe.wav");	//just earcandy :)
+		PlaySound("ambient\shipyard\axe.wav");	//just earcandy 
 		PlaySound("ambient\shipyard\vehicle.wav");
 		Log_SetStringToLog(TranslateString("", "Repairs are completed") + " " + daystowait + " " + XI_ConvertString("day") + stringret(daystowait > 1, XI_ConvertString("s"),"") + " " + LanguageConvertString(tmpLangFileID,"later."));
 		LogIt(XI_ConvertString("Time") + ": " + GetStringTime(GetTime()));		// LDH 15Oct06 added time display
@@ -865,7 +865,7 @@ void SetViewShipData(int cn, int buyPrice, int Reduction) // modded to PRS3, add
 	GameInterface.strings.Capacity        = sti(GetLocalShipAttrib(arCurShip, shref, "Capacity"));
 	GameInterface.strings.MaxCrew         = sti(GetLocalShipAttrib(arCurShip, shref, "MaxCrew"));
 	GameInterface.strings.MinCrew         = sti(GetLocalShipAttrib(arCurShip, shref, "MinCrew"));
-	GameInterface.strings.CannonsQuantity = sti(GetLocalShipAttrib(arCurShip, shref, "CurCanQty")); //NK can qty 05-04-18 "CannonsQuantity"));
+	GameInterface.strings.CannonsQuantity = sti(GetLocalShipAttrib(arCurShip, shref, "CurCanQty")); //NK can qty 05-04-18 "CannonsQuantity";
 	GameInterface.strings.MaxCaliber      = sti(GetLocalShipAttrib(arCurShip, shref, "MaxCaliber"));
 	GameInterface.strings.ShipCost        = MakeMoneyShow(shipCost,MONEY_SIGN,MONEY_DELIVER);
 	if (CheckShipAttribute(arCurShip, shref, "Nation")) tempnation = GetLocalShipAttrib(arCurShip, shref, "Nation"); // PB
@@ -3303,7 +3303,7 @@ void ClampShipToType(ref chref)
 		oldq = GetCargoGoods(&chref, i);
     	// --> Swindler 05-10-16: only make emergency pursue when FOOD_ON
     	// TIH --> why on earth FOR??? changed this so it sells ANY over quantity good!!! grrrr Jul27'06
-        //if(FOOD_ON == 1 && oldq < gq[i]) {
+
         if(oldq < gq[i]) {
 			// sold some
 			//PW: method changed to equate to store prices -->

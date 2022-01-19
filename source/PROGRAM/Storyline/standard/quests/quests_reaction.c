@@ -91,13 +91,13 @@ void QuestComplete(string sQuestName)
 			// ADDING GOODS AND CREW TO THEIR SHIPS // changed by MAXIMUS [gunpowder mod] --> // KK -->
 			SetCrewQuantity(characterFromID("Remy Gatien"), makeint(GetMaxCrewQuantity(characterFromID("Remy Gatien"))));
 			SetCharacterGoods(characterFromID("Remy Gatien"),GOOD_WHEAT,makeint(sti(GetCrewQuantity(characterFromID("Remy Gatien"))) * FOOD_PER_CREW * WHEAT_DAYS));
-			SetCharacterGoods(characterFromID("Remy Gatien"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Remy Gatien"))) * FOOD_PER_CREW * RUM_DAYS));
+			SetCharacterGoods(characterFromID("Remy Gatien"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Remy Gatien"))) * FOOD_PER_CREW * RUM_DAYS);
 			SetCrewQuantity(characterFromID("Yves Giner"), makeint(GetMaxCrewQuantity(characterFromID("Yves Giner"))));
 			SetCharacterGoods(characterFromID("Yves Giner"),GOOD_WHEAT,makeint(sti(GetCrewQuantity(characterFromID("Yves Giner"))) * FOOD_PER_CREW * WHEAT_DAYS));
-			SetCharacterGoods(characterFromID("Yves Giner"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Yves Giner"))) * FOOD_PER_CREW * RUM_DAYS));
+			SetCharacterGoods(characterFromID("Yves Giner"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Yves Giner"))) * FOOD_PER_CREW * RUM_DAYS);
 			SetCrewQuantity(characterFromID("Begon Monchaty"), makeint(GetMaxCrewQuantity(characterFromID("Begon Monchaty"))));
 			SetCharacterGoods(characterFromID("Begon Monchaty"),GOOD_WHEAT,makeint(sti(GetCrewQuantity(characterFromID("Begon Monchaty"))) * FOOD_PER_CREW * WHEAT_DAYS));
-			SetCharacterGoods(characterFromID("Begon Monchaty"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Begon Monchaty"))) * FOOD_PER_CREW * RUM_DAYS));
+			SetCharacterGoods(characterFromID("Begon Monchaty"),GOOD_RUM,makeint(GetCrewQuantity(characterFromID("Begon Monchaty"))) * FOOD_PER_CREW * RUM_DAYS);
 			// ADDING GOODS AND CREW TO THEIR SHIPS // changed by MAXIMUS [gunpowder mod] <-- // <-- KK
 
 			// ADDING GUNPOWDER TO THEIR SHIPS // added by MAXIMUS [gunpowder mod] -->
@@ -2346,7 +2346,6 @@ void QuestComplete(string sQuestName)
 			if (GetNotCaptivePassengersQuantity(pchar) > 0) {
 				cidx = GetNotCaptivePassenger(pchar, GetNotCaptivePassengersQuantity(pchar) - 1);
 				if (cidx != -1) {
-//					if (GetCompanionQuantity(PChar) < 3) {
 					if (GetCompanionQuantity(PChar) < COMPANION_MAX-1) {
 						ExchangeCharacterShip(GetCharacter(cidx), characterFromID("Ship Storage"));
 						SetCompanionIndex(PChar, -1, cidx);
@@ -2434,15 +2433,9 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Lighthouse_Officer"), "Lighthouse_Inside", "goto1");
 			Locations[FindLocation("Oxbay_lighthouse")].reload.l4.disable = 0;
 
-			/*if (characters[GetCharacterIndex("danielle")].ship.type != SHIP_NOTUSED)
-			{
-				SetCompanionIndex(pchar, -1, GetCharacterIndex("danielle"));
-			}
-			else
-			{*/
-				SetOfficersIndex(Pchar, 1, GetCharacterIndex("Danielle"));
-				LAi_SetOfficerType(characterFromID("danielle"));
-			//}
+
+			SetOfficersIndex(Pchar, 1, GetCharacterIndex("Danielle"));
+			LAi_SetOfficerType(characterFromID("danielle"));
 			SetCharacterRemovable(characterFromID("Danielle"), false);
 
 			Pchar.quest.Story_KillSoldiersAtLighthouse.win_condition.l1 = "NPC_Death";

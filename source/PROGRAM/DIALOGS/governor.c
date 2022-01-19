@@ -170,7 +170,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "leavec";
 			if(sti(PChar.reputation) < REP_LEAVEMIN + 5)
 			{
-				dialog.text = GetNationRoyalByType(iNation) + DLG_TEXT[64] + PChar.name + ".");
+				dialog.text = GetNationRoyalByType(iNation) + DLG_TEXT[64] + PChar.name + ".";
 				Link.l1 = DLG_TEXT[69];
 			}
 			Link.l2 = DLG_TEXT[65];

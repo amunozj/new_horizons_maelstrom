@@ -1024,7 +1024,7 @@ float GetPersonalShareRatio(ref char)
 	return 0.05*makefloat(GetDifficulty());
 }
 
-//returns shareratio for chref (chref assumed to be, or have been, officer and/or companion of pchar
+//returns shareratio for chref chref assumed to be, or have been, officer and/or companion of pchar
 float GetCharShareRatio(ref pchar, ref chref)
 {
 	// LDH rewritten 12Mar09
@@ -4698,30 +4698,13 @@ int RemoveNotCaptivePassenger(ref _refCharacter,ref _refPassenger)
 
 float GetCharacterMaxEnergyValue(ref _refCharacter)
 {
-    float ret = (30.0); // + GetCharacterSPECIAL(_refCharacter, SPECIAL_A)*10);
-    /*if (CheckCharacterPerk(_refCharacter, "EnergyPlus"))
-	{
-		ret = ret + 20;
-	}
-	if (CheckAttribute(_refCharacter, "PerkValue.EnergyPlus"))
-	{
-  		ret = ret + stf(_refCharacter.PerkValue.EnergyPlus);
-	} */
+    float ret = (30.0);
 	return ret;
 }
 
 float GetCharacterMaxEnergyABSValue(ref _refCharacter)
 {
-    // ???????? ?????? to_do
-	float ret = (30.0); // + GetCharacterSPECIALSimple(_refCharacter, SPECIAL_A)*10);
-	/*if (CheckCharacterPerk(_refCharacter, "EnergyPlus"))
-	{
-		ret = ret + 20;
-	}
-	if (CheckAttribute(_refCharacter, "PerkValue.EnergyPlus"))
-	{
-  		ret = ret + stf(_refCharacter.PerkValue.EnergyPlus);
-	} */
+ 	float ret = (30.0);
 	return ret;
 }
 

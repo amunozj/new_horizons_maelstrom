@@ -1815,7 +1815,7 @@ void CommonQuestComplete(string sQuestName)
 				{
 					LAi_SetActorType(characters[GetOfficersIndex(Pchar, i)]);
 					LAi_type_actor_Reset(characters[GetOfficersIndex(Pchar, i)]);
-					LAi_SetOfficerType(characters[GetOfficersIndex(Pchar, i)]));
+					LAi_SetOfficerType(characters[GetOfficersIndex(Pchar, i)]);
 				}
 			}
 		break;
@@ -2458,7 +2458,7 @@ Cost for level 50 is 55,374,000
 			if(rand(1) == 0) // Fixed 50% chance
 			{
 				if(CheckAttribute(characterFromID("quest trader"), "nation")) iTradeNation = sti(characters[GetCharacterIndex("quest trader")].nation);
-				else iTradeNation = GetServedNation());
+				else iTradeNation = GetServedNation();
 //				GenerateQuestShip("Convoy Pirate", GetServedNation());	// PB: Use Generic Function
 				GenerateQuestShip("Convoy Pirate", iTradeNation);	// GR: make the enemy hostile to the trader
 				Group_CreateGroup("Convoy_Pirate");

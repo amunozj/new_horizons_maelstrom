@@ -1065,7 +1065,7 @@ ref NewInterfaceTexture()
 {
 	string str = GetEventData();
 	string strSaveData = ""; // TIH initialize it Aug24'06
-//	if(str!="quicksave")) // NK 05-04-14 fix quicksave "out of memory" error //MAXIMUS
+//	if(str!="quicksave") // NK 05-04-14 fix quicksave "out of memory" error //MAXIMUS
 //	{
 	if (GetTargetPlatform()=="pc") {
 		sl_tmp_var = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ, GetSaveDirectory() + GetStorylineDir(iCurStoryline), str, &strSaveData);

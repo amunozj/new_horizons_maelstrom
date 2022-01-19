@@ -40,7 +40,7 @@ void ProcessDialogEvent()
 			if(!Rand(3)) dialog.text = DLG_TEXT[11] + GetTownSize("Quebradas Costillas") + DLG_TEXT[12]; // NK
 			link.l1 = DLG_TEXT[3];
 			link.l1.go = "exit";
-// RobC/Alan_Smithee Blacksmiths (plus A_S' whim, expanding the dialog mightily -->
+// RobC/Alan_Smithee Blacksmiths plus A_S' whim, expanding the dialog mightily -->
 			link.l2 = DLG_TEXT[13];
 			link.l2.go = "new question";
 //<--ditto

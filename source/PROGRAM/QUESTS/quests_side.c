@@ -2116,35 +2116,7 @@ void SideQuestComplete(string sQuestName)
 		break;
 		
 		case "Indians will slay you now!":
-/* -->PW this code in abeyance until impact across storylines better evaluated
-			for (i = 0; i < 1; i++)
-			{
-				indianid = 1+rand(2);
-				sld = LAi_CreateFantomCharacterExOtAt(false, OFFIC_TYPE_GUARD,"isIndian","","", 20, true, 1.0, "indian"+indianid, "reload",LAi_FindRandomLocator("reload")); 				
-				GiveItem2Character(sld,"tomahawk");//PW make doubly sure they are always armed!!
-				LAi_FindRandomLocator("reload"));
-				if(rand(99) > 50)
-				{
-					TakeNItems(sld,"curare",1+rand(4));
-				}
-				else
-				{
-					TakeNItems(sld,"tar",1+rand(4));
-				}
-				LAi_SetWarriorType(sld);
-				LAi_group_MoveCharacter(sld, "Indian Ambush");
-			}
-			//Lock all locators
-			aref reloads; makearef(reloads,Locations[FindLocation(pchar.location)].reload);
-			for(i=0;i<GetAttributesNum(reloads);i++)
-			{
-				aref lx = GetAttributeN(reloads,i);
-				if(!CheckAttribute(lx,"disable")) lx.disabledbylock = true;
-				lx.disable = true;
-			}
-			LAi_group_FightGroups(LAI_GROUP_PLAYER, "Indian Ambush", true);
-// <--PW this code in abeyance until impact across storylines better evaluated
-*/
+
 			DeleteAttribute(&pchar,"quest.Add_Native_In_Hotel");//PW remove payback indian from Cartagena Hotel
 			sld = &characters[sti(PChar.quest.mysterious_plants.give_up.indian)];//PW remove payback indian from Cartagena Hotel
 			ChangeCharacterAddressGroup(sld,"none", "", "");	//PW remove payback indian from Cartagena Hotel
@@ -2157,14 +2129,6 @@ void SideQuestComplete(string sQuestName)
 			CloseQuestHeader("plants");
 			Pchar.quest.plants = "done";
 						
-			
-/*
-// --> PW this code in abeyance until impact across storylines better evaluated
-			PChar.quest.wow_you_won_from_ambush.win_condition.l1 = "Group_Death";
-			PChar.quest.wow_you_won_from_ambush.win_condition.l1.group = "Indian Ambush";
-			PChar.quest.wow_you_won_from_ambush.win_condition = "Release Location from Indian Ambush";
-// <--PW this code in abeyance until impact across storylines better evaluated
-*/ 
 		break;
 		
 		case "Release Location from Indian Ambush":
@@ -2209,7 +2173,7 @@ void SideQuestComplete(string sQuestName)
 		case "Sail To Cartagena for Apothecary":
 			DoQuestReloadToLocation("Cartagena_port","reload","reload1","_");
 			DisableFastTravel(true);// PW block fast travel to ships
-			//StoreCharacterShip(pchar);//PW included in loop for companions (so their crew don't starve either)
+			//StoreCharacterShip(pchar);//PW included in loop for companions so their crew don't starve either
 			shipname = GetMyShipName(PChar);
 			for (i = 0; i < COMPANION_MAX; i++) {
 				limit = GetCompanionIndex(PChar, i);
@@ -3992,10 +3956,7 @@ void SideQuestComplete(string sQuestName)
 				LAi_warrior_DialogEnable(CharacterFromID("Thug9"), 1); //SCM
 				LAi_warrior_DialogEnable(CharacterFromID("Camille Leone"), 1); //SCM
 
-				//LAi_group_MoveCharacter(CharacterFromID("Mateus Santos"), "santos_group");
-				//LAi_group_MoveCharacter(CharacterFromID("Desiree' Muerte"), "santos_group"); //SCM
 				LAi_group_MoveCharacter(CharacterFromID("Thug2"), "santos_group");
-				//LAi_group_MoveCharacter(CharacterFromID("Thug3"), "santos_group");
 				LAi_group_MoveCharacter(CharacterFromID("Thug4"), "santos_group"); //SCM
 				LAi_group_MoveCharacter(CharacterFromID("Thug5"), "santos_group"); //SCM
 				LAi_group_MoveCharacter(CharacterFromID("Thug6"), "santos_group"); //SCM
@@ -4124,15 +4085,7 @@ void SideQuestComplete(string sQuestName)
 			// PB: Allow starting the quest again <--
 			
 			DeleteEnterLocationQuest("Conceicao_tavern", "Hit_start_check");
-		/*	LAi_ActorGoToLocation(CharacterFromID("Ambroz Bricenos"), "reload", "reload1", "none", "", "", "Hit_refused_Ambroz_end", 3.0);
-		break;
 
-		case "Hit_refused_Ambroz_end":
-			EndQuestMovie();TrackQuestMovie("end","Hit_refused_Ambroz_end");
-			bDisableFastReload = 0;
-
-			//END QUEST
-			LAi_QuestDelay("Hit_END", 0.0);*/
 		break;
 
 		case "Hit_start1":
@@ -8728,8 +8681,8 @@ void SideQuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Bart Cooke"), "Redmond_Shore_02", "goto4");
 			ChangeCharacterAddress(characterFromID("Wally Cutty"), "Redmond_Shore_02", "goto6");
 			ChangeCharacterAddress(characterFromID("Bill Jellybones"), "Redmond_Shore_02", "goto5");
-			string smuggle_goods = Goods[sti(Characters[GetCharacterIndex("Thomas O'Reily")].smuggle_cargo)].name);
-			string smuggle_goods2 = Goods[sti(Characters[GetCharacterIndex("Thomas O'Reily")].smuggle_cargo2)].name);
+			string smuggle_goods = Goods[sti(Characters[GetCharacterIndex("Thomas O'Reily")].smuggle_cargo)].name;
+			string smuggle_goods2 = Goods[sti(Characters[GetCharacterIndex("Thomas O'Reily")].smuggle_cargo2)].name;
 
 			Preprocessor_AddQuestData("Thomas O'Reily", GetMyFullName(CharacterFromID("Thomas O'Reily")));
 			Preprocessor_AddQuestData("Thomas", GetMyName(CharacterFromID("Thomas O'Reily")));

@@ -480,7 +480,7 @@ void ChangeScroll()
 	GameInterface.strings.MyGoods = GetCargoGoods(xi_refCharacter,GetGoodsIndexForI(curNum));
 	GameInterface.strings.EnemyCargo = GetCargoLoad(refEnemyCharacter) + "/" + GetCargoMaxSpace(refEnemyCharacter);
 	GameInterface.strings.GoodsName = XI_ConvertString(Goods[GetGoodsIndexForI(curNum)].Name);
-	GameInterface.strings.EnemyGoods = GetCargoGoods(refEnemyCharacter,GetGoodsIndexForI(curNum)));
+	GameInterface.strings.EnemyGoods = GetCargoGoods(refEnemyCharacter,GetGoodsIndexForI(curNum));
 
 	//Boyer change
     //SendMessage(&GameInterface,"lsl",MSG_INTERFACE_SCROLL_CHANGE,"GOODSLIST",-1);

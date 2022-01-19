@@ -178,7 +178,6 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 
 	//Установим обработчик на убийство группы
 	// Casualty event handler
-	// KK SetEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill", 1);		// activated in LAi_group_CheckGroupQuest()
 
 	//Настроим интерфейс
 	// Let us dispose the interface
@@ -209,18 +208,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	// NK -->
 	if (IsFort)
 	{
-		/*ecrew = 2000;
-		SDLogIt("Fort crew1 = " + ecrew);
-		if (CheckAttribute(echr,"town"))
-		{
-			// TIH --> changed to be float and int friendly Nov14'06
-			//ecrew = GetTownNumTroops(echr.town) * TROOPS_MULT_ON_BOARD + GetTownSize(echr.town) * TOWN_MILITIA_MULT; // NK 04-09-20 increase troops
-			// KK ecrew = GetTownNumTroops(echr.town) * TROOPS_MULT_ON_BOARD;
-			// KK ecrew += makeint(makefloat(GetTownSize(echr.town)) * TOWN_MILITIA_MULT);
-			// TIH <--
-			SDLogIt(GetTownNumTroops(echr.town)+"*"+TROOPS_MULT_ON_BOARD+"+"+GetTownSize(echr.town)+"*"+TOWN_MILITIA_MULT);
-			echr.ship.crew.morale = MORALE_NORMAL; // 04-09-22 tempfix for fort morale.
-		}*/
+
 		SDLogIt("Fort crew2 = " + ecrew);
 	}
 	// NK <--
@@ -266,7 +254,6 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 
 	// NK -->
 	// LDH - change from averaging boarding_erank with mchr only if echr was higher to always
-	// was makeint(sti(mchr.rank)+(boarding_erank-sti(mchr.rank))/2))
 	// Make the enemy rank closer to the player so enemy boarder HP won't be too different.  Used only for enemy boarder HP
 	int old_boarding_erank = boarding_erank;
 	boarding_erank = makeint((2.0*sti(mchr.rank) + boarding_erank)/3.0+0.5);
@@ -412,9 +399,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	else											boarding_enemy_original_morale = MORALE_NORMAL;					// PB: For towns without forts
 	// LDH - defeat variable is used in GetAdjustedMorale() for final enemy morale adjustment after battle is over
 	defeat = makeint((rand(makeint(GetShipSkill(mchr,SKILL_GRAPPLING)+GetShipSkill(mchr,SKILL_SNEAK)))+rand(9)+1)*((GetShipSkill(mchr,SKILL_LEADERSHIP)+CalcCharacterSkill(mchr,SKILL_FENCING))/2)); // NK
-//	defeat = (rand(GetShipSkill(mchr,SKILL_GRAPPLING)+GetShipSkill(mchr,SKILL_SNEAK))+rand(9)+1) * ((GetShipSkill(mchr,SKILL_LEADERSHIP)+CalcCharacterSkill(mchr,SKILL_FENCING))/2); // NK
-//	defeat = (rand((1..10) + (1..10)) + (0..9) + 1) * ((1..10) + (1..10)) / 2)
-//	defeat = ((0..20) + (0..9) + 1) * AverageOfLeadershipAndFencing = (1..300), likely 75
+
 
 // changed by MAXIMUS [abordage MOD] -->
 	if (CheckForSurrender(mchr, echr))
@@ -424,7 +409,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		if (mclass > eclass)	// if our ship is smaller we get a morale boost
 		{
 			int beforesurrmorale = sti(mchr.ship.crew.morale);
-			int surrmoraleboost = (rand(mclass-eclass)+1) * rand(mclass-eclass)+1);
+			int surrmoraleboost = (rand(mclass-eclass)+1) * rand(mclass-eclass)+1;
 			SDLogIt("Player morale boost for surrendered ship: " + beforesurrmorale + " -> " + (beforesurrmorale+surrmoraleboost));
 			mchr.ship.crew.morale = beforesurrmorale + surrmoraleboost;
 			DeleteAttribute(mchr,"boardingReload"); // PB: To ensure this is REMOVED upon surrendering
@@ -497,10 +482,10 @@ void LAi_InitializeDeck(int locIndex)
 	// LDH - playerHP should be left alone.  EnemyHP is scaled by difficulty and morale differences.
 	if (!IsTown) {
 		boarding_enemy_hp += boarding_enemy_hp * ((stf(echr.ship.crew.morale) - stf(mchr.ship.crew.morale))/200.0); // LDH - change from absolute morale diff to percentage diff, 0.5 to 1.5 - 19Jan09
-		boarding_enemy_hp = boarding_enemy_hp * (1.0 + (GetDifficulty()-1.0)/5.0));	// 1.0, 1.2, 1.4, 1.6
+		boarding_enemy_hp = boarding_enemy_hp * (1.0 + (GetDifficulty()-1.0)/5.0);	// 1.0, 1.2, 1.4, 1.6
 	} else {
 		boarding_enemy_hp = boarding_enemy_hp + ((makefloat(GetTownCrewMorale(echr.town)) - stf(mchr.ship.crew.morale))/4.0);	// fix parenthesis as above
-		boarding_enemy_hp = boarding_enemy_hp * (1.0 + (GetDifficulty()-1.0)/5.0));	// 1.0, 1.2, 1.4, 1.6
+		boarding_enemy_hp = boarding_enemy_hp * (1.0 + (GetDifficulty()-1.0)/5.0);	// 1.0, 1.2, 1.4, 1.6
 	}
 	//SDLogIt("Final enemy HP = " + boarding_enemy_hp + ", emorale = " + echr.ship.crew.morale + ", mmorale = " + mchr.ship.crew.morale + ", morale change = " + (stf(echr.ship.crew.morale)-stf(mchr.ship.crew.morale))/2.0 + " percent"); // LDH changed 19Jan09
 // <-- KK
@@ -1866,7 +1851,7 @@ if you haven't fixed the enemy ship's starting crew numbers.
 
 Note #5
 No more sailing happily into the sunset for you, matey!  You've gotta
-cheer up the crew on the captured ship now.  :)
+cheer up the crew on the captured ship now.  
 */
 }
 // END MOD Code by Stone-D : 27/07/2003

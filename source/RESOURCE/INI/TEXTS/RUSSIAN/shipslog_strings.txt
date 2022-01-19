@@ -51,6 +51,6 @@ in the night{ночью}
 
 {=====| shipslog.c |=====}
 Unreadable page{Нечитаемая страница}
-This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]{Эта страница была залита ромом и все записи полностью уничтожены. [ ошибка в коде :) ]}
+This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]{Эта страница была залита ромом и все записи полностью уничтожены. [ ошибка в коде  ]}
 
 {=====| 27 log entrys |=====}

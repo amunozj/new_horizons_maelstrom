@@ -183,7 +183,7 @@ void ProcessDialogEvent()
 // PB -->
 		//	Why bother doing all this? The guy is only ever at Martinique anyway
 		//	string island = FindIslandName(Islands[GetCharacterCurrentIsland(CharacterFromID("Raymond Bouchez"))].id); // KK
-		//	dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35] + XI_ConvertString(island) + ".";//MAXIMUS: just for eye-candy :)
+		//	dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35] + XI_ConvertString(island) + ".";//MAXIMUS: just for eye-candy 
 			dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35];
 // PB <--
 			link.l1 = DLG_TEXT[36];

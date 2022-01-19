@@ -272,7 +272,7 @@ float LAi_BladeCalcExperience(aref attack, aref enemy, float dmg)
 	if(re < 1.0) re = 1.0;
 	if(LAi_IsImmortal(enemy)) dmg = 1+rand(sti(attack.rank));
 //NK -->
-	//dmg = dmg*((1.0 + re*0.5)/(1.0 + ra*0.5)) * sqrt(re); //JA 8DEC06 reduced XP at high levels. (was leveling too fast up there
+	//dmg = dmg*((1.0 + re*0.5)/(1.0 + ra*0.5)) * sqrt(re); //JA 8DEC06 reduced XP at high levels. (was leveling too fast up there)
 	dmg = pow2(1.4,(re/1.5)/ra)*sqrt(re)*dmg; //Levis - trying to balance the XP at high level differences
 	//Log_SetStringToLog("" + (dmg * 0.5));
 // NK <--
@@ -1147,11 +1147,11 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 	}
 	if(critical > 0.0)
 	{
-		LAi_ApplyCharacterDamage(enemy, ApplyArmor(enemy, attack, critical, false) + 0.5)); // GreatZen-NK
+		LAi_ApplyCharacterDamage(enemy, ApplyArmor(enemy, attack, critical, false) + 0.5); // GreatZen-NK
 	}
 	else
 	{
-		LAi_ApplyCharacterDamage(enemy, ApplyArmor(enemy, attack, damage, false) + 0.5)); // GreatZen-NK
+		LAi_ApplyCharacterDamage(enemy, ApplyArmor(enemy, attack, damage, false) + 0.5); // GreatZen-NK
 	}
 	//Проверим на смерть
 

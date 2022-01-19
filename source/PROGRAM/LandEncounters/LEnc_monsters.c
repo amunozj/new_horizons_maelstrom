@@ -1298,7 +1298,7 @@ void LEnc_MonstersLoginCorrectParams(ref location, aref chr, string group, strin
 			case "Brothel":
 				chr.dialog.filename = "wenched_dialog.c";
 				chr.greeting = "Gr_Wench";
-				if(!CheckAttribute(location,"brothels_mom") && !HasSubStr(location.id,"QC"))//MAXIMUS: brothel's mom must be equipped to protect her girls ;)
+				if(!CheckAttribute(location,"brothels_mom") && !HasSubStr(location.id,"QC"))//MAXIMUS: brothel's mom must be equipped to protect her girls 
 				{
 					chr.dialog.filename = "mistress_dialog.c";
 					chr.greeting = "Gr_Brothel's mom";

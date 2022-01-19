@@ -1216,7 +1216,7 @@ void BLI_SetPossibleCommands()
 	}*/
 // <-- KK
 
-// KK -[changed by MAXIMUS: isn't simpler and faster? Also without lags ;)]->
+
 	objLandInterface.Commands.ExitDeck.enable = bDeckEnter && iShipCaptain == GetMainCharacterIndex() && !bQuestDisableSeaEnter; // PB
 	objLandInterface.Commands.EnterShip.enable = bTmpBool && !LAi_IsBoardingProcess();
 	if (bDeckEnter) objLandInterface.Commands.EnterShip.enable = GetCompanionQuantity(mchref) > 1;
@@ -1224,7 +1224,7 @@ void BLI_SetPossibleCommands()
 	int portlocidx = -1;
 	int cn = -1;
 	if(CheckAttribute(mchref, "location.from_sea")) portlocidx = FindLocation(mchref.location.from_sea);
-	if(!bSeaActive) bTmpBool = sti(objLandInterface.Commands.OutDoor.enable) == true;//MAXIMUS: full check already done above :) // KK
+	if(!bSeaActive) bTmpBool = sti(objLandInterface.Commands.OutDoor.enable) == true;//MAXIMUS: full check already done above  // KK
 	//else bTmpBool = CheckAttribute(mchref, "Interlocutor.update")==false;
 	if (bTmpBool == true && VISIT_DECK == 1 && curLocIdx != -1 && portlocidx != -1)//MAXIMUS: I doubt, that even it's needed (curLocIdx!=-1 && portlocidx!=-1)...
 	{
@@ -1245,7 +1245,7 @@ void BLI_SetPossibleCommands()
 	objLandInterface.Commands.Back.enable = sti(objLandInterface.Commands.ExitDeck.enable) == true && bTmpBool == true && bDeckEnter == true && LandLocationIdx != -1;
 	bUseCommand = true;
 // MAXIMUS Deck <--
-// <-[changed by MAXIMUS: isn't simpler and faster? Also without lags ;)]- KK
+// <-[changed by MAXIMUS: isn't simpler and faster? Also without lags ]- KK
 
 	if(!bUseCommand)
 	{
@@ -1825,7 +1825,7 @@ void BLI_UpdateOfficers()
 	}
 
 	BLI_SetObjectData();
-	CheckOfficers();//MAXIMUS: all was moved down and BLI_UpdateObjectData will check officers-icons too :) [this will exclude hundreds of BLI_UpdateOfficers() in different places]
+	CheckOfficers();//MAXIMUS: all was moved down and BLI_UpdateObjectData will check officers-icons too  [this will exclude hundreds of BLI_UpdateOfficers() in different places]
 }
 
 void CheckOfficers()

@@ -86,7 +86,7 @@ void ProcessDialogEvent()
 				dialog.snd3 = "Voice\ALMI\ALMI005";
 				// Ah, I meant model in terms of what is the resultant phrase, i.e. write "he" or "she" as the model, and you'll get the gender-appropriate version. Shoulda picked a better variable name than model... :\ ( :kev )
 				// so if you wanted him/her, you could write GetMyPronoun(PChar, "her")
-				// You could also call the appropriate function (GetMyPronounSubj() for he/she), but I for sure can't remember what the real names of the pronouns are, so I wrote the above as a shortcut. :]
+				// You could also call the appropriate function (GetMyPronounSubj() for he/she), but I for sure can't remember what the real names of the pronouns are, so I wrote the above as a shortcut. :
 				
 				// Also it appears the randphrase will have as the three choices:
 				//a. Why, forsooth!  My dear 
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				// this would be GetMyAddressForm(NPChar, PChar, ADDR_CIVIL, false, false) or perhaps more likely ADDR_INSULT. :)
+				// this would be GetMyAddressForm(NPChar, PChar, ADDR_CIVIL, false, false) or perhaps more likely ADDR_INSULT. 
 				// could you also put any isolated strings like the below in the H file?
 				// so it would read:
 				//d.Text = DLG_TEXT[xx] + GetMyAddressForm(NPChar, PChar, ADDR_INSULT, false, false) + DLG_TEXT[yy];

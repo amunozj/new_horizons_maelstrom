@@ -4,7 +4,7 @@ void Rapid_Raid(string modeltype, int bmax, int nation, string mainrel, string n
 Bind this to a key to put some flavour into your visits on land.
 Creates a whole infantry regiment or a single raider that attacks the player.
 Attention: When employing a high number of attackers the game may freeze for some seconds!
-But the fun is definitely worth waiting 2 seconds! :)
+But the fun is definitely worth waiting 2 seconds! 
 Usage comparable to Random_Raid, but with slight differences.
 
 Parameters: 		(attacker modeltype, number of attackers, nation,
@@ -57,7 +57,7 @@ for atmosphere.
 	if (alert != "")	LogIt(alert);											// Don't show empty log messages
 }
 
-string LAi_FindFirstLocator(string group)	// This function is needed to place all troops and captains on the same spot. Random start positions look very dumb. :)
+string LAi_FindFirstLocator(string group)	// This function is needed to place all troops and captains on the same spot. Random start positions look very dumb. 
 {
 	if(IsEntity(loadedLocation) != true) return "";
 	string at = "locators." + group;

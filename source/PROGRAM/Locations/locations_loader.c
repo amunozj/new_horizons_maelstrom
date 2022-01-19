@@ -53,19 +53,7 @@ bool LoadLocation(ref loc)
 
 	for (i = 0; i < MAX_SHIPS_IN_LOCATION; i++) { iShips[i] = -1; } // KK
 
-	//Time update==========================================================================
-	// NK 04-09-21 with time now added on the fly this is unnecessary. However, with TIMEUPDATE_BLOCK_LAND we still need something.
-	/*if(locTmpTime > 300)
-	{
-		AddTimeToCurrent(4, 0);
-	}else{
-		if(locTmpTime > 100)
-		{
-			AddTimeToCurrent(0, 30);
-		}else{
-			AddTimeToCurrent(0, 5);
-		}
-	}*/
+
 	if(TIMEUPDATE_BLOCK_LAND)
 	{
 		AddTimeToCurrent(0, (locTmpTime * TIMESCALAR_LAND)/60.0);
@@ -123,21 +111,7 @@ bool LoadLocation(ref loc)
 		SetNextWeather(loc.lockWeather);
 	}
 // KK -->
-	/*bool isNoBoarding = true;
-	bool isFort = false;
-	if(CheckAttribute(loc, "boarding") == true)
-	{
-		if(loc.boarding == "true") isNoBoarding = false;
-		if(loc.boarding == "fort")
-		{
-			isNoBoarding = false;
-			isFort = true;
-		}
-		if (loc.boarding == "town") {
-			isNoBoarding = false;
-			isTown = true;
-		}
-	}*/
+
 	bool isNoBoarding = !LAi_IsBoardingProcess() && !bSeaActive;
 	if (isNoBoarding) {
 		if (!CheckAttribute(loc,"models.back")) {
@@ -477,7 +451,6 @@ bool LoadLocation(ref loc)
 					float litX = stf(lit1.x);
 					float litY = stf(lit1.y);
 					float litZ = stf(lit1.z);
-					//traceif("     AddLight: " + lightName + " (" + litX + ", " + litY + ", " + litZ);
 					SendMessage(loc, "lsfff", MSG_LOCATION_ADD_LIGHT, lightName, litX, litY, litZ);
 					if(lightName == "lamp")
 					{
@@ -563,7 +536,7 @@ bool LoadLocation(ref loc)
 	CreateEntity(&locCamera, "locationcamera");
 	SendMessage(&locCamera, "li", MSG_CAMERA_SETTARGET, mainCharacter);
 	locCameraFollow();
-	if(CheckAttribute(loc, "lockCamAngle") == true) // KK && LAi_boarding_process)
+	if(CheckAttribute(loc, "lockCamAngle") == true) 
 	{
 		float lockCamAngle = stf(loc.lockCamAngle);
 		if(lockCamAngle < -1.5) lockCamAngle = -1.5;
@@ -753,7 +726,6 @@ void LocationSetLights(ref loc)
 					float litX = stf(lit1.x);
 					float litY = stf(lit1.y);
 					float litZ = stf(lit1.z);
-					//Trace("     AddLight: " + lightName + " (" + litX + ", " + litY + ", " + litZ);
 					SendMessage(loc, "lsfff", MSG_LOCATION_ADD_LIGHT, lightName, litX, litY, litZ);
 					if(lightName == "lamp")
 					{

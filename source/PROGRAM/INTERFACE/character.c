@@ -607,8 +607,8 @@ void SetVariable()
     GameInterface.strings.NextExperience = nNextExperience;
     GameInterface.strings.Money = MakeMoneyShow(nPlayerMoney,MONEY_SIGN,MONEY_DELIVER);
 	GameInterface.strings.Land = MakeMoneyShow(nPlayerLand,MONEY_SIGN,MONEY_DELIVER) + " " + XI_ConvertString("acr") + "."; // GreatZen
-    // Scheffnow - bfd -->
-    // GameInterface.strings.CharacterName = xi_refCharacter.name+" "+ stringRet(CheckAttribute(xi_refCharacter,"firstname"),xi_refCharacter.firstname + " ","") + xi_refCharacter.lastname; // RM
+
+
     // NK clean this up 05-07-21
 	string namestr = "";
 	if(CheckAttribute(xi_refCharacter,"name")) namestr = xi_refCharacter.name+" ";
@@ -706,11 +706,9 @@ void SetVariable()
 //	SetNewPicture("TYPEPICT1", "");//MAXIMUS: SetNewPicture with "" couses many traces into log-file and slows down an interface
 	SetNodeUsing("TYPEPICT", xi_refCharacter.id!=xi_refMainChar.id);
 	SetNodeUsing("TYPEPICT1",CheckAttribute(xi_refCharacter,"prisoned")==true);
-//	if( xi_refCharacter.id == xi_refMainChar.id ) {
-//		SetNewPicture("TYPEPICT", "");
-//	} else {
+	
 	if ( IsCompanion(xi_refCharacter) ) SetNewPicture("TYPEPICT", "interfaces\blank_ship.tga");			// changed after build 11 by KAM
-	if ( IsOfficer(xi_refCharacter) ) //SetNewPicture("TYPEPICT", "interfaces\kam_isofficer.tga");				// changed after build 11 by KAM
+	if ( IsOfficer(xi_refCharacter) ) 
 	{
 		if(CheckAttribute(xi_refCharacter,"quest.officertype"))
 		{
@@ -1283,7 +1281,7 @@ void ProcessFrame()
 			if(nFreeSkillPoints>0)
 			{
 				// NK 04-09-08 added choice for whether to disable skillup if skill == 0 -->
-				//(added this 04-09-19. Sorry I missed it before
+				// added this 04-09-19. Sorry I missed it before
 				if(ENABLE_SKILLUP_IFZERO)
 				{
 					switch(newIndex)

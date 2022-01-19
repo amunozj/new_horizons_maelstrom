@@ -282,7 +282,7 @@ bool AddXPtoChar(ref chref, string expName, int _exp)
 					}
 					else
 					{
-						LevelText = GetMySimpleName(chref) + " " + TranslateString("","has gained a new level!") + " " + TranslateString("","(Now level") + " " + GetTotalRank(chref) + ")");
+						LevelText = GetMySimpleName(chref) + " " + TranslateString("","has gained a new level!") + " " + TranslateString("","(Now level") + " " + GetTotalRank(chref) + ")";
 						PlayStereoSound("interface\new_level.wav");
 						AddMsgToCharacter(chref,MSGICON_LEVELUP);
 					}
@@ -291,7 +291,7 @@ bool AddXPtoChar(ref chref, string expName, int _exp)
 			}
 			else
 			{
-				LevelText = GetMySimpleName(chref) + " " + TranslateString("","has gained a new level!") + " " + TranslateString("","(Now level") + " " + GetTotalRank(chref) + ")");
+				LevelText = GetMySimpleName(chref) + " " + TranslateString("","has gained a new level!") + " " + TranslateString("","(Now level") + " " + GetTotalRank(chref) + ")";
 				//This character has noone to choose his perks so we must do it for him.
 				if(!bAllies(chref))
 				{
@@ -435,7 +435,7 @@ bool AddXPtoSkill(ref chref, string expName, int skillExp)
 				{
 					if (GetAttribute(GetMainCharacter(), "location") != "Tutorial_Deck") // PB: Skip sound here
 					{
-						LogIt(GetMySimpleName(chref) + " " + TranslateString("","Gained") + " " + XI_ConvertString("skill_level") + " " + XI_ConvertString(expName) + " - " + GetCharacterSkill(chref, expName)));
+						LogIt(GetMySimpleName(chref) + " " + TranslateString("","Gained") + " " + XI_ConvertString("skill_level") + " " + XI_ConvertString(expName) + " - " + GetCharacterSkill(chref, expName));
 					}
 				}
 			}
@@ -1490,7 +1490,7 @@ int CalculateExperienceFromRank(int _Rank)
 
 int CalculateSkillExperienceFromRank(int rank)
 {
-	//makeint(((CalculateExperienceFromRank(rank)-CalculateExperienceFromRank(rank-1))*SKILL_NEXT_XP_MULT) / ADD_SKILLPOINTS_PERLEVEL
+	
 	int maxexp = CalculateExperienceFromRank(makeint((MAX_CHARACTER_SKILL * NUM_DIFF_SKILLS) / ADD_SKILLPOINTS_PERLEVEL)); //Take the XP needed for level all skillpoints are used
 	//We have NUM_DIFF_SKILLS skills each going to MAX_CHARACTER_SKILL. We need to know how !MAX_CHARACTER_SKILL, so use a for-loop.
 	int amskills = 0;

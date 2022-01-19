@@ -216,11 +216,8 @@ void ProcessDialogEvent()
 			{
 			Link.l1.go = "EITC Trading2";
 			}
-			/*if (CheckCharacterItem(Pchar,"Map_Doc_1") && !checkCharacterItem(Pchar, "Map_Doc_2"))
-			{
-			Link.l1.go = "EITC Trading5";
-			}*/
-			if (CheckCharacterItem(Pchar,"Map_Doc_1"))// && checkCharacterItem(Pchar, "Map_Doc_2"))
+
+			if (CheckCharacterItem(Pchar,"Map_Doc_1"))
 			{
 			Link.l1.go = "EITC Trading6";
 			}
@@ -403,7 +400,6 @@ void ProcessDialogEvent()
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice); // KK
 						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string
-						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.text = DLG_TEXT[55];

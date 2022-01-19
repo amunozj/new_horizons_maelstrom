@@ -1579,7 +1579,7 @@ void SetCoastTraffic(string islandstr)
 					int oldyear = GetDataYear();  if (sti(cr.crmonth) > GetDataMonth()) oldyear -= 1;
 					int days = GetPastTime("day", oldyear, sti(cr.crmonth), sti(cr.crday), 0.0, GetDataYear(), GetDataMonth(), GetDataDay(), 0.0);
 					// LDH faster calculation 20Feb09
-//					int days = GetDayOfYear(GetDataYear(), GetDataMonth(), GetDataDay()) - GetDayOfYear(oldyear, sti(cr.crmonth), sti(cr.crday);
+//					int days = GetDayOfYear(GetDataYear(), GetDataMonth(), GetDataDay()) - GetDayOfYear(oldyear, sti(cr.crmonth), sti(cr.crday));
 //					if (days < 0) days += 365;	// Ignoring leap year here.  It's close enough.
 					if(days < CR_PERSIST)
 					{

@@ -313,7 +313,7 @@ void DoScrollChange()
 			SetSelectable("EXECUTE_CAPTIVE",true);
 			/* END MOD : Stone-D 01/08/2003 */
 			SetSelectable("RELEASE_CAPTIVE",true); // NK alwasy can release 05-04-16
-			// ccc ransom options added Oct17 04.  Based on code by Stone-D and Nathan Kell, all credit and thanks to them :)
+			// ccc ransom options added Oct17 04.  Based on code by Stone-D and Nathan Kell, all credit and thanks to them 
 			//ccc if(true) // NK - if(GetRemovable(chPsgn)) //if( GetRemovable(chPsgn) && CheckAttribute(chPsgn,"nation") && chPsgn.nation==curLocNation )
 			// modified by NK in light of new release button. 05-04-16
 			bool allsites = RANSOMSITE == "all";
@@ -330,7 +330,7 @@ void DoScrollChange()
 			if(RELEASE_AT_SEA) ransomstate = ransomstate && FindLoadedLocation() != -1; // NK so if release_at_sea, we can only release, not ransom, at sea.
 			if(ransomstate) SetSelectable("RANSOM_CAPTIVE",true);
 			else SetSelectable("RANSOM_CAPTIVE", false);
-			// ccc ransom options end. Last lines are a bit crude coding but that way its more clear what I've messed up ;)
+			// ccc ransom options end. Last lines are a bit crude coding but that way its more clear what I've messed up 
 			}
 		}
 		SetCaptiveData(chPsgn);
@@ -1091,7 +1091,7 @@ void PressExecuteCaptive() // Sorry, no notes yet.
 	ref captiveCharacter = GetCharacter(captiveIdx);
 	ref pchar = GetMainCharacter(); // KK
 	// NK --> // KK -->
-	ChangeCharacterReputation(pchar, -5); // NK disable this. Rep doesn't have bigger changes later, so no reason why rep chg should be level-based. makeint(-5.0 * (1.0 + (sqrt(stf(captiveCharacter.rank))-1.0)/5.0)));
+	ChangeCharacterReputation(pchar, -5); // NK disable this. Rep doesn't have bigger changes later, so no reason why rep chg should be level-based
 	if (AUTO_SKILL_SYSTEM) {
 	  AddCharacterExpChar(pchar, "Defence", sti(captiveCharacter.ransom));
 	} else {

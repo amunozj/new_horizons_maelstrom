@@ -86,7 +86,7 @@ void ProcessDialogEvent()
 				}
 			}
 //			i = makeint(GetTownGovernorIndex(NPChar.town) > -1) + GetTownNumForts(NPChar.town);
-			i = GetTownNumForts(NPChar.town) + 1;							// GR: simplified, if (makeint(GetTownGovernorIndex(NPChar.town) > -1) is false then original line sets i to wrong value
+			i = GetTownNumForts(NPChar.town) + 1;							// GR: simplified, if (makeint(GetTownGovernorIndex(NPChar.town)) > -1) is false then original line sets i to wrong value
 			if (GetTownGovernorIndex(NPChar.town) > -1 && GetPassengersQuantity(PChar) >= i && ProfessionalNavyNation() == UNKNOWN_NATION)
 			{
 				Link.l10 = DLG_TEXT[7];

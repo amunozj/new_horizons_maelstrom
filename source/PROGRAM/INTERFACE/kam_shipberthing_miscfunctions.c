@@ -202,7 +202,7 @@ string GetShipPic(int shiptypenum)
 
 
 string GetBerthingStatusName(int BerthingStatusNum, bool InitialCapital)
-//returns "laid up" or "on shore leave", with or without initial capital)
+//returns "laid up" or "on shore leave", with or without initial capital
 {
 	int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	switch(InitialCapital)

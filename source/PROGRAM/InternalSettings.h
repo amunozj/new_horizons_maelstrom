@@ -360,7 +360,7 @@ float	MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - origina
 												// 100: sequential (NATHANIEL_BOARDER_6 to NATHANIEL_BOARDER_10; for remaining groups identical to 0).
 // <-- KK
 
-// PRISONER RANSOM OPTIONS Based on code by Stone-D and Nathan Kell, all credit and thanks to them :)
+// PRISONER RANSOM OPTIONS Based on code by Stone-D and Nathan Kell, all credit and thanks to them 
 // You can't get ransom for your prisoners at sea anymore but at certain landlocations only. Choose ONE locationtype from the list. Can be changed during saved games.
 #define RANSOMSITE					"all" 		// STRING - You can change 'all' to: 'town', 'jungle', 'dungeon', 'residence', 'church' or 'tavern'.
 #define RANSOM_AT_HOME				0			// BOOL - If you set this option to 1 you must take the prisoner to his 'homeisland' to get ransom (i.e. the island with the prisoners nation)
@@ -460,7 +460,7 @@ int		RANGE_TO_ENEMY =			3000;		// INT - in feet/yards/whatever unit the game use
 #define CHANCE_OVERRIDE_PRS3NAT_IF_PIRATE	0.4 // FLOAT - chance to use a random nation rather than PIRATE if passed nation is pirate in SetRandomStatsToShip()
 #define CHANCE_OVERRIDE_SHIPNATION			0.0 // FLOAT - chance to use passed nation rather than base ship's nation if base ship has nation. Defaults to never doing so. Will almost never be used.
 
-#define SHIPYARD_SELL_ALL_CLASSES		0		// BOOL - are shipyards limited to selling only certain classes of ship, based on town size (see STORE_MINSIZE, below, in Town Constants
+#define SHIPYARD_SELL_ALL_CLASSES		0		// BOOL - are shipyards limited to selling only certain classes of ship, based on town size see STORE_MINSIZE, below, in Town Constants
 #define SHIPYARD_CHANCE_CLASS			9		// INT - default 8. Chance for a ship to be available is 1 in (this - ship class). So if this is 8, then a class 1 ship has a 1-in-7 chance of being available. NOTE setting to 0 makes any ship always available.
 #define SHIPYARD_SHIP_SELL_MULT			0.30	// FLOAT - multiplier to sell price for ship - non rpgstyle shipyards
 #define SHIPYARD_BOUGHTSHIP_SELL_MULT	0.90	// FLOAT - SY_RPG_STYLE - multiplier to sell price for a LEGIT ship (one you bought originally)

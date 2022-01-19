@@ -257,7 +257,7 @@ void RepairAllCannons(ref ch)
 		int AddSkill = CannonsFixed * 30;
 		if (sti(ch.index) == GetMainCharacterIndex())		// LDH 24Jan09
 			Trace("Repair & Defence skill added in RepairAllCannons: " + AddSkill);
-		AddPartyExpChar(ch, "Repair", AddSkill));
+		AddPartyExpChar(ch, "Repair", AddSkill);
 		AddPartyExpChar(ch, "Defence", AddSkill);
 	}
 
@@ -271,9 +271,6 @@ bool SetCannonArcQty(ref ch, int arc, int qty)
 	if(quadstr == "") return false; // arc not correct
 	ref rship = GetShipByType(GetCharacterShipType(ch));
 	if(!sti(rship.cannonsquantity)) return false; // ship has no guns
-	/*if(!CheckAttribute(ch,"ship.cannons.borts."+quadstr) ch.ship.cannons.borts.(quadstr) = "";
-	aref arcan; makearef(arcan, ch.ship.cannons.borts.(quadstr));
-	arcan.qty = qty;*/
 	ch.ship.cannons.borts.(quadstr).qty = qty;
 	return true;
 }

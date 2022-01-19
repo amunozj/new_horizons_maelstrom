@@ -54,4 +54,4 @@ in the late evening after sunset{in the late evening after sunset}
 in the night{in the night}
 
 Unreadable page{Unreadable page}
-This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]{This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]}
+This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]{This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]}

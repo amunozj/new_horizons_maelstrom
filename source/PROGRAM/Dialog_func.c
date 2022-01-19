@@ -396,7 +396,7 @@ void KAM_SetSailingIconsState(bool cap)
 
 // move to set_indialogattributes to address section below 05-07-18
 
-string RandSwear()	// ccc Nov05  fixed mess by unknown source :(
+string RandSwear()	// ccc Nov05  fixed mess by unknown source
 {
 	int RandS = Rand(16);
 
@@ -622,7 +622,7 @@ string PCharPhrase (string Var1, string Var2)
 //set either to "any" to override loc-based rumors
 string SelectRumour(string rIsland, string rNation)
 {
-	//build available rumor table, borrowed from build encounter table. ;)
+	//build available rumor table, borrowed from build encounter table. 
 	int AvailRumors[256]; //temp, should be [TOTAL_RUMOURS];
 	int NumRumours = 0;
 	bool questavail = false;
@@ -1284,7 +1284,7 @@ void Set_inDialog_Attributes()
 
 
 	AddressForms[GetAddressIndex(ADDR_POLITE, ENGLAND, 0)] = XI_ConvertString("sir");		//	Polite conversations (traders et cetera)
-	AddressForms[GetAddressIndex(ADDR_POLITE, ENGLAND, 1)] = XI_ConvertString("ma'am");	// ma'am is then not a new contraction? Boy, learn something every day. :)
+	AddressForms[GetAddressIndex(ADDR_POLITE, ENGLAND, 1)] = XI_ConvertString("ma'am");	// ma'am is then not a new contraction? Boy, learn something every day. 
 	// civil titles copied for polite for non-Eng
 	AddressForms[GetAddressIndex(ADDR_POLITE, FRANCE, 0)] = XI_ConvertString("Monsieur");
 	AddressForms[GetAddressIndex(ADDR_POLITE, FRANCE, 1)] = XI_ConvertString("Mademoiselle");
@@ -2618,7 +2618,7 @@ void Riley_Officer_Restock_Ammo(int officer_price)
 
 	if(officer_price > 0)
 	{
-		// singular / plural check for words. Wheeeee! :)
+		// singular / plural check for words. Wheeeee! 
 		if(pistolbullets_officers == 1)pb_sgpl = " " + XI_ConvertString("wpistol bullet") + ", ";
 		if(pistolgrapes_officers == 1)pg_sgpl = " " + XI_ConvertString("wgrapeshot load") + ", ";
 		if(musketbullets_officers == 1)mb_sgpl = " " + XI_ConvertString("wmusket bullet bought for") + " ";
@@ -2628,7 +2628,7 @@ void Riley_Officer_Restock_Ammo(int officer_price)
 	}
 // KK -->
 	if (LAi_IsCapturedLocation) {
-		// singular / plural check for words. Wheeeee! :)
+		// singular / plural check for words. Wheeeee! 
 		if(pistolbullets_officers == 1)pb_sgpl = " " + XI_ConvertString("wpistol bullet") + ", ";
 		if(pistolgrapes_officers == 1)pg_sgpl = " " + XI_ConvertString("wgrapeshot load") + ", ";
 		if(musketbullets_officers == 1)mb_sgpl = " " + XI_ConvertString("wmusket bullet taken");

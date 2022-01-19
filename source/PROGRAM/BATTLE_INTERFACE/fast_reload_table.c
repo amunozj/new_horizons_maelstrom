@@ -206,7 +206,7 @@ void initFastReloadTable()
 	//prison
 	curTable.l9.pic = FRP_PRISON;
 	curTable.l9.tex = FRT_PRISON;
-	curTable.l9.note = FRN_PRISON);
+	curTable.l9.note = FRN_PRISON;
 	curTable.l9.location = "Alice_prison";
 	//brothel
 	curTable.l10.pic = FRP_BROTHEL;
@@ -343,14 +343,14 @@ void initFastReloadTable()
 	// store
 	curTable.l5.pic = FRP_STORE;
    	curTable.l5.tex = FRT_STORE;
-   	curTable.l5.note = FRN_STORE);
+   	curTable.l5.note = FRN_STORE;
    	curTable.l5.location = "Pirate_store";
 
 	makearef(curTable,objFastReloadTable.table.Falaise_de_fleur);
 	// store
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
-	curTable.l1.note = FRN_STORE); // KK
+	curTable.l1.note = FRN_STORE; // KK
 	curTable.l1.location = "Falaise_de_Fleur_store";
 	// shipyard
 	curTable.l2.pic = FRP_SHIPYARD;
@@ -500,7 +500,7 @@ void initFastReloadTable()
 	// prison
 	curTable.l6.pic = FRP_PRISON;
 	curTable.l6.tex = FRT_PRISON;
-	curTable.l6.note = FRN_PRISON);
+	curTable.l6.note = FRN_PRISON;
 	curTable.l6.location = "Greenford_prison";
 	// tailor's shop
 	curTable.l7.pic = FRP_TAILORSHOP;
@@ -901,7 +901,7 @@ void initFastReloadTable()
     // prison
 	curTable.l7.pic = FRP_PRISON;
 	curTable.l7.tex = FRT_PRISON;
-	curTable.l7.note = FRN_PRISON);
+	curTable.l7.note = FRN_PRISON;
 	curTable.l7.location = "Tortuga_prison";
     // tailor
 	curTable.l8.pic = FRP_TAILORSHOP;

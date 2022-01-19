@@ -1188,7 +1188,7 @@ void LocationInitHispaniola(ref n)
 	// ccc fake forts--------------------------------------
 	//ID
 	Locations[n].id = "PoPrince_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";
@@ -2545,7 +2545,7 @@ void LocationInitHispaniola(ref n)
 	// ccc fake forts--------------------------------------
 	//ID
 	Locations[n].id = "Santo_Domingo_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
 	//Info
 	Locations[n].filespath.models = "locations\Fort_Inside\Fort_1";
 	Locations[n].filespath.textures = "locations\SPAIN";
