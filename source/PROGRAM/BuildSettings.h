@@ -84,7 +84,10 @@ bool VISIT_DECK = true;
 	// 0: Stock PotC: When anchoring, you go directly to shore; also you go directly to sea when leaving port or bay.
 	// 1: When anchoring, you go to your ship's deck. From there you can go to shore in the same way as in the tutorial.
 	//    When leaving land you'll also go to your ship's deck, unless you select 'Sea' command.
+	
+bool FORCE_TRADE_WINDS = false;		// Mirsaneli add
 
+bool DISABLE_SAILTO_RESTRICTIONS = false;		// Mirsaneli add
 
 // ======================================
 // CANNONS
@@ -141,15 +144,23 @@ bool AUTOLOOT_ON = true;
 	// 0: No automatic looting of killed characters
 	// 1: Blade/Gun/Money of killed enemies is automatically moved into your inventory
 	// (This can be combined with CORPSEMODE 2 as any leftover items not autolooted will be left on the corpse)
+	
+bool SEQUENTIAL_CANNONFIRE = true;
+	// 0: Disables sequental cannonfire (only available in realistic mode)
+	// 1: Enables sequental cannonfire (only available in realistic mode)
 
 
 // ======================================
 // LAND EXPLORATION, LOCATIONS:
 // ======================================
 
-float DIALOG_CAMERA = 0.0;
+// float DIALOG_CAMERA = 0.0;
 	// 0.1 - 1.0: Camera will be moved to the side during dialog, for full scene viewing
 	// 0.0: Stock PotC dialogs
+	
+float HUD_SCALING = 1.0;	// Mirsaneli add
+
+float SHIP_CAMERA_DISTANCE = 1.0;	// Mirsaneli add
 
 bool ENABLE_BROTHEL = false;
 	// 0: Stock PotC: no brothel in QC
@@ -166,11 +177,13 @@ int NO_THEFT = 0;
 
 int LOCK_OPEN = 0;
  	// 0- 70: the higher this value the higher your chance of picking the locks of treasurechests
-	// Above 66 chests always open, above 33 you won't hurt yourself anymore 
+	// Above 66 chests always open, above 33 you won't hurt yourself anymore ;-)
 
 // ======================================
 // LOG, LOOKS & EFFECTS:
 // ======================================
+
+bool SHIP_INFO = true;
 
 bool LOC_CAMERA = false;
 	// 0: Near doors camera view will stay locked to view FROM player
