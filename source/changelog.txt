@@ -1,0 +1,6 @@
+- fixed Espinosa model
+- added Quiet Sun's sea random colorization
+- made the sea waves real
+- changed sea colors to match actual Caribbean
+- reverted back to original NH Direct Sail mode (GOF was causing troubles)
+- various other fixes 
