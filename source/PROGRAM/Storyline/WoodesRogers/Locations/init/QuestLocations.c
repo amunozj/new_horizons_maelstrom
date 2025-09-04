@@ -133,17 +133,17 @@ void LocationInitQuestLocations(ref n)
     	Locations[n].models.always.l3.tech = "LocationModelBlend";
 
     	//Day
-   	 Locations[n].models.day.charactersPatch = "Jungle2_patch";
+	Locations[n].models.day.charactersPatch = "Jungle2_new_patch";
     	//Night
-    	Locations[n].models.night.charactersPatch = "Jungle2_patch";
+	Locations[n].models.night.charactersPatch = "Jungle2_new_patch";
     	//Environment
     	Locations[n].environment.weather = "true";
     	Locations[n].environment.sea = "true";
     
 	//Reload map
-	Locations[n].locators_radius.box.box4 = 4;
-	Locations[n].locators_radius.box.box5 = 3;
-	Locations[n].locators_radius.box.box6 = 4;
+	Locations[n].locators_radius.box.box4 = 0.0001;		//not used boxes	
+	Locations[n].locators_radius.box.box5 = 0.0001;
+	Locations[n].locators_radius.box.box6 = 0.0001;
 
 	Locations[n].locators_radius.box.box7 = 2.5;		
 	Locations[n].locators_radius.goto.push7 = 3;
@@ -164,36 +164,19 @@ void LocationInitQuestLocations(ref n)
 //--------------------------------------------------------------------------
 
 	locations[n].id = "Swamp_island2";
-	//locations[n].id = "TownExitW_flooded";
 	locations[n].id.label = "Swamp Island";
 	locations[n].image = "wr_shipwreck_island.tga";
 	//Town sack
 	locations[n].townsack = "Redmond";
 	//Sound
 	locations[n].type = "silent_seashore";
-	//locations[n].type = "prison_ships";
-	//locations[n].islandId = "Redmond";
-	//locations[n].islandIdAreal = "Cartahena";
+
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Swamp_Island2";
 	Locations[n].models.always.townExit = "townExitW";
-
-//	Locations[n].models.always.townWalls = "townExitW_stucco";
 	Locations[n].models.always.locators = "townExitW_locators_JRH4";
-		
 	Locations[n].models.always.grassPatch = "townExitW_grass";
-//	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
-//	Locations[n].models.always.l1 = "plan1";
-	Locations[n].models.always.l1.level = 9;
-	Locations[n].models.always.l1.tech = "LocationModelBlend";
-//	Locations[n].models.always.l2 = "plan2";
-	Locations[n].models.always.l2.level = 8;
-	Locations[n].models.always.l2.tech = "LocationModelBlend";
-//	Locations[n].models.always.l3 = "plan3";
-	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	
 	//Day
 	locations[n].models.day.charactersPatch = "townExitW_patch";
@@ -206,12 +189,6 @@ void LocationInitQuestLocations(ref n)
 	locations[n].environment.sea = "true";
 	
 	//Reload map
-	locations[n].reload.l1.name = "reload4";
-	locations[n].reload.l1.go = "Cartahena_town";
-	locations[n].reload.l1.emerge = "gate_back";
-	locations[n].reload.l1.autoreload = "0";
-	locations[n].reload.l1.label = "Cartahena";
-
 	locations[n].reload.l4.name = "reload3_back";
 	locations[n].reload.l4.go = "swamp_wreck_inside";
 	locations[n].reload.l4.emerge = "reload7";
@@ -352,47 +329,33 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].island = "Redmond";
 	n = n + 1;
+
 //--------------------------------------------------------------------------
 
 	locations[n].id = "swamp_wreck_inside";
 	locations[n].id.label = "Swamp Wreck";
 	locations[n].filespath.models = "locations\decks\SwampWreck";
 	locations[n].image = "wr_wreck_inside.tga";
+
 	//Town sack
 	locations[n].townsack = "Redmond";
 	locations[n].lockWeather = "Inside";
 	//Sound
-	//locations[n].type = "prison_ships";
 	locations[n].type = "galleon_open";
-	//locations[n].fastreload = "LostShipsCity";
-	//locations[n].islandId = "LostShipsCity";	
+
 	//Models
 	//Always	
-//	Locations[n].models.always.inside = "CeresSmithy";
-//	Locations[n].models.always.inside.level = 65538;
-    Locations[n].models.always.l1 = "CeresSmithy";
-    Locations[n].models.always.l1.level = 65538;
+   	Locations[n].models.always.l1 = "CeresSmithy";
+   	Locations[n].models.always.l1.level = 65538;
 	Locations[n].models.always.seabed = "CeresSmithy_sb";
-//	Locations[n].models.always.outdoor = "CeresSmithy_outdoor";		
-//	Locations[n].models.always.reflect = "CeresSmithy_reflect";
 	Locations[n].models.always.reflect.level = 65531;
 	Locations[n].models.always.reflect.sea_reflection = 1;	
 	Locations[n].models.always.windows = "CeresSmithy_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
 	Locations[n].models.always.windows.level = 65539;	
-//	Locations[n].models.always.sails = "CeresSmithy_sails";
-	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
-//	Locations[n].models.always.plan1 = "Plan1";
-	Locations[n].models.always.plan1.tech = "LocationWindows";
-	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
-//	Locations[n].models.always.plan2 = "Plan2";
-	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
 	Locations[n].models.always.locators = "CeresSmithy_locators_JRH";	
 	Locations[n].models.always.grassPatch = "CeresSmithy_grass";
-//	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+				
 	//Day
 	locations[n].models.day.charactersPatch = "CeresSmithy_patch_day";
 	//Locations[n].models.day.jumpPatch = "CeresSmithy_jump_patch";
@@ -750,6 +713,79 @@ void LocationInitQuestLocations(ref n)
 	n = n + 1;
 
 // Rdm _______________________________________________________________________________________________________
+
+	Locations[n].id = "wr_terrace";
+	locations[n].id.label = "#stown_name#";
+	locations[n].worldmap = "Redmond";
+	Locations[n].filespath.models = "locations\Town_Redmond\Town_04";
+	Locations[n].filespath.textures = "locations\ENGLAND";
+	Locations[n].image = "Town_Redmond_Town_04.tga";
+
+	//Town sack
+	Locations[n].townsack = "Redmond";
+
+	//Sound
+	locations[n].type = "town";
+	locations[n].fastreload = "Redmond";
+	LAi_LocationFantomsGen(&locations[n], true);
+	//Models
+	//Always
+	Locations[n].models.always.locators = "Red04_l_JRH_terrace";
+	Locations[n].models.always.city = "Red04";
+	Locations[n].models.always.dno = "Red04_rb";
+	Locations[n].models.always.dno.level = 95;
+	Locations[n].models.always.dno.uvslide.u1 = -0.12;
+	Locations[n].models.always.dno.uvslide.v1 = -0.03;
+	Locations[n].models.always.dno.tech = "LocationRiverFloor";
+	Locations[n].models.always.mirrow = "Red04_re";
+	Locations[n].models.always.mirrow.level = 96;
+	Locations[n].models.always.dnoBlend = "Red04_rb";
+	Locations[n].models.always.dnoBlend.level = 97;
+	Locations[n].models.always.dnoBlend.uvslide.u1 = -0.1;
+	Locations[n].models.always.dnoBlend.uvslide.v1 = 0.04;
+	Locations[n].models.always.dnoBlend.tech = "LocationRiverFloorBlend";
+	Locations[n].models.always.river = "Red04_rt";
+	Locations[n].models.always.river.level = 98;
+	Locations[n].models.always.river.uvslide.v0 = -0.1;
+	Locations[n].models.always.river.uvslide.v1 = 0.15;
+	Locations[n].models.always.river.tech = "LocationRiver";
+	Locations[n].models.always.grassPatch = "Red04_g";
+
+	//Day
+	Locations[n].models.day.fonar = "Red04_fd";
+	Locations[n].models.day.rinok = "Red04_e01";
+	Locations[n].models.day.charactersPatch = "terrace_patch";
+	//Night
+	Locations[n].models.night.fonar = "Red04_fn";
+	Locations[n].models.night.charactersPatch = "terrace_patch";
+
+	//Environment
+	Locations[n].environment.weather = "true";
+	Locations[n].environment.sea = "false";
+
+	//Reload map
+	Locations[n].reload.l1.name = "reload1";
+	Locations[n].reload.l1.go = "Redmond_Town_01";
+	Locations[n].reload.l1.emerge = "reload6";
+	Locations[n].reload.l1.autoreload = "0";
+
+	Locations[n].reload.l2.name = "reload2";
+	Locations[n].reload.l2.go = "wr_residence";
+	Locations[n].reload.l2.emerge = "reload1";
+	Locations[n].reload.l2.autoreload = "0";
+	locations[n].locators_radius.reload.reload2 = 0.1;			//to not interfere with WR dialog situation
+
+	Locations[n].locators_radius.randitem.randitem3 = 0.1;
+	Locations[n].items.randitem3 = "door_NGR";
+
+	Locations[n].locators_radius.goto.goto_50 = 2.0;
+   //<-- JRH
+
+	Locations[n].island = "Redmond"; // NK 04-08-29
+	n = n + 1;
+
+	// -------------------------------------------------
+
 	Locations[n].id = "wr_claire";
 	locations[n].id.label = "House";
 	Locations[n].filespath.models = "locations\inside\MediumHouse\\";
@@ -797,7 +833,7 @@ void LocationInitQuestLocations(ref n)
 
 	// -------------------------------------------------
 	Locations[n].id = "JRH_tavern_upstairs";		//see also "Redmond_tavern_upstairs" in Redmond (standard alternative: sleep/reincarnation)
-	locations[n].id.label = "Room in Redmond tavern";
+	locations[n].id.label = "Room in #stown_name# tavern";
 	Locations[n].image = "Inside_Doubleflour_House_Room.tga";
 
 	//Town sack
@@ -965,7 +1001,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_food_supply";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogers´food supply.";
+	Locations[n].reload.l3.label = "Woodes Rogersï¿½food supply.";
 	Locations[n].locators_radius.reload.reload3 = 0.5;
 	Locations[n].reload.l3.disable = 1;				
 
@@ -1213,13 +1249,13 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l5.name = "reload5";
 	Locations[n].reload.l5.go = "Redmond_Town_04";
 	Locations[n].reload.l5.emerge = "Door_4";
-	Locations[n].reload.l5.autoreload = "0"
+	Locations[n].reload.l5.autoreload = "0";
 	Locations[n].locators_radius.reload.reload5 = 0.3;
 
 	Locations[n].reload.l7.name = "reload7";
 	Locations[n].reload.l7.go = "wr_crew";
 	Locations[n].reload.l7.emerge = "reload5";
-	Locations[n].reload.l7.autoreload = "0"
+	Locations[n].reload.l7.autoreload = "0";
 	Locations[n].locators_radius.reload.reload7 = 0.3;
 
 	Locations[n].locators_radius.box.box1 = 0.8;
@@ -1315,7 +1351,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l2.go = "Redmond_tavern";
 	Locations[n].reload.l2.emerge = "reload6";
 	Locations[n].reload.l2.autoreload = "0";
-	Locations[n].reload.l2.label = "Redmond tavern.";
+	Locations[n].reload.l2.label = "#stown_name# tavern.";
 	Locations[n].locators_radius.reload.reload2 = 0.7;
 
 	//library
@@ -1323,7 +1359,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_library";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogers´ library.";
+	Locations[n].reload.l3.label = "Woodes Rogersï¿½ library.";
 
 	//Charles Windem room
 	Locations[n].reload.l4.name = "reload4";
@@ -1496,7 +1532,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l2.go = "wr_residence";
 	Locations[n].reload.l2.emerge = "reload2";
 	Locations[n].reload.l2.autoreload = "0";
-	Locations[n].reload.l2.label = "Woodes Rogers´residence.";
+	Locations[n].reload.l2.label = "Woodes Rogersï¿½residence.";
 	Locations[n].locators_radius.reload.reload2 = 0.1;//0.5 later on
 
 	//attic
@@ -1943,8 +1979,8 @@ void LocationInitQuestLocations(ref n)
 
 	//Reload map
 	Locations[n].reload.l1.name = "reload1";
-	Locations[n].reload.l1.go = "Redmond_Town_04";
-	Locations[n].reload.l1.emerge = "terr_out1";
+	Locations[n].reload.l1.go = "wr_terrace";
+	Locations[n].reload.l1.emerge = "terr_out1";				//reload2 later
 	Locations[n].reload.l1.autoreload = "0";
 	Locations[n].reload.l1.label = "Redmond.";
 	Locations[n].reload.l1.disable = 1;
@@ -5056,10 +5092,10 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 
 	//Day
-	Locations[n].models.day.charactersPatch = "Pirl_p";
+	Locations[n].models.day.charactersPatch = "attic_p";
 	Locations[n].models.day.fonar = "pirl_fd";			
 	//Night
-	Locations[n].models.night.charactersPatch = "pirl_p";
+	Locations[n].models.night.charactersPatch = "attic_p";
 	Locations[n].models.night.fonar = "pirl_fn";			
 	//Environment
 	Locations[n].environment.weather = "true";
@@ -5072,6 +5108,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.autoreload = "0";	
 	Locations[n].reload.l3.label = "";
 	Locations[n].locators_radius.reload.reload3 = 0.5;
+	locations[n].reload.l3.disable = 1;				//to be opened later on
 
 	Locations[n].reload.l4.name = "reload4";
 	Locations[n].reload.l4.go = "wr_church_attic_stairs";
@@ -5080,7 +5117,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l4.label = "";
 	Locations[n].locators_radius.reload.reload4 = 0.5;
 
-
+	Locations[n].locators_radius.goto.window = 1.0;
 	Locations[n].locators_radius.box.box3 = 0.5;
 
 	Locations[n].locators_radius.randitem.randitem1 = 0.1;
@@ -6887,6 +6924,123 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].rats = "true";
 	LAi_LocationFightDisable(&Locations[n], true);
 	n = n + 1;
+
+// -------------------------------------------------
+//pï¿½r qdeck
+	Locations[n].id = "wr_gall_qdeck";
+	locations[n].id.label = "Quarterdeck";
+	//Info
+	Locations[n].filespath.models = "locations\decks\udeck_open";
+	Locations[n].image = "wr_ships.tga";
+	//Sound
+	
+	locations[n].type = "Rogers_ships";
+
+	Locations[n].lockCamAngle = 0.4;
+
+	//Models
+	//Always
+//	Locations[n].models.always.locators = "udeck_l_JRH_E1";		//start E: cannon points at east = sea
+//Locations[n].models.always.locators = "udeck_l_JRH_E1_start";	//dito but temp action at anchor mechanism
+Locations[n].models.always.locators = "qdeck_l_JRH";
+
+	Locations[n].models.always.l1 = "udeck";
+//	Locations[n].models.always.l2 = "deck_box";
+//	Locations[n].models.always.l3 = "goods_pile";
+	Locations[n].models.always.l4 = "cannon_S2";		//1 box (start), 2 air, 3 high air, 0 deck (later)
+	Locations[n].models.always.l5 = "anchor0";		//1 deck, 0 water
+	Locations[n].models.always.l6 = "elevator&ropes_C2";	//C1 deck, C2 air
+	Locations[n].models.always.l7 = "elevator&ropes_G2";	//elevatorG0 hold, G1 deck, G2 air, ropes0 hold, ropes2 air
+//	Locations[n].models.always.l8 = "irontool";		//irontool only when G2
+	Locations[n].models.always.l9 = "plank1";		//plank 1 deck, 2 air
+	Locations[n].models.always.l10 = "pinion_large_L";	//"" start  10 = left pos
+	Locations[n].models.always.l11 = "pinion_small_R";	//"" start  11 = right pos
+	Locations[n].models.always.l12 = "hubs";
+	Locations[n].models.always.l13 = "wheel_R";		//"" start
+//	Locations[n].models.always.l14 = "";			//ropesA anchor 
+//	Locations[n].models.always.l15 = "pinion_large_H";	//
+//	Locations[n].models.always.l16 = "Flotsam12";		//not from start
+	Locations[n].models.always.l17 = "steering_wheel";
+	Locations[n].models.always.l18 = "door_N12";		//door_broken later
+
+//	Locations[n].models.always.l20 = "elevator&ropes_G0";	//temp post: only via code in q_r etc
+
+	//Day
+	Locations[n].models.day.charactersPatch = "qdeck_p";
+	//Night
+	Locations[n].models.night.charactersPatch = "qdeck_p";
+	//Environment
+	Locations[n].environment.weather = "true";
+	Locations[n].environment.sea = "true";
+
+	Locations[n].reload.l14.name = "reload14";
+	Locations[n].reload.l14.go = "wr_gall_cap_outer";
+	Locations[n].reload.l14.emerge = "reload4";
+	Locations[n].reload.l14.autoreload = "0";
+	Locations[n].reload.l14.label = "";
+
+	Locations[n].reload.l18.name = "reload18";
+	Locations[n].reload.l18.go = "wr_gall_cap_outer";
+	Locations[n].reload.l18.emerge = "reload3";
+	Locations[n].reload.l18.autoreload = "0";
+	Locations[n].reload.l18.label = "";
+	Locations[n].reload.l18.disable = 1;
+			
+	Locations[n].locators_radius.randitem.randitem1 = 0.001;	
+	Locations[n].items.randitem1 = "hatch12";
+	
+	Locations[n].locators_radius.randitem.randitem2 = 0.001;	//locator bigger later on	
+	Locations[n].items.randitem2 = "elevator_ropes";		//the visible ropes one are not these!!!
+									//these are fake pick ups
+
+	Locations[n].locators_radius.randitem.randitem3 = 0.001;
+	Locations[n].items.randitem3 = "qcport";
+
+	Locations[n].locators_radius.randitem.randitem4 = 0.001;
+	Locations[n].items.randitem4 = "qcport_plan3";
+
+	Locations[n].locators_radius.randitem.randitem5 = 0.001;
+	Locations[n].items.randitem5 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem6 = 0.001;
+	Locations[n].items.randitem6 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem7 = 0.001;
+	Locations[n].items.randitem7 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem8 = 0.001;
+	Locations[n].items.randitem8 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem9 = 0.001;
+	Locations[n].items.randitem9 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem10 = 0.001;
+	Locations[n].items.randitem10 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem11 = 0.001;
+	Locations[n].items.randitem11 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem12 = 0.001;
+	Locations[n].items.randitem12 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem13 = 0.001;
+	Locations[n].items.randitem13 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem14 = 0.001;
+	Locations[n].items.randitem14 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem15 = 0.001;
+	Locations[n].items.randitem15 = "pole2_dark";
+
+	Locations[n].locators_radius.randitem.randitem16 = 0.001;
+	Locations[n].items.randitem16 = "pole2_dark";
+
+	Locations[n].rats = "true";
+	LAi_LocationFightDisable(&Locations[n], true);
+	n = n + 1;
+
+
+
 // -------------------------------------------------
 	//this one is used when galleon is sunken
 	Locations[n].id = "wr_corvette";
@@ -7908,14 +8062,16 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l2.disable = 1;
 
 	Locations[n].reload.l3.name = "reload3";
-	Locations[n].reload.l3.go = "wr_ships";
+//	Locations[n].reload.l3.go = "wr_ships";
+Locations[n].reload.l3.go = "wr_gall_qdeck";
 	Locations[n].reload.l3.emerge = "qdeck";		
 	Locations[n].reload.l3.autoreload = "0";
 	Locations[n].reload.l3.label = "";
 
 	Locations[n].reload.l4.name = "reload4";
 	Locations[n].reload.l4.go = "wr_ships";
-	Locations[n].reload.l4.emerge = "qdeck";		
+//	Locations[n].reload.l4.emerge = "qdeck";
+Locations[n].reload.l4.go = "wr_gall_qdeck";		
 	Locations[n].reload.l4.autoreload = "0";
 	Locations[n].reload.l4.label = "";
 	Locations[n].reload.l4.disable = 1;			//never to be opened
@@ -9782,7 +9938,7 @@ void LocationInitQuestLocations(ref n)
 	n = n + 1;
 
 	//  -------------------------------------------------
-//pär
+//pï¿½r
 	Locations[n].id = "bb_prison_stairs2";
 //	locations[n].id.label = "House";
 	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
@@ -17072,7 +17228,7 @@ void LocationInitQuestLocations(ref n)
 	n = n + 1;
 
 	// -------------------------------------------------
-//pär
+//pï¿½r
 	Locations[n].id = "Tortuga_tower_stairs_A";
 	locations[n].id.label = "Tower stairs";
 	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
@@ -20909,7 +21065,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 //	Locations[n].rats = "true";			//fewer rats added via animals.c
 	Locations[n].island = "Redmond";
 	n = n + 1;
-//pär här
+//pï¿½r hï¿½r
 //--------------------------------------------------------------------------
 //fake location - never visited -just for the label
 
@@ -21128,4 +21284,6 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Build_at("bb_Eden_maze", "jungle", "", 100.0, 2.7, -100.0, 2.0, "wild_jungles");
 
 	Build_at("bb_burning_cave", "church", "", 85.27, 7.55, -27.62, 3.93, "building");
+
+	Build_at("wr_terrace", "barracks", "", 4.6, 0.0, -5.2, 3.14, "building");
 }

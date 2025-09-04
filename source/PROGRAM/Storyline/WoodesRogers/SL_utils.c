@@ -6469,7 +6469,7 @@ void OpenBoxProcedure_WR()
 				//GOLD COINS
 				LaunchItemsBox(&ar);
 
-				Logit(TranslateString("","No, the Gold Coins are too heavy - the crew will take them to the ship.."));
+				Logit(TranslateString("","No, the Gold Coins are too heavy - the crew will take them to the ship."));
 			break;
 
 			case "box8":
@@ -7666,50 +7666,38 @@ void OpenBoxProcedure_WR()
 		switch(chr.boxname)
 		{
 			case "box1":
-				PlaySound("PEOPLE\step_water.wav");
-				LAi_SetActorType(chr);
-				LAi_ActorTurnToLocator(chr, "goto", "goto1");
-
-				LAi_QuestDelay("swamp1_pos1_move_to_land", 1.0);
+				if(Locations[FindLocation(chr.location)].models.always.locators == "jungle2_locators_JRH1")
+				{
+					PlaySound("VOICE\ENGLISH\blaze_dont_leave_me.wav");
+				}
+				else
+				{
+					if(Locations[FindLocation(chr.location)].models.always.locators == "jungle2_locators_JRH2")
+					{
+						if(CheckAttribute(chr,"quest.swamp1_sounds") && chr.quest.swamp1_sounds == "scream")
+						{
+							PlaySound("VOICE\ENGLISH\blaze_scream.wav");
+						}
+						else PlaySound("VOICE\ENGLISH\blaze_help.wav");
+					}
+				}
+				else PlaySound("VOICE\ENGLISH\blaze_scream.wav");
 			break;
 
 			case "box2":
-			//split this one, box2 is the standard case just look
-				PlaySound("PEOPLE\step_water.wav");
-				LAi_SetActorType(chr);
-				LAi_ActorTurnToLocator(chr, "goto", "goto2");
-
-				LAi_QuestDelay("swamp1_pos2_move_to_land", 1.0);
+				PlaySound("VOICE\ENGLISH\blaze_no_escape.wav");
+				Logit(TranslateString("","That island is the only land in sight. I have to get there!"));
 			break;
 
 			case "box3":
-				PlaySound("PEOPLE\step_water.wav");
-				LAi_SetActorType(chr);
-				LAi_ActorTurnToLocator(chr, "goto", "goto3");
-
-				LAi_QuestDelay("swamp1_pos3_move_to_land", 1.0);
+				if(Locations[FindLocation(chr.location)].models.always.locators == "jungle2_locators_JRH1")
+				{
+					PlaySound("VOICE\ENGLISH\blaze_help.wav");
+				}
+				else PlaySound("VOICE\ENGLISH\blaze_scream.wav");
 			break;
 
-			case "box4":
-				PlaySound("PEOPLE\step_water2.wav");
-				ChangeCharacterAddressGroup(chr, "Swamp_island1", "goto", "at_sea1");
-
-				LAi_QuestDelay("swamp1_pos1_turn_sea", 0.01);
-			break;
-
-			case "box5":
-				PlaySound("PEOPLE\step_water2.wav");
-				ChangeCharacterAddressGroup(chr, "Swamp_island1", "goto", "at_sea2");
-
-				LAi_QuestDelay("swamp1_pos2_turn_sea", 0.01);
-			break;
-
-			case "box6":
-				PlaySound("PEOPLE\step_water2.wav");
-				ChangeCharacterAddressGroup(chr, "Swamp_island1", "goto", "at_sea3");
-
-				LAi_QuestDelay("swamp1_pos3_turn_sea", 0.01);
-			break;
+			//box4, 5, 6 not used anymore		
 
 			case "box7":
 				PlaySound("OBJECTS\DUEL\man_attack1.wav");
@@ -7743,8 +7731,6 @@ void OpenBoxProcedure_WR()
 			break;
 
 			case "box11":
-			//split this one, box2 is the standard case just look
-
 				PlaySound("PEOPLE\step_stairway1.wav");
 				ChangeCharacterAddressGroup(chr, "Swamp_island1", "goto", "leave");
 
@@ -8139,51 +8125,30 @@ void OpenBoxProcedure_WR()
 		switch(chr.boxname)
 		{
 			case "box1":
-				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "goto108w");
-
-				LAi_QuestDelay("Blaze_walk_0", 0.01);
+				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "roof2");
+				PlaySound("PEOPLE\Jump_Roof.wav");
 			break;
 
 			case "box2":
-				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "goto113w");
-
-				LAi_QuestDelay("Blaze_walk_1", 0.01);
+				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "roof3");
+				PlaySound("PEOPLE\Jump_Roof.wav");
 			break;
-
+		
 			case "box3":
-				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "goto115w");
-
-				LAi_QuestDelay("Blaze_walk_2", 0.01);
+				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "roof4");
+				PlaySound("PEOPLE\Jump_Roof.wav");
 			break;
 
 			case "box4":
-				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "goto117w");
-
-				LAi_QuestDelay("Blaze_walk_3", 0.01);
-			break;
-
-			case "box5":
-				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "roof6");
-
-				LAi_QuestDelay("afraid_to_jump_3", 0.01);
-			break;
-
-			case "box6":
-				ChangeCharacterAddressGroup(chr, "QC_town", "box", "box7");//reload never got visible
-
-				LAi_QuestDelay("store_upperdoor_2", 0.01);
+				ChangeCharacterAddressGroup(chr, "QC_town", "goto", "roof5");
+				PlaySound("PEOPLE\Jump_Stone.wav");
+				LAi_SetStayType(chr);
 			break;
 
 			case "box7":
 				PlaySound("INTERFACE\creak.wav");
 
 				LAi_QuestDelay("arrive_store_upstairs", 1.5);
-			break;
-
-			case "box8":
-				ChangeCharacterAddressGroup(chr, "QC_town", "reload", "reload25");
-
-				LAi_QuestDelay("run_and_jump_1", 0.01);
 			break;
 		}
 
@@ -16788,7 +16753,8 @@ void OpenBoxProcedure_WR()
 
 				return;
 			break;
-
+		/*
+		//moved to wr_gall_qdeck
 			case "box13":
 				if(CheckAttribute(chr,"quest.captains_door") && chr.quest.captains_door == "closed")
 				{
@@ -16806,7 +16772,7 @@ void OpenBoxProcedure_WR()
 
 				return;
 			break;
-
+		*/
 			case "box14":
 				//place anchor in prow
 
@@ -16885,7 +16851,8 @@ void OpenBoxProcedure_WR()
 
 				return;
 			break;
-
+		/*
+		//moved to wr_gall_qdeck
 			case "box18":
 				//move to steering wheel
 				PlaySound("PEOPLE\run_wood.wav");
@@ -16893,7 +16860,7 @@ void OpenBoxProcedure_WR()
 
 				return;
 			break;
-
+		*/
 			case "box19":
 				//enter ships
 				PlaySound("PEOPLE\recoil.wav");
@@ -16977,6 +16944,31 @@ void OpenBoxProcedure_WR()
 				}
 			break;
 
+		}
+		return;
+	}
+
+	if(Locations[locidx].id=="wr_gall_qdeck")
+	{
+		switch(chr.boxname)
+		{
+			case "box13":
+				if(CheckAttribute(chr,"quest.captains_door") && chr.quest.captains_door == "closed")
+				{
+					PlaySound("PEOPLE\wheel_open.wav");
+
+					LAi_QuestDelay("open_captains_door", 4.0);
+				}
+
+				if(CheckAttribute(chr,"quest.captains_door") && chr.quest.captains_door == "open")
+				{
+					PlaySound("PEOPLE\wheel_close.wav");
+
+					LAi_QuestDelay("close_captains_door", 3.5);
+				}
+
+				return;
+			break;
 		}
 		return;
 	}
@@ -17192,38 +17184,6 @@ void OpenBoxProcedure_WR()
 			case "box2":
 				PlaySound("PEOPLE\Run_roof.wav");
 				ChangeCharacterAddressGroup(chr, "wr_church_outside", "goto", "goto7");
-			break;
-		}
-		return;
-	}
-
-	if(Locations[locidx].id=="wr_church_attic")
-	{
-		switch(chr.boxname)
-		{
-			case "box2":
-
-			break;
-
-			case "box3":
-				PlaySound("PEOPLE\Run_roof.wav");
-				ChangeCharacterAddressGroup(chr, "wr_church_attic", "goto", "goto4");
-
-				LAi_QuestDelay("church_attic2", 0.1);
-			break;
-
-			case "box4":
-				PlaySound("PEOPLE\Run_roof.wav");
-				ChangeCharacterAddressGroup(chr, "wr_church_attic", "goto", "goto11");
-
-				LAi_QuestDelay("church_attic2", 0.1);
-			break;
-
-			case "box5":
-				PlaySound("PEOPLE\Run_roof.wav");
-				ChangeCharacterAddressGroup(chr, "wr_church_attic", "goto", "window");
-
-				LAi_QuestDelay("Vane_returns_to_attic", 1.0);
 			break;
 		}
 		return;
@@ -22357,6 +22317,11 @@ void CreateLandActionsEnvironment_WR()
 				if(Pchar.boxname == "box24") IActions.ActiveActions.OpenBox.IconNum	= 3;
 			}
 			else IActions.ActiveActions.OpenBox.IconNum = 2;
+		}
+
+		if(Pchar.location == "wr_gall_qdeck")
+		{
+			if(Pchar.boxname == "box13") IActions.ActiveActions.OpenBox.IconNum	= 2;
 		}
 
 		if(Pchar.location == "wr_gall_hold_first")
