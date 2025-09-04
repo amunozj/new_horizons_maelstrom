@@ -31,7 +31,7 @@ int Find_nearest_inf_ship(ref chr)
 			if (rGroup.location != PChar.location) { continue; }
 			achr = Group_GetGroupCommanderR(rGroup);
 
-			if(CheckAttribute(achr,"surrendered") || CharacterIsDead(achr)){continue;} 
+			if(CheckAttribute(achr,"surrendered") || CharacterIsDead(achr)){continue;} //Group_UpdateGroup(achr);continue;}
 			if(!Checkattribute(achr,"index")){continue;}
 			if(GetNationRelation(sti(achr.nation), sti(chr.nation)) == RELATION_ENEMY)
 			{
@@ -99,7 +99,7 @@ int Find_nearest_inf_ship(ref chr)
 			}
 		}
 	}
-	
+
 	return place;
 }
 
@@ -267,7 +267,7 @@ bool CheckAllShips(string type, bool initialize)
 			ship_range       = shipattr.(shipstr).distance;
 			visibility_range = GetCharVisibilityRange(chr, 2); // KK: Ship nation is visible inside MEDIUM range
 			if(Whr_IsNight() && HasCharacterShipAttribute(PChar, "night_stealth")) visibility_range /= 2;	// PB: Black Pearl stealth at night
-			
+
 			if (initialize)
 			{
 				CheckInitialFlagRelations(chr, visibility_range, ship_range);
@@ -281,7 +281,8 @@ bool CheckAllShips(string type, bool initialize)
 					if (CheckAttribute(chr, "PlayerShip") && !HasThisShip(chr.PlayerShip))	bCheckInitial = true;	// GR: If you are already logged and the log is out of date, update it
 					if (bCheckInitial) CheckInitialFlagRelations(chr, visibility_range, ship_range);
 				}
-				Recognized = CheckForMainCharacterfalseflag(chr, visibility_range, ship_range);
+				// Recognized = CheckForMainCharacterfalseflag(chr, visibility_range, ship_range);
+				Recognized = Recognized || CheckForMainCharacterfalseflag(chr, visibility_range, ship_range);
 			}
 		}
 	}
@@ -290,7 +291,9 @@ bool CheckAllShips(string type, bool initialize)
 
 int GetFortRelationToPirates(ref chr)
 {
-	if (CheckAttribute(chr, "relation_to_pirates"))
+	int iNation = UNKNOWN_NATION;
+	if (CheckAttribute(chr, "nation")) iNation = sti(chr.nation);
+	if (iNation != PERSONAL_NATION && CheckAttribute(chr, "relation_to_pirates"))
 	{
 		return sti(chr.relation_to_pirates);
 	}
@@ -300,8 +303,9 @@ int GetFortRelationToPirates(ref chr)
 		string town;
 		ref rPeriod;
 
-		if (CheckAttribute(chr, "town"))	town = chr.town;			// For fort commanders
-		else								town = GetCurrentTownID();	// For characters in town
+		if (iNation == PERSONAL_NATION)		iRelation = GetNationRelation2MainCharacter(PIRATE);	// GR: Personal fort commanders follow player's relation to pirates
+		if (CheckAttribute(chr, "town"))	town = chr.town;					// For fort commanders
+		else					town = GetCurrentTownID();				// For characters in town
 		if (town != "")
 		{
 			iRelation = GetNationRelation(GetTownNation(town), PIRATE);
@@ -343,7 +347,7 @@ void UpdateAllShipsAtSea(ref chr, bool IsFort)
 
 		if (IsFort) // Forts aren't part of this loop, so need to use the BOTH function
 		{
-			if (oNation == PIRATE)
+		    if (oNation == PIRATE)
 			{
 				SetCharacterRelationBoth(Char_index, sti(otherChar.index), GetFortRelationToPirates(chr));
 			}
@@ -354,7 +358,7 @@ void UpdateAllShipsAtSea(ref chr, bool IsFort)
 		}
 		else // Relations between ships can be set only one way, because they'll be set the other way later
 		{
-			if (IsCompanion(chr) && IsCompanion(otherChar))
+		    if (IsCompanion(chr) && IsCompanion(otherChar))
 			{
 				nNation = GetCurrentFlag();
 				oNation = nNation;
@@ -390,6 +394,7 @@ void CheckInitialFlagRelations(ref chr, float visibility_range, float ship_range
 	// Initialize relations between NPC ships
 	UpdateAllShipsAtSea(chr, IsFort);
 
+	if (IsFort && nNation == PERSONAL_NATION) return; //Do not check me if fort is mine
 	if (IsCompanion    (chr)) return; // Companions don't care
 	if (CharacterIsDead(chr)) return; // Already dead, don't change relation again
 
@@ -434,6 +439,7 @@ void CheckInitialFlagRelations(ref chr, float visibility_range, float ship_range
 				else
 				{
 					iNation = sti(chr.PlayerNation);
+					trace("Resetting from chr.PlayerNation " + iNation);
 					Trace("FLAGS: The " + GetMyShipNameShow(chr) + " remembers us as " + GetNationDescByType(iNation) );
 				}
 			}
@@ -472,7 +478,8 @@ bool CheckForMainCharacterfalseflag(ref chr, float visibility_range, float ship_
 {
 	if (IsCompanion(chr))						return false; // Companions don't care
 	if (CheckForPirateException(chr))			return false; // You are friendly to the pirates, flying a pirate flag and the town is tolerant of pirates
-	if (GetAttribute(chr, "skipFalseFlag"))		return false; // Quest ship that will always believe your false flag
+	if (CheckAttribute(chr, "skipFalseFlag"))		return false; // Quest ship that will always believe your false flag
+	if (iForceDetectionFalseFlag == -1)		return false; // Don't calculate chances because -1 means never recognise you
 
 	ref PChar = GetMainCharacter();
 
@@ -483,9 +490,15 @@ bool CheckForMainCharacterfalseflag(ref chr, float visibility_range, float ship_
 	{
 		if (ship_range < visibility_range)
 		{
-			chance = 0.5 + chance; // 0.5 will be decreased if you are too easily recognized
+ trace("CheckForMainCharacterfalseflag: visibility range = " + visibility_range + ", actual range = " + ship_range);
+ trace("CheckForMainCharacterfalseflag: range factor to recognition = " + chance);
+ trace("CheckForMainCharacterfalseflag: fame/skill factor to recognition = " + GetChanceDetectFalseFlag());
+			//	chance = 0.5 + chance; // 0.5 will be decreased if you are too easily recognized
+			chance = chance / 20.0;				// GR: because you're checked repeatedly and frequently
 			chance = chance * GetChanceDetectFalseFlag();
 			if(iForceDetectionFalseFlag == 1) chance = 1.0; // PB: Obeys "iForceDetectionFalseFlag" setting to always see through false flag
+ trace("CheckForMainCharacterfalseflag: final chance of false flag detection by '" + GetMyShipNameShow(chr) + "' in group '" + GetGroupIDFromCharacter(chr) + "' = " + chance);
+ trace("CheckForMainCharacterfalseflag: randVal = " + randVal);
 			if(randVal <= chance)
 			{
 				Trace("FLAGS: The " + GetMyShipNameShow(chr) + " has recognized our false " + GetNationDescByType(GetCurrentFlag()) + " flag at range=" + ship_range + " with visibility=" + visibility_range + ", chance=" + chance + " and frnd=" + randVal);
@@ -518,6 +531,7 @@ void SetGroupHostile(ref chr, bool bBetrayed)
 		}
 		Group_SetTaskAttack(sGroupID, PLAYER_GROUP, false); // False to skip call to SetCharacterRelationBoth!
 	}
+//	UpdateRelations();
 }
 
 void SetCharRelationToFleet(ref chr, int iRelation)
@@ -554,7 +568,7 @@ void Improve_SeaAi(String groupe)
 		if(crgchar.fantomtype=="trade")
 		{
 			nextenemy = Find_nearest_inf_ship(crgchar);
-			if(nextenemy != -1) 
+			if(nextenemy != -1) // && Characters[nextenemy].ship.type != SHIP_FORT_NAME )
 			{
 				if(Check_courageous_merchant(crgchar, &Characters[nextenemy]) || GetCharacterShipClass(crgchar) < 3)
 				{
@@ -618,7 +632,7 @@ void Improve_SeaAi(String groupe)
 		{
 			//nextenemy = FindClosestShipofRel(crgchar.index, &enemydist, RELATION_ENEMY);
 			nextenemy = Find_nearest_inf_ship(crgchar);
-			if(CheckAttribute(crgchar,"runaway")) 
+			if(CheckAttribute(crgchar,"runaway"))
 			{
 				//TraceAndLog("I'm " + GetMyShipNameShow(crgchar) + " a " + crgchar.fantomtype + " and I'm running away!");
 				Group_UnlockTask(groupe);
@@ -627,7 +641,7 @@ void Improve_SeaAi(String groupe)
 			}
 			else
 			{
-				if(nextenemy != -1) 
+				if(nextenemy != -1)
 				{
 					//TraceAndLog("I'm " + GetMyShipNameShow(crgchar) + " a " + crgchar.fantomtype + " and I'm attacking " + Characters[nextenemy].id + "!");
 					Group_UnlockTask(groupe);
@@ -660,7 +674,7 @@ void Improve_SeaAi(String groupe)
 								else
 								{
 									x = stf(rGroup.memo.x);
-									z = stf(rGroup.memo.z);							
+									z = stf(rGroup.memo.z);
 									//TraceAndLog("I'm " + GetMyShipNameShow(crgchar) + " a " + crgchar.fantomtype + " and I'm " + GetDistance2D(stf(crgchar.ship.Pos.x), stf(crgchar.ship.Pos.z), stf(rGroup.memo.x), stf(rGroup.memo.z)) + " yards from my next patrol point!");
 								}
 							}
@@ -724,6 +738,7 @@ void Improve_SeaAi(String groupe)
 
 void Refreshseacolor_in()
 {
+    DelEventHandler("frame", "BI_Refreshseacolor_out");
 	if (bSeaActive && !bAbordageStarted) {
 		SetEventHandler("frame", "BI_Refreshseacolor_in", 1);
 		return;
@@ -731,6 +746,7 @@ void Refreshseacolor_in()
 }
 void Refreshseacolor_out()
 {
+    DelEventHandler("frame", "BI_Refreshseacolor_in");
 	if (bSeaActive && !bAbordageStarted) {
 		SetEventHandler("frame", "BI_Refreshseacolor_out", 1);
 		return;

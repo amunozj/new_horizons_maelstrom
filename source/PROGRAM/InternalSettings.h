@@ -23,11 +23,11 @@ int iScriptVersion = 8675309;       //54128  --  15650
 // Included in Realistic Game Mode:
 #define REALISTIC_SHIP_INERTIA			0		// BOOL - 1=ON - Ships require counter-rudder and don't sail as if on rails
 #define SHORE_DANGER_ALARM			0		// BOOL - 1=ON - Red flashing icon and danger music do not start until enemies draw their blade
-#define DISCOVER_SAIL_TO			1		// BOOL - 0=OFF - Shores and ports must be discovered by sailing there manually or having the island's map before you can use Sail To
-#define DISCOVER_FAST_TRAVEL			1		// BOOL - 0=OFF - Town locations must be discovered by finding them manually or asking for directions before you can use Fast Travel
+#define DISCOVER_SAIL_TO			0		// BOOL - 0=OFF - Shores and ports must be discovered by sailing there manually or having the island's map before you can use Sail To
+#define DISCOVER_FAST_TRAVEL			0		// BOOL - 0=OFF - Town locations must be discovered by finding them manually or asking for directions before you can use Fast Travel
 #define NAVIGATION_EQUIPMENT			0		// BOOL - 1=ON - Items required for certain navigational information to become available
 #define ENABLE_LIMITED_SHIPCLASS		0		// BOOL - 1=ON - When player takes command of ship of too high tier, Leadership and Sailing skills drops
-#define CANNOT_RELOAD_WHILE_FIGHTING		1		// INT - 1=DEFAULT: Controlled by Realism Mode - 0 or 2 override the Realism Mode setting
+#define CANNOT_RELOAD_WHILE_FIGHTING		0		// INT - 1=DEFAULT: Controlled by Realism Mode - 0 or 2 override the Realism Mode setting
 #define SAIL_OPERATE_DELAY			3		// INT - sailors will operate sails this amount of seconds after receiving command (set to 0 to restore stock PotC)
 // Included in Iron Man Mode:
 #define OPEN_SEA_MOD				0		// BOOL - 1=ON - Worldmap enlarged for realistic DirectSail
@@ -143,7 +143,7 @@ int		MAX_RAINCHANGE =				5;		// INT - ^^DITTO for rain
 
 #define MAX_SHIPS_ON_SEA			32			// INT - original value is 32, DO NOT TOUCH THIS
 
-#define MAP_VOYAGELENGTH			1.0 //4.0 		// FLOAT - ccc maptweak is 8.0: lets voyages take longer, original 4.0, slower days on worldmap is 2.0
+#define MAP_VOYAGELENGTH			0.9 //4.0 		// FLOAT - ccc maptweak is 8.0: lets voyages take longer, original 4.0, slower days on worldmap is 2.0
 
 #define MAXPIRATECLASS				4 			// INT - this is the maximum class ship pirates will be given. Defaults to 4.
 #define MAXCOASTGUARDCLASS			2 			// INT - this is the maximum class ship for coast guards.
@@ -165,7 +165,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define AUTOCREATE_CR 			1 			// BOOL - Set to 1 to create new coastships every time you leave or approach an island. 0 will create ships only if you ask a citizen about them.
 #define DEAD_GENNEW_CR 			0.33 			// FLOAT - chance to make new coastal ship for character if character is dead.
 #define CR_PERSIST 			5 			// INT - number of days until new coastal ship is generated
-#define DS_MULTIFLEET			35.0			// FLOAT - percentage chance of an extra group in a direct-sail encounter.  Default 0.0, no additional groups.  Likely to cause crashes if set above 0.0
+#define DS_MULTIFLEET			0.0			// FLOAT - percentage chance of an extra group in a direct-sail encounter.  Default 0.0, no additional groups.  Likely to cause crashes if set above 0.0
 
 
 // ======================================
@@ -178,7 +178,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 
 #define USE_REAL_CANNONS			1			// BOOL - 0: Stock PotC: guns fire in a high arc, wide left-right traversing
 												//        1: More realistic, direct fire; less left-right traversing possible
-#define EXTRA_HIT_CHECK				0			// BOOL - Enable stray shot hits on friendly ships to cause hostility
+#define EXTRA_HIT_CHECK				1			// BOOL - Enable stray shot hits on friendly ships to cause hostility
 												//        USE_REAL_CANNONS must be set to 1 for this setting to take effect
 												//        1: Yes, when a ship is hit, reduce relation to you
 												//        0: No, accidental hits won't cause hostilities
@@ -186,7 +186,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define USE_REAL_SAILING			1			// BOOL - Off=0, Realistic=1, KNB's sailing / grappling changes
 #define REALISTIC_WAVES				1			// BOOL - desc="Set to 0 to disable the realistic waves mod by KiwisDoFly."
 #define UPDATE_AI_FREQUENCY			1			// INT - Time frequency in minutes for AI update at sea
-#define SAIL_LUFFING_SOUNDS			2			// INT - Set from 1 to 3 to play sail luffing sounds when sailing too close to wind.  0=off, higher numbers add more luffing sound.
+#define SAIL_LUFFING_SOUNDS			1			// INT - Set from 1 to 3 to play sail luffing sounds when sailing too close to wind.  0=off, higher numbers add more luffing sound.
 
 #define ARCADE_MULT_TURN			3.0 		// FLOAT - this multiplies base ship-turn-rate, default: 3
 #define ARCADE_MULT_SPEED 			2		 	// INT - Shipspeed if you set the menu "Options/Sailing mode" to ARCADE MODE
@@ -197,7 +197,7 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 #define CANNON_RANGE_SCALAR 		1.0			// 0.3 - 2.0 : The higher the value the longer the cannon range OF SHIPS
 												// SET TO 1.0 IF USING REAL CANNONS!
 #define FORT_RANGE_SCALAR 			0.5			// 0.3 - 2.0 : The higher the value the longer the cannon range OF FORTS
-#define CANNON_DAMAGE_SCALAR 		1.0;		// 0.3 - 2.0 : The higher the value the more damage cannons do
+#define CANNON_DAMAGE_SCALAR 		0.5;		// 0.3 - 2.0 : The higher the value the more damage cannons do
 #define ARCADE_MULT_CANNONS			0.5		 	// INT - Cannon reload time if you set the menu "Options/Sailing mode" to ARCADE MODE
 												// 1.0: Same speed as in "Realistic Mode"
 												// 0.5: Half as much reload time
@@ -227,15 +227,15 @@ float	NAVYRAIDER_CHANCE = 		0.4; 			// FLOAT - Ditto, but chance that raider is 
 
 // Sailto controls
 #define SAILTO_MIN_SPEEDRATIO		0.75		// FLOAT - if your speed is less than this compared to your target's, can't sail-to. Note, also checks wind angle for you and the target running away, and rigtype for both.
-#define SAILTO_MIN_DISTANCE			500			// INT - if you are closer than this many units to the enemy ship, you can't sailto.
+#define SAILTO_MIN_DISTANCE			800			// INT - if you are closer than this many units to the enemy ship, you can't sailto.
 												// Note: You have to be in realistic sailing mode for both above features to work
 
 #define SAILTO_DISTANCE1			100.0		// FLOAT - Closest you'll find yourself to enemy when using sailto.  Stock is 40.0. Used in AI_Sea.c
 #define SAILTO_DISTANCE2			200.0		// FLOAT - Farthest you'll find yourself from enemy when using sailto.  Stock is 100.0.
 
 // Sea Realism Params
-float	MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			500.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
-float	MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
+float	MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			800.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
+float	MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	800.0;	// FLOAT - original value is 500
 
 // KK Mods -->
 #define CHANCE_DETECT_FALSE_FLAG_BASE			0.00	// FLOAT - minimal probability of detecting false flag.
@@ -266,15 +266,16 @@ float	MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - origina
 #define BEST_RATE_FOR_ALL_CREW		1.25		// FLOAT - if crew is at 1.0 ratio (i.e. crew = mincrew*5) reloading is sped up by this
 
 #define RELOAD_TIME_MULTIPLIER		1.0			// FLOAT - Cannon reload time scalar.  2.0 will make cannons take twice as long to reload
+// #define SEQUENTIAL_CANNONFIRE       0           // 0=Fire at will, 1=Fire in sequence		Mirsaneli: Moved it to BuildSettings.h to enable/disable it in Settings Menu
 
 // Amount added to mast damage when mast hit by the following things
 #define MAST_ISLAND_SCL				0.5			// FLOAT - (no description)
 #define MAST_SHIP_SCL				0.1			// FLOAT - (no description)
-#define MAST_BALL_SCL				0.25		// FLOAT - (no description)
-#define MAST_GRAPE_SCL				0.1			// FLOAT - (no description)
-#define MAST_CHAIN_SCL				0.32		// FLOAT - (no description)
-#define MAST_BOMB_SCL				0.33		// FLOAT - (no description)
-#define MAST_MULT_SCL				0.75		// FLOAT - (no description)
+#define MAST_BALL_SCL				0.05		// FLOAT - (reduced by Mirsaneli)
+#define MAST_GRAPE_SCL				0.0			// FLOAT - (disabled by Mirsaneli, grapes can't demast ships)
+#define MAST_CHAIN_SCL				0.25		// FLOAT - (reduced by Mirsaneli)
+#define MAST_BOMB_SCL				0.10		// FLOAT - (reduced by Mirsaneli)
+#define MAST_MULT_SCL				0.40		// FLOAT - (reduced by Mirsaneli)
 
 // Ammo section
 // Default ammo loadout for stock ships (hardly ever used)
@@ -360,7 +361,7 @@ float	MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - origina
 												// 100: sequential (NATHANIEL_BOARDER_6 to NATHANIEL_BOARDER_10; for remaining groups identical to 0).
 // <-- KK
 
-// PRISONER RANSOM OPTIONS Based on code by Stone-D and Nathan Kell, all credit and thanks to them 
+// PRISONER RANSOM OPTIONS Based on code by Stone-D and Nathan Kell, all credit and thanks to them :)
 // You can't get ransom for your prisoners at sea anymore but at certain landlocations only. Choose ONE locationtype from the list. Can be changed during saved games.
 #define RANSOMSITE					"all" 		// STRING - You can change 'all' to: 'town', 'jungle', 'dungeon', 'residence', 'church' or 'tavern'.
 #define RANSOM_AT_HOME				0			// BOOL - If you set this option to 1 you must take the prisoner to his 'homeisland' to get ransom (i.e. the island with the prisoners nation)
@@ -460,7 +461,7 @@ int		RANGE_TO_ENEMY =			3000;		// INT - in feet/yards/whatever unit the game use
 #define CHANCE_OVERRIDE_PRS3NAT_IF_PIRATE	0.4 // FLOAT - chance to use a random nation rather than PIRATE if passed nation is pirate in SetRandomStatsToShip()
 #define CHANCE_OVERRIDE_SHIPNATION			0.0 // FLOAT - chance to use passed nation rather than base ship's nation if base ship has nation. Defaults to never doing so. Will almost never be used.
 
-#define SHIPYARD_SELL_ALL_CLASSES		0		// BOOL - are shipyards limited to selling only certain classes of ship, based on town size see STORE_MINSIZE, below, in Town Constants
+#define SHIPYARD_SELL_ALL_CLASSES		0		// BOOL - are shipyards limited to selling only certain classes of ship, based on town size (see STORE_MINSIZE, below, in Town Constants
 #define SHIPYARD_CHANCE_CLASS			9		// INT - default 8. Chance for a ship to be available is 1 in (this - ship class). So if this is 8, then a class 1 ship has a 1-in-7 chance of being available. NOTE setting to 0 makes any ship always available.
 #define SHIPYARD_SHIP_SELL_MULT			0.30	// FLOAT - multiplier to sell price for ship - non rpgstyle shipyards
 #define SHIPYARD_BOUGHTSHIP_SELL_MULT	0.90	// FLOAT - SY_RPG_STYLE - multiplier to sell price for a LEGIT ship (one you bought originally)
@@ -844,6 +845,7 @@ Set all to -1 to disable this mod
 #define ENABLE_EXTRA_SOUNDS 			1 		// BOOL - Enable/Disable added sound effects.
 #define ENABLE_PLAYING_MAINTHEME		1		// BOOL - Enable/Disable mod that randomly makes storyline main theme music playing instead of current one, depending on your progress in the quest.
 #define ENABLE_WEAKER_PISTOL_SOUNDS 	0		// BOOL - Enable/Disable   0 = old loud sounds
+#define DIALOGCOLOUR					2		// GR: if bNewInterface is false, DIALOGCOLOUR = 1 for bright blue dialog background, 2 for original blue and green (default = 2)
 
 // ======================================
 // LOG NOTIFICATIONS:
@@ -871,7 +873,7 @@ Set all to -1 to disable this mod
 												// 1: Few effects
 												// 2: Medium effects
 												// 3: Full effects
-#define USE_PARTICLES_CANNONS			1		// Sets the realism of the cannon visual effects.
+#define USE_PARTICLES_CANNONS			2		// Sets the realism of the cannon visual effects.
 												// 0: Low - Stock POTC cannon smoke
 												// 1: Medium - Realistic cannon smoke
 												// 2: High - Extremely Realistic cannon smoke, high-end computer recommended.
@@ -1015,4 +1017,4 @@ Set all to -1 to disable this mod
 #define SIDESTEP_ENABLED				0		// BOOL - 0 (default) = off, 1 = on: you can use sidestep during the game (NOTE: No collision detection!)
 #define ENABLE_CHEATMODE				0		// Cheats can be triggered with numpad buttons
 //Boyer add
-#define USE_NEW_WEATHER 1
+#define USE_NEW_WEATHER 				1							 

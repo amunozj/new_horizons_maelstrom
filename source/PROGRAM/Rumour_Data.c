@@ -1,4 +1,4 @@
-//Таблица слухов, и их состояние. "active" - слух включен в поле случаного выбора слуха, "passive" - слух исключен из поля
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. "active" - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, "passive" - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 // NK -->
 int MAX_RUMOURS = 0;
 #define TOTAL_RUMOURS	256
@@ -48,7 +48,7 @@ void SetRumourDefaults(bool isreinit)
 	//(trade rumors are 25)
 
 	//if you give a rumor an ID it then counts as a quest rumor. If there are any quest rumors
-	//available, and frnd() < QUESTRUM_CHANCE, POTC will be forced to choose one even
+	//available, and frnd() < QUESTRUM_CHANCE, POTC will be forced to choose one (even
 	//if frnd()>, it may choose one normally...
 	//if the qr hasn't been given yet, it's vs. QUESTRUM_UNGIVEN_CHANCE
 	//also, if the rumor has an ID, you can set it active or inactive.
@@ -155,7 +155,7 @@ void SetRumourDefaults(bool isreinit)
 	Rumour[i].chance = 100;
 	i++;
 
-	Rumour[i].id = "Children_GreenChurch"
+	Rumour[i].id = "Children_GreenChurch";
 	Rumour[i].text = LanguageConvertString(tmpLangFileID,"Oh, I hear the vicar's very worried about things over in Greenford... You look like a captain, perhaps you could help him?");
 	Rumour[i].state = "active";
 	Rumour[i].loc = "Redmond";
@@ -359,7 +359,7 @@ void SetRumourDefaults(bool isreinit)
 // KK -->
 	LanguageCloseFile(tmpLangFileID);
 
-	if (FindFile("PROGRAM\" + GetStorylinePath(FindCurrentStoryline()), "*.*", "Rumour_Data.c") != "") {
+	if (FindFile("PROGRAM\\" + GetStorylinePath(FindCurrentStoryline()), "*.*", "Rumour_Data.c") != "") {
 		if (LoadSegment(GetStorylinePath(FindCurrentStoryline()) + "Rumour_Data.c")) {
 			SetStorylineRumours(&i);
 			UnloadSegment(GetStorylinePath(FindCurrentStoryline()) + "Rumour_Data.c");

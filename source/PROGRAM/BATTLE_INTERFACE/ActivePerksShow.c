@@ -5,12 +5,14 @@ object objActivePerkShower;
 
 void InitActivePerkShower()
 {
-	objActivePerkShower.ShowParam.PosRect.left		= sti(showWindow.right) - RecalculateHIcon(16+132);
-	objActivePerkShower.ShowParam.PosRect.top		= sti(showWindow.top) + RecalculateVIcon(220); // KK: was 200
-	objActivePerkShower.ShowParam.PosRect.right		= sti(showWindow.right) - RecalculateHIcon(16);
-	objActivePerkShower.ShowParam.PosRect.bottom	= sti(showWindow.bottom) - RecalculateVIcon(28);
-	objActivePerkShower.ShowParam.IconSize.horz		= RecalculateHIcon(64);
-	objActivePerkShower.ShowParam.IconSize.vert		= RecalculateVIcon(64);
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+	objActivePerkShower.ShowParam.PosRect.left		= sti(showWindow.right) - RecalculateHIcon(makeint((16+132) * fHtRatio));
+	objActivePerkShower.ShowParam.PosRect.top		= sti(showWindow.top) + RecalculateVIcon(makeint(220 * fHtRatio)); // KK: was 200
+	objActivePerkShower.ShowParam.PosRect.right		= sti(showWindow.right) - RecalculateHIcon(makeint(16 * fHtRatio));
+	objActivePerkShower.ShowParam.PosRect.bottom	= sti(showWindow.bottom) - RecalculateVIcon(makeint(28 * fHtRatio));
+	objActivePerkShower.ShowParam.IconSize.horz		= RecalculateHIcon(makeint(64 * fHtRatio));
+	objActivePerkShower.ShowParam.IconSize.vert		= RecalculateVIcon(makeint(64 * fHtRatio));
 	objActivePerkShower.ShowParam.IconSpace.horz	= RecalculateHIcon(4);
 	objActivePerkShower.ShowParam.IconSpace.vert	= RecalculateVIcon(4);
 }
