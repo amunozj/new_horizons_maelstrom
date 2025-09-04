@@ -398,7 +398,7 @@ An easy to grasp book in the popular scientific style. Many pictures.
 itmname_book64			{L’Ordre de Malte}
 itmdescr_book64
 {
-A french edition, author Annet de Clermont-Gessant.
+A French edition, author Annet de Clermont-Gessant.
 }
 
 itmname_book65			{Sacred Writ}
@@ -1822,7 +1822,7 @@ A simple cross and chain in silver.
 itmname_treasure7		{Relic}
 itmdescr_treasure7
 {
-The supposed finger and ring of the 1100th century female Pope. 
+The supposed finger and ring of the 12th century female Pope. 
 }
 
 itmname_icon			{Icon}
@@ -2208,6 +2208,12 @@ itmdescr_bladeA2
 A rapier.
 }
 
+itmname_bladeA4			{Blade}
+itmdescr_bladeA4
+{
+A rapier.
+}
+
 itmname_bladeA5			{Blade}
 itmdescr_bladeA5
 {
@@ -2451,7 +2457,7 @@ itmdescr_pistolbook71
 Many pages have been ripped out. I see one of those symbols there. Could it be..? 
 }
 
-//--------------- PISTOL WEAPONS END -------------------------------------------------------------------------------------
+//--------------- PISTOL WEAPONS END --------------------------------------------------------------------------------------
 //------------------- TOOLS START ----------------------------------------------------------------------------------------
 
 itmname_bladeaxe4		{Axe}

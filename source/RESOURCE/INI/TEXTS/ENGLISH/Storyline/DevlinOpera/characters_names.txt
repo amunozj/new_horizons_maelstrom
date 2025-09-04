@@ -1,7 +1,27 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 Beatrice{Beatrice}
 Devlin{Devlin}
+
+
 Skull{Skull}
+Sixto{Sixto}
+Costa{Costa}
+Rico1{Rico}
+
+
+Subteniente{Subteniente}
+Chorizo{Chorizo}
+Rocoso{Rocoso}
+Don Evaristo{Don Evaristo}
+Dragan{Dragan}
+van Mourik{van Mourik}
+Kevin{Kevin}
+Poor1{Poor}
+Grunk{Grunk}
+Flobb{Flobb}
+
+
 Mystery{Mystery}
 Messenger{Messenger}
 Brin Mistress{Brin Mistress}
@@ -9,7 +29,7 @@ Emmanuel{Emmanuel}
 Bonnie{Bonnie}
 Blaze{Blaze}
 Short Jack{Short Jack}
-Gold{Gold}
+GoldDO{Gold}
 Couch Captain{Couch Captain}
 Charles{Charles}
 Sir Christopher{Sir Christopher}
@@ -34,3 +54,89 @@ Bartholomew{Bartholomew}
 Roberts{Roberts}
 Merciless{Merciless}
 Mark{Mark}
+Sharp{Sharp}
+
+
+Toni{Toni}
+Haraldo{Haraldo}
+Isabel{Isabel}
+Marino{Marino}
+Grey{Grey}
+Pepe{Pepe}
+Grande{Grande}
+Kofi{Kofi}
+Macchiato{Macchiato}
+Doma{Doma}
+Perignone{Perignone}
+Puerta{Puerta}
+Velador{Velador}
+Franz{Franz}
+Gynster{Gynster}
+Ernesto{Ernesto}
+Dirty{Dirty}
+Chico{Chico}
+Malo{Malo}
+Audience{Audience}
+Guzman{Guzman}
+Jauri{Jauri}
+Lil{Lil}
+Bonto{Bonto}
+Triton{Triton}
+Barbos{Barbos}
+Silvia{Silvia}
+
+
+Killian{Killian}
+O'Byrne{O'Byrne}
+Annie{Annie}
+Scout{Scout}
+Mad Kay{Mad Kay}
+Hubecher{Hubecher}
+Godefroi{Godefroi}
+Bonamy{Bonamy}
+Crazy Luc{Crazy Luc}
+Helveur{Helveur}
+
+
+Johnny{Johnny}
+Jackson{Jackson}
+Jackie{Jackie}
+Johnson{Johnson}
+Cunning Frog{Cunning Frog}
+Private{Private}
+Pyle{Pyle}
+Cheyenne{Cheyenne}
+Borgen{Borgen}
+Feck{Feck}
+Bionicle{Bionicle}
+Humana{Humana}
+Osseus{Osseus}
+Contessa{Contessa}
+Calzone{Calzone}
+Torsten{Torsten}
+Storenfried{Storenfried}
+Shirley{Shirley}
+Lieselotte{Lieselotte}
+Lt{Lt}
+Bornhowler{Bornhowler}
+Finstock{Finstock}
+Kurt{Kurt}
+Krautwurm{Krautwurm}
+Georg{Georg}
+Geheim{Geheim}
+Mondo{Mondo}
+Margrit{Margrit}
+Eugster{Eugster}
+Donkey{Donkey}
+Kong{Kong}
+Ferdinand{Ferdinand}
+Marcel{Marcel}
+Guille{Guille}
+the Kid{the Kid}
+Jungle Julia{Jungle Julia}
+Buffoon{Buffoon}
+Lorena{Lorena}
+Lopez{Lopez}
+Compulsive{Compulsive}
+Village Idiot{Village Idiot}
+

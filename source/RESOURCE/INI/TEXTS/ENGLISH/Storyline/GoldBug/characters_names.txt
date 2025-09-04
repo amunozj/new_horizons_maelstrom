@@ -1,9 +1,14 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 William{William}
 Legrand{Legrand}
+
+
 Edgar Allan{Edgar Allan}
 Poe{Poe}
 Jupiter{Jupiter}
+
+
 C. Auguste{C. Auguste}
 Dupin{Dupin}
 Arthur Gordon{Arthur Gordon}
@@ -43,12 +48,14 @@ Doctor{Doctor}
 KP{KP}
 Street{Street}
 Merchant{Merchant}
+Street Merchant{Street Merchant}
 Shipyard{Shipyard}
 Owner{Owner}
 Harbour{Harbour}
 Master{Master}
 Bank{Bank}
 Clerk{Clerk}
+Bank Clerk{Bank Clerk}
 Blacksmith{Blacksmith}
 Storeowner{Storeowner}
 Governor Thomas{Governor Thomas}
@@ -58,6 +65,7 @@ Man{Man}
 Black Magic Woman{Black Magic Woman}
 Plantation{Plantation}
 Guard{Guard}
+Plantation Guard{Plantation Guard}
 Captain William{Captain William}
 Kidd{Kidd}
 Howard{Howard}
@@ -117,3 +125,4 @@ Bandit{Bandit}
 Priest{Priest}
 Zombie{Zombie}
 Buccaneer{Buccaneer}
+

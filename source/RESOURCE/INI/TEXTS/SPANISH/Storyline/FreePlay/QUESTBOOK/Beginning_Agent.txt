@@ -1,3 +1,7 @@
-title=Sabotaje en #stown#
-text.t1=He arribado a #sisland# bajo una bandera falsa y tengo la misión de causar tanto caos como pueda. Sin embargo, soy un hombre libre y muy capaz de decidir por mí mismo lo que hacer.
-text.t2=He arribado a #sisland# bajo una bandera falsa y tengo la misión de causar tanto caos como pueda. Sin embargo, soy una mujer libre y muy capaz de decidir por mí misma lo que hacer.
+title=Operación encubierta en #stown#
+text.t1=He arribado a #sisland# bajo una bandera falsa y tengo la misión de causar tanto caos como pueda. Primero, #sofficer# me ha indicado que debería loclaizar a #sname#, cuyo verdadero nombre es #sname2#, y que probablemente estará en la taberna local. Si me pregunta por mi barco, debería responder que estaba infestado de termitas, pero que me libré de ellas y reparé los daños.
+text.t2=#sname# me preguntó por mi barco, mi respuesta le satisfizo y me confirmó su identidad dándome su verdadero nombre: #sname2#.
+text.t3=Ahora debería mover mi barco, ya que los agentes #snation# estarán vigilando y sospecharán si #sname2# intenta subir a bordo de un barco en el puerto.
+text.t4=#sname2# quiere que le lleve a #sdestination#.
+text.t5=Hemos llegado sanos y salvo a nuestro destino. Ha aceptado una patente de corso de los #snation#. Ahora, continuaré con mis propias actividades encubiertas...
+text.t6=Hemos llegado sanos y salvo a nuestro destino. He recibido algo de dinero como recompensa. Ahora, continuaré con mis propias actividades encubiertas...

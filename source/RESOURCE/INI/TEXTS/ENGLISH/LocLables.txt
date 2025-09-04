@@ -4,6 +4,7 @@ Falaise De Fleur Port{Falaise de Fleur Port}
 Octopus Bay{Octopus Bay}
 Falaise De Fleur Fort{Falaise De Fleur Fort}
 Redmond{Redmond}
+Jamaica{Jamaica}
 Redmond Port{Redmond port}
 Devil's Throat{Devil's Throat}
 Rocky Shore{Rocky Shore}
@@ -14,6 +15,7 @@ Shore{Shore}
 Oyster Beach{Oyster Beach}
 Isla Muelle Fort{Isla Muelle Fort}
 Oxbay{Oxbay}
+Barbados{Barbados}
 Oxbay Port{Oxbay Port}
 Greenford Port{Greenford port}
 Gray Rock Bay{Gray Rock Bay}
@@ -22,11 +24,14 @@ Far Beach{Far Beach}
 Greenford Fort{Greenford Fort}
 Oxbay Fort{Oxbay Fort}
 Conceicao{Conceicao}
+Grenada{Grenada}
 Conceição Port{Conceição Port}
 Sunny Haven{Sunny Haven}
 Leviathan Rock{Leviathan Rock}
 Conceição Fort{Conceição Fort}
 Douwesen{Douwesen}
+Bonaire{Bonaire}
+Eleuthera{Eleuthera}
 Douwesen Port{Douwesen port}
 Palm Beach{Palm Beach}
 Crab Cliffs{Crab Cliffs}
@@ -85,3 +90,8 @@ Birds Cove{Birds Cove}
 Fort{Fort}
 Bocht Van Hato{Bocht Van Hato}
 Bullen Bay{Bullen Bay}
+Bermudes{Bermudes}
+Pirate Town{Pirate Town Port}
+Shore3{Ruin Shore}
+shore_ship1{Shipwreck Shore}
+Temple{Temple}

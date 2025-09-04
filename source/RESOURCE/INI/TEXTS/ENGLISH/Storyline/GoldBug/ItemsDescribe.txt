@@ -156,6 +156,12 @@ itmdescr_bladewood_short
 Hmm, I have to split the Wood too.
 }
 
+itmname_bladewood2		{Wood}
+itmdescr_bladewood2
+{
+Some dry wood from the rainforest.
+}
+
 itmname_bladewood4		{Wood}
 itmdescr_bladewood4
 {
@@ -515,7 +521,7 @@ itmdescr_pistolbucket_nitre
 A Bucket filled with Salpeter.
 }
 
-itmname_pistolhand2		{}
+itmname_pistolhand2		{.}
 itmdescr_pistolhand2
 {
 .
@@ -524,7 +530,7 @@ itmdescr_pistolhand2
 itmname_pistolnitre_E		{Empty Sack}
 itmdescr_pistolnitre_E
 {
-
+.
 }
 
 itmname_pistolnitre_H		{Salpeter Sack}
@@ -542,7 +548,7 @@ A Leathersack filled with Salpeter.
 itmname_pistolsulphur_E		{Empty Basket}
 itmdescr_pistolsulphur_E
 {
-
+.
 }
 
 itmname_pistolsulphur_H		{Sulfur Basket}
@@ -560,7 +566,7 @@ A Basket filled with Sulfur.
 itmname_pistolcharcoal_E	{Empty Jar}
 itmdescr_pistolcharcoal_E
 {
-
+.
 }
 
 itmname_pistolcharcoal_H	{Charcoal Jar}
@@ -578,7 +584,7 @@ A Jar filled with Charcoal.
 itmname_pistolpyrite_E		{Empty Box}
 itmdescr_pistolpyrite_E
 {
-
+.
 }
 
 itmname_pistolpyrite_H		{Pyrite Box}
@@ -596,7 +602,7 @@ A Box filled with Pyrite Dust.
 itmname_pistolbarrel_gp0	{Empty Barrel}
 itmdescr_pistolbarrel_gp0
 {
-
+.
 }
 
 itmname_pistolbarrel_gpW	{Gunpowder Barrel}
@@ -897,19 +903,19 @@ These leaves may protect you against evil spirits and inspire your imagination.
 itmname_Poes_clothes		{Clothes}
 itmdescr_Poes_clothes
 {
-   
+
 }
 
 itmname_Poes_urn		{Urn}
 itmdescr_Poes_urn
 {
-   
+
 }
 
 itmname_Poes_books		{Books}
 itmdescr_Poes_books
 {
-   
+
 }
 
 itmname_gibbet_rope		{Long Rope}
@@ -1654,10 +1660,22 @@ Looks like ordinary Red Wine to me.
 }
 
 itmname_fake_candelabre		{Candelabre}
+itmdescr_fake_candelabre
+{
+
+}
 
 itmname_wax_candles		{Wax Candles}
+itmdescr_wax_candles
+{
+
+}
 
 itmname_fake_chalice		{Chalice}
+itmdescr_fake_chalice
+{
+
+}
 
 itmname_altar_bread		{Altar Bread}
 itmdescr_altar_bread
@@ -1666,14 +1684,34 @@ Poor bastard - only these dry biscuits to eat.
 }
 
 itmname_flyswatter		{Flyswatter}
+itmdescr_flyswatter
+{
+
+}
 
 itmname_shrine			{Shrine}
+itmdescr_shrine
+{
+
+}
 
 itmname_jewelcross		{Jewelcross}
+itmdescr_jewelcross
+{
+
+}
 
 itmname_cowl			{Cowl}
+itmdescr_cowl
+{
+
+}
 
 itmname_fake_censer		{Censer}
+itmdescr_fake_censer
+{
+
+}
 
 //..........................CHURCH ITEMS END....................................
 //........................TREASURE ITEMS START..................................
@@ -1699,32 +1737,154 @@ Part of the Treasure in a sack.
 }
 
 itmname_treasure1		{Prodigious Punch Bowl}
+itmdescr_treasure1
+{
+
+}
+
 itmname_treasure2		{Censer}
+itmdescr_treasure2
+{
+
+}
+
 itmname_treasure3		{Opal}
+itmdescr_treasure3
+{
+
+}
+
 itmname_treasure4		{Elephant}
+itmdescr_treasure4
+{
+
+}
+
 
 itmname_treasure5		{Large Ring}
+itmdescr_treasure5
+{
+
+}
+
 itmname_treasure6		{Small Ring}
+itmdescr_treasure6
+{
+
+}
+
 itmname_treasure7		{Finger Ring}
+itmdescr_treasure7
+{
+
+}
+
 itmname_treasure8		{Small Chain}
+itmdescr_treasure8
+{
+
+}
+
 
 itmname_treasure9		{Large Clock}
+itmdescr_treasure9
+{
+
+}
+
 itmname_treasure10		{Small Clock}
+itmdescr_treasure10
+{
+
+}
+
 itmname_treasure11		{Medium Clock}
+itmdescr_treasure11
+{
+
+}
+
 itmname_treasure12		{Rich Chain}
+itmdescr_treasure12
+{
+
+}
 
 itmname_treasure13		{French Crucifix}
+itmdescr_treasure13
+{
+
+}
+
 itmname_treasure14		{Small Crucifix}
+itmdescr_treasure14
+{
+
+}
+
 itmname_treasure15		{Large Crucifix}
+itmdescr_treasure15
+{
+
+}
+
 itmname_treasure16		{Heavy Chain}
+itmdescr_treasure16
+{
+
+}
 
 itmname_incas_collection	{Incan treasure collection}
+itmdescr_incas_collection
+{
+
+}
+
 itmname_sword_handle1		{Sword Handle}
+itmdescr_sword_handle1
+{
+
+}
+
 itmname_sword_handle2		{Sword Handle}
+itmdescr_sword_handle2
+{
+
+}
+
 
 itmname_coin3			{Doubloon}
+itmdescr_coin3
+{
+
+}
+
 itmname_coin5			{Guinea}
+itmdescr_coin5
+{
+
+}
+
 itmname_coin9			{Sequin}
+itmdescr_coin9
+{
+
+}
+
 itmname_coin12			{Louis d'Or}
+itmdescr_coin12
+{
+
+}
+
 itmname_coin13			{Gulden}
+itmdescr_coin13
+{
+
+}
+
 itmname_coin16			{Moydore}
+itmdescr_coin16
+{
+
+}

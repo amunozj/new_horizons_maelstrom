@@ -1,18 +1,20 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| Ardent.c |=====}
+
 Charles{Charles}
 Ardent{Ardent}
 
-{=====| StartStoryline.c |=====}
+
 William{William}
 McMurrough{McMurrough}
 O'Brien{O'Brien}
 
-{=====| quests_reaction.c |=====}
+
 de la Vega{de la Vega}
 Two Dogs{Dos Perros}
 Fighting{Que Pelean}
+Two Dogs Fighting{Dos Perros Que Pelean}
 not-Fighting{Que No Pelean}
+Two Dogs not-Fighting{Dos Perros Que No Pelean}
 Carlos{Carlos}
 Ardenta{Ardenta}
 Indian{Indio}
@@ -20,7 +22,7 @@ Cardinal{Cardenal}
 Ximinez{Ximinez}
 Fang{Fang}
 
-{=====| Story.c |=====}
+
 Indian Warrior{Guerrero indio}
 Louwe{Louwe}
 Louwman{Louwman}
@@ -47,12 +49,12 @@ Gilbert{Gilbert}
 Emmett{Emmett}
 Dawson{Dawson}
 
-{=====| TempQuest.c |=====}
+
 Inquisitor{Inquisidor}
 Monkey{Mono}
 Crescent Moon{Luna Creciente}
 Rain Cloud{Nube De Lluvia}
-Golden Flower{Flor Dirada}
+Golden Flower{Flor Dorada}
 Nervous Elk{Ciervo Nervioso}
 Ringboned Wolf{Lobo Huesudo}
 Strong Deer{Corzo Fuerte}
@@ -83,11 +85,11 @@ Escudero{Escudero}
 Elizabeth{Elizabeth}
 Constantino{Constantino}
 de Malaspina{de Malaspina}
-Maria{Maria}
+Maria{María}
 Antonia{Antonia}
 of Austria{de Austria}
 
-{=====| TempQuestEnemy.c |=====}
+
 Guard{Guardia}
 1{1}
 2{2}
@@ -149,7 +151,5 @@ de Guzmán{de Guzmán}
 Gilles{Gilles}
 Clouzot{Clouzot}
 
-{=====| 90 characters |=====}
 
-{=====| Other |=====}
 Helen{Helen}

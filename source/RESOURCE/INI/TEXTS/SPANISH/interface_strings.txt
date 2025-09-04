@@ -1,5 +1,7 @@
 Delete savefile confirm{øSeguro que quieres eliminar esta partida?}
 Overwrite savefile confirm{øSeguro que quieres sobreescribir esta partida?}
+Delete profile confirm{øSeguro que quieres eliminar este perfil?}
+Warning: this profile is currently active!{Advertencia: °este perfil est· activo actualmente!}
 Low storage and unable save create{Espacio en disco duro insuficiente. No se puede guardar.}
 Load game confirm{øSeguro que quieres cargar esta partida?}
 Unable to Load save game{No se puede cargar esta partida.}
@@ -24,13 +26,14 @@ Transfer cannons confirm2{al barco}
 Transfer cannons confirm3{Al transferir caÒones de calibre igual o menor al calibre m·ximo, recibir·s caÒones de calibre}
 Transfer cannons confirm4{Al transferir caÒones de calibre mayor al calibre m·ximo, recibir·s caÒones de calibre}
 Exit from cannons confirm{La compra no se ha confirmado. øSeguro que quieres salir?}
-Adding{Reeplaza solo caÒones daÒados}
+Adding{Reemplaza solo caÒones daÒados}
+Min/Max Crew{Tripu. mÌn./m·x.}
 Exit from abordage confirm{øSeguro que quieres dejar este barco?}
 Exit from fortabordage confirm{øSeguro que quieres detener el saqueo del fuerte?}
 Exit from exchange confirm{øSeguro que quieres salir?}
 Not enough crew assigned{°No hay suficiente tripulaciÛn asignada!}
 Min crew reached{°TripulaciÛn mÌnima alcanzada!}
-This officer has too low Leadership and Sailing skills to command this ship. Assign anyway?{Este oficial tiene destrezas de Liderazgo y NavegaciÛn demasiado bajas para capitanear este barco. øAsignar de todos modos?}
+This officer has too low Leadership and Sailing skills to command this ship. Assign anyway?{Destrezas de Liderazgo y NavegaciÛn insuficientes para este barco. øAsignar oficial de todos modos?}
 You can't command a fleet until reaching level{No puedes comandar una flota hasta alcanzar el nivel}
 Leadership. Assign anyway?{ de Liderazgo. øAsignar de todos modos?}
 's current colours{bandera actual}
@@ -44,6 +47,9 @@ Nomoney{No tienes suficiente dinero}
 NoCannons{No hay caÒones instalados en el barco}
 Installed{CaÒones instalados actualmente}
 Bigcaliber{°Calibre demasiado grande para tu barco!}
+Only available in Pirate Shipyards!{°Solo disponible en astilleros piratas!}
+Click Install to Remove the upgrade{Haz clic en Instalar/Quitar para retirar la mejora}
+This upgrade can't be removed{Esta mejora no se puede retirar}
 CanBuyMax{Puedes comprar un m·ximo de}
 cannons.{caÒones.}
 Repairs are completed{Reparaciones completadas}
@@ -63,7 +69,7 @@ tax_normal{Normal}
 tax_high{Alto}
 tax_plunder{Muy alto}
 
-This officer can command ships up to tier{Este oficial puede capitanear barcos de hasta clase}
+This officer can command ships up to class{Este oficial puede capitanear barcos hasta la clase}
 
 Broken{Inservible}
 Badly worn{Lamentable}
@@ -95,8 +101,9 @@ You equipped{Has equipado}
 All hands execute fire drill ! NOW !!{°Todo el mundo, zafarrancho de incendio! °°AHORA!!}
 Sails and cartridges jettisoned.{Velas y cartuchos arrojados por la borda.}
 Captain, what's a firedrawl?{Capit·n, øquÅÈ es un "fazarrancho" de incendio?}
-Your crew seems to lack the SHIP DEFENCE ability...{Parece que tu tripilaciÛn no tiene la habilidad DEFENSA NAVAL...}
+Your crew seems to lack the SHIP DEFENCE ability...{Parece que tu tripilaciÛn no tiene la habilidad CONTROL DE DA—OS...}
 Used potion{PociÛn usada}
+You don't have a map of the archipelago.{No tienes un mapa del ArchipiÈlago.}
 You equipped{Has equipado}
 You don't have a regular blade to equip.{No tienes un arma blanca normal que equipar.}
 You don't have a regular gun to equip.{No tienes un arma de fuego normal que equipar.}
@@ -122,8 +129,8 @@ With a few mates you escape from disaster.{Junto a algunos compaÒeros, escapas d
 If you're careful, you just might make it.{Si tienes cuidado, puede que lo consigas.}
 But given your past performance you'll all starve'{Pero conociendo tu historial, todos morirÈis de hambre'}
 You regain consciousness after a long feverish sleep{Recuperas el sentido despuÈs de un largo periodo de sueÒo febril}
-Fire has reached the{°El fuego se ha extendido por el}
-'s powder magazine!{ hasta alcanzar la santab·rbara!}
+Fire has reached the{°El fuego ha alcanzado la santab·rbara del}
+'s powder magazine!{!}
 One fire doused!{°Un fuego apagado!}
 men burnt{hombres quemados}
 Fire still burning! Execute firedrill procedure immediately!{°El fuego sigue ardiendo! °Ejecuta zafarrancho de incendio inmediatamente!}
@@ -139,8 +146,8 @@ has been sunk by the{ha sido hundido por la}
 God gained{Dios ha ganado}
 Total XP{Total de XP}
 Hand of God{la mano de Dios}
-Victim poisoned !{°VÌctima envenenada !}
-WHACK! You knocked out your opponent!{°WHACK! °Has dejado inconsciente a tu oponente!}
+Victim poisoned!{°VÌctima envenenada!}
+WHACK! You knocked out your opponent!{°CRACK! °Has dejado inconsciente a tu oponente!}
 Opponent disarmed !{°Oponente desarmado !}
 One of your officers was disarmed!{°Han desarmado a uno de tus oficiales!}
 You were disarmed!{°Te han desarmado!}
@@ -185,10 +192,12 @@ Neutral{neutral}
 Wary{suspicaz}
 Hostile{hostil}
 Letter of Marque{Patente de corso}
-ALARM !  AN AMBUSH !!!!{°ALARMA!  °°°EMBOSCADA!!!}
+pardon{orden de indulto}
+document{cÈdula}
+ALARM!  AN AMBUSH!!!{°ALARMA!  °°°EMBOSCADA!!!}
 Gamlet{Solo Hamlet hablaba con los muertos y ni siquiera Èl esperaba que le respondieran.}
 NoItems{No hay nada que llevarte}
-Captain, the crew is envious of the amount of money we have on board and wants to sign articles{Capit·n, la tripulaciÛn tiene envidia de la cantidad de dinero que tenemos a bordo y quiere firmar artÌculos}
+Captain, the crew is envious of the amount of money we have on board and wants to sign articles{Capit·n, la tripulaciÛn tiene envidia de la cantidad de dinero que tenemos a bordo y quiere firmar artÌculos para repartir el botÌn}
 Captain, we have only{°Capit·n, solo nos quedan}
 days worth of rum left!{dÌas hasta que se acabe el ron!}
 Captain, we're out of rum!{°Capit·n, se ha acabado el ron!}
@@ -204,9 +213,11 @@ crew have died from starvation.{triplantes han muerto de hambre.}
 We've been out{Hemos estado fuera}
 The crew now has{La tripulaciÛn tiene}
 days out.{dÌas fuera.}
-You made{Has ganado}
-gold from your estates.{oro de tus tierras.}
-gold as taxes from controlled towns.{oro en concepto de impuestos de las ciudades controladas.}
+You get your ship{Recuperas tu barco}
+days later.{dÌas despuÈs.}
+You made{Has recibido}
+gold from your estates.{piezas de oro de tus tierras.}
+gold as taxes from controlled towns.{piezas de oro en concepto de impuestos de las ciudades controladas.}
 Colony of{Colonia de}
 captured by{capturada por}
 Your prisoner{°Tu prisionero}
@@ -226,6 +237,10 @@ starboard{estribor}
 bow{proa}
 stern{popa}
 days.{dÌas.}
+of the crew is cursed due to{miembros de la tripulaciÛn sufren la maldiciÛn debido a}
+Aztec coins{monedas aztecas}
+Captain, the crew is really not happy with this whole curse business. They work SO HARD at repairing the sails, but it appears to have no effect!{Capit·n, la tripulaciÛn no est· nada contenta con este asunto de la maldiciÛn. °Se matan a trabajar para remendar las velas, pero parece que no sirve de nada!}
+Captain, now the crew can't even see where they're going anymore with all this unnatural fog! Cannot you be persuaded to attempt to lift the curse?{°Capit·n, ahora la tripulaciÛn ni siquiera pouede ver adÛnde vamos por culpa de esta niebla antinatural! øSeguro que no podemos persuadirte para que intentes levantar la maldiciÛn?}
 Reinitializing...{Reinicializando...}
 LOADED NEW INTERFACE{NUEVA INTERFAZ CARGADA}
 LOADED OLD INTERFACE{VIEJA INTERFAZ CARGADA}
@@ -245,7 +260,13 @@ Towns...{Ciudades...}
 Stores...{Tiendas...}
 Always run is now on{'Correr siempre' est· activado}
 Always run is now off{'Correr siempre' est· desactivado}
-Log level is now set to{La abundancia de informes est· a nivel}
+Log level is now set to{El nivel de informes en pantalla es}
+Quiet{Silencio}
+Laconic{LacÛnico}
+Normal{Normal}
+Verbose{Detallado}
+Clubhauling default direction set to PORT{DirecciÛn por defecto para virar sobre el ancla: BABOR}
+Clubhauling default direction set to STARBOARD{DirecciÛn por defecto para virar sobre el ancla: ESTRIBOR}
 Mantrap set! grp:{°Cepo colocado! grp:}
 port authority{autoridad portuaria}
 from your party in berthing duties.{de tu grupo en tasas de atraque.}
@@ -260,6 +281,7 @@ You can't save or load until{No puedes guardar o cargar hasta que}
 leaves.{se vaya.}
 NewSave{Nueva partida guardada}
 God mode{Modo Dios}
+Selected character is{El personaje sleccionado es}	
 Shotgun mode{Modo Escopeta}
 Worldmap encounters{Encuentros en el mapa}
 Fake Level Up{Falsa subida de nivel}
@@ -267,7 +289,6 @@ Error updating passenger, is passenger{Error updating passenger, is passenger}
 (no ships berthed at{(no hay barcos atracados en}
 ){)}
 (empty slot){(Puesto vacÌo)}
-New captain{Nuevo capit·n}
 (CHOOSE A CAPTAIN){(ELIGE UN CAPIT¡N)}
 (no available captains){(no hay capitanes disponibles)}
 Currently a passenger{Actualmente un pasajero}
@@ -306,6 +327,7 @@ Cayman{Islas Caim·n}
 Hispaniola{La EspaÒola}
 Cuba{Cuba}
 Guadeloupe{Guadeloupe}
+Santa Maria de Guadalupe de Extremadura{Santa MarÌa de Guadalupe}
 Saint Martin{Saint Martin}
 Antigua{Antigua}
 Turks{Islas Turcas}
@@ -400,7 +422,7 @@ There is a moderate breeze{Sopla una brisa moderada}
 There is a fresh breeze{Sopla una brisa fresca}
 There is a strong breeze{Sopla una brisa fuerte}
 There is a near gale{Sopla un vendaval}
-from the{del}
+wind_from_the{del}
 Wind is from the{El viento sopla del}
 wind_at{a}
 kts{nudos}
@@ -420,6 +442,59 @@ W{O}
 WNW{ONO}
 NW{NO}
 NNW{NNO}
+Dir_N{N}
+Dir_NNE{NNE}
+Dir_NE{NE}
+Dir_ENE{ENE}
+Dir_E{E}
+Dir_ESE{ESE}
+Dir_SE{SE}
+Dir_SSE{SSE}
+Dir_S{S}
+Dir_SSW{SSO}
+Dir_SW{SO}
+Dir_WSW{OSO}
+Dir_W{O}
+Dir_WNW{ONO}
+Dir_NW{NO}
+Dir_NNW{NNO}
+
+ROLL_Roll angle is{El balanceo nos est· escorando}
+ROLL_degrees to starboard{grados a estribor}
+ROLL_degrees to port{grados a babor}
+ROLL_degrees{grados.}
+Captain, we have to put our bow to the waves to decrease the rolling movement of the ship{Capit·n, tenemos que ponernos con la proa hacia las olas, para reducir el balanceo del barco.}
+Captain, the morale of the crew decreased from{Capit·n, la moral de la tripulaciÛn ha bajado de}
+ROLL_to{a}
+because the ship's rolling is making them seasick{porque el balanceo del barco les hace marearse}
+Captain, the cargo has started shifting due to the rolling and{Capit·n, la carga ha empezado a desplazarse debido al balanceo}
+went overboard{se han caÌdo por la borda}
+crewmembers are heard yelling from inside the empty cargo hold{tripulantes est·n gritando desde la bodega vacÌa}
+Captain, shifting cargo did{Capit·n, el movimiento de la carga ha provocado}
+damage to the hull{de daÒo al casco}
+Captain, that last violent roll washed{Capit·n, ese ˙ltimo balanceo tan violento ha hecho que}
+crewmembers overboard{tripulantes se hayan caÌdo por la borda}
+Captain, we're capsizing to starboard... ABANDON SHIP!{°Capit·n, estamos zozobrando por estribor!... °ABANDONAD EL BARCO!}
+Captain, we're capsizing to port... ABANDON SHIP!{°Capit·n, estamos zozobrando por babor!... °ABANDONAD ELL BARCO!}
+she's coming onto blow!{°El viento arrecia!}		 
+
+You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.{Parece que tienes una escuadra propia bastante impresionante. No parece que vayas a necesitar un nuevo barco por tu ascenso.}
+Captain, we're being attacked by the Kraken!{°Capit·n, el Kraken nos est· atacando!}
+Captain, the{°Capit·n, el}
+is under attack by the Kraken!{est· siendo atacado por el Kraken!}
+Captain, the Kraken has finished its attack on the{°Capit·n, el Kraken ha terminado su ataque contra el}
+Captain, the Kraken is ready for another attack!{°Capit·n, el Kraken est· preparado para otro ataque!}
+Captain, the crew is ready for another go at the oars!{°CapÏt·n, la tripulaciÛn est· lista para volver a los remos!}
+Captain, the Sword of Triton has recharged itself!{°Capit·n, la Espada de TritÛn se ha recargado!}
+
+Engines: Full{Motores: a toda m·quina}
+Engines: Half{Motores: a media m·quina}
+Engines: Slow{Motores: a poca m·quina}
+Engines: Dead Slow{Motores: a muy poca m·quina}
+Engines: ALL STOP{Motores: PARA}
+Ahead{avante}
+Astern{atr·s}
+Engines: NO FUEL{Motores SIN COMBUSTIBLE}
 
 Emblem{Emblema}
 Special Sail{Vela especial}
@@ -445,7 +520,7 @@ Red sails with gold fringe, characteristic to Queen Anne's Revenge.{Velas rojas 
 A set of sails that once belonged to the legendary Death Vessel.{Un juego de velas que antaÒo perteneciÛ al legendario Buque de la Muerte.}
 A set of black sails with red and white stripes.{Un juego de velas negras con franjas rojas y blancas.}
 A set of sails bearing diamonds patterns, praised for their beauty.{Un juego de velas decoradas con un diseÒo de diamantes, renombradas por su belleza.}
-A set of white sails sporting a chain with broken links, and represent the holder's commitment to freedom.{Un juego de velas decoradas con una cadenas con eslabones rotos, que representa el compromiso de quien las iza con la libertad.}
+A set of white sails sporting a chain with broken links, and represent the holder's commitment to freedom.{Un juego de velas decoradas con una cadena con eslabones rotos, que representa el compromiso de quien las iza con la libertad.}
 A set of sails with an anchor pattern, representing the conquering explorers of the New World.{Un juego de velas con la imagen de un ancla, que representa a los exploradores y conquistadores del Nuevo Mundo.}
 A set of blue sails with gilded gold patterns.{Un juego de velas azules con decoraciones doradas.}
 A set of sails with the pattern of a master navigator's golden sextant.{Un juego de velas decoradas con la imagen de un sextante dorado, propias de un maestro navegante.}
@@ -540,7 +615,7 @@ a battle fleet{una flota de batalla}
 a scratch patrol{una escuadra de castigo}
 ship{barco}
 ships{barcos}
-flying the colors of{ondeando la bandera de}
+flying the colors of{con bandera de}
 flying the Jolly Roger{ondeando la Jolly Roger}
 Sail Ho! There's a battle up ahead sir, it looks like{°Vela a la vista! Hay una batalla a proa, seÒor.}
 Sail Ho! There's a battle up ahead ma'am, it looks like{°Vela a la vista! Hay una batalla a proa, seÒora.}
@@ -555,9 +630,14 @@ mutinied and turned against you{se ha amotinado y se ha vuelto en tu contra}
 Captain{Capit·n}
 of the{del}
 does not approve of your actions and turned against you{no aprueba tus acciones y se ha vuelto en tu contra}
+Captain, the crew of the{Capit·n, la tripulaciÛn de tu}
+has less than Low morale. Beware of mutiny!{tiene la moral por debajo de Baja. °Ten cuidado, podrÌan amotinarse!}
+wounded crewmembers:{tripulantes heridos}
+healed and{se han curado y}
+died from gangrene.{han muerto por gangrena.}
+died from gangrene on{han muerto por gangrena a bordo del}
+
 Captain, we're out of crew!{°Capit·n, no nos queda tripulaciÛn!}
-Captain, we're out of food!{°Capit·n, no nos queda comida!}
-Captain, we're out of rum!{°Capit·n, no nos queda ron!}
 Choosing outfit for{Elegir atuendo para}
 The thief spreads the news{El ladrÛn extiende las noticias}
 that you receive stolen goods.{de que aceptas objetos robados.}
@@ -565,7 +645,7 @@ This meeting has really lightened you...{Este encuentro te ha aligerado el bolsi
 This meeting has really enlightened you...{Este encuentro te ha aligerado el corazÛn...}
 For five hours are you being lectured on{Durante cinco horas, recibes una lecciÛn de}
 This has improved your{Esto ha mejorado tu destreza de}
-skill{.}
+skill.{.}
 New ship characters...{New ship characters...}
 
 There are not enough Grapeshots{°No hay suficiente metralla!}
@@ -586,7 +666,7 @@ left{!}
 You have taken{Has conseguido}
 Equip the Ammunition Pouch!{°Equipa el saquete de balas!}
 Equip the Gunpowder Flask!{°Equipa la petaca de pÛlvora!}
-Mustering those drunken tars takes till nightfall...{Reunir a estos marineros borrachos lleva hasta el anochecer...}
+Mustering those drunken tars takes till nightfall...{Reunir a esos marineros borrachos lleva hasta el anochecer...}
 Donation of personal wealth to crew{DonaciÛn de riqueza personal a la tripulaciÛn}
 will be notified of all sightings{ser· notificado de todos los avistamientos}
 won't be notified of too-powerful sightings{no ser· notificado de los avistamientos demasiado poderosos}
@@ -609,7 +689,6 @@ INDEX OF FIRST CONTRABAND IS:{ÕNDICE DE LA PRIMERA MERCANCÕA DE CONTRABANDO ES:}
 THERE ARE SOME MORE CONTRABAND GOODS{HAY ALGUNA MERCANCÕAS DE CONTRABANDO M¡S}
 ONLY ONE CONTRABAND GOOD IS AVAILABLE{SOLO UNA MERCANCÕA DE CONTRABANDO EST¡ DISPONIBLE}
 Donation of personal wealth to crew{DonaciÛn de riqueza personal a la tripulaciÛn}
-You have hoisted a Pirate flag! Argh!{°Has izado una bandera pirata! °Argh!}
 You've dropped through a trapdoor into a cave...{Has caÌdo por una trampilla en una cueva...}
 Secret Hide{Escondite secreto}
 You've dropped through a trapdoor into the crypt...{Has caÌdo por una trampilla en la cripta...}
@@ -637,13 +716,13 @@ AMBUSH{EMBOSCADA}
 MILITARY RAID{ATAQUE MILITAR}
 ALERT{ALERTA}
 PIRATES RAID{ATAQUE PIRATA}
-You are ALONE now. No other LIVING soul dares to enter here..{Ahora est·s SOLO. Ning˙n otra alma VIVIENTE osa entrar aquÌ..}
+You are ALONE now. No other LIVING soul dares to enter here..{Ahora est·s en SOLITARIO. Ning˙n otra alma VIVIENTE osa entrar aquÌ..}
 The warriormonk disappears... like the smoke of a long forgotten pyre...{El monje guerrero desaparece..., como el humo de una pira olvidada...}
 The weird monk reveals his true nature..{El extraÒo monje revela su verdadera naturaleza..}
 Old vag gone at the moment, but...burglers!{El viejo no est· en este momento pero... °ladrones!}
 We are recognized, captain!{°Nos han reconocido, capit·n!}
 Cabin for captives can be here{La cabaÒa prisiÛn puede estar aquÌ}
-Prisoners{Habla con tus prisioneros en la bodega para varias opciones. Hazlo mientras est·s en puerto para pedir rescate. El precio depende de su relaciÛn con el prisionero.}
+Prisoners{Habla con tus prisioneros en la bodega para elegir varias opciones. Hazlo mientras est·s en puerto para pedir rescate. El precio depende de la relaciÛn que tenga la naciÛn del puerto con el prisionero.}
 You hide the Jolly Roger and hoist your former flag again{Escondes la Jolly Roger e izas tu antigua bandera de nuevo}
 CaptainMoney1{Consigues}
 CaptainMoney2{piastras del cofre del capit·n.}
@@ -674,8 +753,11 @@ Brothel{Burdel}
 Tutorial Deck{Cubierta del tutorial}
 Tutorial_Deck{Cubierta del tutorial}
 Loanshark's Office{Oficina del prestamista}
+#stown_name# Loanshark's Office{Oficina del prestamista de #stown_name#}
 Loanshark's backdoor{Puerta trasera del prestamista}
 Room in #stown_name# tavern{HabitaciÛn en la taberna de #stown_name#}
+Cellar in #stown_name# tavern{SÛtano en la taberna de #stown_name#}
+Cellar in #stown_name# tavern.{SÛtano en la taberna de #stown_name#.}
 #stown_name# tavern{Taberna de #stown_name#}
 #stown_name# store{Tienda de #stown_name#}
 #stown_name# shipyard{Astillero de #stown_name#}
@@ -683,7 +765,9 @@ Room in #stown_name# tavern{HabitaciÛn en la taberna de #stown_name#}
 #stown_name# residence{Residencia de #stown_name#}
 #stown_name# prison{PrisiÛn de #stown_name#}
 #stown_name# brothel{Burdel de #stown_name#}
+#stown_name# Brothel room{HabitaciÛn del burdel de #stown_name#}
 Exit from #stown_name#{Salida de #stown_name#}
+#stown_name# Exit{Salida de #stown_name#}
 #stown_name# Outskirts{Afueras de #stown_name#}
 #stown_name# Dungeon{Mazmorra de #stown_name#}
 #stown_name#{#stown_name#}
@@ -701,10 +785,12 @@ Store{Tienda}
 Jungle{Selva}
 House{Casa}
 Tailor's Shop{SastrerÌa}
+Changing room{Probador}
 Mansion{MansiÛn}
 SeaPort{Puerto}
 SeaFort{Fuerte}
 Cave{Cueva}
+Small Cave{PequeÒa cueva}
 Sea{Mar}
 Ship{Barco}
 Pitfall!!!!{°°°Pozo!!!}
@@ -725,7 +811,6 @@ Naval officers only!{°Solo para oficiales de la Armada!}
 Towncenter{Centro de la ciudad}
 Warehouse{AlmacÈn}
 Abbey of the Maltese order{AbadÌa de la Orden de Malta}
-Greenford{Greenford}
 Greenford port{Puerto de Greenford}
 Exit from Greenford{Salida de Greenford}
 Greenford shipyard{Astillero de Greenford}
@@ -739,6 +824,7 @@ Room in Greenford tavern{HabitaciÛn en la taberna de Greenford}
 #sisland_name# cavern{Caverna de #sisland_name#}
 #stown_name# church{Iglesia de #stown_name#}
 Sewer{Cloacas}
+#stown_name# Sewer{Cloacas de #stown_name#}
 Abandoned mine{Mina abandonada}
 Town{Ciudad}
 Dutch West India Company{CompaÒÌa Holandesa de las Indias Occidentales}
@@ -746,9 +832,16 @@ Indian Village{Poblado indio}
 Casa de Contratacion{Casa de ContrataciÛn}
 French West India Company{CompaÒÌa Francesa de las Indias Occidentales}
 #stown_name# Gambling House{Garito de juego de #stown_name#}
+Vice Admiral's residence{Residencia del Vicealmirante}
+Admiralty{Almirantazgo}
+Head's House{Casa del capataz}
+To the Loanshark{Al prestamista}
+Room in tavern{HabitaciÛn en la taberna}
+Townhall{Ayuntamiento}
 
 Brothel.{Burdel}
 Loanshark's Office.{Oficina del prestamista}
+#stown_name# Loanshark's Office.{Oficina del prestamista de #stown_name#.}
 Loanshark's backdoor.{Puerta trasera del prestamista}
 Room in #stown_name# tavern.{HabitaciÛn en la taberna de #stown_name#}
 #stown_name# tavern.{taberna de #stown_name#}
@@ -807,16 +900,19 @@ Town.{Ciudad}
 Casa de Contratacion.{Casa de ContrataciÛn.}
 French West India Company.{CompaÒÌa Francesa de las Indias Occidentales.}
 Gaming House.{Garito de juego.}
+The Dark Frigate{La Fragata Oscura}
+The Faithful Bride{La Novia Fiel}
+Will Turner's House{Casa de Will Turner}
 
 Khael Roa Shore{Costa de Khael Roa}
 Incas Temple{Templo Inca}
 Maze{Laberinto}
-Alcove{Alcoba}
+Alcove{Hornacina}
 
 Khael Roa Shore.{Costa de Khael Roa}
 Incas Temple.{Templo Inca}
 Maze.{Laberinto}
-Alcove.{Alcoba}
+Alcove.{Hornacina}
 
 Pirate Chief's House{Casa del jefe pirata}
 House of leader #stown_name# pirates{Casa del lÌder de los piratas de #stown_name#}
@@ -889,9 +985,11 @@ Center.{Centro de la ciudad}
 Octopus Bay.{BahÌa del Pulpo}
 House in #stown_name#.{Casa en #stown_name#}
 Old Bridge{Puente Viejo}
+House of Luc Merin{Casa de Luc Merin}
 
 Trade Square{Plaza del mercado}
 House of Mateus Santos{Casa de Mateus Santos}
+Study of Mateus Santos{Estudio de Mateus Santos}
 Damski's House{Casa de Damski}
 House of Sidonio Ogarrio{Casa de Sidonio Ogarrio}
 Sea Passage{Pasadizo marÌtimo}
@@ -900,6 +998,7 @@ Oyster Beach{Playa de las Ostras}
 Entrace to #sisland_name# cave{Entrada a la cueva de #sisland_name#}
 Shore{Costa}
 ANIMISTS Lair{Guarida de los ANIMISTAS}
+Satanists Lair{Guarida de los satanistas}
 
 Trade Square.{Plaza del mercado}
 House of Mateus Santos.{Casa de Mateus Santos}
@@ -910,6 +1009,7 @@ Oyster Beach.{Playa de las Ostras}
 Entrace to #sisland_name# cave.{Entrada a la cueva de #sisland_name#}
 Shore.{Costa}
 ANIMISTS Lair.{Guarida de los ANIMISTAS}
+Satanists Lair.{Guarida de los satanistas}
 
 Prison{PrisiÛn}
 Devil's Throat{Garganta del Diablo}
@@ -959,11 +1059,7 @@ Pirate Lair.{Guarida Pirata}
 White Bay.{BahÌa Blanca}
 White Bay{BahÌa Blanca}
 
-White Bay.{BahÌa Blanca}
-White Bay{BahÌa Blanca}
-
-Exit from #stown_name#{Salida de #stown_name#}
-#sisland_name# Cavern{Caverna de#sisland_name#}
+#sisland_name# Cavern{Caverna de #sisland_name#}
 Pirate Fort{Fuerte pirata}
 House of leader of #sisland_name# pirates{Casa del lÌder de los piratas de #sisland_name#}
 Palm Beach{Playa de las Palmeras}
@@ -972,9 +1068,9 @@ House in Jungle{Casa en la selva}
 Rheims house on #sisland_name#{Casa de Rheims en #sisland_name#}
 Room in Pirate tavern{HabitaciÛn en la taberna pirata}
 The cavern{La caverna}
+Smuggler's Home{Casa del contrabandista}
 #sisland_name# shore ship{Barco en la costa de #sisland_name#}
 
-Exit from #stown_name#.{Salida de #stown_name#}
 #sisland_name# Cavern.{Caverna de#sisland_name#}
 Pirate Fort.{Fuerte pirata}
 House of leader of #sisland_name# pirates{Casa del lÌder de los piratas de #sisland_name#}
@@ -1024,7 +1120,16 @@ Baie Orient{Baie Orient}
 Cellar{SÛtano}
 Muscetto Cove{Cala Muscetto}
 Mixteca Bay{BahÌa Mixteca}
+Mixteca Bay.{BahÌa Mixteca.}
 Darien Beach{Playa de Darien}
+Darien Beach.{Playa de Darien.}
+Bullen Bay{BahÌa Bullen}
+Bocht Van Hato.{Bocht Van Hato.}
+Aguadilla Bay.{BahÌa Aguadilla.}
+Vera Cruz port.{Puerto de Vera Cruz}
+Vera Cruz. Plaza de Armas{Vera Cruz. Plaza de Armas}
+Vera Cruz Tavern{Taberna de Vera Cruz}
+San Felipe Fort{Fuerte de San Felipe}
 
 Tradepost.{Puesto comercial}
 Inn.{Posada}
@@ -1045,6 +1150,7 @@ Buccaneers Camp{Campamento bucanero}
 Buccaneers Camp.{Campamento bucanero}
 Village{Aldea}
 Village.{Aldea}
+Village church{Iglesia de la aldea}
 
 Barracks{Barracones}
 Church{Iglesia}
@@ -1073,14 +1179,48 @@ Lighthouse{Faro}
 Lighthouse.{Faro}
 Arsenal{Barracones}
 Arsenal.{Barracones}
+#stown_name# Naval HQ{Cuartel General Naval de #stown_name#}
+Officer Commanding #stown_name# Naval HQ{Oficial al mando del Cuartel General Naval de #stown_name#}
+Mrs. Mason's House{Casa de la Sra. Mason}
+Office{Despacho}
+Naval Store{AlmacÈn Naval}
+Naval Shipyard{Astillero Naval}
+British Naval Headquarters{Cuartel General Naval Brit·nico}
+British Naval Headquarters Study{Estudio del Cuartel General Naval}
+#stown_name# Plantation{PlantaciÛn de #stown_name#}
+Plantation{PlantaciÛn}
+Fire Ship deck{Cubierta del brulote}
+HMS Hotspur{HMS Hotspur}
+French Battery{BaterÌa francesa}
+Mystery House{Casa misteriosa}
+Back Room{Cuarto trasero}
+Beach Tunnel{T˙nel de la playa}
+Pirate Entrance{Entrada pirata}
+Pirate House{Casa pirata}
+Spanish Prison{PrisiÛn espaÒola}
+Prison Shore{Costa de la prisiÛn}
+Smugglers Fort{Fuerte de los contrabandistas}
+Santiago warehouse{AlmacÈn de Santiago}
+Prison Dining Room{Comedor de la prisiÛn}
+Rebel Shore{Costa rebelde}
+Rebel Fort{Fuerte rebelde}
+Don Julian Alvarado's Quarters{Aposentos de don Julian Alvarado}
+Smuggler ship{Barco contrabandista}
 
-To Fort{Al Fort}
+Isla Mona Port{Puerto de Isla Mona}
+Isla Mona Tavern{Taberna de Isla Mona}
+head port house.{Casa de la autoridad portuaria.}
+Commander's House{Casa del comandante}
+Isla Mona warehouse{AlmacÈn de Isla Mona}
+Exit from port{Salida del puerto}
+Isla Mona Shore{Costa de Isla Mona}
+
+To Fort{Al fuerte}
 Cayman Kai{Cayo Caim·n}
 #sisland_name# Grot entrance{Entrada a la gruta de #sisland_name#}
 Entrance to house{Entrada a la casa}
 Inside house{Interior de la casa}
 #sisland_name# underground{Subterr·neos de #sisland_name#}
-Naval officers only!{°Solo oficiales de la Armada!}
 
 To Fort.{Al fuerte}
 Cayman Kai.{Cabo Caim·n}
@@ -1088,7 +1228,6 @@ Cayman Kai.{Cabo Caim·n}
 Entrance to house.{Entrada a la casa}
 Inside house.{Interior de la casa}
 #sisland_name# underground.{Subterr·neos de #sisland_name#}
-Naval officers only!{°Solo oficiales de la Armada!}
 
 Rocky Cove{Cala Rocosa}
 Sandy Beach{Playa Arenosa}
@@ -1104,7 +1243,7 @@ NoCannons{°No m·s caÒones!}
 Enough{°No puedes instalar m·s caÒones en este lugar!}
 
 There is no building ground left anymore!{°Ya no queda terreno edificable!}
-Switch to first-person-view if your avatar is inside of the building{°Cambia avista en primera persona si tu avatar est· dentro del edificio}
+Switch to first-person-view if your avatar is inside of the building{°Cambia a vista en primera persona si tu avatar est· dentro del edificio}
 There is no building ground free at{No hay terreno edificable libre en}
 Buildings for Greater Oxbay locs{Buildings for Greater Oxbay locs}
 BK Keeper initialised.{BK Keeper initialised.}
@@ -1117,12 +1256,6 @@ Your wounds burn like fire!{°Tus heridas arden como el fuego!}
 about the town.{sobre la ciudad.}
 Your victim produces{Tu vÌctima saca}
 Your conduct didn't improve your reputation{Tu conducta no ayuda a mejorar tu reputaciÛn}
-Mustering those drunken tars takes till nightfall...{Reunir a esos marineros borrachos lleva hasta el anochecer...}
-
-For mature men only!{°Solo para audiencias maduras!}
-Brothel Bedroom{Dormitorio del burdel}
-Naval academy{Academia Naval}
-Storehouse{AlmacÈn}
 
 You wait here 5 days{Esperas aquÌ 5 dÌas}
 You spend 1 day in the house{Pasas 1 dÌa en la casa}
@@ -1178,10 +1311,9 @@ Transfer takes roughly an hour{El traslado de mercancÌas dura aproximadamente un
 You get your blade back three days later.{Recoges tu acero tres dÌas despuÈs.}
 You get your blade back two days later.{Recoges tu acero dos dÌas despuÈs.}
 
-You have hoisted a Pirate flag! Argh!{°Has izado una bandera pirata! °Argh!}
 No Balls to Load{No hay balas rasas que cargar}
 No Grapes to Load{No hay metralla que cargar}
-No Chains to Load{No hay palanquetas que cargar}
+No Chains to Load{No hay balas encadenadas que cargar}
 No Bombs to Load{No hay bombas que cargar}
 
 There's a cave entrance in the Cliff!{°Hay una entrada a una cueva en el acantilado!}
@@ -1206,27 +1338,28 @@ CrewMutinyArticles3{Bien, capit·n. Respeta las condiciones de nuestro acuerdo de
 CrewMutinyArticles4{No tienes ron...}
 CrewMutinyArticles5{Tus bolsillos est·n vacÌos...}
 GainedPerk{Nueva habilidad ganada -}
+You unlocked the perk:{Habilidad desbloqueada:}
 PlaguevictimsGrave{øMaldiciÛn? øLa tumba de una vÌctima de peste? °Sea lo que sea, de repente sientes un terrible malestar!}
 Petit Tabac{Petit Tabac}
 Battle_Rocks{Petit Tabac}
 Isla De Muerte{Isla De Muerta}
 IslaDeMuerte{Isla De Muerta}
 Deserted shore{Costa desierta}
-Dead Man's Bay{BahÌa del hombre Muerto}
+Dead Man's Bay{BahÌa del Hombre Muerto}
 Witch's Rock{Roca de la Bruja}
 Strange sail to the{Vela desconocida al}
 Strange sail{Vela desconocida}
-Captain, a hint:{Capit·n, una pista:}
+Captain, a hint:{Capit·n, una pista: al}
 of_island{de}
 lies nothing but open sea!{no hay nada salvo mar abierto!}
-North{Norte}
-South{Sur}
-West{Oeste}
-East{Este}
-Northeast{Nordeste}
-Northwest{Noroeste}
-Southeast{Sudeste}
-Southwest{Suroeste}
+North{norte}
+South{sur}
+West{oeste}
+East{este}
+Northeast{nordeste}
+Northwest{noroeste}
+Southeast{sudeste}
+Southwest{suroeste}
 No island within reach{No hay ninguna isla al alcance}
 Enter the map to sail to some island{Entra al mapa para navegar a alguna isla}
 in sight{a la vista}
@@ -1238,6 +1371,10 @@ Something is drifting there, DEAD AHEAD,{Hay algo flotando a la deriva ahÌ, JUST
 Captain, a boat{Capit·n, un bote}
 Captain, a native raft{Capit·n, una balsa nativa}
 Captain, a dismasted vessel{Capit·n, un barco desarbolado}
+Captain, something is drifting there{Capit·n, hay algo a la deriva allÌ}
+Captain, a boat has been sighted{Capit·n, hemos avistado un bote}
+Captain, a native raft has been sighted{Capit·n, hemos avistado una balsa nativa}
+Captain, a dismasted vessel has been sighted{Capit·n, hemos avistado un barco desarbolado}
 You don't have enough gunpowder for a mine{No tienes suficiente pÛlvora para una mina}
 A mine{Una mina}
 Mine launched{Mina lanzada}
@@ -1248,7 +1385,7 @@ You find some votive items on an Indian ceremonial raft{Encuentras algunos objet
 You find some burial objects on a witch doctor's funeral raft{Encuentras algunos objetos funerarios en la balsa mortuoria de un cham·n}
 You find some burial objects on a voodoo priest's funeral raft{Encuentras algunos objetos funerarios en la balsa mortuoria de un sacerdote vud˙}
 This Indian funeral raft has already been plundered...{Esta balsa mortuoria india ya ha sido saqueada...}
-You find some jewels on an abandoned packet boat{Encuentras algunas joyas en un barco correo afbandonado}
+You find some jewels on an abandoned packet boat{Encuentras algunas joyas en un barco correo abandonado}
 You find some money on an abandoned packet boat{Encuentras algo de dinero en un barco correo abandonado}
 You find some ordinance on an abandoned ammo tender{Encuentras algo de municiÛn en un barco de suministros abandonado}
 Someone has already emptied this abandoned hulk...{Alguien ya ha vaciado este cascarÛn abandonado...}
@@ -1257,6 +1394,22 @@ Directsail mod deactivated{Mod Directsail desactivado}
 Directsail toggled, press 0 to enable{DirectSail seleccionado, pulsa 0 para activar}
 Governor Ship Hunting quest active, DirectSail disabled to prevent target ship from disappearing{MisiÛn de caza de barco activa, DirectSail se ha desactivado para evitar que el barco objetivo desaparezca}
 Our position from{Nuestra posiciÛn respecto a}
+dead ahead{a proa}
+fine on the starboard bow{por la amura de estribor, 2 cuartas}
+on the starboard bow{por la amura de estribor}
+broad on the starboard bow{por la amura de estribor, 6 cuartas}
+on the starboard beam{por el travÈs de estribor}
+broad on the starboard quarter{Por la aleta de estribor, 10 cuartas}
+on the starboard quarters{por la aleta de estribor}
+fine on the starboard quarter{por la aleta de estribor, 14 cuartas}
+astern{a popa}
+fine on the port quarter{por la aleta de babor, 14 cuartas}
+on the port quarter{por la aleta de babor}
+broad on the port quarter{por la aleta de babor, 10 cuartas}
+on the port beam{por el travÈs de babor}
+broad on the port bow{por la amura de babor, 6 cuartas}
+on the port bow{por la amura de babor}
+fine on the port bow{por la amura de babor, 2 cuartas}
 
 #stown_name# Gunsmith{Armero de #stown_name#}
 #stown_name# Blacksmith{Herrero de #stown_name#}
@@ -1273,7 +1426,6 @@ Pirate Gun- and Blacksmith{Armero y herrero pirata}
 Apothecary{Boticario}
 Eden Rock{Roca del EdÈn}
 Sand Bluff{Acantilado de las Arenas}
-Study{Estudio}
 Undercroft{BÛveda}
 Yard{Patio}
 Outskirts{Afueras}
@@ -1290,6 +1442,8 @@ Sandy Point{Punta Arenas}
 White Reefs{Arrecifes Blancos}
 Wreckage shore{Costa de los Naufragios}
 Dolphin Sands{Arenal de los Delfines}
+Citadel Rock{Roca de la Ciudadela}
+Citadel Rock.{Roca de la Ciudadela}
 
 Portugese Blacksmith.{Herrero portuguÈs}
 French Blacksmith.{Herrero FrancÈs}
@@ -1301,7 +1455,6 @@ Pirate Blacksmith.{Herrero pirata}
 Apothecary.{Boticario}
 Eden Rock.{Roca del EdÈn}
 Sand Bluff.{Acantilado de las Arenas}
-Study.{Estudio}
 Undercroft.{BÛveda}
 Yard.{Patio}
 Outskirts.{Afueras}
@@ -1314,12 +1467,16 @@ Kidnappers' Hideout, 2nd floor.{Escondite de los secuestradores, 2™ planta}
 House of Geffrey Bampfylde.{Casa de Geffrey Bampfylde}
 Room in Marigot tavern.{HabitaciÛn en la taberna de Marigot}
 Mine.{Mina}
-Sandy Point.{Punta Arenas}
+Sandy Point.{Punta Arenosa}
 White Reefs.{Arrecifes Blancos}
 Wreckage shore.{Costa de los Naufragios}
-Dolphin Sands.{Arenal de los Delfines.}
+Dolphin Sands.{Arenal de los Delfines}
 Boca de Yuman{Boca de Yuman}
+Boca de Yuman.{Boca de Yuman}
 Boca de Hubon{Boca de Hubon}
+Boca de Hubon.{Boca de Hubon}
+Ile a Vache{Ile a Vache}
+Ile a Vache.{Ile a Vache}
 Bahia de San Antonio{BahÌa de San Antonio}
 Playa de Sabana{Playa de Sabana}
 Punta de Maisi{Punta de Maisi}
@@ -1337,6 +1494,9 @@ Navy Office{Oficina Naval}
 Tortuga prison{PrisiÛn de Tortuga}
 Tortuga Townhall{Ayuntamiento de Tortuga}
 House of Pablo Escriva.{Casa de Pablo Escriva.}
+Captain Murphy's House{Casa de Captain Murphy}
+Entrance Hall{VestÌbulo}
+Cardroom{SalÛn de juego}
 
 have declared a ceasefire!{han declarado un alto el fuego}
 have formed an alliance!{han formado una alianza}
@@ -1356,7 +1516,7 @@ My dear, I'm just a master and commander.  Tell me about yourself, everything, I
 There are any wondrous things at sea, from mighty ships to flying fish. But none so lovely as your smile!{Hay todo tipo de cosas maravillosas en la mar, desde imponentes navÌos a peces voladores.  °Pero ninguna tan hermosa como tu sonrisa!}
 I hesitate to be so bold, but I am lost without you.  Would you complete me by consenting to be my bride?{Perdona que sea tan osado, pero me siento perdido sin ti. øMe completarÌas consintiendo en ser mi esposa?}
 I used to think that I was happy at sea, but I would be much happier knowing that you waited at my home port.  Would you be my wife?{SolÌa creer que era feliz en la mar, pero serÌa mucho m·s feliz sabiendo que t˙ me esperas al regrsar a puerto. øQuerrÌas ser mi esposa?}
-I...  I'm at a loss for words... Ha'hmmm...  I have this ring here, you see, and I...  Would you marry me?{Yo... no puedo encontrar las palabras... Eh...hum... Tengo aquÌ este anillo, ya sabes, y... øTe casarÌas conmigo?}
+I...  I'm at a loss for words... Ha'hmmm...  I have this ring here, you see, and I...  Would you marry me?{Yo... no puedo encontrar las palabras... Eh... hum... Tengo aquÌ este anillo, ya sabes, y... øTe casarÌas conmigo?}
 Dear lady, I have trod decks riddled with shot without the depth of fear I feel now.  Please ease my soul and tell me that you'll marry me!{Querida mÌa, he atravesado cubiertas acribilladas de disparos sin sentir el miedo que siento ahora. °Por favor, tranquiliza mi alma y dime que te casar·s conmigo!}
 I would very much like to spend a few moments with the gentleman's company, if he is willing.{Me encantarÌa pasar siquiera unos momentos en compaÒÌa del caballero, si Èl consiente.}
 My lord, I must admit, you do not fail to impress. Would you care to join me for some conversation?{Mi seÒor, debo admitirlo, no dejas de impresionarme. øTe gustarÌa conversar un rato conmigo?}
@@ -1386,17 +1546,20 @@ Store upstairs{Piso de arriba de la tienda}
 Woodes Rogers' bedroom{Dormitorio de Woodes Rogers}
 Caroline K's bedroom{Dormitorio de Caroline K}
 Woodes Rogers' kitchen{Cocina de Woodes Rogers}
+Woodes Rogers' kitchen.{Cocina de Woodes Rogers.}
 Woodes Rogers' food cellar{Despensa de Woodes Rogers}
 Tavern storeroom{AlmacÈn de la taberna}
 Charles Windem's room{HabitaciÛn de Charles Windem}
 Woodes Rogers' library{Biblioteca de Woodes Rogers}
 Caroline K's drawing room{SalÛn de Caroline K}
+Caroline's drawing room.{SalÛn de Caroline}
 Woodes Rogers' study{Estudio de Woodes Rogers}
 Woodes Rogers' secret room{HabitaciÛn secreta de Woodes Rogers}
 Woodes Rogers' residence{Residencia de Woodes Rogers}
+Woodes Rogers' residence.{Residencia de Woodes Rogers}
 Loanshark cellar{SÛtano del prestamista}
 Woodes Rogers' booty room{HabitaciÛn del botÌn de Woodes Rogers}
-Fried Egg's Room{HabitaciÛn del Fried Egg}
+Fried Egg's Room{HabitaciÛn de Fried Egg}
 Shipyard stairs{Escaleras del astillero}
 Shipyard shore{Costa dela stillero}
 Redmond shore{Costa de Redmond}
@@ -1404,6 +1567,7 @@ Woodes Rogers' port{Puerto de Woodes Rogers}
 Woodes Rogers' armory{ArmerÌa de Woodes Rogers}
 Gunpowder storage{Santab·rbara}
 Crew's quarter{Alojamientos de la tripulaciÛn}
+Crew's quarter.{Alojamientos de la tripulaciÛn}
 Gunroom{Arsenal}
 Storeroom attic{Desv·n del almacÈn}
 Rogers' Paintings Furniture & Weapons{Pinturas, Muebles y Armas de Rogers}
@@ -1418,14 +1582,12 @@ Cave shore{Costa de la cueva}
 Blue cavern{Caverna azul}
 Outside pirate church{Exterior de la iglesia pirata}
 Entrance to church attic{Entrada al desv·n de la iglesia}
-Outside pirate church{Exterior de la iglesia pirata}
 Church attic{Desv·n de la iglesia}
 Sacristy{SacristÌa}
 Pirate church{Iglesia pirata}
 Chapel stairs{Escaleras de la capilla}
 Chapel{Capilla}
 Temple stairs{Escaleras del templo}
-Temple{Templo}
 Port Royal catacombs{Catacumbas de Port Royal}
 Prison ships{Barcos prisiÛn}
 Boat shore{Costa del bote}
@@ -1438,13 +1600,20 @@ Church wine cellar{Bodega de la iglesia}
 Port Royal Church Choir{Coro de la iglesia de Port Royal}
 Port Royal Military Head Quarter{Cuartel general militar de Port Royal}
 Grandma's stairs{Escaleras de la abuela}
+Gun deck{Cubierta de artillerÌa}
+Redmond old mine{Vieja mina}
+Friday's room{HabitaciÛn de Viernes}
+Port Royale Fort{Fuerte de Port Royale}
 
 Rogers' kitchen{Cocina de Rogers}
 Rogers' bedroom{Dormitorio de Rogers}
 Rogers' passage{Pasadizo de Rogers}
 Minervas room{HabitaciÛn de Minerva}
-Rogers' bootyroom{HabitaciÛn del botÌn de Rogers}
+Rogers' bootyroom{Sala del botÌn de Rogers}
 Rogers' laboratory{Laboratorio de Rogers}
+Rogers' storeroom{AlmacÈn de Rogers}
+Rogers' secret laboratory{Laboratorio secreto de Rogers}
+Rogers' secret storeroom{AlmacÈn secreto de Rogers}
 Wood tower{Torre de madera}
 
 You equipped a Powder Flask and an Ammunition Pouch.{Has equipado una petaca de pÛlvora y un saquete de balas.}
@@ -1460,7 +1629,6 @@ Now get the Carpenter's Chest!{°Ahora consigue el cofre de carpintero!}
 I found a big key in one of his pockets!{°He encontrado una gran llave en uno de sus bolsillos!}
 The Carpenter's Chest is now filled up!{°El cofre de carpintero est· lleno!}
 Hmm, the other lock is not opened yet{Hum, la otra cerradura todavÌa no est· abierta}
-Woodes Rogers' kitchen{Cocina de Woodes Rogers}
 Erotica{Erotismo}
 Geography and Meteorology{GeografÌa y MeteorologÌa}
 Mathematics, Physics and Chemistry{Matem·ticas, FÌsica y QuÌmica}
@@ -1522,7 +1690,7 @@ The chest is blocked by a lot of goods.{El cofre est· bloqueado por un montÛn de
 Choose ONE picture.{Elige UNA imagen.}
 Yes, this picture seems to be the right one!{°SÌ, esta imagen parece ser la corecta!}
 Now I need some glue to repair the Book.{Ahora necesito algo de cola para reparar el libro.}
-No this is not the right picture.{No, esta no es la imagen correcta.}
+No, this is not the right picture!{No, esta no es la imagen correcta!}
 Maybe I should cut him down.{Quiz·s deberÌa bajarlo.}
 That barrel could be useful but I can't remove it with my bare hands from the gibbet.{Ese barril podrÌa ser ˙til pero no puedo sacarlo del cadalso con mis manos desnudas.}
 Ok, there might be skeletons in here...{De acuerdo, puede que haya esqueletos aquÌ...}
@@ -1651,7 +1819,7 @@ The lock is too rusty - I can't move the key.{La cerradura est· muy oxidada. No 
 Neither lock nor handle. How do I open it?{Ni cerradura ni tirador. øCÛmo abro?}
 The pieces-of-eight vary too much in weight to be of any use!{°Estas piezas de a ocho varÌan demasiado en peso para ser de utilidad!}
 Alright, I can weigh all the coins - and then what?{De acuerdo, puedo pesar todas las monedas, øy despuÈs quÈ?}
-Scales hmm...?{øBalanza hmm...?}
+Scales hmm...?{Balanza, øhum...?}
 'Call mates'{'Llamar ayudantes'}
 'Carry on'{'Contin˙a'}
 'The side'{'Por el costado'}
@@ -1666,7 +1834,9 @@ I have 2 officers left to hire.{Me quedan 2 oficiales por enrolar.}
 I have 1 officer left to hire.{Me queda 1 oficial por enrolar.}
 Hmm, with some more logs maybe I could build a raft here.{Hum, con unos cuantos troncos m·s, quiz·s podrÌa construir una balsa.}
 I still need more logs to build a raft.{A˙n necesito m·s troncos para construir una balsa.}
+I'll use the rope to assemble the raft!{°UsarÈ la cuerda para construir la balsa!}
 Enough with logs - how do I assemble the raft?{Ya basta de troncos. øCÛmo los uno para hacer la balsa?}
+Hmm, let's arrange them in some order...{Hum, ser· mejor disponerlos con alg˙n orden...}
 No, this rope is tied too hard!{°No, este cabo est· demasiado bien atado!}
 No, I can't move it!{°No, no puedo moverlo!}
 Hmm. That was maybe not a good idea!?{Hum. °øQuiz·s no era una buena idea?!}
@@ -1706,7 +1876,6 @@ Hmm, maybe I can make them go all the way down into the hold?{Hum, øtal vez pued
 Hmm, they go all the way down into the hold?{Hum, øllegan hasta la bodega?}
 Oh!! It's really hot and stuffy in here - think I have to open the window!{°Oh! AquÌ hace un calor sofocante. °Creo que tengo que abrir la ventana!}
 And..?{øY..?}
-This heavy cast iron door has a silver lock{Esta pesada puerta de hierro forjado tiene una cerradura de plata}
 There's something under the elevator!{°Hay algo bajo el montacargas!}
 How can two planks help me get the Tool from the elevator?{°CÛmo pueden dos tablas ayudarme a conseguir la herramienta del montacargas?}
 Not exactly what I had in mind!{°No es exactamente lo que tenÌa en mente!}
@@ -1739,11 +1908,14 @@ Legrands food cellar{Despensa de Legrand}
 Legrands boathouse{Cobertizo para barcas de Legrand}
 Fort Moultrie Village{Aldea de Fort Moultrie}
 Fort Moultrie store{Tienda de Fort Moultrie}
-Room{HabitaciÛn}
 Staff only{Solo personal}
 Summer cottage{Casa de verano}
 Fort Moultrie exit{Salida de Fort Moultrie}
 Fort Moultrie{Fort Moultrie}
+Fort Moultrie restaurant{Restaurante de Fort Moultrie}
+Fort Moultrie hotel{Hotel de Fort Moultrie}
+Fort Moultrie prison{PrisiÛn de Fort Moultrie}
+Fort Moultrie barracks{Barracones de Fort Moultrie}
 Lieutenant G:s house{Casa del teniente G}
 Lieutenant G:s office{Despacho del teniente G}
 Lieutenant G:s bedroom{Dormitorio del teniente G}
@@ -1751,26 +1923,30 @@ Fort Moultrie shore{Costa de Fort Moultrie}
 Charleston{Charleston}
 Charleston port{Puerto de Charleston}
 Charleston port tavern{Taberna del puerto de Charleston}
+The Red Death{La Muerte Roja}
+The Maelstrom{El Maelstrom}
 Charleston town{Ciudad de Charleston}
 Charleston shipyard{Astillero de Charleston}
 Charleston townhall{Ayuntamiento de Charleston}
 Charleston store{Tienda de Charleston}
+Charleston Post & Bank{Correo y banco de Charleston}
+Charleston tailor{Sastre de Charleston}
 Charleston blacksmith{Herrero de Charleston}
 Post Office{Oficina de correos}
 Poe's house{Casa de Poe}
 Poe's bedroom{Dormitorio de Poe}
+Landlady private{Cuarto privado de la casera}
 Exit from Charleston{Salida de Charleston}
 Charleston swamp{Pantano de Charleston}
 Charleston passage{Pasadizo de Charleston}
 Charleston shore{Costa de Charleston}
+Robert Cook and Maya{Robert Cook y Maya}
 Bishops Hostel{Hostal del Obispo}
 Bessop Plantation{PlantaciÛn Bessop}
 
-
-
 It's too high, I can't climb the rocks.{Es demasiado alto, no puedo trepar por las rocas.}
 Oxbay? Greenford? What are they talking about?{øOxbay? øGreenford? øDe quÈ est·n hablando?}
-That was close - I'll remember not to go there again!{Eso estuvo cerca - °Debo recordar no volver por allÌ!}
+That was close - I'll remember not to go there again!{Eso estuvo cerca... °Debo recordar no volver por allÌ!}
 It's getting worse and worse...{Se est· poniendo cada vez peor...}
 The bridge is rotten, I'll have to fix it somehow.{El puente est· podrido, tendrÈ que arreglarlo de alguna manera.}
 The bridge is rotten, I have to be careful.{El puente est· podrido, debo tener cuidado.}
@@ -1795,6 +1971,11 @@ Jupiter look! It's a Gold-Bug!{°J˙piter, mira! °Es un escarabajo de oro!}
 Ouch, the Gold-Bug gave me a sharp bite!{°Ouch, el escarabajo de oro me ha mordido con sus agudas mandÌbulas!}
 OPEN ONLY DURING TOURIST SEASON{ABIERTO SOLO DURANTE LA TEMPORADA TURÕSTICA}
 Hmm, it's only glowing...?{Hum, øSolo est· brillando...?}
+You need oxygen!{°Necesitas oxÌgeno!}
+Get some wood first!{°Consigue algo de madera primero!}
+Not a bad idea, but light the gas!{°No es mala idea, pero enciende el gas!}
+Turn on the gas first!{°Activa el gas primero!}
+I saw no gun  at all in there. Did I miss it?{No vi ning˙n arma ahÌ dentro. øSe me pasarÌa por alto?}
 Only ashes left - I'll need new wood!{No quedan m·s que cenizas. °NecesitarÈ m·s leÒa!}
 Two empty barrels.{Dos barriles vacÌos.}
 Some empty bottles.{Algunos barriles vacÌos.}
@@ -1812,7 +1993,6 @@ No, I can never climb up the way I came down.{No, nunca podrÈ trepar por el cami
 No, I'm not going back. The metal door locked behind me.{No, no puedo volver atr·s. La puerta met·lica se ha cerrado a mi espalda.}
 William Kidd 1645 - 1701{William Kidd 1645 - 1701}
 C. Auguste Dupin has earned this certificate for...{C. Auguste Dupin ha obtenido este certificado por...}
-Fort Moultrie{Fort Moultrie}
 Edgar Allan Poe{Edgar Allan Poe}
 Whaling{Pesca de ballenas}
 Caves{Cuevas}
@@ -1937,7 +2117,11 @@ I have to find another way down.{Tengo que encontrar otra forma de bajar.}
 I need something to tie the Rope to.{Necesito algo a lo que atar la cuerda.}
 To Mr Poe's house now!{°Ahora a la casa del seÒor Poe!}
 East tower{Torre este}
+West tower{Torre oeste}
+North tower{Torre norte}
 South tower{Torre sur}
+South tower under repair{Torre sur en proceso de reparaciÛn}
+The upper part of the tower is destroyed{La parte superior de la torre est· destruida}
 Hmm, what are they doing? Something's hanging down from that tree.{Hum, øquÈ est·n haciendo? Hay algo colgando de aquel ·rbol.}
 
 There are no Rockets left{No quedan cohetes}
@@ -1966,6 +2150,7 @@ We have to get the rest of the Treasure first.{Primero tenemos que recoger el re
 No, I have already done that.{No, ya he hecho eso.}
 Now when it's clean, maybe I should heat it up again?{Ahora que est· limpio, øtal vez deberÌa calentarlo otra vez?}
 No, I don't want to boil the Parchment!{°No, no quiero hervir el pergamino!}
+Okay, the parchment is in place - now it's only to wait for Jupiter and more wood.{Muy bien, el pergamino est· en su sitio; ahora solo queda esperar a que J˙piter traiga m·s leÒa.}
 No, let's go on instead.{No, v·monos.}
 No, it wasn't that easy!{°No, no fue tan f·cil!}
 Not the right time to leave.{No es el momento adecuado para irse.}
@@ -1989,13 +2174,19 @@ cloister inside{Interior del claustro}
 New Cloister Garden{Nuevo jardÌn del claustro}
 Cloister yard{Patio del claustro}
 cloister exit{Salida del claustro}
+Cathedral{Catedral}
 Infirmary{EnfermerÌa}
 Lavatorium{Lavatorium}
-Sacristy{SacristÌa}
 Graveyard{Cementerio}
 Crypt{Cripta}
 Cell{Celda}
+Library{Biblioteca}
 Fort Waxholm{Fort Waxholm}
+Adventure Galley{Adventure Galley}
+To the Harbour Master{Al capit·n del puerto}
+Charleston Harbour Master{Capit·n del puerto de Charleston}
+Detective Agency 1st floor{Agencia de investigaciÛn, primera planta}
+C. Auguste Dupin - Private Investigator{C. Auguste Dupin - Investigador privado}	
 
 Something under that straw?{øAlgo bajo esa paja?}
 No, I'll only cut myself on those shards.{No, me cortarÌa con esos cristales rotos.}
@@ -2032,7 +2223,7 @@ One Black Antimony Basket is enough!{°Con una cesta de antimonio negro es sufici
 One Mercury Oxide Basket is enough!{°Con una cesta de Ûxido de mercurio es suficiente!}
 It's gas in the bottle.{Hay gas en la botella.}
 Oh no, there's no gas left in the bottle!{°Oh, no, no queda gas en la botella!}
-I have made Sodium Carbonate!{°He hehco Carbonato SÛdico!}
+I have made Sodium Carbonate!{°He hecho Carbonato SÛdico!}
 I have made Liquor Hepatis!{°He hecho Liquor Hepatis!}
 I have made Black Pulvis Solaris!{°He hecho Pulvis Solaris Negro!}
 I have made Red Pulvis Solaris!{°He hecho Pulvis Solaris Rojo!}
@@ -2053,6 +2244,12 @@ Cartagena fort{Fuerte de Cartagena}
 Cartagena fort.{Fuerte de Cartagena.}
 Cartagena Hotel{Hotel de Cartagena}
 Cartagena Hotel Pension{PensiÛn del Hotel de Cartagena}
+Room 1{HabitaciÛn 1}
+Room 2{HabitaciÛn 2}
+Room 3{HabitaciÛn 3}
+Room 4{HabitaciÛn 4}
+Private room{HabitaciÛn privada}
+Attic{Desv·n}
 Palace square{Plaza del palacio}
 Admiral's Office{Despacho del Almirante}
 Fort Tunnel{T˙nel del fuerte}
@@ -2078,7 +2275,7 @@ It's time to go downstairs and visit Caroline in her Drawing Room.{Es hora de ir
 It's a trap! I have to creep under the musket.{°Es una trampa! Tengo que pasar agachado bajo el mosquete.}
 I have not looted Dampier!{°No he saqueado a Dampier!}
 That boat could be the way back to the Port.{Ese bote podrÌa ser la forma de volver al puerto.}
-The Gate is blocking the way out.{La puerta cierra el cmaino de salida.}
+The Gate is blocking the way out.{La puerta cierra el camino de salida.}
 It's blunt. It's worthless!{No tiene filo. °No sirve para nada!}
 There it is. The exit!{AhÌ est·. °La salida!}
 Three officers with a total of 5 shares. Add to that the 28 shares for the sailors. But first I have to...{Tres oficiales con un total de cinoc partes. A eso hay que aÒadir 28 partes para los marineros. Pero primero tengo que...}
@@ -2100,6 +2297,52 @@ I need a long tool to remove the pole.{Necesito un utensilio largo para quitar e
 CALL MATES{LLAMAR AYUDANTES}
 AWAY BOAT{ARRIAR BOTE}
 No, I have no more business there.{No, no tengo que hacer nada m·s allÌ.}
+Insert coin.{Introducir moneda.}
+No, the cannon is stuck!{°No, el caÒÛn est· atascado!}
+So he could read? Most about Alchemy!{øAsÌ que sabÌa leer? °Sobre todo, sobre alquimia!}
+No, the Gold Bars are too heavy - the crew will take them to the ship.{No, los lingotes de oro son demasiado pesados; la tripulaciÛn los llevar· al barco.}
+No, the Silver Bars are too heavy - the crew will take them to the ship.{No, los lingotes de plata son demasiado pesados; la tripulaciÛn los llevar· al barco.}
+No, the Valuable Weapons are too heavy - the crew will take them to the ship.{No, los armas valiosas son demasiado pesadas; la tripulaciÛn las llevar· al barco.}
+No, it's not the time for that.{No, no es momento para eso.}
+I'll use more this time. Five drops maybe.{Esta vez usarÈ m·s. Cinco gotas, quiz·s.}
+A small clock that's something.{Un pequeÒo reloj; algo es algo.}
+A purse with a lot of coins - that's better!{Una bolsa llena de monedas; °eso est· mejor!}
+I found his map!!!{°°°He encontrado su mapa!!!}
+PILOT{PILOTO}
+EDWARD TEACH{EDWARD TEACH}
+WR_MERCHANT{MERCADER}
+ISRAEL HANDS{ISRAEL HANDS}
+STEDE BONNET{STEDE BONNET}
+SURGEON MAJOR{CIRUJANO PRINCIPAL}
+SECOND SURGEON{SEGUNDO CIRUJANO}
+GUNSMITH OR THIRD SURGEON{ARMERO O TERCER CIRUJANO}
+SURGEON'S AIDE{AYUDANTE DEL CIRUJANO}
+I have got 1 Malta Document.{Tengo 1 documento de Malta.}
+I have got 2 Malta Documents.{Tengo 2 documentos de Malta.}
+I have got 3 Malta Documents.{Tengo 3 documentos de Malta.}
+I have got 4 Malta Documents.{Tengo 4 documentos de Malta.}
+I have got 5 Malta Documents.{Tengo 5 documentos de Malta.}
+I have got all 6 Malta Documents!{°Tengo los 6 documentos de Malta!}
+The elevator is already up!{°El ascensor ya est· arriba!}
+The elevator is already down!{°El ascensor ya est· abajo!}
+No, the six Sacks with Gold Dust are too heavy - the crew will take them to the ship.{No, los 6 sacos de oro en polvo son demasiado pesados; la tripulaciÛn los llevar· al barco.}
+No, the Idol is too heavy - the crew will take it to the ship.{No, el Ìdolo es demasiado pesado; la tripulaciÛn los llevar· al barco.}
+R{R}
+T{T}
+D{D}
+E{E}
+F{F}
+P{P}
+S{S}
+I{I}
+A{A}
+U{U}
+Wonder what kind of import that is!{°Me pregunto quÈ clase de importacione sosn estas!}
+Officers only!{°Solo para oficiales!}
+
+Crewmember of{Marinero de}
+'s crewmember{'s crewmember}
+Bouncer{Portero}
 
 Taino Village{Aldea taÌna}
 House of Gilbert Downing{Casa de Gilbert Downing}
@@ -2107,19 +2350,23 @@ Old Inquisition prison{Antigua prisiÛn de la InquisiciÛn}
 Archives{Archivo}
 Abandoned fort{Fuerte abandonado}
 Slave Camp{Campamento de esclavos}
+Dining Room{Comedor}
+Dining Room.{Comedor}
 
-HINT: If that warden comes close enough to the bars, you can mug him!{Pista: Si el carcelero se acerca lo suficiente a los barrotes, puedes reobarle.}
+HINT: If that warden comes close enough to the bars, you can mug him!{Pista: Si el carcelero se acerca lo suficiente a los barrotes, puedes robarle.}
 Crew remaining:{TripulaciÛn restante:}
 crew died of maltreatment{miembros de la tripulaciÛn han muerto por el mal trato recibido}
 HINT: You aren't well armed and your officers aren't armed at all. Take all the help you can get!{Pista: No cuentas con buenas armas, y tus oficiales no est·n armados en absoluto.°Necesitar·s toda la ayuda que puedas conseguir!}
 crew died in the battle{miembros de la tripulaciÛn han muerto en la batalla}
 I'm taking one of the soldier's uniforms. A disguise might be useful later.{Me llevarÈ uno de los uniformes de los soldados. Un disfraz podrÌa serme ˙til m·s tarde.}
+HINT: The captain will be more willing to talk to someone who looks like a soldier.{PISTA: El capit·n estar· m·s dispuesto a hablar con algiien que parezca un soldado.}
 You broke the window and grabbed the map. Now RUN!{Has roto la ventana y has conseguido el mapa. °Ahora, corre!}
 That looks like the original crew returning. Better get aboard and get out of here!{Parece que la tripulaciÛn original ya viene de vuelta. °Ser· mejor subir a bordo y salir de aquÌ!}
 Now to wait for the 'Siroco'...{Ahora toca esperar a que aparezca el 'Siroco'...}
 Maybe there's something in that room with the wall markings...{Quiz·s haya algo en esa habitaciÛn con maecas en las paredes...}
 You have been given a lockpick.{Has recibido una ganz˙a.}
 Run! They're after you!{°Corre! °Vienen a por ti!}
+Search party{Equipo de b˙squeda}
 Someone heard that window break!{°Alguien ha oÌdo la ventana romperse!}
 Yedam Kinne should have finished with the pass by now.{Yedam Kinne ya deberÌa tener preparado el permiso de visita falso.}
 Time to go to church!{°Es hora de ir a la iglesia!}
@@ -2132,13 +2379,32 @@ You found your equipment. Equip some of it!{Has encontrado tu equipamiento. °No 
 The lock on this door must date back to the time when this town was Spanish..{La cerradura de esta puerta debe datar de la Època en que la ciudad todavÌa era espÒola.}
 It opens with the same key that you used to escape from Havana prison!{°Se abre con la misma llave que usaste para escapar de la prisiÛn de La Habana!}
 A few minutes later...{Unos minutos despuÈs...}
-Hint: To make an officer available as an escort, assign that officer to one of the shore party slots.{Pista: Para hacer que un oficial estÈ disponible como escolta, asigna a ese oficial a uno de los 4 recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
-Hint: To make an officer available as an escort, assign that officer to one of the first three shore party slots.{Pista: Para hacer que un oficial estÈ disponible como escolta, asigna a ese oficial a uno de los 3 primeros recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
-Hint: To make an officer available as an escort, assign that officer to one of the shore party slots.{Pista: Para hacer que un oficial estÈ disponible como escolta, asigna a ese oficial a uno de los 4 recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
-Hint: To make an officer available as an escort, assign that officer to one of the first three shore party slots.{Pista: Para hacer que un oficial estÈ disponible como escolta, asigna a ese oficial a uno de los 3 primeros recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
+Hint: To make an officer available to command your ship, assign that officer to one of the shore party slots.{Pista: Para que un oficial estÈ disponible para comandar tu barco, asigna a ese oficial a uno de los recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
+Hint: To make an officer available to command your ship, assign that officer to one of the first three shore party slots.{Pista: Para que un oficial estÈ disponible para comandar tu barco, asigna a ese oficial a uno de los 3 primeros recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
+Hint: To make an officer available as an escort, assign that officer to one of the shore party slots.{Pista: Para que un oficial estÈ disponible como acompaÒante, asigna a ese oficial a uno de los recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
+Hint: To make an officer available as an escort, assign that officer to one of the first three shore party slots.{Pista: Para que un oficial estÈ disponible como acompaÒante, asigna a ese oficial a uno de los 3 primeros recuadros del grupo de desembarco en la pantalla 'Pasajeros'.}
 Capit·n{Capit·n}
+Capit›o{Capit›o}
+Teniente{Teniente}
+Electress{Electora}
+
+That coward is trying to escape! Go after him!{°Ese cobarde est· intentando escapar! °Ve tras Èl!}
+Keep going, he can't run from you forever!{°Sigue, no podr· huir de ti eternamente!}
+Let's get back to the ship!{°Volvamos al barco!}
+To be continued... Hopefully soon!{Continuar·... °Esperemos que sea pronto!}
+
+You succumb to the Carib poison.{Sucumbes al veneno de los caribes.}
+has been executed.{ha sido ejecutado.}
+Sorry, but I can't take the chance that you'll make good on your threat to take back the amber skull... FIRE!{Lo siento, pero no puedo arriesgarme a que cumplas tu amenaza de recuperar la calavera de ·mbar... °FUEGO!}
+You failed to rescue{No has conseguido rescatar a}
+
+Two months later...{Dos mese sdespuÈs...}
 
 Three days later...{Tres dÌas despuÈs...}
+
+Ten years later...{Diez aÒos despuÈs...}
+
+The fort gate is closed. Wait for Admiral Hernandez to open it.{La puerta del fuerte est· cerrada. Espera a que el Almirante Hern·ndez la abra.}
 
 A French infantry unit suddenly appears and attacks you!{°Una unidad de infanterÌa francesa aparece de pronto y te ataca!}
 Several Conquistadores attack you!{°Varios conquistadores te atacan!}
@@ -2151,11 +2417,11 @@ lax{laxa}
 normal{normal}
 tight{estricta}
 very tight{muy estricta}
-Increase_Patrol{ha aumentado las parullas guardacostas}
-Increase_Message1{Debido a un reciente aumento del contrabando, la guardia costera ha decidido modificar las patrullas en }
+Increase_Patrol{aumenta las parullas}
+Increase_Message1{Debido a un reciente aumento del contrabando, los guardacostas han decidido modificar las patrullas en }
 Increase_Message2{. Sospechan que los contrabandistas estaban enterados de su itinerario y por eso eran capaces de eludirlas. Ahora la seguridad es }
-Decrease_Patrol{ha disminuido las patrullas guardacostas}
-Decrease_Message1{Debido a un reciente descenso del contrabando, la guardia costera ha decidido modificar las patrullas en }
+Decrease_Patrol{reduce las patrullas}
+Decrease_Message1{Debido a un reciente descenso del contrabando, los guardacostas han decidido modificar las patrullas en }
 Decrease_Message2{. Parece que los guardacostas han sido capaces de apresar a la mayor parte de los contrabandistas, por lo que se ha decidido destinar a algunas de esas tropas a puestos donde sean m·s ˙tiles. Ahora la actividad de las patrullas guardacostas es }
 Patrol_None{labores de patrulla inexistentes, necesitamos las tropas en otra parte}
 Patrol_Low{mÌnimas labores de patrulla}
@@ -2168,3 +2434,25 @@ There's poor Sakharine again.{AhÌ est· otra vez el pobre Sakharine.}
 I need Tools to assemble this thing.{Necesito herramientas para ensamblar esta cosa.}
 I don't have all parts yet.{TodavÌa no tengo todas las partes.}
 No, that's not the right part.{No, esa no es la parte correcta.}
+
+Captain, we are under a flag friendly to the ship we're attacking. We may be branded a pirate if we don't hoist our true colours!{Capit·n, navegamos bajo una bandera considerada amistosa por el barco al que estamos atacando. °PodrÌan declararnos piratas si no izamos nuestra verdadera bandera!}
+Greek Fire hits the{°El fuego griego ha alcanzado al}
+
+hours pass until the work is completed and you receive the blades back.{horas pasan hasta que el trabajo est· termiando y recuperas tus espadas.}
+hours pass until the work is completed and you receive the guns back.{horas pasan hasta que el trabajo est· termiando y recuperas tus armas de fuego.}
+
+Haul on the main brace! Make ready the guns! And run out the sweeps...{°Tensad las brazas mayores! °Preparad la artillerÌa! Sacad los remos...}
+By the power of Neptune, I command this storm to end!{°Por el poder de Neptuno, ordeno a esta tormenta que amaine!}
+I call upon the sea goddess Calypso to bring a storm onto my foes!{°Llamo a Calipso, la diosa del mar, para que desate una tormenta sobre mis enemigos!}
+
+You take a uniform from one of the dead soldiers{Le qutas el uniforme a uno de los soldados muertos}
+
+The{El}
+was repaired and reprovisioned{ha sido reparado y reaprovisionado}
+was repaired and new guns were installed{ha sido reparado y se le han instalado nuevos caÒones}
+
+- LEGEND -{- LEYENDA -}
+: Ship Position{: PosiciÛn de tu barco}
+: Escort Destination{: Destino de escolta}
+: Cargo Destination{: Destino de entrega de mercancÌa}
+: Hidden Treasure{: Tesoro esocndido}

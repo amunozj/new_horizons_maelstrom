@@ -1,6 +1,9 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 Horatio{Horatio}
 Hornblower{Hornblower}
+
+
 Jack{Jack}
 Hammond{Hammond}
 Lt. William{Lt. William}
@@ -10,6 +13,8 @@ Wolfe{Wolfe}
 Matthews{Matthews}
 Lt.{Lt.}
 Chadd{Chadd}
+
+
 Keene{Keene}
 Edward{Edward}
 Pellew{Pellew}
@@ -49,6 +54,7 @@ Chumley{Chumley}
 Barbara{Barbara}
 Maria{Maria}
 Mason{Mason}
+Ellen{Ellen}
 The Duchess of{The Duchess of}
 Wharfedale{Wharfedale}
 Teresa{Teresa}
@@ -96,10 +102,17 @@ Two{Two}
 Three{Three}
 Donatien{Donatien}
 Thibaud{Thibaud}
-Captain{Captain}
+Rifleman{Rifleman}
+Major{Major}
+DoctorW{Doctor}
+Able Seaman{Able Seaman}
+CaptainA{Captain}
+
+
 Simon{Simon}
 Blunden{Blunden}
 Cecil Scott{Cecil Scott}
 Forester{Forester}
 Capitaine{Capitaine}
 de Corvette{de Corvette}
+

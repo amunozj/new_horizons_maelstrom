@@ -1,35 +1,33 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| Hornblower.c |=====}
+
 Horatio{Horatio}
 Hornblower{Hornblower}
 
-{=====| StartStoryline.c |=====}
 
-{=====| quests_reaction.c |=====}
 Jack{Jack}
 Hammond{Hammond}
-Lt. William{Lt. William}
+Lt. William{Teniente William}
 Bush{Bush}
 Thomas{Thomas}
 Wolfe{Wolfe}
 Matthews{Matthews}
-Lt.{Lt.}
+Lt.{Teniente}
 Chadd{Chadd}
 
-{=====| Story.c |=====}
+
 Keene{Keene}
 Edward{Edward}
 Pellew{Pellew}
 Dreadnought{Dreadnought}
 Foster{Foster}
-Black Charlie{Black Charlie}
+Black Charlie{Charlie el Negro}
 Harvey{Harvey}
 Simpson{Simpson}
 Clayton{Clayton}
 Hunter{Hunter}
 Henry{Henry}
 Wellard{Wellard}
-Helmsman{Helmsman}
+Helmsman{Timonel}
 Styles{Styles}
 Perrin{Perrin}
 Oldroyd{Oldroyd}
@@ -56,6 +54,7 @@ Chumley{Chumley}
 Barbara{Barbara}
 Maria{Maria}
 Mason{Mason}
+Ellen{Ellen}
 The Duchess of{La duquesa de}
 Wharfedale{Wharfedale}
 Teresa{Teresa}
@@ -97,15 +96,19 @@ Wilks{Wilks}
 Tompkins{Tompkins}
 Stanley{Stanley}
 Hughes{Hughes}
-Guerilla{Guerilla}
+Guerilla{Guerillero}
 One{Uno}
 Two{Dos}
 Three{Tres}
 Donatien{Donatien}
 Thibaud{Thibaud}
+Rifleman{Fusilero}
+Major{Mayor}
+DoctorW{Doctor}
+Able Seaman{Marinero de primera}
+CaptainA{Capitán}
 
-{=====| TempQuest.c |=====}
-Captain{Captain}
+
 Simon{Simon}
 Blunden{Blunden}
 Cecil Scott{Cecil Scott}
@@ -113,4 +116,3 @@ Forester{Forester}
 Capitaine{Capitaine}
 de Corvette{de Corvette}
 
-{=====| 86 characters |=====}

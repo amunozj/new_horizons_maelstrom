@@ -1,5 +1,6 @@
 // MAXIMUS 19.06.2019: file created by script. For ease of later comparison please keep its structure. 
 
+
 Hilda{Hilda}
 Sparre{Sparre}
 The Road Back to Greatness{The Road Back to Greatness}
@@ -42,6 +43,7 @@ Caroline{Caroline}
 Le Rève{Le Rève}
 
 Atropos{Atropos}
+Lydia{Lydia}
 
 Don Julian{Don Julian}
 Alvarado{Alvarado}
@@ -52,6 +54,13 @@ Petra{Petra}
 Borinqueña{Borinqueña}
 
 Becka{Becka}
+
+Aveline{Aveline}
+de Grandpré{de Grandpré}
+Hatching a Plot{Hatching a Plot}
+As an official member of the Assassin Brotherhood, you sought to liberate the slave community from the Templar Order influence. After more than 10 years of dedication, you succeeded in eradicating the Templar Order of Louisiana. Recently, you received a letter asking for help from the Caribbean Brotherhood of Assassins.{As an official member of the Assassin Brotherhood, you sought to liberate the slave community from the Templar Order influence. After more than 10 years of dedication, you succeeded in eradicating the Templar Order of Louisiana. Recently, you received a letter asking for help from the Caribbean Brotherhood of Assassins.}
+Liberté{Liberté}
+
 La Aguja - The Needle{La Aguja - The Needle}
 The daughter of a wealthy landowner and one-time partisan, your family have been murdered by the French and you want revenge. You have risen to command of a partisan group, sometimes working with a British officer named Richard Sharpe. You even have a ship, formerly French, which changed hands several times before ending up in yours.{The daughter of a wealthy landowner and one-time partisan, your family have been murdered by the French and you want revenge. You have risen to command of a partisan group, sometimes working with a British officer named Richard Sharpe. You even have a ship, formerly French, which changed hands several times before ending up in yours.}
 
@@ -104,6 +113,11 @@ Lebre{Lebre}
 Taegan{Taegan}
 Finch{Finch}
 
+Dark{Dark}
+Teacher{Teacher}
+Satanists{Satanists}
+After escaping the Maltese Order's destruction of your lair in Italy, you've fled to the Caribbean vowing for vengeance in the name of the Prince of Darkness...{After escaping the Maltese Order's destruction of your lair in Italy, you've fled to the Caribbean vowing for vengeance in the name of the Prince of Darkness...}
+
 Anna{Anna}
 De Leiva{De Leiva}
 
@@ -134,9 +148,10 @@ Beatrice{Beatrice}
 Devlin{Devlin}
 Caribbean Tales{Caribbean Tales}
 Beatrice Devlin is fond of exploring the newly discovered West Indies. You are a free lass in a free world. Do you have what it takes to create a true Age of Pirates?{Beatrice Devlin is fond of exploring the newly discovered West Indies. You are a free lass in a free world. Do you have what it takes to create a true Age of Pirates?}
-Quicksilver{Quicksilver}
+Discovery{Discovery}
 
 Bonnie{Bonnie}
+Quicksilver{Quicksilver}
 
 Desmond Ray{Desmond Ray}
 Beltrop{Beltrop}
@@ -180,11 +195,35 @@ James T.{James T.}
 Hook{Hook}
 Jolly Roger{Jolly Roger}
 
-Captaine{Captaine}
+Eduardo{Eduardo}
+Villanueva{Villanueva}
+Sargento{Sargento}
+Lord of the Adriatic{Lord of the Adriatic}
+Relive the piratical adventures of Capitán Villanueva, feared corsair of the Adriatic Sea. Whether that means serving Spain as a privateer - or turning hostile to anything and everything in his way - that is up to you, the player, to decide.{Relive the piratical adventures of Capitán Villanueva, feared corsair of the Adriatic Sea. Whether that means serving Spain as a privateer - or turning hostile to anything and everything in his way - that is up to you, the player, to decide.}
+
+Sao{Sao}
+Feng{Feng}
+Crouching Tiger, Sailing Dragon{Crouching Tiger, Sailing Dragon}
+Destined to become the Pirate Lord of Singapore and scourge of the South China Sea, you have just made your way to the Caribbean to make a name for yourself. Your uncommon type of ship may give you the leverage you need to become a successful pirate.{Destined to become the Pirate Lord of Singapore and scourge of the South China Sea, you have just made your way to the Caribbean to make a name for yourself. Your uncommon type of ship may give you the leverage you need to become a successful pirate.}
+Empress{Empress}
+
+Capitaine{Capitaine}
 Chevalle{Chevalle}
+Lord of the Mediterranean Sea{Lord of the Mediterranean Sea}
+Chevalle, pirate lord of the Mediterranean sea, has embarked on a journey to the Caribbean. Work as a privateer for France, a pirate for yourself, or a rival power...the choice is yours, Capitaine.{Chevalle, pirate lord of the Mediterranean sea, has embarked on a journey to the Caribbean. Work as a privateer for France, a pirate for yourself, or a rival power...the choice is yours, Capitaine.}
 Fancy{Fancy}
 
+Sumbhajee{Sumbhajee}
+Angria{Angria}
+Lord of the Indian Ocean{Lord of the Indian Ocean}
+Priest turned pirate lord, Sri Sumbhajee Angria has left the Indian Ocean to resume his piratical activities in the Caribbean.{Priest turned pirate lord, Sri Sumbhajee Angria has left the Indian Ocean to resume his piratical activities in the Caribbean.}
+Otter{Otter}
+
+Edward{Edward}
 Teague{Teague}
+Pirate Lord of Madagascar{Pirate Lord of Madagascar}
+Rumour has it this infamous buccaneer fathered the legendary Captain Jack Sparrow. Some say his accomplishments eclipsed even those of Jack. Steer the ship of the mighty Edward Teague.{Rumour has it this infamous buccaneer fathered the legendary Captain Jack Sparrow. Some say his accomplishments eclipsed even those of Jack. Steer the ship of the mighty Edward Teague.}
+Troubadour{Troubadour}
 
 Amazon{Amazon}
 
@@ -283,12 +322,12 @@ Fanielle{Fanielle}
 
 Ralph{Ralph}
 Fawn{Fawn}
-Having eaten a magic fruit and narrowly avoided being eaten yourself, you now sail the seas in search of the One Piece. Can you rise to become a Pirate King?{Having eaten a magic fruit and narrowly avoided being eaten yourself, you now sail the seas in search of the One Piece. Can you rise to become a Pirate King?}
 
 Monkey{Monkey}
 D.{D.}
 Luffy{Luffy}
 Going Merry{Going Merry}
+Having eaten a magic fruit and narrowly avoided being eaten yourself, you now sail the seas in search of the One Piece. Can you rise to become a Pirate King?{Having eaten a magic fruit and narrowly avoided being eaten yourself, you now sail the seas in search of the One Piece. Can you rise to become a Pirate King?}
 
 Gherarde{Gherarde}
 de Jongh{de Jongh}
@@ -308,6 +347,12 @@ La Licorne{La Licorne}
 Henry{Henry}
 Morgan{Morgan}
 Jamaica Merchant{Jamaica Merchant}
+
+Black{Black}
+Caesar{Caesar}
+Longboat{Longboat}
+From Slave to Pirate{From Slave to Pirate}
+You were taken from your homeland and bound in chains on a slave ship. But not everyone on the ship is an enemy. With a little help from an unexpected ally and  a storm, you escape your captivity. What will you do next?{You were taken from your homeland and bound in chains on a slave ship. But not everyone on the ship is an enemy. With a little help from an unexpected ally and  a storm, you escape your captivity. What will you do next?}
 
 the Beggar{the Beggar}
 
@@ -352,12 +397,6 @@ Modyford{Modyford}
 
 Daniel{Daniel}
 Montbart{Montbart}
-
-Sao{Sao}
-Feng{Feng}
-Crouching Tiger, Sailing Dragon{Crouching Tiger, Sailing Dragon}
-Destined to become the Pirate Lord of Singapore and scourge of the South China Sea, you have just made your way to the Caribbean to make a name for yourself. Your uncommon type of ship may give you the leverage you need to become a successful pirate.{Destined to become the Pirate Lord of Singapore and scourge of the South China Sea, you have just made your way to the Caribbean to make a name for yourself. Your uncommon type of ship may give you the leverage you need to become a successful pirate.}
-Empress{Empress}
 
 Morris{Morris}
 Williams{Williams}
@@ -420,9 +459,6 @@ The Might of Spain{The Might of Spain}
 Ever since the Spanish set foot in the New World, others have tried and succeeded in taking more land away from them. But as recently promoted lieutenant in His Most Catholic Majesty's navy, you intend to see that Spain reclaims its rightful place in the world!{Ever since the Spanish set foot in the New World, others have tried and succeeded in taking more land away from them. But as recently promoted lieutenant in His Most Catholic Majesty's navy, you intend to see that Spain reclaims its rightful place in the world!}
 San Jeronimo{San Jeronimo}
 
-Sri{Sri}
-Sumbhajee{Sumbhajee}
-
 Tia{Tia}
 Dalma{Dalma}
 
@@ -442,11 +478,17 @@ Enterprise{Enterprise}
 Vito{Vito}
 Leone{Leone}
 
+A Second Calling{A Second Calling}
+After coming to terms with the truth about your father, you've decided it's time to retire from the smith and embrace the life of a sailor.{After coming to terms with the truth about your father, you've decided it's time to retire from the smith and embrace the life of a sailor.}
+Miranda{Miranda}
+
 A Touch of Destiny{A Touch of Destiny}
 Cursed for killing Davy Jones, you are now captain of the renewed Flying Dutchman. You are tasked to ferry the souls of the dead to the next world. But surely that can wait! For now, you have to become familiar with the tasks of Captain. What you do after that is up to you.{Cursed for killing Davy Jones, you are now captain of the renewed Flying Dutchman. You are tasked to ferry the souls of the dead to the next world. But surely that can wait! For now, you have to become familiar with the tasks of Captain. What you do after that is up to you.}
 
 Will{Will}
 Turner{Turner}
+
+Bootstrap Bill{Bootstrap Bill}
 
 Ricardo{Ricardo}
 Orellana{Orellana}
@@ -491,10 +533,6 @@ Brave Black Flag{Brave Black Flag}
 You have led a mutiny against your cruel captain who meant to kill a group of your countrymen taken as pirates. Now, on the run and marked as a traitor, you must decide what path to follow. Your actions have earned you the respect of the Brotherhood of Pirates. Will you join them under the brave black flag?{You have led a mutiny against your cruel captain who meant to kill a group of your countrymen taken as pirates. Now, on the run and marked as a traitor, you must decide what path to follow. Your actions have earned you the respect of the Brotherhood of Pirates. Will you join them under the brave black flag?}
 Defiance{Defiance}
 
-Eduardo{Eduardo}
-Villanueva{Villanueva}
-Sargento{Sargento}
-
 Milady{Milady}
 de Winter{de Winter}
 Spy and Assassin{Spy and Assassin}
@@ -513,8 +551,19 @@ Wapen van Hoorn{Wapen van Hoorn}
 Piet{Piet}
 Pieterszoon{Pieterszoon}
 Hein{Hein}
-The Silver Fleet{The Silver Fleet}
-'We have quite the journey ahead of us. We are going to get salt. From Africa.' That is Piet's first introduction to the sea and the tough life of seafarers. Years later Piet Hein gets his own ship. What will he do? Discover new lands? Trading? Or... Conquering the Spanish Silver Fleet?{'We have quite the journey ahead of us. We are going to get salt. From Africa.' That is Piet's first introduction to the sea and the tough life of seafarers. Years later Piet Hein gets his own ship. What will he do? Discover new lands? Trading? Or... Conquering the Spanish Silver Fleet?}
+De Zilvervloot{De Zilvervloot}
+'We hebben een flinke reis voor de boeg. We gaan zout halen. In Afrika.' Dat is Piet's eerste kennismaking met de zee en het harde leven van de zeelieden. Jaren later krijgt Piet Hein een eigen schip. Wat zal hij doen? Nieuw land ontdekken? Handel drijven? Of... de Spaanse zilvervloot veroveren?{'We hebben een flinke reis voor de boeg. We gaan zout halen. In Afrika.' Dat is Piet's eerste kennismaking met de zee en het harde leven van de zeelieden. Jaren later krijgt Piet Hein een eigen schip. Wat zal hij doen? Nieuw land ontdekken? Handel drijven? Of... de Spaanse zilvervloot veroveren?}
+
+Drake{Drake}
+Stranton{Stranton}
+Phantom{Phantom}
+Cursed Vengeance{Cursed Vengeance}
+Go on an adventure of treasure and betrayal, bloodshed and vengeance. A time when the pirate had the upper hand and got the girl, the treasure and conquered his enemies. What you may think about a pirate's life will be challenged to the extreme as they live, love, and die as only a pirate can! Based on the novel by Brent Jackson.{Go on an adventure of treasure and betrayal, bloodshed and vengeance. A time when the pirate had the upper hand and got the girl, the treasure and conquered his enemies. What you may think about a pirate's life will be challenged to the extreme as they live, love, and die as only a pirate can! Based on the novel by Brent Jackson.}
+
+Purpure{Purpure}
+Squire of the Sea{Squire of the Sea}
+Once, there was a little girl unwanted by her family. Her beloved stepuncle put her out to sea. But the sea took her away to another world.{Once, there was a little girl unwanted by her family. Her beloved stepuncle put her out to sea. But the sea took her away to another world.}
+Carnation{Carnation}
 
 Francis{Francis}
 Drake{Drake}

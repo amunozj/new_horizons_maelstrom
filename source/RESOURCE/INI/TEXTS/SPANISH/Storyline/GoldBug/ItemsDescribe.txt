@@ -156,6 +156,12 @@ itmdescr_bladewood_short
 Hum, también tengo que partir la leña.
 }
 
+itmname_bladewood2	{Madera}
+itmdescr_bladewood2
+{
+Algo de madera seca del bosque tropical.
+}
+
 itmname_bladewood4		{Leña}
 itmdescr_bladewood4
 {
@@ -515,16 +521,16 @@ itmdescr_pistolbucket_nitre
 Un cubo lleno de salitre.
 }
 
-itmname_pistolhand2		{}
+itmname_pistolhand2		{.}
 itmdescr_pistolhand2
 {
-.
+
 }
 
 itmname_pistolnitre_E		{Saco vacío}
 itmdescr_pistolnitre_E
 {
-
+.
 }
 
 itmname_pistolnitre_H		{Saco de salitre}
@@ -542,7 +548,7 @@ Un saco de cuero lleno de salitre.
 itmname_pistolsulphur_E		{Cesta vacía}
 itmdescr_pistolsulphur_E
 {
-
+.
 }
 
 itmname_pistolsulphur_H		{Cesta de azufre}
@@ -560,7 +566,7 @@ Una cesta llena de azufre.
 itmname_pistolcharcoal_E	{Tarro vacío}
 itmdescr_pistolcharcoal_E
 {
-
+.
 }
 
 itmname_pistolcharcoal_H	{Tarro de carbón vegetal}
@@ -578,7 +584,7 @@ Un tarro lleno de carbón vegetal.
 itmname_pistolpyrite_E		{Caja vacía}
 itmdescr_pistolpyrite_E
 {
-
+.
 }
 
 itmname_pistolpyrite_H		{Caja de pirita}
@@ -596,7 +602,7 @@ Una caja llena de polvo de pirita.
 itmname_pistolbarrel_gp0	{Barril vacío}
 itmdescr_pistolbarrel_gp0
 {
-
+.
 }
 
 itmname_pistolbarrel_gpW	{Barril de pólvora}
@@ -1654,10 +1660,22 @@ Parece vino tinto normal y corriente.
 }
 
 itmname_fake_candelabre		{Candelabro}
+itmdescr_fake_candelabre
+{
+
+}
 
 itmname_wax_candles		{Velas de cera}
+itmdescr_wax_candles
+{
+
+}
 
 itmname_fake_chalice		{Cáliz}
+itmdescr_fake_chalice
+{
+
+}
 
 itmname_altar_bread		{Pan de misa}
 itmdescr_altar_bread
@@ -1665,15 +1683,35 @@ itmdescr_altar_bread
 Pobre bastardo; sin nada que comer salvo estas obleas secas.
 }
 
-itmname_flyswatter        {Matamoscas}
+itmname_flyswatter        	{Matamoscas}
+itmdescr_flyswatter
+{
+
+}
 
 itmname_shrine			{Relicario}
+itmdescr_shrine
+{
+
+}
 
 itmname_jewelcross		{Cruz enjoyada}
+itmdescr_jewelcross
+{
+
+}
 
 itmname_cowl			{Capucha}
+itmdescr_cowl
+{
+
+}
 
 itmname_fake_censer		{Incensario}
+itmdescr_fake_censer
+{
+
+}
 
 //..........................CHURCH ITEMS END....................................
 //........................TREASURE ITEMS START..................................
@@ -1699,32 +1737,150 @@ Parte del tesoro en un saco.
 }
 
 itmname_treasure1		{Ponchera prodigiosa}
+itmdescr_treasure1
+{
+
+}
+
 itmname_treasure2		{Incensario}
+itmdescr_treasure2
+{
+
+}
+
 itmname_treasure3		{Ópalo}
+itmdescr_treasure3
+{
+
+}
+
 itmname_treasure4		{Elefante}
+itmdescr_treasure4
+{
+
+}
 
 itmname_treasure5		{Anillo grande}
+itmdescr_treasure5
+{
+
+}
+
 itmname_treasure6		{Anillo pequeño}
+itmdescr_treasure6
+{
+
+}
+
 itmname_treasure7		{Anillo}
+itmdescr_treasure7
+{
+
+}
+
 itmname_treasure8		{Cadena pequeña}
+itmdescr_treasure8
+{
+
+}
 
 itmname_treasure9		{Reloj grande}
+itmdescr_treasure9
+{
+
+}
+
 itmname_treasure10		{Reloj pequeño}
+itmdescr_treasure10
+{
+
+}
+
 itmname_treasure11		{Reloj mediano}
+itmdescr_treasure11
+{
+
+}
+
 itmname_treasure12		{Cadena suntuosa}
+itmdescr_treasure12
+{
+
+}
 
 itmname_treasure13		{Crucifijo francés}
+itmdescr_treasure13
+{
+
+}
+
 itmname_treasure14		{Crucifijo pequeño}
+itmdescr_treasure14
+{
+
+}
+
 itmname_treasure15		{Crucifijo grande}
+itmdescr_treasure15
+{
+
+}
+
 itmname_treasure16		{Cadena pesada}
+itmdescr_treasure16
+{
+
+}
 
 itmname_incas_collection	{Colección de tesoros incas}
+itmdescr_incas_collection
+{
+
+}
+
 itmname_sword_handle1		{Mango de espada}
+itmdescr_sword_handle1
+{
+
+}
 itmname_sword_handle2		{Mango de espada}
+itmdescr_sword_handle2
+{
+
+}
 
 itmname_coin3			{Doblón}
+itmdescr_coin3
+{
+
+}
+
 itmname_coin5			{Guinea}
+itmdescr_coin5
+{
+
+}
+
 itmname_coin9			{Cequí}
+itmdescr_coin9
+{
+
+}
+
 itmname_coin12			{Louis d'Or}
+itmdescr_coin12
+{
+
+}
+
 itmname_coin13			{Gulden}
+itmdescr_coin13
+{
+
+}
+
 itmname_coin16			{Moidoro}
+itmdescr_coin16
+{
+
+}

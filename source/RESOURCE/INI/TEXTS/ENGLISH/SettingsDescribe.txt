@@ -28,8 +28,8 @@ REALISMMODE_0{- Simple sailing mode, wind direction has little effect
 REALISMMODE_1{- Wind and inertia heavily affect sailing
 - On-Sea data depends on the items you have equipped
 - Worldmap Sailing and DirectSail are both available
-- Instant Travel limited to only discovered locations
-- Large ships limited as well as reload while fencing}
+- Sail-To and Fast Travel are freely available
+- Large ships limited}
 
 REALISMMODE_2{- Worldmap completely disabled
 - Size of Caribbean increased for accurate travel
@@ -363,18 +363,15 @@ settingautoloot_on3
 {
 #This can be combined with the Lootable Corpse setting as any leftover items not Auto-Looted will be left on the corpse.
 }
-dialog_camera{Dialog Camera}
-settingdialog_camera1
+hud_scaling{HUD Scaling}
+settinghud_scaling1
 {
-0.0: Camera remains locked behind character (stock PotC)
+#NOTE: Adjust the slider to resize the HUD to your preference
 }
-settingdialog_camera2
+ship_camera_distance{Ship camera distance}
+settingship_camera_distance1
 {
-0.1 to 1.0: Camera will be moved to the side of the characters
-}
-settingdialog_camera3
-{
-#NOTE: Maximum value not suitable for all locations
+#NOTE: Adjusts the distance from ship in sailing mode
 }
 enable_brothel{Brothel Access}
 settingenable_brothel1
@@ -413,6 +410,15 @@ lock_open{Chest Locks}
 settinglock_open1
 {
 You need some skill to pick a chest's lock. And some may be booby-trapped! Above 33 you won't hurt yourself anymore, above 66 chests are always open.
+}
+ship_info{Ships info bars at sea}
+settingship_info2
+{
+Show ships info bars at sea 
+}
+settingship_info1
+{
+Hide ships info bars at sea 
 }
 loc_camera{Door Camera}
 settingloc_camera1
@@ -485,4 +491,43 @@ Pirates use emblemed black sails
 settingpirates_black_sails4
 {
 #Black sails can help you recognize pirates from afar
+}
+sequential_cannonfire{Sequential Cannonfire}
+settingsequential_cannonfire1
+{
+Off (Cannons fire at will)
+}
+settingsequential_cannonfire2
+{
+On (Cannons fire at sequence)
+}
+settingsequential_cannonfire3
+{
+#Sets the sequential fire ON or OFF according to player's preference.
+}
+force_trade_winds{Trade Winds}
+settingforce_trade_winds1
+{
+Off (Use regular/random weather)
+}
+settingforce_trade_winds2
+{
+On (Enable Trade Winds)
+}
+settingforce_trade_winds3
+{
+#Force real Caribbean Trade Winds from the East (~4 Beaufort).
+}
+disable_sailto_restrictions{SailTo Restrictions}
+settingdisable_sailto_restrictions1
+{
+On ('SailTo' restricted - COAS behavior)
+}
+settingdisable_sailto_restrictions2
+{
+Off (No restriction - POTC behavior)
+}
+settingdisable_sailto_restrictions3
+{
+#Toggle the 'SailTo' restrictions ON or OFF. When enabled, the player will be unable to use the quick sail option on enemy ships, or on friendly ships within combat range. Additionally, distant shores and ships will remain hidden until the player approaches them, enhancing the sense of realism.
 }

@@ -210,7 +210,7 @@ Sloop1_Descr{Un pequeño barco de un solo palo de uso común en
 el Caribe, para el comercio, la guerra o la piratería.
 Casco pintado de azul con detalles blancos.
 16 cañones, es veloz y navega bien de ceñida gracias a su gran vela mayor cangreja.}
-FR_Sloop_Descr{'Le Rêve' es uuna ágil balandra de guerra francesa.
+FR_Sloop_Descr{'Le Rêve' es una ágil balandra de guerra francesa.
 Pintura negra y roja, común en la Armada Francesa.
 
 14 cañones, es veloz y navega bien de ceñida gracias a su gran vela mayor cangreja.}
@@ -264,6 +264,22 @@ Brújula incluida (pero no apunta al norte).
 Acabado de madera oscura y desgastada.
 12 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
 
+PO_LuggerP_Descr{Un barco mercante adaptado para la práctica del corso.
+Casco blanco con acentos verdes y rojos.
+8 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
+SP_LuggerP_Descr{Un barco mercante adaptado para la práctica del corso.
+Casco negro con acentos azules y rojos.
+8 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
+NL_LuggerP_Descr{Un barco mercante adaptado para la práctica del corso.
+Casco amarillo con acentos verdes y rojos.
+8 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
+FR_LuggerP_Descr{Un barco mercante adaptado para la práctica del corso.
+Casco azul con acentos rojos.
+8 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
+RN_LuggerP_Descr{Un barco mercante adaptado para la práctica del corso.
+Casco marrón con acentos azules y amarillos.
+8 cañones, su pequeño tamaño lo hace veloz y maniobrable.}
+
 Lugger3_Descr{El lugre, o quechemarín, es un pequeño barco de 
 cabotaje aparejado con tres mástiles de velas al tercio.
 Pintura desgastada de color negro y marrón.
@@ -304,6 +320,11 @@ Acabado de madera natural con decoración austera.
 FleutWar_Descr{Aunque se idearon como mercantes, los filibotes
 también han sido adaptados para su uso en la guerra.
 Casco pintado de azul y finamente decorado.
+34 cañones,	decentes cualidades marineras en cuanto a velocidad y maniobrabilidad.}
+
+FleutWar2_Descr{Aunque se idearon como mercantes, los filibotes
+también han sido adaptados para su uso en la guerra.
+Casco pintado de negro y rojo.
 34 cañones,	decentes cualidades marineras en cuanto a velocidad y maniobrabilidad.}
 
 FleutWarSat_Descr{Aunque se idearon como mercantes, los filibotes
@@ -441,14 +462,14 @@ Casco pintado de blanco y marrón oscuro.
 38 cañones, bastante rápido y maniobrable con el viento a favor.}
 FastGalleon3_Descr{Sus líneas esbeltas y sus altos mástiles permiten
 a este galeón alcanzar velocidades sorprendentes.
-Casco de madera clara con colorida decoración.
+Casco de madera clara con decoración colorida.
 38 cañones, bastante rápido y maniobrable con el viento a favor.}
 FastGalleon4_Descr{Sus líneas esbeltas y sus altos mástiles permiten
 a este galeón alcanzar velocidades sorprendentes.
 Casco marrón oscuro y rojo muy decorado.
 38 cañones, bastante rápido y maniobrable con el viento a favor.}
-FastGalleon5_Descr{The slender hull lines and tall masts of this
-galleon allow her to reach surprisngly high speeds.
+FastGalleon5_Descr{Sus líneas esbeltas y sus altos mástiles permiten
+a este galeón alcanzar velocidades sorprendentes.
 El casco de madera rojiza está decorado con vivos colores.
 38 cañones, bastante rápido y maniobrable con el viento a favor.}
 PiratFastGal_Descr{Sus líneas esbeltas y sus altos mástiles permiten
@@ -536,8 +557,8 @@ FR_Frigate_Descr{Una fragata de construcción rusa de principios del
 siglo XVIII. Combina movilidad y potencia de fuego.
 Casco negro, melocotón y azul, al estilo francés.
 36 cañones, buenas cualidades marineras.}
-RN_Frigate_Descr{A Russian-built frigate of the early 18th century
-that combines movility and firepower.
+RN_Frigate_Descr{Una fragata de construcción rusa de principios del
+siglo XVIII. Combina movilidad y potencia de fuego.
 Casco negro, melocotón y azul, con la popa decorada.
 36 cañones, buenas cualidades marineras.}
 
@@ -888,6 +909,11 @@ el primero de su tipo construido en Francia.
 Casco de madera rojiza con partes pintadas de azul.
 64 cañones, ni muy rápido ni muy maniobrable.}
 
+Couronne_pirate_Descr{Un gran galeón que perteneció a la Armada Francesa,
+ahora tomado por piratas.
+Casco negro cona centos rojos.
+64 cañones, ni muy rápido ni muy maniobrable.}
+
 SP_ApostolFelipe_Descr{'Apóstol Felipe', uno de los seis galeones 
 construidos por Martín de Arana para el rey Felipe IV.
 Casco de madera natural decorado con pinturas religiosas.
@@ -988,7 +1014,7 @@ Casco pintado de azul y amarillo, al estilo francés.
 16 cañones, buenas cualidades marineras sobre todo a favor del viento.}
 RN_Neptunus_Descr{Un barco corsario de construcción holandesa
 de principios del siglo XVIII.
-Casco amarillo ocn decoraciones rojas y azules.
+Casco amarillo con decoraciones rojas y azules.
 16 cañones, buenas cualidades marineras sobre todo a favor del viento.}
 PO_Neptunus_Descr{Un barco corsario de construcción holandesa
 de principios del siglo XVIII.
@@ -1081,8 +1107,8 @@ Casco verde y marrón, al estilo holandés.
 20 cañones, buenas cualidades marineras.}
 SP_Postillionen_Descr{En algunas marinas de guerra, estas corbetas grandes
 se pueden clasificar como fragatas de sexta clase.
-Casco rojo y amarillo, al estilo español.}
-20 cañones, buenas cualidades marineras.
+Casco rojo y amarillo, al estilo español.
+20 cañones, buenas cualidades marineras.}
 PO_Postillionen_Descr{En algunas marinas de guerra, estas corbetas grandes
 se pueden clasificar como fragatas de sexta clase.
 Casco blanco, verde y marrón, al estilo portugués.

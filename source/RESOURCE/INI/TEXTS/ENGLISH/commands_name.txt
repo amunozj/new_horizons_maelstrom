@@ -49,6 +49,12 @@ sea_InstantRepair {Instant Repair}
 sea_Turn180 {Turn 180}
 sea_SandbankManeuver {Sandbank Maneuver}
 sea_Troopers {Troopers}
+sea_Speak {Talk}
+
+sea_Cannonballs {Balls}
+sea_Grapes {Grapes}
+sea_Knippels {Knippels}
+sea_Bombs {Bombs}
 
 sea_EnglishFlag {England}
 sea_SpainFlag {Spain}

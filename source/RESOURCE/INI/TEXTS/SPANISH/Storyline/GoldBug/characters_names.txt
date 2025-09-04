@@ -1,16 +1,14 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| GoldBug.c |=====}
+
 William{William}
 Legrand{Legrand}
 
-{=====| StartStoryline.c |=====}
 
-{=====| quests_reaction.c |=====}
 Edgar Allan{Edgar Allan}
 Poe{Poe}
 Jupiter{Júpiter}
 
-{=====| TempQuest.c |=====}
+
 C. Auguste{C. Auguste}
 Dupin{Dupin}
 Arthur Gordon{Arthur Gordon}
@@ -48,13 +46,16 @@ Axel{Axel}
 von Fersen{von Fersen}
 Doctor{Doctor}
 KP{KP}
+Street{Callejero}
+Merchant{Mercader}
 Street Merchant{Mercader callejero}
 Shipyard{Dueño}
 Owner{del astillero}
 Harbour{Capitán}
 Master{del puerto}
-Bank{Empleado}
-Clerk{del banco}
+Bank{Banco}
+Clerk{Empleado}
+Bank Clerk{Empleado del banco}
 Blacksmith{Herrero}
 Storeowner{Tendero}
 Governor Thomas{Gobernador Thomas}
@@ -62,8 +63,9 @@ Bennet{Bennet}
 The Chinese{El chino}
 Man{chino}
 Black Magic Woman{Hechicera negra}
-Plantation{Guardia}
-Guard{de la plantación}
+Plantation{Plantación}
+Guard{Guardia}
+Plantation Guard{Guardia de la plantación}
 Captain William{Capitán William}
 Kidd{Kidd}
 Howard{Howard}
@@ -123,5 +125,3 @@ Bandit{Bandido}
 Priest{Sacerdote}
 Zombie{Zombi}
 Buccaneer{Bucanero}
-
-{=====| 191 characters |=====}

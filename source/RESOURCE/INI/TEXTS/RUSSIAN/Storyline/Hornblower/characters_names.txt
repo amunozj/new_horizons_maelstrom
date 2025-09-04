@@ -1,22 +1,20 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| Hornblower.c |=====}
+
 Horatio{Горацио}
 Hornblower{Хорнблауэр}
 
-{=====| StartStoryline.c |=====}
 
-{=====| quests_reaction.c |=====}
 Jack{Джек}
 Hammond{Хэммонд}
 Lt. William{Лт. Уильям}
 Bush{Буш}
 Thomas{Томас}
-Wolfe{Вольф}
+Wolfe{Вульф}
 Matthews{Мэтьюс}
 Lt.{Лт.}
 Chadd{Чад}
 
-{=====| Story.c |=====}
+
 Keene{Кин}
 Edward{Эдвард}
 Pellew{Пеллью}
@@ -29,7 +27,7 @@ Clayton{Клейтон}
 Hunter{Хантер}
 Henry{Генри}
 Wellard{Вэйлард}
-Helmsman{Рулевой}
+Helmsman{Штурман}
 Styles{Стайлс}
 Perrin{Перрин}
 Oldroyd{Олдройд}
@@ -47,19 +45,20 @@ Ebeneezer{Эбенизер}
 Bracegirdle{Брейсгедл}
 William{Уильям}
 Uriah{Урия}
-Quelp{Келп}
+Quelp{Куэлп}
 The Earl of{Граф}
 Edrington{Эдрингтон}
 Arthur{Артур}
-Wellesley{Уэлсли}
+Wellesley{Уэллсли}
 Chumley{Чамли}
 Barbara{Барбара}
 Maria{Мария}
 Mason{Мэйсон}
+Ellen{Эллен}
 The Duchess of{Герцогиня}
 Wharfedale{Ворфдейл}
 Teresa{Тереза}
-Moreno{Морино}
+Moreno{Морено}
 Etienne{Этьен}
 de Vergasse{де Вергасс}
 Archie{Арчи}
@@ -88,7 +87,7 @@ Archer{Арчер}
 Tongue{Болтун}
 Mansfield{Мансфилд}
 Perkins{Перкинс}
-Dunnitt{Даннитт}
+Dunnitt{Дуннитт}
 Hogan{Хоган}
 Murray{Мюррэй}
 Hew{Хью}
@@ -103,9 +102,13 @@ Two{второй}
 Three{третий}
 Donatien{Донасьё}
 Thibaud{Тибо}
+Rifleman{Стрелок}
+Major{Майор}
+DoctorW{Доктор}
+Able Seaman{Способный Моряк}
+CaptainA{Капитан}
 
-{=====| TempQuest.c |=====}
-Captain{Капитан}
+
 Simon{Саймон}
 Blunden{Бланден}
 Cecil Scott{Сесиль Скотт}
@@ -113,4 +116,3 @@ Forester{Форестер}
 Capitaine{Капитан}
 de Corvette{3 ранга}
 
-{=====| 86 characters |=====}

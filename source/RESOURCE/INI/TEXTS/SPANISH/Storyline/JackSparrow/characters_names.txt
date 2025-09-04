@@ -1,11 +1,12 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| JackSparrow.c |=====}
+
 Jack{Jack}
 Sparrow{Sparrow}
 
-{=====| StartStoryline.c |=====}
 
-{=====| quests_reaction.c |=====}
+Verbinski{Verbinski}
+
+
 Heumac{Heumac}
 Tezcacoatl{Tezcacoatl}
 Angler{Angler}
@@ -25,8 +26,9 @@ Wheelback{Wheelback}
 Wyvern{Wyvern}
 Quittance{Quittance}
 Penrod{Penrod}
+French Soldier{Soldado francés}							  
 
-{=====| Officers.c |=====}
+
 Captaine{Captaine}
 Chevalle{Chevalle}
 Lucas{Lucas}
@@ -38,24 +40,24 @@ the Slave{el esclavo}
 Prognatus{Prognatus}
 Solvo{Solvo}
 
-{=====| QuebradasCostillas.c |=====}
+
 Ines{Ines}
 Diaz{Diaz}
 Skull{Skull}
 
-{=====| Redmond.c |=====}
+
 Henry{Henry}
 Weatherby{Weatherby}
 Swann{Swann}
 
-{=====| Story.c |=====}
+
 Joshamee{Joshamee}
 Gibbs{Gibbs}
 Random{Cualquiera}
 Drunk{Borracho}
 Random Drunk{Borracho cualquiera}
 
-{=====| TempQuest.c |=====}
+
 Matthew{Matthew}
 Shaw{Shaw}
 Billy{Billy}
@@ -198,8 +200,16 @@ Jimmy{Jimmy}
 Legs{Legs}
 Port Admiral{Almirante del puerto}
 Talicerdor{Talicerdor}
+Guard Captain {Capitán de la guardia}
+Prison Guard {Guardia de la prisión}
+Atwood {Atwood}
+Paddley {Paddley}
+Elton {Elton}
+Garfield {Garfield}
+Cannibal Chief {Cacique caníbal}
+Cannibal{Caníbal}
 
-{=====| TempQuestEnemy.c |=====}
+
 Ronald{Ronald}
 Blacklock{Blacklock}
 Harris{Harris}
@@ -218,4 +228,6 @@ Spanish Officer{Oficial español}
 Prison Commendant{Comandante de la prisión}
 Spanish Midshipman{Guardiamarina español}
 
-{=====| 189 characters |=====}
+
+Nigel{Nigel}
+

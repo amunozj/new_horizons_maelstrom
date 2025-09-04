@@ -28,8 +28,8 @@ REALISMMODE_0{- Simple sailing mode, wind direction has little effect
 REALISMMODE_1{- Wind and inertia heavily affect sailing
 - On-Sea data depends on the items you have equipped
 - Worldmap Sailing and DirectSail are both available
-- Instant Travel limited to only discovered locations
-- Large ships limited as well as reload while fencing}
+- Sail-To and Fast Travel are freely available
+- Large ships limited}
 
 REALISMMODE_2{- Worldmap completely disabled
 - Size of Caribbean increased for accurate travel
@@ -362,18 +362,10 @@ settingautoloot_on3
 {
 #This can be combined with the Lootable Corpse setting as any leftover items not Auto-Looted will be left on the corpse.
 }
-dialog_camera{Dialog Camera}
-settingdialog_camera1
+hud_scaling{HUD Scaling}
+settinghud_scaling1
 {
-0.0: Camera remains locked behind character (stock PotC)
-}
-settingdialog_camera2
-{
-0.1 to 1.0: Camera will be moved to the side of the characters
-}
-settingdialog_camera3
-{
-#NOTE: Maximum value not suitable for all locations
+#NOTE: Adjust the slider to resize the HUD to your preference
 }
 enable_brothel{Brothel Access}
 settingenable_brothel1

@@ -534,7 +534,7 @@ More of a Dress Sword than a combat weapon. It allows you to impress the ladies 
 itmname_blade50	{Venetian Navy Cutlass}
 itmdescr_blade50
 {
-Robust enough to hack through ropes, canvas and wood yet short enough to weild on a compact ship deck. This Cutlass is the weapon of choice for any self-respecting Pirate.
+Robust enough to hack through ropes, canvas and wood yet short enough to wield on a compact ship deck. This Cutlass is the weapon of choice for any self-respecting Pirate.
 }
 
 itmname_blade51	{French Court Sword}
@@ -547,8 +547,7 @@ itmname_bladeMesser	{Langes Messer}
 itmdescr_bladeMesser
 {
 A German single edged weapon with high cutting power. Not classified as sword but rather as knife to bypass restrictions for manufacturers and folk. Can be used with one or two hands, very versatile and very deadly.
-}
-
+}																																																				   
 // KevAtl SLiB Special Weapon blades -->
 
 itmname_bladeFD	{Francis Drake's Sword}
@@ -630,6 +629,12 @@ itmname_blade_ebony {Ebony Sabre}
 itmdescr_blade_ebony
 {
 This sabre is different from the other ones. It is made out of unique gold and ebony steel. You can feel a dark aura around this sword.
+}
+
+itmname_bladeNorr {Ceremonial Smallsword}
+itmdescr_bladeNorr
+{
+This sword is a weapon most notably owned by James Norrington. Beautifully hand-forged by blacksmith apprentice William Turner, the sword is perfectly balanced, and gold filigree decorates the handle.
 }
 
 // Axes from SLiB. Jack Davidson. -->
@@ -765,7 +770,7 @@ This Spanish pistol is not especially accurate but is hard hitting. The mechanis
 itmname_pistol3_14	{Jack's Lucky Flintlock}
 itmdescr_pistol3_14
 {
-This beautiful, but plain-decorated pistol, comes from the British colonies of India, the maker has his name 'Perry' etched in the pistol. Orginally owned by Sri Sumbhajee, but stolen by you.
+This beautiful, but plain-decorated pistol, comes from the British colonies of India, the maker has his name 'Perry' etched in the pistol. Originally owned by Sri Sumbhajee, but stolen by you.
 }
 
 itmname_pistol4_1	{Mercenary's pistol}
@@ -1067,7 +1072,15 @@ This saber is favoured by the few merchants who want to protect their merchandis
 }
 //SuperDurnius <--
 
-itmname_spyglass1	{Cheap spyglass}
+itmname_spyglass0	{Spyglass of Shame}
+itmdescr_spyglass0
+{
+A cheap spyglass and a downright shameful one can be only one letter apart!
+This particular one was formerly owned by Yuri (Ursus) Rogach, who quickly dumped it in favour of something better.
+Allows the user to see only the ship's name, type, and speed.
+}
+
+itmname_spyglass1	{Cheap Spyglass}
 itmdescr_spyglass1
 {
 A simple spyglass with scratched lenses. This junk does not belong in any self-respecting captain's pocket.
@@ -1562,7 +1575,7 @@ The keys to the House of Mateus Santos, what doors do they open? Before you atta
 itmname_Santos_Journal1 {Santos To-do Hit List A-N}
 itmdescr_Santos_Journal1
 {
-This apparently is volume one of a journal listing Santos' targets for assassination; Admiral 8Q, Bonny Megs, Cap'n Toast, Captain Cookie, Captain Dams, Catalina the Pirate, Child of Thor, Couch Captain Charles, Diomed, Donkey Pirate, Fred Bob, High Sea Lass, Inez Dias, JMV575, Keith, Kevo44, Kieron, Lady Karen of the Sandwich Isles, Mad Jack, Maximus, Meigger, Muddymonkey77, Nathan Kell
+This apparently is volume one of a journal listing Santos' targets for assassination; Admiral 8Q, Bonny Megs, Cap'n Toast, Captain Cookie, Captain Dams, Catalina the Pirate, Child of Thor, Couch Captain Charles, Diomed, Donkey Pirate, Fred Bob, Grey Roger, High Sea Lass, Inez Dias, JMV575, Keith, Kevo44, Kieron, Lady Karen of the Sandwich Isles, Mad Jack, Maximus, Meigger, Muddymonkey77, Nathan Kell
 }
 
 itmname_Santos_Journal2 {Santo's To-do Hit List O-Z}
@@ -1574,7 +1587,7 @@ More targets on Santos Hit List; Petros, Pieter Boelen, Pirate Sam, Rafe Bligh, 
 
 // ccc Building kit aug 05
 
-itmname_building	{Building Permit  }
+itmname_building	{Building Permit ;) }
 itmdescr_building
 {
 DON'T TOUCH! Essential for 'occupant' of this building! 
@@ -2084,7 +2097,7 @@ itmname_skillbook3 {Book of Bouncing Balls}
 itmdescr_skillbook3
 {
 Did you know there is a way to make cannons balls bounce of your hull? This and more tricks you'll find in this book. 
-(Unlocks Advanced Ship defence)
+(Unlocks Improved Damage Control)
 }
 
 itmname_skillbook4 {Don't Shoot the Messenger}
@@ -2234,4 +2247,15 @@ Map of the ground level of #slocation# temple.
 itmname_mapKRTempleUpper {#slocation# temple map}
 itmdescr_mapKRTempleUpper {
 Map of the upper level of #slocation# temple.
+}
+
+itmname_mushket	{Musketoon}
+itmdescr_mushket
+{
+The musketoon is a shorter barreled version of the musket and served in the roles of a shotgun or carbine. The musketoon is most commonly associated with naval use, and pirates in particular, though they also served in a carbine role with cavalry.
+}
+
+itmname_mushket1 {Matchlock musket}
+itmdescr_mushket1 {
+ The European matchlock gun held a burning slow match in a clamp at the end of a small curved lever known as the serpentine. Upon the pulling of a lever the clamp dropped down, lowering the smoldering match into the flash pan and igniting the powder.
 }

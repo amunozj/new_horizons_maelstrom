@@ -1,9 +1,9 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| FreePlay.c |=====}
+
 Julian{Джулиан}
 McAllister{МакАлистер}
 
-{=====| StartStoryline.c |=====}
+
 Robert{Роберт}
 Fletcher{Флэтчер}
 Edward{Эдвард}
@@ -16,19 +16,45 @@ Cardinal{Кардинал}
 Richelieu{Ришелье}
 Mazarin{Мазарини}
 Teague{Тиг}
-Sparrow{Спэрроу}
+Sparrow{Воробей}
 Franзois{Франсуа}
-de Hadoque{де Хадоке}
+de Hadoque{Де Хадоке}
 Koleniko{Коленико}
 Ragetti{Раджетти}
+Mother{Мать}
+Bootstrap Bill{Прихлоп Билл}
+Mateo{Матео}
+Black Caesar{Чёрный Цезарь}
+Raoul{Рауль}
+Dupont{Дюпон}
+Askay{Аскай}
+Pusasn{Пусасн}
+Lian{Лиан}
+Park{Парк}
+Tai{Тай}
+Huang{Хуанг}
+Twigg{Твигг}
+Bo'sun{Боцман}
+Pintel{Пинтел}
+Ian{Иан}
+Mercer{Мерсер}
+Bligh{Блай}
+Uncle{Дядя}
+Gules{Гюлес}
 
-{=====| quests_reaction.c |=====}
-Bartolomeu{Бартоломео}
-Portugues{Португальский}
+
+Bartolomeu{Бартоломью}
+Portugues{Португалец}
 Guillaume{Гилм}
 Auger{Уга}
 
-{=====| Officers.c |=====}
+
+Weatherby{Уэзерби}
+Swann{Суонн}
+Christopher{Кристофер}
+Silehard{Сайлхард}
+
+
 William{Уильям}
 Sullivan{Салливан}
 David{Дэвид}
@@ -44,8 +70,10 @@ O'Bannon{О'Беннон}
 Angus{Ангус}
 Calhoun{Кэлхаун}
 Bush{Буш}
+Dark Captain{Тёмный Капитан}
+Dark Cannoneer{Тёмный Канонир}
 
-{=====| TempQuest.c |=====}
+
 Bart{Барт}
 Renault{Рено}
 Enrique{Энрике}
@@ -55,6 +83,7 @@ Villalobos{Виллалобос}
 Crewmember{Член команды}
 Spanish{Испанский}
 Commander{Командующий}
+Spanish Commander{Испанский Командир}
 Padre{Падре}
 Gerardo{Жерардо}
 Soldier{Солдат}
@@ -69,25 +98,26 @@ Keene{Кин}
 Fernando{Фернандо}
 Suarez{Суарез}
 Elvira{Эльвира}
+Carranza{Карранса}
 Alonso{Алонсо}
 Madero{Мадеро}
 Arnaldo{Арнальдо}
 Chaparro{Чапарро}
 
-{=====| TempQuestEnemy.c |=====}
+
 Prison{Арестант}
 Guard{Стражник}
+Prison Guard{Тюремный Стражник}
 Arnold{Арнольд}
 McGill{МакГилл}
 Smuggler{Контрабандист}
 Acre{Акр}
 Jourdain{Журден}
 Anjou{Анжу}
-Edam{Едам}
+Edam{Эдам}
 De Cow{Де Коу}
 Abel{Абель}
 Barco{Барко}
 Renouart{Ренуар}
 Larrouse{Лярус}
 
-{=====| 63 characters |=====}

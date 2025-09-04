@@ -1,12 +1,17 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 Howard{Howard}
 Pyle{Pyle}
+
+
 Israel{Israel}
 Hands{Hands}
 Samuel{Samuel}
 Odel{Odel}
 Edward{Edward}
 Teach{Teach}
+
+
 Celestine{Celestine}
 Maupassant{Maupassant}
 Natalia{Natalia}
@@ -19,6 +24,8 @@ Valentina{Valentina}
 Malter{Malter}
 Celia{Celia}
 Hilder{Hilder}
+
+
 Richard{Richard}
 Bolitho{Bolitho}
 Midshipman{Midshipman}
@@ -32,6 +39,7 @@ Constable{Constable}
 Mills{Mills}
 Young{Young}
 Mutineer{Mutineer}
+Mutineer_F{Mutineer}
 Thug{Thug}
 Leading{Leading}
 Coastbrother{Coastbrother}
@@ -52,7 +60,9 @@ Fry{Fry}
 Stretton{Stretton}
 Rogers'{Rogers'}
 Crew{Crew}
+Rogers' Crew{Rogers' Crew}
 Former Crew{Former Crew}
+Rogers' Former Crew{Rogers' Former Crew}
 Vane{Vane}
 Bellamy{Bellamy}
 Paul{Paul}
@@ -69,6 +79,7 @@ Phineas{Phineas}
 Bunce{Bunce}
 Gow{Gow}
 Charles Vane's{Charles Vane's}
+Charles Vane's Crew{Charles Vane's Crew}
 Walter{Walter}
 Kennedy{Kennedy}
 England{England}
@@ -200,8 +211,10 @@ Blowhorn{Blowhorn}
 Mummy{Mummy}
 Blackbeard's{Blackbeard's}
 head{head}
+Blackbeard's head{Blackbeard's head}
 Swedish{Swedish}
 Guy{Guy}
+Swedish Guy{Swedish Guy}
 Konrad{Konrad}
 Ljungberg{Ljungberg}
 Abraham{Abraham}

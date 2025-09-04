@@ -2,7 +2,7 @@ Potion parameters{Remedio médico}
 health value{Salud}
 weapon blade parameters{Arma: daño mín./máx. #ddmg_min#/#ddmg_max#, penetrante #dpiercing#%, bloqueo #dblock#%.}
 weapon gun parameters{Arma: daño mín./máx. #ddmg_min#/#ddmg_max#, recarga #dchargespeed# s, precisión #daccuracy#%.}
-weapon armor parameters{Armadura: Cobertura #dcoverage#%, Posib. de parada / % de daño recibido si no hay parada, para: Espada #dbladestop#% / #dbladefrac#%, Arma de fuego #dgunstop#% / #dgunfrac#%.}
+weapon armor parameters{Armadura: Cobertura #dcoverage#%, Posib. de parada / Daño recibido si no hay parada, para: Espada #dbladestop#% / #dbladefrac#%, Arma de fuego #dgunstop#% / #dgunfrac#%.}
 
 you've_got {Has encontrado}
 
@@ -76,6 +76,36 @@ itmdescr_Trade_Passport
 Este documento ha sido expedido por el director de la Compañía Comercial de las Indias Occidentales. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería.
 }
 
+itmname_Trade_PassportE {Licencia mercantil}
+itmdescr_Trade_PassportE
+{
+Este documento ha sido expedido por el director de la Compañía Comercial de las Indias Orientales. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería.
+}
+
+itmname_Trade_PassportH {Licencia mercantil}
+itmdescr_Trade_PassportH
+{
+Este documento ha sido expedido por el director de la Compañía Holandesa de las Indias Occidentales. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería.
+}
+
+itmname_Trade_PassportS {Licencia mercantil}
+itmdescr_Trade_PassportS
+{
+Este documento ha sido expedido por el director de la Casa de Contratación de Sevilla. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería.
+}
+
+itmname_Trade_PassportF {Licencia mercantil}
+itmdescr_Trade_PassportF
+{
+Este documento ha sido expedido por el director de la Compañía Francesa de las Indias Occidentales. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería..
+}
+
+itmname_Trade_PassportP {Licencia mercantil}
+itmdescr_Trade_PassportP
+{
+Este documento ha sido expedido por el director de la Casa da India. Indica que eres un honorable mercader y no tienes que pagar comisiones al vender bienes comerciales. También muestra a tu tripulación que no estás envuelto en ningún tipo de piratería.
+}
+
 itmname_EITC_Passport {Pasaporte de la Compañía de las Indias Orientales}
 itmdescr_EITC_Passport
 {
@@ -115,7 +145,7 @@ Un sable común. Está diseñado más para blandirlo desde un caballo que en la cubi
 itmname_blade2	{Ropera}
 itmdescr_blade2
 {
-"Estas armas son propias de niños, no de hombres, para que los chicos rezagados del campamento maten gallinas, no para hombres de honor que se enfrentan en batalla a sus enemigos" - George Silver, "Paradoxes of Defence" 1599.
+"Estas armas son propias de niños, para que los chicos del campamento maten gallinas, no para hombres de honor que se enfrentan en batalla a sus enemigos" - George Silver, "Paradoxes of Defence" 1599.
 }
 
 itmname_blade3	{Badelaire}
@@ -265,7 +295,7 @@ Estas cuidadas hojas son fabricadas en Solingen, Alemania, especialmente para se
 itmname_blade27	{Favorito del Contramaestre}
 itmdescr_blade27
 {
-Después de retirarse a una vida en tierra firme, tu antiguo primer oficial Malcolm decidió que alguien debería fabricar buenas armas para contramaestres, para marineros trabajadores, no solo espadas elegantes para oficiales. Alfanjes de calidad como este son el resultado de sus esfuerzos.
+Después de retirarse, tu antiguo primer oficial Malcolm decidió fabricar buenas armas para marineros trabajadores, en vez de espadas elegantes para oficiales. Este alfanje de calidad es el resultado de sus esfuerzos.
 }
 
 // Blades from SLiB. Added 09-10-2007 by KevAtl -->
@@ -273,13 +303,13 @@ Después de retirarse a una vida en tierra firme, tu antiguo primer oficial Malco
 itmname_blade28	{Shamshir}
 itmdescr_blade28
 {
-Una decorada espada persa caracterizada por una hoja fina y muy curva. El único filo es muy cortante pero ofrece poco valor defensivo.
+Una decorada espada persa caracterizada por una hoja fina y muy curva. El único filo es muy cortante, pero ofrece poco valor defensivo.
 }
 
 itmname_blade29	{Espada de oficial portugués}
 itmdescr_blade29
 {
-Espada decorativa otorgada a oficiales navales portugueses de alto rango. Este modelo está basado en las primeras espadas usadas por el gran explorador portugués Vasco da Gama.
+Espada decorativa otorgada a oficiales navales portugueses de alto rango. Este modelo está basado en las primeras espadas usadas por el gran explorador portugués Vasco da Gama.
 }
 
 itmname_blade30	{Sable de duelista}
@@ -323,7 +353,7 @@ Una hoja corta, decorada con una cabeza de marfil bajo la empuñadura.
 itmname_bladeC11	{Espada milanesa}
 itmdescr_bladeC11
 {
-Hay muchas espadas a caballo entre los estilos de punta y de corte; espadas que son más largas que las de estilos posteriores pero más finas que las espadas de corte más antiguas. Ésta es una de esas espadas.
+Hay espadas a caballo entre los estilos de punta y de corte; más largas que las de estilos posteriores pero más finas que las espadas tajadoras más antiguas. Ésta es una de esas espadas.
 }
 
 itmname_bladeC12	{Katzbalger}
@@ -335,7 +365,7 @@ Una hoja de doble filo con tres acanaladuras grandes y dos pequeñas, gavilanes e
 itmname_bladeC6	{Espadín}
 itmdescr_bladeC6
 {
-El espadín es la espada de duelo más común. No es simplemente un arma, sino más bien una parte esencial del vestuario de un caballero. A pesar del nombre, los espadines pueden ser bastante largos. Se refiere a la anchura de la hoja más que a la longitud.
+El espadín es la espada de duelo más común. No es solo un arma, sino parte esencial del vestuario de un caballero. Los espadines pueden ser bastante largos. Se refiere a la anchura de la hoja más que a la longitud.
 }
 
 itmname_bladeC17	{Ropera flamígera}
@@ -353,7 +383,7 @@ Esta pesada espada es usada sobre todo por hombres fuertes, y tiene la potencia 
 itmname_bladeC2	{Espada italiana con contrafilo}
 itmdescr_bladeC2
 {
-Esta es una espada veneciana con guarda de cuarto de lazo. Dos aspectos distintivos de este diseño son la empuñadura de acero y una ancha hoja con contrafilo y doble acanaladura central. La hoja es lo bastante ancha y pesada como para calificarla como una espada de punta y corte.
+Espada veneciana con guarda de cuarto de lazo. Tiene la empuñadura de acero y una ancha hoja con contrafilo y acanaladura central. Es lo bastante ancha y pesada para considerarla una espada de punta y corte.
 }
 
 itmname_bladeC23 {Ropera de Toledo}
@@ -420,7 +450,7 @@ Esta antigua y rara espada de doble filo ha sido transmitida durante generacione
 itmname_blade36	{Espada de caza}
 itmdescr_blade36
 {
-Esta espada corta y afilada suele usarse para sacrificar animales, pero es igual de efectiva contra personas.
+Esta espada corta y afilada suele usarse para rematar animales heridos en las cacerías, pero es igual de efectiva contra personas.
 }
 
 itmname_blade37	{Daga dorada con incrustaciones de joyas}
@@ -471,7 +501,7 @@ itmdescr_blade41
 El Shashka, que significa 'cuchillo largo', es favorecido por los regimientos de cosacos rusos debido a su ligereza y su hoja resistente. Perfectamente equilibrado, el Shashka es un arma de caballería ideal y es letal en las manos de casi cualquiera.
 }
 
-itmname_blade45	{Espada 'Garra de Cangrejo'}
+itmname_blade45	{Espada de patillas}
 itmdescr_blade45
 {
 Antigua y rara, esta pesada arma de doble filo es de origen desconocido, pero puuede cortar y parar bastante bien a pesar de su edad.
@@ -510,7 +540,7 @@ Lo bastante robusto como para cortar cabos, lona y madera y ala vez lo bastante 
 itmname_blade51	{Espadín de gala francés}
 itmdescr_blade51
 {
-Una ornamentada espada de gala de la Corte Real de París. Tal vez puedas impresionar a tu oponente lo bastante como para que se rinda.
+Una ornamentada espada de gala de la Corte Real de París. Tal vez puedas impresionar a tu oponente lo bastante como para que se rinda.
 }
 
 // KevAtl SLiB Special Weapon blades -->
@@ -532,6 +562,12 @@ itmname_bladeSC	{Espada de Cortés}
 itmdescr_bladeSC
 {
 Le quité este antiguo sable a Amérigo Vieira. Es un arma mística y maldita usada por Hernán Cortés durante la conquista del Imperio Azteca. El poder de la espada se combina con una vaina sagrada, hecha con las entrañas de vícitmas de los sacrificos aztecas. La inscripción de la hoja reza "Hernán Cortés 1520 A.D.".
+}
+
+itmname_bladeMH	{El favorito del profesor}
+itmdescr_bladeMH
+{
+Esta es mi recompensa por matar a mi tutor. ¡Ahora yo soy el maestro!
 }
 
 // KevAtl SLiB Special Weapon blades <--
@@ -557,19 +593,43 @@ Esta excéntrica espada ootorgada por el gobernador en recompensa por el arresto 
 itmname_bladePOA {Mano de Poseidon}
 itmdescr_bladePOA
 {
-Johan Elting se hizo con esta espada hace muchos años cuando estaba luchando por el ejército holandés y mató a un famoso pirata.
+Johan Elting se hizo con esta espada hace muchos años cuando estaba luchando por el ejército holandés y mató a un famoso pirata.
 }
 
 itmname_blthag02 {Calavera Letal}
 itmdescr_blthag02
 {
-Roxanne Lalliere encargó esta espada a un armero de Tortuga. Como su dueña, esta peculiar arma es hermosa y letal.
+Roxanne Lalliere encargó esta espada a un armero de Tortuga. Como su dueña, esta peculiar arma es hermosa y letal.
 }
 
 itmname_blangel {Espada Ángel}
 itmdescr_blangel
 {
 Inicialmente diseñada para el conde Guillermo V de Holanda, esta espada ceremonial tiene un pomo en forma de alas de ángel y un gran zafiro engarzado en la guarda.
+}
+
+itmname_bldevil	{Espada de Orellana}
+itmdescr_bldevil
+{
+Nadie sabe quién forjó esta espada. Se dice que fue unvocada desde los negros abismos y entregada a Ricardo Orellana por los servicios prestados a la Inquisición Española. La hoja emite una fuerza malévola, como si un millón de voces gritaran de terror.
+}
+
+itmname_bladerubysb {Sable rúnico de rubí}
+itmdescr_bladerubysb
+{
+Este es uno de los sables rúnicos que fue forjado en las míticas minas de sal de una isla muy lejos del Caribe; solo con blandirla, puedes apreciar que la hoja está afilada como una navaja de afeitar.
+}
+
+itmname_blade_ebony {Sable de ébano}
+itmdescr_blade_ebony
+{
+Este sable es diferente a todos los demás. Está hecho de un acero único, ébano y oro. Puedes snetir un aura oscura rodeando a esta espada.
+}
+
+itmname_bladeNorr {Espadín ceremonial}
+itmdescr_bladeNorr
+{
+Esta espada es un arma propiedad de James Norrington. Bellamente forjasa a mano por el parendiz de herrero William Turner, la espada está perfectamente equilibrada y el mango está decorado con filigrana de oro.
 }
 
 // Axes from SLiB. Jack Davidson. -->
@@ -584,7 +644,7 @@ Comúnmente usada para cortar madera, el hacha también puede usarse como arma. Su
 itmname_bladeaxe2 {Hacha de abordaje}
 itmdescr_bladeaxe2
 {
-Una herramienta con muchos usos a bordo de un barco incluyendo control de daños o de incendios. El hacha de abordaje se usaba a menudo también para ayudar en el abordaje de barcos enemigos para inutilizarlos cortando los aparejos, etc. Por supuesto también puede ser un arma poderosa, aunque no muy manejable.
+Una herramienta con muchos usos a bordo de un barco. El hacha de abordaje se usa para abordar barcos enemigos, cortar aparejos, etc. También puede ser un arma poderosa, aunque no muy manejable.
 }
 
 itmname_bladeaxe3 {Hachuela}
@@ -705,7 +765,7 @@ Esta pistola española no es especialmente precisa, pero hace mucho daño. El meca
 itmname_pistol3_14	{Pistola de la suerte de Jack}
 itmdescr_pistol3_14
 {
-Esta bella pero sobriamente decorada pistola, viene de las colonias Británicas de la India, el fabricante tiene su nombre 'Perry' grabado en la pistola. Orginalmente propiedad de Sri Sumbhajee, pero robada por ti.
+Esta bella pero sobriamente decorada pistola, viene de las colonias Británicas de la India, el fabricante tiene su nombre 'Perry' grabado en la pistola. Originalmente propiedad de Sri Sumbhajee, pero robada por ti.
 }
 
 itmname_pistol4_1	{Pistola de mercenario}
@@ -903,7 +963,7 @@ Este clásico mosquete de mecha sostiene una mecha lenta en una tenaza al final d
 itmname_blade_mKnife		{Bayoneta de cuchillo}
 itmdescr_blade_mKnife
 {
-Bayoneta temprana del tipo 'de tapón'. Este cuchillo tiene un puño redondeado que encaja directamente en el cañón del mosquete, por lo que impide disparar mientras está puesta.
+Bayoneta temprana del tipo 'de tapón'. Este cuchillo tiene un puño redondeado que encaja directamente en el cañón del mosquete, por lo que impide disparar mientras está puesta.
 }
 
 itmname_blademketK			{Mosquete con bayoneta}
@@ -1006,6 +1066,14 @@ itmdescr_MerchantsBlade
 Este sable es la elección de los pocos mercaderes dispuestos a proteger sus mercancías con su vida. No muy elegante pero cunple su trabajo.
 }
 //SuperDurnius <--
+
+itmname_spyglass0	{Catalejo de la vergüenza}
+itmdescr_spyglass0
+{
+¡Un catalejo barato y uno realmente vergonzoso pueden estar a solo una letra de distancia!
+Este en particular perteneció a Yuri (Ursus) Rogach, que se libró de él en cuanto encontró algo mejor.
+Permite al usuario ver solo el nombre, tipo y velocidad del barco.
+}
 
 itmname_spyglass1	{Catalejo barato}
 itmdescr_spyglass1
@@ -1344,7 +1412,7 @@ Esta armadura está tan bien hecha que puede parar una espada e incluso desviar u
 itmname_CheapArmor	{Coraza barata}
 itmdescr_CheapArmor
 {
-Esta es una típica armadura de batalla de acero; es pesada y dificulta los movimientos.
+Típica armadura de acero; es pesada y dificulta los movimientos.
 }
 
 itmname_Gorget	{Gola}
@@ -1502,7 +1570,7 @@ Las llaves de la casa de Mateus Santos, ¿qué puertas abren? Antes de que atacara
 itmname_Santos_Journal1 {Lista de objetivos de Santos A-N}
 itmdescr_Santos_Journal1
 {
-Este es aparentmente el primer volumen de un diario con una lista de los objetivos de asesinato de Santos; Admiral 8Q, Bonny Megs, Cap'n Toast, Captain Cookie, Captain Dams, Catalina the Pirate, Child of Thor, Couch Captain Charles, Diomed, Donkey Pirate, Fred Bob, High Sea Lass, Inez Dias, JMV575, Keith, Kevo44, Kieron, Lady Karen of the Sandwich Isles, Mad Jack, Maximus, Meigger, Muddymonkey77, Nathan Kell
+Este es aparentmente el primer volumen de un diario con una lista de los objetivos de asesinato de Santos; Admiral 8Q, Bonny Megs, Cap'n Toast, Captain Cookie, Captain Dams, Catalina the Pirate, Child of Thor, Couch Captain Charles, Diomed, Donkey Pirate, Fred Bob, Grey Roger, High Sea Lass, Inez Dias, JMV575, Keith, Kevo44, Kieron, Lady Karen of the Sandwich Isles, Mad Jack, Maximus, Meigger, Muddymonkey77, Nathan Kell
 }
 
 itmname_Santos_Journal2 {Lista de objetivos de Santos O-Z}
@@ -1514,7 +1582,7 @@ Más objetivos de la lista de Santos; Petros, Pieter Boelen, Pirate Sam, Rafe Bli
 
 // ccc Building kit aug 05
 
-itmname_building	{Licencia del edificio  }
+itmname_building	{Licencia del edificio ;) }
 itmdescr_building
 {
 ¡NO TOCAR! ¡Esencial para el 'ocupante' de este edificio! 
@@ -1678,7 +1746,7 @@ Con la cartuchera equipada puedes llevar 12 balas de pistola, 12 cargas de metra
 itmname_powderbarrel {Barrilete de pólvora}
 itmdescr_powderbarrel
 {
-Puedes llevar 24 cargas de pólviora cuando el barrilete de pólvora esté equipado.
+Puedes llevar 24 cargas de pólviora cuando el barrilete de pólvora esté equipado.
 }
 
 itmname_ammobag {Bolsa de munición}
@@ -1812,7 +1880,7 @@ Contiene una piedra de afilar, aceite y un trapo fino. Cuida de tu espada y ella
 itmname_clock1 {Reloj simple} // PB
 itmdescr_clock1
 {
-Conocer la hora a bordo de un barco siempre ha sido muy importante para la navegación. Este sencillo reloj, de 10 cm de diámetro, puede colgarse en un mamparo de tu cámara y te indicará la hora cuando estés en el mar. Sin embargo, este reloj no es muy preciso y no puede usarse para determinar tu posición usando las estrellas.
+Conocer la hora a bordo de un barco es muy importante para la navegación. Puedes colgar este sencillo reloj en tu cámara y te indicará la hora cuando estés en el mar. Sin embargo, no es muy preciso y no puede usarse para determinar tu posición usando las estrellas.
 }
 
 itmname_clock2 {Cronómetro} // PB
@@ -2020,11 +2088,11 @@ Este libro te enseña lo secretos de las armas de fuego.
 (Desbloquea 'Pistolero profesional')
 }
 
-itmname_skillbook3 {Libro del rebote Balístico}
+itmname_skillbook3 {Libro del rebote Balístico}
 itmdescr_skillbook3
 {
 ¿Sabías que existe una forma de hacer rebotar las balas de cañón al golpear tu casco? En este libro podrás aprender éste y más trucos. 
-(Desbloquea 'Defensa naval avanzada')
+(Desbloquea 'Control de daños mejorado')
 }
 
 itmname_skillbook4 {No dispares al mensajero}

@@ -1,6 +1,12 @@
 // MAXIMUS 05.06.2019: file created by script. For ease of later comparison please keep its structure. 
+
 Jack{Jack}
 Sparrow{Sparrow}
+
+
+Verbinski{Verbinski}
+
+
 Heumac{Heumac}
 Tezcacoatl{Tezcacoatl}
 Angler{Angler}
@@ -21,6 +27,8 @@ Wyvern{Wyvern}
 Quittance{Quittance}
 Penrod{Penrod}
 French Soldier{French Soldier}
+
+
 Captaine{Captaine}
 Chevalle{Chevalle}
 Lucas{Lucas}
@@ -31,17 +39,25 @@ Gombo{Gombo}
 the Slave{the Slave}
 Prognatus{Prognatus}
 Solvo{Solvo}
+
+
 Ines{Ines}
 Diaz{Diaz}
 Skull{Skull}
+
+
 Henry{Henry}
 Weatherby{Weatherby}
 Swann{Swann}
+
+
 Joshamee{Joshamee}
 Gibbs{Gibbs}
 Random{Random}
 Drunk{Drunk}
 Random Drunk{Random Drunk}
+
+
 Matthew{Matthew}
 Shaw{Shaw}
 Billy{Billy}
@@ -184,6 +200,16 @@ Jimmy{Jimmy}
 Legs{Legs}
 Port Admiral{Port Admiral}
 Talicerdor{Talicerdor}
+Guard Captain {Guard Captain}
+Prison Guard {Prison Guard}
+Atwood {Atwood}
+Paddley {Paddley}
+Elton {Elton}
+Garfield {Garfield}
+Cannibal Chief {Cannibal Chief}
+Cannibal{Cannibal}
+
+
 Ronald{Ronald}
 Blacklock{Blacklock}
 Harris{Harris}
@@ -201,4 +227,7 @@ Spanish Lieutenant{Spanish Lieutenant}
 Spanish Officer{Spanish Officer}
 Prison Commendant{Prison Commandant}
 Spanish Midshipman{Spanish Midshipman}
+
+
 Nigel{Nigel}
+

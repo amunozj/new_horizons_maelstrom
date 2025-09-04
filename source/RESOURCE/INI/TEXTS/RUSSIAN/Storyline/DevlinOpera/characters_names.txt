@@ -1,43 +1,142 @@
 // MAXIMUS 23.05.2019: file created by script. For ease of later comparison please keep its structure. 
-{=====| DevlinOpera.c |=====}
+
 Beatrice{Беатрис}
 Devlin{Девлин}
 
-{=====| StartStoryline.c |=====}
 
-{=====| quests_reaction.c |=====}
+Skull{Череп}
+Sixto{Сиксто}
+Costa{Коста}
+Rico1{Рико}
 
-{=====| QuebradasCostillas.c |=====}
-Skull{Skull}
 
-{=====| Story.c |=====}
-Mystery{Странный}
+Subteniente{Субтеньенте}
+Chorizo{Чоризо}
+Rocoso{Рокозо}
+Don Evaristo{Дон Эваристо}
+Dragan{Драган}
+van Mourik{Ван Моурик}
+Kevin{Кевин}
+Poor1{Бедняк}
+Grunk{Гранк}
+Flobb{Флобб}
+
+
+Mystery{Таинственный}
 Messenger{Посланник}
-Emmanuel{Эммануил}
+Brin Mistress{Госпожа Брин}
+Emmanuel{Эммануэль}
 Bonnie{Бонни}
-Short Jack{Short Jack}
-Gold{Gold}
-Couch Captain{Couch Captain}
-Charles{Charles}
-Sir Christopher{Sir Christopher}
-Mings{Mings}
-Nathan{Nathan}
-Kell{Kell}
-Petros{Petros}
-Thomas the{Thomas the}
-Terror{Terror}
-John Paul{John Paul}
-Jones{Jones}
+Blaze{Блейз}
+Short Jack{Коротышка Джек}
+GoldDO{Голд}
+Couch Captain{Капитан Коуч}
+Charles{Чарльз}
+Sir Christopher{Сэр Кристофер}
+Mings{Мингс}
+Nathan{Натан}
+Kell{Келл}
+Petros{Петрос}
+Robert{Роберт}
+Cook{Кук}
+Thomas the{Томас}
+Terror{Террор}
+John Paul{Джон Пол}
+Jones{Джонс}
 Captain{Капитан}
-Maximus{Maximus}
-High Sea{High Sea}
-Lass{Lass}
-Catalina{Catalina}
-the Pirate{the Pirate}
-Morgan{Morgan}
-Bartholomew{Bartholomew}
-Roberts{Roberts}
-Merciless{Merciless}
-Mark{Mark}
+Maximus{Максимус}
+High Sea{Хай Си}
+Lass{Девушка}
+Catalina{Каталина}
+the Pirate{Пират}
+Morgan{Морган}
+Bartholomew{Бартоломью}
+Roberts{Робертс}
+Merciless{Беспощадный}
+Mark{Марк}
+Sharp{Шарп}
 
-{=====| 18 characters |=====}
+
+Toni{Тони}
+Haraldo{Харальдо}
+Isabel{Изабель}
+Marino{Марино}
+Grey{Грей}
+Pepe{Пепе}
+Grande{Гранде}
+Kofi{Кофи}
+Macchiato{Маккиато}
+Doma{Дома}
+Perignone{Периньоне}
+Puerta{Пуэрта}
+Velador{Веладор}
+Franz{Франц}
+Gynster{Гинстер}
+Ernesto{Эрнесто}
+Dirty{Грязный}
+Chico{Чико}
+Malo{Мало}
+Audience{Наблюдатель}
+Guzman{Гузман}
+Jauri{Джаури}
+Lil{Лил}
+Bonto{Бонто}
+Triton{Тритон}
+Barbos{Барбос}
+Silvia{Сильвия}
+
+
+Killian{Киллиан}
+O'Byrne{О'Бирн}
+Annie{Энни}
+Scout{Скаут}
+Mad Kay{Безумный Кай}
+Hubecher{Хубечер}
+Godefroi{Годфруа}
+Bonamy{Бонами}
+Crazy Luc{Сумасшедший Люк}
+Helveur{Хельвер}
+
+
+Johnny{Джонни}
+Jackson{Джексон}
+Jackie{Джеки}
+Johnson{Джонсон}
+Cunning Frog{Хитрая Жаба}
+Private{Рядовой}
+Pyle{Пайл}
+Cheyenne{Шайенн}
+Borgen{Борген}
+Feck{Фек}
+Bionicle{Бионикл}
+Humana{Человеческий}
+Osseus{Скелет}
+Contessa{Графиня}
+Calzone{Кальцоне}
+Torsten{Торстен}
+Storenfried{Сторенфрид}
+Shirley{Ширли}
+Lieselotte{Лизелотта}
+Lt{Лт.}
+Bornhowler{Борнхоулер}
+Finstock{Финсток}
+Kurt{Курт}
+Krautwurm{Краутвурм}
+Georg{Георгий}
+Geheim{Гехейм}
+Mondo{Мондо}
+Margrit{Маргрит}
+Eugster{Югстер}
+Donkey{Донки}
+Kong{Конг}
+Ferdinand{Фердинанд}
+Marcel{Марсель}
+Guille{Гиль}
+Jungle Julia{Джулия из Джунглей}
+the Kid{Сопляк}
+Buffoon{Шут Гороховый}
+Lorena{Лорена}
+Lopez{Лопес}
+Compulsive{Навязчивый}
+Village Idiot{Деревенский Идиот}
+

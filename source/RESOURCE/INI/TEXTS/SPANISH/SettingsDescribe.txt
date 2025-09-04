@@ -361,19 +361,6 @@ settingautoloot_on3
 {
 #Esto puede combinarse con la opción de 'Saquear cadáveres', ya que cualquier objeto que no sea autosaqueado se quedará en el cuerpo.
 }
-dialog_camera{Cámara de diálogo}
-settingdialog_camera1
-{
-0.0: La cámara queda centrada detrás del personaje (PotC original).
-}
-settingdialog_camera2
-{
-0.1 a 1.0: La cámara se moverá hacia el lado de los personajes.
-}
-settingdialog_camera3
-{
-#NOTA: El valor máximo no es apropiado para todas las localizaciones.
-}
 enable_brothel{Acceso al burdel}
 settingenable_brothel1
 {
@@ -423,7 +410,7 @@ La cámara gira para centrarse en el personaje de frente (PotC original).
 }
 settingloc_camera3
 {
-#Comportamiento de la cámara cunado el jugador se acerca a una puerta.
+#Comportamiento de la cámara cuando el jugador se acerca a una puerta.
 }
 onsea_compass{Apariencia de la brújula}
 settingonsea_compass1

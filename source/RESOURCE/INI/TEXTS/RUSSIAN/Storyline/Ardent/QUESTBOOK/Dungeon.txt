@@ -1,6 +1,6 @@
-title=The Dungeon's Secret
-text.t1=Apparently there's a lot of unused wine left over from the celebration of the wedding of #sromance# to #svillain#. Maybe I can buy it cheap and then sell it somewhere else for profit.
-text.t2=So much for that. #svillain# has had the same idea.
-text.t3=According to legend, the house of #svillain# used to belong to the Spanish Inquisition, and so did the dungeon next door. There may be some Inquisition loot down there!
-text.t4=I haven't found any gold but I have found #sromance#! Perhaps there's a reward for taking #spronoun# home.
-text.t5=There won't be a reward for taking #sromance# home. But there's a chance of a much bigger prize...
+title=—екрет ѕодземель€
+text.t1=ќчевидно, осталось много неиспользованного вина после праздновани€ свадьбы персоны по имени #sromance# с человеком по имени #svillain#. ћожет быть, € смогу купить его по дешевой цене, а потом продать где-нибудь ещЄ с выгодой.
+text.t2=¬от это да. ” человека по имени #svillain# была та же иде€.
+text.t3=—огласно легенде, дом персоны по имени #svillain# раньше принадлежал испанской инквизиции, как и подземелье по соседству. ¬озможно, там есть добыча инквизиции!
+text.t4=я не нашел золота, но € нашел персону по имени #sromance#! ¬озможно, € смогу получить награду за то, что доставлю домой этого человека.
+text.t5=«а то, что € заберу персону по имени #sromance# домой, награды не будет. Ќо есть шанс получить гораздо больший приз...

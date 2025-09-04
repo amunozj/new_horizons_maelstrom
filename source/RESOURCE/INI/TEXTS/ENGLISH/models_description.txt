@@ -181,7 +181,10 @@ This tastefully simple outfit will be quite appropriate in any town in the Archi
 The blonde ringlets appearing from underneath this Dutch bonnet are the perfect adornment to a lady's dress.{The blonde ringlets appearing from underneath this Dutch bonnet are the perfect adornment to a lady's dress.}
 This dress, with it's nice and alluring bodice compliment a head full of fiery red hair.{This dress, with it's nice and alluring bodice compliment a head full of fiery red hair.}
 This dress features a light, cool upper; an elaborate brown bodice; and a green skirt to finish.{This dress features a light, cool upper; an elaborate brown bodice; and a green skirt to finish.}
+A low-cut, dark red dress capped with a dark bonnet.{A low-cut, dark red dress capped with a dark bonnet.}
 A nice little brown outfit, with a hat pinned up on the side, like Will Turner the swordsmith was wearing at the dock the other day!{A nice little brown outfit, with a hat pinned up on the side, like Will Turner the swordsmith was wearing at the dock the other day!}
+A long black coat over a dark red shirt, like Will Turner on the Flying Dutchman.{A long black coat over a dark red shirt, like Will Turner on the Flying Dutchman.}
+A black coat and grey shirt, like Bootstrap Bill without the fishy bits.{A black coat and grey shirt, like Bootstrap Bill without the fishy bits.}
 A nice little brown outfit, with a hat pinned up on the side and a steel cuirass, like Will Turner the swordsmith was wearing at the dock the other day!{A nice little brown outfit, with a hat pinned up on the side and a steel cuirass, like Will Turner the swordsmith was wearing at the dock the other day!}
 A nice little brown outfit, with a hat pinned up on the side and an engraved breastplate, like Will Turner the swordsmith was wearing at the dock the other day!{A nice little brown outfit, with a hat pinned up on the side and an engraved breastplate, like Will Turner the swordsmith was wearing at the dock the other day!}
 A nice little brown outfit, with a hat pinned up on the side and a gilded breastplate, like Will Turner the swordsmith was wearing at the dock the other day!{A nice little brown outfit, with a hat pinned up on the side and a gilded breastplate, like Will Turner the swordsmith was wearing at the dock the other day!}
@@ -332,6 +335,7 @@ An elegant and revealing gown with Steel Cuirass.{An elegant and revealing gown 
 An elegant and revealing gown with Battle Cuirass.{An elegant and revealing gown with Battle Cuirass.}
 An elegant and revealing gown with Gold Cuirass.{An elegant and revealing gown with Gold Cuirass.}
 I want to look like Roxanne Lalliere.{I want to look like Roxanne Lalliere.}
+I want to look like Aveline de Grandpré.{I want to look like Aveline de Grandpré.}
 Catalina like simple and practical sturdy leather but without the cuirass.{Catalina like simple and practical sturdy leather but without the cuirass.}
 I want something simple and practical, sturdy leather and steel like Catalina was known to wear.{I want something simple and practical, sturdy leather and steel like Catalina was known to wear.}
 Simple and practical sturdy leather with Steel Cuirass.{Simple and practical sturdy leather with Steel Cuirass.}
@@ -350,7 +354,7 @@ Beatrice Devlin. In her original view.{Beatrice Devlin. In her original view.}
 Beatrice's sister. Slightly younger, slightly sassier and it shows in the outfit.{Beatrice's sister. Slightly younger, slightly sassier and it shows in the outfit.}
 Bonnie Devlin after she dyed her hair and her clothes.{Bonnie Devlin after she dyed her hair and her clothes.}
 A demoness who came from the underworld seeks an adventure in mortal world.{A demoness who came from the underworld seeks an adventure in mortal world.}
-The undead monk who had many names for ages, decides to take up a sword and show his true nature into this cruel world{The undead monk who had many names for ages, decides to take up a sword and show his true nature into this cruel world}
+The undead monk who had many names for ages, decides to take up a sword and show his true nature into this cruel world.{The undead monk who had many names for ages, decides to take up a sword and show his true nature into this cruel world.}
 Am I worthy to sail under Captain Jack Sparrow?{Am I worthy to sail under Captain Jack Sparrow?}
 A most trustworthy and rum-drinking boatswain, please!{A most trustworthy and rum-drinking boatswain, please!}
 A most trustworthy and rum-drinking boatswain, in blue vest!{A most trustworthy and rum-drinking boatswain, in blue vest!}
@@ -641,6 +645,7 @@ Shave and a haircut - two grand. You'd hardly recognise Charles Ardent!{Shave an
 Helen Ardent, pirate. Heroine or villainess - the choice is yours.{Helen Ardent, pirate. Heroine or villainess - the choice is yours.}
 Helen Ardent, with a pirate's hat and coat.{Helen Ardent, with a pirate's hat and coat.}
 Helen Ardent - in a dress?{Helen Ardent - in a dress?}
+A blue dress with red trimmings and a bonnet - but why is Helen Ardent wearing it?{A blue dress with red trimmings and a bonnet - but why is Helen Ardent wearing it?}
 A gentleman like this has no time for vagabonds - and may not be quite the gentleman he appears!{A gentleman like this has no time for vagabonds - and may not be quite the gentleman he appears!}
 A high-ranking French naval officer and gentleman.{A high-ranking French naval officer and gentleman.}
 Charles Ardent has 'borrowed' a Spanish uniform.{Charles Ardent has 'borrowed' a Spanish uniform.}
@@ -671,7 +676,10 @@ A pale witch in a black dress who probably does not get enough sleep.{A pale wit
 This elegant green dress is studded with pearls and trimmed with lace.{This elegant green dress is studded with pearls and trimmed with lace.}
 Have you a nice green dress like the one worn by the tavern girl in Cartagena?{Have you a nice green dress like the one worn by the tavern girl in Cartagena?}
 A Dutch admiral and privateer for the Dutch Republic during the Eighty Years' War. The first and the last to capture a large part of a Spanish treasure fleet from America.{A Dutch admiral and privateer for the Dutch Republic during the Eighty Years' War. The first and the last to capture a large part of a Spanish treasure fleet from America.}
+Where did he come from? Where will he go?  Where did he come from, Cotton-Eye - no, that can't be right...{Where did he come from? Where will he go?  Where did he come from, Cotton-Eye - no, that can't be right...}
 Death is only the beginning.{Death is only the beginning.}
 An adventurer from the Italic peninsula, in search of glory in the Caribbean.{An adventurer from the Italic peninsula, in search of glory in the Caribbean.}
 The son of a French nobleman, who became a well known captain after coming to the Caribbean in quite hasty circumstances.{The son of a French nobleman, who became a well known captain after coming to the Caribbean in quite hasty circumstances.}
 A Spanish Admiral bearing with pride the scars of many battles.{A Spanish Admiral bearing with pride the scars of many battles.}
+A big African warrior with a face full of tattoos.{A big African warrior with a face full of tattoos.}
+Purple is the theme of this outfit, with various shades on the shirt, vest and skirt.{Purple is the theme of this outfit, with various shades on the shirt, vest and skirt.}
