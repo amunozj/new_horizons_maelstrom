@@ -47,7 +47,9 @@ void InitLocations()
 		n = CreateGameLocations(n, "IslaMona");				ReloadProgressUpdate();
 		n = CreateGameLocations(n, "Colombia");				ReloadProgressUpdate();
 		n = CreateGameLocations(n, "IslaDeMuerte");			ReloadProgressUpdate();
+		n = CreateGameLocations(n, "Bermudes");				ReloadProgressUpdate();
 		n = CreateGameLocations(n, "QuestLocations");		ReloadProgressUpdate();
+		n = CreateGameLocations(n, "LostShipsCity");		ReloadProgressUpdate();
 		n = CreateGameLocations(n, "SideQuestLocations");	ReloadProgressUpdate(); // PB: Sidequests in other storylines
 
 		Locations[0].IslandsList.Ship.begin = n;

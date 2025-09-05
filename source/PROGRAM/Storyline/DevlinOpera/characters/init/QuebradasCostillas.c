@@ -93,7 +93,7 @@ void CreateQuebradasCostillasCharacters(ref n)
 
 	ch.old.name = "Rico";
 	ch.old.lastname = "Diaz";
-	ch.name = TranslateString("","Rico");
+	ch.name = TranslateString("","Rico1");
 	ch.lastname = TranslateString("","Diaz");
 	ch.id		= "Rico Diaz";
 	ch.model	= "diller";

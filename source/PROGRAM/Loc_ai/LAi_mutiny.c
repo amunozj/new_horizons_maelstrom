@@ -18,7 +18,7 @@ void MutinyDeck_ReloadStartFade()
 	DelEventHandler("FaderEvent_StartFade", "MutinyDeck_ReloadStartFade");
 
 	fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-	Sea.MaxSeaHeight = 1.2;
+	Sea.MaxSeaHeight = 2.0;
 	ref lcn = &Locations[FindLocation(DeckID)];
 	if(CheckAttribute(lcn,"MaxSeaHeight")) Sea.MaxSeaHeight = stf(lcn.MaxSeaHeight); // screwface : limit wave height
 }
@@ -489,7 +489,7 @@ void MutinyDeck_ReloadEndFadeAfter()
 	SetSchemeForSea();
 
 	PauseParticles(false);
-	Whr_UpdateWeather(false);
+	Whr_UpdateWeather(true);
 
 	ReloadProgressEnd();
 }

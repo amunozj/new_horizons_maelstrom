@@ -1,5 +1,5 @@
 int STORE_QUANTITY = 27; // NK 05-03-30 use int qty and oversized array
-#define STORE_MAX					32
+#define STORE_MAX					33
 #define FALAISE_DE_FLEUR_STORE		0
 #define REDMOND_STORE				1
 #define OXBAY_STORE					2
@@ -28,6 +28,8 @@ int STORE_QUANTITY = 27; // NK 05-03-30 use int qty and oversized array
 #define ALICE_STORE					25 // Philippe
 #define CARTAGENA_STORE				26 // Bartolomeu o Portugues
 #define PIRATE_FORT_STORE			27 // Ansel
+#define SHIP_STORE 					28
+#define BERMUDES_STORE 				29						  
 
 #define TRADE_TYPE_NORMAL		0
 #define TRADE_TYPE_EXPORT		1

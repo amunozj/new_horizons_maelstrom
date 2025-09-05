@@ -183,7 +183,7 @@ void InitInterface_RS(string iniName, ref gambler, string curName)
 		ChangePicture("BACKGROUND", "interfaces\card_sukno.tga",true);
 		ChangePicture("BOX", "",true);
 	}
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	SetNodeUsing("STATUS", AUTO_SKILL_SYSTEM);
 	SetNodeUsing("LUCK1", AUTO_SKILL_SYSTEM);
@@ -251,7 +251,7 @@ string FindCardsForNation(ref refCharacter)// by this way anyone can make his ow
 	return cardsNation;
 }
 
-void SetGame(string gameName)// resets all to virginity 
+void SetGame(string gameName)// resets all to virginity :)
 {
 	if (LanguageGetLanguage() == "Spanish")
 	{
@@ -325,7 +325,7 @@ void SetGame(string gameName)// resets all to virginity
 	}
 }
 
-void StartGame()// no comments 
+void StartGame()// no comments :)
 {
 	if(DEBUG_GAMBLING>0) trace("GAMBLING: Called function StartGame");
 	int tmpLangFileID = LanguageOpenFile("interface_strings.txt");

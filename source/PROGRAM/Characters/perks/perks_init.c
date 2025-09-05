@@ -3,31 +3,31 @@ void extrnInitPerks()
 	//	Combat Skills Group
 	//==========================================================
 	ChrPerksList.list.BasicDefence.descr = "perkBasicDefence";
-	ChrPerksList.list.BasicDefence.cost = 1; // Levis
+	ChrPerksList.list.BasicDefence.cost = 2; // Levis
 	ChrPerksList.list.BasicDefence.type = PERK_TYPE_COMBAT; //Levis
 
 	ChrPerksList.list.AdvancedDefence.descr = "perkAdvancedDefence";
 	ChrPerksList.list.AdvancedDefence.condition.BasicDefence = true;
 	ChrPerksList.list.AdvancedDefence.locked = true; //Levis
-	ChrPerksList.list.AdvancedDefence.cost = 2; // Levis
+	ChrPerksList.list.AdvancedDefence.cost = 4; // Levis
 	ChrPerksList.list.AdvancedDefence.type = PERK_TYPE_COMBAT; //Levis
 
 	// El Rapido -->
 	ChrPerksList.list.Toughness.descr = "perkToughness";
 	ChrPerksList.list.Toughness.condition.AdvancedDefence = true;
 	ChrPerksList.list.Toughness.locked = true; //Levis
-	ChrPerksList.list.Toughness.cost = 2; // Levis
+	ChrPerksList.list.Toughness.cost = 4; // Levis
 	ChrPerksList.list.Toughness.type = PERK_TYPE_COMBAT; //Levis
 	// El Rapido <--
 
 	ChrPerksList.list.CriticalHit.descr = "perkCriticalHit";
-	ChrPerksList.list.CriticalHit.cost = 2; // Levis
+	ChrPerksList.list.CriticalHit.cost = 4; // Levis
 	ChrPerksList.list.CriticalHit.type = PERK_TYPE_COMBAT; //Levis
 
 	ChrPerksList.list.SwordplayProfessional.descr = "perkSwordplayProfessional";
 	ChrPerksList.list.SwordplayProfessional.condition.AdvancedDefence = true;
 	ChrPerksList.list.SwordplayProfessional.condition.CriticalHit = true;
-	ChrPerksList.list.SwordplayProfessional.cost = 2; // Levis
+	ChrPerksList.list.SwordplayProfessional.cost = 5; // Levis
 	ChrPerksList.list.SwordplayProfessional.locked = true; //Levis
 	ChrPerksList.list.SwordplayProfessional.type = PERK_TYPE_COMBAT; //Levis
 
@@ -35,16 +35,16 @@ void extrnInitPerks()
 	ChrPerksList.list.Rush.TimeDuration = 30;
 	ChrPerksList.list.Rush.disable.iRealismMode = 1; //Levis
 	ChrPerksList.list.Rush.disable.REALISTIC_ABILITIES = 1; //Levis
-	ChrPerksList.list.Rush.cost = 2; // Levis
+	ChrPerksList.list.Rush.cost = 3; // Levis
 	ChrPerksList.list.Rush.type = PERK_TYPE_COMBAT; //Levis
 
 	ChrPerksList.list.Gunman.descr = "perkGunman";
-	ChrPerksList.list.Gunman.cost = 1; // Levis
+	ChrPerksList.list.Gunman.cost = 3; // Levis
 	ChrPerksList.list.Gunman.type = PERK_TYPE_COMBAT; //Levis
 
 	ChrPerksList.list.ImproveAiming.descr = "perkImproveAiming";
 	ChrPerksList.list.ImproveAiming.condition.Gunman = true;
-	ChrPerksList.list.ImproveAiming.cost = 3; // Levis
+	ChrPerksList.list.ImproveAiming.cost = 5; // Levis
 	ChrPerksList.list.ImproveAiming.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.ImproveAiming.disable.REALISTIC_ABILITIES = 2; //Levis
 	ChrPerksList.list.ImproveAiming.locked = true; //Levis
@@ -53,7 +53,7 @@ void extrnInitPerks()
 	ChrPerksList.list.GunProfessional.descr = "perkGunProfessional";
 	ChrPerksList.list.GunProfessional.condition.Gunman = true;
 	ChrPerksList.list.GunProfessional.rank = 15;
-	ChrPerksList.list.GunProfessional.cost = 2; // Levis
+	ChrPerksList.list.GunProfessional.cost = 7; // Levis
 	ChrPerksList.list.GunProfessional.locked = true; //Levis
 	ChrPerksList.list.GunProfessional.type = PERK_TYPE_COMBAT; //Levis
 
@@ -63,7 +63,7 @@ void extrnInitPerks()
 	ChrPerksList.list.GunFighter.condition.BasicDefence = true;
 	ChrPerksList.list.GunFighter.condition.IronWill = true;
 	ChrPerksList.list.GunFighter.disable.StorylineVar = "GUNFIGHTER_PERK";
-	ChrPerksList.list.GunFighter.cost = 1; // Levis
+	ChrPerksList.list.GunFighter.cost = 3; // Levis
 	ChrPerksList.list.GunFighter.type = PERK_TYPE_COMBAT; //Levis
     //<-- JRH
 
@@ -71,7 +71,7 @@ void extrnInitPerks()
 	//==========================================================================
 	ChrPerksList.list.ImprovePotions.descr = "perkImprovePotions"; //Levis
 	ChrPerksList.list.ImprovePotions.rank = 15;
-	ChrPerksList.list.ImprovePotions.cost = 3; // Levis
+	ChrPerksList.list.ImprovePotions.cost = 4; // Levis
 	ChrPerksList.list.ImprovePotions.locked = true; //Levis
 	ChrPerksList.list.ImprovePotions.type = PERK_TYPE_PARTY; //Levis
 
@@ -85,13 +85,13 @@ void extrnInitPerks()
 	ChrPerksList.list.ShipTurnRateUp.descr = "perkShipTurnRateUp";
 	ChrPerksList.list.ShipTurnRateUp.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.ShipTurnRateUp.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.ShipTurnRateUp.cost = 1; // Levis
+	ChrPerksList.list.ShipTurnRateUp.cost = 2; // Levis
 	ChrPerksList.list.ShipTurnRateUp.type = PERK_TYPE_SAILING; //Levis
 
 	ChrPerksList.list.ShipSpeedUp.descr = "perkShipSpeedUp";
 	ChrPerksList.list.ShipSpeedUp.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.ShipSpeedUp.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.ShipSpeedUp.cost = 2; // Levis
+	ChrPerksList.list.ShipSpeedUp.cost = 3; // Levis
 	ChrPerksList.list.ShipSpeedUp.type = PERK_TYPE_SAILING; //Levis
 
 	ChrPerksList.list.Turn180.descr = "perkTurn180";
@@ -100,7 +100,7 @@ void extrnInitPerks()
 	ChrPerksList.list.Turn180.TimeDelay = 180;
 	ChrPerksList.list.Turn180.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.Turn180.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.Turn180.cost = 2; // Levis
+	ChrPerksList.list.Turn180.cost = 4; // Levis
 	ChrPerksList.list.Turn180.locked = true; //Levis
 	ChrPerksList.list.Turn180.type = PERK_TYPE_SAILING; //Levis
 
@@ -111,7 +111,7 @@ void extrnInitPerks()
 	ChrPerksList.list.SandbankManeuver.TimeDuration = 60;
 	ChrPerksList.list.SandbankManeuver.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.SandbankManeuver.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.SandbankManeuver.cost = 2; // Levis
+	ChrPerksList.list.SandbankManeuver.cost = 4; // Levis
 	ChrPerksList.list.SandbankManeuver.type = PERK_TYPE_SAILING; //Levis
 
 	ChrPerksList.list.StormProfessional.descr = "perkStormProfessional";
@@ -121,7 +121,7 @@ void extrnInitPerks()
 	ChrPerksList.list.StormProfessional.rank = 20; // KK
 	ChrPerksList.list.StormProfessional.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.StormProfessional.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.StormProfessional.cost = 2; // Levis
+	ChrPerksList.list.StormProfessional.cost = 4; // Levis
 	ChrPerksList.list.StormProfessional.type = PERK_TYPE_SAILING; //Levis
 
 	ChrPerksList.list.SailingProfessional.descr = "perkSailingProfessional";
@@ -129,13 +129,13 @@ void extrnInitPerks()
 	ChrPerksList.list.SailingProfessional.condition.StormProfessional = true;
 	ChrPerksList.list.SailingProfessional.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.SailingProfessional.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.SailingProfessional.cost = 3; // Levis
+	ChrPerksList.list.SailingProfessional.cost = 7; // Levis
 	ChrPerksList.list.SailingProfessional.type = PERK_TYPE_SAILING; //Levis
 
 	// Ship Combat Abilities
 	//==========================================================================
 	ChrPerksList.list.BasicDamageControl.descr = "perkBasicDamageControl";
-	ChrPerksList.list.BasicDamageControl.cost = 1; // Levis
+	ChrPerksList.list.BasicDamageControl.cost = 2; // Levis
 	ChrPerksList.list.BasicDamageControl.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.AdvancedDamageControl.descr = "perkAdvancedDamageControl";
@@ -143,7 +143,7 @@ void extrnInitPerks()
 	ChrPerksList.list.AdvancedDamageControl.Rank = 10; // KK
 	//ChrPerksList.list.AdvancedDamageControl.disable.iRealismMode = 2; //Levis: they are now more realistic so let's include them again
 	//ChrPerksList.list.AdvancedDamageControl.disable.REALISTIC_ABILITIES = 2; //Levis: they are now more realistic so let's include them again
-	ChrPerksList.list.AdvancedDamageControl.cost = 2; // Levis set back to 2 because it's weaker now
+	ChrPerksList.list.AdvancedDamageControl.cost = 4; // Levis set back to 2 because it's weaker now
 	ChrPerksList.list.AdvancedDamageControl.locked = true; //Levis
 	ChrPerksList.list.AdvancedDamageControl.type = PERK_TYPE_SEACOMBAT; //Levis
 
@@ -152,30 +152,30 @@ void extrnInitPerks()
 	ChrPerksList.list.ProfessionalDamageControl.rank = 15; // KK
 	ChrPerksList.list.ProfessionalDamageControl.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.ProfessionalDamageControl.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.ProfessionalDamageControl.cost = 3; // Levis set to 3 because it's weaker now
+	ChrPerksList.list.ProfessionalDamageControl.cost = 7; // Levis set to 3 because it's weaker now
 	ChrPerksList.list.ProfessionalDamageControl.type = PERK_TYPE_SEACOMBAT; //Levis
 	
 	ChrPerksList.list.BasicFirstAid.descr = "perkBasicFirstAid";
-	ChrPerksList.list.BasicFirstAid.cost = 1;
+	ChrPerksList.list.BasicFirstAid.cost = 2;
 	ChrPerksList.list.BasicFirstAid.type = PERK_TYPE_SEACOMBAT;
 	
 	ChrPerksList.list.AdvancedFirstAid.descr = "perkAdvancedFirstAid";
-	ChrPerksList.list.AdvancedFirstAid.cost = 3;
+	ChrPerksList.list.AdvancedFirstAid.cost = 5;
 	ChrPerksList.list.AdvancedFirstAid.rank = 15;
 	ChrPerksList.list.AdvancedFirstAid.condition.BasicFirstAid = true;
 	ChrPerksList.list.AdvancedFirstAid.type = PERK_TYPE_SEACOMBAT;
 	
 	ChrPerksList.list.Rigging.descr = "perkRigging";
-	ChrPerksList.list.Rigging.cost = 1;
+	ChrPerksList.list.Rigging.cost = 2;
 	ChrPerksList.list.Rigging.type = PERK_TYPE_SEACOMBAT;
 	
 	ChrPerksList.list.RiggingAdvance.descr = "perkRiggingAdvance";
-	ChrPerksList.list.RiggingAdvance.cost = 3;
+	ChrPerksList.list.RiggingAdvance.cost = 5;
 	ChrPerksList.list.RiggingAdvance.condition.Rigging = true;
 	ChrPerksList.list.RiggingAdvance.type = PERK_TYPE_SEACOMBAT;
 
 	ChrPerksList.list.FastReload.descr = "perkFastReload";
-	ChrPerksList.list.FastReload.cost = 2; // Levis
+	ChrPerksList.list.FastReload.cost = 3; // Levis
 	ChrPerksList.list.FastReload.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.ImmediateReload.descr = "perkImmediateReload";
@@ -183,26 +183,26 @@ void extrnInitPerks()
 	ChrPerksList.list.ImmediateReload.TimeDelay = 300;
 	ChrPerksList.list.ImmediateReload.disable.iRealismMode = 1; //Levis
 	ChrPerksList.list.ImmediateReload.disable.REALISTIC_ABILITIES = 1; //Levis
-	ChrPerksList.list.ImmediateReload.cost = 2; // Levis
+	ChrPerksList.list.ImmediateReload.cost = 7; // Levis
 	ChrPerksList.list.ImmediateReload.locked = true; //Levis
 	ChrPerksList.list.ImmediateReload.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.HullDamageUp.descr = "perkHullDamageUp";
 	ChrPerksList.list.HullDamageUp.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.HullDamageUp.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.HullDamageUp.cost = 2; // Levis
+	ChrPerksList.list.HullDamageUp.cost = 3; // Levis
 	ChrPerksList.list.HullDamageUp.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.SailsDamageUp.descr = "perkSailsDamageUp";
 	ChrPerksList.list.SailsDamageUp.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.SailsDamageUp.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.SailsDamageUp.cost = 2; // Levis
+	ChrPerksList.list.SailsDamageUp.cost = 3; // Levis
 	ChrPerksList.list.SailsDamageUp.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.CrewDamageUp.descr = "perkCrewDamageUp";
 	ChrPerksList.list.CrewDamageUp.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.CrewDamageUp.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.CrewDamageUp.cost = 2; // Levis
+	ChrPerksList.list.CrewDamageUp.cost = 3; // Levis
 	ChrPerksList.list.CrewDamageUp.type = PERK_TYPE_SEADEFENCE; //Levis
 
 	ChrPerksList.list.CriticalShoot.descr = "perkCriticalShoot";
@@ -211,13 +211,13 @@ void extrnInitPerks()
 	ChrPerksList.list.CriticalShoot.condition.CrewDamageUp = true;
 	ChrPerksList.list.CriticalShoot.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.CriticalShoot.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.CriticalShoot.cost = 1; // Levis
+	ChrPerksList.list.CriticalShoot.cost = 2; // Levis
 	ChrPerksList.list.CriticalShoot.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.LongRangeShoot.descr = "perkLongRangeShoot";
 	ChrPerksList.list.LongRangeShoot.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.LongRangeShoot.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.LongRangeShoot.cost = 1; // Levis
+	ChrPerksList.list.LongRangeShoot.cost = 2; // Levis
 	ChrPerksList.list.LongRangeShoot.type = PERK_TYPE_SEACOMBAT; //Levis
 
 	ChrPerksList.list.CannonProfessional.descr = "perkCannonProfessional";
@@ -226,7 +226,7 @@ void extrnInitPerks()
 	ChrPerksList.list.CannonProfessional.condition.LongRangeShoot = true;
 	ChrPerksList.list.CannonProfessional.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.CannonProfessional.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.CannonProfessional.cost = 2; // Levis
+	ChrPerksList.list.CannonProfessional.cost = 5; // Levis
 	ChrPerksList.list.CannonProfessional.locked = true; //Levis
 	ChrPerksList.list.CannonProfessional.type = PERK_TYPE_SEACOMBAT; //Levis
 
@@ -241,7 +241,7 @@ void extrnInitPerks()
 	ChrPerksList.list.MusketsShoot.descr = "perkMusketsShoot";
 	ChrPerksList.list.MusketsShoot.condition.GunProfessional = true;
 	ChrPerksList.list.MusketsShoot.condition.LongRangeGrappling = true;
-	ChrPerksList.list.MusketsShoot.cost = 1; // Levis
+	ChrPerksList.list.MusketsShoot.cost = 3; // Levis
 	ChrPerksList.list.MusketsShoot.type = PERK_TYPE_BOARDING; //Levis
 	// GreatZen <--
 
@@ -249,7 +249,7 @@ void extrnInitPerks()
 	ChrPerksList.list.GrapplingProfessional.condition.LongRangeGrappling = true;
 	ChrPerksList.list.GrapplingProfessional.disable.iRealismMode = 2; //Levis
 	ChrPerksList.list.GrapplingProfessional.disable.REALISTIC_ABILITIES = 2; //Levis
-	ChrPerksList.list.GrapplingProfessional.cost = 3; // Levis								set from 2 to 3 by El Rapido
+	ChrPerksList.list.GrapplingProfessional.cost = 4; // Levis								set from 2 to 3 by El Rapido
 	ChrPerksList.list.GrapplingProfessional.type = PERK_TYPE_BOARDING; //Levis
 
 	ChrPerksList.list.InstantBoarding.descr = "perkInstantBoarding";
@@ -259,7 +259,7 @@ void extrnInitPerks()
 	ChrPerksList.list.InstantBoarding.TimeDelay = -1;
 	ChrPerksList.list.InstantBoarding.disable.iRealismMode = 1; //Levis
 	ChrPerksList.list.InstantBoarding.disable.REALISTIC_ABILITIES = 1; //Levis
-	ChrPerksList.list.InstantBoarding.cost = 3; // Levis
+	ChrPerksList.list.InstantBoarding.cost = 5; // Levis
 	ChrPerksList.list.InstantBoarding.type = PERK_TYPE_BOARDING; //Levis
 
 	// Miscellaneous Abilities
@@ -268,7 +268,7 @@ void extrnInitPerks()
 	//ChrPerksList.list.Troopers.condition.LongRangeGrappling = true; // PB: To prevent sacking fortless towns in the early game //Changed by Levis
 	ChrPerksList.list.Troopers.locked = true; // Levis
 	ChrPerksList.list.Troopers.rank = 20; // KK
-	ChrPerksList.list.Troopers.cost = 4; // Levis
+	ChrPerksList.list.Troopers.cost = 7; // Levis
 	ChrPerksList.list.Troopers.type = PERK_TYPE_MISC; //Levis
 
 	ChrPerksList.list.LightRepair.descr = "perkLightRepair";
@@ -307,7 +307,7 @@ void extrnInitPerks()
 	ChrPerksList.list.AdvanceSmuggling.condition.ImproveSmuggling = true;
 	ChrPerksList.list.AdvanceSmuggling.condition.BasicCommerce = true;
 	ChrPerksList.list.AdvanceSmuggling.condition.Disguiser = true;
-	ChrPerksList.list.AdvanceSmuggling.cost = 2;
+	ChrPerksList.list.AdvanceSmuggling.cost = 4;
 	ChrPerksList.list.AdvanceSmuggling.type = PERK_TYPE_DARING; //Levis
 	// <-- Levis
 	
@@ -345,11 +345,11 @@ void extrnInitPerks()
 	ChrPerksList.list.SharedExperience.type = PERK_TYPE_MISC; //Levis
 
 	ChrPerksList.list.IronWill.descr = "perkIronWill";
-	ChrPerksList.list.IronWill.cost = 2; // Levis
+	ChrPerksList.list.IronWill.cost = 3; // Levis
 	ChrPerksList.list.IronWill.type = PERK_TYPE_MISC; //Levis
 
 	ChrPerksList.list.Brander.descr = "perkBrander";
 	ChrPerksList.list.Brander.rank = 20; // KK
-	ChrPerksList.list.Brander.cost = 1; // Levis
+	ChrPerksList.list.Brander.cost = 2; // Levis
 	ChrPerksList.list.Brander.type = PERK_TYPE_DARING; //Levis
 }

@@ -144,7 +144,7 @@ void ProcessDialogEvent()
 			}
 			if (pchar.quest.main_line == "blaze_goto_douwesen_with_danielle_2")
 			{
-				dialog.text = pchar.name + DLG_TEXT[23] + characters[getcharacterindex(DLG_TEXT[24])].name + DLG_TEXT[25];
+				dialog.text = GetMyName(PChar) + DLG_TEXT[23] + characters[getcharacterindex(DLG_TEXT[24])].name + DLG_TEXT[25];
 				link.l1 = DLG_TEXT[26];
 				link.l1.go = "blaze_goto_douwesen_with_danielle";
 			}
@@ -349,7 +349,7 @@ void ProcessDialogEvent()
 		case "resque_danielle_6":
 			// DeathDaisy -->
 			if(PChar.sex == "woman"){
-				Preprocessor_Add("gender", "Women like you"); 
+				Preprocessor_Add("gender", XI_ConvertString("Women like you")); 
 			}
 			else{
 				Preprocessor_Add("gender", FirstLetterUp(XI_ConvertString("Men")));
@@ -561,8 +561,7 @@ void ProcessDialogEvent()
 			Preprocessor_AddQuestData("Danielle", GetMyName(NPChar));
 			Preprocessor_AddQuestData("pronoun", XI_ConvertString(GetMyPronounSubj(NPChar)));
 			Preprocessor_AddQuestData("pronoun2", XI_ConvertString(GetMyPronounObj(NPChar)));
-			if (NPChar.sex == "woman") Preprocessor_AddQuestData("pronoun3", XI_ConvertString("her"));
-			else Preprocessor_AddQuestData("pronoun3", XI_ConvertString("his"));
+			Preprocessor_AddQuestData("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 			SetQuestHeader("again_find_rheims");
 			AddQuestRecord("again_find_rheims", "1");
 			Preprocessor_Remove("pronoun3");
@@ -1209,9 +1208,12 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			Preprocessor_AddQuestData("Danielle", GetMyName(CharacterFromID("Danielle")));
-			SetQuestHeader("Capture_greenford");
-			AddQuestRecord("Capture_greenford", 2);
-			Preprocessor_Remove("Danielle");
+			if(!CheckAttribute(PChar,"QuestInfo.Capture_greenford"))
+			{
+				SetQuestHeader("Capture_greenford");
+				AddQuestRecord("Capture_greenford", 2);
+				Preprocessor_Remove("Danielle");
+			}
 
 			AddDialogExitQuest("Story_GreenfordAssaultStarted");
 		break;
@@ -1533,8 +1535,7 @@ void ProcessDialogEvent()
 
 		case "Danielle_immortal":
 			Preprocessor_AddQuestData("Danielle", GetMyName(NPChar));
-			if (NPChar.sex == "woman") Preprocessor_AddQuestData("pronoun3", XI_ConvertString("her"));
-			else Preprocessor_AddQuestData("pronoun3", XI_ConvertString("his"));
+			Preprocessor_AddQuestData("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 			AddQuestRecord("After_Final", 2);
 			CloseQuestHeader("After_Final");
 			Preprocessor_Remove("pronoun3");
@@ -1547,8 +1548,7 @@ void ProcessDialogEvent()
 		case "Danielle_mortal":
 			LAi_SetImmortal(characterFromID("Danielle"), false);
 			Preprocessor_AddQuestData("Danielle", GetMyName(NPChar));
-			if (NPChar.sex == "woman") Preprocessor_AddQuestData("pronoun3", XI_ConvertString("her"));
-			else Preprocessor_AddQuestData("pronoun3", XI_ConvertString("his"));
+			Preprocessor_AddQuestData("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 			AddQuestRecord("After_Final", 4);
 			CloseQuestHeader("After_Final");
 			Preprocessor_Remove("pronoun3");

@@ -81,13 +81,13 @@ Please follow these rules when editing settings:
 
 #define CTL_SHIP_TURN_LEFT 			"KEY_A"
 #define CTL_SHIP_TURN_RIGHT 		"KEY_D"
-#define CTL_SHIP_SAIL_RAISE 		"KEY_W"
-#define CTL_SHIP_SAIL_STRIKE 		"KEY_S"
+// #define CTL_SHIP_SAIL_RAISE 		"KEY_W"
+// #define CTL_SHIP_SAIL_STRIKE 		"KEY_S"
 #define CTL_SHIP_POWER_UP 			"VK_ADD"
 #define CTL_SHIP_POWER_DOWN	 		"VK_SUBTRACT"
 #define CTL_SHIP_POWER_ZERO			"VK_MULTIPLY"
 
-#define CTL_SHIP_FIRE_AUTO_CANNON 	"KEY_Q"
+#define CTL_SHIP_FIRE_AUTO_CANNON 	"VK_SPACE"
 #define CTL_DECK_FIRE_AIMED_CANNON 	"KEY_V"
 
 #define CTL_SHIP_FIREDRILL			"KEY_C"

@@ -11,6 +11,7 @@ int PROP_QUANTITY = 0;
 
 string Flirt[MAX_FLIRT];
 string Prop[MAX_PROP];
+string title, text;
 
 string RandFlirt(ref NPChar) {return Flirt[Rand(FLIRT_QUANTITY-1)]; }
 string RandProp(ref NPChar) {return Prop[Rand(PROP_QUANTITY-1)]; }
@@ -72,10 +73,10 @@ void ProcessDialogEvent()
 			Dialog.cam = "1";
 			Dialog.snd = "dialogs\0\009";
 
+			if (!CheckAttribute(NPChar, "quest.colombian_silver.counter")) NPChar.quest.colombian_silver.counter = 0;	// Initialise counter for "Colombian Silver" sidequest
 			if(NPChar.quest.meeting == "0")
 			{
 				NPChar.quest.meeting = "1";
-				NPChar.quest.colombian_silver.counter = 0;	// Initialise counter for "Colombian Silver" sidequest
 				tempt1 = DLG_TEXT[0] + GetMyAddressForm(NPChar, PChar, ADDR_TITLE, false, false) + DLG_TEXT[1];
 				if(MRCanMarryRatio(PChar, NPChar, false) > 0.33) tempt1 = DLG_TEXT[2] + GetMyAddressForm(NPChar, PChar, ADDR_TITLE, false, false) +DLG_TEXT[3];
 				if(MRCanMarryRatio(PChar, NPChar, false) > 0.67) tempt1 = DLG_TEXT[4];
@@ -106,10 +107,9 @@ void ProcessDialogEvent()
 						Link.l2.go = "propose";
 					}
 				}
-				NPChar.quest.Meeting = lastspeak_date;
 				if(sti(NPChar.married))
 				{
-					NPChar.quest.colombian_silver.counter = sti(NPChar.quest.colombian_silver.counter) + 1;	// GR: Increase chance of triggering "Colombian Silver" sidequest
+					if (NPChar.quest.Meeting != lastspeak_date) NPChar.quest.colombian_silver.counter = sti(NPChar.quest.colombian_silver.counter) + 1;	// GR: Increase chance of triggering "Colombian Silver" sidequest
 					Link.l1 = DLG_TEXT[19];
 					Link.l1.go = "info";
 					if(sti(NPChar.pcounter))
@@ -127,6 +127,7 @@ void ProcessDialogEvent()
 						Link.l4.go = "dump";
 					}
 				}
+				NPChar.quest.Meeting = lastspeak_date;
 				if(CheckAttribute(NPChar,"skiptext")) { DeleteAttribute(NPChar,"skiptext"); }
 			}
 			break;
@@ -155,7 +156,7 @@ void ProcessDialogEvent()
 			if(MRCanMarry(&PChar, &NPChar, false) && sti(PChar.married) == MR_SINGLE)
 			{
 				Preprocessor_Add("pronoun", FirstLetterUp(XI_ConvertString(GetMyPronounSubj(NPChar))));
-				d.text = DLG_TEXT[30] + NPChar.relationtype + DLG_TEXT[31];
+				d.text = DLG_TEXT[30] + XI_ConvertString(NPChar.relationtype) + DLG_TEXT[31];
 				NPChar.pcounter = 1;
 				NPChar.married = MR_MISTRESS;
 				tempt1 = NPChar.id;
@@ -197,7 +198,7 @@ void ProcessDialogEvent()
 			Link.l1 = DLG_TEXT[44];
 			Link.l1.go = "exit";
 
-			if(!CheckAttribute(PChar, "quest.colombian_silver") && rand(7) <= sti(NPChar.quest.colombian_silver.counter))
+			if(!CheckAttribute(PChar, "quest.colombian_silver") && GetAttribute(NPChar, "quest.colombian_silver.lastspeak_date") != lastspeak_date && sti(NPChar.quest.colombian_silver.counter) >= (rand(4) + 2))
 			{
 				d.text = DLG_TEXT[69 + rand(2)];
 				link.l1 = DLG_TEXT[72];
@@ -214,6 +215,7 @@ void ProcessDialogEvent()
 					link.l3.go = "exit_reject_colombian_silver";
 				}
 			}
+			NPChar.quest.colombian_silver.lastspeak_date = lastspeak_date;
 		break;
 
 		case "dump":
@@ -263,8 +265,31 @@ void ProcessDialogEvent()
 			PChar.married.id = NPChar.id;
 			int ix = GetTownGovernorIndex (GetCurrentTownID());
 //			WriteNewLogEntry("Married my beautiful wife", "On this wonderful day I married my beautiful wife, "+NPChar.name+" "+NPChar.lastname+", daugther of "+Characters[ix].name+" "+Characters[ix].lastname+", the governor of "+FindTownName(GetCurrentTownID())+". I won her heart with my wit and charm, and last but not least with my swordmanship, as I had to defeat her jealous suitor, before she could agree to a marriage. We're both very happy, and now I am going to finish this writing, because I have something more important to do ...","Personal",true);
-			if (PChar.sex == "man") WriteNewLogEntry("Married my beautiful wife", "On this wonderful day I married my beautiful wife, "+GetMySimpleName(NPChar)+", "+XI_ConvertString(NPChar.relationtype)+" of "+GetMySimpleName(Characters[ix])+", the governor of "+FindTownName(GetCurrentTownID())+". I won her heart with my wit and charm, and last but not least with my swordmanship, as I had to defeat her jealous suitor, before she could agree to a marriage. We're both very happy, and now I am going to finish this writing, because I have something more important to do ...","Personal",true);
-			else WriteNewLogEntry("Married my handsome husband", "On this wonderful day I married my handsome husband, "+GetMySimpleName(NPChar)+", "+XI_ConvertString(NPChar.relationtype)+" of "+GetMySimpleName(Characters[ix])+", the governor of "+FindTownName(GetCurrentTownID())+". I won his heart with my wit and charm, and last but not least with my swordmanship, as I had to defeat his jealous suitor, before he could agree to a marriage. We're both very happy, and now I am going to finish this writing, because I have something more important to do ...","Personal",true);
+			switch(GetAttribute(PChar, "sex"))
+			{
+				case "man": Preprocessor_Add("spouse", GetTranslatedLog("my beautiful wife")); break;
+				case "woman": Preprocessor_Add("spouse", GetTranslatedLog("my handsome husband")); break;
+				// neither "man" nor "woman" - the line below should never be seen, if it is then I want to know why! - GR
+				Preprocessor_Add("spouse", GetTranslatedLog("my pet human"));
+			}
+			Preprocessor_Add("pronoun1", XI_ConvertString(GetMyPronounSubj(NPChar)));
+			Preprocessor_Add("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
+			Preprocessor_Add("name", GetMySimpleName(NPChar));
+			Preprocessor_Add("relation", XI_ConvertString(NPChar.relationtype));
+			Preprocessor_Add("governor", GetMySimpleName(Characters[ix]));
+			Preprocessor_Add("town", FindTownName(GetCurrentTownID()));
+
+			title = GetTranslatedLog("Married #sspouse#"));
+			text = GetTranslatedLog("On this wonderful day I married #sspouse#, #sname#, #srelation# of #sgovernor#, the governor of #stown#. I won #spronoun3# heart with my wit and charm, and last but not least with my swordmanship, as I had to defeat #spronoun3# jealous suitor, before #spronoun1# could agree to a marriage. We're both very happy, and now I am going to finish this writing, because I have something more important to do ...");
+			WriteNewLogEntry(PreprocessText(title), PreprocessText(text),"Personal",true);
+
+			Preprocessor_Remove("town");
+			Preprocessor_Remove("governor");
+			Preprocessor_Remove("relation");
+			Preprocessor_Remove("pronoun1");
+			Preprocessor_Remove("pronoun3");
+			Preprocessor_Remove("name");
+			Preprocessor_Remove("spouse");
 			d.text = DLG_TEXT[45];
 			Link.l1 = DLG_TEXT[46];
 			Link.l1.go = "married2";
@@ -352,7 +377,22 @@ void ProcessDialogEvent()
 		case "kiss_the_bride":
 			d.text = DLG_TEXT[62];
 			Link.l1 = DLG_TEXT[63];
-			WriteNewLogEntry("Married my beautiful wife", "On this wonderful day I married my beautiful wife, "+GetMySimpleName(NPChar)+". We're both very happy, and now I am going to finish this writing, because I have something more important to do...","Personal",true);
+		//	WriteNewLogEntry("Married my beautiful wife", "On this wonderful day I married my beautiful wife, "+GetMySimpleName(NPChar)+". We're both very happy, and now I am going to finish this writing, because I have something more important to do...","Personal",true);
+			switch(GetAttribute(PChar, "sex"))
+			{
+				case "man": Preprocessor_Add("spouse", GetTranslatedLog("my beautiful wife")); break;
+				case "woman": Preprocessor_Add("spouse", GetTranslatedLog("my handsome husband")); break;
+				// neither "man" nor "woman" - the line below should never be seen, if it is then I want to know why! - GR
+				Preprocessor_Add("spouse", GetTranslatedLog("my pet human"));
+			}
+			Preprocessor_Add("name", GetMySimpleName(NPChar));
+
+			title = GetTranslatedLog("Married #sspouse#"));
+			text = GetTranslatedLog("On this wonderful day I married #sspouse#, #sname#. We're both very happy, and now I am going to finish this writing, because I have something more important to do ...");
+			WriteNewLogEntry(PreprocessText(title), PreprocessText(text),"Personal",true);
+
+			Preprocessor_Remove("spouse");
+			Preprocessor_Remove("name");
 			Link.l1.go = "exit";
 		break;
 

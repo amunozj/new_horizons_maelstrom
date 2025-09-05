@@ -1,4 +1,4 @@
-
+Ôªø
 GetTime(){ return stf(Environment.time); }
 
 void QuestComplete(string sQuestName)
@@ -1033,11 +1033,15 @@ void QuestComplete(string sQuestName)
 						Locations[FindLocation("Legrands_kitchen")].models.always.locators = "mediumhouse01_locators_GB0";
 						locations[FindLocation("Legrands_kitchen")].models.always.l2 = "wood3";
 						Pchar.quest.Legrands_fireplace = "glowing";
+			//YES here already too
+						LAi_QuestDelay("chimney_no_smoke", 0.1);
 					break;	
 
 					case "glowing":
 						locations[FindLocation("Legrands_kitchen")].models.always.l2 = "wood5";
 						Pchar.quest.Legrands_fireplace = "extinct";
+
+						LAi_QuestDelay("chimney_no_smoke", 0.1);
 					break;
 				}
 			}
@@ -1151,6 +1155,8 @@ void QuestComplete(string sQuestName)
 					case "glowing":
 						locations[FindLocation("Legrands_kitchen")].models.always.l2 = "wood5";
 						Pchar.quest.Legrands_fireplace = "extinct";
+
+						LAi_QuestDelay("chimney_no_smoke", 0.1);
 					break;
 				}
 			}
@@ -1222,6 +1228,8 @@ void QuestComplete(string sQuestName)
 					case "glowing":
 						locations[FindLocation("Legrands_kitchen")].models.always.l2 = "wood5";
 						Pchar.quest.Legrands_fireplace = "extinct";
+
+						LAi_QuestDelay("chimney_no_smoke", 0.1);
 					break;
 				}
 			}
@@ -1306,7 +1314,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "look6");
 
-			if(Locations[FindLocation(Pchar.location)].models.always.locators == "qcexit_l_GB_tree")
+			if(Locations[FindLocation(Pchar.location)].models.always.locators == "qcexit_l_GB_tree" || Locations[FindLocation(Pchar.location)].models.always.locators == "qcexit_l_GB_tree_nosmoke")
 			{
 				PlaySound("OBJECTS\VOICES\DEAD\male\dead1.wav");		
 			}
@@ -3222,6 +3230,8 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("Legrands_kitchen")].models.always.locators = "mediumhouse01_locators_GB0";
 			ChangeCharacterAddressGroup(Pchar, "Legrands_house", "goto", "staybed");
 			
+			LAi_QuestDelay("chimney_no_smoke", 0.1);
+
 			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "new_day";
 			LAi_ActorSelfDialog(pchar, "");
@@ -3230,7 +3240,7 @@ void QuestComplete(string sQuestName)
 		case "new_day_done":
 			LAi_SetPlayerType(pchar);
 			PlaySound("VOICE\ENGLISH\blaze_lets_go.wav");
-	
+
 			pchar.quest.no_wood_first.win_condition.l1 = "locator";
 			pchar.quest.no_wood_first.win_condition.l1.location = "Legrands_kitchen";
 			pchar.quest.no_wood_first.win_condition.l1.locator_group = "goto";
@@ -12004,7 +12014,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.leave_female_slave.win_condition.l1.locator = "door_in";
 			pchar.quest.leave_female_slave.win_condition = "leave_female_slave";
 		break;
-//p‰r door
+//p√§r door
 		case "leave_female_slave":
 	//LogIt("leave_female_slave");
 			ChangeCharacterAddressGroup(Pchar, "Bessop_plantation", "goto", "barrack_out");
@@ -12543,7 +12553,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("f_slave1"), pchar, "", 0.1);
 			LAi_ActorWaitDialog(Pchar, characterFromID("f_slave1"));
 		break;
-//p‰r save
+//p√§r save
 		case "witch_is_drawing_done":
 			PlaySound("INTERFACE\paper_small.wav");
 			GiveItem2Character(Pchar, "BH_sketch");
@@ -17646,7 +17656,16 @@ void QuestComplete(string sQuestName)
 		case "attic_blocked1":
 			Pchar.quest.attic_box1 = "blocked";
 			LAi_SetSitType(Pchar);
-			Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_tree";
+
+			if(CheckAttribute(Pchar,"quest.Legrands_fireplace"))
+			{
+				if(Pchar.quest.Legrands_fireplace == "fire2" || Pchar.quest.Legrands_fireplace == "fire1"
+				|| Pchar.quest.Legrands_fireplace == "glowing")
+				{
+					Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_tree";
+				}
+				else Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_tree_nosmoke";
+			}
 
 			PlaySound("PEOPLE\derrick_fall.wav");
 			PlaySound("PEOPLE\roof_broken1.wav");
@@ -18216,8 +18235,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Lieutenant G"), "Fort_Moultrie_barracks", "sit", "sit13");
 			LAi_SetSitType(characterFromID("Lieutenant G"));
 
-			Pchar.name = "Edgar Allan";
-			Pchar.lastname = "Poe";
+			Pchar.name = TranslateString("","Edgar Allan");
+			Pchar.lastname =TranslateString("","Poe");
 			Pchar.rank 	= 2;
 			Pchar.reputation = "50";
 			Pchar.experience = "0";
@@ -19490,8 +19509,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Legrand_copy"), "none", "", "");
 			ChangeCharacterAddressGroup(Pchar, "Bessop_plantation", "goto", "goto100");
 			SetModel(Pchar, "William Legrand2", pchar.model.animation, pchar.sex, stf(pchar.model.height), true);
-			Pchar.name = "William";
-			Pchar.lastname ="Legrand";
+			Pchar.name = TranslateString("","William");
+			Pchar.lastname =TranslateString("","Legrand");
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
@@ -20912,9 +20931,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(Pchar);
 			LAi_SetActorType(characterFromID("Edgar Allan Poe"));
 			LAi_SetActorType(characterFromID("Jupiter"));
-			LAi_ActorAnimation(Pchar, "afraid", "", 1.0);
-			LAi_ActorAnimation(CharacterFromID("Edgar Allan Poe"), "afraid", "", 1.0);
-			LAi_ActorAnimation(CharacterFromID("Jupiter"), "afraid", "", 1.0);
+			LAi_ActorAnimation(Pchar, "hands up", "", 1.0);
+			LAi_ActorAnimation(CharacterFromID("Edgar Allan Poe"), "hands up", "", 1.0);
+			LAi_ActorAnimation(CharacterFromID("Jupiter"), "hands up", "", 1.0);
 		break;
 
 		case "stop_animation":
@@ -21729,7 +21748,16 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Legrands_boathouse")].locators_radius.goto.exit_stop = 0.001;
 			Pchar.quest.house_box1 = "open";
 			Pchar.quest.backyard = "open";
-			Locations[FindLocation("Legrands_backyard")].models.always.locators = "qcexit_l_GB";
+
+			if(CheckAttribute(Pchar,"quest.Legrands_fireplace"))
+			{
+				if(Pchar.quest.Legrands_fireplace == "fire2" || Pchar.quest.Legrands_fireplace == "fire1"
+				|| Pchar.quest.Legrands_fireplace == "glowing")
+				{
+					Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB";
+				}
+				else Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_nosmoke";
+			}
 
 			pchar.quest.home_with_treasure.win_condition.l1 = "location";
 			pchar.quest.home_with_treasure.win_condition.l1.location = "Legrands_house";
@@ -23029,7 +23057,7 @@ void QuestComplete(string sQuestName)
 			SetModel(PChar, "Jupiter", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 			ChangeCharacterAddressGroup(characterFromID("Jupiter"), "none", "", "");	//just to be sure
 
-			Pchar.name = "Jupiter";
+			Pchar.name = TranslateString("","Jupiter");
 			Pchar.lastname = "";
 			Pchar.rank 	= 2;
 			Pchar.reputation = "50";
@@ -23201,8 +23229,8 @@ void QuestComplete(string sQuestName)
 			RemovePassenger(pchar, characterFromID("Legrand_copy"));
 			ChangeCharacterAddressGroup(characterFromID("Legrand_copy"), "none", "", "");	//just to be sure
 
-			Pchar.name = "William";
-			Pchar.lastname = "Legrand";
+			Pchar.name = TranslateString("","William");
+			Pchar.lastname =TranslateString("","Legrand");
 			Pchar.rank = 3;	
 			Pchar.skill.Leadership = "5";
 			Pchar.skill.Fencing = "2";		
@@ -23665,11 +23693,20 @@ void QuestComplete(string sQuestName)
 			else return;
 		break;
 
+		case "chimney_no_smoke":
+			if(CheckAttribute(Pchar, "quest.attic_box1") && Pchar.quest.attic_box1 == "blocked")
+			{
+				Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_tree_nosmoke";
+				Locations[FindLocation("Sullivan_jungle1")].models.always.locators = "QCexit_l_GB_tree_nosmoke";
+			}
+			else
+			{
+				Locations[FindLocation("Legrands_backyard")].models.always.locators = "QCexit_l_GB_nosmoke";
+				Locations[FindLocation("Sullivan_jungle1")].models.always.locators = "QCexit_l_GB_nosmoke";
+			}
+		break;
+
 		//<-- JRH
-
-
-
-
 
 	}
 	

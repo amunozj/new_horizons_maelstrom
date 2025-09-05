@@ -7,7 +7,7 @@ int num_labels = 0;
 void InitInterface_I(string iniName, int map)
 {
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	chm = GetMainCharacter();
 

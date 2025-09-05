@@ -140,6 +140,8 @@ void InitBattleInterfacesParameters()
 
 void CreateILogAndActions(int loadType)
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
 	DeleteAttribute(&IBoardingStatus,"ActiveActions");
 	if(loadType==LOG_FOR_SEA)
 	{
@@ -157,9 +159,10 @@ void CreateILogAndActions(int loadType)
 	ref rLog; makeref(rLog, ILog);
 	DeleteAttribute(rLog, "");
 	CopyAttributes(rLog, &IActions);
-	IActions.Log.up = sti(showWindow.top) + RecalculateVIcon(sti(IActions.ActiveActions.height)) + RecalculateVIcon(16);
-	IActions.Log.left = sti(showWindow.left) + RecalculateHIcon(16);
+	IActions.Log.up = sti(showWindow.top) + RecalculateVIcon(sti(IActions.ActiveActions.height)) + RecalculateVIcon(makeint(17 * fHtRatio));
+	IActions.Log.left = sti(showWindow.left) + RecalculateHIcon(makeint(16 * fHtRatio));
 	IActions.Log.color = argb(0,255,255,255);	// LDH 19Jan09
+	IActions.Log.fontscale = 1.2 * fHtRatio;
 	SendMessage(&IActions,"lll",LOG_AND_ACTIONS_INIT,sti(InterfaceStates.BattleShow.FastCommand),sti(InterfaceStates.BattleShow.ActionLabel));
 	SendMessage(&ILog,"lll",LOG_AND_ACTIONS_INIT,false,sti(InterfaceStates.BattleShow.LogString));
 
@@ -243,14 +246,18 @@ void Log_SetEternalString(string strLog)
 
 void CreateLogEnvironment()
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
 	//  CCC Make log message smaller and relocate  -->
 	ILog.Log.width = sti(showWindow.left) + makeint(stf(showWindow.width) * 0.5) - 1; //KK sti(showWindow.sw)/2;
-	ILog.Log.height = sti(showWindow.sh)-80;
+	ILog.Log.height = sti(showWindow.sh)- makeint(80 * fHtRatio);
 	ILog.Log.left = sti(showWindow.left)+1; // ccc maptweak original value +88
 	ILog.Log.up = sti(showWindow.top)+1; //+16
-	ILog.Log.font = "interface_small"; // interface_normal
+	ILog.Log.font = "interface_coas"; // interface_small	Mirsaneli 2025
+	ILog.Log.fontscale = 1.1 * fHtRatio;
 	ILog.Log.color = argb(0,255,255,255);
-	ILog.Log.offsetString = 14; //24
+	ILog.Log.offsetString = makeint(15 * fHtRatio); //24
 	ILog.Log.speed = 0.1; //0.05		// LDH this is the scroll speed after the log fades - 03Jan09
 	ILog.Log.color_speed = 0.01; //0.02	// LDH this is the speed at which the log fades - 03Jan09
 	// NOTE: The last two lines determine how fast the message disappears and scrolls. If you want to change this: INCREASING the values makes it vanish FASTER
@@ -267,12 +274,15 @@ void CreateLogEnvironment()
 
 void CreateSeaActionsEnvironment()
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
 	IActions.type = "sea";
 	IActions.ActiveActions.TextureName = "battle_interface\cicons_command.tga";
 	IActions.ActiveActions.horzQ = 8;
 	IActions.ActiveActions.vertQ = 8; // FCoHS
-	IActions.ActiveActions.width = RecalculateHIcon(64);
-	IActions.ActiveActions.height = RecalculateVIcon(64);
+	IActions.ActiveActions.width = RecalculateHIcon(makeint(64 * fHtRatio));
+	IActions.ActiveActions.height = RecalculateVIcon(makeint(64 * fHtRatio));
 	IActions.ActiveActions.left = sti(showWindow.left)+16;
 	IActions.ActiveActions.top = sti(showWindow.top)+16;
 
@@ -288,13 +298,15 @@ void CreateSeaActionsEnvironment()
 void CreateLandActionsEnvironment()
 {
 	PChar = GetMainCharacter();		//JRH
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
 
 	IActions.type = "land";
 	IActions.ActiveActions.TextureName = "battle_interface\land_fast_commands.tga";
 	IActions.ActiveActions.horzQ = 8;
 	IActions.ActiveActions.vertQ = 8; // KK // MAXIMUS
-	IActions.ActiveActions.width = RecalculateHIcon(64);
-	IActions.ActiveActions.height = RecalculateVIcon(64);
+	IActions.ActiveActions.width = RecalculateHIcon(makeint(64 * fHtRatio));
+	IActions.ActiveActions.height = RecalculateVIcon(makeint(64 * fHtRatio));
 	IActions.ActiveActions.left = sti(showWindow.left)+16;
 	IActions.ActiveActions.top = sti(showWindow.top)+16;
 
@@ -450,6 +462,9 @@ void CreateLandActionsEnvironment()
 
 void DrawCharacterHP(float myHP,float enemyHP)
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
 	if(bYesBoardStatus==false)
 	{
 		CreateEntity(&IBoardingStatus,"IBoardingStatus");
@@ -457,8 +472,8 @@ void DrawCharacterHP(float myHP,float enemyHP)
 		IBoardingStatus.myTop = sti(showWindow.bottom)-140;
 		IBoardingStatus.enemyLeft = sti(showWindow.left)+16;
 		IBoardingStatus.enemyTop = sti(showWindow.bottom)-128;
-		IBoardingStatus.height = RecalculateVIcon(8);
-		IBoardingStatus.width = RecalculateHIcon(120);
+		IBoardingStatus.height = RecalculateVIcon(makeint(8 * fHtRatio));
+		IBoardingStatus.width = RecalculateHIcon(makeint(120 * fHtRatio));
 		IBoardingStatus.myColor = argb(255,0,0,128);
 		IBoardingStatus.enemyColor = argb(255,128,0,0);
 		SendMessage(&IBoardingStatus,"l",LOG_INIT_CHARCTER_HP);
@@ -681,17 +696,21 @@ void DeleteDateTimeDisplay()
 
 void CreateDateTimeDisplay()
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
 	ref rtmp;
 	makeref(rtmp, IDateTimeDisplay);
 	DeleteAttribute(rtmp, "");
 	CopyAttributes(rtmp, &ILog);
 	IDateTimeDisplay.Log.width = RecalculateHIcon(makeint(stf(showWindow.width) * 0.5));
-	IDateTimeDisplay.Log.height = RecalculateVIcon(10);
-	IDateTimeDisplay.Log.left = sti(showWindow.left) + makeint(stf(showWindow.width) * 0.475);
-	IDateTimeDisplay.Log.up = sti(showWindow.top) + RecalculateVIcon(10);
-	IDateTimeDisplay.Log.font = "interface_normal";
+	IDateTimeDisplay.Log.height = RecalculateVIcon(makeint(10 * fHtRatio));
+	IDateTimeDisplay.Log.left = sti(showWindow.left) + makeint(stf(showWindow.width) * 0.325);
+	IDateTimeDisplay.Log.up = sti(showWindow.top) + RecalculateVIcon(makeint(10 * fHtRatio));
+	IDateTimeDisplay.Log.font = "seadogs";
+	IDateTimeDisplay.Log.fontscale = 1.2 * fHtRatio;
 	IDateTimeDisplay.Log.color = argb(0,255,255,255);
-	IDateTimeDisplay.Log.offsetString = 24;
+	IDateTimeDisplay.Log.offsetString = makeint(24 * fHtRatio);
 	IDateTimeDisplay.Log.speed = 1.0;
 	IDateTimeDisplay.Log.color_speed = 0.0;
 	SendMessage(&IDateTimeDisplay, "lll", LOG_AND_ACTIONS_INIT, false, true);
@@ -700,6 +719,7 @@ void CreateDateTimeDisplay()
 	int imonth = GetDataMonth();
 	int iday = GetDataDay();
 	sDateTimeDisplay = XI_ConvertString(GetDayName(GetWeekday(iday, imonth, iyear))) + ", " + GetHumanDate(iyear, imonth, iday);
+	sDateTimeDisplay += ", " + CreateLocDescribe();											
 
 	ref chMain = GetMainCharacter();
 	bool btmp = true;
@@ -937,70 +957,121 @@ void procUpdateTime()
 			// Screwface : lagoon colour mod close to seashore reload locator
 			if(mchr.location != WDM_NONE_ISLAND)
 			{
-				// trace("Check for lagoon")
+				//trace("Check for lagoon")
 				string island = mchr.location;
 				int li = Findisland(island);
 				//logit("island : " + island);
 				if(li >= 0)
 				{
 					aref aCurWeather = GetCurrentWeather();
-					float psX = MakeFloat(mchr.Ship.Pos.x);
-					float psZ = MakeFloat(mchr.Ship.Pos.z);
-					float isR = 450.0;
-					//logit("ship pos x : " + psx);
-					//logit("ship pos z : " + psz);
-					aref rl;
-					makearef(rl, Islands[li].reload);
-					num = GetAttributesNum(rl);
-					for(int j = 0; j < num; j++)
-					{
-						string tempattrname = GetAttributeName(GetAttributeN(rl,j));
-						//sLandfallName = rl.(tempattrname).label;
-						if (CheckAttribute(rl, tempattrname+".x"))
-						{
-							float ix = stf(rl.(tempattrname).x);
-							float iz = stf(rl.(tempattrname).z);
-							if(aCurWeather.id == "Blue Sky")
-							{
-								if(wRain < 75)
-								{
-									if(GetDistance2D(psX, psZ, ix, iz) <= isR && Locations[FindLocation(rl.(tempattrname).go)].type =="seashore")
-									{
-										//logit("loc pos x : " + ix);
-										//logit("loc pos z : " + iz);
-										if(!Checkattribute(rl, tempattrname+".inlagoon"))
-										{
-											//Logit("i'm in a lagoon !");
-											//Sea.GF3.WaterColor = argb(0,45,129,153);
-											Refreshseacolor_in();
-											rl.(tempattrname).inlagoon = 1;
-											break;
-										}
-									}
-									else
-									{
-										if(CheckAttribute(rl, tempattrname+".inlagoon"))
-										{
-											//Logit("i'm not in a lagoon !");
-											aCurWeather.Sea.inlagoon = 0;
-											Refreshseacolor_out();
-											//Sea.GF3.WaterColor = argb(0,30,55,100);
-											DeleteAttribute(rl, tempattrname+".inlagoon");
-										}
-									}
-								}
-								else
-								{
-									//Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
-									//Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
-									//Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
-									Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
-									Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
-									Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
-								}
-							}
-						}
+					if (wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //if(aCurWeather.id == "Blue Sky")
+                    {
+                        float psX = MakeFloat(mchr.Ship.Pos.x);
+                        float psZ = MakeFloat(mchr.Ship.Pos.z);
+                        float isR = 202500.0; //450.0 squared;
+                        //logit("ship pos x : " + psx);
+                        //logit("ship pos z : " + psz);
+                        aref rl;
+                        makearef(rl, Islands[li].reload);
+                        num = GetAttributesNum(rl);
+                        bool bFound = false;
+                        for(int j = 0; j < num; j++)
+                        {
+                            string tempattrname = GetAttributeName(GetAttributeN(rl,j));
+                            //trace("tempattrname " + tempattrname);
+                            //sLandfallName = rl.(tempattrname).label;
+                            if (CheckAttribute(rl, tempattrname+".x"))
+                            {
+                                float ix = stf(rl.(tempattrname).x);
+                                float iz = stf(rl.(tempattrname).z);
+                                //if (CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //if(aCurWeather.id == "Blue Sky")
+                                //{
+                                    //if(wRain < 75)
+                                    //{
+                                        float dist = GetDistance2DRel(psX, psZ, ix, iz);
+                                        string sType = Locations[FindLocation(rl.(tempattrname).go)].type;
+                                        if(sType == "seashore" || sType == "port")
+                                        {
+                                            //trace("stype " + sType);
+                                            //trace("Name " + rl.(tempattrname).name);
+                                            //trace("dist " + dist);
+                                            if(dist <= isR)
+                                            {
+                                                //logit("loc pos x : " + ix);
+                                                //logit("loc pos z : " + iz);
+                                                if(Checkattribute(rl, tempattrname+".inlagoon")) {
+                                                    //trace("LogInterface already lagoon " + aCurWeather.id);
+                                                    Sea.Sea2.WaterColor = argb(0,84,162,175);
+                                                    Sea.Sea2.SkyColor = argb(0,255,255,255);
+													Sea.Sea2.Transparency = 0.6;
+                                                    aCurWeather.Sea.inlagoon = 1;
+                                                    bFound = true;
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    //Logit("i'm in a lagoon !");
+                                                    //Sea.GF3.WaterColor = argb(0,45,129,153);
+                                                    //trace("LogInterface in lagoon " + aCurWeather.id);
+                                                    //trace("WaterColor " + Sea.Sea2.WaterColor);
+                                                    if (!CheckAttribute(aCurWeather, "Sea.inlagoon")) {
+                                                        //trace("calling Refreshseacolor_in");
+                                                        Refreshseacolor_in();
+                                                    }
+                                                    aCurWeather.Sea.inlagoon = 1;
+                                                    rl.(tempattrname).inlagoon = 1;
+                                                    bFound = true;
+                                                    break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                //trace("Loc dist " + dist + ", " + tempattrname);
+                                                if(CheckAttribute(rl, tempattrname+".inlagoon"))
+                                                {
+                                                    DeleteAttribute(aCurWeather, "Sea.inlagoon");
+                                                    //trace("LogInterface removing lagoon1 " + aCurWeather.id);
+                                                    //Logit("i'm not in a lagoon !");
+                                                    //aCurWeather.Sea.inlagoon = 0;
+                                                    Refreshseacolor_out();
+                                                    //Sea.GF3.WaterColor = argb(0,30,55,100);
+                                                    DeleteAttribute(rl, tempattrname+".inlagoon");
+                                                }
+                                            }
+                                        }
+                                    //}
+                                    //else
+                                    //{
+                                        //Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
+                                        //Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
+                                        //Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
+                                   //     Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
+                                   //     Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
+                                    //    Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
+                                    //}
+                                //}
+                            }
+                        }
+                        if (!bFound) {
+                            //trace("LogInterface removing lagoon2 " + aCurWeather.id);
+                            DeleteAttribute(aCurWeather, "Sea.inlagoon");
+                        }
 					}
+					else {
+                        //trace("LogInterface removing lagoon3 " + aCurWeather.id);
+                        DeleteAttribute(aCurWeather, "Sea.inlagoon");
+					}
+				}
+				else {
+                   if (CheckAttribute(aCurWeather, "Sea.inlagoon"))
+					{
+						DeleteAttribute(aCurWeather, "Sea.inlagoon");
+					}
+				}
+				else
+				{
+					Trace("Warning: Attribute 'Sea.inlagoon' not found in aCurWeather!");
+					// Optionally handle this situation if necessary
 				}
 			} // Screwface : Lagoon colour mod end
 		}
@@ -1012,6 +1083,7 @@ void procUpdateTime()
 		int iday = GetDataDay();
 		sDateTimeDisplay = XI_ConvertString(GetDayName(GetWeekday(iday, imonth, iyear))) + ", " + GetHumanDate(iyear, imonth, iday);
 		if (sti(mchr.HasClock)) sDateTimeDisplay += " " + GetStringTime(stf(mchr.CurrentTime));
+		sDateTimeDisplay +=", " + CreateLocDescribe();
 		// DeathDaisy: approximate time of day when not having a clock
 		else{
 			string TimeOfDay;
@@ -1036,25 +1108,28 @@ void procUpdateTime()
 // <-- KK
 void CreateWorldMapActionsEnvironment()
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
     IActions.type = "map";
 
 	IActions.ActiveActions.TextureName = "battle_interface\WorldMapCommands.tga.tx";
 	IActions.ActiveActions.horzQ = 8;
 	IActions.ActiveActions.vertQ = 2;
-	IActions.ActiveActions.width = RecalculateHIcon(48);
-	IActions.ActiveActions.height = RecalculateVIcon(48);
-	IActions.ActiveActions.left = sti(showWindow.right) - RecalculateHIcon(284);
-	IActions.ActiveActions.top = sti(showWindow.top) + RecalculateVIcon(32);
+	IActions.ActiveActions.width = RecalculateHIcon(makeint(48 * fHtRatio));
+	IActions.ActiveActions.height = RecalculateVIcon(makeint(48 * fHtRatio));
+	IActions.ActiveActions.left = sti(showWindow.right) - RecalculateHIcon(makeint(284 * fHtRatio));
+	IActions.ActiveActions.top = sti(showWindow.top) + RecalculateVIcon(makeint(32 * fHtRatio));
 
 	IActions.ActiveActions.text1.font = "interface_normal";
 	IActions.ActiveActions.text1.scale = 1.5;
-	IActions.ActiveActions.text1.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
-	IActions.ActiveActions.text1.pos.y = sti(showWindow.top) + RecalculateVIcon(86);
+	IActions.ActiveActions.text1.pos.x = sti(showWindow.right) - RecalculateHIcon(makeint(260 * fHtRatio));
+	IActions.ActiveActions.text1.pos.y = sti(showWindow.top) + RecalculateVIcon(makeint(86 * fHtRatio));
 	IActions.ActiveActions.text1.text = XI_ConvertString("Press_F3");
 	IActions.ActiveActions.text2.font = "interface_normal";
 	IActions.ActiveActions.text2.scale = 1.5;
-	IActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
-	IActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);//RecalculateVIcon(102);
+	IActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(makeint(260 * fHtRatio));
+	IActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(makeint(86 * fHtRatio));//RecalculateVIcon(102);
 	IActions.ActiveActions.text2.text = XI_ConvertString("for_quick_action");
 
 	IActions.ActiveActions.EnterToSea.IconNum	= 1;

@@ -521,7 +521,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -559,7 +559,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -597,7 +597,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	//town_01
@@ -715,7 +715,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			// Patrol.
@@ -754,7 +754,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			// Soldier.
@@ -1457,7 +1457,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 	
 			// Patrol.
@@ -1496,7 +1496,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			// Patrol.
@@ -1535,7 +1535,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);	
 
 	// Santiago town 01
@@ -1810,7 +1810,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			// Patrol.
@@ -1849,7 +1849,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			// Patrol.
@@ -1888,7 +1888,7 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_isla muelle Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 
@@ -2297,7 +2297,7 @@ if (ENABLE_WEAPONSMOD)
 	// Levis: Storyteller
 	ch.old.name = "Mahala";
 	ch.old.lastname = "";
-	ch.name    = "Mahala";
+	ch.name    = TranslateString("","Mahala");
 	ch.lastname    = "";
 	ch.id        = "Mahala";
 	ch.model    = "gipsygirl";
@@ -2327,5 +2327,38 @@ if (ENABLE_WEAPONSMOD)
 	LAi_SetStayType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetLoginTime(ch, 0.0, 24.0);		//JRH
+	AddGameCharacter(n, ch);
+
+	// Santiago Tailor
+	ch.old.name = "Tancredo";
+	ch.old.lastname = "Pellón";
+	ch.name	= TranslateString("", "Tancredo");
+	ch.lastname	= TranslateString("", "Pellón");
+	ch.id = "Tancredo Pellon";
+	ch.model = "9R_Purs";
+	ch.sex = "man";
+	ch.location	= "Santiago_TailorsShop";
+	ch.location.group = "sit";
+	ch.location.locator = "sit1";
+	ch.IsTailor = true;
+	ch.Dialog.Filename = "tailor_dialog.c";
+ 	ch.Dialog.Filename.Groupdialog = "tailor.c";
+	ch.rank 	= 1;
+	ch.nation = SPAIN;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "0";
+	ch.skill.Fencing = "0";
+	ch.skill.Sailing = "0";
+	ch.skill.Accuracy = "0";
+	ch.skill.Cannons = "0";
+	ch.skill.Grappling = "0";
+	ch.skill.Repair = "0";
+	ch.skill.Defence = "0";
+	ch.skill.Commerce = "7";
+	ch.skill.Sneak = "0";
+	ch.money = "10";
+	LAi_SetMerchantType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
 	AddGameCharacter(n, ch);
 }

@@ -60,7 +60,7 @@ void InitInterface_RS(string iniName,ref _refCharacter, string _colony_name)
 	FillScroll();
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	if (bMyColony) {
 		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "ASSIGNGOV_BUTTON", 0, "#"+XI_ConvertString("OK"));
@@ -131,7 +131,7 @@ void InitInterface_RS(string iniName,ref _refCharacter, string _colony_name)
 	CreateString(true,"skillSneak","",FONT_BOLD_NUMBERS,COLOR_NORMAL,434,368,SCRIPT_ALIGN_RIGHT,1.0);
 
 
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	if (!bMyColony) SetSelectable("ASSIGNGOV_BUTTON", false);
 
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);

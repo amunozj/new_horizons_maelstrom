@@ -17,6 +17,8 @@ bool locDisableUpdateTime = false;
 
 // NK character-style loc functions 05-07-19
 
+//#20190624-01
+
 int GetLocationIndex(string id)
 {
 	return NativeFindLocation(&locations, id);
@@ -53,7 +55,19 @@ bool LoadLocation(ref loc)
 
 	for (i = 0; i < MAX_SHIPS_IN_LOCATION; i++) { iShips[i] = -1; } // KK
 
-
+	//Time update==========================================================================
+	// NK 04-09-21 with time now added on the fly this is unnecessary. However, with TIMEUPDATE_BLOCK_LAND we still need something.
+	/*if(locTmpTime > 300)
+	{
+		AddTimeToCurrent(4, 0);
+	}else{
+		if(locTmpTime > 100)
+		{
+			AddTimeToCurrent(0, 30);
+		}else{
+			AddTimeToCurrent(0, 5);
+		}
+	}*/
 	if(TIMEUPDATE_BLOCK_LAND)
 	{
 		AddTimeToCurrent(0, (locTmpTime * TIMESCALAR_LAND)/60.0);
@@ -111,7 +125,21 @@ bool LoadLocation(ref loc)
 		SetNextWeather(loc.lockWeather);
 	}
 // KK -->
-
+	/*bool isNoBoarding = true;
+	bool isFort = false;
+	if(CheckAttribute(loc, "boarding") == true)
+	{
+		if(loc.boarding == "true") isNoBoarding = false;
+		if(loc.boarding == "fort")
+		{
+			isNoBoarding = false;
+			isFort = true;
+		}
+		if (loc.boarding == "town") {
+			isNoBoarding = false;
+			isTown = true;
+		}
+	}*/
 	bool isNoBoarding = !LAi_IsBoardingProcess() && !bSeaActive;
 	if (isNoBoarding) {
 		if (!CheckAttribute(loc,"models.back")) {
@@ -210,6 +238,16 @@ bool LoadLocation(ref loc)
 	//Set lighting path
 	SendMessage(loc, "ls", MSG_LOCATION_LIGHTPATH, GetLightingPath());
 	SendMessage(loc, "ls", MSG_LOCATION_SHADOWPATH, GetLmLightingPath());
+	SendMessage(loc, "lf", MSG_LOCATION_DIAG_RAD, 5.0);
+	// SendMessage(loc, "ls", MSG_LOCATION_EX_MSG, "UseNarrowCharRadius"); //Add this line for narrow collisions
+	
+	PeopleOnShip.isNight = Whr_IsNight();
+	PeopleOnShip.HidePeopleOnDeck = false;
+	CreateEntity(&PeopleOnShip, "PEOPLE_ON_SHIP");
+	LayerAddObject("execute", &PeopleOnShip, 100);
+	LayerAddObject("realize", &PeopleOnShip, 100);
+	Ship_Walk_Init();
+	SetEventHandler(SHIP_CREATE, "Ship_Walk_Create", 0);
 
 	//Loading always models================================================================
 	aref st, at, lit, lit1;
@@ -379,7 +417,30 @@ bool LoadLocation(ref loc)
 	ReloadProgressUpdate();
 
 	//Locators=============================================================================
-	Sea.MaxSeaHeight = 1.15;
+	// if (bWeatherIsStorm) {Sea.MaxSeaHeight = 3.0;}
+	
+	bool dropSea = false;
+	//#20190613-01
+	if(dropSea) {
+        dropSeaHt();
+	}
+    else {	// Mirsaneli (bumpscale fix for some shores)
+			Sea.MaxSeaHeight = 1.4;
+			Sea.Sea2.Bumpscale = 0.03;
+			Sea.Sea2.Transparency = 0.5;
+            Sea.Sea2.LodScale = 1.0; //0.22;
+            Sea.Sea2.GridStep = 0.0375; //0.07
+            Sea.Sea2.PosShift = 0.005;
+			
+        if(CheckAttribute(loc, "MaxWaveHeigh"))
+        {
+            if(stf(loc.MaxWaveHeigh) > 0.0)
+            {
+                Sea.MaxSeaHeight = stf(loc.MaxWaveHeigh);
+            }
+        }
+    }
+	
 	if(CheckAttribute(loc,"MaxSeaHeight")) Sea.MaxSeaHeight = stf(loc.MaxSeaHeight); // screwface : limit wave height
 	//Locator's radiuses
 	int j, k, gnum, lnum;
@@ -451,6 +512,7 @@ bool LoadLocation(ref loc)
 					float litX = stf(lit1.x);
 					float litY = stf(lit1.y);
 					float litZ = stf(lit1.z);
+					//traceif("     AddLight: " + lightName + " (" + litX + ", " + litY + ", " + litZ);
 					SendMessage(loc, "lsfff", MSG_LOCATION_ADD_LIGHT, lightName, litX, litY, litZ);
 					if(lightName == "lamp")
 					{
@@ -536,7 +598,7 @@ bool LoadLocation(ref loc)
 	CreateEntity(&locCamera, "locationcamera");
 	SendMessage(&locCamera, "li", MSG_CAMERA_SETTARGET, mainCharacter);
 	locCameraFollow();
-	if(CheckAttribute(loc, "lockCamAngle") == true) 
+	if(CheckAttribute(loc, "lockCamAngle") == true) // KK && LAi_boarding_process)
 	{
 		float lockCamAngle = stf(loc.lockCamAngle);
 		if(lockCamAngle < -1.5) lockCamAngle = -1.5;
@@ -654,6 +716,46 @@ bool LoadLocation(ref loc)
 	}
 	LAI_group_SetRelationWithAllStock(LAI_GROUP_CORPSES, LAI_GROUP_NEUTRAL);//MAXIMUS: so we do it once
 	//PostEvent("UpdateLocator", 0, "iiss", loc, mainCharacter, mainCharacter.location.group, mainCharacter.location.locator);//MAXIMUS: labels will always be shown
+	
+	///#20180102-01 Port/Shore sea change		Mirsaneli added different parameters for storms
+	if (CheckAttribute(loc, "type")) {
+		Sea.Sea2.Bumpscale = 0.03; // Always apply this value
+
+		if (bWeatherIsStorm) {
+        // Apply stormy sea parameters
+		Sea.MaxSeaHeight = 2.0;
+        Sea.Sea2.Transparency = 0;
+		//Sea.Sea2.LodScale = 1.0; //0.22;
+        //Sea.Sea2.GridStep = 0.0375; //0.07
+        Sea.Sea2.PosShift = 1.1;
+        Sea.Sea2.Amp1 = 12.0; //1.0
+        Sea.Sea2.Scale1 = 1.0; //2.0
+        Sea.Sea2.Amp2 = 1.5;
+        Sea.Sea2.Scale2 = 5.0; //11.0
+        Sea.Sea2.AnimSpeed1 = 2.0;
+        Sea.Sea2.MoveSpeed1 = "1.0, 0.0, 7.0";
+        Sea.Sea2.AnimSpeed2 = 9.0;
+        Sea.Sea2.MoveSpeed2 = "0.0, 0.0, 1.5";
+		} else {
+        // Apply calm port/shore parameters
+		Sea.MaxSeaHeight = 1.2;
+		Sea.Sea2.Transparency = 0.2;
+        //Sea.Sea2.LodScale = 1.0; //0.22;
+        //Sea.Sea2.GridStep = 0.0375; //0.07
+        Sea.Sea2.PosShift = 0.005;
+        Sea.Sea2.Amp1 = 1.5; //1.0
+        Sea.Sea2.Scale1 = 2.50; //2.0
+        Sea.Sea2.Amp2 = 0.02;
+        Sea.Sea2.Scale2 = 7.0; //11.0
+        Sea.Sea2.AnimSpeed1 = 0.003;
+        Sea.Sea2.MoveSpeed1 = "0.6, 0.0, 0.003";
+        Sea.Sea2.AnimSpeed2 = 0.002;
+        Sea.Sea2.MoveSpeed2 = "0.7, 0.0, 0.003";
+		}
+
+		Sea.isDone = "";
+	}
+	
 	if(CheckAttribute(mainCharacter,"autoreload") && CheckAttribute(mainCharacter,"location.locator.emerge"))
 	{
 		mainCharacter.location.locator.old.emerge = mainCharacter.location.locator.emerge;
@@ -726,6 +828,7 @@ void LocationSetLights(ref loc)
 					float litX = stf(lit1.x);
 					float litY = stf(lit1.y);
 					float litZ = stf(lit1.z);
+					//Trace("     AddLight: " + lightName + " (" + litX + ", " + litY + ", " + litZ);
 					SendMessage(loc, "lsfff", MSG_LOCATION_ADD_LIGHT, lightName, litX, litY, litZ);
 					if(lightName == "lamp")
 					{
@@ -788,6 +891,11 @@ bool UnloadLocation(aref loc)
 // <-- KK
 	if(!bSeaActive) // KK
 	{
+		LayerDelObject("execute", &PeopleOnShip);
+		LayerDelObject("realize", &PeopleOnShip);
+		PeopleOnShip.HidePeopleOnDeck = true;
+		DeleteClass(&PeopleOnShip);
+		DelEventHandler(SHIP_CREATE, "Ship_Walk_Create");
 		DeleteParticles();
 		DeleteClass(&Island);
 		DeleteAnimals();
@@ -1197,7 +1305,7 @@ void LocLoadShips(ref Location)
 		}
 // <-- KK
 
-		// ASVS -->
+		// ASVS -->		Mirsaneli: 27.11.2024.
 		if(CheckAttribute(rCharacter,"sailaway"))
 		{
 			if(!CheckAttribute(rCharacter,"Ship.Strand"))					rCharacter.Ship.Strand = false;
@@ -1210,13 +1318,32 @@ void LocLoadShips(ref Location)
 			if(!CheckAttribute(rCharacter,"TmpPerks.stormprofessional"))	rCharacter.TmpPerks.stormprofessional = false;
 			if(!CheckAttribute(rCharacter,"TmpPerks.turn"))					rCharacter.TmpPerks.turn = false;
 			rCharacter.Ship.stopped = false;
-			rCharacter.Ship.Speed.z = 1.5;
-		}
-		else
-		{
+			rCharacter.Ship.Speed.z = 0.62;	// ship move speed
+			}
+			else
+			{
+				if (iShipsType[n] == 0 || iShipsType[n] == 2) // Jetty ships are always moored
+			{
 			rCharacter.Ship.stopped = true;
 			rCharacter.Ship.Speed.z = 0.0;
+			}
+			else
+			{
+			// Randomly determine whether this ship will sail
+			if (rand(100) < 25) // 25% chance to sail for non-jetty ships
+			{
+			if(!CheckAttribute(rCharacter,"TmpPerks.stormprofessional"))	rCharacter.TmpPerks.stormprofessional = false;
+				rCharacter.Ship.stopped = false;
+				rCharacter.Ship.Speed.z = 0.62;
+			}
+			else
+				{
+				rCharacter.Ship.stopped = true;
+				rCharacter.Ship.Speed.z = 0.0;
+				}
+			}
 		}
+		// ASVS <--
 		// ASVS <--
 		Ship_PrepareShipForLocation(rCharacter);
 		// Screwface : section to send to setshipflag function the real number of ships who are physically in port and avoid CTD in some ports
@@ -1231,6 +1358,7 @@ void LocLoadShips(ref Location)
 		rCharacter.Flags.DoRefresh = true; // KK
 		//If(CheckAttribute(GetMainCharacter(),"avoidflagsRe")){DeleteAttribute(GetMainCharacter(),"avoidflagsRe");}
  		// Screwface : end
+ 		locShips[n].id = rCharacter.id;
 		SendMessage(&locShips[n],"laa",MSG_SHIP_CREATE,&rCharacter,&rShip);
 	}
 
@@ -1252,6 +1380,7 @@ void LocLoadShips(ref Location)
 				rCharacter.Ship.Speed.z = 0.0;
 				Ship_PrepareShipForLocation(rCharacter);
 				SendMessage(&locShips[n],"laa",MSG_SHIP_CREATE,&rCharacter,&rShip);
+				locShips[n].id = rCharacter.id;
 				locNumShips++;
 			}
 		}
@@ -1263,6 +1392,25 @@ void LocLoadShips(ref Location)
 			traceif("LocLoadShips: Can't find boat locator in location: " + Location.id);
 		}
 	}
+	aref refObj;
+	if(GetEntityByName("", "Player", &refObj))
+    {
+        ReconnectEntity(&Characters[GetMainCharacterIndex()], refObj);
+    }
+    if(GetEntityByName("", "NPCharacter", &refObj))
+    {
+        while(true)
+        {
+            for (i = 0; i < locNumShips; i++)
+            {
+                if(SendMessage(&refObj, "lss", MSG_CHARACTER_EX_MSG, "CheckID", locShips[i].id) != 0) {
+                    if (GetEntityName(characterFromID(locShips[i].id)) != "NPCharacter")
+                        ReconnectEntity(characterFromID(locShips[i].id), refObj);
+                }
+            }
+            if(!GetEntityNextByName("NPCharacter",&refObj)) break;
+        }
+    }
 }
 
 bool Character_LocIsEntryLocation(ref rCharacter, ref rLocation)
@@ -1323,4 +1471,22 @@ void LocationTimeUpdateFunc()
 	}
 	// 04-09-21 unclamp time - if(locTmpTime > 100000.0) locTmpTime = 100000.0;
 	// NK <--
+}
+
+void dropSeaHt()
+{
+    Sea.MaxSeaHeight = -25.0;
+    Sea.Sea2.LodScale = 2.0;
+    Sea.Sea2.GridStep = 0.25;
+    Sea.Sea2.BumpScale = 0.0;
+    Sea.Sea2.PosShift = 0.0;
+    Sea.Sea2.Amp1 = 0.0;
+    Sea.Sea2.Scale1 = 0.0;
+    Sea.Sea2.Amp2 = 0.0;
+    Sea.Sea2.Scale2 = 0.0;
+    Sea.Sea2.AnimSpeed1 = 0.0;
+    Sea.Sea2.MoveSpeed1 = "0.0, 0.0, 0.0";
+    Sea.Sea2.AnimSpeed2 = 0.0;
+    Sea.Sea2.MoveSpeed2 = "0.0, 0.0, 0.0";
+    Sea.isDone = "";
 }

@@ -680,7 +680,7 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 // <-- KK
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 // KK -->
 	if (!bFromCharacterScreen) {
 		SetNodeUsing("VIDEOBASE",false);
@@ -689,10 +689,10 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 		SetNodeUsing("DOWNRECTSMOOTH",false);
 		SetNodeUsing("BACKSLIDE",false);
 		SetNodeUsing("TITLE",false);
-		CreateString(true, "ScreenTitle", XI_ConvertString(GameInterface.title), FONT_TITLE, COLOR_NORMAL, 320, 6, SCRIPT_ALIGN_CENTER, 1.0);
+		CreateString(true, "ScreenTitle", XI_ConvertString(GameInterface.title), FONT_TITLE, COLOR_NORMAL, 320, 85, SCRIPT_ALIGN_CENTER, 0.8);
 		SetNodeUsing("CENTERRECTANGLE",false);
 		SetNodeUsing("CENTERBOUND",false);
-		if(bAnimation) SetNodeUsing("BACKGROUND",false); // PB: Dynamic Interfaces
+		// if(bAnimation) SetNodeUsing("BACKGROUND",false); // PB: Dynamic Interfaces
 		SetNodeUsing("INFO",false);
 	}
 
@@ -1072,6 +1072,7 @@ void FillScroll()
 	aref curItem,arItem,rootItems;
 	aref arImgGrp;
 	ref mchref = GetMainCharacter();
+	// int idx = 1;// TIH
 
 	if(CheckAttribute(&GameInterface,"one_itemslist.current"))
 		nCurScroll1 = sti(GameInterface.one_itemslist.current);
@@ -1101,7 +1102,7 @@ void FillScroll()
 		GameInterface.one_itemslist.pic1.tex1 = GetItemPictureTexture("one_itemslist.ImagesGroup","Gold");
 		GameInterface.one_itemslist.pic1.itemID = "Money";
 		GameInterface.one_itemslist.pic1.str1 = "#"+sti(mchref.Money);		// LDH 15Oct06 fix for decimal point money
-		if(DynamicInterfaceLevel() > 0) GameInterface.one_itemslist.pic1.str2 = "Gold"; // KK: Dynamic Interfaces
+		// if(DynamicInterfaceLevel() > 0) GameInterface.one_itemslist.pic1.str2 = "Gold"; // KK: Dynamic Interfaces
 		i++;
 	}
 	// loop through all items except maps of the player and add to scroller
@@ -1122,7 +1123,7 @@ void FillScroll()
 			GameInterface.one_itemslist.(attributeName).img1 = GetItemPictureName(arItem.id);
 			GameInterface.one_itemslist.(attributeName).tex1 = GetItemPictureTexture("one_itemslist.ImagesGroup",arItem.id);
 			GameInterface.one_itemslist.(attributeName).itemID = arItem.id;
-			
+			//if(CheckConsumedItem(arItem.id)) {// TIH doesnt work right?
 			if (iqty > 1) {// TIH absolute check
 				GameInterface.one_itemslist.(attributeName).str1 = "#" + iqty;
 			}
@@ -1137,7 +1138,7 @@ void FillScroll()
 			{
 				name += GetAssembledString(TranslateString("", arItem.name),arItem);
 			}
-			if(DynamicInterfaceLevel() > 0) GameInterface.one_itemslist.(attributeName).str2 = "#" + name; // PB: Dynamic Interfaces
+			// if(DynamicInterfaceLevel() > 0) GameInterface.one_itemslist.(attributeName).str2 = "#" + name; // PB: Dynamic Interfaces
 // <-- KK
 			// TIH --> add equipped checkmarks
 			if( IsEquipCharacterByItem(mchref,arItem.id) )
@@ -1193,7 +1194,7 @@ void FillScroll()
 		GameInterface.two_itemslist.pic1.tex1 = GetItemPictureTexture("two_itemslist.ImagesGroup","Gold");
 		GameInterface.two_itemslist.pic1.itemID = "Money";
 		GameInterface.two_itemslist.pic1.str1 = "#"+sti(g_refItems.Money);		// LDH 15Oct06 fix for decimal point money
-		if(DynamicInterfaceLevel() > 0) GameInterface.two_itemslist.pic1.str2 = "Gold"; // KK: Dynamic Interfaces
+		// if(DynamicInterfaceLevel() > 0) GameInterface.two_itemslist.pic1.str2 = "Gold"; // KK: Dynamic Interfaces
 		i++;
 	}
 
@@ -1219,7 +1220,7 @@ void FillScroll()
 			GameInterface.two_itemslist.(attributeName).img1 = GetItemPictureName(arItem.id);
 			GameInterface.two_itemslist.(attributeName).tex1 = GetItemPictureTexture("two_itemslist.ImagesGroup",arItem.id);
 			GameInterface.two_itemslist.(attributeName).itemID = arItem.id;
-			
+			//if(CheckConsumedItem(arItem.id)) {// TIH doesnt work right?
 			if ( sti(GetAttributeValue(curItem)) > 1 ) {// TIH absolute check
 				GameInterface.two_itemslist.(attributeName).str1 = "#"+sti(GetAttributeValue(curItem));
 			}
@@ -1227,7 +1228,7 @@ void FillScroll()
 			name = "";
 			if (CheckAttribute(arItem, "QualityName")) name = TranslateString("", "q"+arItem.QualityName) + " "; // PB: Correct quality name
 			name += GetAssembledString(TranslateString("", arItem.name),arItem);
-			if(DynamicInterfaceLevel() > 0) GameInterface.two_itemslist.(attributeName).str2 = "#" + name; // PB: Dynamic Interfaces
+			// if(DynamicInterfaceLevel() > 0) GameInterface.two_itemslist.(attributeName).str2 = "#" + name; // PB: Dynamic Interfaces
 // <-- KK
 		}
 		else
@@ -1243,6 +1244,7 @@ void FillScroll()
 
 	nCurScroll1 = sti(GameInterface.one_itemslist.current);
 	nCurScroll2 = sti(GameInterface.two_itemslist.current);
+	// GameInterface.one_itemslist.ListSize = idx-1;// TIH
 }
 
 void ProcessCancelExit()
@@ -1811,7 +1813,7 @@ void ChangeItemsSlot()
 	SetScrollsUsing();
 }
 
-// Sulan: Rewrote these functions to reduce the code mess 
+// Sulan: Rewrote these functions to reduce the code mess :)
 void TakeOneItem()
 {
 	TakeItems(false);
@@ -3496,13 +3498,13 @@ void InsertItem(int source_itemlist, string source_itemID, int amount, string st
 	{
 		list.(tempItem).img1 = GetItemPictureName("Gold");
 		list.(tempItem).tex1 = GetItemPictureTexture(listname+".ImagesGroup","Gold");
-		if(DynamicInterfaceLevel() > 0) list.(tempItem).str2 = "Gold"; // PB: Dynamic Interfaces
+		// if(DynamicInterfaceLevel() > 0) list.(tempItem).str2 = "Gold"; // PB: Dynamic Interfaces
 	}
 	else
 	{
 		list.(tempItem).img1 = GetItemPictureName(source_itemID);
 		list.(tempItem).tex1 = GetItemPictureTexture(listname+".ImagesGroup",source_itemID);
-		if(DynamicInterfaceLevel() > 0) list.(tempItem).str2 = str2; // PB: Dynamic Interfaces
+		// if(DynamicInterfaceLevel() > 0) list.(tempItem).str2 = str2; // PB: Dynamic Interfaces
 	}
 	list.(tempItem).ItemID = source_itemID;
 	if (amount > 1) list.(tempItem).str1 = "#"+amount;
@@ -3594,7 +3596,7 @@ void RemoveItem(int item_list, string item_ID, int amount)
 				else list.(olditem).img2 = "";
 				if(CheckAttribute(&GameInterface, listname+"."+newItem+".tex2"))  list.(olditem).tex2 = list.(newItem).tex2;
 				else list.(olditem).tex2 = "";
-				if(DynamicInterfaceLevel() > 0) list.(olditem).str2 = list.(newItem).str2; // PB: Dynamic Interfaces
+				// if(DynamicInterfaceLevel() > 0) list.(olditem).str2 = list.(newItem).str2; // PB: Dynamic Interfaces
 			}
 		}
 		if(CheckAttribute(&GameInterface,listname+".current")) scroll_pos = (sti(list.current)+1);
@@ -3734,7 +3736,7 @@ int GetItemQntByOrder(bool my,int num)
 		PChar = GetMainCharacter();
 		if (itmName == "Money" && CheckAttribute(PChar, "Money") == true) return sti(PChar.Money);
 		iqty = GetCharacterItem(PChar, itmName);
-		if (IsEquipCharacterByItem(PChar, itmName))
+		if (IsEquipCharacterByItem(g_refItems, itmName) && !bDeadExchange)  // PB: Dead corpses don't care about still having anything equipped (workaround for WEIRD BUG!)
 		{
 			iqty--;
 			if (iqty <= 0) iqty = 0;
@@ -3750,7 +3752,7 @@ int GetItemQntByOrder(bool my,int num)
 		else
 		{
 			iqty = GetCharacterItem(g_refItems, itmName);
-			if (IsEquipCharacterByItem(g_refItems, itmName))
+			if (IsEquipCharacterByItem(g_refItems, itmName) && !bDeadExchange)  // PB: Dead corpses don't care about still having anything equipped (workaround for WEIRD BUG!)
 			{
 				iqty--;
 				if (iqty <= 0) iqty = 0;
@@ -4091,7 +4093,7 @@ void SetUpDownUsed()
 		}
 	}
 
-	if(sti(GetStorylineVar(FindCurrentStoryline(), "BUG_PUZZLES")) > 0)
+	if(sti(GetStorylineVar(FindCurrentStoryline(), "BUG_PUZZLES")) > 0))
 	{
 		if(itmName1=="gunpowder" || itmName1=="pistolmtoon")
 		{

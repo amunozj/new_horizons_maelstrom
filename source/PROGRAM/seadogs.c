@@ -32,13 +32,7 @@
 #include "ITEMS\itemLogic.c"
 #include "ITEMS\items_utilite.c"
 #include "sound\alias.c" // KK
-
-// ======================================
-// WEATHER OPTIONS
-// ======================================
-#include "Weather_NH/WhrWeather.c"   // NH weather
-// #include "Weather_GOF/WhrWeather.c"   //GOF weather
-
+#include "weather\WhrWeather.c"
 #include "controls\controls.c"
 #include "landencounters\landencounters.c"
 #include "NK.c" // 05-07-03 NK for misc functions
@@ -47,11 +41,8 @@
 #include "models\initModels.c" //scheffnow
 #include "Characters\init\monks.c" // scheffnow
 #include "CCCFunctions.c" // ccc
-
-// Directsail code.  Use only directsail_NH.c (original) or directsail_GOF.c (hybrid of GOF and NH)
-// #include "directsail_NH.c" // ccc Jan07, directsail code
-#include "directsail_GOF.c" // ccc Jan07, directsail code
-
+#include "CCCdirectsail.c" // ccc Jan07, directsail code
+// #include "directsail_GOF.c" // ccc Jan07, directsail code
 #include "elrapido.c" // El Rapido
 #include "MAXIMUS_Functions.c" // MAXIMUS
 #include "KB_routines.c"  // KBlack - to accomodate functions from other mods - initially for tuning ships mod
@@ -181,12 +172,12 @@ void ProcessCheat()
 					mc.scrollchars = sti(mc.scrollchars) - 1;
 					if(sti(mc.scrollchars) < 0) mc.scrollchars = OFFICER_MAX + COMPANION_MAX - 2;
 				}
-				LogIt("Selected character is " + Cheat_ScrollCharacterName(mc.scrollchars));
+				LogIt(TranslateString("","Selected character is") + " " + Cheat_ScrollCharacterName(mc.scrollchars));
 			break;
 
 			case "ScrollCharactersMain":
 				mc.scrollchars = 0
-				LogIt("Selected character is " + Cheat_ScrollCharacterName(mc.scrollchars));
+				LogIt(TranslateString("","Selected character is") + " " + Cheat_ScrollCharacterName(mc.scrollchars));
 			break;
 
 			case "ScrollCharactersRight":
@@ -203,7 +194,7 @@ void ProcessCheat()
 					mc.scrollchars = sti(mc.scrollchars) + 1;
 					if(sti(mc.scrollchars) > OFFICER_MAX + COMPANION_MAX - 2) mc.scrollchars = 0;
 				}
-				LogIt("Selected character is " + Cheat_ScrollCharacterName(mc.scrollchars));
+				LogIt(TranslateString("","Selected character is") + " " + Cheat_ScrollCharacterName(mc.scrollchars));
 			break;
 
 			case "God":
@@ -244,8 +235,8 @@ void ProcessCheat()
 			case "Gold":
 				mc.money = sti(mc.money) + 100000;
 				mc.wealth = sti(mc.wealth) + 10000;
-				Log_SetStringToLog("+ 100000 " + XI_ConvertString("Gold") + " for " + Cheat_ScrollCharacterName(0));
-				Log_SetStringToLog("+ 10000 " + XI_ConvertString("Wealth") + " for " + Cheat_ScrollCharacterName(0));
+				Log_SetStringToLog("+ 100000 " + XI_ConvertString("Gold") + " " + XI_Convertstring("for") + " " + Cheat_ScrollCharacterName(0));
+				Log_SetStringToLog("+ 10000 " + XI_ConvertString("Wealth") + " " + XI_Convertstring("for") + " " + Cheat_ScrollCharacterName(0));
 			break;
 
 			case "Reputation":
@@ -421,6 +412,13 @@ void Main_LogoVideo()
 			return;
 		}
 	break;
+	case 1:
+		{
+			InterfaceStates.videoIdx = 2;
+			StartPostVideo("Maelstrom_Intro",1);
+			return;
+		}
+	break;
 	}
 
 	DelEventHandler(EVENT_END_VIDEO,"Main_LogoVideo");
@@ -487,8 +485,8 @@ void Main_Start()
 
 	CheckStorylines(); // KK
 
-	//Boyer add
-	pchar = GetMainCharacter();
+	 //Boyer add
+	 pchar = GetMainCharacter();
     if(USE_NEW_WEATHER) {
         InterfaceStates.SeaDetails = 1.0;
         WeatherInit();
@@ -522,7 +520,7 @@ void SaveGame()
 
 void SaveGame_continue()
 {
-	PChar = GetMainCharacter();
+	ref PChar = GetMainCharacter();
 	DelEventHandler("evntSave","SaveGame");
 	DelEventHandler("delay_save","SaveGame_continue"); //Levis
 	string savePath = GetEventData(); // KK
@@ -541,6 +539,7 @@ void SaveGame_continue()
 	string qsFileName = "-=" + sCurProfile + "=- QuickSave";
 	string saveQSFullName = savePath + "\" + qsFileName;
 // <-- KK
+	PChar.savelang = GetInterfaceLanguage(); // MAXIMUS 20.08.2018 used for localization																				 
 
 	SaveEngineState(saveFullName);
 	ISetSaveData(saveFullName, saveData);
@@ -589,7 +588,7 @@ void LoadGame()
 	SendMessage(&reload_fader, "ls", FADER_PICTURE, FindReloadPicture("loading_game.tga")); // KK
 	SendMessage(&reload_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 	ReloadProgressStart();
-	pchar = GetMainCharacter(); // KK
+	ref pchar = GetMainCharacter(); // KK
 	pchar.savegamename = saveName;
 	SetEventHandler("frame","LoadGame_continue",1);
 }
@@ -597,7 +596,7 @@ void LoadGame()
 void LoadGame_continue()
 {
 // KK -->
-	pchar = GetMainCharacter();
+	ref pchar = GetMainCharacter();
 	DelEventHandler("frame","LoadGame_continue");
 	LoadEngineState(PChar.savegamename);
 	DeleteAttribute(PChar, "savegamename");
@@ -715,28 +714,46 @@ void InterfaceDoExit()
 			Event("DoInfoShower","sl","MainMenuLaunch",true);
 			LaunchMainMenu();
 			break;
+
+		case RC_INTERFACE_SPEAK_EXIT_AND_CAPTURE://Philippe, unlocked
+			string sTargetChr = pchar.speakchr;
+
+			pchar.abordage = 1;
+
+			Sea_AbordageStartNow(SHIP_ABORDAGE, GetCharacterIndex(sTargetChr), true, true);
+
+
+			SetTimeScale(1.0);
+			TimeScaleCounter = 0;
+			DelPerkFromActiveList("TimeSpeed"); //boal
+
+			pchar.speakchr = 0;
+			pchar.whospeak = 0;
+			break;
+		case RC_INTERFACE_SPEAK_EXIT_AND_TRADE://Philippe, unlocked
+			LaunchStore(SHIP_STORE);
+			break;
 // <-- KK
 	}
 }
 
-void EngineLayersOffOn(bool on)
+void EngineLayersOffOn(bool on)		// Mirsaneli: fixes the white junglesprites when loading a save game (borrowed from GoF)
 {
-	//LayerSetRealize("realize",on);
-	//LayerSetExecute("execute",on);
 	on = !on;
-	LayerFreeze("realize",on);
-	LayerFreeze("execute",on);
-	if(!bAbordageStarted) { // KK
+	if( on ) {
+		LayerFreeze("realize",on);
+		LayerFreeze("execute",on);
 		LayerFreeze("sea_realize",on);
 		LayerFreeze("sea_execute",on);
+	} else {
+		if(bSeaActive && !bAbordageStarted) {
+			LayerFreeze("sea_realize",on);
+			LayerFreeze("sea_execute",on);
+		} else {
+			LayerFreeze("realize",on);
+			LayerFreeze("execute",on);
+		}
 	}
-	//LayerFreeze("sun_trace",on);
-	//LayerFreeze("sea_reflection",on);
-	//LayerFreeze("shadow",on);
-	//LayerFreeze("ship_cannon_trace",on);
-	//LayerFreeze("hull_trace",on);
-	//LayerFreeze("mast_ship_trace",on);
-	//LayerFreeze("sails_trace",on);
 }
 
 string seadogs_saveFrom = "";
@@ -770,7 +787,7 @@ void SaveAtSea()
 {
 	// Screwface : It seems that if we do a save at sea and a reload, we lost the current load of balls & gunpowder
 	// This code save this charge to re-add it at the load at sea
-	Pchar = GetMainCharacter();
+	ref Pchar = GetMainCharacter();
 	ref rCannon; makeref(rCannon,Cannon[GetCaracterShipCannonsType(Pchar)]);
 	if(CANNONPOWDER_MOD)
 	{
@@ -863,6 +880,8 @@ void OnLoad()
 	InterfaceStates.Buttons.Save.enable = true;
 	InterfaceStates.Buttons.Load.enable = true;
 
+	// Reset active control group
+	ResetActiveControls();		   
 // KK -->
 	switch (seadogs_saveFrom)
 	{
@@ -1153,6 +1172,7 @@ void SideStepControl(float mag, bool onoff)
 {
 	//trace("Sidestep control, mag " + mag + ", onoff is " + onoff);
 	pchar = GetMainCharacter();
+	if(CheckAttribute(pchar, "inDialog")) return;
 	if(onoff)
 	{
 		if(!CheckAttribute(pchar, "sidestep"))
@@ -1173,6 +1193,7 @@ void SideStep_Proc()
 {
 	int idx = GetEventData();
 	ref chr = GetCharacter(idx);
+	if(CheckAttribute(chr, "inDialog")) return;
 	if(sti(InterfaceStates.Launched) || dialogRun)
 	{
 		DeleteAttribute(&chr, "sidestep")
@@ -1368,6 +1389,7 @@ void ProcessControls()
 					SetDefaultNormWalk(PChar);
 					SetDefaultFight(PChar);
 					EndChangeCharacterActions(PChar); // NK ditto
+					SetAlwaysRun(AlwaysRunToggle);
 					if(AlwaysRunToggle) Log_SetStringToLog(TranslateString("","Always run is now on"));
 					else Log_SetStringToLog(TranslateString("","Always run is now off"));
 				}
@@ -1376,12 +1398,12 @@ void ProcessControls()
 					if(sti(GetAttribute(GetMainCharacter(), "clubhauling")) == 1 )
 					{
 						Characters[GetMaincharacterIndex()].clubhauling = -1;
-						LogIt("Clubhauling default direction set to PORT");
+						LogIt(TranslateString("","Clubhauling default direction set to PORT"));
 					}
 					else
 					{
 						Characters[GetMaincharacterIndex()].clubhauling = 1;
-						LogIt("Clubhauling default direction set to STARBOARD");
+						LogIt(TranslateString("","Clubhauling default direction set to STARBOARD"));
 					}
 				}
 			return; break;
@@ -1532,6 +1554,10 @@ void ProcessControls()
 							PostEvent("Longrifle_W_on_back", 1000, "i", PChar);
 						}
 
+						if(IsEquipCharacterByItem(PChar, "portugize"))
+						{
+							PostEvent("portugize_on_back", 1000, "i", PChar);
+						}
 						if(IsEquipCharacterByItem(Pchar, "shield_hand"))
 						{
 							RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE );
@@ -2108,28 +2134,11 @@ void ProcessControls()
 
 			// PB: Simplified Time Compression Controls -->
 			case "BOAL_Control":
-				switch(GetTimeScale())
-				{
-					case  0: PChar.basetime =  1; break;		// New values by El Rapido
-					case  1: PChar.basetime =  3; break;
-					case  3: PChar.basetime =  5; break;
-					case  5: PChar.basetime = 10; break;
-					case 10: PChar.basetime = 20; break;
-				}
-				UpdateTimeScale();
-				LogIt(XI_ConvertString("Time") + " x" + makeint(GetTimeScale()));
+			SpeedUpTime();
 			return; break;
 
 			case "BOAL_Control0":
-				switch(GetTimeScale())
-				{
-					case 20: PChar.basetime = 10; break;		// New values by El Rapido
-					case 10: PChar.basetime =  5; break;
-					case  5: PChar.basetime =  3; break;
-					case  3: PChar.basetime =  1; break;
-				}
-				UpdateTimeScale();
-				LogIt(XI_ConvertString("Time") + " x" + makeint(GetTimeScale()));
+			SlowDownTime();
 			return; break;
 			// PB: Simplified Time Compression Controls <--
 
@@ -2166,7 +2175,7 @@ void ProcessControls()
 				}
 				else
 				{
-					LogIt("You don't have a map of the archipelago.");
+					LogIt(TranslateString("","You don't have a map of the archipelago."));
 				}
 			return; break;
 // dchaley <--
@@ -2920,4 +2929,54 @@ void ResetDevice()
         //ChangeShowIntarface();
         //ChangeShowIntarface();
     //}
+}
+
+void SpeedUpTime()  // MrMyth92: added the different timescales for World map
+{
+if(!IsEntity(&worldMap))
+{
+switch (GetTimeScale())
+{
+case  0: PChar.basetime =  1; break;		// New values by El Rapido
+case  1: PChar.basetime =  3; break;
+case  3: PChar.basetime =  5; break;
+case  5: PChar.basetime = 8; break;
+case 8: PChar.basetime = 12; break;
+}
+}
+else
+{
+switch (GetTimeScale())
+{
+case  0: PChar.basetime =  1; break;		// New values by El Rapido
+case  1: PChar.basetime =  3; break;
+case  3: PChar.basetime =  5; break;
+}
+}
+UpdateTimeScale();
+LogIt(XI_ConvertString("Time") + " x" + makeint(GetTimeScale()));
+}
+
+void SlowDownTime() // MrMyth92: added the different timescales for World map
+{
+if(!IsEntity(&worldMap))
+{
+switch (GetTimeScale())
+{
+case 12: PChar.basetime = 8; break;		// New values by El Rapido
+case 8: PChar.basetime =  5; break;
+case  5: PChar.basetime =  3; break;
+case  3: PChar.basetime =  1; break;
+}
+}
+else
+{
+switch (GetTimeScale())
+{
+case  5: PChar.basetime =  3; break;		// New values by El Rapido
+case  3: PChar.basetime =  1; break;
+}
+}
+UpdateTimeScale();
+LogIt(XI_ConvertString("Time") + " x" + makeint(GetTimeScale()));
 }

@@ -39,6 +39,8 @@ options
 *.xps
 *.zap
 *.wrl
+*.exe
+*.zip
 
 launch.json
 settings.json

@@ -38,7 +38,7 @@ bool LAi_tmpl_SetFight(aref chr, aref target)
 // JRH -->
 	if(IsEquipCharacterByItem(chr, "pistolmket"))
 	{
-		if(charge == 1.0) 
+		if(charge == 1.0)
 		{
 			PostEvent("mket_on_hip", 1000, "i", chr);
 		}
@@ -58,7 +58,7 @@ bool LAi_tmpl_SetFight(aref chr, aref target)
 
 	if(IsEquipCharacterByItem(chr, "pistolmketB"))
 	{
-		if(charge == 1.0) 
+		if(charge == 1.0)
 		{
 			PostEvent("mketB_on_hip", 0, "i", chr);
 		}
@@ -84,7 +84,7 @@ bool LAi_tmpl_SetFight(aref chr, aref target)
 	{
 		if(charge == 1.0) PostEvent("LongRifle_C_on_hip", 0, "i", chr);
 	}
-	
+
 	if(IsEquipCharacterByItem(chr, "LongRifle_H"))
 	{
 		if(charge == 1.0) PostEvent("LongRifle_H_on_hip", 0, "i", chr);
@@ -100,8 +100,8 @@ bool LAi_tmpl_SetFight(aref chr, aref target)
 		PostEvent("bax_on_hip", 10, "i", chr);
 	}
 
-	if(IsEquipCharacterByItem(chr, "witcher_steel-2") || IsEquipCharacterByItem(chr, "witcher_steel-1") 
-	|| IsEquipCharacterByItem(chr, "witcher_steel") || IsEquipCharacterByItem(chr, "witcher_steel+1") 
+	if(IsEquipCharacterByItem(chr, "witcher_steel-2") || IsEquipCharacterByItem(chr, "witcher_steel-1")
+	|| IsEquipCharacterByItem(chr, "witcher_steel") || IsEquipCharacterByItem(chr, "witcher_steel+1")
 	|| IsEquipCharacterByItem(chr, "witcher_steel+2") || IsEquipCharacterByItem(chr, "witcher_steel+3"))
 	{
 		PostEvent("witcher_steel_on_hip", 10, "i", chr);
@@ -157,11 +157,11 @@ bool LAi_tmpl_fight_InitTemplate(aref chr)
 			DeleteAttribute(chr, "chr_ai.tmpl");
 			chr.chr_ai.tmpl = LAI_TMPL_FIGHT;
 			int idx = LAi_tmpl_fight_SetBestTarget(chr);
-			if(idx == -1) 
+			if(idx == -1)
 			{
 				LAi_tmpl_fight_SetTarget(chr, NullCharacter);
 			}
-			else 
+			else
 			{
 				LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
 			}
@@ -229,14 +229,14 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 			if(LAi_IsDead(target))
 			{
 				idx = LAi_tmpl_fight_SetBestTarget(chr);
-				if(idx == -1) 
+				if(idx == -1)
 				{
 					if(DEBUG_FIGHTING) trace("No target found for "+chr.id);
 					LAi_tmpl_fight_SetWaitState(chr);
 					LAi_Character_TemplateComplite(chr, LAI_TMPL_FIGHT);
 					return;
 				}
-				else 
+				else
 				{
 					LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
 				}
@@ -249,7 +249,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 				if(time > 3)
 				{
 					idx = LAi_tmpl_fight_SetBestTarget(chr);
-					if(idx == -1) 
+					if(idx == -1)
 					{
 						//Maybe our target just went out of checking range, but we don't want to loose it now do we...
 						if(LAi_IsDead(target))
@@ -297,7 +297,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 				if(stf(tmpl.changestatetime) > 8 && tmpl.state == "go")
 				{
 					//Character doesn't seem to reach his destination
-					if(CanReloadGun(chr)) 
+					if(CanReloadGun(chr))
 					{
 						if(DEBUG_FIGHTING) trace("Set Support because character can't reach target");
 						LAi_tmpl_fight_FightSupport(chr);
@@ -321,7 +321,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 								{
 									if(sti(GetAttribute(GroupTargets,aigroup+".targets."+idx)) < 2 || !CheckAttribute(GroupTargets,aigroup+".targets."+idx)) //If the best target has no people fighting it then go get it!
 									{
-									
+
 										if(DEBUG_FIGHTING) trace("Nobody is taking care of best target so in we go altough we are exhausted");
 										LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
 										LAi_tmpl_fight_FightStay(chr);
@@ -550,9 +550,9 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 			PostEvent("bax_on_back", 1000, "i", chr);
 			PostEvent("mguns_reset_check", 1000, "i", chr);
 		}
-	
-		if(IsEquipCharacterByItem(chr, "witcher_steel-2") || IsEquipCharacterByItem(chr, "witcher_steel-1") 
-		|| IsEquipCharacterByItem(chr, "witcher_steel") || IsEquipCharacterByItem(chr, "witcher_steel+1") 
+
+		if(IsEquipCharacterByItem(chr, "witcher_steel-2") || IsEquipCharacterByItem(chr, "witcher_steel-1")
+		|| IsEquipCharacterByItem(chr, "witcher_steel") || IsEquipCharacterByItem(chr, "witcher_steel+1")
 		|| IsEquipCharacterByItem(chr, "witcher_steel+2") || IsEquipCharacterByItem(chr, "witcher_steel+3"))
 		{
 			PostEvent("witcher_steel_on_back", 1000, "i", chr);
@@ -565,14 +565,14 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 			{
 				//Check for a enemy again else stop this template
 				idx = LAi_tmpl_fight_SetBestTarget(chr);
-				if(idx == -1) 
+				if(idx == -1)
 				{
 					if(DEBUG_FIGHTING) trace("No target found for "+chr.id);
 					LAi_tmpl_fight_SetWaitState(chr);
 					LAi_Character_TemplateComplite(chr, LAI_TMPL_FIGHT);
 					return;
 				}
-				else 
+				else
 				{
 					LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
 					LAi_tmpl_fight_FightStay(chr);
@@ -599,7 +599,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 					if(hp < hppercantagehelp)
 					{
 						idx = LAi_tmpl_fight_SetBestTarget(GetMainCharacter());
-						if(idx > -1) 
+						if(idx > -1)
 						{
 							LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
 							LAi_tmpl_fight_FightStay(chr);
@@ -643,12 +643,12 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 							{
 								if(LAi_CharacterCanFire(chr))
 								{
-									if(idx == -1) 
+									if(idx == -1)
 									{
 										if(DEBUG_FIGHTING) trace("No target found for "+chr.id);
 										LAi_tmpl_fight_SwitchIn(chr);
 									}
-									else 
+									else
 									{
 										if(DEBUG_FIGHTING) trace("Character "+chr.id+" should fire gun");
 										LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
@@ -659,7 +659,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 								{
 									SetCharacterTask_Stay(chr);
 									CharacterTurnByChr(chr,&characters[nearestchar]);
-									if(CanReloadGun(chr)) 
+									if(CanReloadGun(chr))
 									{
 										if(DEBUG_FIGHTING) trace("Character "+chr.id+" is reloading "+chr.chr_ai.charge);
 										LAi_tmpl_fight_FightSupport(chr);
@@ -675,12 +675,12 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 							{
 								if(LAi_CharacterCanFire(chr) && distancetotarget > fightdistance) //If we can fire we should do so first but we do need to take a little distance so we can properly aim
 								{
-									if(idx == -1) 
+									if(idx == -1)
 									{
 										if(DEBUG_FIGHTING) trace("No target found for "+chr.id);
 										LAi_tmpl_fight_SwitchIn(chr);
 									}
-									else 
+									else
 									{
 										if(DEBUG_FIGHTING) trace("Character "+chr.id+" taken some distance so it should fire the gun now");
 										LAi_tmpl_fight_SetTarget(chr, &Characters[idx]);
@@ -974,7 +974,7 @@ void LAi_tmpl_fight_FreePos(aref chr, aref who)
 void LAi_tmpl_fight_SetWaitState(aref chr)
 {
 	if(DEBUG_FIGHTING) trace("Character "+chr.id+" is now waiting");
-	if(IMPROVE_FIGHT_AI) 
+	if(IMPROVE_FIGHT_AI)
 	{
 		if(GetAttribute(chr,"chr_ai.tmpl.state") != "wait")
 		{
@@ -1208,7 +1208,7 @@ int LAi_tmpl_fight_SetBestTarget(aref chr)
 				//We call this function again but for the main player, this way we'll get a nice check
 				return LAi_tmpl_fight_SetBestTarget(GetMainCharacter());
 			}
-			
+
 		}
 	}
 	if(bestidx >= 0)
@@ -1249,7 +1249,7 @@ int LAi_tmpl_fight_SetBestTarget(aref chr)
 					}
 				}
 			}
-			
+
 		}
 	}
 	//First check for best
@@ -1350,5 +1350,5 @@ void GroupTargetSetState(ref chr, string state)
 
 bool EnoughFightersInGroup(ref chr)
 {
-	
+
 }

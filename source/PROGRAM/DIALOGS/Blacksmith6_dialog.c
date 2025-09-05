@@ -399,7 +399,7 @@ void ProcessDialogEvent()
 		link.l95 = DLG_TEXT[24];
 		link.l95.go = "exit";
 
-		LogIt(BladeCount*2+" hours pass until the work is completed and you receive the blades back.");
+		LogIt(BladeCount*2+ " "+ TranslateString("","hours pass until the work is completed and you receive the blades back."));
 		WaitDate("", 0, 0, 0, BladeCount*2, 0);
 		break;
 
@@ -472,7 +472,7 @@ void ProcessDialogEvent()
 		link.l95 = DLG_TEXT[24];
 		link.l95.go = "exit";
 
-		LogIt(BladeCount*2+" hours pass until the work is completed and you receive the blades back.");
+		LogIt(BladeCount*2+ " "+ TranslateString("","hours pass until the work is completed and you receive the blades back."));
 		WaitDate("", 0, 0, 0, BladeCount*2, 0);
 
 		break;
@@ -546,7 +546,7 @@ void ProcessDialogEvent()
 		link.l95 = DLG_TEXT[24];
 		link.l95.go = "exit";
 
-		LogIt(BladeCount*2+" hours pass until the work is completed and you receive the blades back.");
+		LogIt(BladeCount*2+ " "+ TranslateString("","hours pass until the work is completed and you receive the blades back."));
 		WaitDate("", 0, 0, 0, BladeCount*2, 0);
 
 		break;
@@ -620,7 +620,7 @@ void ProcessDialogEvent()
 		link.l95 = DLG_TEXT[24];
 		link.l95.go = "exit";
 
-		LogIt(BladeCount*2+" hours pass until the work is completed and you receive the blades back.");
+		LogIt(BladeCount*2+ " "+ TranslateString("","hours pass until the work is completed and you receive the blades back."));
 		WaitDate("", 0, 0, 0, BladeCount*2, 0);
 
 		break;
@@ -649,7 +649,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_EXELLENT, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings 
+		// ccc added makeint cause you can't calc with strings :)
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -680,7 +680,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_FINE, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings 
+		// ccc added makeint cause you can't calc with strings :)
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -711,7 +711,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_GOOD, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings 
+		// ccc added makeint cause you can't calc with strings :)
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else
@@ -742,7 +742,7 @@ void ProcessDialogEvent()
 		RepairCost = makeint(GetItemUpgradePrice(BladeID, GetItemQualityByID(BladeID), QUALITY_AVERAGE, pricemult));
 		AddMoneyToCharacter(NPChar,RepairCost); // PB: Blacksmith Gets Paid
 		PlayerMoney -= RepairCost;
-		// ccc added makeint cause you can't calc with strings 
+		// ccc added makeint cause you can't calc with strings :)
 		if (BLACKSMITH_PAY_OUT_WEALTH == 1) // PB: Toggle blacksmith payment in BS.h
 		{MainChar.wealth = PlayerMoney;}
 		else

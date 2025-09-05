@@ -1,11 +1,15 @@
 #define LIFETIMEFACTOR 1.0
-
-
+#define MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER_FORT		1250.0
+#define MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION		1000.0										  
 object	Sail, Rope, Flag, Vant;
 // KK -->
 object Pennant, MerchantFlag, MerchantPennant, FortFlag;
 object PirateFlag[PIRATEFLAGS_TEXTURES_QUANTITY], PiratePennant[PIRATEFLAGS_TEXTURES_QUANTITY];
 object PersonalFlag[PERSONALFLAGS_TEXTURES_QUANTITY], PersonalPennant[PERSONALFLAGS_TEXTURES_QUANTITY];
+#define MAX_SHIPS 300 // or match your engine’s max ship count
+
+object NationFlag[MAX_SHIPS];
+object NationPennant[MAX_SHIPS];
 // <-- KK
 
 #event_handler("proc_ship_adddelayedcumxp","proc_ship_adddelayedcumxp"); //Levis
@@ -114,26 +118,29 @@ void CreateFlagEnvironment()
 		}
 		if (sti(chr.nation) != PIRATE) continue;
 		GetPirateFlag(chr, &ntexture);
-		if (!IsEntity(&PirateFlag[ntexture])) {
-			sid = "" + ntexture;
-			PirateFlag[ntexture].ratioLimit = 1;
-            PirateFlag[ntexture].sizeRatio = 3.5;
-			PirateFlag[ntexture].iniSection = "PFg" + sid;
-			CreateEntity(&PirateFlag[ntexture], "Flag");
-			LayerAddObject(sCurrentSeaExecute, &PirateFlag[ntexture], iPriority);
-			LayerAddObject(sCurrentSeaRealize, &PirateFlag[ntexture], iPriority);
-			LayerAddObject("sea_reflection", &PirateFlag[ntexture], 3);
+		int nIdx = ntexture;
+		if (!IsEntity(&PirateFlag[nIdx])) {
+			sid = "" + nIdx;
+			//PirateFlag[nIdx].ratioLimit = 1;
+            //PirateFlag[nIdx].sizeRatio = 3.5;
+            DeleteAttribute(&PirateFlag[nIdx], "ratioLimit");
+            DeleteAttribute(&PirateFlag[nIdx], "sizeRatio");										
+			PirateFlag[nIdx].iniSection = "PFg" + sid;
+			CreateEntity(&PirateFlag[nIdx], "Flag");
+			LayerAddObject(sCurrentSeaExecute, &PirateFlag[nIdx], iPriority);
+			LayerAddObject(sCurrentSeaRealize, &PirateFlag[nIdx], iPriority);
+			LayerAddObject("sea_reflection", &PirateFlag[nIdx], 3);
 
 
 			iPriority++;
 
 			if (hasPennant) {
-                PiratePennant[ntexture].iniSection = "PPn" + sid;
-                PiratePennant[ntexture].lblGroup = "penn";
-				CreateEntity(&PiratePennant[ntexture], "Flag");
-				LayerAddObject(sCurrentSeaExecute, &PiratePennant[ntexture], iPriority);
-				LayerAddObject(sCurrentSeaRealize, &PiratePennant[ntexture], iPriority);
-				LayerAddObject("sea_reflection", &PiratePennant[ntexture], 3);
+                PiratePennant[nIdx].iniSection = "PPn" + sid;
+                PiratePennant[nIdx].lblGroup = "penn";
+				CreateEntity(&PiratePennant[nIdx], "Flag");
+				LayerAddObject(sCurrentSeaExecute, &PiratePennant[nIdx], iPriority);
+				LayerAddObject(sCurrentSeaRealize, &PiratePennant[nIdx], iPriority);
+				LayerAddObject("sea_reflection", &PiratePennant[nIdx], 3);
 				iPriority++;
 			}
 		}
@@ -152,8 +159,10 @@ void CreateFlagEnvironment()
 		GetPersonalFlag(chr, &ntexture);
 		if (!IsEntity(&PersonalFlag[ntexture])) {
 			sid = "" + ntexture;
-			PersonalFlag[ntexture].ratioLimit = 1;
-            PersonalFlag[ntexture].sizeRatio = 3.5;
+			//PersonalFlag[ntexture].ratioLimit = 1;
+            //PersonalFlag[ntexture].sizeRatio = 3.5;
+            DeleteAttribute(&PersonalFlag[ntexture], "ratioLimit");
+            DeleteAttribute(&PersonalFlag[ntexture], "sizeRatio");		  
 			PersonalFlag[ntexture].iniSection = "QFg" + sid;
 			CreateEntity(&PersonalFlag[ntexture], "Flag");
 			LayerAddObject(sCurrentSeaExecute, &PersonalFlag[ntexture], iPriority);
@@ -173,6 +182,40 @@ void CreateFlagEnvironment()
 			}
 		}
 	}
+	for (i = 0; i < shipsqty; i++)
+	{
+	if (locidx < 0) {
+		if (Ships[i] < 0) continue;
+		chr = GetCharacter(Ships[i]);
+	} else {
+		if (iShips[i] < 0) continue;
+		chr = GetCharacter(iShips[i]);
+	}
+
+	// Skip pirates and personal flags - they already have dedicated entities
+	int nat = sti(chr.nation);
+	if (nat == PIRATE || nat == PERSONAL_NATION || nat == PRIVATEER_NATION) continue;
+
+	if (!IsEntity(&NationFlag[i])) {
+		NationFlag[i].iniSection = "Flg" + sPeriod;
+		CreateEntity(&NationFlag[i], "Flag");
+		LayerAddObject(sCurrentSeaExecute, &NationFlag[i], iPriority);
+		LayerAddObject(sCurrentSeaRealize, &NationFlag[i], iPriority);
+		LayerAddObject("sea_reflection", &NationFlag[i], 3);
+		iPriority++;
+	}
+
+	if (hasPennant && !IsEntity(&NationPennant[i])) {
+		NationPennant[i].iniSection = "Pnt" + sPeriod;
+		NationPennant[i].lblGroup = "penn";
+		CreateEntity(&NationPennant[i], "Flag");
+		LayerAddObject(sCurrentSeaExecute, &NationPennant[i], iPriority);
+		LayerAddObject(sCurrentSeaRealize, &NationPennant[i], iPriority);
+		LayerAddObject("sea_reflection", &NationPennant[i], 3);
+		iPriority++;
+	}
+	}
+
 }
 
 void DeleteFlagEnvironment()
@@ -192,6 +235,11 @@ void DeleteFlagEnvironment()
 	{
 		if (IsEntity(&PersonalFlag[i])) DeleteClass(&PersonalFlag[i]);
 		if (IsEntity(&PersonalPennant[i])) DeleteClass(&PersonalPennant[i]);
+	}
+	for (i = 0; i < MAX_SHIPS; i++)
+	{
+		if (IsEntity(&NationFlag[i])) DeleteClass(&NationFlag[i]);
+		if (IsEntity(&NationPennant[i])) DeleteClass(&NationPennant[i]);
 	}
 	DeleteClass(&FortFlag);
 }
@@ -224,8 +272,10 @@ void CreateRiggingEnvironment()
 	LayerAddObject(sCurrentSeaRealize, &Vant, iPriority);
 	iPriority++;
 
-	Flag.ratioLimit = 1;
-	Flag.sizeRatio = 3.5;
+	//Flag.ratioLimit = 1;
+	//Flag.sizeRatio = 3.5;
+	DeleteAttribute(&Flag, "ratioLimit");
+    DeleteAttribute(&Flag, "sizeRatio");			
 	Flag.iniSection = "Flg" + sPeriod;
 	CreateEntity(&Flag, "Flag");
 	LayerAddObject(sCurrentSeaExecute, &Flag, iPriority);
@@ -245,8 +295,10 @@ void CreateRiggingEnvironment()
 
 	GetPirateFlag(mchr, &ntexture);
 	sid = "" + ntexture;
-	PirateFlag[ntexture].ratioLimit = 1;
-	PirateFlag[ntexture].sizeRatio = 3.5;
+	//PirateFlag[ntexture].ratioLimit = 1;
+	//PirateFlag[ntexture].sizeRatio = 3.5;
+	DeleteAttribute(&PirateFlag[ntexture], "ratioLimit");
+    DeleteAttribute(&PirateFlag[ntexture], "sizeRatio");					
 	PirateFlag[ntexture].iniSection = "PFg" + sid;
 	CreateEntity(&PirateFlag[ntexture], "Flag");
 	LayerAddObject(sCurrentSeaExecute, &PirateFlag[ntexture], iPriority);
@@ -266,8 +318,10 @@ void CreateRiggingEnvironment()
 
 	GetPersonalFlag(mchr, &ntexture);
 	sid = "" + ntexture;
-	PersonalFlag[ntexture].ratioLimit = 1;
-	PersonalFlag[ntexture].sizeRatio = 3.5;
+	//PersonalFlag[ntexture].ratioLimit = 1;
+	//PersonalFlag[ntexture].sizeRatio = 3.5;
+	DeleteAttribute(&PersonalFlag[ntexture], "ratioLimit");
+    DeleteAttribute(&PersonalFlag[ntexture], "sizeRatio");			  
 	PersonalFlag[ntexture].iniSection = "QFg" + sid;
 	CreateEntity(&PersonalFlag[ntexture], "Flag");
 	LayerAddObject(sCurrentSeaExecute, &PersonalFlag[ntexture], iPriority);
@@ -463,6 +517,15 @@ void Ship_FireAction()
 				RefreshBattleInterface(true);														// Update relations and battle interface
 			}
 		}
+		// Philippe,
+		if (CheckAttribute(&rCharacter, "relation.UseOtherCharacter"))
+		{
+			if (sti(rCharacter.relation.UseOtherCharacter) >= 0)
+			{
+				SetCharacterRelationBoth(nMainCharacterIndex, sti(rCharacter.relation.UseOtherCharacter), RELATION_ENEMY);
+			}
+		}
+		NationUpdate();
 	}
 }
 
@@ -494,7 +557,7 @@ float Ship_MastDamage()
 		break;
 
 		case SHIP_MAST_TOUCH_SHIP:
-			if(!IsMainCharacter(rCharacter)) return 0.0; // PB: Collision damage for player ship only
+			// if(!IsMainCharacter(rCharacter)) return 0.0; // PB: Collision damage for player ship only
 		//aref rCollideCharacter = GetEventData();
 			fDamage = fDamage + MAST_SHIP_SCL * collhp;
 		break;
@@ -540,7 +603,7 @@ float Ship_MastDamage()
 				break;
 
 				case GOOD_GRAPES:
-					fDamage = fDamage + MAST_GRAPE_SCL * hp * fMult;
+					fDamage = fDamage + 0.0; // grapes cannot demast ships
 				break;
 
 				case GOOD_KNIPPELS:
@@ -633,15 +696,16 @@ void Ship_SetSailState(int iCharacterIndex, int iSailState)
 					Log_SetStringToLog(TranslateString("", "Make all sail!"));
 				break;
 			}
-			if (ENABLE_EXTRA_SOUNDS == 1) {	// added by KAM after build 11 // KK
+			/*if (ENABLE_EXTRA_SOUNDS == 1) {	// added by KAM after build 11 // KK	// disabled by Mirsaneli (sail up/down sound)
 				if (sti(rCharacter.LastSailState) > iSailState) {
 					PlayStereoSound("#sails_down");
 				} else {
 					PlayStereoSound("#sails_up");
 				}
 			}
+			*/
 		}
-		if (SAIL_OPERATE_DELAY == 0 || iRealismMode == 0) {
+		if (SAIL_OPERATE_DELAY == 0) {
 			rCharacter.LastSailState = iSailState;
 			DeleteAttribute(rCharacter, "Ship.Sails.Delay"); // PB: Just in case
 		} else {
@@ -934,7 +998,7 @@ void procDoneFireRequest()
 	} else {
 		bAllGunsLoaded = false;
 	}
-	if (!bAllGunsLoaded) PlayGunReadySound(-1);
+	// if (!bAllGunsLoaded) PlayGunReadySound(-1);
 }
 // <-- KK
 
@@ -978,8 +1042,6 @@ void Ship_SetTrackSettings(ref rCharacter)
     if(!CheckAttribute(rShip, "Track2.speed")) Trace("No speed rship " + rShip.Name);
         rCharacter.Ship.Track2.Speed = rShip.Track2.Speed;
 }
-
-
 void Ship_SetLightsOff(ref rCharacter, float fTime, bool bLights, bool bFlares, bool bNow)
 {
 	SendMessage(rCharacter, "lflll", MSG_SHIP_SETLIGHTSOFF, fTime, bLights, bFlares, bNow);
@@ -1027,7 +1089,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 		rCharacter.seatime = 0;
 		rCharacter.lastupdateseatime = 0;
 	}
-	trace("starting sa2s for " + rCharacter.id + " and prev numships " + iNumShips+ ", did delete attr");
+	//trace("starting sa2s for " + rCharacter.id + " and prev numships " + iNumShips+ ", did delete attr");
 
 	int iShipType = GetCharacterShipType(rCharacter); // PS
 	if (iShipType < 0 || iShipType >= SHIP_TYPES_QUANTITY_WITH_FORT)
@@ -1065,8 +1127,6 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType)
 	CharacterUpdateShipFromBaseShip(iCharacterIndex);
 	Ship_SetLightsAndFlares(rCharacter);
 	Ship_SetTrackSettings(rCharacter);
-
-	trace("updated ship from base");
 
 //	rCharacter.Ship.Ang.y = 0.0;
 	rCharacter.Ship.Ang.y = rand(90);
@@ -1130,7 +1190,7 @@ void Ship_Login(int iCharacterIndex)
 
 	//Update the contriblist and skill multipliers and do auto level up for NPC's
 	InitAutoSkillsSystem(rCharacter, true); //Levis, the check for autoskill will happen later.
-	if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList"); //Levis refresh contriblist on login
+	if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList")); //Levis refresh contriblist on login
 
 	ReloadProgressUpdate();
 }
@@ -2121,7 +2181,11 @@ int FindNearShips(int idx)
 	aref tmpar; makearef(tmpar, closeobj);
 	fSortArray(&tmpar, "dist", 0, place-1);
 
-	int r, relplace[3]; relplace[0] = 0; relplace[1] = 0; relplace[2] = 0;
+	int r, relplace[MAX_SHIPS_ON_SEA];
+	for (i = 0; i < MAX_SHIPS_ON_SEA; i++)
+	{
+		relplace[i] = 0;
+	}
 	object groupplaces;
 	string tstr2;
 	aref curplace, aref arrplace;
@@ -2133,6 +2197,13 @@ int FindNearShips(int idx)
 		makearef(curplace, retobj.all.(tstr));
 		CopyAttributes(curplace, arrplace);
 		r = sti(arrplace.rel);
+		//#20220717-02
+		if (r == 4) //UNKNOWN
+            r = 1; //NEUTRAL
+        else {
+            if (r == 3) //ALLIANCE
+                r = 0; //FRIEND
+        }
 		tstr = "rel" + r + "." + relplace[r];
 		relplace[r]++;
 		retobj.(tstr) = "";
@@ -2148,9 +2219,11 @@ int FindNearShips(int idx)
 		CopyAttributes(curplace, arrplace);
 	}
 	// done above. retobj.all.qty = place;
-	retobj.rel0.qty = relplace[0];
-	retobj.rel1.qty = relplace[1];
-	retobj.rel2.qty = relplace[2];
+	for (i = 0; i < place; i++)
+	{
+		tstr = "rel"+i;
+		retobj.(tstr).qty = relplace[i];
+	}
 	//tstr = "all.0";
 	//retdist = stf(retobj.(tstr).dist);
 	return place;
@@ -2377,7 +2450,8 @@ int GetSeaTime()
 	return sti(pchar.seatime);
 }
 // 04-09-21
-int AddSeaTimeToCurrent()
+//#20220816-01
+int AddSeaTimeToCurrent(bool incrementTime)
 {
 	// logit("AddSeaTimeToCurrent");
 	ref pchar = GetMainCharacter();
@@ -2388,7 +2462,9 @@ int AddSeaTimeToCurrent()
 	{
 		int oldhour = GetHour();
 		minutes = TIMESCALAR_SEA * (st/60 - sti(pchar.lastupdateseatime));
-		AddTimeToCurrent(0, minutes);
+		//#20220816-01
+		if (incrementTime)
+            AddTimeToCurrent(0, minutes);
 		pchar.lastupdateseatime = (st/60);
 // KK -->
 		if (CheckAttribute(PChar, "Ship.Cannons.fired_time") && CheckAttribute(PChar, "Ship.Cannons.reload_time")) {
@@ -2410,73 +2486,18 @@ int AddSeaTimeToCurrent()
 			// LDH this is where the weather is updated when on ship - 04Jan09
 			bool oldIsNight = Whr_IsNight();
 			bool oldIsRain = Whr_IsRain();		// LDH 20Feb09
-			Whr_UpdateWeatherHour();
-			Whr_UpdateWeather(false);
-			Weather.Time.time = GetTime();
+			//trace("AIShip oldhour != new " + GetHour());
+			aref aCurWeather = GetCurrentWeather();
+			DeleteAttribute(aCurWeather, "Sea.inlagoon");
+			Whr_UpdateWeather(true);
 			// LDH update the music if day/night changes - 20Jan09
 			// turn off the rain sounds if it's no longer raining - 20Feb09
-			if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain)
-				SetSchemeForSea();
+			if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain) {
+				doShipLightChange(aCurWeather);
+                SetSchemeForSea();
+			}
 		}
 	}
-
-	sCurrentFog = "Fog";
-	if (bSeaActive)
-	{
-		sCurrentFog = "SpecialSeaFog";
-	}		
-
-	// trace("addseatime: Find weather");
-	iCurWeatherNum = FindWeatherByHour( makeint(Environment.time) );
-	// addProceduralWeather(iCurWeatherNum);	
-	iBlendWeatherNum = FindBlendWeather(iCurWeatherNum);
-	iNextWeatherNum = iBlendWeatherNum;
-
-	// trace("addseatime: Fill weather");
-	// update weather: sun lighting
-	FillWeatherData(iCurWeatherNum, iBlendWeatherNum);
-
-	// trace("addseatime: Fill rain");
-
-	//update rain: rain drops, rain colors, rain size, rainbow
-	//navy -- 5.03.07
-	if (WeathersNH.Rain == true)
-	{
-		FillRainData(iCurWeatherNum, iBlendWeatherNum);
-		Rain.isDone = "";
-	}
-
-	// trace("addseatime: Fill sun");
-
-	// update sun glow: sun\moon, flares
-	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
-	SunGlow.isDone = true;
-
-	// trace("addseatime: Fill sea");
-	// Fill Sea data
-	FillSeaData(iCurWeatherNum,iBlendWeatherNum);	
-
-	// trace("addseatime: Fill sky");	
-	// Fill Sky data
-	FillSkyData(iCurWeatherNum,iBlendWeatherNum);
-
-	// trace("addseatime: update fog");
-	// update sky: fog
-	// Sky.TimeUpdate = Environment.time;
-
-	// trace("addseatime: done");
-
-	if (bSeaActive)
-	{
-		Island.LightingPath = GetLightingPath();
-		Island.FogDensity = Whr_GetFloat(Weather, "Fog.IslandDensity");
-		Sea.Fog.SeaDensity =  Whr_GetFloat(Weather, "Fog.SeaDensity");
-		SendMessage(&IslandReflModel, "lllf", MSG_MODEL_SET_FOG, 1, 1, stf(Weather.Fog.IslandDensity));	
-		
-	}	
-
-	fFogDensity = Whr_GetFloat(Weather, "Fog.Density");
-
 	return minutes;
 }
 // NK <--
@@ -2606,7 +2627,7 @@ void Ship_Ship2IslandCollision()
 	z = GetEventData();
 
 	ref rOurCharacter = GetCharacter(iOurCharacterIndex);
-	if(!IsMainCharacter(rOurCharacter)) return; // PB: Collision damage for player ship only
+	// if(!IsMainCharacter(rOurCharacter)) return; // PB: Collision damage for player ship only
 
 	float fHP = (1.0 - fSlide) * fPower * 3.0;
 	//Trace("Ship->Island touch: fpower = " + fPower + ", fHP = " + fHP + ", fSlide = " + fSlide);
@@ -2642,7 +2663,7 @@ void Ship_Ship2ShipCollision()
 	z = GetEventData();
 
 	ref rOurCharacter = GetCharacter(iOurCharacterIndex);
-	if(!IsMainCharacter(rOurCharacter)) return; // PB: Collision damage for player ship only
+//	if(!IsMainCharacter(rOurCharacter)) return; // PB: Collision damage for player ship only
 
 	float fHP = (1.0 - fSlide) * fPower * 20.0;
 	//Trace("Ship->Ship touch: idx = " + iOurCharacterIndex + ", fpower = " + fPower + ", fHP = " + fHP + ", fSlide = " + fSlide);
@@ -2666,7 +2687,8 @@ void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
 		{
 			for (int i = 1; i < COMPANION_MAX; i++)
 			{
-				if (GetCompanionIndex(GetMainCharacter(), i) < 0) continue;				ch = GetCharacter(GetCompanionIndex(GetMainCharacter(), i));
+				if (GetCompanionIndex(GetMainCharacter(), i) < 0) continue;
+				ch = GetCharacter(GetCompanionIndex(GetMainCharacter(), i));
 				if(rOurCharacter.index == ch.index)
 				{
 					loc = &locations[FindLocation("Companion_Cabin_"+i)];
@@ -2691,7 +2713,7 @@ void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
 	float fMultiply;
 	float fskillDefence = stf(rOurCharacter.TmpSkill.Defence); // KK
 	int iskillDefence = GetShipSkill(rOurCharacter, SKILL_DEFENCE); // PB
-float fFirstAid = 1.0;
+	float fFirstAid = 1.0;
 	if (USE_REAL_CANNONS)
 	{
 		fMultiply = Bring2Range(1.0, 0.5, 0.0, 1.0, fskillDefence); // KNB was from 1.0x to 0.2x damage
@@ -3152,38 +3174,52 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 				// RM <--
 
 				// Sulan : Ship's log -->
-				sLogTitle="Sunk a "+sSunkShipType;
+				Preprocessor_Add("shiptype", sSunkShipType);
+				Preprocessor_Add("shipname", GetMyShipNameShow(rDead));
+				Preprocessor_Add("nationdesc", XI_ConvertString(GetNationDescByType(iNation)));
+				Preprocessor_Add("nationdescflag", XI_ConvertString(GetNationDescByType(GetCurrentFlag())));
+				Preprocessor_Add("myshipname", GetMyShipNameShow(rKillerCharacter));
+				Preprocessor_Add("deadcrew", +abs(sti(rDead.Ship.Crew.Quantity)));
+				Preprocessor_Add("money", rDead.ShipMoney);
+				sLogTitle = GetTranslatedLog("Sunk a #sshiptype#");
 				switch (iKillStatus)
 				{
 					case KILL_BY_TOUCH:
-						sLogEntry = GetLogTime()+" we encountered the "+GetMyShipNameShow(rDead)+", a "+sSunkShipType+" flying "+GetNationDescByType(iNation)+" colours while under "+GetNationDescByType(GetCurrentFlag())+" flag ourselves.\nWe closed in on the ship and fired a broadside. In the following battle their captain tried to evade our cannonfire and almost escaped with a risky maneuver. The battle was ended by the "+GetMyShipNameShow(rKillerCharacter)+" ramming their ship. The hull shattered and the "+GetMyShipNameShow(rDead)+" sank like a stone within minutes.";
-						if (bPirated) sLogEntry +=" This was not considered to be a legal attack.";
-						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry +="\nAbout "+abs(sti(rDead.Ship.Crew.Quantity))+" sailors followed her to Davy Jones.";
+						sLogEntry = GetLogTime()+GetTranslatedLog(", we encountered the #sshipname#, a #sshiptype# flying #snationdesc# colours while under #snationdescflag# flag ourselves.\nWe closed in on the ship and fired a broadside. In the following battle their captain tried to evade our cannonfire and almost escaped with a risky maneuver. The battle was ended by the #smyshipname# ramming their ship. The hull shattered and the #sshipname# sank like a stone within minutes.");
+						if (bPirated) sLogEntry += " " + GetTranslatedLog("This was not considered to be a legal attack.");
+						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry += GetTranslatedLog("\nAbout #sdeadcrew# sailors followed her to Davy Jones.");
 					break;
 					case KILL_BY_BALL:
-						sLogEntry = GetLogTime()+" we encountered the "+GetMyShipNameShow(rDead)+", a "+sSunkShipType+" flying "+GetNationDescByType(iNation)+" colours while under "+GetNationDescByType(GetCurrentFlag())+" flag ourselves.\nWhen they were in reach of our cannons, we opened fire. Our cannons tore their sails to tatters and shattered their hull. After a ferocious battle, the "+GetMyShipNameShow(rKillerCharacter)+" fired her cannons a last time at the "+sSunkShipType+". Its hull was already heavily damaged from a previous broadside and the ship sank like a stone.";
-						if (bPirated) sLogEntry +=" This was not considered to be a legal attack.";
-						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry += "\nAbout "+abs(sti(rDead.Ship.Crew.Quantity))+" sailors went down with her to Davy Jones.";
+						sLogEntry = GetLogTime()+GetTranslatedLog(", we encountered the #sshipname#, a #sshiptype# flying #snationdesc# colours while under #snationdescflag# flag ourselves.\nWhen they were in reach of our cannons, we opened fire. Our cannons tore their sails to tatters and shattered their hull. After a ferocious battle, the #smyshipname# fired her cannons a last time at the #sshipname#. Its hull was already heavily damaged from a previous broadside and the ship sank like a stone.");      
+						if (bPirated) sLogEntry += " " + GetTranslatedLog("This was not considered to be a legal attack.");
+						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry += GetTranslatedLog("\nAbout #sdeadcrew# sailors went down with her to Davy Jones.");
 					break;
 					case KILL_BY_ABORDAGE:
-						sLogEntry = GetLogTime()+" we encountered the "+GetMyShipNameShow(rDead)+", a "+sSunkShipType+" flying "+GetNationDescByType(iNation)+" colours while under "+GetNationDescByType(GetCurrentFlag())+" flag ourselves.\n";
+						sLogEntry = GetLogTime()+GetTranslatedLog(", we encountered the #sshipname#, a #sshiptype# flying #snationdesc# colours while under #snationdescflag# flag ourselves.\n");
 						if (CheckAttribute(rDead, "surrendered") == true && sti(rDead.surrendered) == 1)
 						{
-							sLogEntry += "When we opened fire, they tried to escape, but we chased them and finally were in reach for boarding, when the cowards raised the white flag and surrendered the ship. We brought our ship alongside and boarded.";
+							sLogEntry += GetTranslatedLog("When we opened fire, they tried to escape, but we chased them and finally were in reach for boarding, when the cowards raised the white flag and surrendered the ship. We brought our ship alongside and boarded.");
 						}
 						else
 						{
-							sLogEntry += "Our cannons gave them a warm and hearty welcome when we closed for battle. Once they were in reach of our grappling hooks, we boarded the ship and I defeated the captain.";
+							sLogEntry += GetTranslatedLog("Our cannons gave them a warm and hearty welcome when we closed for battle. Once they were in reach of our grappling hooks, we boarded the ship and I defeated the captain.");
 						}
-						if (bPirated) sLogEntry +=" This was not considered to be a legal attack.";
-						sLogEntry += "\nWe plundered her";
-						if (CheckAttribute(rDead,"ShipMoney")) sLogEntry += ", moved the "+rDead.ShipMoney+" gold from their ship's chest to ours";
-						sLogEntry += " and sent the "+GetMyShipNameShow(rDead)+" down to Davy Jones.";
-						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry += "\nAbout "+abs(sti(rDead.Ship.Crew.Quantity))+" sailors accompanied her on her journey.";
-						sLogEntry += "\n \nThe "+GetMyShipNameShow(rDead)+" was loaded with the following cargo:\n"+GetCargoList(rDead);
+						if (bPirated) sLogEntry += " " + GetTranslatedLog("This was not considered to be a legal attack.");
+						sLogEntry += GetTranslatedLog("\nWe plundered her");
+						if (CheckAttribute(rDead,"ShipMoney")) sLogEntry += GetTranslatedLog(", moved the #smoney# gold from their ship's chest to ours");
+						sLogEntry += " " + GetTranslatedLog("and sent the #sshipname# down to Davy Jones.");
+						if (abs(sti(rDead.Ship.Crew.Quantity))>0) sLogEntry += GetTranslatedLog("\nAbout #sdeadcrew# sailors accompanied her on her journey.");
+						sLogEntry += GetTranslatedLog("\n \nThe #sshipname# was loaded with the following cargo:\n")+GetCargoList(rDead);
 					break;
 				}
-				WriteNewLogEntry(sLogTitle,sLogEntry, "Battle", true);
+				WriteNewLogEntry(PreprocessText(sLogTitle),PreprocessText(sLogEntry), "Battle", true);
+				Preprocessor_Delete("shiptype");
+				Preprocessor_Delete("shipname");
+				Preprocessor_Delete("nationdesc");
+				Preprocessor_Delete("nationdescflag");
+				Preprocessor_Delete("myshipname");
+				Preprocessor_Delete("deadcrew");
+				Preprocessor_Delete("money");
 				UpdateStatistics("ShipsSunk",1);
 				// Sulan : Ship's log <--
 			}
@@ -3353,21 +3389,31 @@ bool ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
 			// RM <--
 
 			// Sulan: Ship's log -->
-			sLogTitle = "Captured a "+sSunkShipType;
-			sLogEntry = GetLogTime()+" we encountered the "+GetMyShipNameShow(rDead)+", a "+sSunkShipType+" flying "+GetNationDescByType(iNation)+" colours while under "+GetNationDescByType(GetCurrentFlag())+" flag ourselves.\n";
+			Preprocessor_Add("shiptype", sSunkShipType);
+			Preprocessor_Add("shipname", GetMyShipNameShow(rDead));
+			Preprocessor_Add("nationdesc", XI_ConvertString(GetNationDescByType(iNation)));
+			Preprocessor_Add("nationdescflag", XI_ConvertString(GetNationDescByType(GetCurrentFlag())));
+			if (CheckAttribute(rDead,"ShipMoney")) Preprocessor_Add("money", rDead.ShipMoney);
+			sLogTitle = GetTranslatedLog("Captured a #sshiptype#");
+			sLogEntry = GetLogTime()+ GetTranslatedLog(", we encountered the #sshipname#, a #sshiptype# flying #snationdesc# colours while under #snationdescflag# flag ourselves.\n");
 			if(CheckAttribute(rDead, "surrendered") == true && sti(rDead.surrendered) == 1)
 			{
-				sLogEntry += "When we opened fire, they tried to escape, but we chased them and finally were in reach for boarding, when the cowards raised the white flag and surrendered the ship. We brought our ship alongside and boarded.";
+				sLogEntry += GetTranslatedLog("When we opened fire, they tried to escape, but we chased them and finally were in reach for boarding, when the cowards raised the white flag and surrendered the ship. We brought our ship alongside and boarded.");
 			}
 			else
 			{
-				sLogEntry += "When they were in reach of our cannons, we fired and a ferocious sea battle began. Finally we brought our ship alongside and boarded. After a bloody deckfight I defeated the enemy captain in a duel, thus capturing the ship.";
+				sLogEntry += GetTranslatedLog("When they were in reach of our cannons, we fired and a ferocious sea battle began. Finally we brought our ship alongside and boarded. After a bloody deckfight I defeated the enemy captain in a duel, thus capturing the ship.");      
 			}
-			if (bPirated) sLogEntry +=" This was not considered to be a legal attack.";
+			if (bPirated) sLogEntry += " " + GetTranslatedLog("This was not considered to be a legal attack.");
 			sLogEntry += "\n"+GetSailStatus(rDead)+" "+GetHullStatus(rDead)+"\n \n";
-			sLogEntry += "The "+sSunkShipName+" was loaded with the following cargo:\n"+GetCargoList(rDead);
-			if (CheckAttribute(rDead,"ShipMoney")) sLogEntry += "Additionally we found "+rDead.ShipMoney+" gold in the ship's chest.";
-			WriteNewLogEntry(sLogTitle,sLogEntry, "Battle", true);
+			sLogEntry += GetTranslatedLog("The #sshipname# was loaded with the following cargo:\n")+GetCargoList(rDead);
+			if (CheckAttribute(rDead,"ShipMoney")) sLogEntry += GetTranslatedLog("Additionally we found #smoney# gold in the ship's chest.");
+			WriteNewLogEntry(PreprocessText(sLogTitle),PreprocessText(sLogEntry), "Battle", true);
+			Preprocessor_Delete("shiptype");
+			Preprocessor_Delete("shipname");
+			Preprocessor_Delete("nationdesc");
+			Preprocessor_Delete("nationdescflag");
+			if (CheckAttribute(rDead,"ShipMoney")) Preprocessor_Delete("money");
 			UpdateStatistics("ShipsCaptured",1);
 			// <-- Sulan
 		} // NK
@@ -3555,13 +3601,35 @@ void Ship_HullHitEvent()
 						CreateParticleSystem("splinters_enhanced", x, y, z, 0.0, 0.0, 0.0, 0);	// twenty-four small splinters
 						CreateParticleSystem("splinters2_enhanced", x, y, z, 0.0, 0.0, 0.0, 0);	// twenty-four medium splinters
 				break;
-				case 3:
-						CreateBlast(x,y,z); // excessive plume of planks and barrels, causing big water splashes
-						CreateParticleSystem("ball_impact", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
-						CreateParticleSystem("splinters2", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
-						CreateParticleSystem("splinters3", x, y, z, 0.0, 0.0, 0.0, 0);	// five large splinters
-						CreateParticleSystem("flyers", x, y, z, 0.0, 0.0, 0.0, 0);
-						CreateParticleSystem("flyers2", x, y, z, 0.0, 0.0, 0.0, 0);
+				case 3:	// mirsaneli
+						if (rCannon.caliber >= 32)	
+						{
+							if (rand(8) == 0)  // 1 in 6 chance (rand(5) generates values 0-5)
+							{
+								CreateBlast(x, y, z);  // excessive plume of planks and barrels, causing big water splashes
+							}
+							if (rand(10) == 0) 
+							{
+								CreateParticleSystem("geo", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli: takes particles from models\particles
+							}
+							CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
+							CreateParticleSystemXPS("blast_inv_explode", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
+							CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli
+						}
+						else
+						{
+							if (rand(8) == 0)  // 1 in 6 chance (rand(5) generates values 0-5)
+							{
+								CreateBlast(x, y, z);  // excessive plume of planks and barrels, causing big water splashes
+							}
+							if (rand(10) == 0)
+							{
+								CreateParticleSystem("geo", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli: takes particles from models\particles
+							}
+							CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
+							CreateParticleSystemXPS("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
+							CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);	// Mirsaneli
+						}
 				break;
 			}
 		break;
@@ -3572,17 +3640,31 @@ void Ship_HullHitEvent()
 			if (rand(100) < 30) {Play3DSound("episode_boom", x, y, z);}
 			switch(SHIPHIT_PARTICLES)
 			{
-				case 0: CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); break; // one orange puff // stock behavior
-				case 1:
+				case 0: CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); break; // one orange puff // stock behavior	// not used in Maelstrom
+				case 1:	// not used in Maelstrom
 					CreateParticleSystem("ball_impact", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
-				case 2:
+				case 2:	// not used in Maelstrom
 					CreateParticleSystem("ball_impact", x, y, z, 0.0, 0.0, 0.0, 0);
 					CreateParticleSystem("splinters", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 				case 3:
-					CreateBlast(x,y,z);
-					CreateParticleSystem("ball_impact", x, y, z, 0.0, 0.0, 0.0, 0);
+					// CreateBlast(x,y,z); // excessive plume of planks and barrels, causing big water splashes		2025 Mirsaneli disabled: unrealistic
+					CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
+					CreateParticleSystemXPS("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
+					CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
+					if (rand(8) == 0) 
+					{
+						CreateParticleSystem("geo", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli: takes particles from models\particles
+					}
+					if (rand(10) == 0)  // 1 in 6 chance (rand(5) generates values 0-5)
+					{
+						CreateParticleSystem("flyers", x, y, z, 0.0, 0.0, 0.0, 0);
+					}
+					if (rand(10) == 0)  // 1 in 6 chance (rand(5) generates values 0-5)
+					{
+						CreateParticleSystem("flyers2", x, y, z, 0.0, 0.0, 0.0, 0);
+					}
 				break;
 			}
 		break;
@@ -3602,10 +3684,9 @@ void Ship_HullHitEvent()
 					CreateParticleSystem("splinters2", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 				case 3:
-					CreateBlast(x,y,z);
-					CreateParticleSystem("ball_impact", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("flyers", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("flyers2", x, y, z, 0.0, 0.0, 0.0, 0);
+					CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
+					CreateParticleSystemXPS("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
+					CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 			}
 		break;
@@ -3615,24 +3696,28 @@ void Ship_HullHitEvent()
 			Play3DSound("bomb2bort", x, y, z);
 			switch(SHIPHIT_PARTICLES)
 			{
-				case 0: CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); break; // one orange puff // stock behavior
-				case 1:
+				case 0: CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); break; // one orange puff // stock behavior	// not used in Maelstrom
+				case 1:	// not used in Maelstrom
 					CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
-				case 2:
+				case 2:	// not used in Maelstrom
 					CreateBlast(x,y,z);
 					CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0);
 					CreateParticleSystem("flyers", x, y, z, 0.0, 0.0, 0.0, 0);
 					CreateParticleSystem("flyers2", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 				case 3:
-					CreateBlast(x,y,z);
-					CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("splinters2", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("splinters3", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("flyers", x, y, z, 0.0, 0.0, 0.0, 0);
-					CreateParticleSystem("flyers2", x, y, z, 0.0, 0.0, 0.0, 0);
+					if (rand(7) == 0)  // 1 in 6 chance (rand(5) generates values 0-5)
+					{
+						CreateBlast(x, y, z);  // excessive plume of planks and barrels, causing big water splashes
+					}
+					if (rand(10) == 0) 
+					{
+						CreateParticleSystem("geo", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli: takes particles from models\particles
+					}
+					CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0);	// two small gray puffs
+					CreateParticleSystemXPS("blast_inv_explode", x, y, z, 0.0, 0.0, 0.0, 0);	// six medium splinters
+					CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 			}
 		break;
@@ -3644,6 +3729,12 @@ void Ship_HullHitEvent()
 	{
 		bInflame = true;
 		LogIt("Greek Fire hits the " + rOurCharacter.ship.name + "!")
+	}
+	// PB: Queen Anne's Revenge -->
+	if(sti(GetAttribute(AIBalls, "GreekFire")))
+	{
+		bInflame = true;
+		LogIt(TranslateString("","Greek Fire hits the") +" "+ rOurCharacter.ship.name + "!")
 	}
 	// PB: Queen Anne's Revenge <--
 
@@ -3661,7 +3752,6 @@ void Ship_HullHitEvent()
 //		fCrewDamage = 0.5*fCrewDamage+frand(0.5*fCrewDamage)+frand(0.5*fCrewDamage);	// this sets the damage to a random amount between 0.5* and 1.5* calculated damage - reported as being excessive
 		fCrewDamage = 0.1*fCrewDamage+frand(0.5*fCrewDamage)+frand(0.5*fCrewDamage);	// this sets the damage to a random amount between 0.1* and 1.1* calculated damage
 //trace("fCrewDamage="+fCrewDamage);
-		//fCrewDamage = FRAND(fCrewDamage); cleared by Mirsaneli
 		int iRelation = SeaAI_GetRelation(iOurCharacterIndex, GetMainCharacterIndex());
 		if (IsMainCharacter(rBallCharacter))
 		{
@@ -3670,7 +3760,7 @@ void Ship_HullHitEvent()
 			{
 				if (sti(rOurCharacter.nation) != PIRATE && !CheckAttribute(rBallCharacter, "false_flag_note") && !CheckAttribute(rOurCharacter, "skipRM"))
 				{
-					LogIt("Captain, we are under a flag friendly to the ship we're attacking. We may be branded a pirate if we don't hoist our true colours!");
+					LogIt(TranslateString("", "Captain, we are under a flag friendly to the ship we're attacking. We may be branded a pirate if we don't hoist our true colours!"));
 					PlaySound("INTERFACE\notebook.wav");
 					rBallCharacter.false_flag_note = true;
 				}
@@ -3897,7 +3987,7 @@ void Ship_FireDamage()
 void Ship_Serious_Boom(float x, float y, float z)
 {
 	CreateBlast(x,y,z);
-	CreateParticleSystem("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);
+	CreateParticleSystemXPS("ShipExplode", x, y, z, 0.0, 0.0, 0.0, 0);
 	Play3DSound("ship_explosion", x, y, z);
 }
 
@@ -4091,7 +4181,8 @@ void Ship_CheckMainCharacter()
 	rCharacter.seatime = temptime;
 
 	//locTmpTime = temptime; // also update loc tmp time.
-	AddSeaTimeToCurrent();
+	//#20220816-01
+	AddSeaTimeToCurrent(false);
 
 	Ship_CheckMorale(GetMainCharacterIndex()); // NK for morale check 04-09-16 <--
 
@@ -4362,10 +4453,16 @@ void Ship_CheckMainCharacter()
 				float fRatio = fEnemyCrewFencing / fOurCrewFencing;
 				if (sti(rShipCharacter.nation) == PIRATE) { fRatio = fRatio * 1.4; }
 				if (fRatio > 1.2)
-				{
-					bAbordageStartNow = true;
-					break;
-				}
+					{
+						// Mirsaneli: Prevent Silent Marry from boarding the player
+						if (CheckAttribute(rShipCharacter, "ship.type") && rShipCharacter.ship.type == "SilentMarry")
+						{
+							trace("Silent Marry refuses to board. Creepy...");
+							continue; // skip this boarding attempt
+						}
+						bAbordageStartNow = true;	// if other ships, initiate boarding
+						break;
+					}
 			}
 			continue;
 		}
@@ -4440,8 +4537,8 @@ void Ship_CheckMainCharacter()
 		}
 	}
 
-// disable any abordage if storm
-	if (Whr_IsStorm())
+	// disable any abordage if storm
+	if (Whr_IsStorm() || IsSilentMarryPresent())
 	{
 		bAbordageStartNow = false;
 		bAbordageFortCanBe = false;
@@ -4515,6 +4612,22 @@ void Ship_CheckMainCharacter()
 	if (bAbordageStartNow) { Sea_AbordageLoad(SHIP_ABORDAGE, false); }
 }
 
+bool IsSilentMarryPresent()
+{
+	for (int i = 0; i < MAX_SHIPS_ON_SEA; i++)
+	{
+		if (!IsCompanion(i)) continue;
+
+		ref rEnemy = GetCharacter(i);
+		if (CheckAttribute(rEnemy, "Ship.Type") && GetShipID(rEnemy) == "SilentMarry")
+		{
+			trace("Silent Marry is present in sea. Boarding is blocked.");
+			return true;
+		}
+	}
+	return false;
+}
+
 void Ship_OnStrandNext()
 {
 	ref	rCharacter = GetCharacter(GetEventData());
@@ -4563,15 +4676,10 @@ void Ship_OnStrand()
 void Ship_DetonateSmall()
 {
 	ref		rCharacter = GetCharacter(GetEventData());
-	// NK allow this to not repeat forever 05-04-18
-	if(CheckAttribute(rCharacter,"maxsmallboomtimes"))
-	{
-		int bt = sti(rCharacter.maxsmallboomtimes);
-		if(bt) { bt--; rCharacter.maxsmallboomtimes = bt; }
-		else { DeleteAttribute(rCharacter,"maxsmallboomtimes"); return; }
-	}
-	// NK <--
 	aref	arCharShip; makearef(arCharShip, rCharacter.Ship);
+
+	if (bAbordageStarted) { return; }
+	if (sti(InterfaceStates.Launched)) { return; }
 
 	float x = stf(arCharShip.Pos.x);
 	float y = stf(arCharShip.Pos.y);
@@ -4582,10 +4690,6 @@ void Ship_DetonateSmall()
 		int iSClass = GetCharacterShipClass(rCharacter);
 		PostEvent(SHIP_DETONATE_SMALL, 200 + iSClass * 300 + rand(900), "l", sti(rCharacter.index));
 	}
-
-	if (bAbordageStarted) { return; }
-	if (sti(InterfaceStates.Launched)) { return; }
-
 	float bx = arCharShip.BoxSize.x;
 	float by = arCharShip.BoxSize.y;
 	float bz = arCharShip.BoxSize.z;
@@ -4593,9 +4697,8 @@ void Ship_DetonateSmall()
 	float fCos = cos(stf(arCharShip.Ang.y));
 	float fSin = sin(stf(arCharShip.Ang.y));
 
-	int iTemp = 1 + rand(1);	// LDH moved outside for loop test, just in case - 25Mar09
-	for (int i=0; i < iTemp; i++)
-	{
+	//for (int i=0; i < 1 + rand(1); i++)
+	//{
 		float x1, y1, z1;
 		x1 = (frnd() - 0.5) * bx;
 		z1 = (frnd() - 0.5) * bz;
@@ -4604,8 +4707,8 @@ void Ship_DetonateSmall()
 
 		y1 = 1.0 + y + frnd() * 3.0;
 		Ship_Serious_Boom(x1 + x, y1, z1 + z);
-		CreateParticleSystem("blast", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
-	}
+		CreateParticleSystemXPS("blast", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
+	//}
 }
 
 void Ship_Turn180(ref rCharacter)
@@ -4621,11 +4724,9 @@ void Ship_Detonate(ref rCharacter, bool bMakeSmallBoom, bool bMakeDead)
 {
 	if (!CheckAttribute(rCharacter, "Ship.Pos.x"))
 	{
-		Traceif("Ship_Detonate: Can't find Ship.Pos in character with id: " + rCharacter.id);
+		Trace("Ship_Detonate: Can't find Ship.Pos in character with id: " + rCharacter.id);
 		return;
 	}
-	//trace("for char " + rCharacter.id + " of ship " + rCharacter.ship.name + " do Ship_Detonate");
-
 	aref	arCharShip; makearef(arCharShip, rCharacter.Ship);
 
 	float x = stf(arCharShip.Pos.x);
@@ -4641,8 +4742,9 @@ void Ship_Detonate(ref rCharacter, bool bMakeSmallBoom, bool bMakeDead)
 	float fCos = cos(stf(arCharShip.Ang.y));
 	float fSin = sin(stf(arCharShip.Ang.y));
 
-	iMinBoom += rand(2);	// LDH moved outside for loop test, just in case - 25Mar09
-	for (int i=0; i<iMinBoom; i++)
+	bool isBoomAlready = false;
+	int iMax = iMinBoom + rand(2); //fix
+	for (int i=0; i<iMax; i++)
 	{
 		float x1, y1, z1;
 		x1 = (frnd() - 0.5) * bx;
@@ -4651,8 +4753,12 @@ void Ship_Detonate(ref rCharacter, bool bMakeSmallBoom, bool bMakeDead)
 		RotateAroundY(&x1, &z1, fCos, fSin);
 
 		y1 = 1.0 + y + frnd() * 3.0;
-		Ship_Serious_Boom(x1 + x, y1, z1 + z);
-		CreateParticleSystem("blast", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
+		if(isBoomAlready == false)
+		{
+			Ship_Serious_Boom(x1 + x, y1, z1 + z);
+		}
+		isBoomAlready = true;
+		CreateParticleSystemXPS("blast_inv_explode", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
 	}
 	if (bMakeDead) { ShipDead(sti(rCharacter.Index), KILL_BY_SPY, -1); }
 
@@ -4679,41 +4785,54 @@ void Ship_UpdateParameters()
 	float fSailState = GetEventData();
 	if(!CheckAttribute(rCharacter,"LastSailState")) rCharacter.LastSailState = makeint(fSailState * 2); // NK, Amokachi
 
-	// PB: Steam Ships -->
+	// PB: Steam Ships -->			25.4.2025. Mirsaneli (rewritten some code to make it work with Maelstrom)
 	if(SteamShip(rCharacter))
 	{
 		if(!IsMainCharacter(rCharacter))
 		{
 			switch(sti(fSailState * 2))
 			{
-				case 0:
-					rCharacter.Ship.Power = 0;
-				break;
-				case 1:
-					rCharacter.Ship.Power = 50;
-				break;
-				case 2:
-					rCharacter.Ship.Power = 100;
-				break;
+				case 0: rCharacter.Ship.Power = 0; break;
+				case 1: rCharacter.Ship.Power = 50; break;
+				case 2: rCharacter.Ship.Power = 100; break;
 			}
 		}
+
 		if(GetCargoGoods(rCharacter, GOOD_PLANKS) > 0 || !IsMainCharacter(rCharacter))
 		{
 			ref MyShipType = GetShipByType(GetCharacterShipType(rCharacter));
 			aref arship; makearef(arship, rCharacter.ship);
-			float PowerScalar = stf(GetAttribute(rCharacter,"Ship.Power"))/100;
-			float SpeedRateScalar = stf(GetLocalShipAttrib(arship, MyShipType, "SpeedRate"))/10
-			float DamageScalar = makefloat(GetCurrentShipHP(rCharacter)) / makefloat(GetCharacterShipHP(rCharacter));
-			float SailCompensation = 1.0;
-			if(sti(rCharacter.LastSailState) == 0)	SailCompensation = 0.5;
-			rCharacter.Ship.Impulse.Rotate.z = 0.2 * PowerScalar * SpeedRateScalar * DamageScalar * SailCompensation;
 
-			fX = 0; fY = 0; fZ = 0;
+			float PowerScalar = stf(rCharacter.Ship.Power) / 100;
+			float SpeedRateScalar = stf(GetLocalShipAttrib(arship, MyShipType, "SpeedRate")) / 10;
+			float DamageScalar = makefloat(GetCurrentShipHP(rCharacter)) / makefloat(GetCharacterShipHP(rCharacter));
+			float SailCompensation;
+			if (sti(rCharacter.LastSailState) == 0)
+			{
+				SailCompensation = 0.5;
+			}
+			else
+			{
+				SailCompensation = 1.0;
+			}
+
+			// Final power factor adjustment - Tweak this to match Maelstrom requirements
+			float EngineForce = 10.0; // Try raising this value if the ship still doesn't move
+
+			// MAIN FIX: Use Speed.z instead of Rotate.z
+			rCharacter.Ship.Impulse.Speed.z = EngineForce * PowerScalar * SpeedRateScalar * DamageScalar * SailCompensation;
+			// LogIt("Player Speed.z = " + rCharacter.Ship.Speed.z + " | Impulse = " + rCharacter.Ship.Impulse.Speed.z);
+
+			// Optional: also allow some rotation assist
+			rCharacter.Ship.Impulse.Rotate.z = 0.7 * PowerScalar;
+
+			// Particle system
+			fX = 0, fY = 0, fZ = 0;
 			if(CheckAttribute(rCharacter,"Ship.pos.x")) fX=stf(rCharacter.Ship.pos.x);
 			if(CheckAttribute(rCharacter,"Ship.pos.y")) fY=stf(rCharacter.Ship.pos.y);
 			if(CheckAttribute(rCharacter,"Ship.pos.z")) fZ=stf(rCharacter.Ship.pos.z);
-
-			if(fX != 0 && fY != 0 && fZ != 0)	StackSteam(rCharacter, makeint(abs(stf(GetAttribute(rCharacter,"Ship.Power")))/7.5));
+			if(fX != 0 && fY != 0 && fZ != 0)
+				StackSteam(rCharacter, makeint(abs(stf(rCharacter.Ship.Power)) / 7.5));
 		}
 	}
 	// PB: Steam Ships <--
@@ -4750,7 +4869,7 @@ void Ship_UpdateParameters()
 // NK <--
 
 	float	fMaxSpeedZ = stf(GetLocalShipAttrib(arCharShip, &rShip, "SpeedRate")); // PRS3
-	float	fMaxSpeedY = stf(GetLocalShipAttrib(arCharShip, &rShip, "TurnRate")) / 444.444;	
+	float	fMaxSpeedY = stf(GetLocalShipAttrib(arCharShip, &rShip, "TurnRate")) / 444.444;	// cool magic number :)) //PRS3
 	float	fCurrentSpeedZ = stf(arCharShip.Speed.z);
 	if(!CheckAttribute(arCharShip,"Cargo.load")) RecalculateCargoLoad(rCharacter); // NK 04-16 bugfix
 	float	fLoad = Clampf(stf(arCharShip.Cargo.Load) / stf(GetLocalShipAttrib(arCharShip, &rShip, "Capacity"))); // PRS3
@@ -4854,7 +4973,7 @@ void Ship_UpdateParameters()
 						float fTacking = stf(arCharShip.Speed.y);													// Check which way the ship is going
 						if(fTacking <= 0.0)		arCharShip.Impulse.Rotate.y = -0.0018;								// Make the ship rotate to port
 						else					arCharShip.Impulse.Rotate.y =  0.0018;								// Make the ship rotate to starboard
-						//	if (IsCompanion(rCharacter)) LogIt("The " + GetMyShipNameShow(rCharacter) + " is tacking");
+						if (IsCompanion(rCharacter)) LogIt("The " + GetMyShipNameShow(rCharacter) + " is tacking");
 					}
 				}
 				else																								// Tack in progress
@@ -4872,7 +4991,7 @@ void Ship_UpdateParameters()
 					}
 					else
 					{
-						Ship_SetSailState(iCharacterIndex, 0.001);													// Keep sails lowered
+						// Ship_SetSailState(iCharacterIndex, 0.001);													// Keep sails lowered
 					}
 				}
 				// PB: Rewritten Tacking <--
@@ -5071,8 +5190,25 @@ void Ship_UpdateParameters()
 	float fWindAttack;
 	float fDamageMultiply;
 	float fDamageHP;
+	bool doStormDmg = false;
+	bool doTornadoDmg = false;
+	if (iRealismMode != 2) { //Check for IronMan mode 2
+        if (bStorm && bSeaActive)
+            doStormDmg = true;
+        if (bTornado && bSeaActive)
+            doTornadoDmg = true;
+    }
+    else { //Is IronMan mode
+        trace("IM iStormLockSeconds " + iStormLockSeconds);
+        if (iStormLockSeconds > 0) {
+            if (bStorm && bSeaActive)
+                doStormDmg = true;
+            if (bTornado && bSeaActive)
+                doTornadoDmg = true;
+        }
+    }
 //placed here by MAXIMUS <--
-	if (bStorm && bSeaActive)
+	if (doStormDmg && iStormLockSeconds > 0) //bStorm && bSeaActive)
 	{
 		fWindAttack = 1.0 - abs(fWindDotShip);
 
@@ -5132,7 +5268,7 @@ void Ship_UpdateParameters()
 	}
 // PB: Rewritten Storm Rotate Impulse <--
 
-	if (bTornado && bSeaActive)
+	if (doTornadoDmg && iStormLockSeconds > 0) //bTornado && bSeaActive)
 	{
 //placed here by MAXIMUS -->
 		fWindAttack = 1.0 - abs(fWindDotShip);
@@ -5216,17 +5352,98 @@ void Ship_UpdateTmpSkills(ref rCharacter)
 
 	aref aTmpSkill; makearef(aTmpSkill, rCharacter.TmpSkill);
 
-	aTmpSkill.Commerce   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Leadership = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP)) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Sneak      = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Defence    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Grappling  = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Sailing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Repair     = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Fencing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Accuracy   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  )) / MAX_CHARACTER_SKILL);
-	aTmpSkill.Cannons    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   )) / MAX_CHARACTER_SKILL);
-
+	// NK -->
+	//float mult = 1.0;
+	//bool bcomp = true;
+	//string tmp; // 04-09-15
+	/*if(!IsCompanion(rCharacter))
+	{
+		bcomp = false;
+		//Seeing the randofficers attribute was never removed this was set the first time you went to sea and after that it wasn't changed anymore
+		//So effectivly this never worked so for now I remove it to see how it goes -Levis
+		/*if(CheckAttribute(rCharacter, "randofficers"))
+		{
+			mult = stf(rCharacter.randofficers);
+			//unneeded, already clamped. 04-09-15
+			/*if(mult < 1.0) mult = 1.0;
+			if(mult > 4.0) mult = 4.0;*/
+		/*}
+		else
+		{
+			int sclass = GetCharacterShipClass(rCharacter);
+			sclass = 8-sclass;
+			mult += (fRand(GetOfficersQuantity(GetMainCharacter()))/3.0 + sclass/6.0 + fRand(sclass/6.0)) * (0.5 + makefloat(GetDifficulty()-1.0)/3.0);
+			if(mult < 1.0) mult = 1.0;
+			if(mult > 4.0) mult = 4.0;
+			rCharacter.randofficers = mult;
+			//Log_SetStringToLog("Fantom " + rCharacter.id + ", (" + rCharacter.name + " " + rCharacter.lastname + ") has mult " + mult);
+		}*/
+		//Every call too this goes trough the shipstatsmult object so why save it for the character? - Levis
+		/*if(!CheckAttribute(rCharacter,"skillnatmult")) // lookup to speed up national skill mults. 04-09-15
+		{
+			for(int i = 0; i < 10; i++)
+			{ tmp = GetSkillName(i); rCharacter.skillnatmult.(tmp) = GetSkillMultByNation(tmp, sti(rCharacter.nation)); }
+			/*rCharacter.skillnatmult.(SKILL_COMMERCE) = GetSkillMultByNation(SKILL_COMMERCE, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_LEADERSHIP) = GetSkillMultByNation(SKILL_LEADERSHIP, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_SNEAK) = GetSkillMultByNation(SKILL_SNEAK, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_DEFENCE) = GetSkillMultByNation(SKILL_DEFENCE, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_GRAPPLING) = GetSkillMultByNation(SKILL_GRAPPLING, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_SAILING) = GetSkillMultByNation(SKILL_SAILING, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_REPAIR) = GetSkillMultByNation(SKILL_REPAIR, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_FENCING) = GetSkillMultByNation(SKILL_FENCING, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_ACCURACY) = GetSkillMultByNation(SKILL_ACCURACY, sti(rCharacter.nation));
+			rCharacter.skillnatmult.(SKILL_CANNONS) = GetSkillMultByNation(SKILL_CANNONS, sti(rCharacter.nation));*/
+		//}
+	//}
+	// calc skills for speed optimization
+	// NK uncommented commerce and leadership 04-09-10, you never know when they'd be needed, esp. leadership.
+	// NK PRS3 04-09-10 added mult by shipstatsmult for nation
+	// 04-09-15 switched to attribute.
+	//if(IsCompanion(rCharacter))
+	//{
+	//There is no difference anymore between if character is a companion or not so this makes the function easier. -Levis
+		aTmpSkill.Commerce   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Leadership = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP)) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Sneak      = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Defence    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Grappling  = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Sailing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Repair     = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Fencing    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Accuracy   = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  )) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Cannons    = Clampf(MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   )) / MAX_CHARACTER_SKILL);
+	/*{
+	else
+	{
+		aTmpSkill.Commerce   = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_COMMERCE  ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Leadership = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_LEADERSHIP))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Sneak      = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_SNEAK     ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Defence    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_DEFENCE   ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Grappling  = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_GRAPPLING ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Sailing    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_SAILING   ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Repair     = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_REPAIR    ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Fencing    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_FENCING   ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Accuracy   = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_ACCURACY  ))) / MAX_CHARACTER_SKILL);
+		aTmpSkill.Cannons    = Clampf(mult * MakeFloat(GetShipSkill(rCharacter, SKILL_CANNONS   ))) / MAX_CHARACTER_SKILL);
+	}*/
+	// NK <--
+	//Seriously why ... -Levis
+	/*
+	if (SeaCameras.Camera == "SeaDeckCamera" && sti(rCharacter.index) == GetMainCharacterIndex())
+	{
+		switch (GetTargetPlatform())
+		{
+			case "xbox":
+				aTmpSkill.Accuracy = 1.0;
+			break;
+			case "pc":
+				if(iRealismMode == 0) // 1.03
+				{
+					aTmpSkill.Accuracy = Clampf(stf(aTmpSkill.Accuracy) + 0.4);
+				}
+			break;
+		}
+	}*/
 }
 
 void Ship_UpdatePerks()
@@ -5510,8 +5727,8 @@ float RS_GetRigTypeDivisor(string sDet, float fOffWind)
 
 // NK 04-09-19 move some RS funcs here instead of as part of UpdateParams.
 #define RS_SCALAR		1.0 //scales all speeds
-#define RS_BACKWIND	-0.25 //speed backwinded
-#define RS_CP_OFFSET	0.02 // fudge on either side of Closest Point
+#define RS_BACKWIND		0.14 //speed backwinded
+#define RS_CP_OFFSET	0.24 // fudge on either side of Closest Point
 
 float RS_CalcOffwind(float fWindAngle, float fShipAngle)
 {
@@ -5809,3 +6026,266 @@ void Ship_DoLowerSails()
 	Ship_SetSailState(GetMainCharacterIndex(), iSailState);
 }
 // <-- KK
+
+float Ship_GetSailState(ref rCharacter)
+{
+	float fSailState = 1.0;
+	SendMessage(rCharacter, "le", MSG_SHIP_GET_SAIL_STATE, &fSailState);
+	return fSailState;
+}
+
+void Ship_Neutral(int chridx, string sGroup)
+{
+	//if (AISHIPDEBUG) Trace("Ship_Neutral: Ship_Neutral begin idx: " + chridx);
+	ref chr = GetCharacter(chridx);
+	string chid = chr.id;
+
+	//remember old relations
+	if(CheckAttribute(chr,"relation")) {
+		chr.oldrelation = "";
+		aref arRel; makearef(arRel, chr.relation);
+		aref arOldRel; makearef(arOldRel, chr.oldrelation);
+		CopyAttributes(arOldRel, arRel);
+	}
+	//string sTemp1 = "" + iCharacterIndex2;
+	//Characters[iCharacterIndex1].relation.(sTemp1) = iRelationType;
+
+	//forget that you were shot
+	chr.Ship.LastBallCharacter = -1;
+
+	//*** Fix group membership as neutral ship changes group.
+	int i;
+	ref rGroup = Group_FindOrCreateGroup(sGroup);
+	Group_SetType(sGroup, "trade");
+
+	ref pchar = GetMainCharacter();
+	int pchridx = GetMainCharacterIndex();
+	ref schr;
+	string ogroup = Ship_GetGroupID(&chr);
+
+	int cmdridx = Group_GetGroupCommanderIndex(ogroup);
+	if (cmdridx < 0) return;
+	ref cmdr = GetCharacter(cmdridx);
+
+	bool cmdrchange = cmdridx == chridx;
+
+	ref rOGroup = Group_GetGroupByID(ogroup);
+	bool firstchar = Group_GetCharacterIndexR(rOGroup, 0) == chridx;  // was this char the commander?
+	//#20180914-03
+	int og_ships = Group_GetLiveCharactersNum(ogroup); //Group_GetCharactersNumR(rOGroup);
+
+	if (cmdrchange) {
+		//set new commander if group commander surrenders
+		if (og_ships > 1) {
+			cmdridx = Group_GetCharacterIndexR(rOGroup, firstchar);  //if was the commander, get the second ship in group
+			cmdr = GetCharacter(cmdridx);
+			Group_SetGroupCommander(ogroup, cmdr.id); //set new commander
+			Group_Refresh_Engine_relations(ogroup);
+			DeleteAttribute(cmdr,"relation.UseOtherCharacter");
+		} else {
+		    Group_SetAddress(ogroup, "None", "", "");
+			Group_DeleteGroup(ogroup); // KK
+		}
+	}
+	//#20180914-03
+    if(og_ships < 2 && ogroup == "PGGQuestE") {
+        DeleteAttribute(PChar, "Quest.PGGQuest1_GroupDead.win_condition.l1.Group");
+        PChar.Quest.PGGQuest1_GroupDead.win_condition.l1 = "Ship_capture";
+        PChar.Quest.PGGQuest1_GroupDead.win_condition.l1.character = chridx;
+    }
+	//Remove ship from old group
+	//if (AISHIPDEBUG) trace("Ship_Neutral: setting up character group: ogroup="+ ogroup);
+
+	Group_DelCharacter(ogroup, chid);
+
+	Event(SHIP_UPDATE_PARAMETERS, "lf", chridx, 1.0);		// Parameters
+
+	DeleteAttribute(chr,"relation.UseOtherCharacter");
+	Group_ChangeCharacter(sGroup, chid);
+	Group_SetGroupCommander(sGroup, chid);
+	ChangeCharacterShipGroup(chr, sGroup); //forces a engine group boss refresh for this char
+	Group_DeleteAtEnd(sGroup);
+
+	//if (AISHIPDEBUG) Trace("Ship_Neutral: group change done");
+    //#20190728-01
+    bool bHasOld = false;
+    if(CheckAttribute(chr, "surrendered")) {
+        bHasOld = true;
+        int bOlSurr = sti(chr.surrendered);
+        int nOldTime = sti(chr.surrendered.seatime);
+        DeleteAttribute(chr, "surrendered");
+    }
+	//Set ship neutral to their enemies
+	for (i = 0; i < iNumShips; i++) {
+		//if (ships[i] == -1 || ships[i] == chridx) continue;
+		if (ships[i] == -1) continue;
+		schr = GetCharacter(ships[i]);
+		//if (AISHIPDEBUG) trace("Ship_Neutral: chr.id: " + chr.id + ", schr.id " + schr.id);
+		if (chr.id == schr.id) continue;
+
+		if(GetRelation(chridx, ships[i]) == RELATION_ENEMY || GetNationRelation2Character(sti(schr.nation),chridx) == RELATION_ENEMY)
+		{
+			//if (AISHIPDEBUG) trace("Ship_Neutral: Set relation between: chr.id: " + chr.id + " and schr.id " + schr.id + " to neutral");
+			SetCharacterRelationBoth(chridx, ships[i], RELATION_NEUTRAL);
+		}
+	}
+	//set ships neutral to forts
+	if (CheckAttribute(pchar, "seaAI.update.forts")) {
+		aref fortattr; makearef(fortattr, PChar.seaAI.update.forts);
+		int iFortidx;
+		int num = GetAttributesNum(fortattr);
+		for (i = 0; i < num; i++)
+		{
+			string fortstr = "l" + i;
+			iFortidx = sti(fortattr.(fortstr).idx);
+			if(GetRelation(chridx, iFortidx)  == RELATION_ENEMY)
+			{
+				//if (AISHIPDEBUG) trace("Ship_Neutral: Set relation between: " + chridx + " and fort:" + iFortidx + " to neutral");
+				SetCharacterRelationBoth(chridx, iFortidx, RELATION_NEUTRAL);
+			}
+		}
+	}
+	//#20190728-01
+	if(bHasOld) {
+        chr.surrendered = bOlSurr;
+        chr.surrendered.seatime = nOldTime;
+    }
+	// NationUpdate();
+	// DoQuestCheckDelay("NationUpdate", 0.9);
+
+	//if (AISHIPDEBUG) Trace("Ship_Neutral: Ship_Neutral complete");
+}
+
+//#20180524-01 Remove unneeded sqrt
+float Ship_GetDistance2DRel(ref rCharacter1, ref rCharacter2)
+{
+	if (CheckAttribute(rCharacter1, "Ship.Pos.x") && CheckAttribute(rCharacter2, "Ship.Pos.x")) // fix
+	{
+		return GetDistance2DRel(stf(rCharacter1.Ship.Pos.x), stf(rCharacter1.Ship.Pos.z), stf(rCharacter2.Ship.Pos.x), stf(rCharacter2.Ship.Pos.z));
+	}
+	else
+	{
+		return 1000000.0;
+	}
+}
+
+bool Ship_Check_Surrender(int chridx, float fSurrMult)
+{
+	// start surrender checking, also used for ransom checking
+	//#20200307-03
+	int nSurr = sti(InterfaceStates.SurrenderEnabled);
+	if(fSurrMult > 0.0) {
+	    switch(nSurr) {
+	        case 1: //occasional surrender
+                fSurrMult -= frand(0.15);
+                fSurrMult += frand(0.1);
+            break;
+            case 2: //rare surrender
+                fSurrMult -= frand(0.25);
+                fSurrMult += frand(0.15);
+            break;
+            case 3://very rare surrender
+                fSurrMult -= frand(0.25);
+                fSurrMult -= frand(0.25);
+            break;
+        }
+	}
+	//if (AISHIPDEBUG)  trace("*** Ship_Check_Surrender chridx:" + chridx + ", fSurrMult " + fSurrMult);
+
+	ref rCharacter = GetCharacter(chridx);
+
+	if(!CheckAttribute(rCharacter,"seatime.tempmorale")) {
+		//do a morale calc
+		if (!Ship_CheckMorale(chridx, true)) return false;  //Boyer fix for when Ship_CheckMorale does not set .seatime.tempmorale
+	}
+	float tempmorale = rCharacter.seatime.tempmorale;
+    //#20200307-03
+	if(tempmorale < 0.05) {
+	    switch(nSurr) {
+	        case 1: //occasional surrender
+                tempmorale += frand(0.15);
+            break;
+            case 2: //rare surrender
+                tempmorale += frand(0.25);
+                tempmorale += frand(0.25);
+            break;
+            case 3://very rare surrender
+                tempmorale += frand(0.5);
+                tempmorale += frand(0.5);
+            break;
+        }
+	}
+	if (!CheckAttribute(rCharacter, "seatime.surmorale") || stf(rCharacter.seatime.surmorale) < 0.01) {
+		return false;
+	}
+	float surmorale = stf(rCharacter.seatime.surmorale) * fSurrMult;
+    //#20200307-03
+	if(surmorale < tempmorale) return false;
+
+	int nThink = 25;
+	if(CheckAttribute(rCharacter, "seatime.thinkSurr"))
+        nThink = sti(rCharacter.seatime.thinkSurr);
+    nThink = nThink % 50;
+    switch(nSurr) {
+        case 1: //occasional surrender
+            if(rand(nThink) > 20) return false;
+        break;
+        case 2: //rare surrender
+            if(rand(nThink) > 10) return false;
+        break;
+        case 3://very rare surrender
+            if(rand(nThink) > 5) return false;
+        break;
+    }
+	//if (AISHIPDEBUG)  trace("*** Ship_Checkmorale surmorale:" + surmorale + " is greater than " + tempmorale + " so maybe surrender");
+
+	float surch;
+	surch = Bring2Range(0.75, 0.01, 0.01, surmorale, tempmorale);
+
+	//if (AISHIPDEBUG) Trace("SURR: Initial surch = " + surch);
+
+	//ref echr = GetCharacter(targetidx);
+
+	surch *= SURR_GLOBAL_SCL; // LDH
+
+	//if (AISHIPDEBUG) Trace("SURR: surch after global modifier = " + surch);
+
+	if (surch < 0.1) return false;  //just don't surrender if less then 10% chance
+
+	//use random surrender chance
+	float fRoll = frnd();
+	//if (AISHIPDEBUG) Trace("SURR: surrender roll: fRoll=" + fRoll + ", surch=" + surch);
+	if(fRoll < surch)
+	{
+		//if (AISHIPDEBUG) Trace("Morale fail");
+		return true;
+	}
+	return false;
+}
+
+bool Ship_CheckMoraleFail(int chridx, float fSurrMult)
+{
+	// start surrender checking, also used for ransome checking
+	//if (AISHIPDEBUG)  trace("*** Ship_CheckMoraleFail chridx:" + chridx + ", fSurrMult " + fSurrMult);
+
+	ref rCharacter = GetCharacter(chridx);
+	if(!CheckAttribute(rCharacter,"seatime.tempmorale")) {
+		//do a morale calc
+		Ship_CheckMorale(chridx);
+	}
+	float tempmorale = rCharacter.seatime.tempmorale;
+
+	if (!CheckAttribute(rCharacter, "seatime.surmorale")) {
+		//if (AISHIPDEBUG)  trace("*** Ship_CheckMoraleFail missing rCharacter.seatime.surmorale");
+		return false;
+	}
+	float surmorale = stf(rCharacter.seatime.surmorale) * fSurrMult;
+
+	if(tempmorale < surmorale)
+	{
+		//if (AISHIPDEBUG)  trace("*** Ship_CheckMoraleFail tempmorale:" + tempmorale + " is less than adjusted surmorale:" + surmorale + " so faile morale check");
+		return true;
+	}
+	//if (AISHIPDEBUG)  trace("*** Ship_CheckMoraleFail tempmorale:" + tempmorale + " is greater than adjusted surmorale:" + surmorale + " so morale ok");
+	return false;
+}

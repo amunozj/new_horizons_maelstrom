@@ -33,6 +33,7 @@ void CreateSeaCamerasEnvironment()
 	LayerAddObject(SEA_EXECUTE, &SeaDeckCamera, iShipPriorityExecute + 5);
 
 	SeaFreeCamera.Perspective = 1.285;
+	// SeaShipCamera.HorizontalMult = SHIP_CAMERA_DISTANCE;	// made as a separate function to change camera instantly
 
 	// Ship camera paramerets
 	SeaShipCamera.Perspective = 1.285;
@@ -42,7 +43,7 @@ void CreateSeaCamerasEnvironment()
 	SeaShipCamera.SensivityAzimuthAngle = 0.04;
 	SeaShipCamera.MaxAngleX = 0.2;
 	SeaShipCamera.MinAngleX = -1.4;
-	SeaShipCamera.Distance = 70.0;
+	SeaShipCamera.Distance = 120.0;
 	SeaShipCamera.MinDistance = 25.0;
 	SeaShipCamera.MaxDistance = 70.0;
 	SeaShipCamera.MinHeightOnSea = 1.0;
@@ -97,6 +98,13 @@ void CreateSeaCamerasEnvironment()
 	SeaShipCharacterForCamera = GetMainCharacter(); // KK
 	// KK if (DECK_VIEW_ON_SEAENTER == 1) PostEvent("SeaCameras_Switch",250);	// LDH reinstated 13Mar09
 }
+
+// Mirsaneli -->
+void UpdateShipCameraDistance()
+{
+    SeaShipCamera.HorizontalMult = SHIP_CAMERA_DISTANCE;
+}
+// <-- Mirsaneli
 
 void SeaCameras_TelescopeActive()
 {

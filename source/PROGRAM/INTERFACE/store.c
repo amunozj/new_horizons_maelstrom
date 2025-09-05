@@ -1,5 +1,5 @@
 // --> PW 12/2016 Build 14 4.1 ProcessTradeDecrease(),ProcessTradeIncrease(),ProcessSell() rewritten to allow multipliers and dynamic price changes
-// SellAllProcessReal(bool reset) revised to give same results as normal store transactions using same function calls 
+// SellAllProcessReal(bool reset) revised to give same results as normal store transactions using same function calls
 // minor changes to RefreshAllStrings () to conform <-- PW
 
 #define SHOW_MAIN	0
@@ -33,8 +33,9 @@ void InitInterface_RR(string iniName,ref pChar,ref pStore)
 	refCharacter = pChar;
   showType = SHOW_MAIN;
 
-	UpdateTradebook();		
-	
+  if (gStoreNum != SHIP_STORE)
+        UpdateTradebook();
+
 // KK -->
 	if (!LAi_IsCapturedLocation) {
 		GameInterface.title = "titleStore";
@@ -46,7 +47,7 @@ void InitInterface_RR(string iniName,ref pChar,ref pStore)
 	CreateStartingCargo();// TIH transfer time fix Jul20'06
     FillScroll();
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 // KK -->
 		if (LAi_IsCapturedLocation) {
 		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "BUY_BUTTON", 0, "#"+XI_ConvertString("Take"));
@@ -159,7 +160,7 @@ void RefreshAllStrings()
 	    GameInterface.strings.GoodWeightSum = "" + GetGoodWeightByType(GetGoodsIndexForI(nCurScrollNum),nTradeQuantity);
 		// NK -->
 		int priceSum;
-		
+
 		if(showType == SHOW_BUY)
 		{
 			GameInterface.strings.CurPrice = MakeMoneyShow(GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), -nTradeQuantity),MONEY_SIGN,MONEY_DELIVER);
@@ -224,7 +225,7 @@ void FillScroll()
 // KK -->
 	if(bNewIcons==true) GameInterface.scrollitems.ImagesGroup.t1 = "GOODS_NEW";
 	else GameInterface.scrollitems.ImagesGroup.t1 = "GOODS";
-	
+
 	switch (LanguageGetLanguage())
 	{
 		case "Polish":
@@ -261,7 +262,7 @@ void FillScroll()
 void ProcessBuy()
 {
 	nTradeQuantity = 0;
-	nCurPrice = 0; 
+	nCurPrice = 0;
 	SetShowMode(SHOW_BUY);
 	RefreshAllStrings();
 }
@@ -314,7 +315,7 @@ void ProcessOk()
 		RemoveCharacterGoods(refCharacter,GetGoodsIndexForI(nCurScrollNum),nTradeQuantity);
 		// NK -->
 		exch = nCurPrice; //GetGoodPriceByType(&refStore, refCharacter, GetGoodsIndexForI(nCurScrollNum),nTradeQuantity,PRICE_TYPE_SELL);
-		
+
 		nPlayerMoney += exch;
 		nStoreMoney -= exch;
 		// NK <--
@@ -468,7 +469,7 @@ void ProcessTradeIncrease()
 				if(nCurPrice/4*3 + GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_SELL, GetMainCharacter(), nTradeQuantity/unitSize)/4*3 >= nStoreMoney) return;
 			}
 			int oldTQ = nTradeQuantity;
-	
+
 			nTradeQuantity = nTradeQuantity + unitSize;
 
 			if(tradeLow==false)
@@ -499,7 +500,7 @@ void ProcessCancelExit()
 	// Sulan -->
 	if(nPlayerMoney > nPlayerMoneyStart)
 	{
-		WriteNewLogEntry("Visited "+FindTownName(sTownName),"Visited the local merchant, sold off our cargo and refilled our supplies. The trade earned me "+(nPlayerMoney-nPlayermoneyStart)+" pieces of gold.","Ship",true);    
+		WriteNewLogEntry("Visited "+FindTownName(sTownName),"Visited the local merchant, sold off our cargo and refilled our supplies. The trade earned me "+(nPlayerMoney-nPlayermoneyStart)+" pieces of gold.","Ship",true);
 	}
 	if(nPlayerMoney < nPlayerMoneyStart)
 	{
@@ -507,7 +508,8 @@ void ProcessCancelExit()
 	}
 	// Sulan <--
 
-	UpdateTradebook();		// LDH need this here to update from last trade - 04Mar09
+	if (gStoreNum != SHIP_STORE)
+        UpdateTradebook();		// LDH need this here to update from last trade - 04Mar09
 
 	DelEventHandler("InterfaceBreak","ProcessCancelExit");
     DelEventHandler("frame","ProcessFrame");
@@ -829,9 +831,9 @@ void SellAllProcessReal(bool reset)
 				if(GetCargoGoods(refCharacter,i) > 0 && CheckAttribute(Goods[i], "noTrade") && sti(Goods[i].noTrade)) needQty = 0; // NK / KNB to skip bombs and other notrade goods 05-04-13
 				else
 				{
-					if(i == GOOD_WHEAT) 
-					{ 
-						if (FOOD_ON != 1) { 
+					if(i == GOOD_WHEAT)
+					{
+						if (FOOD_ON != 1) {
 							needQty = 0;// TIH do not autobuy food if the mod is OFF Jul14'06
 						} else {
 							buyQty = 1+makeint(makefloat(GetCrewQuantity(refCharacter)) * FOOD_PER_CREW * WHEAT_DAYS * SupplyScalar); // TIH at least 1
@@ -844,9 +846,9 @@ void SellAllProcessReal(bool reset)
 							needQty = buyQty;//PW
 						}
 					}
-					if(i == GOOD_RUM) 
-					{ 
-						if (FOOD_ON != 1) { 
+					if(i == GOOD_RUM)
+					{
+						if (FOOD_ON != 1) {
 							needQty = 0;// TIH do not autobuy food if the mod is OFF Jul14'06
 						} else {
 							buyQty = 1+makeint(makefloat(GetCrewQuantity(refCharacter)) * FOOD_PER_CREW * RUM_DAYS * SupplyScalar); // TIH at least 1
@@ -858,9 +860,9 @@ void SellAllProcessReal(bool reset)
 							needQty = buyQty;//PW
 						}
 					}
-					if(i == GOOD_BALLS) 
-					{ 
-						buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * BALLS_PER * SupplyScalar / unitSize)); 
+					if(i == GOOD_BALLS)
+					{
+						buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * BALLS_PER * SupplyScalar / unitSize));
 						if(GetStoreGoodsQuantity(refStore, i) < buyQty) buyQty = 0; //PW check store has quantity required
 						needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
 						//if(tradeLow==false) needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY);
@@ -868,9 +870,9 @@ void SellAllProcessReal(bool reset)
 						if(needMoney>nPlayerMoney) buyQty = 0;//PW
 						needQty = buyQty; //PW
 					}
-					if(i == GOOD_GRAPES) 
-					{ 
-						buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * GRAPE_PER * SupplyScalar / unitSize)); 
+					if(i == GOOD_GRAPES)
+					{
+						buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * GRAPE_PER * SupplyScalar / unitSize));
 						if(GetStoreGoodsQuantity(refStore, i) < buyQty) buyQty = 0; //PW check store has quantity required
 						needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
 						//if(tradeLow==false) needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY);
@@ -878,8 +880,8 @@ void SellAllProcessReal(bool reset)
 						if(needMoney>nPlayerMoney) buyQty = 0; //PW
 						needQty = buyQty; //PW
 					}
-					if(i == GOOD_KNIPPELS) 
-					{ 
+					if(i == GOOD_KNIPPELS)
+					{
 						buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * CHAIN_PER * SupplyScalar / unitSize));
 						if(GetStoreGoodsQuantity(refStore, i) < buyQty) buyQty = 0; //PW check store has quantity required
 						needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
@@ -888,12 +890,12 @@ void SellAllProcessReal(bool reset)
 						if(needMoney>nPlayerMoney) needQty = 0; //PW
 						needQty = buyQty; //PW
 					}
-					if(i == GOOD_BOMBS) 
-					{ 
-						if (USE_REAL_CANNONS) { 
+					if(i == GOOD_BOMBS)
+					{
+						if (USE_REAL_CANNONS) {
 							needQty = 0;// TIH do not autobuy bombs if the mod is ON - in case noTrade is not set  Jul14'06
 						} else {
-							buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * BOMBS_PER * SupplyScalar / unitSize)); 
+							buyQty = unitSize * (1 + makeint(makefloat(GetMaxCannonQuantity(refCharacter)) * BOMBS_PER * SupplyScalar / unitSize));
 							if(GetStoreGoodsQuantity(refStore, i) < buyQty) buyQty = 0; //PW check store has quantity required
 							needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
 							//if(tradeLow==false) needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY);
@@ -903,9 +905,9 @@ void SellAllProcessReal(bool reset)
 						}
 					}
 				// added by MAXIMUS [gunpowder mod] --> // TIH --> fixed slop  7-7-06
-					if(i == GOOD_GUNPOWDER) 
-					{ 
-						if (!CANNONPOWDER_MOD || GetMaxCannonQuantity(refCharacter) <= 0) {// do not buy if they have no cannons 
+					if(i == GOOD_GUNPOWDER)
+					{
+						if (!CANNONPOWDER_MOD || GetMaxCannonQuantity(refCharacter) <= 0) {// do not buy if they have no cannons
 							needQty = 0;// TIH do not autobuy cannonpowder if the mod is OFF - in case noTrade is not set  Jul14'06
 						} else {
 							ref rCannon; makeref(rCannon,Cannon[GetCaracterShipCannonsType(refCharacter)]);// TIH typo fix
@@ -926,8 +928,8 @@ void SellAllProcessReal(bool reset)
 						}
 					}
 				// added by MAXIMUS [gunpowder mod] <-- // TIH <-- fixed slop
-					if(i == GOOD_SAILCLOTH) 
-					{ 
+					if(i == GOOD_SAILCLOTH)
+					{
 						buyQty = makeint(makefloat(GetCharacterShipHP(refCharacter)) * SAIL_PER * SupplyScalar);// TIH RE-typo typo fix
 						needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
 						//if(tradeLow==false) needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY);
@@ -935,9 +937,9 @@ void SellAllProcessReal(bool reset)
 						if(needMoney>nPlayerMoney) needQty = 0;
 						else needQty = buyQty;
 					}
-					if(i == GOOD_PLANKS) 
-					{ 
-						buyQty = makeint(makefloat(GetCharacterShipHP(refCharacter)) * PLANKS_PER * SupplyScalar); 
+					if(i == GOOD_PLANKS)
+					{
+						buyQty = makeint(makefloat(GetCharacterShipHP(refCharacter)) * PLANKS_PER * SupplyScalar);
 						needMoney = GetStoreGoodsPrice(&refStore, GetGoodsIndexForI(nCurScrollNum), PRICE_TYPE_BUY, GetMainCharacter(), buyQty/unitSize);
 						//if(tradeLow==false) needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY);
 						//else needMoney = GetGoodPriceByType(&refStore, mainRef, i, buyQty,PRICE_TYPE_BUY)/4*3;
@@ -947,7 +949,7 @@ void SellAllProcessReal(bool reset)
 				}
 			}
 		}
-			
+
 		tQuantity = GetCargoGoods(refCharacter,i); // moved here by MAXIMUS
 // rewritten by MAXIMUS <--
 //		if( reset && needQty <= 0 ) { continue; }	// TIH bugfix [commented out by MAXIMUS for old-style AUTOBUY function]
@@ -996,13 +998,13 @@ void SellAllProcessReal(bool reset)
 		p=0;
 // LDH 26Nov06 replaced refCharacter with mainRef for quest goods
 		// TIH --> prevent the auto-sale of QUEST cargo from merchant jobs! Aug30'06
-		if (CheckAttribute(mainRef, "quest.generate_trade_quest.iQuantityGoods")) 
+		if (CheckAttribute(mainRef, "quest.generate_trade_quest.iQuantityGoods"))
 		{
 			int iQuantityShipGoods = sti(mainRef.quest.generate_trade_quest.iQuantityGoods);
 			int iQuestTradeGoods = sti(mainRef.quest.generate_trade_quest.iTradeGoods);
-			if ( i == iQuestTradeGoods ) 
+			if ( i == iQuestTradeGoods )
 			{
-				if ( tQuantity > iQuantityShipGoods ) 
+				if ( tQuantity > iQuantityShipGoods )
 				{
 					tQuantity = tQuantity - iQuantityShipGoods; // ready to sell off extra
 				}
@@ -1118,7 +1120,7 @@ void CargoTransferTimelapse()
 		sfstr = "good" + i;
 		newQty = GetCargoGoods(refCharacter,i);
 		oldQty = refCharacter.startingCargo.(sfstr);
-		
+
 		// if a change in quantity, add it to transfer
 		if ( newQty != oldQty ) {
 			goodsTransfer += makeint( ( abs(newQty - oldQty) / sti( Goods[i].Units ) ) * sti( Goods[i].Weight ) );
@@ -1144,7 +1146,7 @@ void CargoTransferTimelapse()
 	if ( timeToAdd > 10080 ) timeToAdd = 10080;// never go above 7 days for ANY transfer
 
 	// LDH 16Oct06 changed rounding to more accurately reflect time passed
-	if ( timeToAdd > 1440 ) { 
+	if ( timeToAdd > 1440 ) {
 //		if ( makeint(round(timeToAdd/1440)) < 2 ) 	LogIt(LanguageConvertString(tmpLangFileID,"Transfer takes roughly a day"));// MAXIMUS
 		if ( round(timeToAdd/1440) < 1.5 ) 			LogIt(LanguageConvertString(tmpLangFileID,"Transfer takes roughly a day"));// MAXIMUS
 		else 										LogIt(LanguageConvertString(tmpLangFileID,"Transfer takes roughly") + " " + makeint(round(timeToAdd/1440)) + " " + XI_ConvertString("days"));// MAXIMUS
@@ -1157,6 +1159,7 @@ void CargoTransferTimelapse()
 	AddTimeToCurrent(0, timeToAdd );
 	LogIt("Time: " + GetStringTime(GetTime()));		// LDH 15Oct06 added time display
 	LanguageCloseFile(tmpLangFileID);
+	DeleteAttribute(&WeatherParams, "Rain.ThisDay");	// Mirsaneli: clears the stormy sky that used to stick even in the night hours after trade
 }
 // TIH <--
 

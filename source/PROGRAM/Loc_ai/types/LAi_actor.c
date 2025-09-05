@@ -44,6 +44,35 @@ void LAi_type_actor_Init(aref chr)
 		if(!CheckAttribute(chr, "chr_ai.type.lock")) chr.chr_ai.type.lock = "0";
 		if(!CheckAttribute(chr, "chr_ai.type.mode")) chr.chr_ai.type.mode = "stay";
 	}
+	bool isMusk = false;
+	if(CheckAttribute(chr, "model.animation")) {
+        string sAni = strcut(chr.model.animation, 0, 8);
+        if (sAni == "mushketer")
+            isMusk = true;
+	}
+	if (isMusk && !CheckAttribute(chr, "isMusketer.weapon") && chr.index != getmaincharacterindex() && !isOfficer(chr))
+	{
+        while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
+        }
+        while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
+        }
+		GiveItem2Character(chr, "unarmed");
+		EquipCharacterbyItem(chr, "unarmed");
+		string sMush = "mushket";
+		if (chr.model == "MusketeerEnglish_2") sMush = "mushket2x2";
+		GiveItem2Character(chr, sMush);
+		EquipCharacterbyItem(chr, sMush);
+		chr.items.bullet = 300;
+		chr.isMusketer = true;
+		if (!CheckAttribute(chr, "MusketerDistance"))
+			chr.MusketerDistance = 10.0 + frand(10.0);
+	}
+	else
+	{
 	//Установим анимацию персонажу
 	if(chr.chr_ai.type.mode == "sit")
 	{
@@ -61,6 +90,7 @@ void LAi_type_actor_Init(aref chr)
 				}
 			}
 		}
+	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 

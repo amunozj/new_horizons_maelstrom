@@ -4,7 +4,7 @@ void LocationInitCuba(ref n)
 	Locations[n].id = "Cuba_port";
 	locations[n].id.label = "#stown_name# port";
 	locations[n].worldmap = "Havana";
-	Locations[n].filespath.models = "locations\Town_Redmond\Port";
+	Locations[n].filespath.models = "locations\Port_Havana\Port";
 	Locations[n].filespath.textures = "locations\SPAIN";
 	Locations[n].image = "Town_Redmond_Port_Spain.tga";
 
@@ -969,7 +969,7 @@ void LocationInitCuba(ref n)
 
 	//ID
 	Locations[n].id = "Havana_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_Inside\Fort_1";
 	Locations[n].filespath.textures = "locations\SPAIN";
@@ -1175,7 +1175,7 @@ void LocationInitCuba(ref n)
 	Locations[n].models.always.jungle = "Shore06";
 	Locations[n].models.always.jungle.foam = "1";
 	Locations[n].models.always.locators = "Shore06_l";
-	Locations[n].models.always.grassPatch = "Shore06_g";
+	//Locations[n].models.always.grassPatch = "Shore06_g";
 	Locations[n].models.always.seabed = "Shore06_sb";
 	Locations[n].models.always.seabed.foam = "1";
 
@@ -1203,7 +1203,7 @@ void LocationInitCuba(ref n)
 
 	Locations[n].reload.l2.name = "boat";
 	Locations[n].reload.l2.go = "Cuba";
-	Locations[n].reload.l2.emerge = "reload_2";
+	Locations[n].reload.l2.emerge = "reload_5";
 	Locations[n].reload.l2.autoreload = "0";
 	if (VISIT_DECK == 1)
 		Locations[n].reload.l2.label = "Ship.";
@@ -2596,9 +2596,17 @@ void LocationInitCuba(ref n)
 	Locations[n].reload.l8.autoreload = "0";
 	Locations[n].reload.l8.label = "Cartographer's House";
 	Locations[n].reload.l8.close_for_night = 1;
-
 	Locations[n].locators_radius.randitem.randitem1 = 0.01;
 	Locations[n].items.randitem1 = "WallMap";
+
+	Locations[n].reload.l9.name = "reload9";
+	Locations[n].reload.l9.go = "Santiago_TailorsShop";
+	Locations[n].reload.l9.emerge = "locator2";
+	Locations[n].reload.l9.autoreload = "0";
+	Locations[n].reload.l9.label = "Tailor's Shop.";
+	Locations[n].reload.l9.close_for_night = 1;
+	Locations[n].locators_radius.reload.reload1 = 0.75;
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l9.goto_disable = 1; // Screwface: Disable Go-To location
 
 	Locations[n].island = "Cuba";
 	n = n + 1;
@@ -2863,6 +2871,10 @@ void LocationInitCuba(ref n)
 	Locations[n].id = "Cartographer_House";
 	locations[n].id.label = "Cartographer's House";
 	Locations[n].image = "Inside_cartographer.tga";
+
+	//Town sack
+	Locations[n].townsack = "Santiago";
+
 	//Sound
 	locations[n].type = "house";
 	//Models
@@ -2898,6 +2910,101 @@ void LocationInitCuba(ref n)
 	Locations[n].locators_radius.randitem.randitem1 = 0.01;
 	Locations[n].items.randitem1 = "WallMap";
 	
+	Locations[n].island = "Cuba"; // NK 04-08-29
+	n = n + 1;
+
+	// -------------------------------------------------
+	Locations[n].id = "Santiago_TailorsShop";
+	Locations[n].id.label = "Tailor's Shop.";
+	Locations[n].image = "Inside_StoreSmall.tga";
+
+	//Town sack
+	Locations[n].townsack = "Santiago";
+
+	//Sound
+	locations[n].type = "shop";
+	locations[n].fastreload = "Santiago";
+	//Models
+	//Always
+	Locations[n].filespath.models = "locations\inside\StoreSmall";
+	Locations[n].models.always.store = "SS";
+	Locations[n].models.always.locators = "SS_l";
+	Locations[n].models.always.window = "SS_w";
+	Locations[n].models.always.window.tech = "LocationWindows";
+	Locations[n].models.always.window.level = 50;
+	//Day
+	Locations[n].models.day.charactersPatch   = "SS_p";
+	Locations[n].models.day.fonar			 = "SS_fn";
+
+	//Night
+	Locations[n].models.night.charactersPatch = "SS_p";
+	Locations[n].models.night.fonar		   = "ss_fn";
+
+	//Environment
+	Locations[n].environment.weather = "false";
+	Locations[n].environment.sea = "false";
+	Locations[n].models.back = "back\grmh9_";
+	//Reload map
+	Locations[n].reload.l1.name = "locator2";
+	Locations[n].reload.l1.go = "Santiago_town_01";
+	Locations[n].reload.l1.emerge = "reload9";
+	Locations[n].reload.l1.autoreload = "0";
+	Locations[n].reload.l1.label = "#stown_name#";
+	Locations[n].locators_radius.reload.locator2 = 0.7;
+
+	Locations[n].reload.l2.name = "locator1";
+	Locations[n].reload.l2.go = "Santiago_Tailor_ChangingRoom";
+	Locations[n].reload.l2.emerge = "reload1";
+	Locations[n].reload.l2.autoreload = "0";
+	Locations[n].reload.l2.label = "Changing room";
+	Locations[n].reload.l2.disable = true;
+	Locations[n].locators_radius.reload.locator1 = 0.7;
+
+	LAi_LocationFightDisable(&Locations[n], true);
+
+	Locations[n].island = "Cuba"; // NK 04-08-29
+	n = n + 1;
+
+	// -------------------------------------------------
+
+	Locations[n].id = "Santiago_Tailor_ChangingRoom";
+	locations[n].id.label = "Changing room";
+	Locations[n].filespath.models = "locations\inside\mh7";
+	Locations[n].image = "Inside_mh7.tga";
+
+	//Town sack
+	Locations[n].townsack = "Santiago";
+
+	//Sound
+	locations[n].type = "shop";
+	locations[n].fastreload = "Santiago";
+	//Models
+	//Always
+	Locations[n].models.always.locators = "mh7_l";
+	Locations[n].models.always.shipyard = "mh7";
+	Locations[n].models.always.window = "mh7_w";
+	Locations[n].models.always.window.tech = "LocationWindows";
+	Locations[n].models.always.window.level = 50;
+
+	//Day
+	Locations[n].models.day.charactersPatch = "mh7_p";
+
+	//Night
+	Locations[n].models.night.charactersPatch = "mh7_p";
+
+	//Environment
+	Locations[n].environment.weather = "true";
+	Locations[n].environment.sea = "false";
+	Locations[n].models.back = "back\redmh7_";
+
+	//Reload map
+	Locations[n].reload.l1.name = "reload1";
+	Locations[n].reload.l1.go = "Santiago_TailorsShop";
+	Locations[n].reload.l1.emerge = "locator1";
+	Locations[n].reload.l1.autoreload = "0";
+	Locations[n].reload.l1.label = "Tailor's Shop.";
+
+
 	Locations[n].island = "Cuba"; // NK 04-08-29
 	n = n + 1;	
 
@@ -3079,7 +3186,7 @@ void LocationInitCuba(ref n)
 
 	Locations[n].reload.l2.name = "boat";
 	Locations[n].reload.l2.go = "Cuba";
-	Locations[n].reload.l2.emerge = "reload_5";
+	Locations[n].reload.l2.emerge = "reload_2";
 	Locations[n].reload.l2.autoreload = "0";
 	if (VISIT_DECK == 1)
 		Locations[n].reload.l2.label = "Ship.";
@@ -3226,7 +3333,7 @@ void LocationInitCuba(ref n)
 	Locations[n].reload.l1.go = "Havana_fakefort4";
 	Locations[n].reload.l1.emerge = "reloadc5";
 	Locations[n].reload.l1.autoreload = "0";
-	locations[n].id.label = "Spanish Prison";
+	locations[n].reload.l1.label = "Spanish Prison";
 
 	LAi_LocationFightDisable(&Locations[n], true);
 
@@ -3236,16 +3343,16 @@ void LocationInitCuba(ref n)
 
 	// -------------------------------------------------
     Build_at("Havana_town_02", "gallows", "", 1.7591, 0.13162, -14.759, 0.18, "building");
-    Build_at("Cuba_port", "chain", "", 100, 10, 75, 0.77, "building");	
-	Build_at("Cuba_port", "bastion", "", -2.59, 7.00, 28.93, 1.98, "Building");
-	Build_at("Cuba_port", "bastion", "", 17.96, 15.5, -103.14, -2.91, "Building");
+    // Build_at("Cuba_port", "chain", "", 100, 10, 75, 0.77, "building");					Mirsaneli: removed
+	// Build_at("Cuba_port", "bastion", "", -2.59, 7.00, 28.93, 1.98, "Building");			Mirsaneli: removed
+	// Build_at("Cuba_port", "bastion", "", 17.96, 15.5, -103.14, -2.91, "Building");		Mirsaneli: removed
 	Build_at("Cuba_port", "College", "", 109.3, 5.00, -72.82, -0.13, "Building");
 	Build_at("Cuba_port", "warehouse", "", 142.7, 4.00, -54.85, -0.38, "Building");
 	Build_at("Cuba_port", "warehouse", "", 124.43, 5.00, -62.82, -0.38, "Building");
-	Build_at("Cuba_port", "keep3", "", 162.57, 5.00, 21.73, 0.71, "Building");
+	// Build_at("Cuba_port", "keep3", "", 162.57, 5.00, 21.73, 0.71, "Building");			Mirsaneli: removed
 	Build_at("Cuba_port", "church", "", -28.2, 8.00, -54.81, 1.24, "Building");
-	Build_at("Cuba_port", "bastion", "", -19.17, 7.00, -5.05, -1.31, "Building");
-	Build_at("Cuba_port", "bastion", "", 12.6, 7.00, 62.07, 2.04, "Building");
+	// Build_at("Cuba_port", "bastion", "", -19.17, 7.00, -5.05, -1.31, "Building");		Mirsaneli: removed
+	// Build_at("Cuba_port", "bastion", "", 12.6, 7.00, 62.07, 2.04, "Building");			Mirsaneli: removed
 	Build_at("Cuba_port", "bastion2", "", 69.12, 9.00, -91.63, -2.91, "Building");
 	Build_at("Cuba_port", "mansion", "", -17.3, 13.5, -84.06, 0.87, "Building");
 	Build_at("Havana_Outskirts", "jungle2", "", -47.71, -2.79, -100.8, 1.78, "wild_jungles");

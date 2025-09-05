@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 
 	switch(Dialog.CurrentNode)
 	{
-		//-----------------------------------?????? ?????? - ?????? ???????
+		//-----------------------------------Диалог первый - первая встреча
 		case "First time":
 			Dialog.defAni = "dialog_stay1";
 			Dialog.defCam = "1";
@@ -181,7 +181,7 @@ void ProcessDialogEvent()
 			RemovePassenger(Pchar, characterFromID("Annabella Brinkley"));			
 			pchar.quest.Jacks_early_days = "about_to_go_down";		
 			LAi_SetActorType(characterFromID("Eng_soldier_39"));
-//			LAi_ActorAnimation(characterFromID("Eng_soldier_39"), "attack_force_1", "Get_arrested_in_Greenford", 1.0);		
+//			LAi_ActorAnimation(characterFromID("Eng_soldier_39"), "attack", "Get_arrested_in_Greenford", 1.0);		
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 			AddDialogExitQuest("Get_arrested_in_Greenford");			

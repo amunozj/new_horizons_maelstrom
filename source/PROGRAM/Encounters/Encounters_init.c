@@ -433,8 +433,29 @@ void InitEncounters()
 	Enc_AddClasses(rEnc, 11,0, 0, 1, 5);
 	Enc_AddClasses(rEnc, 13,0, 0, 1, 4);
 	Enc_AddClasses(rEnc, -1,0, 0, 1, 4); // NK for shipcap off
+	
+	// === Silent Marry special encounter ===			// Mirsaneli
+	/*
+	makeref(rEnc, EncountersTypes[ENCOUNTER_TYPE_SM]);
+	rEnc.Skip = false;
+	rEnc.Type = ENCOUNTER_WAR;
+	rEnc.Chance = 100; // always selected if triggered manually
+	rEnc.MinRank = 1;
+	rEnc.MaxRank = 50;
+	Enc_AddShips(rEnc, "War", 1, 1);
+	Enc_ExcludeNation(rEnc, ENGLAND);  // Optional: limit nations
+	Enc_ExcludeNation(rEnc, FRANCE);
+	Enc_ExcludeNation(rEnc, HOLLAND);
+	// !!!SPAIN ONLY!!! //	
+	Enc_ExcludeNation(rEnc, PORTUGAL);
+	Enc_ExcludeNation(rEnc, AMERICA);
+	Enc_ExcludeNation(rEnc, SWEDEN);
+	Enc_ExcludeNation(rEnc, PIRATE);  // Only appears via forced trigger
+
+	Enc_AddClasses(rEnc, -1, 0, 0, 4, 4); // class 4 warship only
 
 	ENCOUNTERS_QUANTITY = n;
 
 	Trace("Init encounters complete.");
+	*/
 }

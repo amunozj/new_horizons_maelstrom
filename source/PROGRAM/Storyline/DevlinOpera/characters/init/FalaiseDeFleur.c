@@ -674,7 +674,7 @@ void CreateFalaiseDeFleurCharacters(ref n)
 
 	ch.old.name = "Guzman";
 	ch.old.lastname = "";
-	ch.name = "Guzman";
+	ch.name = TranslateString("","Guzman");
 	ch.lastname = "";
 	ch.id		= "Guzman";
 	ch.model = 2; // PB

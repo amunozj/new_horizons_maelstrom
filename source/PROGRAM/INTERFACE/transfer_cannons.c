@@ -54,7 +54,7 @@ void InitInterface_RR(string iniName,ref pCharacter,ref enemyCh)
 
     if(bAnimation && bNewInterface) iniName = "NEW_INTERFACES\ANIMATION\transfer_cannons.ini";
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	ref shipRef = GetShipByType(GetCharacterShipType(refMyCharacter)); // PS
 	CreateImage("myShip",GetShipTextureName(sti(shipRef.index)),GetShipPicName(sti(shipRef.index)),32,39,160,167); // PS

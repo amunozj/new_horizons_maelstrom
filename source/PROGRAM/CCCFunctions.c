@@ -10,7 +10,10 @@ void ChangeTownNation (string townsk, int nat)		// functioncall must include tow
 	for(n = 0; n < numforts; n++)
 	{
 		ch = GetTownFortCommander(townsk, n);
-
+		/*ref commander = CharacterFromID(	// the fortcommander of this town
+		if (townsk == "Falaise de Fleur") commander = (characterFromID("FalaisedeFleur Commander"));	// why didn't Akella...
+		else if (townsk == "Isla Muelle") commander = (characterFromID("IslaMuelle Commander"));	// stick to one spelling system ? @@
+		else commander = (characterFromID(townsk + " Commander"));*/
 
 		ch.nation = nat;						// gets the nation from the functioncall
 		ch.model = SelectSoldierModelByNation(nat, "Officer");	// NK was soldier. 05-07-10 - and the appropriate charmodel
@@ -574,9 +577,11 @@ void MerchantGuildAttack(aref enemy, bool bKill)
 		ChangeCharacterReputation(PChar, -100);				// TIH MUST BE INT Nov17'06
 		pchar.traitor = true;								// PB: Trigger massive penalties
 		UpdateRMRelation(PChar, iNation, REPCH_FRIENDLY);	// PB: Straight function call
-		string sLogTitle = "Merchant Guild Member Killed";
-		string sLogEntry = "I do not remember the specifics, but a " + GetNationDescByType(iNation) + " merchant got killed in my presence. Was it one of my officers who did it? Myself? Or a complete accident? Either way, the Merchant Guild blamed me and I was lucky to escape with my life. This has had a notable effect on my relations and reputation.";
-		WriteNewLogEntry(sLogTitle,sLogEntry, "Personal", true);
+		Preprocessor_Add("nationdesc", XI_ConvertString(GetNationDescByType(iNation)));
+		string sLogTitle = GetTranslatedLog("Merchant Guild Member Killed");
+		string sLogEntry = GetTranslatedLog("I do not remember the specifics, but a #snationdesc# merchant got killed in my presence. Was it one of my officers who did it? Myself? Or a complete accident? Either way, the Merchant Guild blamed me and I was lucky to escape with my life. This has had a notable effect on my relations and reputation.");
+		WriteNewLogEntry(sLogTitle,PreprocessText(sLogEntry), "Personal", true);
+		Preprocessor_Delete("nationdesc");
 		// TIH <--
 	}
 }

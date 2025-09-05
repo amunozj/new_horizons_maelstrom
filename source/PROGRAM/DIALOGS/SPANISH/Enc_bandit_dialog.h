@@ -1,13 +1,13 @@
 string DLG_TEXT[10] = {
-"¡Eh, tú! ¿Cómo osas entrar en este refugio sagrado de nuestra orden?",
-"¡¿Qué estáis fumando aqui?!",
+"Â¡Eh, tÃº! Â¿CÃ³mo osas entrar en este refugio sagrado de nuestra orden?",
+"Â¡Â¿QuÃ© estÃ¡is fumando aqui?!",
 "!",
-"Hum... eh..., pensé que esta era una iglesia normal y corriente, y entré a rob... eh... rezar de rodillas, como debe hacer todo buen cristiano.",
-"¡Oye, he oído que alguien con mucha influencia y MUCHO oro ha puesto un precio a tu cabeza! Te doy la bienvenida, ¡je,je! Este es el dia en que me haré rico...",
-"Te equivocas, este es el día en que morirás...",
-"¡Esta no es una iglesia pública, es una abadía de la Orden de Malta, y aquí solo se permite el paso a frailes, novicios y caballeros de la noble orden!",
+"Hum... eh..., pensÃ© que esta era una iglesia normal y corriente, y entrÃ© a rob... eh... rezar de rodillas, como debe hacer todo buen cristiano.",
+"Â¡Oye, he oÃ­do que alguien con mucha influencia y MUCHO oro ha puesto un precio a tu cabeza! Te doy la bienvenida, Â¡je,je! Este es el dia en que me harÃ© rico...",
+"Te equivocas, este es el dÃ­a en que morirÃ¡s...",
+"Â¡Esta no es una iglesia pÃºblica, es una abadÃ­a de la Orden de Malta, y aquÃ­ solo se permite el paso a frailes, novicios y caballeros de la noble orden!",
 "Ya veo.",
 "...",
-"Parece que mis HABILIDADES eran insuficientes para intentar ese enfoque. ¿O ha sido solo mala suerte? Bueno, espero que mi esgrima tenga más éxito que mi arte dramático...",
+"Parece que mis HABILIDADES eran insuficientes para intentar ese enfoque. Â¿O ha sido solo mala suerte? Bueno, espero que mi esgrima tenga mÃ¡s Ã©xito que mi arte dramÃ¡tico...",
 
 };

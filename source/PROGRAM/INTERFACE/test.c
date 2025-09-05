@@ -16,7 +16,7 @@ void InitInterface(string iniName)
 	SetNodeUsing("DESCRIBE_RECT",false);
 	SetSelectable("EXIT_BUTTON",true);
 
-	CreateExitString();
+	// CreateExitString();
 
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);

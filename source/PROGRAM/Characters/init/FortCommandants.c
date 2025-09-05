@@ -32,8 +32,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.skill.Sneak = "1";
 	ch.money = "10";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -1215.46; // PB
-	ch.ship.pos.z = 108.417; // PB
+	ch.ship.pos.x = 2122.685 // PB
+	ch.ship.pos.z = -1132.215 // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -83,8 +83,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.skill.Sneak = "1";
 	ch.money = "10";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -1490.16; // PB
-	ch.ship.pos.z = 1059.16; // PB
+	ch.ship.pos.x = -795.8871; // PB
+	ch.ship.pos.z = 1666.402; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -132,8 +132,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.skill.Sneak = "1";
 	ch.money = "10";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -128.329; // PB
-	ch.ship.pos.z = -4.02075; // PB
+	ch.ship.pos.x = -906.7187 // PB
+	ch.ship.pos.z = -1639.882 // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -183,8 +183,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 17.191; // PB
-	ch.ship.pos.z = -2.25536; // PB
+	ch.ship.pos.x = -322.6504; // PB
+	ch.ship.pos.z = -317.9496; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -235,8 +235,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -1987.75; // PB
-	ch.ship.pos.z = -546.917; // PB
+	ch.ship.pos.x = -2566.726; // PB
+	ch.ship.pos.z = -2080.765; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -287,8 +287,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -516.703; // PB
-	ch.ship.pos.z = -249.656; // PB
+	ch.ship.pos.x = 1698.886; // PB
+	ch.ship.pos.z = 68.87842; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -339,8 +339,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 2073.03; // PB
-	ch.ship.pos.z = -684.425; // PB
+	ch.ship.pos.x = 1716.492; // PB
+	ch.ship.pos.z = 1302.121; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -395,8 +395,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 50.895; // PB
-	ch.ship.pos.z = -117.873; // PB
+	ch.ship.pos.x = -1711.641; // PB
+	ch.ship.pos.z = 954.9787; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -448,8 +448,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -347.291; // PB
-	ch.ship.pos.z = 382.68; // PB
+	ch.ship.pos.x = -904.6331; // PB
+	ch.ship.pos.z = -967.0954; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -501,8 +501,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -2149.93; // PB
-	ch.ship.pos.z = 5817.46; // PB
+	ch.ship.pos.x = 7234.018; // PB
+	ch.ship.pos.z = -4732.157; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -554,8 +554,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 4349.73; // PB
-	ch.ship.pos.z = -1943.02; // PB
+	ch.ship.pos.x = -9210.628; // PB
+	ch.ship.pos.z = 1676.017; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -607,8 +607,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 539.978; // PB
-	ch.ship.pos.z = -139.105; // PB
+	ch.ship.pos.x = -2623.564; // PB
+	ch.ship.pos.z = -2333.141; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -660,8 +660,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 145.941; // PB
-	ch.ship.pos.z = -318.264; // PB
+	ch.ship.pos.x = 60.82787; // PB
+	ch.ship.pos.z = 1282.235; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -713,8 +713,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -271.61; // PB
-	ch.ship.pos.z = 372.135; // PB
+	ch.ship.pos.x = -1199.019; // PB
+	ch.ship.pos.z = -972.0608; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -766,8 +766,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 1563.12; // PB
-	ch.ship.pos.z = 157.497; // PB
+	ch.ship.pos.x = -4116.84; // PB
+	ch.ship.pos.z = -1384.702; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -819,8 +819,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -870.43; // PB
-	ch.ship.pos.z = 3581.66; // PB
+	ch.ship.pos.x = 4338.215; // PB
+	ch.ship.pos.z = -2254.132; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -872,8 +872,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 1556.89; // PB
-	ch.ship.pos.z = -4389.19; // PB
+	ch.ship.pos.x = -95.08528; // PB
+	ch.ship.pos.z = 7897.716; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -926,8 +926,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -488.099; // PB
-	ch.ship.pos.z = -430.98; // PB
+	ch.ship.pos.x = -1645.387; // PB
+	ch.ship.pos.z = 23.00062; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -979,8 +979,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = 7.998; // PB
-	ch.ship.pos.z = -552.731; // PB
+	ch.ship.pos.x = 770.1185; // PB
+	ch.ship.pos.z = -1871.272; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -1031,8 +1031,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -588.579; // PB
-	ch.ship.pos.z = -402.164; // PB
+	ch.ship.pos.x = 991.127; // PB
+	ch.ship.pos.z = -839.5062; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)
@@ -1134,8 +1134,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.money.quest = "0";
 	ch.quest.meeting = "0";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -378.273; // PB
-	ch.ship.pos.z = -184.403; // PB
+	ch.ship.pos.x = 128.2023; // PB
+	ch.ship.pos.z = -394.4997; // PB
 	ch.ship.crew.quantity = 500;
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
@@ -1185,8 +1185,8 @@ void CreateFortCommandantsCharacters(ref n)
 	ch.skill.Sneak = "1";
 	ch.money = "10";
 	ch.ship.type = SHIP_FORT_NAME; // PS
-	ch.ship.pos.x = -804.717; // PB
-	ch.ship.pos.z = -1408.82; // PB
+	ch.ship.pos.x = -1075.986; // PB
+	ch.ship.pos.z = -651.965; // PB
 	ch.Fort.Cannons.Charge.Type = GOOD_BOMBS;
 	// KNB -->
 	if(USE_REAL_CANNONS)

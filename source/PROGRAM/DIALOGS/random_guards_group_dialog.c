@@ -31,7 +31,7 @@ void ProcessDialogEvent()
 		int pLeadership = CalcCharacterSkill(PChar,SKILL_LEADERSHIP);
 		int pLuck = CalcCharacterSkill(PChar,SKILL_SNEAK);
 		int PersuasionChance = 3+round(rand(pLuck*10)/10)+pLeadership-(getSmugglingState(smugisland)-1);
-		if(CheckCharacterPerk(PChar,"Trustworthy")) PersuasionChance = PersuasionChance+1;
+		if(CheckPerkForGroup(PChar,"Trustworthy")) PersuasionChance = PersuasionChance+1;
 		if(CheckCharacterPerk(PChar,"IronWill")) PersuasionChance = PersuasionChance+1;
 		//if(CheckCharacterPerk(PChar,"Charisma")) PersuasionChance = PersuasionChance+2;
 		//if(CheckCharacterPerk(PChar,"WitCharm")) PersuasionChance = PersuasionChance+3;
@@ -50,6 +50,8 @@ void ProcessDialogEvent()
 	int loc_id = FindLocation(PChar.location);
 	int price = makeint(sqrt(sti(pchar.rank)))*250;
 	string sNation = "";
+
+	bool bPatrolQuestionSet;
 
 	bool bHostileDetected = false;
 
@@ -72,10 +74,10 @@ void ProcessDialogEvent()
 			Dialog.snd = "voice\PADI\PADI001";
 
 			// PB: You are a KNOWN enemy because you're flying a hostile flag
-			if (GetFlagRMRelation(sti(Npchar.nation)) == RELATION_ENEMY)
+			if (sti(NPChar.nation) != PERSONAL_NATION && GetFlagRMRelation(sti(Npchar.nation)) == RELATION_ENEMY)
 			{
-				sNation = " " + GetNationDescByType(GetCurrentFlag());
-				if (GetCurrentFlag() == PERSONAL_NATION) sNation = "n "; // PB: Grammar "an enemy"
+				sNation = " " + XI_ConvertString(GetNationDescByType(GetCurrentFlag()));
+				if (GetCurrentFlag() == PERSONAL_NATION && LanguageGetLanguage() == "English") sNation = "n"; // PB: Grammar "an enemy"
 				Preprocessor_Add("sir", GetMyAddressForm(NPChar, PChar, ADDR_POLITE, false, false)); // DeathDaisy
 				Dialog.Text = DLG_TEXT[7] + GetMySimpleName(PChar) + DLG_TEXT[8] + sNation + DLG_TEXT[32];
 				Link.l1 = DLG_TEXT[9];
@@ -87,8 +89,9 @@ void ProcessDialogEvent()
 				// ccc Dec 05 You are recognized for your pirating actions
 				if(GetServedNation() == PIRATE && GetCurrentLocationNation() != PIRATE)	// MT: If serving the pirates and in a non-pirate location, then:
 				{
-					if(frnd()<makefloat(GetRank(pchar, sti(NPChar.nation)))/12.0) //MT: Meant to make you easier to detect as a pirate as you go up in pirate rank
+					if(sti(NPChar.nation) != PERSONAL_NATION && frnd()<makefloat(GetRank(pchar, sti(NPChar.nation)))/12.0) //MT: Meant to make you easier to detect as a pirate as you go up in pirate rank
 					{
+						Preprocessor_Add("sir", GetMyAddressForm(NPChar, PChar, ADDR_POLITE, false, false)); // DeathDaisy
 						Dialog.Text = DLG_TEXT[7] + GetMySimpleName(PChar) + DLG_TEXT[11];
 						Link.l1 = DLG_TEXT[9];
 						Link.l1.go = "exit_soldiers";
@@ -104,10 +107,11 @@ void ProcessDialogEvent()
 				else
 				{
 					//MT: If at war with the nation the guard belongs to, there is a chance to be detected (false flags should only occur when at war):
-					if (GetNationRelation(PERSONAL_NATION, sti(Npchar.nation)) == RELATION_ENEMY && frnd() < GetChanceDetectFalseFlag())
+					if (sti(NPChar.nation) != PERSONAL_NATION && GetNationRelation(PERSONAL_NATION, sti(Npchar.nation)) == RELATION_ENEMY && frnd() < GetChanceDetectFalseFlag())
 					{
-						sNation = " " + GetNationDescByType(GetServedNation());
+						sNation = " " + XI_ConvertString(GetNationDescByType(GetServedNation()));
 						if (GetServedNation() == PERSONAL_NATION) sNation = ""; // PB: Grammar "a spy"
+						Preprocessor_Add("sir", GetMyAddressForm(NPChar, PChar, ADDR_POLITE, false, false)); // DeathDaisy
 						Dialog.Text = DLG_TEXT[7] + GetMySimpleName(PChar) + DLG_TEXT[8] + sNation + DLG_TEXT[10];
 						Link.l1 = DLG_TEXT[9];
 						Link.l1.go = "exit_soldiers";
@@ -205,21 +209,30 @@ void ProcessDialogEvent()
 			Preprocessor_Add("npcsir",FirstLetterUp(GetCharacterAddressForm(NPChar,ADDR_POLITE,false,false)));
 			
 			Dialog.Text = DLG_TEXT[4];
+			bPatrolQuestionSet = false;
 			if(!CheckAttribute(Pchar,"quest.Contraband.Talked"))
 			{
 				Link.l1 = PersuadeDialog;
 				if(PersuadeInt == 0)	Link.l1.go = "seasidepicknick";
 				else Link.l1.go = "persuadeguard"+PersuadeInt;
+				bPatrolQuestionSet = true;
 			}
 			if(!CheckAttribute(Pchar,"quest.Contraband.Cardwon"))
 			{
-				if(CheckCharacterPerk(PChar,"HighStakes"))
+				if(CheckPerkForGroup(PChar,"HighStakes"))
 				{
 					Link.l3 = DLG_TEXT[28];
 					Link.l3.go = "playgame";
+					bPatrolQuestionSet = true;
 				}
 			}
-			// //DeathDaisy: TODO: if you happen to be in the navy, outrank the soldier and they are of your nation, order them to give you the time
+
+			if (!bPatrolQuestionSet)
+			{
+				Link.l1 = DLG_TEXT[31];		// GR: Can get to case "PatrolQuestion" if *either* "Contraband.Talked" or "Contraband.Cardwon" is not set
+				Link.l1.go = "exit_smuggling";	// Exit if "Contraband.Talked" is set, "Contrband.Cardwon" is not set, and you don't have "HighStakes" perk
+			}
+			//if(ProfessionalNavyNation() == NPChar.nation){ //DeathDaisy: TODO: if you happen to be in the navy, outrank the soldier and they are of your nation, order them to give you the time
 		break;
 		
 		case "persuadeguard1":			

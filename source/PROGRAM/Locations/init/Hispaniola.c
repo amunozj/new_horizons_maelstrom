@@ -1188,7 +1188,7 @@ void LocationInitHispaniola(ref n)
 	// ccc fake forts--------------------------------------
 	//ID
 	Locations[n].id = "PoPrince_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";
@@ -1948,7 +1948,7 @@ void LocationInitHispaniola(ref n)
 	// -------------------------------------------------
 	// Swindler 2006-07-11 -->
 	// Retextured Santo Domingo
-	Locations[n].filespath.models = "locations\town_Greenford\port";
+	Locations[n].filespath.models = "locations\Port_Santo_Domingo\port";
 	Locations[n].filespath.textures = "locations\SPAIN";
 	Locations[n].image = "Town_Greenford_Port_Spain.tga";
 
@@ -2545,7 +2545,7 @@ void LocationInitHispaniola(ref n)
 	// ccc fake forts--------------------------------------
 	//ID
 	Locations[n].id = "Santo_Domingo_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_Inside\Fort_1";
 	Locations[n].filespath.textures = "locations\SPAIN";
@@ -4621,7 +4621,7 @@ void LocationInitHispaniola(ref n)
 	Locations[n].filespath.models = "locations\Inside\SmallTavern";	
 
 	Locations[n].id = "BC_Tavern";
-	locations[n].id.label = "Buccaneers Camp tavern";
+	locations[n].id.label = "#stown_name# tavern";
 	Locations[n].image = "Inside_SmallTavern.tga";
 	//Town sack
 	Locations[n].townsack = "Buccaneers Camp"; // NK - "Oxbay";
@@ -4670,7 +4670,7 @@ void LocationInitHispaniola(ref n)
 	Locations[n].filespath.models = "locations\Inside\SmallHome";	
 
 	Locations[n].id = "BC_tavern_upstairs";
-	locations[n].id.label = "Room in Buccaneers Camp tavern";
+	locations[n].id.label = "Room in #stown_name# tavern";
 	Locations[n].image = "Inside_Doubleflour_House_Room.tga"; // ccc: Skip VC in room
 	//Town sack
 	Locations[n].townsack = "Buccaneers Camp";

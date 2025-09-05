@@ -41,7 +41,7 @@ int GetOfficerSkillFactor(ref Officer, string SkillName)
 	{
 		if(!CheckAttribute(OfficerTypes,officType+".skills"))
 		{
-			trace("ERROR: missing skills for "+officType+" for Character "+GetMySimpleName(Officer)); 
+			trace("ERROR: missing skills for "+officType+" for Character "+GetMySimpleName(Officer));
 			DumpAttributes(Officer);
 			Officer.quest.officerType = GetRandomEnemyType();
 			officType = Officer.quest.officerType;
@@ -50,7 +50,7 @@ int GetOfficerSkillFactor(ref Officer, string SkillName)
 	}
 	else
 	{
-		trace("ERROR: missing skillfactor for type "+officType+" and skill "+SkillName); 
+		trace("ERROR: missing skillfactor for type "+officType+" and skill "+SkillName);
 		DumpAttributes(Officer);
 		skillFactor = 2;
 	}
@@ -58,7 +58,7 @@ int GetOfficerSkillFactor(ref Officer, string SkillName)
 	// 0: no contribution
 	// 1: half contribution
 	// 2: full contribution
-	
+
 	return skillFactor;
 }
 
@@ -185,14 +185,14 @@ string GetRandomEnemyType()
 string GetRandomOfficerType()
 {
 	string retVal = "";
-	int numtypes = GetAttributesNum(OfficerTypes);
+	int numtypes = GetAttributesNum(&OfficerTypes);
 	int picked;
 	int attempts = 0;
 	string type;
 	while(retVal == "")
 	{
 		picked = rand(numtypes-1);
-		type = GetAttributeName(GetAttributeN(OfficerTypes,picked));
+		type = GetAttributeName(GetAttributeN(&OfficerTypes,picked));
 		if(CheckAttribute(OfficerTypes,type+".usableoffictype"))
 		{
 			retVal = type;
@@ -214,7 +214,7 @@ bool UsableOfficer(ref _refEnemy)
 
 bool UsableOfficerType(string officertype, bool bUsable)
 {
-	if(!CheckAttribute(OfficerTypes,officertype)) 
+	if(!CheckAttribute(OfficerTypes,officertype))
 	{
 		if (DEBUG_OFFICERPRICE > 0) trace("OFFIC TYPE ERROR: Type "+officertype+" not present");
 	}

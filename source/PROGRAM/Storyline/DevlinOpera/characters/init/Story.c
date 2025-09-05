@@ -118,7 +118,7 @@ void CreateStoryCharacters(ref n)
 	ch.lastname = TranslateString("","Devlin");
 	ch.id		= "Bonnie Devlin";
 	ch.model = "BeatriceA";
-	ch.model.animation = "woman_sit";
+	ch.model.animation = "Beatrice";
 	ch.sex = "woman";
 	ch.sound_type = "female_citizen";
 	GiveItem2Character(ch, "blade4");
@@ -127,23 +127,24 @@ void CreateStoryCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Bonnie Devlin_dialog.c";
-	ch.greeting = "Gr_Bonnie"; //Gr_Stephan Bonser";
+	ch.greeting = "Gr_Bonnie";
 	ch.rank 	= 20;
-	ch.reputation = "22";
+	ch.reputation = "60";
 	ch.experience = "0";
-	ch.skill.Leadership = "1";
-	ch.skill.Fencing = "8";
-	ch.skill.Sailing = "1";
-	ch.skill.Accuracy = "8";
+	ch.skill.Leadership = "4";
+	ch.skill.Fencing = "5";
+	ch.skill.Sailing = "5";
+	ch.skill.Accuracy = "4";
 	ch.skill.Cannons = "1";
 	ch.skill.Grappling = "1";
 	ch.skill.Repair = "1";
-	ch.skill.Defence = "8";
-	ch.skill.Commerce = "1";
-	ch.skill.Sneak = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "5";
+	ch.skill.Sneak = "4";
 	ch.money = "1000";
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
+	ch.quest.officertype = OFFIC_TYPE_CIVILIAN;
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -153,7 +154,7 @@ void CreateStoryCharacters(ref n)
 	ch.lastname = TranslateString("","Devlin");
 	ch.id		= "Blaze Devlin";
 	ch.model = "Devlin";
-	ch.model.animation = "man";
+	ch.model.animation = "blaze";
 	ch.sex = "man";
 	ch.sound_type = "male_citizen";
 	GiveItem2Character(ch, "blade21");
@@ -164,24 +165,25 @@ void CreateStoryCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Blaze Devlin_dialog.c";
-	ch.greeting = "Gr_Devlin"; //Gr_Stephan Bonser";
+	ch.greeting = "Gr_Devlin";
 	ch.rank 	= 20;
-	ch.reputation = "22";
+	ch.reputation = "30";
 	ch.experience = "0";
 	ch.skill.Leadership = "1";
 	ch.skill.Fencing = "8";
 	ch.skill.Sailing = "1";
-	ch.skill.Accuracy = "8";
+	ch.skill.Accuracy = "4";
 	ch.skill.Cannons = "1";
 	ch.skill.Grappling = "1";
 	ch.skill.Repair = "1";
-	ch.skill.Defence = "8";
+	ch.skill.Defence = "6";
 	ch.skill.Commerce = "1";
-	ch.skill.Sneak = "1";
+	ch.skill.Sneak = "6";
 	ch.money = "1000";
 	LAi_SetPoorType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
+	ch.quest.officertype = OFFIC_TYPE_CIVILIAN;
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -219,10 +221,49 @@ void CreateStoryCharacters(ref n)
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	AddGameCharacter(n, ch);
 
+	ch.old.name = "Beatrice";
+	ch.old.lastname = "Devlin";
+	ch.name = TranslateString("","Beatrice");
+	ch.lastname = TranslateString("","Devlin");
+	ch.id		= "Fake Bea";
+	ch.model = "Beatrice";
+	ch.model.animation = "Beatrice";
+	ch.sex = "woman";
+	ch.sound_type = "female_citizen";
+	GiveItem2Character(ch, "blade47");
+	ch.equip.blade = "blade47";
+	ch.location	= "";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.Dialog.Filename = "Fake Bea_dialog.c";
+	ch.greeting = "";
+	ch.rank 	= 20;
+	ch.reputation = "60";
+	ch.experience = "0";
+	ch.skill.Leadership = "4";
+	ch.skill.Fencing = "5";
+	ch.skill.Sailing = "5";
+	ch.skill.Accuracy = "4";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "5";
+	ch.skill.Sneak = "4";
+	ch.money = "1000";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	ch.quest.officertype = OFFIC_TYPE_CIVILIAN;
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+
+//========================================== PIRATES IN TURKS
+
 	ch.old.name = "Short Jack";
 	ch.old.lastname = "Gold";
 	ch.name = TranslateString("", "Short Jack");
-	ch.lastname = TranslateString("", "Gold");
+	ch.lastname = TranslateString("", "GoldDO");
 	ch.id		= "Short Jack Gold";
 	ch.model	= "50FatJack"; // PB
 	ch.sex = "man";
@@ -680,7 +721,7 @@ void CreateStoryCharacters(ref n)
 	ch.id		= "High Sea Lass";
 	ch.model = "33_Blazie";
 	ch.sex = "woman";
-	ch.model.animation = "woman_sit";
+	ch.model.animation = "33_Blazie";
 	ch.sound_type = "female_citizen";
 	ch.location	= "";
 	ch.location.group = "";
@@ -697,7 +738,7 @@ void CreateStoryCharacters(ref n)
 	TakenItems(ch, "gunpowder", 6);
 	TakenItems(ch, "pistolbullets", 6);
 	//JRH ammo mod <--
-	ch.greeting = "Gr_SJGfem"; //Gr_Stephan Bonser";
+	ch.greeting = "Gr_SJGfem";
 	ch.rank 	= 40;
 	ch.reputation = "22";
 	ch.experience = "600";
@@ -753,7 +794,7 @@ void CreateStoryCharacters(ref n)
 	TakenItems(ch, "gunpowder", 6);
 	TakenItems(ch, "pistolbullets", 6);
 	//JRH ammo mod <--
-	ch.greeting = "Gr_SJGfem"; //Gr_Stephan Bonser";
+	ch.greeting = "Gr_SJGfem";
 	GiveItem2Character(ch, "commonarmor");
 	ch.equip.armor = "commonarmor";
 	ch.rank 	= 40;

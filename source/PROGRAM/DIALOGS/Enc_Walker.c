@@ -1293,8 +1293,8 @@ void ProcessDialogEvent()
 				// Aconcagua: need to take money from char, too -> attacking afterwards does not double stolen money!
 				AddMoneyToCharacter(NPChar, -pickgold);
 				Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"You got") + " " +  NPChar.pickgold + " " + XI_ConvertString("gold."));
-				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+pickgold/4); }
-				else { AddPartyExp(PChar, 100+pickgold/4); }
+				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+pickgold/4)); }
+				else { AddPartyExp(PChar, 100+pickgold/4)); }
 				DeleteAttribute(NPChar, "pickgold");	// GR: "pickgold" is checked in "stunned_dialog.c" so you don't lose rep for mugging a pickpocket.  Lose rep if you mug him after he gives your money back.
 			}
 			d.Text = DLG_TEXT[248];
@@ -1328,8 +1328,8 @@ void ProcessDialogEvent()
 				// Aconcagua: so now, leave nothing to the character -> no sense in adding afterwards
 				NPChar.money = 0;
 				Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"You got") + " " + pickgold + " " + XI_ConvertString("gold."));
-				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+makeint(pickgold/4)); }
-				else { AddPartyExp(PChar, 100+makeint(pickgold/4)); }
+				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+makeint(pickgold/4))); }
+				else { AddPartyExp(PChar, 100+makeint(pickgold/4))); }
 				DeleteAttribute(NPChar, "pickgold");	// GR: "pickgold" is checked in "stunned_dialog.c" so you don't lose rep for mugging a pickpocket.  Lose rep if you mug him after he gives your money back.
 				d.Text = DLG_TEXT[245];
 				Link.l1 = DLG_TEXT[247];
@@ -1352,8 +1352,8 @@ void ProcessDialogEvent()
 				// 	NPChar.pickgold = 0;
 				//	// Aconcagua: TODO: do we need an extra dialog then?
 				// }
-				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+makeint(pickgold/2)); }
-				else { AddPartyExp(PChar, 100+makeint(pickgold/2)); }
+				if(AUTO_SKILL_SYSTEM) { AddPartyExPChar(PChar, "Sneak", 100+makeint(pickgold/2))); }
+				else { AddPartyExp(PChar, 100+makeint(pickgold/2))); }
 				d.Text = DLG_TEXT[266];
 				Link.l2 = DLG_TEXT[268];
 				Link.l2.go = "jewel";
@@ -1396,7 +1396,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "why_3":
-			d.text = DLG_TEXT[286] + DLG_TEXT[287];
+			d.text = DLG_TEXT[286] + DLG_TEXT[287]);
 			link.l1 = DLG_TEXT[288];
 			link.l1.go = "tell_price";
 		break;
@@ -1605,6 +1605,7 @@ void ProcessDialogEvent()
 		case "exit_change_dlg":
 			Diag.CurrentNode = "Node_1";
 			DialogExit();
+			// DialogMain(characterFromID(PChar.newofficerid));//MAXIMUS //Levis: Creates CTD
 			PChar.quest.hire_enc_walker = NPChar.id;
 			AddDialogExitQuest("LandEnc Talk to player about hireing");
 			DeleteAttribute(PChar,"newofficerid");//MAXIMUS

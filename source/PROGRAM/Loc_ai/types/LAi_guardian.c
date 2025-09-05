@@ -46,8 +46,42 @@ void LAi_type_guardian_Init(aref chr)
 			}
 		}
 	}
-	//Установим анимацию персонажу
-	LAi_SetDefaultStayAnimation(chr);
+	bool isMusk = false;
+	string sAni = "";
+	if (CheckAttribute(chr, "model.animation"))
+	{
+		sAni = strcut(chr.model.animation, 0, 8);
+		if (sAni == "mushketer")
+			isMusk = true;
+	}
+	if (isMusk && !CheckAttribute(chr, "isMusketer.weapon") && chr.index != getmaincharacterindex() && !isOfficer(chr))
+
+
+	{
+        while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
+        }
+        while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
+        }
+		GiveItem2Character(chr, "unarmed");
+		EquipCharacterbyItem(chr, "unarmed");
+		string sMush = "mushket";
+		if (chr.model == "MusketeerEnglish_2") sMush = "mushket2x2";
+		GiveItem2Character(chr, sMush);
+		EquipCharacterbyItem(chr, sMush);
+		chr.items.bullet = 300;
+		chr.isMusketer = true;
+		if (!CheckAttribute(chr, "MusketerDistance"))
+			chr.MusketerDistance = 5.0 + frand(5.0);
+	}
+	else
+	{
+		//Установим анимацию персонажу
+		LAi_SetDefaultStayAnimation(chr);
+	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 	//Сохраним адрес как точку охраны
 	chr.chr_ai.type.group = chr.location.group;

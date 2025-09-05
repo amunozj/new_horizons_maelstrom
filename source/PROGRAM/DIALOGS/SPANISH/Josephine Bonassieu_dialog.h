@@ -1,4 +1,4 @@
-string DLG_TEXT[35] = {
+string DLG_TEXT[44] = {
 "¡Te doy la bienvenida! Toma asiento en una mesa libre. ¿Que deseas pedir, ",
 "?",
 "Nada. Estoy aquí por negocios.",
@@ -22,7 +22,7 @@ string DLG_TEXT[35] = {
 "Bien. Te costará cinco piezas de oro.",
 "Muy bien. Aquí tienes.",
 "¿Tanto? Me parece que voy a pasar la noche en el salón de la taberna.",
-"¿Qué pago ocn eso? ¿La residencia del gobernador? No, gracias.",
+"¿Qué pago con eso? ¿La residencia del gobernador? No, gracias.",
 "Lo pensaré. Por ahora, déjame hacerte otra pregunta.",
 "Te costará cinco piezas de oro.",
 "Muy bien. Aquí tienes.",
@@ -34,4 +34,13 @@ string DLG_TEXT[35] = {
 "No. Tengo otra pregunta.",
 "¡Amigos, por favor! Basta de esta locura. ¡No me hagáis llamar a la guardia!",
 "¡Relájate! Ya me marcho.",
+"¿Sí? ¿Qué quieres?",
+"Me gustaría pasar un buen rato, si entiendes lo que quiero decir. ¿Podrías ayudarme a encontrar una mujer?",
+"¡Ja, ja, ja! Por supuesto, capitán. Te entiendo perfectamente. Habla con Laura Cotton.",
+"¿Dónde puedo encontrarla?",
+"A estas horas, supongo que en su casa. Es la que está junto a la puetra que conduce a la selva.",
+"¡Gracias!",
+"A decir verdad, estamos buscnado a Short Jack Gold. ¿Has oído hablar de ´él?",
+"¡Ah! El gran Short Jack Gold... No lo encontrarás aquí, cariño. Prueba en el ayuntamiento. Normalmente está allí, trabajando en algún programa de desarrollo para la isla, junto alr esto del consejo.",
+"De acuerdo. Gracias.",
 };

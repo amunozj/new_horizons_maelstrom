@@ -29,6 +29,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "", "ChrCamTurnV", 257, 0, false );
 	SetControlForInverting("ChrCamTurnV",false);
 	CI_CreateAndSetControls( "", "ChrCamTurnH", 256, 0, false );
+	CI_CreateAndSetControls( "", "ChrCamSpecMode", CI_GetKeyCode("VK_CONTROL"), 0, false );
 	CI_CreateAndSetControls( "", "Turn V", 257, INVERSE_CONTROL, false );
 	SetControlForInverting("Turn V",true);
 	CI_CreateAndSetControls( "", "Turn H", 256, 0, false );
@@ -76,6 +77,12 @@ void ExternControlsInit(bool bFirst)
 	//MapControlToGroup("Sidestep_right_off", "FightModeControls");
 
 	CI_CreateAndSetControls( "PrimaryLand", "ChrRun", CI_GetKeyCode(CTL_LAND_RUN), 0, true );
+	if(AlwaysRunToggle) {
+		CI_CreateAndSetControls( "PrimaryLand", "ChrRun", CI_GetKeyCode(CTL_LAND_RUN), USE_AXIS_AS_BUTTON, true );
+	} else {
+		CI_CreateAndSetControls( "PrimaryLand", "ChrRun", CI_GetKeyCode(CTL_LAND_RUN), USE_AXIS_AS_BUTTON + INVERSE_CONTROL, true );
+	}
+
 	MapControlToGroup("ChrRun","FightModeControls");
 	//MapControlToGroup("ChrRun","BattleInterfaceControls");// TIH not needed Aug24'06
 
@@ -171,11 +178,10 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_TurnRight", CI_GetKeyCode(CTL_SHIP_TURN_RIGHT), 0, true );
 	MapControlToGroup("Ship_TurnRight","Sailing1Pers");
 
-	CI_CreateAndSetControls( "Sailing3Pers", "Ship_RaiseSails", CI_GetKeyCode(CTL_SHIP_SAIL_RAISE), 0, true ); // KK
-	MapControlToGroup("Ship_RaiseSails","Sailing1Pers"); // KK
-
-	CI_CreateAndSetControls( "Sailing3Pers", "Ship_LowerSails", CI_GetKeyCode(CTL_SHIP_SAIL_STRIKE), 0, true ); // KK
-	MapControlToGroup("Ship_LowerSails","Sailing1Pers"); // KK
+	CI_CreateAndSetControls( "Sailing3Pers", "Ship_SailUp", CI_GetKeyCode("KEY_W"), 0, true );
+	MapControlToGroup("Ship_SailUp","Sailing1Pers");
+	CI_CreateAndSetControls( "Sailing3Pers", "Ship_SailDown", CI_GetKeyCode("KEY_S"), 0, true );
+	MapControlToGroup("Ship_SailDown","Sailing1Pers");
 
 // PB: Steam Ships -->
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_PowerUp", CI_GetKeyCode(CTL_SHIP_POWER_UP), 0, true );

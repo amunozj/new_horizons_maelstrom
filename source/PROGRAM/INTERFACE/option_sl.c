@@ -391,11 +391,14 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 		/////////////////////////////////////////////////////////////////////
 		Settings.BuildSettings.GRAPHICAL = GRAPHICAL;
 		/////////////////////////////////////////////////////////////////////
+				Settings.BuildSettings.SHIP_INFO = SHIP_INFO;
 				Settings.BuildSettings.LOC_CAMERA = LOC_CAMERA;
-				Settings.BuildSettings.DIALOG_CAMERA = DIALOG_CAMERA;
+				// Settings.BuildSettings.DIALOG_CAMERA = DIALOG_CAMERA;
+				Settings.BuildSettings.HUD_SCALING = HUD_SCALING;
 				Settings.BuildSettings.ONSEA_COMPASS = ONSEA_COMPASS;
 				Settings.BuildSettings.DEFAULT_SAILS = DEFAULT_SAILS;
 				Settings.BuildSettings.PIRATES_BLACK_SAILS = PIRATES_BLACK_SAILS;
+				Settings.BuildSettings.SHIP_CAMERA_DISTANCE = SHIP_CAMERA_DISTANCE;
 
 
 		/////////////////////////////////////////////////////////////////////
@@ -414,6 +417,8 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 				Settings.BuildSettings.ENABLE_WEAPONSMOD = ENABLE_WEAPONSMOD;
 				Settings.BuildSettings.ENABLE_AMMOMOD = ENABLE_AMMOMOD;
 				Settings.BuildSettings.SWEDEN_ALLOWED = SWEDEN_ALLOWED;
+				Settings.BuildSettings.SEQUENTIAL_CANNONFIRE = SEQUENTIAL_CANNONFIRE;
+				Settings.BuildSettings.FORCE_TRADE_WINDS = FORCE_TRADE_WINDS;
 
 
 		/////////////////////////////////////////////////////////////////////
@@ -434,6 +439,7 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 				Settings.BuildSettings.NATIONAL_PAINT_SCHEMES = NATIONAL_PAINT_SCHEMES;
 				Settings.BuildSettings.SAILHO_INFOLEVEL = SAILHO_INFOLEVEL;
 				Settings.BuildSettings.RELATION_IGNORE_FRIENDLY = RELATION_IGNORE_FRIENDLY;
+				Settings.BuildSettings.DISABLE_SAILTO_RESTRICTIONS = DISABLE_SAILTO_RESTRICTIONS;
 
 		trace("==> BuildSettings: Sets to default");
 	}
@@ -464,11 +470,16 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 		/////////////////////////////////////////////////////////////////////
 		GRAPHICAL = Settings.BuildSettings.GRAPHICAL;
 		/////////////////////////////////////////////////////////////////////
+				SHIP_INFO = Settings.BuildSettings.SHIP_INFO;
+				UpdateShipInfoBars(); // Mirsaneli <- Apply ship info bars instantly!
 				LOC_CAMERA = Settings.BuildSettings.LOC_CAMERA;
-				DIALOG_CAMERA = Settings.BuildSettings.DIALOG_CAMERA;
+				// DIALOG_CAMERA = Settings.BuildSettings.DIALOG_CAMERA;
+				HUD_SCALING = Settings.BuildSettings.HUD_SCALING;
 				ONSEA_COMPASS = Settings.BuildSettings.ONSEA_COMPASS;
 				DEFAULT_SAILS = Settings.BuildSettings.DEFAULT_SAILS;
 				PIRATES_BLACK_SAILS = Settings.BuildSettings.PIRATES_BLACK_SAILS;
+				SHIP_CAMERA_DISTANCE = Settings.BuildSettings.SHIP_CAMERA_DISTANCE;
+				UpdateShipCameraDistance(); // Mirsaneli <- Apply camera distance instantly!
 
 
 		/////////////////////////////////////////////////////////////////////
@@ -487,6 +498,9 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 				ENABLE_WEAPONSMOD = Settings.BuildSettings.ENABLE_WEAPONSMOD;
 				ENABLE_AMMOMOD = Settings.BuildSettings.ENABLE_AMMOMOD;
 				SWEDEN_ALLOWED = Settings.BuildSettings.SWEDEN_ALLOWED;
+				SEQUENTIAL_CANNONFIRE = Settings.BuildSettings.SEQUENTIAL_CANNONFIRE;
+				FORCE_TRADE_WINDS = Settings.BuildSettings.FORCE_TRADE_WINDS;
+				SetTradeWinds();
 
 
 		/////////////////////////////////////////////////////////////////////
@@ -507,6 +521,7 @@ void InitBuildOptions(bool bDefault, bool bGlobal)
 				NATIONAL_PAINT_SCHEMES = Settings.BuildSettings.NATIONAL_PAINT_SCHEMES;
 				SAILHO_INFOLEVEL = Settings.BuildSettings.SAILHO_INFOLEVEL;
 				RELATION_IGNORE_FRIENDLY = Settings.BuildSettings.RELATION_IGNORE_FRIENDLY;
+				DISABLE_SAILTO_RESTRICTIONS = Settings.BuildSettings.DISABLE_SAILTO_RESTRICTIONS;
 
 		trace("==> BuildSettings: New settings applied");
 	}

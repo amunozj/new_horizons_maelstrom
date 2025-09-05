@@ -132,7 +132,7 @@ void InitInterface_R(string iniName,ref pCharacter)
 
 	if( CheckAttribute(&InterfaceStack,"CharacterView_pos") ) GameInterface.SkillChanger.current = InterfaceStack.CharacterView_pos;
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	bBeParty = false;
 	for(i=1;i<OFFICER_MAX  ;i++)	{if( GetOfficersIndex (pCharacter,i)>=0 ) bBeParty = true; break;}

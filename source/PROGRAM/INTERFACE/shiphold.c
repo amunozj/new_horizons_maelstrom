@@ -20,7 +20,7 @@ void InitInterface(string iniName)
 	FillScroll();
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	refCharacter = GetMainCharacter();
 	CreateString(true,"Money",MakeMoneyShow(sti(refCharacter.Money),MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,320,393,SCRIPT_ALIGN_CENTER,1.0);
@@ -101,7 +101,13 @@ void FillFourImage()
 	int bSelected;
 
 	GameInterface.FourImage.current = 0;
+	if(bNewInterface==true)
+	{
 	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship2.tga";
+	}
+
 	GameInterface.FourImage.ImagesGroup.t0 = "ICONS";
 	GameInterface.FourImage.ImagesGroup.t1 = "SHIPS16";
 	GameInterface.FourImage.ImagesGroup.t2 = "SHIPS1";

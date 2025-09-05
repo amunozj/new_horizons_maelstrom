@@ -7,7 +7,7 @@ void LocationInitSaintMartin(ref n)
 
 	//ID
 	Locations[n].id = "Marigot_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";
@@ -560,7 +560,7 @@ void LocationInitSaintMartin(ref n)
 	locations[n].id.label = "#stown_name# Port."; // KK
 	locations[n].worldmap = "Marigot";
 	Locations[n].image = "Town_FalaiseDeFleur_Port_Buildings.tga";
-	Locations[n].filespath.models = "locations\Town_FalaiseDeFleur\port";
+	Locations[n].filespath.models = "locations\Town_Marigot\port";
 	Locations[n].filespath.textures = "locations\FRANCE";
 
 	//Town sack
@@ -1579,6 +1579,9 @@ void LocationInitSaintMartin(ref n)
 	Locations[n].monsters = "1";
 	locations[n].id.label = "#stown_name# Sewer";
 
+	//Town sack
+	Locations[n].townsack = "Philipsburg";
+
 	//Sound
 	locations[n].type = "Dungeon";
 	//Models
@@ -1632,7 +1635,7 @@ void LocationInitSaintMartin(ref n)
 
 // -----------Philipsburg -------------------------------------------------
 
-	Locations[n].filespath.models = "locations\Town_Greenford\port";
+	Locations[n].filespath.models = "locations\Town_Philipsburg\port";
 	Locations[n].filespath.textures = "locations\HOLLAND";
 	Locations[n].image = "Town_Greenford_Port_Holland.tga";
 
@@ -2223,7 +2226,7 @@ void LocationInitSaintMartin(ref n)
 
 	//ID
 	Locations[n].id = "Philipsburg_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";

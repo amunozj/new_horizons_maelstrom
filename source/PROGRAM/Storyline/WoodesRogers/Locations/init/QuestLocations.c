@@ -1001,7 +1001,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_food_supply";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogersï¿½food supply.";
+	Locations[n].reload.l3.label = "Woodes Rogers´food supply.";
 	Locations[n].locators_radius.reload.reload3 = 0.5;
 	Locations[n].reload.l3.disable = 1;				
 
@@ -1249,13 +1249,13 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l5.name = "reload5";
 	Locations[n].reload.l5.go = "Redmond_Town_04";
 	Locations[n].reload.l5.emerge = "Door_4";
-	Locations[n].reload.l5.autoreload = "0";
+	Locations[n].reload.l5.autoreload = "0"
 	Locations[n].locators_radius.reload.reload5 = 0.3;
 
 	Locations[n].reload.l7.name = "reload7";
 	Locations[n].reload.l7.go = "wr_crew";
 	Locations[n].reload.l7.emerge = "reload5";
-	Locations[n].reload.l7.autoreload = "0";
+	Locations[n].reload.l7.autoreload = "0"
 	Locations[n].locators_radius.reload.reload7 = 0.3;
 
 	Locations[n].locators_radius.box.box1 = 0.8;
@@ -1359,7 +1359,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_library";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogersï¿½ library.";
+	Locations[n].reload.l3.label = "Woodes Rogers´ library.";
 
 	//Charles Windem room
 	Locations[n].reload.l4.name = "reload4";
@@ -1532,7 +1532,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l2.go = "wr_residence";
 	Locations[n].reload.l2.emerge = "reload2";
 	Locations[n].reload.l2.autoreload = "0";
-	Locations[n].reload.l2.label = "Woodes Rogersï¿½residence.";
+	Locations[n].reload.l2.label = "Woodes Rogers´residence.";
 	Locations[n].locators_radius.reload.reload2 = 0.1;//0.5 later on
 
 	//attic
@@ -6926,7 +6926,7 @@ void LocationInitQuestLocations(ref n)
 	n = n + 1;
 
 // -------------------------------------------------
-//pï¿½r qdeck
+//pär qdeck
 	Locations[n].id = "wr_gall_qdeck";
 	locations[n].id.label = "Quarterdeck";
 	//Info
@@ -9938,7 +9938,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 	n = n + 1;
 
 	//  -------------------------------------------------
-//pï¿½r
+//pär
 	Locations[n].id = "bb_prison_stairs2";
 //	locations[n].id.label = "House";
 	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
@@ -17228,7 +17228,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 	n = n + 1;
 
 	// -------------------------------------------------
-//pï¿½r
+//pär
 	Locations[n].id = "Tortuga_tower_stairs_A";
 	locations[n].id.label = "Tower stairs";
 	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
@@ -21065,7 +21065,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 //	Locations[n].rats = "true";			//fewer rats added via animals.c
 	Locations[n].island = "Redmond";
 	n = n + 1;
-//pï¿½r hï¿½r
+//pär här
 //--------------------------------------------------------------------------
 //fake location - never visited -just for the label
 

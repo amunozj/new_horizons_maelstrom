@@ -55,20 +55,23 @@ int GetStoreGoodsQuantity(ref _refStore,int _Goods)
 	{
 		q = sti(_refStore.Goods.(tmpstr).Quantity);
 	}
-	// Levis: Fetch Quest New -->
-	ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));
-	int count = 0;
-	string cargoid = getAllFetchQuestCargo(count,ctown);
-	while(cargoid != "")
-	{
-		if(sti(getCargoGood(Islands[FindIsland(ctown.island)], cargoid))==_Goods)
-		{
-			q = 0;
-		}
-		count++;
-		cargoid = getAllFetchQuestCargo(count,ctown);
-	}
-	// Levis: Fetch Quest New <--
+	if (CheckAttribute(_refStore, "group"))
+    {
+        // Levis: Fetch Quest New -->
+        ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));
+        int count = 0;
+        string cargoid = getAllFetchQuestCargo(count,ctown);
+        while(cargoid != "")
+        {
+            if(sti(getCargoGood(Islands[FindIsland(ctown.island)], cargoid))==_Goods)
+            {
+                q = 0;
+            }
+            count++;
+            cargoid = getAllFetchQuestCargo(count,ctown);
+        }
+        // Levis: Fetch Quest New <--
+    }
 	return q;
 }
 
@@ -152,21 +155,28 @@ int GetStoreGoodsPrice(ref _refStore,int _Goods,int _PriceType,ref chref, int of
 	if( !CheckAttribute(_refStore,"Goods."+tmpstr) ) return 0;
 	makearef(refGoods,_refStore.Goods.(tmpstr));
  	//int tradeType = MakeInt(refGoods.TradeType);
-	string town = GetTownIDFromGroup(_refStore.group); // KK
-	ref ctown = GetTownFromID(town); //Levis
-	int tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods); //Changed by levis to use common function //Changed again to use proper function
-	int gqty = makeint(refGoods.Quantity) + offset; // NK
-	if(gqty==0) { gqty = 1; }//MAXIMUS [fix "divide by zero"]
-	
-	float tradeModify=1.0;
-	float discount = (0.1 * GetTownCrewMorale(town) / (MORALE_MAX - MORALE_MIN)) * makefloat(GetTownNation(town) == PERSONAL_NATION); // KK
-	// NK -->
-	if(tradeType == TRADE_TYPE_AMMUNITION) {
-		basePrice -= makeint(basePrice * discount); // KK
-		return basePrice;
-	}
+ 	int tradeType = TRADE_TYPE_NORMAL;
+    float tradeModify=1.0;
+    float discount = 0.0;
+    int tsize = DEFAULT_TOWN_POP;
+    int gqty = makeint(refGoods.Quantity) + offset; // NK
+    if(gqty==0) { gqty = 1; }//MAXIMUS [fix "divide by zero"]
+ 	if (CheckAttribute(_refStore, "group")) {
+        string town = GetTownIDFromGroup(_refStore.group); // KK
+        ref ctown = GetTownFromID(town); //Levis
+        tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods); //Changed by levis to use common function //Changed again to use proper function
+        tradeModify=1.0;
+        discount = (0.1 * GetTownCrewMorale(town) / (MORALE_MAX - MORALE_MIN)) * makefloat(GetTownNation(town) == PERSONAL_NATION); // KK
+        // NK -->
+        if(tradeType == TRADE_TYPE_AMMUNITION) {
+            basePrice -= makeint(basePrice * discount); // KK
+            return basePrice;
+        }
+        // NK -->
+        tsize = GetTownSize(GetTownIDFromGroup(_refStore.group));
+ 	}
 	tradeModify = 1.0 - 0.2 + stf(refGoods.RndPriceModify);
-	/*switch(tradeType)
+	switch(tradeType)
 	{
 	case TRADE_TYPE_NORMAL:
 		tradeModify=0.8+stf(refGoods.RndPriceModify);
@@ -183,13 +193,13 @@ int GetStoreGoodsPrice(ref _refStore,int _Goods,int _PriceType,ref chref, int of
 	case TRADE_TYPE_AMMUNITION:
 		return basePrice;
 		break;
-	}*/
+	}
 	// NK <--
 
 	float skillModify = GetCharPriceMod(&chref, _PriceType, true, false); // NK now use central func 05-04-19
 
 	// NK -->
-	int tsize = GetTownSize(GetTownIDFromGroup(_refStore.group));
+	//int tsize = GetTownSize(GetTownIDFromGroup(_refStore.group));
 	//NK now use global - if(GetTownIDFromGroup(_refStore.group) != "") { tsize = GetTownSize(GetTownIDFromGroup(_refStore.group)); }
 	//if( != "") { tsize = sti(rStoreTown.size) } // NK 05-04-15
 	float qtyModify = makefloat(tsize) / makefloat(gqty);
@@ -203,15 +213,18 @@ int GetStoreGoodsPrice(ref _refStore,int _Goods,int _PriceType,ref chref, int of
 		tradeModify = 0.5 + stf(refGoods.RndPriceModify);
 	}
 	qtyModify = fclamp(GQTY_PRICE_MINSCL, GQTY_PRICE_MAXSCL, qtyModify); // NK 05-04-15 to clamp qty modifier.
-	return MakeInt(basePrice*tradeModify*skillModify * qtyModify - discount); // KK
+	return MakeInt(basePrice * tradeModify * skillModify - discount); // KK
 	// NK <--
 }
 
 string GetStoreGoodsType(ref _refStore,int _Goods)
 {
-	//Changed by Levis to use island depended trade types
-	ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));
-	int tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods);
+    int tradeType = TRADE_TYPE_NORMAL;
+    if (CheckAttribute(_refStore, "group")) {
+        //Changed by Levis to use island depended trade types
+        ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));
+        tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods);
+    }
 	/*string tmpstr = Goods[_Goods].name;
 	int tradeType = TRADE_TYPE_NORMAL;
 	if( CheckAttribute(_refStore,"Goods."+tmpstr) ) {
@@ -270,12 +283,17 @@ int GetGoodTradeType(ref sisland, int Good)
 
 bool GetStoreGoodsUsed(ref _refStore,int _Goods)
 {
-	ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));//PW for using island not store attributes
-	int tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods);//PW for using island not store attributes
+    int tradeType = TRADE_TYPE_NORMAL;
+    if (CheckAttribute(_refStore, "group"))
+    {
+        ref ctown = GetTownFromID(GetTownIDFromGroup(_refStore.group));//PW for using island not store attributes
+        tradeType = GetGoodTradeType(Islands[FindIsland(ctown.island)], _Goods);//PW for using island not store attributes
+    }
 
 	string tmpstr = Goods[_Goods].name;
 	if( !CheckAttribute(_refStore,"Goods."+tmpstr) ) return false;
-	if( sti(_refStore.Goods.(tmpstr).NotUsed)==true ) return false;
+	if( CheckAttribute(_refStore, ".Goods." + tmpstr + ".NotUsed") && sti(_refStore.Goods.(tmpstr).NotUsed)==true ) return false;
+	//if (sti(_refStore.Goods.(tmpstr).TradeType) == TRADE_TYPE_CONTRABAND) {
 	if (tradeType == TRADE_TYPE_CONTRABAND)	// PW change to function to use island based tradeType
 	{
 		if (!CheckOfficersPerk(GetMainCharacter(),"Trustworthy") && !LAi_IsCapturedLocation && GetTownNation(GetTownIDFromGroup(_refStore.group)) != PERSONAL_NATION) return false; // KK
@@ -455,3 +473,20 @@ int GetStoreOwnerIndex(int store_no)
 	return GetCharacterIndex(Stores[store_no].owner);
 }
 // <-- KK
+
+void FillShipStore( ref chr)
+{
+	ref pRef = &stores[SHIP_STORE];
+	// boal ??? ?????? ?????, ?????? ???????? RndPriceModify   ? 1 ? ???, ?? ????? ??????????? ?????
+	int iQuantity = 0;
+	string goodName;
+
+	for(int i = 0; i<GOODS_QUANTITY; i++)
+	{
+		iQuantity = GetCargoGoods(chr, i);
+		SetStoreGoods(pref, i, iQuantity);
+
+		goodName = Goods[i].name;
+		pRef.Goods.(goodName).RndPriceModify = frnd() * 0.4;
+	}
+}

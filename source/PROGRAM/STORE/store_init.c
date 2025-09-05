@@ -267,4 +267,15 @@ void StoreInit()
 	Stores[PIRATE_FORT_STORE].group	= "Pirate Fort";
 	Stores[PIRATE_FORT_STORE].owner	= "Cornelius Vanslyperken"; // Ansel
 	STORE_QUANTITY++;
+
+	/*
+	Stores[BERMUDES_STORE].Island	= "Bermudes";
+	Stores[BERMUDES_STORE].group	= "Bermudes";
+	Stores[BERMUDES_STORE].owner	= "Cornelis Huijser";
+	Stores[BERMUDES_STORE].dockyard = "Abraham Hollander";
+	Stores[BERMUDES_STORE].tavern = "Johannes Harlekeyn"; // KK
+	Stores[BERMUDES_STORE].usurer = "Oranjestad Usurer"; // KK
+	Stores[BERMUDES_STORE].taylor = "Jan Thijs"; // KK
+	STORE_QUANTITY++;
+	*/
 }

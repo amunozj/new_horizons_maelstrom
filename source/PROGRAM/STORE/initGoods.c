@@ -332,6 +332,13 @@ void InitGoods()
 	Goods[GOOD_TREATMENT].Units		= 1;
 	Goods[GOOD_TREATMENT].Swim.Model= "box";
 	Goods[GOOD_TREATMENT].Swim.Time	= 5;
+	
+	Goods[GOOD_SLAVES].Name		= "Slaves";
+	Goods[GOOD_SLAVES].Weight		= 2;
+	Goods[GOOD_SLAVES].Cost		= 55 * GOODS_PRICE_SCALAR;          // Sulan (4)
+	Goods[GOOD_SLAVES].Units		= 1;
+	Goods[GOOD_SLAVES].Swim.Model	= "sack";
+	Goods[GOOD_SLAVES].Swim.Time	= 7;
 
 	// from SLiB Mod by Jack Davidson <--
 }

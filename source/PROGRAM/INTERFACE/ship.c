@@ -32,7 +32,7 @@ void InitInterface_I(string iniName,int bIState)
     FillFourImages();
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	ref refMyCh = GetMainCharacter();
 	if(CheckAttribute(refMyCh,"crewstatus.explength")) explength = sti(refMyCh.crewstatus.explength); // NK
@@ -44,10 +44,10 @@ void InitInterface_I(string iniName,int bIState)
 	CreateString(true,"Money",MakeMoneyShow(sti(refMyCh.money),MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,320,393,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(true,"ShipName","",FONT_SEADOGS,COLOR_NORMAL,320,234,SCRIPT_ALIGN_CENTER,1.0); // MAXIMUS interface MOD // KK
 
-	CreateString(true,"THull",XI_ConvertString("Hull"),FONT_NORMAL,COLOR_NORMAL,63,34,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,"TSails",XI_ConvertString("Sails"),FONT_NORMAL,COLOR_NORMAL,191,34,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,"TCrew",XI_ConvertString("Crew"),FONT_NORMAL,COLOR_NORMAL,447,34,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,"TCannons",XI_ConvertString("Cannons"),FONT_NORMAL,COLOR_NORMAL,575,34,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,"THull",XI_ConvertString("Hull"),FONT_NORMAL,COLOR_NORMAL,63,40,SCRIPT_ALIGN_CENTER,0.9);
+	CreateString(true,"TSails",XI_ConvertString("Sails"),FONT_NORMAL,COLOR_NORMAL,191,40,SCRIPT_ALIGN_CENTER,0.9);
+	CreateString(true,"TCrew",XI_ConvertString("Crew"),FONT_NORMAL,COLOR_NORMAL,447,40,SCRIPT_ALIGN_CENTER,0.9);
+	CreateString(true,"TCannons",XI_ConvertString("Cannons"),FONT_NORMAL,COLOR_NORMAL,575,40,SCRIPT_ALIGN_CENTER,0.9);
 
 	// none strings
 	CreateString(true,"ShipSpeed","0",FONT_NORMAL,COLOR_NORMAL,220,279,SCRIPT_ALIGN_LEFT,1.0);
@@ -160,11 +160,11 @@ void InitInterface_I(string iniName,int bIState)
 	}
 // MAXIMUS interface MOD <--
 
-	CreateImage("face","FACE128_"+refMyCh.FaceId,"face",256,42,384,170);
-	CreateImage("Hull","SHIP_STATE_ICONS","Hull",0,42,128,170);
-	CreateImage("Sails","SHIP_STATE_ICONS","Sails",128,42,256,170);
-	CreateImage("Crew","SHIP_STATE_ICONS","Crew",384,42,512,170);
-	CreateImage("Cannons","SHIP_STATE_ICONS","Cannons",512,42,640,170);
+	CreateImage("face","FACE128_"+refMyCh.FaceId,"face",270,56,370,156);
+	CreateImage("Hull","SHIP_STATE_ICONS","Hull",14,56,114,156);
+	CreateImage("Sails","SHIP_STATE_ICONS","Sails",142,56,242,156);
+	CreateImage("Crew","SHIP_STATE_ICONS","Crew",398,56,498,156);
+	CreateImage("Cannons","SHIP_STATE_ICONS","Cannons",526,56,626,156);
 
 	GameInterface.renamebox.strdata = "";
 	GameInterface.renamebox.maxlen = 32;
@@ -270,7 +270,14 @@ void FillFourImages()
 	int bSelected;
 	
 	GameInterface.FourImage.current = 0;
+	
+	if(bNewInterface==true)
+	{
 	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship2.tga";
+	}
+	
 // KK -->
 	if (bNewInterface)
 		GameInterface.FourImage.ImagesGroup.t0 = "ICONS_NEW";

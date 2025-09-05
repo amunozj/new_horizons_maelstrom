@@ -209,7 +209,7 @@ void ProcessDialogEvent()
 		case "buy_deal":
 			if (!CheckAttribute(NPChar, "item") || !CheckAttribute(NPChar, "price"))
 			{
-				dialog.text = "Something is wrong - either I don't know the item or I don't know the price!";
+				dialog.text = "Something is wrong - either I don't know the item or I don't know the price!");
 				link.l1 = "Oops...";
 				link.l1.go = "exit";
 			}

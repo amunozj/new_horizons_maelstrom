@@ -20,7 +20,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleShipsLog";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();
+	// CreateExitString();
 
 	CreateString(false, "LogEntry_Title", "", FONT_SHIPSLOG, COLOR_WHITE, 320, 62, SCRIPT_ALIGN_CENTER, 1.0);	
 	CreateString(false, "LogEntry_Date", "", FONT_SHIPSLOG, COLOR_WHITE, 75, 62, SCRIPT_ALIGN_LEFT, 1.0);	
@@ -28,9 +28,9 @@ void InitInterface(string iniName)
 	CreateString(false, "NewLogEntry_Entry_Label", XI_ConvertString("Log Entry"), FONT_SHIPSLOG, COLOR_GRAY, 10, 135, SCRIPT_ALIGN_LEFT, 0.7) // MAXIMUS 27.06.2019: localization
 	CreateString(true, "NewLog", XI_ConvertString("Write new log entry"), FONT_SHIPSLOG, COLOR_GRAY, 140, 435, SCRIPT_ALIGN_LEFT, 1.3) // MAXIMUS 27.06.2019: localization
 
-	CreateString(true, "Stat_Kills", GetStatistics("Kills"), FONT_SHIPSLOG, COLOR_WHITE, 657, 340, SCRIPT_ALIGN_CENTER, 0.5);	
-	CreateString(true, "Stat_ShipsSunk", GetStatistics("ShipsSunk"), FONT_SHIPSLOG, COLOR_WHITE, 657, 400, SCRIPT_ALIGN_CENTER, 0.5);
-	CreateString(true, "Stat_ShipsCaptured", GetStatistics("ShipsCaptured"), FONT_SHIPSLOG, COLOR_WHITE, 657, 460, SCRIPT_ALIGN_CENTER, 0.5);
+	CreateString(true, "Stat_Kills", GetStatistics("Kills"), FONT_SHIPSLOG, COLOR_WHITE, 637, 185, SCRIPT_ALIGN_CENTER, 0.5);	
+	CreateString(true, "Stat_ShipsSunk", GetStatistics("ShipsSunk"), FONT_SHIPSLOG, COLOR_WHITE, 637, 250, SCRIPT_ALIGN_CENTER, 0.5);
+	CreateString(true, "Stat_ShipsCaptured", GetStatistics("ShipsCaptured"), FONT_SHIPSLOG, COLOR_WHITE, 637, 342, SCRIPT_ALIGN_CENTER, 0.5);
   
 	curLogTop = 0;
 	curLogIdx = 0;
@@ -510,7 +510,7 @@ void DisplayLogText()
 	{
 		tmpLogDate  = "";
 		tmpLogTitle = "Unreadable page";
-		tmpLogEntry = "This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error  ]";
+		tmpLogEntry = "This page of the ship's log is drenched in rum. It's no longer readable. [ the code has an error :) ]";
 	}
 
 	GameInterface.strings.LogEntry_Date = tmpLogDate;

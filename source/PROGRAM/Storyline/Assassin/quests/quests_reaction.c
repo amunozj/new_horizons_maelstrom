@@ -328,7 +328,7 @@ void QuestComplete(string sQuestName)
             ChangeCharacterAddressGroup(CharacterFromID("Pelagius Lizarraga"), "Dungeon 1", "reload", "reloadc3");
 	        LAi_SetPoorType(characterfromID("Pelagius Lizarraga"));
 			Characters[GetCharacterIndex("Pelagius Lizarraga")].dialog.currentnode = "begin_1";
-			SetOfficersIndex(PChar, -1, GetCharacterIndex("Chico Cois"));
+			if(SetOfficersIndex(PChar, -1, GetCharacterIndex("Chico Cois")) == GetCharacterIndex("Chico Cois")) SetOfficersIndex(PChar, 1, GetCharacterIndex("Chico Cois"));
 			AddQuestRecord("Apprenticeship", "5");
             LAi_QuestDelay("viagem_timer2", 0.0);				
 		break;		
@@ -3708,7 +3708,7 @@ void QuestComplete(string sQuestName)
     		AddQuestRecord("Siege", "7");				
 		break;
 
-// Bartolomeuï¿½s trap		
+// Bartolomeu’s trap		
 		
 		case "join_butcher":
 			CloseQuestHeader("Siege");		
@@ -3785,22 +3785,22 @@ void QuestComplete(string sQuestName)
 		case "check_capture":		
 			sld = LAi_CreateFantomCharacter(false, 0, false, false, 0.25, "pirat1", "rld", "aloc7");
             LAi_SetActorType(sld);
-			LAi_ActorAnimation(sld, "afraid", "", 1.0);	           			
+			LAi_ActorAnimation(sld, "hands up", "", 1.0);	           			
 			LAi_SetHP(sld, 40.0, 40.0);
 
 			sld = LAi_CreateFantomCharacter(false, 0, false, false, 0.25, "pirat2", "rld", "aloc5");
             LAi_SetActorType(sld);
-			LAi_ActorAnimation(sld, "afraid", "", 1.0);	            			
+			LAi_ActorAnimation(sld, "hands up", "", 1.0);	            			
 			LAi_SetHP(sld, 40.0, 40.0);	
 
 			sld = LAi_CreateFantomCharacter(false, 0, false, false, 0.25, "pirat3", "rld", "aloc4");
             LAi_SetActorType(sld);
-			LAi_ActorAnimation(sld, "afraid", "", 1.0);	             			
+			LAi_ActorAnimation(sld, "hands up", "", 1.0);	             			
 			LAi_SetHP(sld, 40.0, 40.0);	
 
 			sld = LAi_CreateFantomCharacter(false, 0, false, false, 0.25, "pirat4", "rld", "aloc6");
             LAi_SetActorType(sld);
-			LAi_ActorAnimation(sld, "afraid", "", 1.0);	           			
+			LAi_ActorAnimation(sld, "hands up", "", 1.0);	           			
 			LAi_SetHP(sld, 40.0, 40.0);
 
             ChangeCharacterAddressGroup(CharacterFromID("Chico Cois"), "Santiago_ship", "rld", "loc5");
@@ -5703,11 +5703,11 @@ void QuestComplete(string sQuestName)
 
             ChangeCharacterAddressGroup(CharacterFromID("elting_pirate_06"), "Quest_Morro_fort2", "goto", "goto3");
             LAi_SetActorType(CharacterFromID("elting_pirate_06"));
-			LAi_ActorAnimation(CharacterFromID("elting_pirate_06"), "afraid", "", 1.0);
+			LAi_ActorAnimation(CharacterFromID("elting_pirate_06"), "hands up", "", 1.0);
 
             ChangeCharacterAddressGroup(CharacterFromID("elting_pirate_04"), "Quest_Morro_fort2", "goto", "goto4");				
             LAi_SetActorType(CharacterFromID("elting_pirate_04"));
-			LAi_ActorAnimation(CharacterFromID("elting_pirate_04"), "afraid", "", 1.0);
+			LAi_ActorAnimation(CharacterFromID("elting_pirate_04"), "hands up", "", 1.0);
 
 			GiveItem2Character(CharacterFromId("elting_pirate_04"), "bladex4");
 			EquipCharacterByItem(CharacterFromId("elting_pirate_04"), "bladex4");

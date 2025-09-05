@@ -89,7 +89,7 @@ float MaxHealthPotionForCharacter(ref chref, ref idx)
 			n = GetItemIndex(GetAttributeName(GetAttributeN(chritems, i)));
 			if(CheckAttribute(&Items[n],"potion"))
 			{
-				if(CheckAttribute(&Items[n],"potion.health"))
+				if(CheckAttribute(&Items[n],"potion.health") && stf(Items[n].potion.health)>0)
 				{
 					if(isFinded)
 					{
@@ -127,7 +127,7 @@ float MinHealthPotionForCharacter(ref chref, ref idx)
 			n = GetItemIndex(GetAttributeName(GetAttributeN(chritems, i)));
 			if(n >= 0 && CheckAttribute(&Items[n],"potion"))	// LDH fix for negative index
 			{
-				if(CheckAttribute(&Items[n],"potion.health"))
+				if(CheckAttribute(&Items[n],"potion.health") && stf(Items[n].potion.health)>0)
 				{
 					if(isFinded)
 					{
@@ -252,7 +252,7 @@ int FindQuestUsableItem(ref arFind, int startIdx)
 bool EnablePotionUsing(ref mc, aref arItm)
 {
 	bool bEnableUse = false;
-	if( CheckAttribute(arItm,"potion.health") ) {
+	if( CheckAttribute(arItm,"potion.health") && stf(arItm.potion.health) > 0) {
 		if( LAi_GetCharacterHP(mc)<LAi_GetCharacterMaxHP(mc) ) {
 			return true;
 		}
@@ -912,7 +912,7 @@ string GetItemUpgradePrice(string BladeID, int CurrentQuality, int RequiredQuali
 	return ReturnPrice;
 }
 
-// NK now return -1 rather than AVERAGE as an easier check, and so I can use it in IT below.  05-07-19
+// NK now return -1 rather than AVERAGE as an easier check, and so I can use it in IT below. :) 05-07-19
 int GetItemQualityByID(string GunID)
 // Retrieves the quality of a gun by it's item id
 // Takes a gun id as parameter and returns an integer indicating the status of the gun.

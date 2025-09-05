@@ -550,7 +550,7 @@ void CreateTempQuestCharacters(ref n)
 	LAi_SetStayType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 50.0, 50.0);
-	ch.greeting = "Gr_Ambroz Bricenos";
+	ch.greeting = "Gr_Portuguese Officer"; // was "Gr_Ambroz Bricenos", both just use "Por_m_a_001.wav"
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -3207,7 +3207,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.lastname = TranslateString("", "Caceres");
 	ch.id		= "Capitan Caceres";
 	ch.model	= "Espinosa";
-	ch.model.animation = "man"; // PB
+	ch.model.animation = "new_man"; // PB
 	ch.sex = "man";
 	ch.sound_type = "pirate";
 	ch.location	= "none";

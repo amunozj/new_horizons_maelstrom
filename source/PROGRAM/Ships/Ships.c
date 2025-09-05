@@ -9,15 +9,17 @@ string	sRndShpSpName[2], sRndShpEnName[2], sRndShpFrName[2], sRndShpPiName[2], s
 
 void ShipsInit()
 {
+	string sShipNameFile = "ships\ships_name.c";
+	if (LanguageGetLanguage() == "RUSSIAN") sShipNameFile = "ships\ships_name_ru.c";
 	if (LoadSegment("ships\ships_init.c"))
 	{
 		InitShips();
 		UnloadSegment("ships\ships_init.c");
 	}
-	if (LoadSegment("ships\ships_name.c"))
+	if (LoadSegment(sShipNameFile))
 	{
 		InitRandomShipsNames();
-		UnloadSegment("ships\ships_name.c");
+		UnloadSegment(sShipNameFile);
 	}
 }
 
@@ -330,7 +332,7 @@ void arSetRandomStatsToShip(aref chrship, int idx, int nat)
 			if(atrname == "speedrate" || atrname == "turnrate") isint = false;
 			//new local stat will be base stat * (natstat mult +/- rand(SHIPSTAT_VARIANCE))
 			if(NatStatMod) fStatMod = makefloat(natstats.(atrname)); // so we can still do random variation even if not doing nation variation.
-			arShip.(atrname) = makefloat(refShip.(atrname)) * (fStatMod * RandMult(SHIPSTAT_VARIANCE)); // 05-05-11 mult. If you prefer additive: - SHIPSTAT_VARIANCE + frnd()*SHIPSTAT_VARIANCE*2;
+			arShip.(atrname) = makefloat(refShip.(atrname)) * (fStatMod * RandMult(SHIPSTAT_VARIANCE)); // 05-05-11 mult. If you prefer additive: - SHIPSTAT_VARIANCE + frnd()*SHIPSTAT_VARIANCE*2);
 			if(isint) arShip.(atrname) = round(stf(arShip.(atrname)));
 		}
 	}
@@ -647,7 +649,7 @@ void FillShipsList(ref NPChar)
 
 	// TIH --> rpg_style Auto-sort ships by class and price Jul27'06
 	// yes this is an ugly mess... but the engine was giving me beef... so this is how it ended up
-	// this DOES work, works real good... just ugly 
+	// this DOES work, works real good... just ugly :)
 	// by all means if you see a cleaner way to do it, then PLEASE do it... no one else has!
 	if ( SY_RPG_STYLE )
 	{
@@ -703,9 +705,9 @@ void FillShipsList(ref NPChar)
 					CopyAttributes(swapShipN,swapShipC);
 					CopyAttributes(swapShipC,swapShipT);
 
-					idxholder			= sti(GetAttributeValue(tmparefN));
-					syShipList.(slotN) 	= sti(GetAttributeValue(tmparefC));
-					syShipList.(slotC) 	= idxholder;
+					// idxholder			= sti(GetAttributeValue(tmparefN));		Mirsaneli: disable
+					// syShipList.(slotN) 	= sti(GetAttributeValue(tmparefC));		causes unbalanced stats when buying ships in Shipyard
+					// syShipList.(slotC) 	= idxholder;
 
 					holder 			= SortClass[y+1];
 					SortClass[y+1] 	= SortClass[y];
@@ -743,9 +745,9 @@ void FillShipsList(ref NPChar)
 					CopyAttributes(swapShipN,swapShipC);
 					CopyAttributes(swapShipC,swapShipT);
 
-					idxholder			= sti(GetAttributeValue(tmparefN));
-					syShipList.(slotN) 	= sti(GetAttributeValue(tmparefC));
-					syShipList.(slotC) 	= idxholder;
+					// idxholder			= sti(GetAttributeValue(tmparefN));
+					// syShipList.(slotN) 	= sti(GetAttributeValue(tmparefC));
+					// syShipList.(slotC) 	= idxholder;
 
 					holder 			= SortClass[y+1];
 					SortClass[y+1] 	= SortClass[y];

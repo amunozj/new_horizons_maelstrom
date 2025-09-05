@@ -141,7 +141,7 @@ void InitInterface_R(string iniName,ref shipmaster)
 // <-- KK
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 // KK -->
 	if (LAi_IsCapturedLocation) {
@@ -158,7 +158,7 @@ void InitInterface_R(string iniName,ref shipmaster)
 	sTownName = GetCurrentTownID(); // NK 04-09-08 //GetTownIDFromGroup(Stores[GetCharacterCurrentStore(GetMainCharacter())].group);
 	//rStoreTown = GetTownFromID(sTownName); // NK, add aref 05-04-15, this particular one 05-04-19.
 	//nStoreMoney = GetTownGold(sTownName);
-	CreateString(true, "ScreenTitle", "", FONT_TITLE, COLOR_NORMAL, 320, 6, SCRIPT_ALIGN_CENTER, 1.0); // KK
+	CreateString(true, "ScreenTitle", "", FONT_TITLE, COLOR_NORMAL, 320, 5, SCRIPT_ALIGN_CENTER, 0.8); // KK
 	CreateString(true,"Money",MakeMoneyShow(sti(Characters[GetMainCharacterIndex()].money),MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,175,409,SCRIPT_ALIGN_LEFT,1.0);
 	CreateString(true,"SMoney",MakeMoneyShow(nStoreMoney,MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,465,409,SCRIPT_ALIGN_RIGHT,1.0);
 	//CreateString(true,"Store",Stores[GetCharacterCurrentStore(GetMainCharacter())].group + ":",FONT_NORMAL,COLOR_MONEY,320,436,SCRIPT_ALIGN_CENTER,1.0);
@@ -391,7 +391,7 @@ void ProcessCancelExit()
 	if(daystowait > 0) // NK do day-waiting after everything 05-07-08
 	{
 		WaitDate("", 0, 0, daystowait, 0, 0);
-		PlaySound("ambient\shipyard\axe.wav");	//just earcandy 
+		PlaySound("ambient\shipyard\axe.wav");	//just earcandy :)
 		PlaySound("ambient\shipyard\vehicle.wav");
 		Log_SetStringToLog(TranslateString("", "Repairs are completed") + " " + daystowait + " " + XI_ConvertString("day") + stringret(daystowait > 1, XI_ConvertString("s"),"") + " " + LanguageConvertString(tmpLangFileID,"later."));
 		LogIt(XI_ConvertString("Time") + ": " + GetStringTime(GetTime()));		// LDH 15Oct06 added time display
@@ -865,7 +865,7 @@ void SetViewShipData(int cn, int buyPrice, int Reduction) // modded to PRS3, add
 	GameInterface.strings.Capacity        = sti(GetLocalShipAttrib(arCurShip, shref, "Capacity"));
 	GameInterface.strings.MaxCrew         = sti(GetLocalShipAttrib(arCurShip, shref, "MaxCrew"));
 	GameInterface.strings.MinCrew         = sti(GetLocalShipAttrib(arCurShip, shref, "MinCrew"));
-	GameInterface.strings.CannonsQuantity = sti(GetLocalShipAttrib(arCurShip, shref, "CurCanQty")); //NK can qty 05-04-18 "CannonsQuantity";
+	GameInterface.strings.CannonsQuantity = sti(GetLocalShipAttrib(arCurShip, shref, "CurCanQty")); //NK can qty 05-04-18 "CannonsQuantity"));
 	GameInterface.strings.MaxCaliber      = sti(GetLocalShipAttrib(arCurShip, shref, "MaxCaliber"));
 	GameInterface.strings.ShipCost        = MakeMoneyShow(shipCost,MONEY_SIGN,MONEY_DELIVER);
 	if (CheckShipAttribute(arCurShip, shref, "Nation")) tempnation = GetLocalShipAttrib(arCurShip, shref, "Nation"); // PB
@@ -1985,7 +1985,14 @@ void FillSScroll()
     string attributeName;
     string shipName;
 	ref PChar = GetMainCharacter();
+	
+	if(bNewInterface==true)
+	{
 	GameInterface.scrollitems.BadPicture2 = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.scrollitems.BadPicture2 = "interfaces\blank_ship2.tga";
+	}
+	
 // KK -->
 	if (bNewInterface)
 		GameInterface.scrollitems.ImagesGroup.t0 = "ICONS_NEW";
@@ -2218,7 +2225,14 @@ void FillShipAppearanceScroll()
 	DeleteAttribute(pRef,"");
 
 	idx=0;
+	
+	if(bNewInterface==true)
+	{
 	GameInterface.scrollshipappearance.BadPicture2 = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.scrollshipappearance.BadPicture2 = "interfaces\blank_ship2.tga";
+	}
+	
 	if (bNewInterface)
 		GameInterface.scrollshipappearance.ImagesGroup.t0 = "ICONS_NEW";
 	else
@@ -2407,8 +2421,13 @@ void FillFourImages()
 	nCurFourNum = -1;
 	if(!CheckAttribute(&GameInterface,"FourImage.current"))
 		GameInterface.FourImage.current = 0;
-
+	
+	if(bNewInterface==true)
+	{
 	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship2.tga";
+	}
 // KK -->
 	if (bNewInterface)
 		GameInterface.FourImage.ImagesGroup.t0 = "ICONS_NEW";
@@ -3303,7 +3322,7 @@ void ClampShipToType(ref chref)
 		oldq = GetCargoGoods(&chref, i);
     	// --> Swindler 05-10-16: only make emergency pursue when FOOD_ON
     	// TIH --> why on earth FOR??? changed this so it sells ANY over quantity good!!! grrrr Jul27'06
-
+        //if(FOOD_ON == 1 && oldq < gq[i]) {
         if(oldq < gq[i]) {
 			// sold some
 			//PW: method changed to equate to store prices -->

@@ -38,7 +38,7 @@ void InitInterface_RR(string iniName,ref myCh,ref enemyCh)
 	FillFourImages();
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	oldCurNode = GetCurrentNode();
 
     CreateString(true,"CharacterName",XI_ConvertString("Noname"),FONT_NORMAL,COLOR_NORMAL,320,194,SCRIPT_ALIGN_CENTER,1.0);

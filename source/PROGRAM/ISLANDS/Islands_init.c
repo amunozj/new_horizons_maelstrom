@@ -88,6 +88,7 @@ void InitIslands()
 		rIsland.Trade.Export.id3 = GOOD_LINEN;
 		rIsland.Trade.Export.id4 = GOOD_SILK;
 		rIsland.Trade.Export.id5 = GOOD_SILVER;
+		rIsland.Trade.Export.id6 = GOOD_SLAVES;
 		rIsland.Trade.Import.id1 = GOOD_PLANKS;
 		rIsland.Trade.Import.id2 = GOOD_EBONY;
 		rIsland.Trade.Import.id3 = GOOD_RUM;
@@ -113,6 +114,9 @@ void InitIslands()
 		rIsland.towns.quantity = 1;
 		rIsland.towns.1 = "Redmond";
 		// NK <--
+		Islands[n].jungle.patch = "Redmond_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
 
 		rIsland.reload.l1.label = "#stown_name# Port"; // KK
 		rIsland.reload.l1.name = "reload_2";
@@ -197,6 +201,7 @@ void InitIslands()
 		rIsland.Trade.Export.id2 = GOOD_LINEN;
 		rIsland.Trade.Export.id3 = GOOD_ALE;
 		rIsland.Trade.Export.id4 = GOOD_CLOTHES;
+		rIsland.Trade.Export.id5 = GOOD_SLAVES;
 		rIsland.Trade.Import.id1 = GOOD_PLANKS;
 		rIsland.Trade.Import.id2 = GOOD_CINNAMON;
 		rIsland.Trade.Import.id3 = GOOD_SILK;
@@ -402,6 +407,7 @@ void InitIslands()
 		rIsland.Trade.Import.id2 = GOOD_CHOCOLATE;
 		rIsland.Trade.Import.id3 = GOOD_SILK;
 		rIsland.Trade.Import.id4 = GOOD_LEATHER;
+		rIsland.Trade.Import.id5 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_EBONY;
 		rIsland.Trade.Contraband.id2 = GOOD_COFFEE;
 		rIsland.Trade.Contraband.id3 = GOOD_PAPRIKA;
@@ -498,6 +504,7 @@ void InitIslands()
 		rIsland.Trade.Import.id5 = GOOD_GOLD;
 		rIsland.Trade.Import.id6 = GOOD_SILVER;
 		rIsland.Trade.Import.id7 = GOOD_TREATMENT;
+		rIsland.Trade.Import.id8 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_WINE;
 		rIsland.Trade.Contraband.id2 = GOOD_MAHOGANY;
 		rIsland.Trade.Contraband.id3 = GOOD_COPRA;
@@ -518,6 +525,10 @@ void InitIslands()
 		rIsland.towns.1 = "Douwesen";
 		rIsland.towns.2 = "Pirate Fort";
 		// NK <--
+		
+		Islands[n].jungle.patch = "Douwesen_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
 
 		rIsland.reload.l1.label = "#stown_name# Port"; // KK
 		rIsland.reload.l1.name = "reload_1";
@@ -585,6 +596,7 @@ void InitIslands()
 		rIsland.Trade.Import.id6 = GOOD_SILVER;
 		rIsland.Trade.Import.id7 = GOOD_OIL;
 		rIsland.Trade.Import.id8 = GOOD_COTTON;
+		rIsland.Trade.Import.id9 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SUGAR;
 		rIsland.Trade.Contraband.id2 = GOOD_LINEN;
 		rIsland.Trade.Contraband.id3 = GOOD_WINE;
@@ -766,14 +778,14 @@ void InitIslands()
 		rIsland.reload.l4.goto_enable = false; // Screwface: Disable Sail-To
 
 		rIsland.reload.l5.label = "#stown_name# Fort"; // KK
-		rIsland.reload.l5.name = "reload1_2";
+		rIsland.reload.l5.name = "reload1_2";  // Mirsaneli: was reload_1 which caused missing fort commander
 		rIsland.reload.l5.go = "Fort"; // KK
 		rIsland.reload.l5.GoAfterBoard.location = "reload_1";
 		rIsland.reload.l5.emerge = "see";
 		rIsland.reload.l5.radius = 250.0;
 		rIsland.reload.l5.commander = "Grand Cayman Commander"; // KK
-		rIsland.reload.l5.fort.model = "Cayman_fort2";
-		rIsland.reload.l5.fort.locators = "Cayman_fort2_locators";
+		rIsland.reload.l5.fort.model = "Cayman_fort1";
+		rIsland.reload.l5.fort.locators = "Cayman_fort1_locators";
 		rIsland.reload.l5.pic = 42;
 		rIsland.reload.l5.selpic = 46;
 		rIsland.reload.l5.tex = "t1";
@@ -802,6 +814,7 @@ void InitIslands()
 		rIsland.Trade.Import.id2 = GOOD_CHOCOLATE;
 		rIsland.Trade.Import.id3 = GOOD_SILK;
 		rIsland.Trade.Import.id4 = GOOD_LEATHER;
+		rIsland.Trade.Import.id5 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_EBONY;
 		rIsland.Trade.Contraband.id2 = GOOD_COFFEE;
 		rIsland.Trade.Contraband.id3 = GOOD_PAPRIKA;
@@ -919,8 +932,8 @@ void InitIslands()
 		rIsland.reload.l9.emerge = "see";
 		rIsland.reload.l9.radius = 250.0;
 		rIsland.reload.l9.commander = "Santo Domingo Commander"; // KK
-		rIsland.reload.l9.fort.model = "Gaity_fort3";
-		rIsland.reload.l9.fort.locators = "Gaity_fort3_locators";
+		rIsland.reload.l9.fort.model = "Gaity_fort1";
+		rIsland.reload.l9.fort.locators = "Gaity_fort1_locators";
 		rIsland.reload.l9.pic = 42;
 		rIsland.reload.l9.selpic = 46;
 		rIsland.reload.l9.tex = "t1";
@@ -933,8 +946,8 @@ void InitIslands()
 		rIsland.reload.l10.emerge = "see";
 		rIsland.reload.l10.radius = 250.0;
 		rIsland.reload.l10.commander = "Tortuga Commander"; // KK
-		rIsland.reload.l10.fort.model = "Gaity_fort1";
-		rIsland.reload.l10.fort.locators = "Gaity_fort1_locators";
+		rIsland.reload.l10.fort.model = "Gaity_fort3";
+		rIsland.reload.l10.fort.locators = "Gaity_fort3_locators";
 		rIsland.reload.l10.pic = 42;
 		rIsland.reload.l10.selpic = 46;
 		rIsland.reload.l10.tex = "t1";
@@ -953,6 +966,7 @@ void InitIslands()
 		rIsland.Trade.Export.id4 = GOOD_SANDAL;
 		rIsland.Trade.Export.id5 = GOOD_GOLD;
 		rIsland.Trade.Export.id6 = GOOD_SILVER;
+		rIsland.Trade.Export.id7 = GOOD_SLAVES;
 		rIsland.Trade.Import.id1 = GOOD_PLANKS;
 		rIsland.Trade.Import.id2 = GOOD_SAILCLOTH;
 		rIsland.Trade.Import.id3 = GOOD_SUGAR;
@@ -978,6 +992,9 @@ void InitIslands()
 		rIsland.towns.1 = "Santiago";
 		rIsland.towns.2 = "Havana";
 		// NK <--
+		Islands[n].jungle.patch = "Cuba_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 20.0;
 
 		rIsland.reload.l1.label = "#stown_name#"; // KK
 		rIsland.reload.l1.name = "reload_1";
@@ -1002,7 +1019,7 @@ void InitIslands()
 
 // KK -->
 		rIsland.reload.l3.label = "Bahia de San Antonio";
-		rIsland.reload.l3.name = "reload_2";
+		rIsland.reload.l3.name = "reload_5";
 		rIsland.reload.l3.go = "Cuba_shore_01";
 		rIsland.reload.l3.emerge = "reload1";
 		rIsland.reload.l3.radius = 200.0;
@@ -1012,7 +1029,7 @@ void InitIslands()
 		rIsland.reload.l3.goto_enable = false; // Screwface: Disable Sail-To
 
 		rIsland.reload.l4.label = "Bahia de Moa";
-		rIsland.reload.l4.name = "reload_5";
+		rIsland.reload.l4.name = "reload_2";
 		rIsland.reload.l4.go = "Cuba_shore_02";
 		rIsland.reload.l4.emerge = "Reload2";
 		rIsland.reload.l4.radius = 200.0;
@@ -1070,8 +1087,8 @@ void InitIslands()
 		rIsland.reload.l9.emerge = "see";
 		rIsland.reload.l9.radius = 250.0;
 		rIsland.reload.l9.commander = "Santiago Commander"; // KK
-		rIsland.reload.l9.fort.model = "Cuba_fort2";
-		rIsland.reload.l9.fort.locators = "Cuba_fort2_locators";
+		rIsland.reload.l9.fort.model = "Cuba_fort1";
+		rIsland.reload.l9.fort.locators = "Cuba_fort1_locators";
 		rIsland.reload.l9.pic = 42;
 		rIsland.reload.l9.selpic = 46;
 		rIsland.reload.l9.tex = "t1";
@@ -1084,8 +1101,8 @@ void InitIslands()
 		rIsland.reload.l10.emerge = "see";
 		rIsland.reload.l10.radius = 250.0;
 		rIsland.reload.l10.commander = "Havana Commander"; // KK
-		rIsland.reload.l10.fort.model = "Cuba_fort1";
-		rIsland.reload.l10.fort.locators = "Cuba_fort1_locators";
+		rIsland.reload.l10.fort.model = "Cuba_fort2";
+		rIsland.reload.l10.fort.locators = "Cuba_fort2_locators";
 		rIsland.reload.l10.pic = 42;
 		rIsland.reload.l10.selpic = 46;
 		rIsland.reload.l10.tex = "t1";
@@ -1102,6 +1119,7 @@ void InitIslands()
 		rIsland.Trade.Export.id2 = GOOD_MAHOGANY;
 		rIsland.Trade.Export.id3 = GOOD_CINNAMON;
 		rIsland.Trade.Export.id4 = GOOD_SANDAL;
+		rIsland.Trade.Export.id5 = GOOD_SLAVES;
 		rIsland.Trade.Import.id1 = GOOD_PLANKS;
 		rIsland.Trade.Import.id2 = GOOD_SAILCLOTH;
 		rIsland.Trade.Import.id3 = GOOD_SUGAR;
@@ -1178,6 +1196,7 @@ void InitIslands()
 		rIsland.Trade.Import.id4 = GOOD_LEATHER;
 		rIsland.Trade.Import.id5 = GOOD_GOLD;
 		rIsland.Trade.Import.id6 = GOOD_SILVER;
+		rIsland.Trade.Import.id7 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SANDAL;
 		rIsland.Trade.Contraband.id2 = GOOD_FRUITS;
 		rIsland.Trade.Contraband.id3 = GOOD_CINNAMON;
@@ -1217,7 +1236,7 @@ void InitIslands()
 		rIsland.reload.l2.emerge = "see";
 		rIsland.reload.l2.radius = 250.0;
 		rIsland.reload.l2.commander = "Philipsburg Commander"; // KK
-		rIsland.reload.l2.fort.model = "Sent_fort1";
+		rIsland.reload.l2.fort.model = "Sent_fort2";
 		rIsland.reload.l2.fort.locators = "Sent_fort1_locators";
 		rIsland.reload.l2.pic = 40;
 		rIsland.reload.l2.selpic = 44;
@@ -1242,7 +1261,7 @@ void InitIslands()
 		rIsland.reload.l4.emerge = "see";
 		rIsland.reload.l4.radius = 250.0;
 		rIsland.reload.l4.commander = "Marigot Commander"; // KK
-		rIsland.reload.l4.fort.model = "Sent_fort2";
+		rIsland.reload.l4.fort.model = "Sent_fort1";
 		rIsland.reload.l4.fort.locators = "Sent_fort2_locators";
 		rIsland.reload.l4.pic = 42;
 		rIsland.reload.l4.selpic = 46;
@@ -1262,7 +1281,7 @@ void InitIslands()
 		rIsland.reload.l6.label = "Baie Orient";
 		rIsland.reload.l6.name = "reload_4";
 		rIsland.reload.l6.go = "SaintMartin_shore_02";
-		rIsland.reload.l6.emerge = "see";	// Akella's spelling 
+		rIsland.reload.l6.emerge = "see";	// Akella's spelling ;)
 		rIsland.reload.l6.radius = 200.0;
 		rIsland.reload.l6.pic = 34;
 		rIsland.reload.l6.selpic = 38;
@@ -1286,6 +1305,7 @@ void InitIslands()
 		rIsland.Trade.Import.id2 = GOOD_EBONY;
 		rIsland.Trade.Import.id3 = GOOD_RUM;
 		rIsland.Trade.Import.id4 = GOOD_LEATHER;
+		rIsland.Trade.Import.id5 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SANDAL;
 		rIsland.Trade.Contraband.id2 = GOOD_FRUITS;
 		rIsland.Trade.Contraband.id3 = GOOD_CINNAMON; // KK
@@ -1550,6 +1570,7 @@ void InitIslands()
 		rIsland.Trade.Import.id3 = GOOD_WHEAT;
 		rIsland.Trade.Import.id4 = GOOD_GOLD;
 		rIsland.Trade.Import.id5 = GOOD_SILVER;
+		rIsland.Trade.Import.id6 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SUGAR;
 		rIsland.Trade.Contraband.id2 = GOOD_LINEN;
 		rIsland.Trade.Contraband.id3 = GOOD_WINE;
@@ -1637,6 +1658,7 @@ void InitIslands()
 		rIsland.Trade.Import.id6 = GOOD_OIL;
 		rIsland.Trade.Import.id7 = GOOD_BRICKS;
 		rIsland.Trade.Import.id8 = GOOD_CLOTHES;
+		rIsland.Trade.Import.id9 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SUGAR;
 		rIsland.Trade.Contraband.id2 = GOOD_LINEN;
 		rIsland.Trade.Contraband.id3 = GOOD_WINE;
@@ -1656,6 +1678,9 @@ void InitIslands()
 		rIsland.towns.quantity = 1;
 		rIsland.towns.1 = "Oranjestad";
 		// NK <--
+		Islands[n].jungle.patch = "Aruba_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
 
 		rIsland.reload.l1.label = "#stown_name# Port";
 		rIsland.reload.l1.name = "reload_1";
@@ -1712,6 +1737,7 @@ void InitIslands()
 		rIsland.Trade.Import.id3 = GOOD_WHEAT;
 		rIsland.Trade.Import.id4 = GOOD_GOLD;
 		rIsland.Trade.Import.id5 = GOOD_SILVER;
+		rIsland.Trade.Import.id6 = GOOD_SLAVES;
 		rIsland.Trade.Contraband.id1 = GOOD_SUGAR;
 		rIsland.Trade.Contraband.id2 = GOOD_LINEN;
 		rIsland.Trade.Contraband.id3 = GOOD_WINE;
@@ -1723,7 +1749,7 @@ void InitIslands()
 	// Isla Mona
 		rIsland.id = "IslaMona";
 		rIsland.model = "islamona";
-		rIsland.filespath.models = "islands\IslaDeMuerte";
+		rIsland.filespath.models = "islands\IslaMona";
 		rIsland.refl_model = "islamona_refl";
 		rIsland.locators = "islamona_locators";
 		rIsland.visible = false;
@@ -1817,13 +1843,14 @@ void InitIslands()
 		rIsland.Trade.Import.id4 = GOOD_LINEN;
 		rIsland.Trade.Import.id5 = GOOD_SILVER;
 		rIsland.Trade.Import.id6 = GOOD_TREATMENT;
+		rIsland.Trade.Import.id7 = GOOD_SLAVES;
 
 		AddIsland(q, rIsland, locator);
 
 	// ==================================================================================================
 	// Isla de Muerte
 		rIsland.id = "IslaDeMuerte";
-		rIsland.model = "islamona";
+		rIsland.model = "IslaDeMuerte";
 		rIsland.filespath.models = "islands\IslaDeMuerte";
 		rIsland.refl_model = "islamona_refl";
 		rIsland.locators = "islamona_locators";
@@ -1874,10 +1901,10 @@ void InitIslands()
 	// ==================================================================================================
 	// Petit Tabac
 		rIsland.id = "Battle_Rocks";
-		rIsland.model = "Terks";
-		rIsland.filespath.models = "islands\Terks";
-		rIsland.refl_model = "Terks_refl";
-		rIsland.locators = "Terks_locators";
+		rIsland.model = "Dominica";
+		rIsland.filespath.models = "islands\Dominica";
+		rIsland.refl_model = "dominica_refl";
+		rIsland.locators = "dominica_locators";
 		rIsland.visible = false;
 		rIsland.smuggling_nation = PORTUGAL; // PB: Matches with Conceicao
 		rIsland.towns.quantity = 1;
@@ -1903,6 +1930,46 @@ void InitIslands()
 		ISLANDS_QUANTITY = q;
 
 	// ==================================================================================================
+	// Santa Catalina
+		rIsland.id = "SantaCatalina";
+		rIsland.model = "SantaCatalina";
+		rIsland.filespath.models = "islands\SantaCatalina";
+		rIsland.refl_model = "SantaCatalina_refl";
+		rIsland.locators = "SantaCatalina_locators";
+		rIsland.Enc_enable = false;	// PB: To prevent ships being generated IN the mainland
+		rIsland.towns.quantity = 1;
+		rIsland.towns.1 = "";
+
+		rIsland.InterfaceTextures.t2 = "battle_interface\moor-shores.tga.tx";
+		rIsland.InterfaceTextures.t2.h = 8;
+		rIsland.InterfaceTextures.t2.v = 16;
+
+		AddIsland(q, rIsland, locator);
+		
+		ISLANDS_QUANTITY = q;
+
+	// ==================================================================================================
+	// Porto Bello
+		rIsland.id = "PortoBello";
+		rIsland.model = "PortoBello";
+		rIsland.filespath.models = "islands\PortoBello";
+		rIsland.refl_model = "PortoBello_refl";
+		rIsland.locators = "PortoBello_locators";
+		rIsland.Enc_enable = false;	// PB: To prevent ships being generated IN the mainland
+		rIsland.towns.quantity = 1;
+		rIsland.towns.1 = "";
+
+		rIsland.InterfaceTextures.t2 = "battle_interface\moor-shores.tga.tx";
+		rIsland.InterfaceTextures.t2.h = 8;
+		rIsland.InterfaceTextures.t2.v = 16;
+
+		AddIsland(q, rIsland, locator);
+		
+		ISLANDS_QUANTITY = q;
+		
+	// ==================================================================================================
 	// delete temp module
 		DeleteClass(&locator);
+		
+		CreateJunglesOnIslands();
 }

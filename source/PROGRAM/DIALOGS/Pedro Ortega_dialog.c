@@ -181,7 +181,7 @@ void ProcessDialogEvent()
 				//проверка враждебности нам страны торговца
 				if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY) // KK
 				{
-					Preprocessor_Add("nation_desc", GetNationDescByType(sti(NPChar.nation)));
+					Preprocessor_Add("nation_desc", XI_ConvertString(GetNationDescByType(sti(NPChar.nation))));
 					dialog.snd = "Voice\EMRI\EMRI007";
 					dialog.text = DLG_TEXT[27];
 					link.l1 = DLG_TEXT[28];
@@ -204,7 +204,7 @@ void ProcessDialogEvent()
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice); // TIH nation fix Aug30'06 // KK
 						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string
-						//проверяем свободное место при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
+						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.snd = "Voice\EMRI\EMRI009";

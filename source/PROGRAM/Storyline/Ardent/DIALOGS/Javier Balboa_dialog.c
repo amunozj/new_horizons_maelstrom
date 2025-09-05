@@ -9,27 +9,25 @@ void ProcessDialogEvent()
 
 	gov_kid_pronoun = XI_ConvertString(GetMyPronounSubj(characterFromID(PChar.quest.romance)));
 	gov_kid_pronoun2 = XI_ConvertString(GetMyPronounObj(characterFromID(PChar.quest.romance)));
+	gov_kid_pronoun3 = XI_ConvertString(GetMyPronounPossessive(characterFromID(PChar.quest.romance)));
 	merch_kid_pronoun = XI_ConvertString(GetMyPronounSubj(characterFromID(PChar.quest.villain)));
 	merch_kid_pronoun2 = XI_ConvertString(GetMyPronounObj(characterFromID(PChar.quest.villain)));
+	merch_kid_pronoun3 = XI_ConvertString(GetMyPronounPossessive(characterFromID(PChar.quest.villain)));
 	if (PChar.sex == "man")
 	{
-		your_gov_kid = DLG_TEXT[431];
-		your_gov_kid2 = DLG_TEXT[435];
-		my_gov_kid = DLG_TEXT[433];
-		my_gov_kid2 = DLG_TEXT[437];
-		gov_kid_pronoun3 = XI_ConvertString("her");
+		your_gov_kid = DLG_TEXT[447];
+		your_gov_kid2 = DLG_TEXT[451];
+		my_gov_kid = DLG_TEXT[449];
+		my_gov_kid2 = DLG_TEXT[453];
 		merch_kid = XI_ConvertString("son");
-		merch_kid_pronoun3 = XI_ConvertString("his");
 	}
 	else
 	{
-		your_gov_kid = DLG_TEXT[432];
-		your_gov_kid2 = DLG_TEXT[436];
-		my_gov_kid = DLG_TEXT[434];
-		my_gov_kid2 = DLG_TEXT[438];
-		gov_kid_pronoun3 = XI_ConvertString("his");
+		your_gov_kid = DLG_TEXT[448];
+		your_gov_kid2 = DLG_TEXT[452];
+		my_gov_kid = DLG_TEXT[450];
+		my_gov_kid2 = DLG_TEXT[454];
 		merch_kid = XI_ConvertString("daughter");
-		merch_kid_pronoun3 = XI_ConvertString("her");
 	}
 
 	if(CheckAttribute(characterFromID(PChar.quest.romance), "married") && characters[getCharacterIndex(PChar.quest.romance)].married == MR_MARRIED && characters[getCharacterIndex(PChar.quest.romance)].married.id == PChar.id)
@@ -204,7 +202,7 @@ void ProcessDialogEvent()
 				offer = DLG_TEXT[100];
 				PChar.quest.ardent_kidnap.ransom = 50000;
 			}
-			dialog.text = DLG_TEXT[97] + GetMySimpleName(CharacterFromID(PChar.quest.romance)) + " to " + GetMySimpleName(CharacterFromID(PChar.quest.villain)) + DLG_TEXT[98] + offer + DLG_TEXT[101] + my_gov_kid + DLG_TEXT[102];
+			dialog.text = DLG_TEXT[97] + GetMySimpleName(CharacterFromID(PChar.quest.romance)) + DLG_TEXT[446] + GetMySimpleName(CharacterFromID(PChar.quest.villain)) + DLG_TEXT[98] + offer + DLG_TEXT[101] + my_gov_kid + DLG_TEXT[102];
 			link.l1 = DLG_TEXT[103];
 			link.l1.go = "ransom_accept";
 			link.l2 = DLG_TEXT[104];
@@ -335,26 +333,26 @@ void ProcessDialogEvent()
 			TakeItemFromCharacter(Pchar, "ExplainLetter");
 			ChangeCharacterReputation(PChar, 2);
 			dialog.text = DLG_TEXT[91];
-			link.l1 = DLG_TEXT[112] + GetMyAddressForm(NPChar, CharacterFromID(PChar.quest.romance), ADDR_CIVIL, false, false) + " " + GetMySimpleName(CharacterFromID(PChar.quest.romance)) + ".";
+			link.l1 = DLG_TEXT[112] + GetMyRespectfullyName(CharacterFromID(PChar.quest.romance)) + ".";
 			link.l1.go = "hostage_free2";
 		break;
 
 		case "hostage_free2":
 			dialog.text = DLG_TEXT[113];
-			link.l1 = DLG_TEXT[114] + GetMyAddressForm(NPChar, characterFromID(PChar.quest.romance), ADDR_CIVIL, false, false) + " " + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[115];
+			link.l1 = DLG_TEXT[114] + GetMyRespectfullyName(CharacterFromID(PChar.quest.romance)) + DLG_TEXT[115];
 			link.l1.go = "hostage_free3";
 		break;
 
 		case "hostage_free3":
 			if(GetRMRelation(Pchar, SPAIN) > REL_WAR)
 			{
-				dialog.text = DLG_TEXT[116] + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[117] + gov_kid_pronoun + DLG_TEXT[118];
+				dialog.text = DLG_TEXT[116] + GetMyName(CharacterFromID(PChar.quest.romance)) + DLG_TEXT[117] + gov_kid_pronoun + DLG_TEXT[118];
 			}
 			else
 			{
-				dialog.text = DLG_TEXT[116] + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[117] + gov_kid_pronoun + DLG_TEXT[119];
+				dialog.text = DLG_TEXT[116] + GetMyName(CharacterFromID(PChar.quest.romance)) + DLG_TEXT[117] + gov_kid_pronoun + DLG_TEXT[119];
 			}
-			link.l1 = DLG_TEXT[120] + GetMyAddressForm(NPChar, characterFromID(PChar.quest.romance), ADDR_CIVIL, false, false) + " " + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[121];
+			link.l1 = DLG_TEXT[120] + GetMyRespectfullyName(CharacterFromID(PChar.quest.romance)) + DLG_TEXT[121];
 			AddDialogExitQuest("governor_relaxes");
 			link.l1.go = "Exit";
 		break;
@@ -376,6 +374,46 @@ void ProcessDialogEvent()
 			link.l1 = DLG_TEXT[132];
 			if(!LAi_IsDead(characterFromID(PChar.quest.villain)) && !CheckAttribute(PChar, "quest.finale_marriage")) AddDialogExitQuest("assassination_attempt");
 			link.l1.go = "Exit";
+		break;
+
+		case "dining_room1":
+			dialog.text = DLG_TEXT[438];
+			link.l1 = DLG_TEXT[439];
+			link.l1.go = "dining_room_mona";
+			if(CheckQuestAttribute("payroll_ship", "success"))
+			{
+				dialog.text = DLG_TEXT[431] + GetMyName(PChar) + DLG_TEXT[432];
+				link.l1 = DLG_TEXT[433];
+				link.l1.go = "dining_room_payroll_ship";
+			}
+		break;
+
+		case "dining_room_mona":
+			dialog.text = DLG_TEXT[440] + GetMyName(PChar) + DLG_TEXT[441];
+			link.l1 = DLG_TEXT[442];
+			AddDialogExitQuest("reception_chat_to_romance");
+			link.l1.go = "exit";
+		break;
+
+		case "dining_room_payroll_ship":
+			dialog.text = DLG_TEXT[434];
+			link.l1 = DLG_TEXT[435];
+			link.l1.go = "dining_room_payroll_ship2"
+		break;
+
+		case "dining_room_payroll_ship2":
+			dialog.text = DLG_TEXT[436];
+			link.l1 = DLG_TEXT[437];
+			AddDialogExitQuest("reception_chat_to_romance");
+			link.l1.go = "exit";
+		break;
+
+		case "dining_room_imperial_escort":
+			PChar.quest.imperial_escort_enable = true;
+			dialog.text = DLG_TEXT[443] + GetMyName(PChar) + DLG_TEXT[444];
+			link.l1 = DLG_TEXT[445];
+			AddDialogExitQuest("reception_chat_finish");
+			link.l1.go = "exit";
 		break;
 
 		case "reception_done":
@@ -754,7 +792,8 @@ void ProcessDialogEvent()
 			if (PChar.ship.type == "RN_WarGalleon" || PChar.ship.type == "PO_WarGalleon" || PChar.ship.type == "FR_WarGalleon" || PChar.ship.type == "NL_WarGalleon" || PChar.ship.type == "SP_WarGalleon" || PChar.ship.type == "FR_Licorne")
 			{
 				dialog.text = DLG_TEXT[226];
-				link.l1 = DLG_TEXT[227];
+				if (CheckAttribute(PChar, "quest.convoy_officer")) link.l1 = DLG_TEXT[227];
+				else link.l1 = "...";
 				AddDialogExitQuest("convoy_get_ship_back");
 				link.l1.go = "Exit";
 			}
@@ -1168,7 +1207,9 @@ void ProcessDialogEvent()
 				NPChar.templand = GetCharacterLand(PChar);
 				Promote(&PChar, &NPChar, SPAIN);
 				if (GetRank(PChar, SPAIN) < 3) Promote(&PChar, &NPChar, SPAIN); // Double promotion if low rank
-				dialog.text = DLG_TEXT[359] + DLG_TEXT[375] + TranslateString(GetRankName(PChar, SPAIN),"") + DLG_TEXT[376] + (GetCharacterLand(PChar) - sti(NPChar.templand)) + DLG_TEXT[377];
+				dialog.text = DLG_TEXT[359] + DLG_TEXT[375] + TranslateString(GetRankName(PChar, SPAIN),"");
+				if (GetCharacterLand(PChar) - sti(NPChar.templand) > 0) dialog.text = dialog.text + DLG_TEXT[376] + (GetCharacterLand(PChar) - sti(NPChar.templand)) + DLG_TEXT[377];
+				else dialog.text = dialog.text + ".";
 				DeleteAttribute(NPChar,"templand");
 				if (!LAi_IsDead(characterFromID(PChar.quest.romance)) && PChar.married == MR_SINGLE && !CheckAttribute(PChar, "quest.spain_betrayal"))
 				{
@@ -1537,8 +1578,8 @@ void ProcessDialogEvent()
 		break;
 
 		case "Exit_not_chosen_escort":
-			if(OFFICER_MAX <= 4) logit("Hint: To make an officer available as an escort, assign that officer to one of the shore party slots.");
-			else logit("Hint: To make an officer available as an escort, assign that officer to one of the first three shore party slots.");
+			if(OFFICER_MAX <= 4) logit(TranslateString("","Hint: To make an officer available as an escort, assign that officer to one of the shore party slots."));
+			else logit(TranslateString("","Hint: To make an officer available as an escort, assign that officer to one of the first three shore party slots."));
 			PChar.quest.marriage_status = "need_escort";
 			AddDialogExitQuest("marriage_governor_waits");
 			DialogExit();

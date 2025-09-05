@@ -34,6 +34,7 @@
 #define MSG_MODEL_SET_TECHNIQUE		20510 // "s" = technique
 #define MSG_MODEL_SET_FOG			20511
 #define MSG_MODEL_SET_MAX_VIEW_DIST	20512
+#define MODEL_PLAY_ACTION			20515
 //#20170911-01 Ambient light mod
 #define MSG_MODEL_SET_AMBIENT_LIGHT 20530 // "ll"
 //#20180325-02
@@ -65,6 +66,9 @@
 #define MSG_GRASS_LOAD_DATA			40666
 #define MSG_GRASS_SET_TEXTURE		41666
 #define MSG_GRASS_SET_PARAM			42666
+#define MSG_GRASS_SET_QUALITY		43666
+#define MSG_GRASS_SET_STORM			43670
+#define MSG_GRASS_SET_TECHNIQUES	43680
 
 //============================================================================================
 //Island Messages
@@ -161,6 +165,7 @@
 //Boyer add so that compiles with KK's addition #20170201
 #define MSG_LOCATION_CREATELOCATOR			30190		// "lssffffff" name, group, x, y, z, angX, angY, angZ
 #define MSG_LOCATION_DELETELOCATOR			30191		// "lss" name, group
+#define MSG_LOCATION_DIAG_RAD				30192		// "lf"
 
 //#20170911-01 Ambient light mod
 #define MSG_LOCATION_SET_AMBIENT_LIGHT 30250 // "ll"
@@ -223,6 +228,8 @@
 #define MSG_CAMERA_SETEYES					30522
 //#20200331-01
 #define MSG_CAMERA_LIMITRANGE				30533
+//#20210316-01
+#define MSG_CAMERA_SETSPECIAL				30535
 
 #define MSG_BLOTS_SETMODEL					30600		//"li" model_id
 #define MSG_BLOTS_HIT						30601		//"lffffff"  x, y, z, nx, ny, nz
@@ -248,6 +255,8 @@
 #define MSG_WORLDMAP_CREATEENC_RELEASE		31200	//""
 
 #define MSG_WORLDMAP_LAUNCH_EXIT_TO_SEA		31130	//""
+//#20210415-01
+#define MSG_WORLDMAP_FLAG_SET				31140
 
 //============================================================================================
 //Effects
@@ -319,6 +328,9 @@
 #define MSG_SOUND_ALIAS_ADD					77017   //"s"		  alias_name
 //#20180815-03
 #define MSG_SOUND_ENVIRONMENT				77100	//"ll"
+#define MSG_SOUND_ADD_MUSICALIAS_NAME		77105	//"s" optional "sll"
+#define MSG_SOUND_ADD_MUSICALIAS_ELEMENT	77110	//"ss"
+#define MSG_SOUND_MUSICALIAS_ISREVOLVE		77115   //"sl"
 //#20180824-01
 #define MSG_SOUND_PLAY_NORET       			77150
 

@@ -822,6 +822,34 @@ void InitTowns(bool first)
 	ctown.laigroup = "SPAIN";
 	ctown.economy = TOWN_ECONOMY_WEALTHY;
 	AddTown(q, ctown);
+	
+	/*
+	ctown.id = "Bermudes";
+	ctown.island = "Bermudes";
+	ctown.storegroup = "Turks"; // NK 05-05-04
+	ctown.position.x = -580.0;
+	ctown.position.z = -780.0;
+	ctown.monsterprob = 1.0;
+	if(first) ctown.captured = false;
+	if(first) ctown.size = 1000;
+	ctown.gold = sti(ctown.size) * TOWN_GOLD_SCALAR;
+	if(first) ctown.nation = PIRATE; // KK
+	ctown.homeland = PIRATE; // KK
+	ctown.store = BERMUDES_STORE;
+	ctown.gov = "Dante Siciliano"; // CTM
+	ctown.officiant = "Bermudes_officiant"; // KK
+	ctown.troops = sti(ctown.size) * 4 / 5;
+	ctown.crew.quantity = sti(ctown.size)/8 + rand(sti(ctown.size)/4);
+	ctown.crew.morale = MORALE_NORMAL - 20 + Rand(40);
+	ctown.crew.data.year = GetDataYear();
+	ctown.crew.data.month = GetDataMonth();
+	ctown.crew.data.day = GetDataDay();
+	ctown.shipberth = 0; // KK
+	ctown.boarding.l1 = "Bermudes_town";
+	ctown.laigroup = "Bermudes";
+	ctown.economy = TOWN_ECONOMY_SURVIVING;
+	AddTown(q, ctown);
+	*/
 
 	TOWNS_QUANTITY = q;
 }

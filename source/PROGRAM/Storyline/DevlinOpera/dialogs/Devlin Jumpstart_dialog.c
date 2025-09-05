@@ -39,6 +39,13 @@ void ProcessDialogEvent()
 			link.l1.go = "Exit";
                         link.l2 = DLG_TEXT[2];
 			link.l2.go = "Jump_Rum";
+                        link.l3 = DLG_TEXT[3];
+			link.l3.go = "Jump_Santiago";
+                        link.l4 = DLG_TEXT[4];
+			link.l4.go = "Jump_Domingo";
+                        link.l5 = DLG_TEXT[5];
+			link.l5.go = "Jump_Cayman";
+
 		break;
 
 		case "Jump_Rum":
@@ -46,6 +53,34 @@ void ProcessDialogEvent()
 			SetNextWeather("Clear");
 
 			AddDialogExitQuest("Jump_Rum");
+
+			Diag.CurrentNode = Diag.TempNode; //"First time";
+			DialogExit();
+		break;
+
+		case "Jump_Santiago":
+			SetCurrentTime(10.00, 0);
+			SetNextWeather("Clear");
+
+			AddDialogExitQuest("Jump_Santiago");
+
+			Diag.CurrentNode = Diag.TempNode; //"First time";
+			DialogExit();
+		break;
+
+		case "Jump_Domingo":
+			SetNextWeather("Clear");
+
+			AddDialogExitQuest("Jump_Domingo");
+
+			Diag.CurrentNode = Diag.TempNode; //"First time";
+			DialogExit();
+		break;
+
+		case "Jump_Cayman":
+			SetNextWeather("Clear");
+
+			AddDialogExitQuest("Jump_Cayman");
 
 			Diag.CurrentNode = Diag.TempNode; //"First time";
 			DialogExit();

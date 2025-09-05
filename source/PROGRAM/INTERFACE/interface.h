@@ -65,6 +65,7 @@
 //Levis Readable Books
 #define INTERFACE_BOOK					56 // added by Levis
 #define INTERFACE_INSTALLERROR			57 // added by PB
+#define INTERFACE_SPEAK                 58  // Philippe, ajout
 
 #define RC_INTERFACE_DO_NOTHING			-1
 
@@ -152,5 +153,8 @@
 #define RC_INTERFACE_MONKEY_EXIT				45177 // added by Sulan
 //Levis Readable Books
 #define RC_INTERFACE_BOOK_EXIT					45178 // added by Levis
+#define RC_INTERFACE_SPEAK_EXIT					45179 // Philippe, d?bloqu?
+#define RC_INTERFACE_SPEAK_EXIT_AND_CAPTURE		45180        // Philippe, d?bloqu?
+#define RC_INTERFACE_SPEAK_EXIT_AND_TRADE		45181        // Philippe, d?bloqu?
 
 #define MAX_SAVE_STORE_BLOCKS	160

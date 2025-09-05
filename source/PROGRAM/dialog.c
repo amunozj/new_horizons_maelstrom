@@ -35,6 +35,7 @@ bool DialogMain(ref Character)
 	if(dialogRun != false) return false;
 	//Ссылка на главного персонажа
 	ref mainChr = GetMainCharacter();
+	mainChr.inDialog = true;
 	//Если когото не заведено, выходим
 	if(!IsEntity(mainChr)) return false;
 	if(!IsEntity(Character)) return false;
@@ -65,6 +66,7 @@ bool DialogMain(ref Character)
 // added by MAXIMUS <--
 	//Сохраняем ссыклу на того с кем говорим
 	CharacterRef = Character;
+	CharacterRef.inDialog = true;
 	LoadAllDialogFiles(Character); //Added by Levis for better dialogs
 	// Попытка загрузить текст дилога
 	/*if( !LoadDialogFiles(Character.Dialog.Filename) ) {
@@ -96,6 +98,10 @@ bool DialogMain(ref Character)
 	startDialogMainCounter = 0;
 	SetEventHandler("frame", "StartDialogMain", 1);
 //	SetTimeScale(0.0);
+	if (locCameraCurMode == LOCCAMERA_FOLLOW && !CheckAttribute(loadedLocation, "lockCamAngle") && mainChr.location.group != "sit" && mainChr.location.group != "sit_Pair")
+	{
+		SetCameraDialogMode(Character);
+	}
 	return true;
 }
 
@@ -111,6 +117,7 @@ void StartDialogMain()
 	startDialogMainCounter++;
 	if(startDialogMainCounter < 3) return;
 
+	/*
 	if (DIALOG_CAMERA > 0.0) {
 		size = 3.0 + DIALOG_CAMERA;
 		loadedLocation = &Locations[FindLoadedLocation()];
@@ -124,33 +131,31 @@ void StartDialogMain()
 	if (DIALOG_CAMERA < 0.0) {
 		DialogCamera(GetMainCharacter(), 0.0, true);
 	}
+	*/
 
 	DelEventHandler("frame", "StartDialogMain");
 
-// KK -->
+/// KK -->
 	if (bNewInterface) {
 		//CreateEntity(&Dialog, "dialg2");
-		Dialog.texturePath = "Dialog\Dialg2.tga.tx";
 		Dialog.iniName = "dialg2.ini";
-		CreateEntity(&Dialog, "dialoglegacy");
+		CreateEntity(&Dialog, "dialog");
 	}
-	else {
-        Dialog.texturePath = "Dialog\dialog.tga.orig.tx";
-		CreateEntity(&Dialog, "dialoglegacy");
-	}
+	else
+		CreateEntity(&Dialog, "dialog");
 // KK <--
 
 	Log_SetActiveAction("Nothing");//MAXIMUS
 	LogsVisible(false); // KK
 	Dialog.headModel = CharacterRef.headModel; // KK
-	
+
 	// GR: use armoured head model if appropriate -->
 	if (CheckAttribute(CharacterRef, "model.armorlevel") == true && FindFile("RESOURCE\MODELS\Heads", "*.gm", Dialog.headModel + "_A" + sti(CharacterRef.model.armorlevel) + ".gm") != "")
 	{
 		Dialog.headModel = Dialog.headModel + "_A" + sti(CharacterRef.model.armorlevel);
 	}
 // GR <--
-	
+
 	if(FindFile(GetResourceDirectory() + "models\Heads", "*.gm", CharacterRef.headModel + ".gm") == "")
 	{
 		if(CharacterRef.headModel!="h_"+CharacterRef.Model) CharacterRef.headModel = "h_"+CharacterRef.Model;//MAXIMUS: prevents some errors (I'm wondering: sometimes we have models-names, like 23iu432523h)
@@ -244,6 +249,7 @@ void SelfDialog(ref Character)
 	}
 	//Сохраняем ссылку на того с кем говорим
 	CharacterRef = Character;
+	CharacterRef.inDialog = true;
 	LoadAllDialogFiles(Character); //Added by Levis for better dialogs
  	// Попытка загрузить текст дилога
 	/*if(!LoadDialogFiles(Character.Dialog.Filename))
@@ -263,18 +269,20 @@ void SelfDialog(ref Character)
 // KK -->
 	if (bNewInterface) {
 		//CreateEntity(&Dialog, "dialg2");
-		Dialog.texturePath = "Dialog\Dialg2.tga.tx";
 		Dialog.iniName = "dialg2.ini";
-		CreateEntity(&Dialog, "dialoglegacy");
+		CreateEntity(&Dialog, "dialog");
 	}
-	else {
-        Dialog.texturePath = "Dialog\dialog.tga.orig.tx";
-		CreateEntity(&Dialog, "dialoglegacy");
-	}
+	else
+		CreateEntity(&Dialog, "dialog");
 // <-- KK
 	Log_SetActiveAction("Nothing");//MAXIMUS
 	LogsVisible(false); // KK
 	Dialog.headModel = CharacterRef.headModel; // KK
+	// GR: use armoured head model if appropriate -->
+	if (CheckAttribute(CharacterRef, "model.armorlevel") == true && FindFile("RESOURCE\MODELS\Heads", "*.gm", Dialog.headModel + "_A" + sti(CharacterRef.model.armorlevel) + ".gm") != "")
+	{
+		Dialog.headModel = Dialog.headModel + "_A" + sti(CharacterRef.model.armorlevel);
+	}
 	if (FindFile(GetResourceDirectory() + "models\Heads", "*.gm", CharacterRef.headModel + ".gm") == "")
 	{
 		if(CharacterRef.headModel!="h_"+CharacterRef.Model) CharacterRef.headModel = "h_"+CharacterRef.Model;//MAXIMUS: prevents some errors (I'm wondering: sometimes we have models-names, like 23iu432523h)
@@ -333,6 +341,8 @@ void DialogExit()
 	}
 	//Ссылка на главного персонажа
 	ref mainChr = GetMainCharacter(); // KK
+	DeleteAttribute(GetMainCharacter(), "inDialog");
+	DeleteAttribute(CharacterRef, "inDialog");
 	//Если диалога уже не ведётся, выйдем
 	if(dialogRun == false) return;
 	//DelEventHandler("PlayDialogGreeting", "DialogPlayGreeting"); // KK
@@ -349,6 +359,11 @@ void DialogExit()
 		SendMessage(mainChr, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
 		SendMessage(CharacterRef, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
 		DeleteAttribute(mainChr, "IsInDialog");	// LDH - Used for problems with corpses disappearing.
+		if (locCameraCurMode != LOCCAMERA_FOLLOW)
+		{
+			locCameraTarget(mainChr);
+			locCameraFollow();
+		}
 	}else{
 		LAi_Character_EndDialog(CharacterRef, CharacterRef);
 		SendMessage(CharacterRef, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
@@ -362,7 +377,7 @@ void DialogExit()
 	if(FightDisable == false) {LAi_LocationFightDisable(&Locations[FindLocation(mainChr.location)], false);}
 	// if FightDisable has not been set true, set LocationFightDisable off again (resets original LocationFightDisable setting from before the dialog)
 	// PB: No fights during dialog <--
-	locCameraFollow(); //a simple virtual sailor
+	//locCameraFollow(); //a simple virtual sailor
 	ClearScreenShoter();//MAXIMUS: used for QuickSave
 	LogsVisible(true); // KK
 	CheckReloadAction(mainChr, "");
@@ -379,7 +394,7 @@ void StartDialogWithMainCharacter()
 	//С кем хотим говорить
 	int person = GetEventData();
 	//Boyer fix #20170326-01 Invalid index -1 [size:1000]
-	if(person<0) return;
+	if (person<0 || person>=TOTAL_CHARACTERS) return;
 	//Сими с собой не беседуем
 	if(person == GetMainCharacterIndex()) return;
 	//С непрогруженными персонажами не беседуем
@@ -825,6 +840,11 @@ void DialogCorpseExit(ref char)
 		SendMessage(mainChr, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
 		SendMessage(char, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
 		DeleteAttribute(mainChr, "IsInDialog");
+		if (locCameraCurMode != LOCCAMERA_FOLLOW)
+		{
+			locCameraTarget(mainChr);
+			locCameraFollow();
+		}
 	}else{
 		LAi_Character_EndDialog(char, char);
 		SendMessage(char, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 0);
@@ -835,7 +855,7 @@ void DialogCorpseExit(ref char)
 	//Сообщим об окончании диалога
 	PostEvent(EVENT_DIALOG_EXIT, 1, "l", sti(char.index));
 	// PB -->
-	locCameraFollow(); //a simple virtual sailor
+	// locCameraFollow(); //a simple virtual sailor
 	ClearScreenShoter();//MAXIMUS: used for QuickSave
 	LogsVisible(true); // KK
 	CheckReloadAction(mainChr, "");
@@ -845,6 +865,42 @@ void DialogCorpseExit(ref char)
 	// PB <--
 	if(FightDisable == false) {LAi_LocationFightDisable(&Locations[FindLocation(mainChr.location)], false);}
 	ClearScreenShoter();//MAXIMUS: used for QuickSave
-	if(DIALOG_CAMERA>0.0) locCameraFollow();//MAXIMUS
+	// if(DIALOG_CAMERA>0.0) locCameraFollow();//MAXIMUS
 }
 //MAXIMUS <--
+
+bool SetCameraDialogMode(ref chrRef)
+{
+    //#20191121-02
+	float x1,y1,z1, x2, y2, z2;
+	if( false==GetCharacterPos(pchar,&x1,&y1,&z1) ) return false;
+    if( false==GetCharacterPos(chrRef,&x2,&y2,&z2) ) return false;
+
+    float a = 0.1;
+    float len = GetDistance2D(x1,z1, x2,z2);
+	float dx = x1*(1-a)+x2*a;
+	float dz = z1*(1-a)+z2*a;
+	len = 1;
+	float s1 = (dx-x1)*len;
+	float s2 = (dz-z1)*len;
+
+    float xcam;
+	float zcam;
+	if (rand(1) == 0)
+	{
+		xcam = dx-s2;
+		zcam = dz+s1;
+	}
+	else
+	{
+		xcam = dx+s2;
+		zcam = dz-s1;
+	}
+	locCameraTarget(chrRef);
+	float fH = 1.7;
+	if (chrRef.location.group == "sit" || chrRef.location.group == "sit_Pair")
+	{
+	    fH = 1.15;
+	}
+	return locCameraToPos(xcam,y1+fH,zcam,false);
+}

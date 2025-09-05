@@ -6,7 +6,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleCharacterSelect";
 	GameInterface.faces.current = 0;
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	//SetEventHandler("InterfaceBreak","DoSelect",0);
 	SetEventHandler("DoSelect","DoSelect",0);
 }

@@ -73,7 +73,7 @@ void ProcessDialogEvent()
 		case "bonus_chapter2":
 			LAi_SetActorType(NPchar);
 			LAi_ActorTurnToCharacter(NPchar, characterFromID("Claire Voyant"));
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar));
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Defoe"));
 			PlaySound("VOICE\ENGLISH\jrh_7.wav");			
 			dialog.text = DLG_TEXT[10];

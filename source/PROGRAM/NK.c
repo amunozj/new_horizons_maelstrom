@@ -171,7 +171,7 @@ bool HasMerchantPassport(ref chr)
 
 void LevelUp_Cheat(ref rCharacter, bool real)
 {
-	if(!real)
+	if(!real) 
 	{
 		int oldxp = sti(rCharacter.Experience);
 		if(!CheckAttribute(rCharacter,"FakeLevels")) rCharacter.FakeLevels = 0;
@@ -381,7 +381,7 @@ void CreatePortLandscape(string sPortLandscape)
 	if (!CheckAttribute(&Locations[locidx], "models.always.l1")) return;
 	if (CheckAttribute(deck, "models.always.port1")) DeleteAttribute(deck,"models.always.port1");
 	if (CheckAttribute(deck, "models.always.port2")) DeleteAttribute(deck,"models.always.port2");
-	arLandscapes = GetFiles(GetResourceDirectory() + "MODELS\" + Locations[locidx].filespath.models, "*_landscape.gm");
+	arLandscapes = GetFiles("RESOURCE\MODELS\" + Locations[locidx].filespath.models, "*_landscape.gm");
 	inum = GetAttributesNum(arLandscapes);
 	for (i = 0; i < inum; i++) {
 		gmfile = GetAttributeValue(GetAttributeN(arLandscapes, i));
@@ -428,7 +428,7 @@ string IsPortLandscapeEnabled(string sLocation)
 	ref deck, port;
 	locidx = FindLocation(sLocation);
 	if (locidx < 0) return "";
-	makeref(port, Locations[locidx]);
+	makeref(port, Locations[locidx]); 
 	llocidx = FindLocation(Characters[GetMainCharacterIndex()].location);
 	if (llocidx < 0) return "";
 	makeref(deck, Locations[llocidx]);
@@ -439,7 +439,7 @@ string IsPortLandscapeEnabled(string sLocation)
 	}
 	if (!bEnable) return "";
 	if (!CheckAttribute(port, "filespath.models") || !CheckAttribute(port, "models.always.l1")) return "";
-	if (FindFile(GetResourceDirectory() + "MODELS\" + port.filespath.models, "*_landscape.gm", port.models.always.l1 + "_landscape.gm") != "") return sLocation;
+	if (FindFile("RESOURCE\MODELS\" + port.filespath.models, "*_landscape.gm", port.models.always.l1 + "_landscape.gm") != "") return sLocation;
 	return "";
 }
 // <-- KK
@@ -474,10 +474,10 @@ string LogsToggleDescription()
 {
 	switch(LogsToggle)
 	{
-		case LOG_QUIET:		return "Quiet";		break;
-		case LOG_LACONIC:	return "Laconic";	break;
-		case LOG_NORMAL:	return "Normal";	break;
-		case LOG_VERBOSE:	return "Verbose";	break;
+		case LOG_QUIET:		return TranslateString("","Quiet");		break;
+		case LOG_LACONIC:	return TranslateString("","Laconic");	break;
+		case LOG_NORMAL:	return TranslateString("","Normal");	break;
+		case LOG_VERBOSE:	return TranslateString("","Verbose");	break;
 	}
 }
 
@@ -679,7 +679,7 @@ void GivePromotionReward(int iNation)
 					switch (GetMySimpleOldName(PChar))
 					{
 						case "Horatio Hornblower":
-							GiveShip2Character(pchar,"FR_Sloop","Le R?ve",-1,FRANCE,true,true); // Captured from the French
+							GiveShip2Character(pchar,"FR_Sloop","Le Rève",-1,FRANCE,true,true); // Captured from the French
 						break;
 
 						case "Jack Aubrey":
@@ -802,7 +802,7 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(pchar, "RN_Surprise", "Success", -1, ENGLAND, true, true); // Unit? class Frigate
+								GiveShip2Character(pchar, "RN_Surprise", "Success", -1, ENGLAND, true, true); // Unité class Frigate
 							break;
 						}
 					}
@@ -811,7 +811,7 @@ void GivePromotionReward(int iNation)
 					switch (GetMySimpleOldName(PChar))
 					{
 						case "Horatio Hornblower":
-							GiveShip2Character(pchar, "RN_Essex", "Lydia", -1, ENGLAND, true, true); // Raz?e Frigate
+							GiveShip2Character(pchar, "RN_Essex", "Lydia", -1, ENGLAND, true, true); // Razée Frigate
 						break;
 
 						case "Horatio Nelson":
@@ -876,7 +876,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case "Jack Aubrey":
@@ -920,7 +920,7 @@ void GivePromotionReward(int iNation)
 							RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 						}
 						else
-							LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+							LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 					}
 				break;
 				case 8: // Rear Admiral
@@ -936,7 +936,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 						case "Horatio Nelson":
 							// Nothing on purpose
@@ -955,12 +955,12 @@ void GivePromotionReward(int iNation)
 							if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
 							{
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "brtcpt2_18", 3, ENGLAND, false);
-								GiveShip2Character(ch, "RN_Essex", "Pomone", -1, ENGLAND, true, true); //
+								GiveShip2Character(ch, "RN_Essex", "Pomone", -1, ENGLAND, true, true); // 
 								SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						//default:
@@ -1007,12 +1007,12 @@ void GivePromotionReward(int iNation)
 							if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
 							{
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "brtcpt1_18", 3, ENGLAND, false);
-								GiveShip2Character(ch, "RN_Surprise", "Success", -1, ENGLAND, true, true); // Unit? class Frigate
+								GiveShip2Character(ch, "RN_Surprise", "Success", -1, ENGLAND, true, true); // Unité class Frigate
 								SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case "Theodore Groves":
@@ -1037,7 +1037,7 @@ void GivePromotionReward(int iNation)
 									RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 								}
 								else
-									LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+									LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 							break;
 
 							case PERIOD_THE_SPANISH_MAIN:
@@ -1124,7 +1124,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -1252,7 +1252,7 @@ void GivePromotionReward(int iNation)
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "NL_Fleut50", "Gouden Leeuwin", -1, HOLLAND, true, true); //
+							GiveShip2Character(pchar, "NL_Fleut50", "Gouden Leeuwin", -1, HOLLAND, true, true); // 
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
@@ -1261,19 +1261,19 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "NL_Batavia", "Maarsen", -1, HOLLAND, true, true); //
+							GiveShip2Character(pchar, "NL_Batavia", "Maarsen", -1, HOLLAND, true, true); // 
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
-							GiveShip2Character(pchar, "NL_Frigate47", "Eensgezindheid", -1, HOLLAND, true, true); //
+							GiveShip2Character(pchar, "NL_Frigate47", "Eensgezindheid", -1, HOLLAND, true, true); // 
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "Corvette2", "Wilhelmina", -1, HOLLAND, true, true); //
+							GiveShip2Character(pchar, "Corvette2", "Wilhelmina", -1, HOLLAND, true, true); // 
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "Corvette2", "Embuscade", -1, HOLLAND, true, true); //
+							GiveShip2Character(pchar, "Corvette2", "Embuscade", -1, HOLLAND, true, true); // 
 						break;
 					}
 				break;
@@ -1339,7 +1339,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 				case 8: // Commandeur
 					switch(GetCurrentPeriod())
@@ -1388,12 +1388,12 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Offic_hol_17", 3, HOLLAND, false);
-								GiveShip2Character(ch, "NL_Lineship", "Veere", -1, HOLLAND, true, true); //
+								GiveShip2Character(ch, "NL_Lineship", "Veere", -1, HOLLAND, true, true); // 
 							break;
 
 							case PERIOD_COLONIAL_POWERS:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Offic_hol_18", 3, HOLLAND, false);
-								GiveShip2Character(ch, "NL_PinnaceofWar47", "Prinses Royaal", -1, HOLLAND, true, true); //
+								GiveShip2Character(ch, "NL_PinnaceofWar47", "Prinses Royaal", -1, HOLLAND, true, true); // 
 							break;
 
 							case PERIOD_REVOLUTIONS:
@@ -1410,7 +1410,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 				case 10: // Vice-Admiraal
 					if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
@@ -1428,11 +1428,11 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_THE_SPANISH_MAIN:
 								if (GetMySimpleOldName(PChar) == "Michiel de Ruyter")	GiveShip2Character(ch, "NL_SevenProvincien", "Zeven Provincien", -1, HOLLAND, true, true);
-								else												GiveShip2Character(ch, "NL_Lineship", "	Huis te Oosterwijk", -1, HOLLAND, true, true); //
+								else												GiveShip2Character(ch, "NL_Lineship", "	Huis te Oosterwijk", -1, HOLLAND, true, true); // 
 							break;
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
-								GiveShip2Character(ch, "NL_ConvoiShip", "Raadhuis van Edam", -1, HOLLAND, true, true); //
+								GiveShip2Character(ch, "NL_ConvoiShip", "Raadhuis van Edam", -1, HOLLAND, true, true); // 
 							break;
 
 							case PERIOD_COLONIAL_POWERS:
@@ -1451,7 +1451,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -1519,11 +1519,11 @@ void GivePromotionReward(int iNation)
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "Polacca", "L?opard", -1, FRANCE, true, true);
+							GiveShip2Character(pchar, "Polacca", "Léopard", -1, FRANCE, true, true);
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "Polacca", "L?opard", -1, FRANCE, true, true);
+							GiveShip2Character(pchar, "Polacca", "Léopard", -1, FRANCE, true, true);
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -1535,11 +1535,11 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "Brig2", "?lan", -1, FRANCE, true, true);
+							GiveShip2Character(pchar, "Brig2", "Élan", -1, FRANCE, true, true);
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "Brig2", "?lan", -1, FRANCE, true, true);
+							GiveShip2Character(pchar, "Brig2", "Élan", -1, FRANCE, true, true);
 						break;
 					}
 				break;
@@ -1555,7 +1555,7 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "FR_Postillionen", "M?duse", -1, FRANCE, true, true); // 6th Rate Frigate
+							GiveShip2Character(pchar, "FR_Postillionen", "Méduse", -1, FRANCE, true, true); // 6th Rate Frigate
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
@@ -1563,11 +1563,11 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "FR_Postillionen", "M?duse", -1, FRANCE, true, true); // 6th Rate Frigate
+							GiveShip2Character(pchar, "FR_Postillionen", "Méduse", -1, FRANCE, true, true); // 6th Rate Frigate
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "FR_Greyhound", "Comte de Tr?ville", -1, FRANCE, true, true); // Heavy Sloop-of-War
+							GiveShip2Character(pchar, "FR_Greyhound", "Comte de Tréville", -1, FRANCE, true, true); // Heavy Sloop-of-War
 						break;
 					}
 				break;
@@ -1583,26 +1583,26 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "RN_RaaFrigate", "?toile", -1, FRANCE, true, true); // Frigate
+							GiveShip2Character(pchar, "RN_RaaFrigate", "Étoile", -1, FRANCE, true, true); // Frigate
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
-							GiveShip2Character(pchar, "Corvette1", "Iphig?nie", -1, FRANCE, true, true); // Aurora class Frigate
+							GiveShip2Character(pchar, "Corvette1", "Iphigénie", -1, FRANCE, true, true); // Aurora class Frigate
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "Corvette1", "Iphig?nie", -1, FRANCE, true, true); // Aurora class Frigate
+							GiveShip2Character(pchar, "Corvette1", "Iphigénie", -1, FRANCE, true, true); // Aurora class Frigate
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "FR_Surprise", "DuQuesne", -1, FRANCE, true, true); // Unit? class Frigate
+							GiveShip2Character(pchar, "FR_Surprise", "DuQuesne", -1, FRANCE, true, true); // Unité class Frigate
 						break;
 					}
 				break;
 				case 6: // Capitaine de Vaisseau
 					switch (GetMySimpleOldName(PChar))
 					{
-						case "Fran?ois-Louis Rousselet":
+						case "François-Louis Rousselet":
 							GiveShip2Character(PChar, "WallerPinnace", "Le Saint Louis", -1, FRANCE, true, true); // Heavy Pinnace of War
 						break;
 
@@ -1618,7 +1618,7 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
-								GiveShip2Character(pchar, "FR_Frigate", "M?duse", -1, FRANCE, true, true); // Rossiya Frigate
+								GiveShip2Character(pchar, "FR_Frigate", "Méduse", -1, FRANCE, true, true); // Rossiya Frigate
 							break;
 
 							case PERIOD_COLONIAL_POWERS:
@@ -1626,11 +1626,11 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_REVOLUTIONS:
-								GiveShip2Character(pchar, "FR_BattleFrigate", "Ach?ron", -1, FRANCE, true, true); // Art?mise class Frigate
+								GiveShip2Character(pchar, "FR_BattleFrigate", "Achéron", -1, FRANCE, true, true); // Artémise class Frigate
 							break;
 
 							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(pchar, "FR_BattleFrigate", "Ach?ron", -1, FRANCE, true, true); // Art?mise class Frigate
+								GiveShip2Character(pchar, "FR_BattleFrigate", "Achéron", -1, FRANCE, true, true); // Artémise class Frigate
 							break;
 						}
 					}
@@ -1667,12 +1667,12 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 				case 8: // Vice-Amiral
 					switch (GetMySimpleOldName(PChar))
 					{
-						case "Fran?ois-Louis Rousselet":
+						case "François-Louis Rousselet":
 							GiveShip2Character(PChar, "FR_SoleilRoyal", "Dauphin Royal", -1, FRANCE, true, true); // Heavy Pinnace of War
 						break;
 
@@ -1683,7 +1683,7 @@ void GivePromotionReward(int iNation)
 								GiveShip2Character(pchar, "Galeon1", "Forte", -1, FRANCE, true, true); // Royal Manila Galleon
 							break;
 							case PERIOD_THE_SPANISH_MAIN:
-								GiveShip2Character(pchar, "HeavyLineship", "Maill? Br?z?", -1, FRANCE, true, true); // Pinnace-of-War
+								GiveShip2Character(pchar, "HeavyLineship", "Maillé Brézé", -1, FRANCE, true, true); // Pinnace-of-War
 							break;
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
 								GiveShip2Character(pchar, "FR_Fleuron", "Le Fleuron", -1, FRANCE, true, true); // Fleuron class 3rd Rate
@@ -1695,7 +1695,7 @@ void GivePromotionReward(int iNation)
 								GiveShip2Character(pchar, "FR_Superbe", "Redoutable", -1, FRANCE, true, true); // America class 3rd Rate
 							break;
 							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(pchar, "FR_Bellona", "T?m?raire", -1, FRANCE, true, true); // Bellona class 3rd Rate
+								GiveShip2Character(pchar, "FR_Bellona", "Téméraire", -1, FRANCE, true, true); // Bellona class 3rd Rate
 							break;
 						}
 					}
@@ -1703,7 +1703,7 @@ void GivePromotionReward(int iNation)
 				case 9: // Vice-Amiral d'Escadre
 					switch (GetMySimpleOldName(PChar))
 					{
-						case "Fran?ois-Louis Rousselet":
+						case "François-Louis Rousselet":
 							// Nothing on purpose
 						break;
 
@@ -1762,18 +1762,18 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_REVOLUTIONS:
-								GiveShip2Character(ch, "FR_SotL", "Fougueux", -1, FRANCE, true, true); // Intr?pide class 1st Rate
+								GiveShip2Character(ch, "FR_SotL", "Fougueux", -1, FRANCE, true, true); // Intrépide class 1st Rate
 							break;
 
 							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(ch, "FR_SotL", "Fougueux", -1, FRANCE, true, true); // Intr?pide class 1st Rate
+								GiveShip2Character(ch, "FR_SotL", "Fougueux", -1, FRANCE, true, true); // Intrépide class 1st Rate
 							break;
 						}
 						SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -1809,7 +1809,7 @@ void GivePromotionReward(int iNation)
 						break;
 					}
 				break;
-				case 2: // Alf?rez de Fragate
+				case 2: // Alférez de Fragate
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
@@ -1838,7 +1838,7 @@ void GivePromotionReward(int iNation)
 					}
 				break;
 
-				case 3: // Alf?rez de Nav?o
+				case 3: // Alférez de Navío
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
@@ -1862,24 +1862,24 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "Galeoth1", "Extreme?a", -1, SPAIN, true, true);
+							GiveShip2Character(pchar, "Galeoth1", "Extremeña", -1, SPAIN, true, true);
 						break;
 					}
 				break;
 
-				case 4: // Teniente de Nav?o
+				case 4: // Teniente de Navío
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "SP_Derfflinger", "Girona", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_Derfflinger", "Girona", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "SP_NeptunusE", "Lion de Oro", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_NeptunusE", "Lion de Oro", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "SP_Neptunus", "San Cayetano", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_Neptunus", "San Cayetano", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
@@ -1896,19 +1896,19 @@ void GivePromotionReward(int iNation)
 					}
 				break;
 
-				case 5: // Capit?n de Corbeta
+				case 5: // Capitán de Corbeta
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apost?l Felipe", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apostól Felipe", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apost?l Felipe", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apostól Felipe", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apost?l Felipe", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apostól Felipe", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
@@ -1920,12 +1920,12 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "SP_Surprise", "Cornelia", -1, SPAIN, true, true); // Unit? class Frigate
+							GiveShip2Character(pchar, "SP_Surprise", "Cornelia", -1, SPAIN, true, true); // Unité class Frigate
 						break;
 					}
 				break;
 
-				case 6: // Capit?n de Fragata
+				case 6: // Capitán de Fragata
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
@@ -1954,7 +1954,7 @@ void GivePromotionReward(int iNation)
 					}
 				break;
 
-				case 7: // Capit?n de Nav?o
+				case 7: // Capitán de Navío
 					if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
 					{
 						if(GetCurrentPeriod() < PERIOD_COLONIAL_POWERS)
@@ -1968,7 +1968,7 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_THE_SPANISH_MAIN:
-								GiveShip2Character(ch, "SP_Galeon50", "	Nuestra Se?ora del Pueblo", -1, SPAIN, true, true); // Royal Galleon
+								GiveShip2Character(ch, "SP_Galeon50", "	Nuestra Señora del Pueblo", -1, SPAIN, true, true); // Royal Galleon
 							break;
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -1980,7 +1980,7 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_REVOLUTIONS:
-								GiveShip2Character(ch, "SP_Surprise", "Santa Marta", -1, SPAIN, true, true); // Unit? class Frigate
+								GiveShip2Character(ch, "SP_Surprise", "Santa Marta", -1, SPAIN, true, true); // Unité class Frigate
 							break;
 
 							case PERIOD_NAPOLEONIC:
@@ -1991,7 +1991,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 
 				case 8: // Contra Almirante
@@ -2014,41 +2014,49 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "FR_Superbe", "San Agust?n", -1, SPAIN, true, true); // America class 3rd Rate
+							GiveShip2Character(pchar, "FR_Superbe", "San Agustín", -1, SPAIN, true, true); // America class 3rd Rate
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "FR_Superbe", "San Agust?n", -1, SPAIN, true, true); // America class 3rd Rate
+							GiveShip2Character(pchar, "FR_Superbe", "San Agustín", -1, SPAIN, true, true); // America class 3rd Rate
 						break;
 					}
 				break;
 
 				case 9: // Vice Almirante
-					switch(GetCurrentPeriod())
+					switch (GetMySimpleOldName(PChar))
 					{
-						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "SP_BattleGalleon", "San Martin", -1, SPAIN, true, true); // San Martin
+						case "Blas de Lezo":
+							GiveShip2Character(pchar, "PO_Poseidon", "Conquistador", -1, SPAIN, true, true); // Poseidon class 3rd Rate
 						break;
 
-						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "SP_SanFelipe", "San Felipe", -1, SPAIN, true, true); // Man of war
-						break;
+						//default:
+						switch(GetCurrentPeriod())
+						{
+							case PERIOD_EARLY_EXPLORERS:
+								GiveShip2Character(pchar, "SP_BattleGalleon", "San Martin", -1, SPAIN, true, true); // San Martin
+							break;
 
-						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "SP_SanFelipe", "San Felipe", -1, SPAIN, true, true); // Man of war
-						break;
+							case PERIOD_THE_SPANISH_MAIN:
+								GiveShip2Character(pchar, "SP_SanFelipe", "San Felipe", -1, SPAIN, true, true); // Man of war
+							break;
 
-						case PERIOD_COLONIAL_POWERS:
-							GiveShip2Character(pchar, "SP_Trinity", "Nuevo Invencible", -1, SPAIN, true, true); // Trinity class 2nd Rate
-						break;
+							case PERIOD_GOLDEN_AGE_OF_PIRACY:
+								GiveShip2Character(pchar, "SP_SanFelipe", "San Felipe", -1, SPAIN, true, true); // Man of war
+							break;
 
-						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "SP_SotL", "Sant?sima Trinidad", -1, SPAIN, true, true); // Victory class 1st Rate
-						break;
+							case PERIOD_COLONIAL_POWERS:
+								GiveShip2Character(pchar, "SP_Trinity", "Nuevo Invencible", -1, SPAIN, true, true); // Trinity class 2nd Rate
+							break;
 
-						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "SP_SotL", "Sant?sima Trinidad", -1, SPAIN, true, true); // Victory class 1st Rate
-						break;
+							case PERIOD_REVOLUTIONS:
+								GiveShip2Character(pchar, "SP_SotL", "Santísima Trinidad", -1, SPAIN, true, true); // Victory class 1st Rate
+							break;
+
+							case PERIOD_NAPOLEONIC:
+								GiveShip2Character(pchar, "SP_SotL", "Santísima Trinidad", -1, SPAIN, true, true); // Victory class 1st Rate
+							break;
+						}
 					}
 				break;
 
@@ -2059,37 +2067,48 @@ void GivePromotionReward(int iNation)
 							ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Huber_Spa4_17", 3, SPAIN, false);
 						else
 							ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "spa_cpt1_18", 3, SPAIN, false);
-						switch(GetCurrentPeriod())
+						switch (GetMySimpleOldName(PChar))
 						{
-							case PERIOD_EARLY_EXPLORERS:
-								GiveShip2Character(ch, "FastGalleon2", "San Marcos", -1, SPAIN, true, true); // War Galleon
+							case "Blas de Lezo":
+								ch.name = TranslateString("","Francisco");
+								ch.middlename = TranslateString("","José");
+								ch.lastname = TranslateString("","de Ovando");
+								GiveShip2Character(ch, "PO_Poseidon", "Dragón", -1, SPAIN, true, true);
 							break;
 
-							case PERIOD_THE_SPANISH_MAIN:
-								GiveShip2Character(ch, "Galeon50", "Nuestra Se?ora de las Mercedes", -1, SPAIN, true, true); // War Galleon
-							break;
+							//default:
+							switch(GetCurrentPeriod())
+							{
+								case PERIOD_EARLY_EXPLORERS:
+									GiveShip2Character(ch, "FastGalleon2", "San Marcos", -1, SPAIN, true, true); // War Galleon
+								break;
 
-							case PERIOD_GOLDEN_AGE_OF_PIRACY:
-								GiveShip2Character(ch, "SP_Battleship", "Principe de Asturias", -1, SPAIN, true, true); // Battleship
-							break;
+								case PERIOD_THE_SPANISH_MAIN:
+									GiveShip2Character(ch, "Galeon50", "Nuestra Señora de las Mercedes", -1, SPAIN, true, true); // War Galleon
+								break;
 
-							case PERIOD_COLONIAL_POWERS:
-								GiveShip2Character(ch, "SP_Trinity", "Principe", -1, SPAIN, true, true); // Trinity class 2nd Rate
-							break;
+								case PERIOD_GOLDEN_AGE_OF_PIRACY:
+									GiveShip2Character(ch, "SP_Battleship", "Principe de Asturias", -1, SPAIN, true, true); // Battleship
+								break;
 
-							case PERIOD_REVOLUTIONS:
-								GiveShip2Character(ch, "FR_FirstRate", "San Carlos", -1, SPAIN, true, true); // Intr?pide class 1st Rate
-							break;
+								case PERIOD_COLONIAL_POWERS:
+									GiveShip2Character(ch, "SP_Trinity", "Principe", -1, SPAIN, true, true); // Trinity class 2nd Rate
+								break;
 
-							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(ch, "FR_FirstRate", "San Carlos", -1, SPAIN, true, true); // Intr?pide class 1st Rate
-							break;
+								case PERIOD_REVOLUTIONS:
+									GiveShip2Character(ch, "FR_FirstRate", "San Carlos", -1, SPAIN, true, true); // Intrépide class 1st Rate
+								break;
+
+								case PERIOD_NAPOLEONIC:
+									GiveShip2Character(ch, "FR_FirstRate", "San Carlos", -1, SPAIN, true, true); // Intrépide class 1st Rate
+								break;
+							}
 						}
 						SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -2101,7 +2120,7 @@ void GivePromotionReward(int iNation)
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "LuggerCT", "Nossa Senhora da Oliveira e Santo Ant?nio", -1, PORTUGAL, true, true); // Lugger
+							GiveShip2Character(pchar, "LuggerCT", "Nossa Senhora da Oliveira e Santo António", -1, PORTUGAL, true, true); // Lugger
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
@@ -2203,16 +2222,16 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "PO_Greyhound", "Sao Joao Magn?nimo", -1, PORTUGAL, true, true); // 6th Rate Frigate
+							GiveShip2Character(pchar, "PO_Greyhound", "Sao Joao Magnânimo", -1, PORTUGAL, true, true); // 6th Rate Frigate
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "PO_Greyhound", "Sao Joao Magn?nimo", -1, PORTUGAL, true, true); // 6th Rate Frigate
+							GiveShip2Character(pchar, "PO_Greyhound", "Sao Joao Magnânimo", -1, PORTUGAL, true, true); // 6th Rate Frigate
 						break;
 					}
 				break;
 
-				case 5: // Capit?o-Tenente
+				case 5: // Capitão-Tenente
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
@@ -2236,12 +2255,12 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "RN_Surprise", "Principe Dom Pedro", -1, PORTUGAL, true, true); // Unit? class Frigate
+							GiveShip2Character(pchar, "RN_Surprise", "Principe Dom Pedro", -1, PORTUGAL, true, true); // Unité class Frigate
 						break;
 					}
 				break;
 
-				case 6: // Capit?o-de-Fragata
+				case 6: // Capitão-de-Fragata
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
@@ -2270,7 +2289,7 @@ void GivePromotionReward(int iNation)
 					}
 				break;
 
-				case 7: // Capit?o-de-Mar-e-Guerra
+				case 7: // Capitão-de-Mar-e-Guerra
 					if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
 					{
 						switch(GetCurrentPeriod())
@@ -2302,14 +2321,14 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_NAPOLEONIC:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Offic_por_19", 3, PORTUGAL, false);
-								GiveShip2Character(ch, "RN_Surprise", "Uni?o", -1, PORTUGAL, true, true); // Unit? class Frigate
+								GiveShip2Character(ch, "RN_Surprise", "União", -1, PORTUGAL, true, true); // Unité class Frigate
 							break;
 						}
 						SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 
 				case 8: // Comodoro
@@ -2353,7 +2372,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
@@ -2377,7 +2396,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case PERIOD_NAPOLEONIC:
@@ -2389,7 +2408,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 					}
 				break;
@@ -2420,18 +2439,18 @@ void GivePromotionReward(int iNation)
 							break;
 
 							case PERIOD_REVOLUTIONS:
-								GiveShip2Character(ch, "RN_Superbe", "Santo Augustinho", -1, PORTUGAL, true, true); // Intr?pide class 1st Rate
+								GiveShip2Character(ch, "RN_Superbe", "Santo Augustinho", -1, PORTUGAL, true, true); // Intrépide class 1st Rate
 							break;
 
 							case PERIOD_NAPOLEONIC:
-								GiveShip2Character(ch, "RN_Superbe", "Santo Augustinho", -1, PORTUGAL, true, true); // Intr?pide class 1st Rate
+								GiveShip2Character(ch, "RN_Superbe", "Santo Augustinho", -1, PORTUGAL, true, true); // Intrépide class 1st Rate
 							break;
 						}
 						SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -2529,11 +2548,11 @@ void GivePromotionReward(int iNation)
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "SP_Derfflinger", "Girona", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_Derfflinger", "Girona", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "SP_NeptunusE", "Kasteel van Medemblik", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_NeptunusE", "Kasteel van Medemblik", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -2549,7 +2568,7 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "US_PrinceNeufchatel", "Prince de Neufchatel", -1, AMERICA, true, true); //
+							GiveShip2Character(pchar, "US_PrinceNeufchatel", "Prince de Neufchatel", -1, AMERICA, true, true); // 
 						break;
 					}
 				break;
@@ -2558,11 +2577,11 @@ void GivePromotionReward(int iNation)
 					switch(GetCurrentPeriod())
 					{
 						case PERIOD_EARLY_EXPLORERS:
-							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apost?l Felipe", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apostól Felipe", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
-							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apost?l Felipe", -1, SPAIN, true, true); //
+							GiveShip2Character(pchar, "SP_ApostolFelipe", "Apostól Felipe", -1, SPAIN, true, true); // 
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -2574,11 +2593,11 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_REVOLUTIONS:
-							GiveShip2Character(pchar, "RN_Surprise", "Insurgent", -1, AMERICA, true, true); // Unit? class Frigate
+							GiveShip2Character(pchar, "RN_Surprise", "Insurgent", -1, AMERICA, true, true); // Unité class Frigate
 						break;
 
 						case PERIOD_NAPOLEONIC:
-							GiveShip2Character(pchar, "RN_Surprise", "Delaware", -1, AMERICA, true, true); // Unit? class Frigate
+							GiveShip2Character(pchar, "RN_Surprise", "Delaware", -1, AMERICA, true, true); // Unité class Frigate
 						break;
 					}
 				break;
@@ -2631,7 +2650,7 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_THE_SPANISH_MAIN:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Huber_spa", 3, SPAIN, false);
-								GiveShip2Character(ch, "SP_Galeon50", "	Nuestra Se?ora del Pueblo", -1, SPAIN, true, true); // Royal Galleon
+								GiveShip2Character(ch, "SP_Galeon50", "	Nuestra Señora del Pueblo", -1, SPAIN, true, true); // Royal Galleon
 							break;
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -2646,19 +2665,19 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_REVOLUTIONS:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "USA_lut_18", 3, AMERICA, false);
-								GiveShip2Character(ch, "RN_Surprise", "Bourbon", -1, AMERICA, true, true); // Unit? class Frigate
+								GiveShip2Character(ch, "RN_Surprise", "Bourbon", -1, AMERICA, true, true); // Unité class Frigate
 							break;
 
 							case PERIOD_NAPOLEONIC:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "USA_lut_18", 3, AMERICA, false);
-								GiveShip2Character(ch, "RN_Surprise", "Adams", -1, AMERICA, true, true); // Unit? class Frigate
+								GiveShip2Character(ch, "RN_Surprise", "Adams", -1, AMERICA, true, true); // Unité class Frigate
 							break;
 						}
 						SetCompanionIndex(pchar, -1, GetCharacterIndex(ch.id));
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 
 				case 8: // Rear Admiral
@@ -2731,7 +2750,7 @@ void GivePromotionReward(int iNation)
 
 							case PERIOD_THE_SPANISH_MAIN:
 								ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "Huber_Spa4_17", 3, SPAIN, false);
-								GiveShip2Character(ch, "Galeon50", "Nuestra Se?ora de las Mercedes", -1, SPAIN, true, true); // War Galleon
+								GiveShip2Character(ch, "Galeon50", "Nuestra Señora de las Mercedes", -1, SPAIN, true, true); // War Galleon
 							break;
 
 							case PERIOD_GOLDEN_AGE_OF_PIRACY:
@@ -2758,7 +2777,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 			}
 		break;
@@ -2835,7 +2854,7 @@ void GivePromotionReward(int iNation)
 						break;
 
 						case PERIOD_GOLDEN_AGE_OF_PIRACY:
-							GiveShip2Character(pchar, "Empress", "Ying Tong", -1, PIRATE, true, true); //
+							GiveShip2Character(pchar, "Empress", "Ying Tong", -1, PIRATE, true, true); // 
 						break;
 
 						case PERIOD_COLONIAL_POWERS:
@@ -2942,7 +2961,7 @@ void GivePromotionReward(int iNation)
 				case 7: // Famous Pirate
 					if (GetCompanionIndex(pchar,1) == -1 || GetCompanionIndex(pchar,2) == -1 || GetCompanionIndex(pchar,3) == -1) // GR
 					{
-
+						
 						ch = CreateOfficer_Cheat(OFFIC_TYPE_CAPNAVY, "33_Ronal2", 3, PIRATE, false);
 						switch(GetCurrentPeriod())
 						{
@@ -2950,7 +2969,7 @@ void GivePromotionReward(int iNation)
 								GiveShip2Character(ch, "FleutWar", "Mistress of Mayhem", -1, PIRATE, true, true); // Fleut of war
 							break;
 
-							case PERIOD_THE_SPANISH_MAIN:
+							case PERIOD_THE_SPANISH_MAIN:	
 								GiveShip2Character(ch, "FleutWar", "Mistress of Mayhem", -1, PIRATE, true, true); // Fleut of war
 							break;
 
@@ -2974,7 +2993,7 @@ void GivePromotionReward(int iNation)
 						RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 					}
 					else
-						LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+						LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 				break;
 
 				case 8: // Infamous Pirate
@@ -3018,7 +3037,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case PERIOD_THE_SPANISH_MAIN:
@@ -3042,7 +3061,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 
 						case PERIOD_NAPOLEONIC:
@@ -3054,7 +3073,7 @@ void GivePromotionReward(int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						break;
 					}
 				break;
@@ -3163,6 +3182,13 @@ void GiveSwordAndPerks(int PlayerRank, int iNation)
 						SetRankTitle(PChar, TranslateString("", PCharTitle));
 						PChar.knighted = iNation;
 					}
+					switch (GetMySimpleOldName(PChar))
+					{
+						case "James Norrington":
+							GiveItem2Character(PChar,"bladeNorr"+qual); // Norrington's ceremonial smallsword
+							EquipCharacterByItem(PChar,"bladeNorr"+qual);
+						break;
+					}
 				break;
 
 				case FRANCE:
@@ -3176,7 +3202,7 @@ void GiveSwordAndPerks(int PlayerRank, int iNation)
 				case SPAIN:
 					if (!CheckAttribute(PChar, "knighted"))
 					{
-						if (PChar.sex == "woman") PCharTitle = "Do?a";
+						if (PChar.sex == "woman") PCharTitle = "Doña";
 						else PCharTitle = "Don";
 						SetRankTitle(PChar, TranslateString("", PCharTitle));
 						PChar.knighted = iNation;
@@ -3218,8 +3244,11 @@ void GiveSwordAndPerks(int PlayerRank, int iNation)
 								RemovePassenger  (pchar,     CharacterFromID  (ch.id));
 							}
 							else
-								LogIt("You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship.");
+								LogIt(TranslateString("","You seem to have a pretty impressive squadron of your own. Looks like you won't be needing the promotion ship."));
 						}
+					break;
+					case "James Norrington":
+					// Nothing, he got his promotion sword at Commodore/Knight
 					break;
 					//default:
 					GiveItem2Character(pchar,"blade22"+qual); // Corsair's Pride
@@ -3591,7 +3620,7 @@ string OfficerUniform4Player(int PlayerRank, int iNation)
 						}
 					}
 				break;
-				case 2: // Alf?rez de Fragate
+				case 2: // Alférez de Fragate
 					switch (rand(2))
 					{
 						case 0: PlayerModel = "spa_lut_18"; break;
@@ -3599,13 +3628,13 @@ string OfficerUniform4Player(int PlayerRank, int iNation)
 						case 2: PlayerModel = "spa_lut2_18"; break;
 					}
 				break;
-				case 3: // Alf?rez de Nav?o
+				case 3: // Alférez de Navío
 				break;
-				case 4: // Teniente de Nav?o
+				case 4: // Teniente de Navío
 				break;
-				case 5: // Capit?n de Corbeta
+				case 5: // Capitán de Corbeta
 				break;
-				case 6: // Capit?n de Fragata
+				case 6: // Capitán de Fragata
 					switch(rand(2))
 					{
 						case 0: PlayerModel = "spa_cpt_18"; break;
@@ -3613,7 +3642,7 @@ string OfficerUniform4Player(int PlayerRank, int iNation)
 						case 2: PlayerModel = "spa_cpt2_18"; break;
 					}
 				break;
-				case 7: // Capit?n de Nav?o
+				case 7: // Capitán de Navío
 				break;
 				case 8: // Contra Almirante
 				break;
@@ -3624,7 +3653,7 @@ string OfficerUniform4Player(int PlayerRank, int iNation)
 				break;
 				case 11: // Almirante General
 				break;
-				case 12: // Capit?n General
+				case 12: // Capitán General
 				break;
 			}
 		break;
@@ -3639,11 +3668,11 @@ string OfficerUniform4Player(int PlayerRank, int iNation)
 				break;
 				case 4: // Primeiro-Tenente
 				break;
-				case 5: // Capit?o-Tenente
+				case 5: // Capitão-Tenente
 				break;
-				case 6: // Capit?o-de-Fragata
+				case 6: // Capitão-de-Fragata
 				break;
-				case 7: // Capit?o-de-Mar-e-Guerra
+				case 7: // Capitão-de-Mar-e-Guerra
 				break;
 				case 8: // Comodoro
 				break;
@@ -4098,10 +4127,10 @@ void KrakenAttack(aref rCharacter, int iSwimQuantity)
 		PostEvent("CreateKrakenTentacle", delay, "i", rCharacter);
 		delay = delay + rand(1000);
 	}
-	if(IsMainCharacter(rCharacter)) LogIt("Captain, we're being attacked by the Kraken!");
+	if(IsMainCharacter(rCharacter)) LogIt(TranslateString("","Captain, we're being attacked by the Kraken!"));
 	else
 	{
-		LogIt("Captain, the " + rCharacter.ship.name + " is under attack by the Kraken!");
+		LogIt(TranslateString("","Captain, the")+" "+ rCharacter.ship.name +" "+ TranslateString("","is under attack by the Kraken!"));
 		pchar.KrakenAttack = true;
 	}
 	PostEvent("KrakenAttackFinished", delay, "i", rCharacter);
@@ -4112,7 +4141,7 @@ void FinishKrakenAttack()
 {
 	ref pchar = GetMainCharacter();
 	aref rCharacter = GetEventData();
-	LogIt("Captain, the Kraken has finished its attack on the " + rCharacter.ship.name + "!");
+	LogIt(TranslateString("","Captain, the Kraken has finished its attack on the") +" "+ rCharacter.ship.name + "!");
 	if(CheckAttribute(pchar, "KrakenAttack"))	PostEvent("EnableKraken", 5*60*1000);
 }
 
@@ -4121,7 +4150,7 @@ void KrakenEnabled()
 {
 	ref pchar = GetMainCharacter();
 	DeleteAttribute(pchar, "KrakenAttack");
-	if(KrakenAttackEnabled()) LogIt("Captain, the Kraken is ready for another attack!"); // Just in case you swap ships
+	if(KrakenAttackEnabled()) LogIt(TranslateString("","Captain, the Kraken is ready for another attack!")); // Just in case you swap ships
 }
 
 #event_handler("CreateKrakenTentacle", "KrakenTentacle");
@@ -4468,8 +4497,8 @@ void FinishedSpeedBurst()
 void SpeedBurstAvailable()
 {
 	ref pchar = GetMainCharacter();
-	if (GetAttribute(pchar, "ship.speedburst") == "PearlSweeps")	LogIt("Captain, the crew is ready for another go at the oars!");
-	if (GetAttribute(pchar, "ship.speedburst") == "QARSword")		LogIt("Captain, the Sword of Triton has recharged itself!");
+	if (GetAttribute(pchar, "ship.speedburst") == "PearlSweeps")	LogIt(TranslateString("","Captain, the crew is ready for another go at the oars!"));
+	if (GetAttribute(pchar, "ship.speedburst") == "QARSword")		LogIt(TranslateString("","Captain, the Sword of Triton has recharged itself!"));
 	DeleteAttribute (pchar, "ship.speedburst");
 }
 
@@ -4552,8 +4581,9 @@ string GetCharacterCursedModel(ref chr)
 	if(chr.model == "davy4")						return chr.model;
 	if(chr.model == "davy5")						return chr.model;
 	if(chr.model == "Vanderdecken")					return chr.model;
+	if(chr.model == "Orellana")						return "Skelt";
 	if(IsMainCharacter(chr))						return "Bmunk";
-	if(chr.index == GetOfficersIndex(Pchar, 1))		return "Skelt";
+	if(chr.index == GetOfficersIndex(Pchar, 1))		return "Skel2";
 	if(chr.index == GetOfficersIndex(Pchar, 2))		return "Skel3";
 	if(chr.index == GetOfficersIndex(Pchar, 3))		return "Skel1";
 	return "Skel"+makeint(1+rand(3));
@@ -4587,17 +4617,43 @@ string GetCharacterCursedSails(ref chr)
 		}
 	}
 
-	if(HasSubStr(tempstring, "red"))				CursedSails = "sail_torn_red_plain.tga";
-	if(HasSubStr(tempstring, "petros"))				CursedSails = "sail_torn_red_plain.tga";
-	if(HasSubStr(tempstring, "black"))				CursedSails = "sail_torn_black_plain.tga";
-	if(HasSubStr(tempstring, "tan"))				CursedSails = "sail_torn_tan_plain.tga";
-	if(HasSubStr(tempstring, "weathered"))			CursedSails = "sail_torn_white_plain.tga";
-	if(HasSubStr(tempstring, "patch"))				CursedSails = "sail_BlackPearl_torn.tga";	// Black Pearl - Gets cursed sails
+	if(HasSubStr(tempstring, "red"))			CursedSails = "sail_torn_red_plain.tga";
+																				
+	if(HasSubStr(tempstring, "black"))			CursedSails = "sail_torn_black_plain.tga";
+	if(HasSubStr(tempstring, "tan"))			CursedSails = "sail_torn_tan_plain.tga";
+	if(HasSubStr(tempstring, "weathered"))			CursedSails = "sail_torn_weathered_plain.tga";
+	if(HasSubStr(tempstring, "patch"))			CursedSails = "sail_BlackPearl_torn.tga";	// Black Pearl - Gets cursed sails
 	if(HasSubStr(tempstring, "BlackPearl"))			CursedSails = "sail_BlackPearl_torn.tga";	// Black Pearl - Keeps her own sails
-	if(HasSubStr(tempstring, "dutchman"))			CursedSails = "sail_dutchman2.tga";			// Flying Dutchman - Keeps her own sails
+	if(HasSubStr(tempstring, "dutchman"))			CursedSails = "sail_dutchman2.tga";		// Cursed Flying Dutchman keeps her own sails, uncursed Dutchman gets cursed Dutchman sails
 	if(HasSubStr(tempstring, "Empress"))			CursedSails = "sail_torn_red_plain.tga";	// Empress - Torn red sails
-	if(HasSubStr(tempstring, "qar"))				CursedSails = "sail_torn_red_qar.tga";		// Queen Anne's Revenge - Keeps her own sails
+	if(HasSubStr(tempstring, "Empres2"))			CursedSails = "sail_torn_red_plain.tga";	// Empress - Torn red sails
+	if(HasSubStr(tempstring, "qar"))			CursedSails = "sail_torn_red_qar.tga";		// Queen Anne's Revenge - Keeps her own sails
 	if(HasSubStr(tempstring, "mariana"))			CursedSails = "sail_mariana.tga";			// Mariana - Keeps her own sails
+	if(HasSubStr(tempstring, "sws_christian_maria"))	CursedSails = "sws_christian_maria_torn.tga";	// Torn versions of special sails
+	if(HasSubStr(tempstring, "castile_leon"))		CursedSails = "sail_castile_leon_torn.tga";
+	if(HasSubStr(tempstring, "holy_roman_empire"))		CursedSails = "sail_holy_roman_empire_torn.tga";
+	if(HasSubStr(tempstring, "DeathVessel_whole"))		CursedSails = "sail_DeathVessel_torn.tga";
+	if(HasSubStr(tempstring, "DeathVessel_whole1"))		CursedSails = "sail_DeathVessel_torn1.tga";
+	if(HasSubStr(tempstring, "Black_Red"))			CursedSails = "sail_Black_Red_torn.tga";
+	if(HasSubStr(tempstring, "Diamond"))			CursedSails = "sail_Diamond_torn.tga";
+	if(HasSubStr(tempstring, "Experto"))			CursedSails = "sail_Experto_torn.tga";
+	if(HasSubStr(tempstring, "Experto1"))			CursedSails = "sail_Experto_torn1.tga";
+	if(HasSubStr(tempstring, "Explorer"))			CursedSails = "sail_Explorer_torn.tga";
+	if(HasSubStr(tempstring, "Explorer1"))			CursedSails = "sail_Explorer_torn1.tga";
+	if(HasSubStr(tempstring, "Gilded"))			CursedSails = "sail_Gilded_torn.tga";
+	if(HasSubStr(tempstring, "Gilded_plain"))		CursedSails = "sail_torn_Gilded_plain.tga";
+	if(HasSubStr(tempstring, "Navigator"))			CursedSails = "sail_Navigator_torn.tga";
+	if(HasSubStr(tempstring, "Navigator1"))			CursedSails = "sail_Navigator_torn1.tga";
+	if(HasSubStr(tempstring, "Officer"))			CursedSails = "sail_Officer_torn.tga";
+	if(HasSubStr(tempstring, "Officer1"))			CursedSails = "sail_Officer_torn1.tga";
+	if(HasSubStr(tempstring, "Red_Striped"))		CursedSails = "sail_Red_Striped_torn.tga";
+	if(HasSubStr(tempstring, "Templar"))			CursedSails = "sail_Templar_torn.tga";
+	if(HasSubStr(tempstring, "Templar1"))			CursedSails = "sail_Templar_torn1.tga";
+	if(HasSubStr(tempstring, "petros"))			CursedSails = "sail_torn_red_plain.tga";
+	if(HasSubStr(tempstring, "petros_plain"))		CursedSails = "sail_torn_petros_plain.tga";
+	if(HasSubStr(tempstring, "petros_black_red"))		CursedSails = "sail_torn_petros_black_red.tga";
+	if(HasSubStr(tempstring, "petros_blue_white"))		CursedSails = "sail_torn_petros_blue_white.tga";
+	if(HasSubStr(tempstring, "barbarossa"))			CursedSails = "sail_torn_barbarossa_plain.tga";
 	if(CursedSails == "")
 		CursedSails = "sail_torn_white_plain.tga";
 
@@ -4728,33 +4784,33 @@ void UpdateShipPower()
 	{
 		switch(abs(sti(GetAttribute(rCharacter,"Ship.Power"))))
 		{
-			case  100:	sshippower = "Engines: Full";
+			case  100:	sshippower = TranslateString("","Engines: Full");
 				IShipPower.Log.color = COLOR_GREEN;
 				if(sti(GetAttribute(rCharacter,"Ship.Power")) < 0)
 					IShipPower.Log.color = COLOR_RED;
 			break;
-			case   75:	sshippower = "Engines: Half";
+			case   75:	sshippower = TranslateString("","Engines: Half");
 				IShipPower.Log.color = COLOR_GREEN_LIGHT;
 				if(sti(GetAttribute(rCharacter,"Ship.Power")) < 0)
 					IShipPower.Log.color = COLOR_RED_LIGHT;
 			break;
-			case   50:	sshippower = "Engines: Slow";
+			case   50:	sshippower = TranslateString("","Engines: Slow");
 				IShipPower.Log.color = COLOR_YELLOW;
 			break;
-			case   25:	sshippower = "Engines: Dead Slow";
+			case   25:	sshippower = TranslateString("","Engines: Dead Slow");
 				IShipPower.Log.color = COLOR_YELLOW_LIGHT;
 			break;
-			case    0:	sshippower = "Engines: ALL STOP";
+			case    0:	sshippower = TranslateString("","Engines: ALL STOP");
 				IShipPower.Log.color = COLOR_NORMAL;
 			break;
 		}
 		if(sti(GetAttribute(rCharacter,"Ship.Power")) > 0)
-			sshippower = sshippower + " Ahead";
+			sshippower = sshippower +" "+ TranslateString("","Ahead");
 		if(sti(GetAttribute(rCharacter,"Ship.Power")) < 0)
-			sshippower = sshippower + " Astern";
+			sshippower = sshippower +" "+ TranslateString("","Astern");
 		if(GetCargoGoods(rCharacter, GOOD_PLANKS) < 1)
 		{
-			sshippower = "Engines: NO FUEL";
+			sshippower = TranslateString("","Engines: NO FUEL");
 			IShipPower.Log.color = COLOR_BLUE;
 		}
 	}
@@ -4763,11 +4819,11 @@ void UpdateShipPower()
 }
 
 // Capsizing -->
-#define ROLL_ANGLE_WARNING 21 // Armada: For testing purposes, you can decrease any of the values on the left
-#define ROLL_ANGLE_MORALE  22 // to make the various events occur more easily.
-#define ROLL_ANGLE_GOODS   33
-#define ROLL_ANGLE_DAMAGE  34
-#define ROLL_ANGLE_CAPSIZE 45
+#define ROLL_ANGLE_WARNING 11 // Armada: For testing purposes, you can decrease any of the values on the left
+#define ROLL_ANGLE_MORALE  12 // to make the various events occur more easily.
+#define ROLL_ANGLE_GOODS   13
+#define ROLL_ANGLE_DAMAGE  14
+#define ROLL_ANGLE_CAPSIZE 15
 
 void UpdateShipRoll()
 {
@@ -4783,9 +4839,12 @@ void UpdateShipRoll()
 		float RollAngle = makeint(-Radian2Degree(stf(GetAttribute(rCharacter, "ship.ang.z"))));
 		if(RollAngle < -180) RollAngle = RollAngle + 360;
 
-		if(RollAngle > 0 )	sshiproll = "Roll angle is " + abs(makeint(RollAngle)) + " degrees to starboard";
-		else				sshiproll = "Roll angle is " + abs(makeint(RollAngle)) + " degrees to port";
-		if(RollAngle == 0)	sshiproll = "Roll angle is " + abs(makeint(RollAngle)) + " degrees";
+		if(RollAngle > 0 )	sshiproll = TranslateString("","ROLL_Roll angle is")+" " + abs(makeint(RollAngle)) + " "+TranslateString("","ROLL_degrees to starboard");
+		else			sshiproll = TranslateString("","ROLL_Roll angle is")+" " + abs(makeint(RollAngle)) + " "+TranslateString("","ROLL_degrees to port");
+		if(RollAngle == 0)	sshiproll = TranslateString("","ROLL_Roll angle is")+" " + abs(makeint(RollAngle)) + " "+TranslateString("","ROLL_degrees");
+
+		string sSpace = " ";
+		if (LanguageGetLanguage() == "Russian") sSpace = "";
 
 		switch(sti(GetAttribute(rCharacter, "Capsize.Warning")))
 		{
@@ -4798,7 +4857,7 @@ void UpdateShipRoll()
 				if(abs(RollAngle) >  ROLL_ANGLE_CAPSIZE) IShipRoll.Log.color = COLOR_RED;
 				if(GetSeaTime() > 10 && abs(RollAngle) > ROLL_ANGLE_WARNING)
 				{
-					LogIt("Captain, we have to put our bow to the waves to decrease the rolling movement of the ship");
+					LogIt(TranslateString("","Captain, we have to put our bow to the waves to decrease the rolling movement of the ship"));
 
 					rCharacter.Capsize.Warning  = ROLL_ANGLE_MORALE;
 					rCharacter.Capsize.Time = GetSeaTime();
@@ -4814,7 +4873,7 @@ void UpdateShipRoll()
 				if(GetSeaTime() - sti(rCharacter.Capsize.Time) > 10 && abs(RollAngle) > ROLL_ANGLE_MORALE)
 				{
 					RollDamageValue = sti(rCharacter.Ship.Crew.Morale) - 10;
-					LogIt("Captain, the morale of the crew decreased from " + XI_ConvertString(GetMoraleName(rCharacter.Ship.Crew.Morale)) + " to " + XI_ConvertString(GetMoraleName(RollDamageValue)) + " because the ship's rolling is making them seasick");
+					LogIt(TranslateString("","Captain, the morale of the crew decreased from") + " " + XI_ConvertString(GetMoraleName(rCharacter.Ship.Crew.Morale)) + sSpace + TranslateString("","ROLL_to") + " " + XI_ConvertString(GetMoraleName(RollDamageValue)) + sSpace + TranslateString("","because the ship's rolling is making them seasick"));
 					rCharacter.Ship.Crew.Morale = RollDamageValue; // Decrease morale one level
 					if (sti(rCharacter.Ship.Crew.morale)<MORALE_MIN) rCharacter.Ship.Crew.morale=MORALE_MIN;
 
@@ -4842,13 +4901,13 @@ void UpdateShipRoll()
 					if(GetCargoGoods(rCharacter, i) > 0)
 					{
 						RollDamageValue = 1 + makeint(0.1*GetCargoGoods(rCharacter, i));
-						LogIt("Captain, the cargo has started shifting due to the rolling and " + RollDamageValue + " " + Goods[i].Name + " went overboard");
+						LogIt(TranslateString("","Captain, the cargo has started shifting due to the rolling and") + " " + RollDamageValue + " " + XI_ConvertString(Goods[i].Name) + sSpace + TranslateString("","went overboard"));
 						RemoveCharacterGoods(rCharacter, i, RollDamageValue);
 					}
 					else // The cargo hold is empty
 					{
 						RollDamageValue = makeint(0.1*GetCrewQuantity(rCharacter));
-						LogIt("*" + RollDamageValue + " crewmembers are heard yelling from inside the empty cargo hold*");
+						LogIt("*" + RollDamageValue + " " + TranslateString("","crewmembers are heard yelling from inside the empty cargo hold") + "*");
 						RemoveCharacterCrew(rCharacter, RollDamageValue); // 10% crew damage
 					}
 					PlaySound("objects\abordage\abordage_loosing.wav"); // Armada: crew shout out
@@ -4870,7 +4929,7 @@ void UpdateShipRoll()
 							PlaySound("objects\abordage\abordage_loosing.wav"); // Armada: crew shout out
 							PlaySound("objects\shipcharge\ship_explosion.wav")
 							CreateParticleSystemX("gunfire",    fX+4-rand(8), fY+4-rand(8), fZ+4-rand(8), 6.0, 4.0, 0.0, 0); // Armada: not yet working
-							LogIt("Captain, shifting cargo did " + RollDamageValue + " damage to the hull");
+							LogIt(TranslateString("","Captain, shifting cargo did")+" " + RollDamageValue + " "+TranslateString("","damage to the hull"));
 							Ship_ApplyHullHitpoints(rCharacter, RollDamageValue, KILL_BY_TOUCH, -1); // 10% hull damage
 						break;
 
@@ -4902,7 +4961,7 @@ void UpdateShipRoll()
 								break;
 							}
 							AISeaGoods.ModelsPath = "SwimGoods";   //reset path to the salvagemodels
-							LogIt("Captain, that last violent roll washed " + RollDamageValue + " crewmembers overboard");
+							LogIt(TranslateString("","Captain, that last violent roll washed")+" " + RollDamageValue + " "+TranslateString("","crewmembers overboard"));
 							RemoveCharacterCrew(rCharacter, RollDamageValue); // 10% crew damage
 						break;
 					}
@@ -4916,8 +4975,8 @@ void UpdateShipRoll()
 				if(abs(RollAngle) >  ROLL_ANGLE_CAPSIZE) IShipRoll.Log.color = COLOR_RED;
 				if(GetSeaTime() - sti(rCharacter.Capsize.Time) > 10 && abs(RollAngle) > ROLL_ANGLE_CAPSIZE)
 				{
-					if(RollAngle > 0)	LogIt("Captain, we're capsizing to starboard... ABANDON SHIP!");
-					else				LogIt("Captain, we're capsizing to port... ABANDON SHIP!");
+					if(RollAngle > 0)	LogIt(TranslateString("","Captain, we're capsizing to starboard... ABANDON SHIP!"));
+					else				LogIt(TranslateString("","Captain, we're capsizing to port... ABANDON SHIP!"));
 					CapsizeShip(rCharacter);
 				}
 			break;
@@ -5090,11 +5149,11 @@ void InitOpenSeaMod()
 																	// 0.0 : Stock PotC, no local ships at all
 																	// 0.1 - 0.9 : The higher that value the more pirates instead of merchants appear
 		NAVYRAIDER_CHANCE = 								2.0; 	// FLOAT - Ditto, but chance that raider is a foreign warship. Chance for that is coastraider_chance * navyraider_chance
-		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			750.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
-		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
+		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			100.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
+		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	100.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3500;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =								60.0;		// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_SCALE =								50.0;		// orig 19.607843 for this and next line
 		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =					90.0;		// was 60 in build, 10.0 in stock. NK 05-04-30
 	}
 	else
@@ -5104,26 +5163,26 @@ void InitOpenSeaMod()
 		ENCOUNTERBREAK =									1.25;	// LDH - Changed to float, number is hours per encounter, directsail is called every 5 minutes occasionally
 		// so you can let the clock run faster (by increasing TIMESCALAR_SEA below), meaning longer voyagetimes, without getting too many encounters.
 
-		TIMESCALAR_SEA =									 30;		// INT - how many seconds of gametime one second of realtime is at sea
+		TIMESCALAR_SEA =									 5;		// INT - how many seconds of gametime one second of realtime is at sea
 		MAX_WBALLAST =										25;		// INT - how far the weighting will swing in favor of current trend.. use positive integer between 0 and 50 - 0 is no swing - 50 is major swing.. this is for Windspeed
-		MAX_RBALLAST =										30;		// ^^DITTO for rain
+		MAX_RBALLAST =										25;		// ^^DITTO for rain
 		MAX_FBALLAST =										25;		// ^^DITTO for fog
 		MAX_ABALLAST =										25.0;	// FLOAT - ^^DITTO for wind angle
 
 		MAX_WINDCHANGE =									5;		// INT - How much the wind CAN change in one hour - use positive integer between 0 and 20
-		MAX_FOGCHANGE =										10;		// INT - ^^DITTO for fog
+		MAX_FOGCHANGE =										5;		// INT - ^^DITTO for fog
 		MAX_RAINCHANGE =									5;		// INT - ^^DITTO for rain
 
 		COASTRAIDER_CHANCE = 								0.2;	// FLOAT - Generates local ships in ports and around the islands. Some are local merchants, others pirates.
 																	// 0.0 : Stock PotC, no local ships at all
 																	// 0.1 - 0.9 : The higher that value the more pirates instead of merchants appear
 		NAVYRAIDER_CHANCE = 								0.4; 	// FLOAT - Ditto, but chance that raider is a foreign warship. Chance for that is coastraider_chance * navyraider_chance
-		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			750.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
-		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	500.0;	// FLOAT - original value is 500
+		MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER =			800.0;	// FLOAT - original value is 500 - Petros: reset to 500.0 to prevent trouble
+		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	800.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3000;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =							60;	// orig 19.607843 for this and next line
-		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =				90;	// was 60 in build, 10.0 in stock. NK 05-04-30
+		WDM_MAP_TO_SEA_SCALE =								50;	// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =					45.0;		// was 60 in build, 10.0 in stock. NK 05-04-30 Changed to 19.607843, which puts player too close to enemy.  Changed to 45 by GR 30/1/22
 	}
 }
 // stljeffbb Jan 15 2012 <--

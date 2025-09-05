@@ -218,7 +218,7 @@ void UpdateData()
 		GameInterface.pictures.(attr).pic = sRel;
 
 		SetCheckBox("CHECKBOX_NATION" + i, CHECKBOX_OFF);
-		bIsSelectable = IsFlagSelectable(i);
+		bIsSelectable = IsFlagSelectable(i));
 		SetCheckboxSelectable("CHECKBOX_NATION" + i, bIsSelectable);
 		SetNodeUsing("CHECKBOX_NATION" + i, bIsSelectable);
 

@@ -1339,6 +1339,7 @@ void ProcessDialogEvent()
 		Link.l1 = DLG_TEXT[368];
 		Link.l1.go = "exit";
 	break;
+// Hitman Easter Egg
 
 	case "Bonnieparty1":
 		Dialog.Text = DLG_TEXT[369];
@@ -1378,6 +1379,55 @@ void ProcessDialogEvent()
 		AddDialogExitQuest("Switch_to_Beatrice");
 	break;
 
-// Hitman Easter Egg
+	case "Ricardo":
+		Dialog.Text = DLG_TEXT[379];
+		Link.l1 = DLG_TEXT[380];
+		Link.l1.go = "Ricardo2";
+	break;
+
+	case "Ricardo2":
+		Dialog.Text = DLG_TEXT[381];
+		Link.l1 = DLG_TEXT[382];
+		Link.l1.go = "exit";
+		AddDialogExitQuest("Ricardo_search_Officer");
+	break;
+
+	case "Balboa_ded":
+		Dialog.Text = DLG_TEXT[383];
+		Link.l1 = DLG_TEXT[384];
+		Link.l1.go = "exit";
+		GiveItem2Character(PChar, "second_part_map");
+		AddDialogExitQuest("Blaze_returns_Santiago");
+		AddDialogExitQuest("Switch_to_Beatrice");
+	break;
+
+	case "Waiting_for_Kay":
+		Dialog.Text = DLG_TEXT[385];
+		Link.l1 = DLG_TEXT[384];
+		Link.l1.go = "exit";
+		AddDialogExitQuest("Kay_picks_up");
+	break;
+
+	case "Blaze_killed_Bonamy":
+		Dialog.Text = DLG_TEXT[386];
+		Link.l1 = DLG_TEXT[384];
+		Link.l1.go = "exit";
+		AddDialogExitQuest("Camp_to_Hermit");
+	break;
+
+	case "Stop_house":
+		Dialog.Text = DLG_TEXT[387];
+		Link.l1 = DLG_TEXT[388];
+		Link.l1.go = "exit";
+		AddDialogExitQuest("Stop_house2");
+	break;
+
+	case "KOB_in_trouble":
+		Dialog.Text = DLG_TEXT[389];
+		Link.l1 = DLG_TEXT[384];
+		Link.l1.go = "exit";
+		AddDialogExitQuest("KOB_kidnapped3");
+	break;
+
 	}
 }

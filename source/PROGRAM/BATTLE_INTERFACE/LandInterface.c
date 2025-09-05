@@ -56,7 +56,7 @@ void StartBattleLandInterface()
 	}
 	bLandInterfaceStart = true;
 
-	//BLI_SetShowParameters();
+	// BLI_SetShowParameters();
 	BLI_SetObjectData();
 	BLI_SetMessageParameters();
 	CreateEntity(&objLandInterface,"battle_land_interface");
@@ -92,27 +92,44 @@ void StartBattleLandInterface()
 }
 
 // KK -->
-void BLI_SetFlags()
+void BLI_SetFlags()		// Mirsaneli: fixes flags overlapping
 {
-	int init = 0;
-	if (CheckAttribute(&Characters[GetMaincharacterIndex()], "Flags.waitdelay")) return;
-	if (CheckAttribute(&objLandInterface, "DoSetFlags")) {
-		init = sti(objLandInterface.DoSetFlags);
-		DeleteAttribute(&objLandInterface, "DoSetFlags");
-	}
-	while (init < locNumShips)
-	{
-		if (iShips[init] >= 0 && CheckAttribute(&Characters[iShips[init]], "Flags.DoRefresh") == true) {
-			DeleteAttribute(&Characters[iShips[init]], "Flags.DoRefresh");
-			SetShipFlag(iShips[init]);
-			init++;
-			objLandInterface.DoSetFlags = init;
-			FlagsDelay();
-			return;
-		}
-		init++;
-	}
-	DelEventHandler("frame", "BLI_SetFlags");
+    int init = 0;
+    
+    // Ensure no delay attribute is present before proceeding
+    if (CheckAttribute(&Characters[GetMaincharacterIndex()], "Flags.waitdelay")) return;
+
+    // If there is a pending flag update request, use it
+    if (CheckAttribute(&objLandInterface, "DoSetFlags")) {
+        init = sti(objLandInterface.DoSetFlags);
+        DeleteAttribute(&objLandInterface, "DoSetFlags");
+    }
+
+    // Process each ship's flags incrementally
+    while (init < locNumShips)
+    {
+        if (iShips[init] >= 0 && CheckAttribute(&Characters[iShips[init]], "Flags.DoRefresh") == true) {
+            // Clear the DoRefresh flag to avoid repeated processing
+            DeleteAttribute(&Characters[iShips[init]], "Flags.DoRefresh");
+            
+            // Remove the previous flags and set new ones
+            SetShipFlag(iShips[init]);
+            
+            // Move to the next ship
+            init++;
+            
+            // Update the DoSetFlags index to avoid resetting the same ship
+            objLandInterface.DoSetFlags = init;
+            
+            // Add delay to ensure proper flag handling without overlap
+            FlagsDelay();
+            return;
+        }
+        init++;
+    }
+
+    // Remove the event handler after processing all ships
+    DelEventHandler("frame", "BLI_SetFlags");
 }
 // <-- KK
 
@@ -384,12 +401,15 @@ void EndBattleLandInterface()
 
 void BLI_SetObjectData()
 {
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
     int fTmp, fTmp2;
 	DeleteAttribute(&objLandInterface,"");
 	objLandInterface.data.riskAlarm = 0;
-	// ?????????????????? ??????????????
+	// индикатор тревоги
 	objLandInterface.data.alarm = 0.0;
-	// ?????????? ???????????? ?? ????????
+	// персы вместе с нами
 	ref mainCh = GetMainCharacter();
 	aref ar;
 	int i,cn;
@@ -409,7 +429,7 @@ void BLI_SetObjectData()
 	}
 
 	BLI_SetMessageParameters();
-	// ????????????????
+	// текстуры
 	int idLngFile = LanguageOpenFile("commands_name.txt");
 	objLandInterface.CommandTextures.list.t0.name = "battle_interface\LandCommands.tga";
 	objLandInterface.CommandTextures.list.t0.xsize = 4;
@@ -460,9 +480,6 @@ void BLI_SetObjectData()
 	objLandInterface.CommandTextures.list.t14.name = "battle_interface\ships_32.tga.tx";
 	objLandInterface.CommandTextures.list.t14.xsize = 8; //was 8 by Jeffrey
 	objLandInterface.CommandTextures.list.t14.ysize = 4;
-	objLandInterface.CommandTextures.list.t15.name = "battle_interface\ships_48.tga";
-	objLandInterface.CommandTextures.list.t15.xsize = 8;
-	objLandInterface.CommandTextures.list.t15.ysize = 4;																			  
 // <-- KK
     objLandInterface.CommandTextures.list.t15.name = "battle_interface\ships_48.tga.tx";
 	objLandInterface.CommandTextures.list.t15.xsize = 8;
@@ -473,7 +490,7 @@ void BLI_SetObjectData()
 	objLandInterface.CommandTextures.list.t16.ysize = 16;
 
 	objLandInterface.CommandTextures.CommandTexNum = 0;
-	// ???????????? ????????????
+	// список команд
 	objLandInterface.Commands.Cancel.enable			= false;
 	objLandInterface.Commands.Cancel.picNum			= 0;
 	objLandInterface.Commands.Cancel.selPicNum			= 1;
@@ -499,7 +516,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ItemsChange.event		= "BI_ItemsChange";
 	objLandInterface.Commands.ItemsChange.note		= LanguageConvertString(idLngFile, "land_ItemsChange");
 	objLandInterface.Commands.TakeItem.enable		= true;
-	objLandInterface.Commands.TakeItem.picNum		= 5;
+	objLandInterface.Commands.TakeItem.picNum		= 9;
 	objLandInterface.Commands.TakeItem.selPicNum		= 11;
 	objLandInterface.Commands.TakeItem.texNum			= 0;
 	objLandInterface.Commands.TakeItem.event		= "BI_TakeItem";
@@ -598,7 +615,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ActivateRush.event	= "BI_ActivateRush";
 	objLandInterface.Commands.ActivateRush.note		= LanguageConvertString(idLngFile, "land_ActivateRush");
 
-	// ???????????? ???????????????????????????????? ????????????????
+	// список пользовательских картинок
 		// cancel icon
 	objLandInterface.UserIcons.cancel.enable = true;
 	objLandInterface.UserIcons.cancel.pic = 0;
@@ -618,46 +635,46 @@ void BLI_SetObjectData()
 	objLandInterface.ManSign.alarmuptime			= 2.5;
 	objLandInterface.ManSign.alarmdowntime			= 1.0;
 	objLandInterface.ManSign.alarmuv				= "0.0,0.0,1.0,1.0";
-	fTmp = RecalculateHIcon(-14);
-	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(125);
+	fTmp = RecalculateHIcon(makeint(-14 * fHtRatio));
+	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(makeint(125 * fHtRatio));
 	//objLandInterface.ManSign.alarmoffset			= "-14,770";
 	objLandInterface.ManSign.alarmoffset = fTmp + "," + fTmp2;
-	objLandInterface.ManSign.alarmiconsize			= "70,70";
+	objLandInterface.ManSign.alarmiconsize			= RecalculateHIcon(makeint(70 * fHtRatio))+","+RecalculateVIcon(makeint(70 * fHtRatio));
 
 	objLandInterface.ManSign.manstatetexturename	= "battle_interface\ShipState.tga.tx";
 	objLandInterface.ManSign.manstatecolor			= argb(255,128,128,128);
 	objLandInterface.ManSign.manhpuv				= "0.0,0.109,0.5,0.6875";
-	fTmp = RecalculateHIcon(-38);
-	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(128);
+	fTmp = RecalculateHIcon(makeint(-38 * fHtRatio));
+	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(makeint(128 * fHtRatio));
 	//objLandInterface.ManSign.manhpoffset			= "-38,767";
 	objLandInterface.ManSign.manhpoffset = fTmp + "," + fTmp2;
-	objLandInterface.ManSign.manhpiconsize			= "64,80";
+	objLandInterface.ManSign.manhpiconsize			= RecalculateHIcon(makeint(64 * fHtRatio))+","+RecalculateVIcon(makeint(80 * fHtRatio));
 	objLandInterface.ManSign.manenegryuv			= "0.5,0.109,1.0,0.6875";
-	fTmp = RecalculateHIcon(38);
+	fTmp = RecalculateHIcon(makeint(37.6 * fHtRatio));
 	//objLandInterface.ManSign.manenegryoffset		= "38,767";
 	objLandInterface.ManSign.manenegryoffset = fTmp + "," + fTmp2;
-	objLandInterface.ManSign.manenergyiconsize		= "64,80";
+	objLandInterface.ManSign.manenergyiconsize		= RecalculateHIcon(makeint(64 * fHtRatio))+","+RecalculateVIcon(makeint(80 * fHtRatio));
 
 	objLandInterface.ManSign.gunchargetexturename	= "battle_interface\ShipClass.tga.tx";
 	objLandInterface.ManSign.gunchargecolor			= argb(255,168,168,48);
 	objLandInterface.ManSign.gunchargebackcolor		= argb(255,188,48,48);
 	objLandInterface.ManSign.gunchargeuv			= "0.0,0.0,1.0,1.0";
-	fTmp = RecalculateHIcon(-18);
-	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(168);
+	fTmp = RecalculateHIcon(makeint(-18 * fHtRatio));
+	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(makeint(168 * fHtRatio));
 	//objLandInterface.ManSign.gunchargeoffset		= "-14,740";
 	objLandInterface.ManSign.gunchargeoffset = fTmp + "," + fTmp2;
-	objLandInterface.ManSign.gunchargeiconsize		= "80,20";
+	objLandInterface.ManSign.gunchargeiconsize		= RecalculateHIcon(makeint(80 * fHtRatio))+","+RecalculateVIcon(makeint(20 * fHtRatio));
 	objLandInterface.ManSign.gunchargeprogress		= "0.0625, 0.219, 0.359, 0.5, 0.641, 0.781, 0.983";
 
 	objLandInterface.ManSign.manfacecolor			= argb(255,128,128,128);
 	//objLandInterface.ManSign.manfaceoffset			= "-14,770";
-	fTmp = RecalculateHIcon(-14);
-	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(125);
+	fTmp = RecalculateHIcon(makeint(-14 * fHtRatio));
+	fTmp2 = sti(showWindow.bottom) -  RecalculateVIcon(makeint(125 * fHtRatio));
 	objLandInterface.ManSign.manfaceoffset = fTmp + "," + fTmp2;
 	//objLandInterface.ManSign.iconoffset1 = objLandInterface.ManSign.manfaceoffset;
-	objLandInterface.ManSign.manfaceiconsize		= "74,74";
+	objLandInterface.ManSign.manfaceiconsize		= RecalculateHIcon(makeint(74 * fHtRatio))+","+RecalculateVIcon(makeint(74 * fHtRatio));
 	//objLandInterface.ManSign.commandlistverticaloffset = 735;
-	fTmp2 -= RecalculateVIcon(37);
+	fTmp2 -= RecalculateVIcon(makeint(37 * fHtRatio));
 	objLandInterface.ManSign.commandlistverticaloffset = fTmp2;
 	//Boyer mod
 	/*
@@ -667,8 +684,8 @@ void BLI_SetObjectData()
 	objLandInterface.ManSign.iconoffset4 = "70,400";
 	*/
     string sOff = "iconoffset";
-    fTmp = RecalculateVIcon(95);
-    fTmp2 = RecalculateVIcon(70);
+    fTmp = RecalculateVIcon(makeint(100 * fHtRatio));
+    fTmp2 = RecalculateVIcon(makeint(70 * fHtRatio));
 /*
 	for(i = 1; i<=MAX_NUM_FIGHTERS + 1; i++) {
 		string sOffsetIcon = "iconoffset" + i;
@@ -728,7 +745,7 @@ void BLI_SetShowParameters()
 	ar.heightHealth = RecalculateVIcon(16);
 	ar.distHealth = RecalculateVIcon(4);
 
-	// ???????????? ?? ???????????? ?????? ???????????????????? ?????????????? ??????????????????
+	// высота и отступ для количества зарядов пистолета
 	ar.GunShootHeight = RecalculateHIcon(16);
 	ar.GunShootSpace = RecalculateVIcon(2);
 
@@ -767,23 +784,26 @@ void BLI_SetShowParameters()
 
 void BLI_SetCommandParameters()
 {
-	objLandInterface.CommandList.CommandMaxIconQuantity = 10;
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
+	objLandInterface.CommandList.CommandMaxIconQuantity = 15;
 	objLandInterface.CommandList.CommandIconSpace = 1;
-	objLandInterface.CommandList.CommandIconLeft = 120;//157;
-	objLandInterface.CommandList.CommandIconWidth = RecalculateHIcon(74);
-	objLandInterface.CommandList.CommandIconHeight = RecalculateVIcon(74);
+	objLandInterface.CommandList.CommandIconLeft = 120 * fHtRatio;//157;
+	objLandInterface.CommandList.CommandIconWidth = RecalculateHIcon(makeint(74 * fHtRatio));
+	objLandInterface.CommandList.CommandIconHeight = RecalculateVIcon(makeint(74 * fHtRatio));
 
 	objLandInterface.CommandList.CommandNoteFont = "interface_normal";
 	objLandInterface.CommandList.CommandNoteColor = argb(255,255,255,255);
-	objLandInterface.CommandList.CommandNoteScale = 1.0;
-	objLandInterface.CommandList.CommandNoteOffset = RecalculateHIcon(0) + "," + RecalculateVIcon(-60);
+	objLandInterface.CommandList.CommandNoteScale = 1.0 * fHtRatio;
+	objLandInterface.CommandList.CommandNoteOffset = RecalculateHIcon(makeint(0 * fHtRatio))+","+RecalculateVIcon(makeint(-60 * fHtRatio));
 
 	objLandInterface.CommandList.UDArrow_Texture = "battle_interface\arrowly.tga.tx";
 	objLandInterface.CommandList.UDArrow_UV_Up = "0.0,1.0,1.0,0.0";
 	objLandInterface.CommandList.UDArrow_UV_Down = "0.0,0.0,1.0,1.0";
-	objLandInterface.CommandList.UDArrow_Size = RecalculateHIcon(32) + "," + RecalculateVIcon(32);
-	objLandInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(-41) + "," + RecalculateVIcon(-30);
-	objLandInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(-41) + "," + RecalculateVIcon(46);
+	objLandInterface.CommandList.UDArrow_Size = RecalculateHIcon(makeint(32 * fHtRatio))+","+RecalculateVIcon(makeint(32 * fHtRatio));
+	objLandInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(makeint(-41 * fHtRatio))+","+RecalculateVIcon(makeint(-30 * fHtRatio));
+	objLandInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(makeint(-41 * fHtRatio))+","+RecalculateVIcon(makeint(46 * fHtRatio));
 /*
 	objLandInterface.CommandShowParam.maxShowQuantity = 10;
 	objLandInterface.CommandShowParam.iconDistance = RecalculateHIcon(4);
@@ -811,10 +831,13 @@ void BLI_SetCommandParameters()
 
 void BLI_SetMessageParameters()
 {
-	objLandInterface.MessageIcons.IconWidth = RecalculateHIcon(64);
-	objLandInterface.MessageIcons.IconHeight = RecalculateVIcon(24);
-	objLandInterface.MessageIcons.IconDist = RecalculateVIcon(2);
-	objLandInterface.MessageIcons.IconBottom = sti(showWindow.bottom)-RecalculateHIcon(80+40);
+	//#2023	Mirsaneli
+	float fHtRatio = HUD_SCALING;
+
+	objLandInterface.MessageIcons.IconWidth = RecalculateHIcon(makeint(64 * fHtRatio));
+	objLandInterface.MessageIcons.IconHeight = RecalculateVIcon(makeint(24 * fHtRatio));
+	objLandInterface.MessageIcons.IconDist = RecalculateVIcon(makeint(2 * fHtRatio));
+	objLandInterface.MessageIcons.IconBottom = sti(showWindow.bottom)-RecalculateHIcon(makeint((80+40) * fHtRatio));
 	objLandInterface.MessageIcons.IconMaxQuantity = 4;
 	objLandInterface.MessageIcons.BlendTime = 3.0;
 	objLandInterface.MessageIcons.FallSpeed = 22.0;
@@ -1216,7 +1239,7 @@ void BLI_SetPossibleCommands()
 	}*/
 // <-- KK
 
-
+// KK -[changed by MAXIMUS: isn't simpler and faster? Also without lags ;)]->
 	objLandInterface.Commands.ExitDeck.enable = bDeckEnter && iShipCaptain == GetMainCharacterIndex() && !bQuestDisableSeaEnter; // PB
 	objLandInterface.Commands.EnterShip.enable = bTmpBool && !LAi_IsBoardingProcess();
 	if (bDeckEnter) objLandInterface.Commands.EnterShip.enable = GetCompanionQuantity(mchref) > 1;
@@ -1224,7 +1247,7 @@ void BLI_SetPossibleCommands()
 	int portlocidx = -1;
 	int cn = -1;
 	if(CheckAttribute(mchref, "location.from_sea")) portlocidx = FindLocation(mchref.location.from_sea);
-	if(!bSeaActive) bTmpBool = sti(objLandInterface.Commands.OutDoor.enable) == true;//MAXIMUS: full check already done above  // KK
+	if(!bSeaActive) bTmpBool = sti(objLandInterface.Commands.OutDoor.enable) == true;//MAXIMUS: full check already done above :) // KK
 	//else bTmpBool = CheckAttribute(mchref, "Interlocutor.update")==false;
 	if (bTmpBool == true && VISIT_DECK == 1 && curLocIdx != -1 && portlocidx != -1)//MAXIMUS: I doubt, that even it's needed (curLocIdx!=-1 && portlocidx!=-1)...
 	{
@@ -1245,7 +1268,7 @@ void BLI_SetPossibleCommands()
 	objLandInterface.Commands.Back.enable = sti(objLandInterface.Commands.ExitDeck.enable) == true && bTmpBool == true && bDeckEnter == true && LandLocationIdx != -1;
 	bUseCommand = true;
 // MAXIMUS Deck <--
-// <-[changed by MAXIMUS: isn't simpler and faster? Also without lags ]- KK
+// <-[changed by MAXIMUS: isn't simpler and faster? Also without lags ;)]- KK
 
 	if(!bUseCommand)
 	{
@@ -1825,7 +1848,7 @@ void BLI_UpdateOfficers()
 	}
 
 	BLI_SetObjectData();
-	CheckOfficers();//MAXIMUS: all was moved down and BLI_UpdateObjectData will check officers-icons too  [this will exclude hundreds of BLI_UpdateOfficers() in different places]
+	CheckOfficers();//MAXIMUS: all was moved down and BLI_UpdateObjectData will check officers-icons too :) [this will exclude hundreds of BLI_UpdateOfficers() in different places]
 }
 
 void CheckOfficers()
@@ -1962,6 +1985,22 @@ void ReloadFromLandToSea()
 	FromDeckIdx = -1;
 	bEmergeOnStartloc = false;	// LDH Going from land to sea should put player at boat locator - 14Feb09
 	LandLocator = "";
+//trace("Doing land-to-sea");
+//trace("reload_locator_ref " + reload_locator_ref.name);
+    aref aCurWeather = GetCurrentWeather();
+    if(wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1)
+    { //Colors get set in WhrCreateSeaEnvironment
+//trace("land-to-sea Setting lagoon colors");
+        //Sea.Sea2.WaterColor = argb(0,84,162,175);
+        //Sea.Sea2.SkyColor = argb(0,255,255,255);
+        //Sea.Sea2.Attenuation = 0.3;
+        reload_locator_ref.inlagoon = 1;
+        aCurWeather.Sea.inlagoon = 1;
+        trace("WaterColor " + Sea.Sea2.WaterColor);
+    }
+    else {
+        DeleteAttribute(aCurWeather, "Sea.inlagoon");
+    }
 }
 
 void BLIVisible(bool visibleFlag)

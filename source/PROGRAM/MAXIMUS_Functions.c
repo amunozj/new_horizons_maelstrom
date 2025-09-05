@@ -496,7 +496,7 @@ string FindSeaShoreForLocation(string locID)//MAXIMUS: search for nearest shore
 																			{
 																				if(locations[FindLocation(loc3.(attrName3).go)].type=="seashore") return locations[FindLocation(loc3.(attrName3).go)].id;
 																				else
-																				{//MAXIMUS: currently checks up to 4 locations, but can search more 
+																				{//MAXIMUS: currently checks up to 4 locations, but can search more :)
 																				}
 																			}
 																		}
@@ -670,7 +670,7 @@ ref CreateTwinCharacter(ref _refEnemy)
 	Fightincabin.Dialog.Filename = "Cabinfight_dialog.c";
 	Fightincabin.Dialog.Currentnode = "First time";
 	if(Fightincabin.sex=="woman") Fightincabin.greeting = "Gr_Pirate_f";
-	else Fightincabin.greeting = "Gr_Dark Teacher";
+	else Fightincabin.greeting = "Gr_Clauss"; // was "Gr_Dark Teacher" which is identical
 	if (IsFantom) LAi_NPC_Equip(&Fightincabin, sti(Fightincabin.rank), true, 0.5); // KK
 
 	return Fightincabin;
@@ -689,8 +689,9 @@ void InitQCBrothel()
 	Locations[n].reload.l7.name = "Reload9";
 	Locations[n].reload.l7.go = "QC_brothel";
 	Locations[n].reload.l7.emerge = "reload1";
-	Locations[n].reload.l7.autoreload = "0";
+	// Locations[n].reload.l7.autoreload = "0";
 	Locations[n].reload.l7.label = "#stown_name# Brothel.";
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l7.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("QC_Brothel"); // KK
@@ -729,10 +730,24 @@ void InitQCBrothel()
 	Locations[n].reload.l1.emerge = "reload9";
 	Locations[n].reload.l1.autoreload = "0";
 	Locations[n].reload.l1.label = "#stown_name#.";
+	Locations[n].reload.l2.name = "reload2";
+	Locations[n].reload.l2.go = "QC_brothel_upstairs";
+	Locations[n].reload.l2.emerge = "reload1";
+	Locations[n].reload.l2.label = "Brothel Bedroom";
+	Locations[n].reload.l2.disable = 1;
+
 	Locations[n].monsters = "0";
 	LAi_LocationFightDisable(Locations[n], true);
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress
 	Locations[n].island = "QuebradasCostillas"; // NK 04-08-29
+
+	// Bedroom
+	n = FindLocation("QC_brothel_upstairs");
+	Locations[n].reload.l1.name = "reload1";
+	Locations[n].reload.l1.go  = "QC_brothel";
+	Locations[n].reload.l1.emerge = Locations[n].reload.l1.emerge = Locations[FindLocation("QC_brothel")].reload.l2.name;
+	Locations[n].reload.l1.label = "Brothel";
 }
 
 // KK -->
@@ -745,6 +760,7 @@ void InitTortugaBrothel()
 	Locations[n].reload.l11.go = "Tortuga_Brothel";
 	Locations[n].reload.l11.emerge = "reload1";
 	Locations[n].reload.l11.label = " #stown_name# Brothel.";
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l11.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("Tortuga_Brothel");
@@ -772,6 +788,7 @@ void InitTortugaBrothel()
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.label = "Opium Den";
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress
 	Locations[n].island = "Hispaniola";
 
 	// Bedroom
@@ -797,6 +814,7 @@ void InitPaPBrothel()
 	Locations[n].reload.l11.go = "PaP_Brothel";
 	Locations[n].reload.l11.emerge = "reload1";
 	Locations[n].reload.l11.label = " #stown_name# Brothel.";
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l11.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("PaP_Brothel");
@@ -824,6 +842,7 @@ void InitPaPBrothel()
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.label = "Opium Den";
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress
 	Locations[n].island = "Guadeloupe";
 
 	// Bedroom
@@ -851,8 +870,9 @@ void InitCharlestownBrothel()
 	locations[n].reload.l9.emerge = "reload1";
 	locations[n].reload.l9.autoreload = "0";
 	locations[n].reload.l9.label = "Brothel";
-	locations[n].reload.l9.disable = 0;
+	// locations[n].reload.l9.disable = 0;
 	Locations[n].reload.l9.close_for_night = 0;
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l9.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("Charlestown_Brothel");
@@ -878,6 +898,7 @@ void InitCharlestownBrothel()
 	Locations[n].reload.l2.emerge = "reload1";
 	Locations[n].reload.l2.label = "Brothel Bedroom";
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress																										
 	Locations[n].island = "QuebradasCostillas";
 
 	// Bedroom
@@ -896,8 +917,9 @@ void InitEleutheraBrothel()
 	locations[n].reload.l9.name = "houseS2";
 	locations[n].reload.l9.go = "Eleuthera_Brothel";
 	locations[n].reload.l9.emerge = "reload1";
-	Locations[n].reload.l11.label = " #stown_name# Brothel.";
+	Locations[n].reload.l9.label = " #stown_name# Brothel.";
 	Locations[n].reload.l9.close_for_night = 0;
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l9.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("Eleuthera_Brothel");
@@ -941,14 +963,16 @@ void InitEleutheraBrothel()
 	LAi_LocationFightDisable(&locations[n], true);
 
 	locations[n].reload.l2.name = "reload2_back";
-	locations[n].reload.l2.go = "Eleuthera_Brothel_room";
+	locations[n].reload.l2.go = "Eleuthera_Brothel_bedroom";
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Brothel room";
 	Locations[n].reload.l2.disable = 1;
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress
+	Locations[n].island = "Eleuthera";						   
 	// Room
-	n = FindLocation("Eleuthera_Brothel_room");
+	n = FindLocation("Eleuthera_Brothel_bedroom");
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "Eleuthera_Brothel";
 	Locations[n].reload.l1.emerge = Locations[FindLocation("Eleuthera_Brothel")].reload.l2.name;
@@ -965,6 +989,7 @@ void InitAliceTownBrothel()
 	locations[n].reload.l9.emerge = "reload1";
 	Locations[n].reload.l11.label = " #stown_name# Brothel.";
 	Locations[n].reload.l9.close_for_night = 0;
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l9.goto_disable = 1;
 
 	// -----BROTHEL--------------------------------------------
 	n = FindLocation("Alice Town_Brothel");
@@ -992,6 +1017,7 @@ void InitAliceTownBrothel()
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.label = "Opium Den";
 
+		Locations[n].permanent_mom = true; // GR: needed so that LEnc_monsters.c does not spawn random mistress
 	Locations[n].island = "Eleuthera";
 
 	// Bedroom
@@ -1555,11 +1581,11 @@ void CreateIslaDeMuerte()
 	//Name
 	worldMap.islands.IslaDeMuerte.name = "IslaDeMuerte";
 	//Geometry parameters
-	worldMap.islands.IslaDeMuerte.position.x = 386.499; //303.0
+	worldMap.islands.IslaDeMuerte.position.x = -359.0248; //303.0
 	worldMap.islands.IslaDeMuerte.position.y = 20.0; //30.0
-	worldMap.islands.IslaDeMuerte.position.z = 425.603; //-596.0
-	worldMap.islands.IslaDeMuerte.position.rx = 375.139; //306.7
-	worldMap.islands.IslaDeMuerte.position.rz = 418.814; //-587.6
+	worldMap.islands.IslaDeMuerte.position.z = -338.3994; //-596.0
+	worldMap.islands.IslaDeMuerte.position.rx = -359.0248; //306.7
+	worldMap.islands.IslaDeMuerte.position.rz = -338.3994; //-587.6
 	worldMap.islands.IslaDeMuerte.radius = 40.0;
 	worldMap.islands.IslaDeMuerte.kradius = 0.75;
 	//Island label
@@ -1567,16 +1593,26 @@ void CreateIslaDeMuerte()
 	worldMap.islands.IslaDeMuerte.label.text = TranslateString("","Isla De Muerte");
 	worldMap.islands.IslaDeMuerte.label.icon = -1;
 	worldMap.islands.IslaDeMuerte.label.visible = "true";
-
+	//#20220731-01
+	worldMap.labels.IslaDeMuerte.type = "Island";
+	worldMap.labels.IslaDeMuerte.id = "IslaDeMuerte";
+	worldMap.labels.IslaDeMuerte.locator = "IslaDeMuerte";
+	worldMap.labels.IslaDeMuerte.text = TranslateString("","Isla De Muerte");
+	worldMap.labels.IslaDeMuerte.visible = "true";
+	//From InitializationLabels()
+	worldMap.labels.IslaDeMuerte.font = "INTERFACE_WORLDMAP";	// Mirsaneli
+	worldMap.labels.IslaDeMuerte.pivotX = -0.5;
+	worldMap.labels.IslaDeMuerte.pivotY = -0.5;
+	worldMap.labels.IslaDeMuerte.heightView = 1000.0;
+	worldMap.labels.IslaDeMuerte.weight = 100;
 	//Cursed Coin to mark Isla de Muerte's location - Armada
 	//Geometry parameters
-	worldMap.islands.IslaDeMuerte.locations.city0.position.x = 386.499; //303.0
-	worldMap.islands.IslaDeMuerte.locations.city0.position.y = 0.6; //0.0
-	worldMap.islands.IslaDeMuerte.locations.city0.position.z = 425.603; //-581.0
-	worldMap.islands.IslaDeMuerte.locations.city0.position.ay = 0.0;
-	worldMap.islands.IslaDeMuerte.locations.city0.modelName = "CursedCoin"; //leaf
-	worldMap.islands.IslaDeMuerte.locations.city0.visible = "true";
-	worldMap.islands.IslaDeMuerte.locations.city0.move = "false";
+	worldMap.labels.IslaDeMuerte.type = "Town";
+	worldMap.labels.IslaDeMuerte.id = "IslaDeMuerte";
+	worldMap.labels.IslaDeMuerte.locator = "IslaDeMuerte";
+	worldMap.labels.IslaDeMuerte.island = "IslaDeMuerte";
+	worldMap.labels.IslaDeMuerte.icon = 15;
+	//worldMap.labels.Hispaniolacity1.icon = FRANCE;
 }
 
 void DeleteIslaDeMuerte()
@@ -1587,6 +1623,8 @@ void DeleteIslaDeMuerte()
 		Islands[FindIsland("IslaDeMuerte")].visible = false;
 		aref ourMap; makearef(ourMap,worldMap.islands);
 		DeleteAttribute(ourMap,"IslaDeMuerte");
+		//#20220731-01
+		worldMap.labels.IslaDeMuerte.visible = "false";
 		if(wdmCurrentIsland=="IslaDeMuerte") wdmCurrentIsland = WDM_NONE_ISLAND;
 	}
 }
@@ -1612,6 +1650,7 @@ void CheckSideStep()
 {
 	aref chr = GetEventData();
 	if(CharacterIsDead(chr) || !IsEntity(chr)) return;
+	if(CheckAttribute(chr, "inDialog")) return;
 
 	string leftAnimation, rightAnimation, bAction;
 
@@ -1643,6 +1682,7 @@ void CheckSideStep()
 void CharacterDoStraif()
 {
 	aref chr = GetEventData();
+	if(CheckAttribute(chr, "inDialog")) return;
 	bool bLeft = GetEventData() > 0;
 	string Animation;
 	float stepDist = -SIDESTEP_DIST_LEFT;
@@ -1783,7 +1823,7 @@ void LAi_ClearIndexedLocators(string locId, string group)
 	}
 }
 
-//MAXIMUS: coded by KK, changed by MAXIMUS  changes made by MAXIMUS changed by KK  and changed by MAXIMUS ;b -->
+//MAXIMUS: coded by KK, changed by MAXIMUS ;) changes made by MAXIMUS changed by KK :) and changed by MAXIMUS ;b -->
 void CheckReloadAction(ref chr, string actionType)
 {
 	//MAXIMUS: changes made here, will prevent showing of empty-reloads and showing reloads on enemy's ship
@@ -2176,7 +2216,8 @@ string FirstLetter(string strData)
 // KK -->
 	if (strData == "") return "";
 	int len = strlen(strData);
-	if (len == 1) return ToUpperEng(strData);
+//	if (len == 1) return ToUpperEng(strData);
+	if (len == 1) return ToUpper(strData);	// GR: use multinational 'ToUpper' instead of English-specific 'ToUpperEng'
 // <-- KK
 	return ToUpper(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
 }
@@ -2186,9 +2227,11 @@ string FirstLetterUp(string strData)
 // KK -->
 	if (strData == "") return "";
 	int len = strlen(strData);
-	if (len == 1) return ToUpperEng(strData);
+//	if (len == 1) return ToUpperEng(strData);
 // <-- KK
-	return ToUpperEng(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
+//	return ToUpperEng(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
+	if (len == 1) return ToUpper(strData);	// GR: use multinational 'ToUpper' instead of English-specific 'ToUpperEng'
+	return ToUpper(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
 }
 
 string FirstLetterDown(string strData)
@@ -2196,9 +2239,11 @@ string FirstLetterDown(string strData)
 // KK -->
 	if (strData == "") return "";
 	int len = strlen(strData);
-	if (len == 1) return ToLowerEng(strData);
+//	if (len == 1) return ToLowerEng(strData);
 // <-- KK
-	return ToLowerEng(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
+//	return ToLowerEng(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
+	if (len == 1) return ToLower(strData);	// GR: use multinational 'ToLower' instead of English-specific 'ToLowerEng'
+	return ToLower(strleft(strData,1))+strcut(strData,1,strlen(strData)-1);
 }
 
 string GetLingvo(string strData)
@@ -2381,7 +2426,7 @@ bool CheckCharPosition(float posX, float posY, float posZ)
 	bool bX, bY, bZ;
 	GetCharacterPos(GetMainCharacter(), &x, &y, &z);
 
-	float curXplus = makefloat(posX+makeint(1));
+	float curXplus = makefloat(posX+makeint(1)));
 	float curYplus = makefloat(posY+makeint(1));
 	float curZplus = makefloat(posZ+makeint(1));
 	float curXminus = makefloat(posX-makeint(1));
@@ -2869,6 +2914,8 @@ void ReinitInterface()
 	Interfaces[INTERFACE_RANSACK_CAPTAIN].IniFile = +GetCurrentInterfacePath()+"\ransack_captain.ini";
 	Interfaces[INTERFACE_RANSACK_MAIN].SectionName = "interface\ransack_main.c";
 	Interfaces[INTERFACE_RANSACK_MAIN].IniFile = +GetCurrentInterfacePath()+"\transfer_main.ini";
+	Interfaces[INTERFACE_SPEAK].SectionName = "interface\Speak.c";  // Philippe, ajout?
+	Interfaces[INTERFACE_SPEAK].IniFile = "INTERFACES\Speak.ini";
 	Interfaces[INTERFACE_TRANSFER_MAIN].SectionName = "interface\transfer_main.c";
 	Interfaces[INTERFACE_TRANSFER_MAIN].IniFile = +GetCurrentInterfacePath()+"\transfer_main.ini";
 	Interfaces[INTERFACE_TRANSFER_GOODS].SectionName = "interface\transfer_goods.c";
@@ -3044,7 +3091,7 @@ void SetLanguage()
 
 void ResetKeyboardCharacters(string curLanguage)
 {
-	if(curLanguage!="Russian") curLanguage = "English";// temporary. If anyone'll want to make changes - welcome 
+	if(curLanguage!="Russian") curLanguage = "English";// temporary. If anyone'll want to make changes - welcome ;)
 	switch(curLanguage)
 	{
 		case "Russian":
@@ -3672,7 +3719,6 @@ void CalculateEncInfoData()
 
 void EncRecalcReloadToSea()
 {
-	//int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	worldMap.encounter.type = "";
 	string totalInfo = "";
 	float EncSpeed = 1.0;
@@ -3687,21 +3733,29 @@ void EncRecalcReloadToSea()
 		{
 			if(MakeInt(worldMap.encounter.select) == 0) continue;
 			isShipEncounterType++;
-			if (isShipEncounterType>1)
+			if (isShipEncounterType > 1)
 			{
 				totalInfo = totalInfo + " " + XI_ConvertString("vs.") + " ";
 			}
 			trace("What is this? " + sti(worldMap.encounter.type));
-			//rEncounter = &MapEncounters[sti(worldMap.encounter.type)];
-			//Boyer fix
+
 			string encID = worldMap.encounter.id;
 			makearef(rEncounter, worldMap.encounters.(encID).encdata);
+
+			// Mirsaneli: Check if this is Silent Marry and flag it for special battle image
+			/*
+			if (CheckAttribute(rEncounter, "RealEncounterType") && sti(rEncounter.RealEncounterType) == ENCOUNTER_TYPE_SM)
+			{
+				trace("Silent Marry encounter detected in EncRecalcReloadToSea - flagging for storm image.");
+				worldMap.forceEncounterStorm = true;
+			}
+			*/
 
 			if (!CheckAttribute(rEncounter, "RealEncounterType")) {
 				totalInfo = totalInfo + TranslateString("","ships");
 			} else {
 				switch(sti(rEncounter.RealEncounterType))
-	       		{
+				{
 					case ENCOUNTER_TYPE_MERCHANT0:
 				        totalInfo = totalInfo + TranslateString("","merchants");
 				        EncSpeed = 0.65;
@@ -3766,50 +3820,57 @@ void EncRecalcReloadToSea()
 				        totalInfo = totalInfo + TranslateString("","a scratch patrol");
 				        EncSpeed = 0.75;
 					break;
-
-					totalInfo = totalInfo + TranslateString("","ships");
-	        	}
-			}
-
-			if(SAILHO_INFOLEVEL>=2)
-			{
-				if(sti(rEncounter.Nation) != PIRATE) totalInfo = totalInfo + " " + TranslateString("","flying the colors of") + " " + XI_ConvertString("3"+Nations[sti(rEncounter.Nation)].Name);
-				else totalInfo = totalInfo + " " + TranslateString("","flying the Jolly Roger");
-			}
-
-			if(SAILHO_INFOLEVEL>=1)
-			{
-				// DeathDaisy -->
-				string PCharTitle = "sir";
-				switch(mc.sex){
-					case "woman":
-						PCharTitle = "ma'am";
+					/*
+					case ENCOUNTER_TYPE_SM:	// Silent Marry
+				        totalInfo = totalInfo + TranslateString("", "a ghostly warship");
+				        EncSpeed = 0.75;
 					break;
+					*/
+
+					default:
+				        totalInfo = totalInfo + TranslateString("","ships");
 				}
-				// DeathDaisy <--
-				if(isShipEncounterType>1){ totalInfo = TranslateString("","Sail Ho! There's a battle up ahead " + PCharTitle + ", it looks like") + " " + totalInfo;
-				}
-				else{ totalInfo = TranslateString("","Sail Ho! It looks like") + " " + totalInfo;
-				}
+			}
+
+			if (SAILHO_INFOLEVEL >= 2)
+			{
+				if (sti(rEncounter.Nation) != PIRATE)
+					totalInfo = totalInfo + " " + TranslateString("","flying the colors of") + " " + XI_ConvertString("3"+Nations[sti(rEncounter.Nation)].Name);
+				else
+					totalInfo = totalInfo + " " + TranslateString("","flying the Jolly Roger");
+			}
+
+			if (SAILHO_INFOLEVEL >= 1)
+			{
+				string PCharTitle = "sir";
+				if (mc.sex == "woman") PCharTitle = "ma'am";
+				if (isShipEncounterType > 1)
+					totalInfo = TranslateString("","Sail Ho! There's a battle up ahead " + PCharTitle + ", it looks like") + " " + totalInfo;
+				else
+					totalInfo = TranslateString("","Sail Ho! It looks like") + " " + totalInfo;
 			}
 			else
 			{
-				if(isShipEncounterType>1) totalInfo = TranslateString("","Sail Ho! And gunfire, there's a battle up ahead!");
-				else totalInfo = TranslateString("","Sail Ho!");
+				if (isShipEncounterType > 1)
+					totalInfo = TranslateString("","Sail Ho! And gunfire, there's a battle up ahead!");
+				else
+					totalInfo = TranslateString("","Sail Ho!");
 			}
 
-			if(mc.ShipEnc!="enemy")
+			if (mc.ShipEnc != "enemy")
 			{
-				if(GetNationRelation2MainCharacter(sti(rEncounter.Nation)) == RELATION_ENEMY) mc.ShipEnc = "enemy";
-				else mc.ShipEnc = "ship";
+				if (GetNationRelation2MainCharacter(sti(rEncounter.Nation)) == RELATION_ENEMY)
+					mc.ShipEnc = "enemy";
+				else
+					mc.ShipEnc = "ship";
 			}
 		}
 	}
-	else totalinfo += ".";
-	mc.EncInfo = totalinfo;
+	else totalInfo += ".";
+	mc.EncInfo = totalInfo;
 	mc.EncSpeed = EncSpeed;
 	mc.EncNation = GetNationRelation2MainCharacter(sti(rEncounter.Nation));
-
+	
 	//LanguageCloseFile(tmpLangFileID);
 }
 

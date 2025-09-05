@@ -5,7 +5,7 @@ void InitInterface(string iniName)
 	int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
     GameInterface.title = "titleMoney";
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	ref chm=GetMainCharacter();
 	SetNewPicture("CHARPIC", "interfaces\portraits\256\face_" + chm.FaceId + ".tga");

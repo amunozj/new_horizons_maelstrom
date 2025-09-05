@@ -136,6 +136,128 @@ void ProcessDialogEvent()
 			dialog.text = DLG_TEXT[30];
 			link.l1 = DLG_TEXT[31];
 			link.l1.go = "exit";
+			AddDialogExitQuest("srsly_Blaze");
+		break;
+
+		case "optimism":
+			dialog.text = DLG_TEXT[32];
+			link.l1 = DLG_TEXT[33];
+			link.l1.go = "exit";
+			AddDialogExitQuest("map_search");
+		break;
+
+		case "Santiago_arrival":
+			dialog.text = DLG_TEXT[34];
+			link.l1 = DLG_TEXT[35];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Santiago_switch_to_Blaze");
+		break;
+
+		case "Santiago_story":
+			dialog.text = DLG_TEXT[36];
+			link.l1 = DLG_TEXT[37];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Santiago_crewmember");
+		break;
+
+//--------------------------------------------------------------
+
+		case "Bonnie_Debriefing_Santiagofullmap":
+			dialog.text = DLG_TEXT[38];
+			link.l1 = DLG_TEXT[39];
+			link.l1.go = "exit";
+			AddDialogExitQuest("celebrating_Blaze");
+		break;
+
+		case "please_glue":
+			dialog.text = DLG_TEXT[40];
+			link.l1 = DLG_TEXT[41];
+			link.l1.go = "exit";
+			AddDialogExitQuest("glue_map2");
+		break;
+
+		case "map_now_glued":
+			dialog.text = DLG_TEXT[42];
+			link.l1 = DLG_TEXT[43];
+			link.l1.go = "map_now_glued2";
+		break;
+
+		case "map_now_glued2":
+			dialog.text = DLG_TEXT[44];
+			link.l1 = DLG_TEXT[45];
+			link.l1.go = "exit";
+			AddDialogExitQuest("To_first_X");
+		break;
+
+//--------------------------------------------------------------
+
+		case "Domingo_arrival":
+			dialog.text = DLG_TEXT[46];
+			link.l1 = DLG_TEXT[47];
+			link.l1.go = "Domingo_arrival2";
+		break;
+
+		case "Domingo_arrival2":
+			dialog.text = DLG_TEXT[48];
+			link.l1 = DLG_TEXT[49];
+			link.l1.go = "exit";
+			AddDialogExitQuest("to_Domingo_tavern");
+		break;
+//--------------------------------------------------------------
+
+		case "Good_luck":
+			dialog.text = DLG_TEXT[50];
+			link.l1 = DLG_TEXT[51];
+			link.l1.go = "exit";
+			AddDialogExitQuest("in_Puzzle_tavern");
+		break;
+
+		case "New_look":
+			dialog.text = DLG_TEXT[52];
+			link.l1 = DLG_TEXT[53];
+			link.l1.go = "New_look2";
+		break;
+
+		case "New_look2":
+			dialog.text = DLG_TEXT[54];
+			link.l1 = DLG_TEXT[55];
+			link.l1.go = "New_look3";
+		break;
+
+		case "New_look3":
+			dialog.text = DLG_TEXT[56];
+			link.l1 = DLG_TEXT[57];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Blaze_gambling_again");
+		break;
+
+		case "Bonnie_SD_Deb":
+			dialog.text = DLG_TEXT[58];
+			link.l1 = DLG_TEXT[59];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Domingo_Debriefing4");
+		break;
+
+		case "Bonnie_SD_Deb2":
+			dialog.text = DLG_TEXT[60];
+			link.l1 = DLG_TEXT[61];
+			link.l1.go = "Bonnie_SD_Deb3";
+		break;
+
+		case "Bonnie_SD_Deb3":
+			dialog.text = DLG_TEXT[62];
+			link.l1 = DLG_TEXT[63];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Domingo_Debriefingfin");
+		break;
+
+//--------------------------------------------------------------
+
+		case "Snakes":
+			dialog.text = DLG_TEXT[64];
+			link.l1 = DLG_TEXT[65];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Blaze_matters_hands");
 		break;
 
 //--------------------------------------------------------------

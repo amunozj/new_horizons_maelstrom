@@ -340,8 +340,8 @@ bool Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 					PostEvent("CreateParticleSystemPost", 60, "sffffffl", "MMcancloud2_Light", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20);
 				break;
 				case 2: // Enhanced! High-End Machine Recommended!
-					PostEvent("CreateParticleSystemPost", 50, "sffffffl", "MMcancloud", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20); // Post delay reduced to synchronize the fire and smoke better
-					PostEvent("CreateParticleSystemPost", 60, "sffffffl", "MMcancloud2", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20); // Dirty smoke
+					PostEvent("CreateParticleSystemPost", 50, "sffffffl", "KNBcancloud", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20); // Post delay reduced to synchronize the fire and smoke better
+					PostEvent("CreateParticleSystemPost", 60, "sffffffl", "KNBcancloud2", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20); // Dirty smoke
 					CreateParticleSystem("cannon_embers", fX, fY, fZ, -fHeightAng, fDirAng, 0.0, 20); // Gunpowder embers
 				break;
 			}
@@ -400,16 +400,21 @@ void Ball_WaterHitEvent()
 	x = GetEventData();
 	y = GetEventData();
 	z = GetEventData();
-	/* vx = GetEventData();
-	vy = GetEventData();
-	vz = GetEventData(); */
-	//if(iCharacterIndex != -1) trace("for char " + Characters[iCharacterIndex].id + " and ship " + Characters[iCharacterIndex].ship.name + " waterhit at " + x +","+y+","+z+" and v"+vx+","+vy+","+vz);
 
-	//SendMessage(&BallSplash, "lffffff", MSG_BALLSPLASH_ADD, x, y, z, 0.0, 0.0, 0.0); // vx, vy, vz
-	SendMessage(&BallSplash, "lffffff", MSG_BALLSPLASH_ADD, x, y, z, 0.0, 0.0, 0.0);
+	int nBallType = sti(AIBalls.CurrentBallCannonType);
+	if (nBallType >= 0)
+	{
+		ref rCannon = GetCannonByType(nBallType);
+		if (CheckAttribute(rCannon, "BigBall") && sti(rCannon.BigBall))
+            CreateParticleSystemXPS("splash_big", X, Y, Z, 0.0, 0.0, 0.0, 5);
+			SendMessage(&BallSplash, "lffffff", MSG_BALLSPLASH_ADD, x, y, z, vx, vy, vz);
+		else
+            CreateParticleSystemXPS("splash", X, Y, Z, 0.0, 0.0, 0.0, 5);
+			SendMessage(&BallSplash, "lffffff", MSG_BALLSPLASH_ADD, x, y, z, vx, vy, vz);
+	}
 	Play3DSound("ball_splash", x, y, z);
 }
-//new Fort hit effect by MM
+
 void Ball_FortHit()
 {
 	int		iCharacterIndex;
@@ -421,10 +426,11 @@ void Ball_FortHit()
 	y = GetEventData();
 	z = GetEventData();
 
+	CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0); // boal fix
 	CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
 	SendMessage(&AIFort, "llfff", AI_MESSAGE_FORT_HIT, iCharacterIndex, x, y, z);
 }
-//new hit effect for island by MM
+
 void Ball_IslandHit()
 {
 	int		iCharacterIndex;
@@ -436,11 +442,10 @@ void Ball_IslandHit()
 	y = GetEventData();
 	z = GetEventData();
 
-	// CreateBlast(x,y,z);
-	// CreateParticleSystem("blast_newsmoke",x,y,z,0.0,0.0,0.0,0);
-	CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
+	CreateParticleSystemXPS("blast", x, y, z, 0.0, 0.0, 0.0, 0); // boal fix
 	CreateParticleSystem("blast_dirt", x, y, z, 0.0, 0.0, 0.0, 0);
-	//SendMessage(&AIFort,"llfff",AI_MESSAGE_FORT_HIT,iCharacterIndex,x,y,z);
+
+	//Ship_SetLightsOff(&Characters[1], 15.0, true, true, false);
 }
 
 void Ball_OnFlyUpdate()

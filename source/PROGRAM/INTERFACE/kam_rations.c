@@ -9,7 +9,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleKAMRations";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	SetSelectable("EXIT_BUTTON",true); // MAXIMUS interface mod
 

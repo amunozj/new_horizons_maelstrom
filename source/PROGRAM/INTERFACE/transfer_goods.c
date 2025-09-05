@@ -55,7 +55,7 @@ void InitInterface_RR(string iniName,ref pCharacter,ref enemyCh)
 	FillScroll();
 	if(bAnimation && bNewInterface) iniName = "NEW_INTERFACES\ANIMATION\transfer_goods.ini";
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
     CreateString(true,"MyShipType","",FONT_NORMAL,COLOR_NORMAL,104,270,SCRIPT_ALIGN_CENTER,0.8); // PS
     CreateString(true,"MyName","",FONT_NORMAL,COLOR_NORMAL,180,170,SCRIPT_ALIGN_CENTER,1.0); // MAXIMUS
@@ -480,7 +480,7 @@ void ChangeScroll()
 	GameInterface.strings.MyGoods = GetCargoGoods(xi_refCharacter,GetGoodsIndexForI(curNum));
 	GameInterface.strings.EnemyCargo = GetCargoLoad(refEnemyCharacter) + "/" + GetCargoMaxSpace(refEnemyCharacter);
 	GameInterface.strings.GoodsName = XI_ConvertString(Goods[GetGoodsIndexForI(curNum)].Name);
-	GameInterface.strings.EnemyGoods = GetCargoGoods(refEnemyCharacter,GetGoodsIndexForI(curNum));
+	GameInterface.strings.EnemyGoods = GetCargoGoods(refEnemyCharacter,GetGoodsIndexForI(curNum)));
 
 	//Boyer change
     //SendMessage(&GameInterface,"lsl",MSG_INTERFACE_SCROLL_CHANGE,"GOODSLIST",-1);
@@ -647,7 +647,7 @@ void TakeAllProcess()
 
 	//float GoodsSort[33];
 	//int GSID[33];
-    object GSID[33];
+    object GSID[GOODS_QUANTITY]; //[33]; fix
 
 	for(i = 0; i < GOODS_QUANTITY; i++)
 	{

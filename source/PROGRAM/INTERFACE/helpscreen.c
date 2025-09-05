@@ -14,7 +14,7 @@ void InitInterface_S(string iniName, string sectionName)
 	GameInterface.title = "titleHelp";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
     CreateString(true,"HelpName","",FONT_NORMAL,COLOR_MONEY,420,59,SCRIPT_ALIGN_CENTER,1.2);
 

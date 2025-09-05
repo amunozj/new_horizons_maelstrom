@@ -21,6 +21,7 @@ int ENCOUNTERS_QUANTITY = 0;
 #define ENCOUNTER_TYPE_LCORSAR				13
 #define ENCOUNTER_TYPE_LPIRATE				14
 #define ENCOUNTER_TYPE_LPUNITIVE_SQUADRON	15
+#define ENCOUNTER_TYPE_SM 					16		// Silent Marry			Mirsaneli add
 // <-- 
 
 // Encounter type

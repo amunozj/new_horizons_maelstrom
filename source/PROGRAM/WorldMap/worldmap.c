@@ -93,13 +93,17 @@ void wdmTimeUpdate()
 
 void wdmCreateMap(float dx, float dz, float ay)
 {
+    //trace("Player sea position:");
+    //trace("x = " + dx);
+    //trace("z = " + dz);
+    //trace("Old worldmap position:");
+    //trace("x = " + worldMap.playerShipX);
+    //trace("z = " + worldMap.playerShipZ);
 	float fadeInTime = 0.5; // KK
-	//float zeroX = MakeFloat(worldMap.zeroX);
-	//float zeroZ = MakeFloat(worldMap.zeroZ);
     int scale = WDM_MAP_TO_SEA_SCALE;
 	wdmDisableTornadoGen = true;
 
-   // worldMap.playerShipX = (dx/scale) + zeroX;
+    //worldMap.playerShipX = (dx/scale) + zeroX;
 	//worldMap.playerShipZ = (dz/scale) + zeroZ;
 	worldMap.playerShipAY = ay;
 	ClearAllLogStrings();
@@ -111,10 +115,27 @@ void wdmCreateMap(float dx, float dz, float ay)
 //	DumpAttributes(&worldMap);
 //	Trace("Save check ###########----================--------------")
 	worldMap.playerInStorm = 0;
+	worldMap.resizeRatio = HUD_SCALING;
     wdmReset();
     worldMap.date.hourPerSec = MAP_VOYAGELENGTH;	// ccc maptweak original 4.0
+	worldMap.date.monthnames.m01 = XI_ConvertString("target_month_1");
+    worldMap.date.monthnames.m02 = XI_ConvertString("target_month_2");
+    worldMap.date.monthnames.m03 = XI_ConvertString("target_month_3");
+    worldMap.date.monthnames.m04 = XI_ConvertString("target_month_4");
+    worldMap.date.monthnames.m05 = XI_ConvertString("target_month_5");
+    worldMap.date.monthnames.m06 = XI_ConvertString("target_month_6");
+    worldMap.date.monthnames.m07 = XI_ConvertString("target_month_7");
+    worldMap.date.monthnames.m08 = XI_ConvertString("target_month_8");
+    worldMap.date.monthnames.m09 = XI_ConvertString("target_month_9");
+    worldMap.date.monthnames.m10 = XI_ConvertString("target_month_10");
+    worldMap.date.monthnames.m11 = XI_ConvertString("target_month_11");
+    worldMap.date.monthnames.m12 = XI_ConvertString("target_month_12");
+    worldMap.date.font = "normal";
+    worldMap.outputRum = true;
     //#20210827-01
-    worldMap.legacyArea = true;
+    //worldMap.legacyArea = true;
+    //worldmap.debug = "true";
+    //worldmap.wdmCameraAYDefault = PI;			//Rotation angle of the camera
 // KK -->
 	//Boyer change
 	if (bNewInterface)
@@ -123,10 +144,19 @@ void wdmCreateMap(float dx, float dz, float ay)
 //	else
 		CreateEntity(&worldMap,"worldmap");
 // <-- KK
+    //setWDMPointXZ(pchar.location);
 	worldMap.isLoaded = "true";
 	//Set player ship position
-	worldMap.playerShipDispX = dx / WDM_MAP_TO_SEA_SCALE;
-	worldMap.playerShipDispZ = dz / WDM_MAP_TO_SEA_SCALE;
+	if (worldMap.island == "Cuba")
+	{
+		scale = CUBA_MAP_SCALE;
+	}
+	if (worldMap.island == "SantaCatalina" || worldMap.island == "PortoBello" || worldMap.island == "Colombia")
+	{
+		scale = CONTINENT_SCALE;
+	}
+	worldMap.playerShipDispX = dx / scale;
+	worldMap.playerShipDispZ = dz / scale;
 	//Update parameters
 	worldMap.update = "";
 	//Reset encounters data
@@ -157,19 +187,36 @@ void wdmCreateMap(float dx, float dz, float ay)
 	// ccc maptweak end
 	InitWmInterface();
 }
-
+//Not used
+/*
 void wdmCreateWorldMap()
 {
-	float dshipX = MakeFloat(worldMap.playerShipDispX)*WDM_MAP_TO_SEA_SCALE;
-	float dshipZ = MakeFloat(worldMap.playerShipDispZ)*WDM_MAP_TO_SEA_SCALE;
+    float zeroX = MakeFloat(worldMap.zeroX);
+	float zeroZ = MakeFloat(worldMap.zeroZ);
+	int scale = WDM_MAP_TO_SEA_SCALE;
+	if (worldMap.island == "Cuba")
+	{
+		scale = 25;
+	}
+	float dshipX = MakeFloat(worldMap.playerShipDispX)*scale;
+	float dshipZ = MakeFloat(worldMap.playerShipDispZ)*scale;
 	float shipAY = MakeFloat(worldMap.playerShipAY);
 	wdmCreateMap(dshipX, dshipZ, shipAY);
 }
-
+*/
 void wdmLoadSavedMap()
 {
-	float dshipX = MakeFloat(worldMap.playerShipDispX)*WDM_MAP_TO_SEA_SCALE;
-	float dshipZ = MakeFloat(worldMap.playerShipDispZ)*WDM_MAP_TO_SEA_SCALE;
+    int scale = WDM_MAP_TO_SEA_SCALE;
+	if (worldMap.island == "Cuba")
+	{
+		scale = CUBA_MAP_SCALE;
+	}
+	if (worldMap.island == "SantaCatalina" || worldMap.island == "PortoBello" || worldMap.island == "Colombia")
+	{
+		scale = CONTINENT_SCALE;
+	}
+	float dshipX = MakeFloat(worldMap.playerShipDispX)*scale;
+	float dshipZ = MakeFloat(worldMap.playerShipDispZ)*scale;
 	float shipAY = MakeFloat(worldMap.playerShipAY);
 	wdmNoClearEncountersTable = true;
 	wdmCreateMap(dshipX, dshipZ, shipAY);
@@ -350,38 +397,60 @@ void wdmSetIcon(string town, string new_name, int iNation)
 	if (!TownExist(town)) return;
 	if (iNation >= NATIONS_QUANTITY) return;
 	if (new_name == "" && iNation < -1) return;
-
 	island = GetIslandIDFromTown(town);
 	island_idx = FindIsland(island);
 	if (island_idx < 0) return;
 	wdmisland = wdmGetIslandNameFromID(island);
-	if (!CheckAttribute(worldMap, "islands." + wdmisland + ".locations")) return;
-	//Boyer change
-	//makearef(wdmislandlocs, worldMap.islands.(wdmisland).locations);
-	if (!CheckAttribute(worldMap, "labels")) return;
-	makearef(wdmislandlocs, worldMap.labels));
-	num = GetAttributesNum(wdmislandlocs);
-	for (i = 0; i < num; i++) {
-		loc = GetAttributeN(wdmislandlocs, i);
-		if (!CheckAttribute(loc, "id")) continue;
-		if (!CheckAttribute(loc, "type")) continue;
-		if (!CheckAttribute(loc, "island")) continue;
-		if (loc.type == "town" && loc.id == town && loc.island == wdmisland) {
-			if (IsIslandDisabled(island)) {
-				trace("wdmSetIcon: island "+island+" is disabled.");
-				//loc.modelName = "";
-				//loc.label.text = "";
-				//loc.label.icon = -1;
-				//DeleteAttribute(loc, "real");
-				//Boyer change
-				loc.text = "";
-				loc.icon = -1;
-			} else {
-				if (new_name != "") loc.text = new_name;
-				loc.icon = wdmTownFlag(iNation);
-			}
-			return;
-		}
+	//Boyer change for new label system
+	if (CheckAttribute(worldMap, "islands." + wdmisland + ".locations")) {
+        //Old label system
+        makearef(wdmislandlocs, worldMap.islands.(wdmisland).locations);
+        num = GetAttributesNum(wdmislandlocs);
+        for (i = 0; i < num; i++) {
+            loc = GetAttributeN(wdmislandlocs, i);
+            if (!CheckAttribute(loc, "name")) continue;
+            if (loc.name == town) {
+                if (IsIslandDisabled(island)) {
+                    trace("wdmSetIcon: island "+island+" is disabled.");
+                    loc.modelName = "";
+                    loc.label.text = "";
+                    loc.label.icon = -1;
+                    DeleteAttribute(loc, "real");
+                } else {
+                    if (new_name != "") loc.label.text = new_name;
+                    loc.label.icon = wdmTownFlag(iNation);
+                }
+                //return;
+                i = num;
+            }
+        }
+        //New label system
+        if (CheckAttribute(worldMap, "labels")) {
+            makearef(wdmislandlocs, worldMap.labels));
+            num = GetAttributesNum(wdmislandlocs);
+            for (i = 0; i < num; i++) {
+                loc = GetAttributeN(wdmislandlocs, i);
+                if (!CheckAttribute(loc, "id")) continue;
+                if (!CheckAttribute(loc, "type")) continue;
+                if (!CheckAttribute(loc, "island")) continue;
+                if (loc.type == "town" && loc.id == town && loc.island == wdmisland) {
+                    if (IsIslandDisabled(island)) {
+                        trace("wdmSetIcon: island "+island+" is disabled.");
+                        //loc.modelName = "";
+                        //loc.label.text = "";
+                        //loc.label.icon = -1;
+                        //DeleteAttribute(loc, "real");
+                        //Boyer change
+                        loc.text = "";
+                        loc.icon = -1;
+                    } else {
+                        if (new_name != "") loc.text = new_name;
+                        loc.icon = wdmTownFlag(iNation);
+                    }
+                    return;
+                }
+            }
+        }
 	}
 }
 
@@ -427,3 +496,33 @@ void wdmInit()
 	}
 }
 // <-- KK
+
+void setWDMPointXZ(string _location)
+{
+    int n;
+	string sTemp = "";
+
+    n = FindIslandBySeaLocation(_location);
+	if(n!=-1)
+	{
+		worldMap.island = Islands[n].id;
+		Pchar.curIslandId = worldMap.island; // fix
+		sTemp = worldMap.island;
+		if (CheckAttribute(&worldMap, "islands." + sTemp))
+		{
+		    worldMap.zeroX = worldMap.islands.(sTemp).position.x;
+			worldMap.zeroZ = worldMap.islands.(sTemp).position.z;
+			if (CheckAttribute(&worldMap, "islands." + sTemp + "." + _location))
+			{
+			    worldMap.playerShipX = worldMap.islands.(sTemp).(_location).position.x;
+				worldMap.playerShipZ = worldMap.islands.(sTemp).(_location).position.z;
+				//trace(sTemp + "." + _location);
+			}
+			else
+			{
+			    worldMap.playerShipX = worldMap.zeroX;
+				worldMap.playerShipZ = worldMap.zeroZ;
+			}
+		}
+	}
+}

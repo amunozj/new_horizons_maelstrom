@@ -90,6 +90,7 @@ void CreateCharacters()
 	switch(CharPlayerType)
 	{
 		case PLAYER_TYPE_ADVENTURER:
+			GiveItem2Character(ch, "pistol5");
 			switch(GetMySimpleOldName(ch))
 			{
 				case "Geralt of Rivia":
@@ -111,11 +112,20 @@ void CreateCharacters()
 					GiveItem2Character(ch, "blade_ebony");
 				break;
 
+				case "Danielle Greene":
+					if (HasSubstr(ch.model, "daniell"))
+					{
+						TakeItemFromCharacter(ch, "pistol5");
+						GiveItem2Character(ch, "blade6");
+						TakeNItems(ch,"medical1", Rand(4)+1);
+						GiveItem2Character(ch, "pistol1");
+					}
+				break;
+
 				// Default
 				if(ENABLE_WEAPONSMOD)	GiveItem2Character(ch, "bladeC2+2");
 				else			GiveItem2Character(ch, "bladeC2");
 			}
-			GiveItem2Character(ch, "pistol5");
 		break;
 		case PLAYER_TYPE_AGENT:
 			ch.shiplog.Entry.log0 = "Today I begin my new life as a ship’s captain. I have left the service of the crown and the life of a spy behind me once and for all. If I had any doubts about retiring from that line of work they ended with the episode in Madagascar. It was nothing short of a miracle that I wasn’t arrested and killed along with my counterparts from the other great powers. With my severance from the secret service I have purchased a vessel and made my way to the new world where, I hope, my past will not catch up with me.";
@@ -134,15 +144,70 @@ void CreateCharacters()
 		break;
 		case PLAYER_TYPE_CORSAIR:
 			ch.shiplog.Entry.log0 = "This is a truly momentous occasion. I have worked towards this since I went on account all those years back as a young, know-nothing scallywag with more spine than brains. The crew has elected me captain, replacing our departed leader who lost his head to a cannon ball during our last cruise. Bad for him, good for me. The old man was a good captain and ran a tight ship but I’ve always had my own ideas about how things should be done. Now I get to see if I’m right!";
+			if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) GiveItem2Character(ch, "pistol1");
+			else GiveItem2Character(ch, "pistol1a");
+			GiveItem2Character(ch, "compass2");
+			GiveItem2Character(ch, "clock1");
 			switch(GetMySimpleOldName(ch))
 			{
 				case "Blackbeard":
-					GiveItem2Character(ch, "Blade_Triton");
+					if (ch.model == "Blackbeard")
+					{
+						GiveItem2Character(ch, "Blade_Triton");
+						GiveItem2Character(ch, "piratespistol");
+						GiveItem2Character(ch, "aztec_compass");
+						if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) TakeItemFromCharacter(ch, "pistol1");
+						else TakeItemFromCharacter(ch, "pistol1a");
+					}
 				break;
 
 				case "Piet Hein":
 					GiveItem2Character(ch, "blade26");
 					GiveItem2Character(ch, "luckydimeA");
+				break;
+
+
+				case "Eduardo Villanueva":
+					if (ch.model == "Villanueva")
+					{
+						GiveItem2Character(ch, "blade16");
+						GiveItem2Character(ch, "piratespistol");
+						if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) TakeItemFromCharacter(ch, "pistol1");
+						else TakeItemFromCharacter(ch, "pistol1a");
+					}
+				break;
+
+				case "Sao Feng":
+					if (ch.model == "SaoFeng")
+					{
+						GiveItem2Character(ch, "blade20");
+						GiveItem2Character(ch, "piratespistol");
+						if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) TakeItemFromCharacter(ch, "pistol1");
+						else TakeItemFromCharacter(ch, "pistol1a");
+					}
+				break;
+
+				case "Capitaine Chevalle":
+					if (ch.model == "Captaine_Chevalle")
+					{
+						GiveItem2Character(ch, "blade9");
+						GiveItem2Character(ch, "piratespistol");
+						if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) TakeItemFromCharacter(ch, "pistol1");
+						else TakeItemFromCharacter(ch, "pistol1a");
+					}
+				break;
+
+				case "Sumbhajee Angria":
+					if (ch.model == "Sri_Sumbhajee")
+					{
+						GiveItem2Character(ch, "blade12");
+						GiveItem2Character(ch, "pistol3_14");
+						GiveItem2Character(ch, "Spyglass4");
+						EquiPCharacterbyItem(ch, "Spyglass4");
+						GiveItem2Character(ch, "jewelry3");
+						if (GetCurrentPeriod() >= PERIOD_GOLDEN_AGE_OF_PIRACY) TakeItemFromCharacter(ch, "pistol1");
+						else TakeItemFromCharacter(ch, "pistol1a");
+					}
 				break;
 
 				// default
@@ -256,24 +321,44 @@ void CreateCharacters()
 			GiveItem2Character(ch, "book3");
 		break;
 		case PLAYER_TYPE_REBEL:
-			if(GetMySimpleOldName(ch) == "Hilda Sparre")
+			switch(GetMySimpleOldName(ch))
 			{
-				ch.shiplog.Title.log0 = "Arrived in the New World";
-				ch.shiplog.Entry.log0 =  "That fool of a King and his predecessors would erode our rights, the rights of our blood tracing back to times immemorial. The realm was a bloody mess because the crown could not handle the finances of the realm. The new and growing number of lower nobles screaming for what was rightfully ours. 'Please, the war is so expensive, think of the realm'. Give them a finger and they take the whole hand. It had to stop. But it all went wrong so very fast.\n\n Me and some like-minded people I confided in had plans: Depose the King, push someone else's claim to the throne, someone who saw the worth of what we and our ancestors had done for the realm. But somehow the crown found us out. There is little doubt in my mind we were betrayed. A death sentence was a matter of fact.\n\n Thankfully I still had enough loyal friends and family that I could escape the country and get myself here to the New World. I am still hunted, Sweden's allies will not give me a warm welcome, and neither will her enemies. Their loss, I say. \n\nLo, I got myself a ship with what little wealth I had left, and now it is time to show my true mettle and prove that this noblewoman can claw her way back to greatness on her own merit. Time for adventure!";
-				GiveItem2Character(ch, "clock1");
-				if(ENABLE_WEAPONSMOD)
-				{
-					GiveItem2Character(ch, "bladeC2+1");
-					GiveItem2Character(ch, "pistol2+1");
-				}
-				else
-				{
-					GiveItem2Character(ch, "bladeC2");
-					GiveItem2Character(ch, "pistol2");
-				}
-			}
-			else
-			{
+				case "Hilda Sparre":
+					ch.shiplog.Title.log0 = "Arrived in the New World";
+					ch.shiplog.Entry.log0 =  "That fool of a King and his predecessors would erode our rights, the rights of our blood tracing back to times immemorial. The realm was a bloody mess because the crown could not handle the finances of the realm. The new and growing number of lower nobles screaming for what was rightfully ours. 'Please, the war is so expensive, think of the realm'. Give them a finger and they take the whole hand. It had to stop. But it all went wrong so very fast.\n\n Me and some like-minded people I confided in had plans: Depose the King, push someone else's claim to the throne, someone who saw the worth of what we and our ancestors had done for the realm. But somehow the crown found us out. There is little doubt in my mind we were betrayed. A death sentence was a matter of fact.\n\n Thankfully I still had enough loyal friends and family that I could escape the country and get myself here to the New World. I am still hunted, Sweden's allies will not give me a warm welcome, and neither will her enemies. Their loss, I say. \n\nLo, I got myself a ship with what little wealth I had left, and now it is time to show my true mettle and prove that this noblewoman can claw her way back to greatness on her own merit. Time for adventure!";
+					GiveItem2Character(ch, "clock1");
+					if(ENABLE_WEAPONSMOD)
+					{
+						GiveItem2Character(ch, "bladeC2+1");
+						GiveItem2Character(ch, "pistol2+1");
+					}
+					else
+					{
+						GiveItem2Character(ch, "bladeC2");
+						GiveItem2Character(ch, "pistol2");
+					}
+				break;
+
+				case "Dark Teacher":
+					if (ch.model == "animists1")
+					{
+						ch.shiplog.Entry.log0 = "A new beginning awaits us. The Prince of Darkness is not appeased with our previous failure, but he has granted us one last chance if we can perform a sacrifice to appease him. And then he shall reward us with power beyond measure!";
+						GiveItem2Character(ch, "bladeC36");
+						GiveItem2Character(ch, "blade37");
+						GiveItem2Character(ch, "commonarmor");
+						GiveItem2Character(ch, "spyglass2");
+						GiveItem2Character(ch, "compass2");
+						EquipCharacterByItem(ch, "compass2");
+						GiveItem2Character(ch, "clock1");
+						EquipCharacterByItem(ch, "clock1");
+						GiveItem2Character(ch, "sextant");
+						GiveItem2Character(ch, "hotel_bible");
+						GiveItem2Character(ch, "animists_amulet");
+						GiveItem2Character(ch, "jewelry3");
+					}
+				break;
+
+				// Default
 				ch.shiplog.Entry.log0 = "Ever since I was a child I have been restless and unable to tolerate injustice. I have fought in many wars across the old world and been on the losing side of all of them. I am without regret or apology however. I have stayed true to what I believe in and never compromised my integrity for coin or comfort. Still, I know when it is time to move on and so I have done just that. It is off to the new world for me. If I can't make Europe a better place perhaps there is still time to make the Americas one.";
 			
 				if(ENABLE_WEAPONSMOD)
@@ -324,7 +409,11 @@ void CreateCharacters()
 			GiveItem2Character(ch, "book15");
 		break;
 		case PLAYER_TYPE_SMUGGLER:
-			ch.shiplog.Entry.log0 = "The life of a smuggler is neither easy nor safe, as my former captain, now lingering in a Spanish dungeon will attest. It does pay well however and with my savings I have gotten our vessel out of impound and assumed the captaincy. The crew seems happy enough with the change in leadership as the old man's luck seemed to have ran out long ago and he was much too hot-tempered to make wises choices about who he did business with. His loss is my gain and I am looking forward to a long and profitable career.";
+			switch(GetMySimpleOldName(ch))
+			{
+				case "Anamaria": ch.shiplog.Entry.log0 = "With four older sisters getting their own boats before me, I have had to wait my turn. But finally my mother has trusted me with a vessel of my own. It's not much but it floats and can carry a little cargo. Now to find a buyer for that cargo."; break;
+				ch.shiplog.Entry.log0 = "The life of a smuggler is neither easy nor safe, as my former captain, now lingering in a Spanish dungeon will attest. It does pay well however and with my savings I have gotten our vessel out of impound and assumed the captaincy. The crew seems happy enough with the change in leadership as the old man's luck seemed to have ran out long ago and he was much too hot-tempered to make wises choices about who he did business with. His loss is my gain and I am looking forward to a long and profitable career.";
+			}
 			if(ENABLE_WEAPONSMOD)
 			{
 				GiveItem2Character(ch, "bladeC6+1");
@@ -339,7 +428,7 @@ void CreateCharacters()
 			ChangeSmugglerLiking(ch,25); //add 25 so you can ask about opium instantly. -Levis
 		break;
 		case PLAYER_TYPE_SOCIAL_CLIMBER:
-			ch.shiplog.Entry.log0 = "I mean to go places in life and what better way to get there than as the captain of my own ship. The investment has been considerable but I expect it to pay for itself many times over before I am ready to move on to the next stage. Perhaps a noble title bought with gold and favors, or a fleet of sturdy vessels trading far and wide to fill my coffers with gold. The road will be long and treacherous to be sure but if there is one thing I have learned about myself is that I have what it takes to endure whatever I must to reach my goals.";
+			ch.shiplog.Entry.log0 = "I mean to go places in life and what better way to get there than as the captain of my own ship. The investment has been considerable but I expect it to pay for itself many times over before I am ready to move on to the next stage. Perhaps a noble title bought with gold and favours, or a fleet of sturdy vessels trading far and wide to fill my coffers with gold. The road will be long and treacherous to be sure but if there is one thing I have learned about myself is that I have what it takes to endure whatever I must to reach my goals.";
 			if(ENABLE_WEAPONSMOD)
 			{
 				GiveItem2Character(ch, "bladeC30+2");
@@ -353,19 +442,35 @@ void CreateCharacters()
 			GiveItem2Character(ch, "jewelry7");
 		break;
 		case PLAYER_TYPE_SWORD_MASTER:
-			if (GetMySimpleOldName(ch) == "Bohdan Aleskeevich Voronov" && ch.nation == PERSONAL_NATION)//MAXIMUS 08.05.2019: GetMySimpleName will return TRANSLATED name, so - for other langs this code will not work.
-			{
-				ch.shiplog.Entry.log0 = "Ten years since the death of our leader, Stenka Rasin, some of us have finally made it to the Caribbean. We have gathered our possessions and sold them to raise money to buy a ship. I have been chosen as the captain. Now we shall seek our fortune on the seas, and perhaps one day return to our beloved motherland.";
-				if(ENABLE_WEAPONSMOD) GiveItem2Character(ch, "blade41+3");
-				else GiveItem2Character(ch, "blade41");
-			}
-			else
-			{
-				ch.shiplog.Entry.log0 = "I have done well for myself training the well-to-do how to master the sword in personal combat. I have studied the great masters and imparted their wisdom to my own students in turn but I have frankly become bored of this quiet life. Besides, what true master of the martial arts hides behind walls away from the danger of angry steel? I have used my considerable savings to invest in a ship and decided to make my way to the Caribbean to seek adventure and an even greater fortune.";
-				if(ENABLE_WEAPONSMOD)	GiveItem2Character(ch, "bladeC30+3");
-				else					GiveItem2Character(ch, "bladeC30");
-			}
+			ch.shiplog.Entry.log0 = "I have done well for myself training the well-to-do how to master the sword in personal combat. I have studied the great masters and imparted their wisdom to my own students in turn but I have frankly become bored of this quiet life. Besides, what true master of the martial arts hides behind walls away from the danger of angry steel? I have used my considerable savings to invest in a ship and decided to make my way to the Caribbean to seek adventure and an even greater fortune.";
+			if(ENABLE_WEAPONSMOD)	GiveItem2Character(ch, "bladeC30+3");
+			else			GiveItem2Character(ch, "bladeC30");
 			GiveItem2Character(ch, "goldarmor");
+
+			switch(GetMySimpleOldName(ch)) //MAXIMUS 08.05.2019: GetMySimpleName will return TRANSLATED name, so - for other langs this code will not work.
+			{
+				case "Bohdan Aleskeevich Voronov":
+				if (ch.nation == PERSONAL_NATION)
+				{
+					ch.shiplog.Entry.log0 = "Ten years since the death of our leader, Stenka Rasin, some of us have finally made it to the Caribbean. We have gathered our possessions and sold them to raise money to buy a ship. I have been chosen as the captain. Now we shall seek our fortune on the seas, and perhaps one day return to our beloved motherland.";
+					if(ENABLE_WEAPONSMOD)
+					{
+						TakeItemFromCharacter(ch, "bladeC30+3");
+						GiveItem2Character(ch, "blade41+3");
+					}
+					else
+					{
+						TakeItemFromCharacter(ch, "bladeC30");
+						GiveItem2Character(ch, "blade41");
+					}
+				}
+				break;
+
+				case "Will Turner":
+					if (ch.model == "will") ch.shiplog.Entry.log0 = "I bade farewell to my master, John Smith. I'm ready for the life of a sailor. Perhaps learning the truth about my father and the ordeal is my touch of destiny...";
+					else ch.shiplog.Entry.log0 = "Davy Jones is dead. And I would be dead too, except that I have had my heart removed and have taken over Jones' duty - the duty which he abandoned, the duty of ferryman to the souls of the dead. If I fulfil the duty, will I avoid Jones' curse? Or am I, too, doomed never to set foot on land, and to become part of the ship and the sea?";
+				break;
+			}
 		break;
 		case PLAYER_TYPE_CURSED:
 			string curse_type = "general";
@@ -417,7 +522,14 @@ void CreateCharacters()
 			GiveItem2Character(ch, "commonarmor");
 		break;
 		case PLAYER_TYPE_CASTAWAY:
-			ch.shiplog.Entry.log0 = "An old friend of the family has bought me passage on a ship bound for the New World. But whether he did that out of kindness or just to get rid of me, I do not know. I have never had much luck in Europe and the little I own in this world was safely stored in my cabin. It will be difficult to get on my feet, but I am determined to succeed at last!";
+			switch(GetMySimpleOldName(ch))
+			{
+				case "Black Caesar":
+					ch.shiplog.Title.log0 = "No Longer a Slave";
+					ch.shiplog.Entry.log0 = "When I was first brought aboard a white man's ship, I feared that the rest of my life would be as that of a chained beast. One of the crew treated me with kindness and respect and became my only friend. When the ship fell prey to the anger of the storm, that friend released me and together we escaped in the ship's boat. We have made it to an unknown shore. Now we begin a new journey as free men!";
+				break;
+				ch.shiplog.Entry.log0 = "An old friend of the family has bought me passage on a ship bound for the New World. But whether he did that out of kindness or just to get rid of me, I do not know. I have never had much luck in Europe and the little I own in this world was safely stored in my cabin. It will be difficult to get on my feet, but I am determined to succeed at last!";
+			}
 			// Deliberately no items
 		break;
 		case PLAYER_TYPE_CUSTOM:
