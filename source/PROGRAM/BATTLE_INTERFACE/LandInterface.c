@@ -248,6 +248,9 @@ ref BLI_CheckCommand()
 		case "BI_ActivateRush":
 			g_intRetVal = 0;
 		break;
+		case "BI_TalkSelf":
+			g_intRetVal = 0;
+		break;
 	}
 
 	if(!bUsed) objLandInterface.UserIcons.cancel.enable = false;
@@ -325,6 +328,9 @@ void BLI_ExecuteCommand()
 		break;//MAXIMUS <--
 		case "BI_ActivateRush":
 			ActivateCharacterPerk(GetMainCharacter(),"Rush");
+		break;
+		case "BI_TalkSelf":
+			StartActorSelfDialog("TalkSelf_Main");
 		break;
 	}
 }
@@ -614,6 +620,13 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ActivateRush.texNum		= 0;
 	objLandInterface.Commands.ActivateRush.event	= "BI_ActivateRush";
 	objLandInterface.Commands.ActivateRush.note		= LanguageConvertString(idLngFile, "land_ActivateRush");
+	
+	objLandInterface.Commands.TalkSelf.enable		= true;
+	objLandInterface.Commands.TalkSelf.picNum		= 54;
+	objLandInterface.Commands.TalkSelf.selPicNum	= 62;
+	objLandInterface.Commands.TalkSelf.texNum		= 1;
+	objLandInterface.Commands.TalkSelf.event		= "BI_TalkSelf";
+	objLandInterface.Commands.TalkSelf.note			= LanguageConvertString(idLngFile, "land_TalkSelf");
 
 	// список пользовательских картинок
 		// cancel icon
@@ -1142,6 +1155,23 @@ void BLI_SetPossibleCommands()
 		curcom = GetAttributeN(rootcom,i);
 		curcom.enable = false;
 	}
+
+	// Vex: Self Dialog Port -->
+	bool canTalkToSelf = true;
+
+	if (!chrMode == 0) canTalkToSelf = false;
+	if (LAi_IsBoardingProcess()) canTalkToSelf = false;
+	if (LAi_group_IsActivePlayerAlarm()) canTalkToSelf = false;
+	if (!LAi_IsCharacterControl(mchref)) canTalkToSelf = false;
+	if (CheckAttribute(mchref, "IsOnDeck") && mchref.IsOnDeck==true) canTalkToSelf = false; // Talking to self on deck crashes the game for some reason. This is a temporary fix.
+
+	if (canTalkToSelf){
+		objLandInterface.Commands.TalkSelf.enable = true;
+	}
+	else{
+		objLandInterface.Commands.TalkSelf.enable = false;
+	}
+	// <-- Vex: Self Dialog Port
 
 	if(chrMode==0)
 	{
@@ -2041,4 +2071,29 @@ void SetCharacterIconData(int chrindex, aref arData)
 	}
 	//arData.charge = LAi_GetCharacterRelCharge(chref);
 	//arData.poison = LAi_IsPoison(chref);
+}
+
+bool bSelfDialogTurn = true;
+
+void StartActorSelfDialog(string _CurrentNode)
+{
+	ref pchar = GetMainCharacter();
+	pchar.Dialog.Filename = "SelfWait_dialog.c";
+    LAi_SetActorType(pchar);
+    locCameraSleep(true);
+
+	if(bSelfDialogTurn){
+		 LAi_CharacterSaveAy(pchar);
+		if (stf(pchar.chr_ai.type.ay) > 0)
+		{
+			CharacterTurnAy(pchar,  -PI + abs(stf(pchar.chr_ai.type.ay)));  // 180 == 1
+		}
+		else
+		{
+			CharacterTurnAy(pchar,  PI - abs(stf(pchar.chr_ai.type.ay)));  // 180 == 1
+		}
+	}
+
+    pchar.Dialog.CurrentNode = _CurrentNode;
+    LAi_ActorSelfDialog(pchar, "pchar_back_to_player");
 }
