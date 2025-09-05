@@ -21,7 +21,7 @@ void InitInterface_R(string iniName, ref chref)
 	MainChar = GetMainCharacter();
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	string mychrname = GetMyFullName(refUsedCharacter);
 	string offictype = "";
@@ -98,7 +98,7 @@ void DoIExit(int exitCode)
 	DelEventHandler("pressdown","GoToPerksWindow"); 			//added by Levis
 
 	//Levis make sure the contriblist is updated:
-	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList");
+	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList"));
 	
 	interfaceResultCommand = exitCode;
 // MAXIMUS interface MOD -->
@@ -158,7 +158,7 @@ void SetAbilitesList()
 	//First removed the old list:
 	SendMessage(&GameInterface,"lss",MSG_INTERFACE_SET_FORMATEDTEXT,"PERKSWINDOW","");
 	if(CheckAttribute(GameInterface,"perklist")) DeleteAttribute(GameInterface,"perklist");
-	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList");
+	if(CheckAttribute(refUsedCharacter,"ContribList")) DeleteAttribute(refUsedCharacter,"ContribList"));
 	
 	//Make the new list
 	int perksQ,i;
@@ -321,8 +321,7 @@ void DoViewDescribe()
 	else { namestring = namestring+" ("+GetPerkCost(strPerkName)+" "+TranslateString("", "Points")+")"; }
 	
 	//<--Levis add perk cost
-	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"PERK_NAME",0,"PerkName", namestring, FONT_NORMAL,
-		384,108, argb(255,255,255,255),0, SCRIPT_ALIGN_CENTER, true, 1.5, 420);
+	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"PERK_NAME",0,"PerkName", namestring, FONT_NORMAL, 300,115, argb(255,255,255,255),0, SCRIPT_ALIGN_CENTER, true, 1.0, 420);
 	SetNewPicture("PERK_IMAGE","interfaces\perks\128\\" + strPerkName + ".tga");
 
 	aref perkARef; makearef(perkARef, ChrPerksList.list.(strPerkName).condition);
@@ -388,7 +387,7 @@ void DoViewDescribe()
 	//Add min level -Levis
 	if(!CheckPerkRank(refUsedCharacter, strPerkName))
 	{
-		Description = Description + " Min Level: " + GetPerkRank(strPerkName);
+		Description = Description + " Min Level: " + GetPerkRank(strPerkName));
 	}
 	//Check for captains
 	if(!isOfficerPerk(refUsedCharacter, strPerkName))

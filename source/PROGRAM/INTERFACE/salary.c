@@ -25,7 +25,7 @@ void InitInterface_I(string iniName, int payment)
 	SetNodeUsing("CENTERBOUND", bNewInterface);
 	SetNodeUsing("TITLE", bNewInterface);
 	SetNodeUsing("FOREPICTURE", !bNewInterface);
-	CreateString(!bNewInterface, "ScreenTitle", XI_ConvertString(GameInterface.title), FONT_TITLE, COLOR_NORMAL, 320, 16, SCRIPT_ALIGN_CENTER, 1.0);
+	CreateString(!bNewInterface, "ScreenTitle", XI_ConvertString(GameInterface.title), FONT_TITLE, COLOR_NORMAL, 320, 80, SCRIPT_ALIGN_CENTER, 1.0);
 // <-- KK
 
 	nPaymentQ = payment;

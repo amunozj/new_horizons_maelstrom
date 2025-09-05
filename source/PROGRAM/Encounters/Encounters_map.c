@@ -60,23 +60,32 @@ bool GenerateMapEncounter(int iMapEncounterType, string sIslandID, ref iEncounte
 	bool bReturn = false;
 	int iNearIslandNation = PIRATE;
 
-	// NK 05-06-27 actually get island nation.
-
-	// trace("generatemapencounter: island: " + sIslandID)
-	if(sIslandID != WDM_NONE_ISLAND && sIslandID != "")
+	// Check that island ID is valid and not "mein2"
+	if (sIslandID != WDM_NONE_ISLAND && sIslandID != "")
 	{
-		if(!Island_IsEncountersEnable(sIslandID)) {	return false; }
+		string attrPath = "islands." + sIslandID + ".name";
 
-		ref isl = GetIslandByID(worldMap.islands.(sIslandID).name);
-		iNearIslandNation = sti(isl.smuggling_nation);
+		if (CheckAttribute(&worldMap, attrPath) && Island_IsEncountersEnable(sIslandID))
+		{
+			string islName = worldMap.islands.(sIslandID).name;
+			ref isl = GetIslandByID(islName);
+			if (CheckAttribute(isl, "smuggling_nation"))
+			{
+				iNearIslandNation = sti(isl.smuggling_nation);
+			}
+		}
+		else
+		{
+			Trace("WARNING: Invalid or disabled island in GenerateMapEncounter: " + sIslandID);
+			return false;
+		}
 	}
-	// NK <--
 
+	// Generate appropriate encounter type
 	switch(iMapEncounterType)
 	{
-		case WDM_ETYPE_MERCHANT:		// merchant ship
-		// NK add non-follow warfleets. 05-06-27
-			if(frnd() > ENC_NONFOLLOW_WARFLEET_CHANCE)
+		case WDM_ETYPE_MERCHANT:
+			if (frnd() > ENC_NONFOLLOW_WARFLEET_CHANCE)
 			{
 				bReturn = GenerateMapEncounter_Merchant(iNearIslandNation, iEncounter1);
 			}
@@ -84,37 +93,30 @@ bool GenerateMapEncounter(int iMapEncounterType, string sIslandID, ref iEncounte
 			{
 				bReturn = GenerateMapEncounter_War(iNearIslandNation, iEncounter1, -1);
 			}
-			// NK <--
 		break;
-		case WDM_ETYPE_FOLLOW:			// war ship
+
+		case WDM_ETYPE_FOLLOW:
 			bReturn = GenerateMapEncounter_War(iNearIslandNation, iEncounter1, GetMainCharacterIndex());
 		break;
-		case WDM_ETYPE_WARRING:			// 2 war (or 1 war and 1 trade, or 2 trade) ships in battle
+
+		case WDM_ETYPE_WARRING:
 			bReturn = GenerateMapEncounter_Battle(iNearIslandNation, iEncounter1, iEncounter2);
 		break;
 	}
 
-	if(!bReturn) return false;
+	if (!bReturn) return false;
 
 	ref rEncounter1, rEncounter2;
-	if(iEncounter1 != -1)
+	if (iEncounter1 != -1)
 	{
 		rEncounter1 = &MapEncounters[iEncounter1];
 		rEncounter1.GroupName = ENCOUNTER_GROUP + iEncounter1;
-		//Trace("rEncounter1.GroupName = " + rEncounter1.GroupName)
 	}
-	if(iEncounter2 != -1)
+	if (iEncounter2 != -1)
 	{
 		rEncounter2 = &MapEncounters[iEncounter2];
 		rEncounter2.GroupName = ENCOUNTER_GROUP + iEncounter2;
-		//Trace("rEncounter2.GroupName = " + rEncounter2.GroupName)
 	}
-
-	int i1 = iEncounter1;
-	int i2 = iEncounter2;
-
-	//Trace("Create encounter with slot " + iEncounter1 + ", Real = " + i1);
-	//Trace("Create encounter with slot " + iEncounter2 + ", Real = " + i2);
 
 	return true;
 }
@@ -291,7 +293,17 @@ bool GenerateMapEncounter_War(int iNearIslandNation, ref iEncounter, int iCharac
 	{
 		iEncounterType = FindEncounter(ENCOUNTER_WAR, sti(rEncounter.Nation)); if(iEncounterType == -1) return false;
 	}
+	
+	if (rand(100) < 2) // Mirsaneli add Silent Marry
+	{
+		iEncounterType = ENCOUNTER_TYPE_SM;
+		trace("Spawning SilentMarry via ENCOUNTER_TYPE_SM");
+		ref pchar = GetMainCharacter();
+		pchar.forceShipID = "SilentMarry";
 
+		rEncounter.Nation = SPAIN; // Force nation to Spain
+	}
+	
 	rEncounter.RealEncounterType = iEncounterType;
 	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 4);
 

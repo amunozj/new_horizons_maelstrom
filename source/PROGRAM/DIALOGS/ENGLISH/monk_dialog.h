@@ -10,7 +10,7 @@ string DLG_TEXT[89] = {
 "Good bye, Padre, or whatever you are...",
 "Ah, you again, do you have another answer for me? How DO I look?",
 "I don't know what you are, but you are not like the other monks I know I just can't shake tha feeling that yer too daft.",
-"Spy? Spy! I'm a monk, I live quite piously, I obey my elders, I say my prayers and I'm almost completely chaste. Please shut the %&$#s_hash_#@ up you pirate %&$#s_hash_#@!!!",
+"Spy? Spy! I'm a monk, I live quite piously, I obey my elders, I say my prayers and I'm almost completely chaste. Please shut the %%&$#s_hash_#@ up you pirate %%&$#s_hash_#@!!!",
 "Ok, calm down. I don't want to have any trouble. I'm leaving.",
 "Hey, you are unarmed. Shouldn't you be a little more careful talking in this way to an armed man?",
 "Ah, you again, haven't you learned your lesson?",

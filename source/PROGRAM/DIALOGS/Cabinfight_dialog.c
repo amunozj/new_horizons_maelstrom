@@ -100,46 +100,29 @@ void ProcessDialogEvent()
 	}
 //MAXIMUS: [if your crew and enemy's crew will be enough for two minimum crews, you will be able to take him as companion] <--
 
-//MAXIMUS: [if enemy captain is stronger than player, you'll fight with him] -->
-	if(makeint(CalcCharacterSkill(PChar, "Leadership")+CalcCharacterSkill(PChar, "Fencing")+CalcCharacterSkill(PChar, "Grappling"))>=makeint(CalcCharacterSkill(NPChar, "Leadership")+CalcCharacterSkill(NPChar, "Fencing")+CalcCharacterSkill(NPChar, "Grappling")))
-	{
-/*		if(CheckAttribute(boarding_enemy,"fight") && sti(boarding_enemy.fight)==1) bDeathFight = true;// if captain was created as fantom, but not by CreateTwinCharacter
-		else
-		{*/
-			if(IsCharacterPerkOn(PChar, "SwordplayProfessional") && IsCharacterPerkOn(PChar, "IronWill")) bDeathFight = false;
-			else
-			{
-				if(IsCharacterPerkOn(NPChar, "SwordplayProfessional") && IsCharacterPerkOn(NPChar, "IronWill")) bDeathFight = true;
-				else bDeathFight = false;
-			}
-//		}//MAXIMUS: eliminated, because we can make a proper officer from any fantom
-	}
-	else { bDeathFight = true; }
-
-	if (!CheckAttribute(NPChar,"questchar") && !CheckAttribute(NPChar,"reputation"))
-	{
-		NPChar.reputation = rand(20) + rand(20) + rand(20) + rand(20) + 5;	// If reputation not already set, this should give a random number between 5 and 85, biased towards average of 45 i.e. neutral
-trace("No reputation was assigned. Randomly assigning reputation " + NPChar.reputation);
-	}
-
-	if(GetCharacterShipClass(PChar) < (GetCharacterShipClass(boarding_enemy) - 1))	// GR: Enemy will surrender if your ship is at least 2 tiers bigger than his
-	{
-		bDeathFight = false;
-	}
-	if(HasSubStr(PChar.location, "shipdeck"))					// GR: Enemy will surrender if you're on deck, meaning the ship struck her colours before you boarded,
-	{										// and if the captain is honourable - good reputation and not a pirate
-		if(NPChar.nation != PIRATE && GetCharacterReputation(NPChar) >= REPUTATION_GOOD)
-		{
-			bDeathFight = false;
-		}
-	}
-	if(GetCharacterShipClass(boarding_enemy) < (GetCharacterShipClass(PChar) - 1))	// GR: Enemy will NOT surrender if his ship is at least 2 tiers bigger than yours - if you want such a ship, you must fight for it!
-	{
-		bDeathFight = true;
-	}
-
-	if(IsUsedAlliesModel(NPChar)) { bDeathFight = true; }//MAXIMUS: ally's twin will always be agressive [twin officers looks strange, not so?]
+//TY Changed to check on AI reputation, skills, and piracy, and random chance, to engage in extreme act of attacking after surrender.
+	bDeathFight = false;
+	//if(IsCharacterPerkOn(NPChar, "SwordplayProfessional"))
+	//{
+		//if(frnd() < 0.2)
+		//{
+			//if(GetCharacterReputation(PChar) > REPUTATION_NEUTRAL && GetCharacterReputation(NPChar) < REPUTATION_NEUTRAL)
+			//{bDeathFight = true;}
+			//if(GetCharacterReputation(PChar) < REPUTATION_NEUTRAL && GetCharacterReputation(NPChar) > REPUTATION_NEUTRAL)
+			//{bDeathFight = true;}
+		//}
+	//}
+	//if(sti(NPChar.nation) == PIRATE)
+	//{
+		//if(frnd() < 0.3)
+		//{
+			//bDeathFight = true;
+		//}
+	//}	
+	
+	//if(IsUsedAlliesModel(NPChar)) { bDeathFight = true; }//MAXIMUS: ally's twin will always be agressive [twin officers looks strange, not so?] TY after discussion generally people believe better to allow player to make choice of changing outfit or otherwise dealing with duplicates
 //MAXIMUS: [if enemy captain is stronger than player, you'll fight with him] <--
+	
 	if (strlower(GetAttribute(NPChar, "id")) == "quest trader") bDeathFight = true;	// GR: merchant whom you escorted and betrayed hates you
 	
 	// DeathDaisy: Persuasion tags for the skill checks, if enabled
@@ -512,11 +495,11 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 			Link.l1 = DLG_TEXT[35];
 			Link.l1.go = "price";
 			Link.l2 = DLG_TEXT[36];
-            Link.l2.go = "Exit_not_hire";
+			Link.l2.go = "Exit_not_hire";
 		break;
 
 		case "Exit_not_hire":
-			NPChar.greeting = "Gr_Dark Teacher";
+			NPChar.greeting = "Gr_Clauss"; // was "Gr_Dark Teacher" which is identical
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
@@ -741,8 +724,7 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 			}
 			if(bAllowCapture) // TIH allow to take as prisoner Aug24'06
 			{
-				if (NPChar.sex == "woman") Preprocessor_Add("pronoun3", XI_ConvertString("her"));
-				else Preprocessor_Add("pronoun3", XI_ConvertString("his"));
+				Preprocessor_Add("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 				link.l4 = DLG_TEXT[76];
 				link.l4.go = "take_as_prisoner";
 			}
@@ -788,17 +770,17 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 				PlayStereoSound("INTERFACE\important_item.wav");
 //				GiveItem2Character(PChar, NPSword);
 				stuff_idx = GetItemIndex(NPSword);
-				if(stuff_idx >= 0) stuff_given = TranslateString("a",Items[stuff_idx].name);
+				if(stuff_idx >= 0) stuff_given = XI_ConvertString("a") + " " + TranslateString("",Items[stuff_idx].name);
 				else stuff_given = "INVALID BLADE '" + NPSword + "'";
 			}
 			if(NPGun != "")
 			{
 //				GiveItem2Character(PChar, NPGun);
 				stuff_idx = GetItemIndex(NPGUN);
-				if(stuff_idx >= 0) stuff_given = stuff_given + " " + XI_ConvertString("and") + " " + TranslateString("a",Items[stuff_idx].name);
+				if(stuff_idx >= 0) stuff_given = stuff_given + " " + XI_ConvertString("and") + " " + XI_ConvertString("a") + " " + TranslateString("",Items[stuff_idx].name);
 				else stuff_given = stuff_given + ", INVALID GUN '" + NPGun + "'";
 			}
-			traceandlog(TranslateString("","You got ") + stuff_given + ".");
+			traceandlog(TranslateString("","You got") + " " + stuff_given + ".");
 
 			switch(Rand(1))
 		    	{
@@ -946,7 +928,7 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 			} // MAXIMUS 28.07.2006 [so, these sections were removed from Reinit.c] <--
 			bCrewCaptured = true;// sets a global
 			realCrew = GetCrewQuantity(PChar);
-			dialog.text = DLG_TEXT[96];
+			dialog.text = DLG_TEXT[97];
 			if(bAllowRelease) // TIH allow to release free Aug24'06
 			{
 				link.l1 = DLG_TEXT[71];
@@ -959,6 +941,7 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 			}
 			if(bAllowCapture) // TIH allow to take as prisoner Aug24'06
 			{
+				Preprocessor_Add("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 				link.l3 = DLG_TEXT[76];
 				link.l3.go = "take_as_prisoner";
 			}
@@ -995,6 +978,7 @@ trace("No reputation was assigned. Randomly assigning reputation " + NPChar.repu
 			}
 			if(bAllowCapture) // TIH allow to take as prisoner Aug24'06
 			{
+				Preprocessor_Add("pronoun3", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 				link.l3 = DLG_TEXT[76];
 				link.l3.go = "take_as_prisoner";
 			}

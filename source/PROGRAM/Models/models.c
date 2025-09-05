@@ -10,10 +10,20 @@ void SetModel(ref chr, string model, string ani, string sex, float height, bool 
 	}
 // <-- KK
 
-	if (ani == "") ani = DEFAULT_ANI;
+	if (ani == "") {
+            ani = DEFAULT_ANI;
+	}
 	chr.model.animation = ani;
 
-	if(sex == "") sex = DEFAULT_ANI;
+	if(sex == "") {
+            sex = DEFAULT_ANI;
+	}
+	else {
+        if (sex == "building") {
+            sex = "man";
+            chr.model.animation = "building";
+        }
+	}
 	chr.sex = sex;
 
 // KK -->
@@ -689,6 +699,10 @@ void InitCharacterModel(ref model)
 			model.id = model.model; // just in case someone defines model.model and not model.id
 		else
 			model.model = model.id;
+	}
+	if (model.sex == "building") {
+        model.sex = "man";
+        model.ani = "building";
 	}
 }
 

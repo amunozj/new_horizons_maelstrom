@@ -340,7 +340,7 @@ void LocationInitCCCLocations(ref n)
 
 	//ID
 	Locations[n].id = "Oxbay_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";
@@ -535,7 +535,7 @@ void LocationInitCCCLocations(ref n)
 
 	//ID
 	Locations[n].id = "greenford_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";

@@ -141,14 +141,16 @@ void LocationInitguadeloupe(ref n)
 
 	Locations[n].reload.l12.go = "";//House
 	Locations[n].reload.l12.emerge = "reload1";
-	Locations[n].reload.l12.label = "House.";
+//	Locations[n].reload.l12.label = "House."; // Not translated despite being in "interface_strings.txt"
+	Locations[n].reload.l12.label = "";
 	Locations[n].reload.l12.disable = 1;
 	Locations[n].reload.l12.name = "houseS3";
 	Locations[n].reload.l12.autoreload = "0";
 
 	Locations[n].reload.l13.go = "";//House
 	Locations[n].reload.l13.emerge = "reload1";
-	Locations[n].reload.l13.label = "House.";
+//	Locations[n].reload.l13.label = "House."; // Not translated despite being in "interface_strings.txt"
+	Locations[n].reload.l13.label = "";
 	Locations[n].reload.l13.disable = 1;
 	Locations[n].reload.l13.name = "houseH1";
 	Locations[n].reload.l13.autoreload = "0";
@@ -860,6 +862,7 @@ void LocationInitguadeloupe(ref n)
 	Locations[n].reload.l1.emerge = "Reloadc2"; // was "reload1";
 	Locations[n].reload.l1.autoreload = "0";
 	Locations[n].reload.l1.label = "Fort."; // was "Plantation.";
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l1.goto_disable = 1; // Screwface: Disable Go-To location
 
 	Locations[n].reload.l2.name = "Reload2";
 	Locations[n].reload.l2.go = "Guadeloupe_Jungle_01";
@@ -1070,7 +1073,7 @@ void LocationInitguadeloupe(ref n)
 	// ccc fake forts--------------------------------------
 	//ID
 	Locations[n].id = "Guadeloupe_fakefort1";		//new ID
-	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate 
+	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";	//A warning sign at the gate :)
 	//Info
 	Locations[n].filespath.models = "locations\Fort_inside\Fort_1";
 	Locations[n].image = "Fort_Inside_Fort_1.tga";

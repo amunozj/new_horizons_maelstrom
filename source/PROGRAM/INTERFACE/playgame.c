@@ -6,7 +6,7 @@ void InitInterface_R(string iniName, ref chref)
 	rEnemyChr = chref;
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0)
 	SetEventHandler("exitCancel","ProcessCancelExit",0);

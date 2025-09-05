@@ -8,7 +8,7 @@ void InitInterface(string iniName)
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 	lngFileID = LanguageOpenFile("about_build.txt");
 
-	CreateExitString();
+	// CreateExitString();
 	ProcessShowMain();
 
 	SetEventHandler("ievnt_command","ProcessCommandExecute",0);
@@ -27,7 +27,7 @@ void ProcessShowMain()
 	{
 		string nodes = "B_"+i;
 		SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,nodes,0,
-			"DescName", LanguageConvertString(lngFileID,nodes), FONT_NORMAL,
+			"DescName", LanguageConvertString(lngFileID,nodes), FONT_SEADOGS,
 			0,curPos, COLOR_RED_LIGHT,0, SCRIPT_ALIGN_LEFT, true, 1.0, 420);
 		curPos = curPos + 40;
 	}
@@ -36,15 +36,14 @@ void ProcessShowMain()
 
 void ReturnToMainView()
 {
-	CreateString(true,"DescribeName","Build "+BUILDVERSION,FONT_NORMAL,COLOR_MONEY,385,50,SCRIPT_ALIGN_CENTER,0.7);
-	CreateString(true,"Info_0",LanguageConvertString(lngFileID,"B_10"),FONT_NORMAL,COLOR_MONEY,385,374,SCRIPT_ALIGN_CENTER,0.7);
-	CreateString(true,"Info_1",LanguageConvertString(lngFileID,"About_Build_10_1"),FONT_NORMAL,COLOR_NORMAL,300,396,SCRIPT_ALIGN_RIGHT,0.7);
-	CreateString(true,"Info_2",LanguageConvertString(lngFileID,"About_Build_10_2"),FONT_NORMAL,COLOR_NORMAL,300,418,SCRIPT_ALIGN_RIGHT,0.7);
-	CreateString(true,"Info_3",LanguageConvertString(lngFileID,"About_Build_10_3"),FONT_NORMAL,COLOR_NORMAL,300,440,SCRIPT_ALIGN_RIGHT,0.7);
-	CreateString(true,"Info_1_1"," http://"+PA_INET,FONT_NORMAL,COLOR_BLUE_LIGHT,300,396,SCRIPT_ALIGN_LEFT,0.7);
-	CreateString(true,"Info_2_1"," http://"+PA_DOWN,FONT_NORMAL,COLOR_BLUE_LIGHT,300,418,SCRIPT_ALIGN_LEFT,0.7);
-	CreateString(true,"Info_3_1"," http://"+PA_WALK,FONT_NORMAL,COLOR_BLUE_LIGHT,300,440,SCRIPT_ALIGN_LEFT,0.7);
-	CreateString(true,"Maelstrom",MAELSTROM,FONT_NORMAL,COLOR_BLUE_LIGHT,300,440,SCRIPT_ALIGN_LEFT,0.7);
+	CreateString(true,"DescribeName","Build "+BUILDVERSION,FONT_SEADOGS,COLOR_MONEY,385,50,SCRIPT_ALIGN_CENTER,0.7);
+	CreateString(true,"Info_0",LanguageConvertString(lngFileID,"B_10"),FONT_SEADOGS,COLOR_MONEY,385,374,SCRIPT_ALIGN_CENTER,0.7);
+	CreateString(true,"Info_1",LanguageConvertString(lngFileID,"About_Build_10_1"),FONT_SEADOGS,COLOR_NORMAL,300,396,SCRIPT_ALIGN_RIGHT,0.7);
+	CreateString(true,"Info_2",LanguageConvertString(lngFileID,"About_Build_10_2"),FONT_SEADOGS,COLOR_NORMAL,300,418,SCRIPT_ALIGN_RIGHT,0.7);
+	CreateString(true,"Info_3",LanguageConvertString(lngFileID,"About_Build_10_3"),FONT_SEADOGS,COLOR_NORMAL,300,440,SCRIPT_ALIGN_RIGHT,0.7);
+	CreateString(true,"Info_1_1"," http://"+PA_INET,FONT_SEADOGS,COLOR_BLUE_LIGHT,300,396,SCRIPT_ALIGN_LEFT,0.7);
+	CreateString(true,"Info_2_1"," http://"+PA_DOWN,FONT_SEADOGS,COLOR_BLUE_LIGHT,300,418,SCRIPT_ALIGN_LEFT,0.7);
+	CreateString(true,"Info_3_1"," http://"+PA_WALK,FONT_SEADOGS,COLOR_BLUE_LIGHT,300,440,SCRIPT_ALIGN_LEFT,0.7);
 
 	string infoText = LanguageConvertString(lngFileID,"About_Build");
 	SetFormatedText("BUILD_DESCRIBE",infoText);

@@ -31,7 +31,7 @@ void InitInterface_R(string iniName,ref _refCharacter)
 	FillFourImages();
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	CreateString(true,"skillLeadership","",FONT_BOLD_NUMBERS,COLOR_NORMAL,300,232,SCRIPT_ALIGN_RIGHT,1.0);
 	CreateString(true,"skillFencing","",FONT_BOLD_NUMBERS,COLOR_NORMAL,300,266,SCRIPT_ALIGN_RIGHT,1.0);
@@ -44,7 +44,7 @@ void InitInterface_R(string iniName,ref _refCharacter)
 	CreateString(true,"skillCommerce","",FONT_BOLD_NUMBERS,COLOR_NORMAL,434,334,SCRIPT_ALIGN_RIGHT,1.0);
 	CreateString(true,"skillSneak","",FONT_BOLD_NUMBERS,COLOR_NORMAL,434,368,SCRIPT_ALIGN_RIGHT,1.0);
 
-	CreateString(false,"CharacterName","",FONT_NORMAL,COLOR_NORMAL,320,175,SCRIPT_ALIGN_CENTER,1.0); //Levis: Change 200 to 175 to make room for aboardagemode
+	CreateString(false,"CharacterName","",INTERFACE_COAS,COLOR_NORMAL,320,175,SCRIPT_ALIGN_CENTER,0.9); //Levis: Change 200 to 175 to make room for aboardagemode
 	CreateString(false,"CharacterNation","",FONT_NORMAL,COLOR_NORMAL,320,234,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(false,"RansomCost","0",FONT_NORMAL,COLOR_NORMAL,284,266,SCRIPT_ALIGN_LEFT,1.0); // was 320. NK 05-04-16
 
@@ -55,7 +55,7 @@ void InitInterface_R(string iniName,ref _refCharacter)
 	/* END MOD : Stone-D 01/08/2003 */
 	
 	//Levis: Show Aboardagemode
-	CreateString(false,"Aboardagemode","",FONT_SMALL,COLOR_NORMAL,320,200,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(false,"Aboardagemode","",INTERFACE_COAS,COLOR_NORMAL,320,200,SCRIPT_ALIGN_CENTER,0.8);	// Mirsaneli: smaller font
 	SetNewPicture("BOARDINGMODE0", "interfaces\Viper_IsOfficer.tga");
 	SetNewPicture("BOARDINGMODE1", "interfaces\Viper_IsOfficer.tga");
 	SetNewPicture("BOARDINGMODE2", "interfaces\Viper_IsOfficer.tga");
@@ -313,7 +313,7 @@ void DoScrollChange()
 			SetSelectable("EXECUTE_CAPTIVE",true);
 			/* END MOD : Stone-D 01/08/2003 */
 			SetSelectable("RELEASE_CAPTIVE",true); // NK alwasy can release 05-04-16
-			// ccc ransom options added Oct17 04.  Based on code by Stone-D and Nathan Kell, all credit and thanks to them 
+			// ccc ransom options added Oct17 04.  Based on code by Stone-D and Nathan Kell, all credit and thanks to them :)
 			//ccc if(true) // NK - if(GetRemovable(chPsgn)) //if( GetRemovable(chPsgn) && CheckAttribute(chPsgn,"nation") && chPsgn.nation==curLocNation )
 			// modified by NK in light of new release button. 05-04-16
 			bool allsites = RANSOMSITE == "all";
@@ -330,7 +330,7 @@ void DoScrollChange()
 			if(RELEASE_AT_SEA) ransomstate = ransomstate && FindLoadedLocation() != -1; // NK so if release_at_sea, we can only release, not ransom, at sea.
 			if(ransomstate) SetSelectable("RANSOM_CAPTIVE",true);
 			else SetSelectable("RANSOM_CAPTIVE", false);
-			// ccc ransom options end. Last lines are a bit crude coding but that way its more clear what I've messed up 
+			// ccc ransom options end. Last lines are a bit crude coding but that way its more clear what I've messed up ;)
 			}
 		}
 		SetCaptiveData(chPsgn);
@@ -1091,7 +1091,7 @@ void PressExecuteCaptive() // Sorry, no notes yet.
 	ref captiveCharacter = GetCharacter(captiveIdx);
 	ref pchar = GetMainCharacter(); // KK
 	// NK --> // KK -->
-	ChangeCharacterReputation(pchar, -5); // NK disable this. Rep doesn't have bigger changes later, so no reason why rep chg should be level-based
+	ChangeCharacterReputation(pchar, -5); // NK disable this. Rep doesn't have bigger changes later, so no reason why rep chg should be level-based. makeint(-5.0 * (1.0 + (sqrt(stf(captiveCharacter.rank))-1.0)/5.0)));
 	if (AUTO_SKILL_SYSTEM) {
 	  AddCharacterExpChar(pchar, "Defence", sti(captiveCharacter.ransom));
 	} else {

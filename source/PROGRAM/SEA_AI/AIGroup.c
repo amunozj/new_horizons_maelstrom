@@ -592,3 +592,42 @@ void Group_UpdateGroup(ref chr)
 	}*/
 }
 // <-- KK
+
+// boal 03/08/06
+int Group_GetLiveCharactersNum(string sGroupID)
+{
+	ref rGroup = Group_FindOrCreateGroup(sGroupID);
+	return (Group_GetCharactersNumR(rGroup) - Group_GetDeadCharactersNumR(rGroup));
+}
+
+void Group_Refresh_Engine_relations(string sGroupID)
+{
+	ref rGroup = Group_FindOrCreateGroup(sGroupID);
+	int iNum = Group_GetCharactersNumR(rGroup);
+	for (int i=0; i<iNum; i++)
+	{
+		int iCharacterIndex = Group_GetCharacterIndexR(rGroup, i);
+		if (iCharacterIndex < 0) continue;
+		if (sti(Characters[iCharacterIndex].Ship.Type) == SHIP_NOTUSED || LAi_IsDead(&Characters[iCharacterIndex])) continue;
+
+		ChangeCharacterShipGroup(&Characters[iCharacterIndex], sGroupID);   //forces a refresh of relations via group commander
+	}
+}
+
+void Group_SetNeutralToCharacter(string sGroupID, int iEnemyToCharacter)
+{
+	int iGroupIndex = Group_FindGroup(sGroupID);
+	if (iGroupIndex < 0) { return; }
+
+	ref rGroup = Group_GetGroupByIndex(iGroupIndex);
+
+	int i = 0;
+	int iNumDeadCharacters = 0;
+	while (true)
+	{
+		int iCharacterIndex = Group_GetCharacterIndexR(rGroup, i);
+		if (iCharacterIndex < 0) { break; }
+		SetCharacterRelationBoth(iEnemyToCharacter, iCharacterIndex, RELATION_NEUTRAL);
+		i++;
+	}
+}

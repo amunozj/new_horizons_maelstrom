@@ -1,4 +1,4 @@
-string DLG_TEXT[189] = {
+string DLG_TEXT[194] = {
 "I'm told you've gone to great lengths to request an audience. My name is ",
 ". Now, if you please, tell me the purpose of your visit, ",
 ".",
@@ -12,7 +12,7 @@ string DLG_TEXT[189] = {
 "I'm just here to pay my respects, #saddr#. Nothing more.",
 "In that case, please leave my study and let me get back to more important matters.",
 "Yes, of course. Sorry I disturbed you.",
-"I'm sorry, but I don't have anything to talk about right now",
+"I'm sorry, but I don't have anything to talk about right now.",
 "Oh yes? There are some hostiles in our waters.",
 "Those hostiles sound interesting.",
 "I have learned that you completed the task successfully; my congratulations, captain! Here is your reward.",
@@ -188,4 +188,9 @@ string DLG_TEXT[189] = {
 ", and now you want more! But I am not unreasonable. You should not be left out of pocket after such a service.\nVery well, you can have an extra ",
 ". That, plus what you have already been paid, will cover your debt and still leave you with a reward.",
 "Thank you, your Excellency.",
+"Well? What have you to report about your mission?",
+"Excellency, I am sorry to report that I have been unable to find the ",
+".",
+"It may interest you to know that while you were failing to find the ",
+", she was plundering another of our ships. She has now escaped. This failure will be noted on your record.",
 };

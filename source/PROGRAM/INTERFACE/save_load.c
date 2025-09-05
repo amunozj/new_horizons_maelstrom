@@ -144,19 +144,15 @@ void InitInterface_B(string iniName, bool isSave)
 	SaveLoadFillScroll();
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
-	CreateString(true,"SaveName","",FONT_NORMAL,COLOR_NORMAL,50,330,SCRIPT_ALIGN_LEFT,1.0);
+	CreateString(true,"SaveName","",INTERFACE_COAS,COLOR_NORMAL,34,330,SCRIPT_ALIGN_LEFT,0.8);
 // KK -->
-	CreateString(false,"NoSave","",FONT_NORMAL,COLOR_NORMAL,320,360,SCRIPT_ALIGN_CENTER,0.75); // NK for nosave mod
-	CreateString(true, "Storyline_Profile", TranslateString("", "Storyline") + ": " + GetStorylineTitle(iCurStoryline) + ";  " + TranslateString("", "Profile") + ": " + FirstLetterUp(sCurProfile), FONT_NORMAL, COLOR_NORMAL, 34, 384, SCRIPT_ALIGN_LEFT, 1.0);
-	CreateString(true, "ScreenTitle", "", FONT_TITLE, COLOR_NORMAL, 320, 6, SCRIPT_ALIGN_CENTER, 1.0);
-	CreateString(false, "Storyline_selection", TranslateString("", "Storyline") + ":", FONT_NORMAL, COLOR_NORMAL, 70, 62, SCRIPT_ALIGN_LEFT, 1.0);
-	CreateString(false, "StorylineTitle", "", FONT_NORMAL, COLOR_NORMAL, 370, 62, SCRIPT_ALIGN_CENTER, 1.0);
-	for (i = 0; i < PROFILE_LIST_SIZE; i++) {
-		CreateString(false, "ProfileName" + (i + 1), "", FONT_NORMAL, COLOR_NORMAL, 30, 125 + (i * 33), SCRIPT_ALIGN_LEFT, 1.0);
-	}
-	CreateString(false, "ProfileTitle", "", FONT_NORMAL, COLOR_NORMAL, 500, 120, SCRIPT_ALIGN_CENTER, 1.0);
-	CreateString(false, "ProfileSaves", "", FONT_NORMAL, COLOR_NORMAL, 240, 260, SCRIPT_ALIGN_LEFT, 1.0);
-	CreateExitString();// MAXIMUS
+	CreateString(false,"NoSave","",INTERFACE_COAS,COLOR_NORMAL,320,360,SCRIPT_ALIGN_CENTER,0.75); // NK for nosave mod
+	CreateString(true, "Storyline_Profile", TranslateString("", "Storyline") + ": " + GetStorylineTitle(iCurStoryline) + ";  " + TranslateString("", "Profile") + ": " + FirstLetterUp(sCurProfile), INTERFACE_COAS, COLOR_NORMAL, 34, 384, SCRIPT_ALIGN_LEFT, 0.8);
+	CreateString(true, "ScreenTitle", "", FONT_TITLE, COLOR_NORMAL, 320, 5, SCRIPT_ALIGN_CENTER, 0.8);
+	CreateString(false, "Storyline_selection", TranslateString("", "Storyline") + ":", INTERFACE_COAS, COLOR_NORMAL, 100, 64, SCRIPT_ALIGN_LEFT, 1.0);
+	CreateString(false, "StorylineTitle", "", INTERFACE_COAS, COLOR_NORMAL, 370, 62, SCRIPT_ALIGN_CENTER, 1.2);
+	CreateString(false, "ProfileSaves", "", INTERFACE_COAS, COLOR_NORMAL, 240, 260, SCRIPT_ALIGN_LEFT, 0.8);
+	// CreateExitString();// MAXIMUS
 
 	if (bThisSave) {
 		GameInterface.strings.ScreenTitle = XI_ConvertString("titleSave");
@@ -171,7 +167,7 @@ void InitInterface_B(string iniName, bool isSave)
 	{
 		string sFreeSpace = "Free Space: "+FreeSpace+" blocks";
 		if(FreeSpace>50000) sFreeSpace = "Free Space: 50000+ blocks";
-		CreateString(true,"FreeSpace",sFreeSpace,FONT_NORMAL,COLOR_NORMAL,320,178,SCRIPT_ALIGN_CENTER,1.0);
+		CreateString(true,"FreeSpace",sFreeSpace,INTERFACE_COAS,COLOR_NORMAL,320,178,SCRIPT_ALIGN_CENTER,1.0);
 		SetNodeUsing("FREESPACE_IMG",true);
 	}
 
@@ -1065,7 +1061,7 @@ ref NewInterfaceTexture()
 {
 	string str = GetEventData();
 	string strSaveData = ""; // TIH initialize it Aug24'06
-//	if(str!="quicksave") // NK 05-04-14 fix quicksave "out of memory" error //MAXIMUS
+//	if(str!="quicksave")) // NK 05-04-14 fix quicksave "out of memory" error //MAXIMUS
 //	{
 	if (GetTargetPlatform()=="pc") {
 		sl_tmp_var = SendMessage(&scrshot,"lsse", MSG_SCRSHOT_READ, GetSaveDirectory() + GetStorylineDir(iCurStoryline), str, &strSaveData);
@@ -1091,17 +1087,17 @@ void FindScrshotClass()
 	if (bSeaActive && !bAbordageStarted) layerName = SEA_REALIZE;
 // <-- KK
 	aref refObj;
-	if(GetEntity(layerName,&refObj))
+	if(GetEntityByName(layerName, "scrshoter", &refObj))
 	{
-		while(true)
-		{
-			if(GetEntityName(&refObj)=="scrshoter")
-			{
+		//while(true)
+		//{
+		//	if(GetEntityName(&refObj)=="scrshoter")
+		//	{
 				scrshot = refObj;
-				break;
-			}
-			if(!GetEntityNext(&refObj)) break;
-		}
+		//		break;
+		//	}
+		//	if(!GetEntityNext(&refObj)) break;
+		//}
 	}
 }
 
@@ -1283,7 +1279,7 @@ void StartSelectProfileScreen()
 
 	GameInterface.strings.ScreenTitle = XI_ConvertString("titleGameProfile");
 	SetNodeUsing("PROFILESRECTANGLE", true);
-	SetNodeUsing("PROFILESBOUND", true);
+	// SetNodeUsing("PROFILESBOUND", true);
 	EnableString("Storyline_selection");
 	GameInterface.strings.StorylineTitle = GetStorylineTitle(iShowStoryline);
 	EnableString("StorylineTitle");
@@ -1347,7 +1343,7 @@ void StartActiveProfileScreen()
 
 	GameInterface.strings.ScreenTitle = XI_ConvertString("titleGameProfile");
 	SetNodeUsing("PROFILESRECTANGLE", true);
-	SetNodeUsing("PROFILESBOUND", true);
+	// SetNodeUsing("PROFILESBOUND", true);
 	EnableString("Storyline_selection");
 	GameInterface.strings.StorylineTitle = GetStorylineTitle(FindCurrentStoryline());
 	EnableString("StorylineTitle");
@@ -1434,7 +1430,7 @@ trace("ShowProfile: prop btnidx="+btnidx);
 void EndSelectProfilesScreen()
 {
 	SetNodeUsing("PROFILESRECTANGLE", false);
-	SetNodeUsing("PROFILESBOUND", false);
+	// SetNodeUsing("PROFILESBOUND", false);
 	DisableString("Storyline_selection");
 	DisableString("StorylineTitle");
 	SetNodeUsing("STORYLINES_BACKGROUND", false);

@@ -211,6 +211,41 @@ void CreateGuadeloupeCharacters(ref n)
 	ch.greeting = "Gr_Francois de Vigny";
 	AddGameCharacter(n, ch);
 
+	// Pointe a Pitre Mistress
+	ch.old.name		= "Amarante";
+	ch.old.lastname		= "Bontin";
+	ch.name			= TranslateString("", "Amarante");
+	ch.lastname		= TranslateString("", "Bontin");
+	ch.id			= "PaP_Mistress";
+	ch.model		= "Brinkley";
+	ch.sound_type		= "female_citizen";
+	ch.sex			= "woman";
+	GiveItem2Character(ch, "Piratesdagger");
+	ch.location		= "PaP_Brothel";
+	ch.location.group 	= "goto";
+	ch.location.locator 	= "goto3";
+	ch.Dialog.Filename 	= "mistress_dialog.c";
+	ch.greeting		= "Gr_Brothel's mom";//MAXIMUS
+	ch.rank			= 1;
+	ch.experience		= "10000";
+	ch.skill.Leadership	= "1";
+	ch.skill.Fencing	= "10";
+	ch.skill.Sailing	= "1";
+	ch.skill.Accuracy	= "10";
+	ch.skill.Cannons	= "1";
+	ch.skill.Grappling	= "1";
+	ch.skill.Repair		= "1";
+	ch.skill.Defence	= "10";
+	ch.skill.Commerce	= "1";
+	ch.skill.Sneak		= "10";
+	ch.money		= "1000";
+	LAi_SetHP(ch, 1500.0, 1500.0);
+	LAi_SetWarriorType(ch);
+	LAi_warrior_DialogEnable(ch, true);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
+	AddGameCharacter(n, ch);
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// SOLDIERS
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -515,7 +550,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 22.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -553,7 +588,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 22.0, 1.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -591,7 +626,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 22.0, 1.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -629,7 +664,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 22.0, 1.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -667,7 +702,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 22.0, 1.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -705,7 +740,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 2.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 	AddGameCharacter(n, ch);
 
@@ -747,7 +782,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 2.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -785,7 +820,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 2.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -823,7 +858,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 2.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -861,7 +896,7 @@ void CreateGuadeloupeCharacters(ref n)
 	LAi_SetLoginTime(ch, 2.0, 5.98333);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "FRANCE_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_falaise de fleur soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 // Screwface : old Pointe_a_pitre_town_01 guards reassign to Entrance of fort

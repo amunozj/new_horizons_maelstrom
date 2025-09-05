@@ -425,15 +425,55 @@ float Cannon_GetRechargeTime()
 // calculate delay before fire
 float Cannon_GetFireTime()
 {
-	aref aCharacter = GetEventData();
+    aref aCharacter = GetEventData();
+    int seq = GetEventData();
+    string bort = GetEventData();
+    int perDeck = GetEventData();
+    int nCount = GetEventData();
 
-	float fCannonSkill = stf(aCharacter.TmpSkill.Cannons);
-	float fFireTime = 1.3 - fCannonSkill;
-	fFireTime = fFireTime * Bring2RangeNoCheck(3.0, 1.0, 0.0, 1.0, stf(aCharacter.Ship.Crew.MinRatio));
-	fFireTime = frnd() * fFireTime * 6.0;
-	if(iRealismMode == 0) { fFireTime = fFireTime * ARCADE_MULT_CANNONS; } // NK
-	aCharacter.canfiretime = fFireTime; // NK 05-04-18
-	return fFireTime;
+    // make 20 seconds random delay between fire from fort cannons
+    if (bort == "fort") { 
+        return frnd() * 20.0; 
+    }
+
+    float fCannonSkill = stf(aCharacter.TmpSkill.Cannons);
+    float fFireTime = 1.3 - fCannonSkill;
+    fFireTime *= Bring2RangeNoCheck(3.0, 1.0, 0.0, 1.0, stf(aCharacter.Ship.Crew.MinRatio));
+
+    float skillRange = 1.0;
+    float mult = 1.0;
+
+    // Updated condition: allow sequential fire in arcade mode if enabled
+    if (SEQUENTIAL_CANNONFIRE == 0 || nCount < 9) {
+        skillRange = Bring2Range(4.0, 1.0, 0.0, 1.0, fCannonSkill);
+
+        if(iRealismMode == 0) { // Arcade mode
+            mult = 8.0 + skillRange;
+            fFireTime *= ARCADE_MULT_CANNONS;
+        } else { // Realistic or Iron Man
+            mult = 4.0 + skillRange;
+        }
+
+        fFireTime = frnd() * fFireTime * mult;
+    }
+    else {
+        // Sequential cannon fire logic
+        skillRange = (1.0 - fCannonSkill) / 2.0;
+        mult = 0.25 + skillRange;
+
+        if (perDeck == 0)
+            perDeck = 20;
+
+        seq = seq % perDeck;
+        fFireTime = frnd() * fFireTime * mult + (mult * seq);
+
+        if (iRealismMode == 0) { // Arcade multiplier in sequential mode
+            fFireTime *= ARCADE_MULT_CANNONS;
+        }
+    }
+
+    aCharacter.canfiretime = fFireTime; // NK 05-04-18
+    return fFireTime;
 }
 
 void Cannon_FireCannon()
@@ -556,7 +596,7 @@ float Cannon_DamageEvent()
 	{
 		fCurDamage = 1.0;
 		CreateBlast(x,y,z);
-		CreateParticleSystem("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);
+		CreateParticleSystemXPS("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);
 		Play3DSound("cannon_explosion", x, y, z);
 		if (sti(aCharacter.index) == GetMainCharacterIndex())
 		{

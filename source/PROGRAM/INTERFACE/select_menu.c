@@ -27,7 +27,7 @@ void InitInterface(string iniName)
 //	GameInterface.title = "titleSelect";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	CreateString(true,"CharactersTitle","",FONT_NORMAL,COLOR_NORMAL,165,58,SCRIPT_ALIGN_CENTER,1.0);
 	GameInterface.strings.CharactersTitle = "Characters";

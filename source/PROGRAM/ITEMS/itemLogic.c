@@ -23,7 +23,7 @@ void Items_LoadModel (ref _itemModel, ref _item)
 		CreateEntity(&_itemModel, "MODELR");
 		if (CheckAttribute(_item, "folder"))
 			itemFolder = _item.folder;
-		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\\"); 
+		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\\"); // qf)")
 		SendMessage(&_itemModel, "ls", MSG_MODEL_LOAD_GEO, itemFolder + "\\" + _item.model);
 		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH,"");
 		// NK set blades diff -->
@@ -570,7 +570,7 @@ void Items_ShowItem(int _itemN)
 		Items_LoadModel(&itemModels[_itemN], &Items[_itemN]);
 
 		if (!FindLocator(Items[_itemN].startLocation, Items[_itemN].startLocator, &al, true))
-			Trace("ItemLogic: locator for item "+_itemN+" not found! "+Items[_itemN].startLocation+">>"+Items[_itemN].startLocator);
+			Trace("ItemLogic: locator for item "+_itemN+" not found! ["+Items[_itemN].startLocation+">>"+Items[_itemN].startLocator);
 		Trace ("ItemLogic: showing item at "+al.x+", "+al.y+", "+al.z);
 		SendMessage(&itemModels[_itemN], "lffffffffffff", MSG_MODEL_SET_POSITION, makeFloat(al.x), makeFloat(al.y), makeFloat(al.z), makeFloat(al.vx.x), makeFloat(al.vx.y), -makeFloat(al.vx.z), makeFloat(al.vy.x), makeFloat(al.vy.y), -makeFloat(al.vy.z), makeFloat(al.vz.x), makeFloat(al.vz.y), -makeFloat(al.vz.z));
 	}
@@ -600,7 +600,7 @@ void Items_HideItem(int itemN)
 int Items_FindItem(string itemID, ref itemARef)
 {
 	// NK -->
-	// 04-09-08 let's try again. 
+	// 04-09-08 let's try again. :)
 	/*aref curItem;
 	for(int i=0; i<ITEMS_QUANTITY; i++)
 	{
@@ -977,7 +977,7 @@ void Box_EnterToLocator(aref loc, string locName)
 		PlaySound("people\step_sand.wav");
 		Logit(TranslateString("","Looks like someone has been digging here.."));
 		if(GetCharacterEquipByGroup(chr,BLADE_ITEM_TYPE) == "Minersspade" && CheckCharacterItem(chr, "Minersspade"))
-			Logit(TranslateString("","Do you want to dig as well? With your ") + GetItemNameByID(chr.equip.blade) + "???");
+			Logit(TranslateString("","Do you want to dig as well? With your ") + GetItemNameByID(chr.equip.blade) + "???"));
 		else
 			LogIt(TranslateString("","What am I going to dig with? My HANDS? I need a spade!"));
 	}
@@ -1632,7 +1632,7 @@ void OpenBoxProcedure()
 					BLI_RefreshCommandMenu();
 
 					DeleteAttribute(chr, "required_item."+loc);
-					DeleteAttribute(chr, "digging");
+					DeleteAttribute(chr, "digging"));
 					DeleteAttribute(chr, "treasureloc");
 
 					LaunchItemsBox(&ar);
@@ -2002,7 +2002,7 @@ void OpenBoxProcedure()
 				BLI_RefreshCommandMenu();
 
 				DeleteAttribute(chr, "required_item");
-				DeleteAttribute(chr, "digging");
+				DeleteAttribute(chr, "digging"));
 				DeleteAttribute(chr, "treasureloc");
 			}
 			// PB: Treasure Quests <--

@@ -29,6 +29,18 @@ void ProcessDialogEvent()
 					link.l1.go = "naval_part2";
 				break;
 
+				case PLAYER_TYPE_MERCHANT:
+					switch (GetMySimpleOldName(PChar))
+					{
+						case "Cutler Beckett":
+							Preprocessor_Add("sir", GetMyAddressForm(NPChar, PChar, ADDR_POLITE, false, false));
+    							dialog.text = DLG_TEXT[309];
+							link.l1 = DLG_TEXT[310];
+							link.l1.go = "stormystart";
+						break;
+					}
+				break;
+
 				case PLAYER_TYPE_ROGUE:
 					dialog.text = DLG_TEXT[247];
 					if(PChar.sex == "woman") link.l1 = DLG_TEXT[264];
@@ -49,13 +61,35 @@ void ProcessDialogEvent()
 				case PLAYER_TYPE_AGENT:
 					dialog.text = DLG_TEXT[251];
 					link.l1 = DLG_TEXT[252];
-					link.l1.go = "stormystart";
+					link.l1.go = "agent_start2";
+				break;
+
+				case PLAYER_TYPE_ADVENTURER:
+					switch (GetMySimpleOldName(PChar))
+					{
+						case "Purpure":
+							dialog.text = DLG_TEXT[313];
+							link.l1 = DLG_TEXT[314];
+							link.l1.go = "exit_Purpure_no_storm";
+							link.l2 = DLG_TEXT[315];
+							link.l2.go = "Purpure_storm";
+						break;
+					}
 				break;
 
 				case PLAYER_TYPE_SMUGGLER:
 					dialog.text = DLG_TEXT[253];
 					link.l1 = DLG_TEXT[254];
 					link.l1.go = "stormystart";
+					switch (GetMySimpleOldName(PChar))
+					{
+						case "Anamaria":
+							dialog.text = DLG_TEXT[290] + GetMyShipNameShow(PChar) + DLG_TEXT[291];
+							if (GetCharacterShipID(PChar) == "Tartane50") link.l1 = DLG_TEXT[292];
+							else link.l1 = DLG_TEXT[293];
+							AddDialogExitQuest("rename_PoTC");
+						break;
+					}
 				break;
 
 				case PLAYER_TYPE_CURSED:
@@ -89,12 +123,80 @@ void ProcessDialogEvent()
 					else
 						link.l1 = DLG_TEXT[261];
 					link.l1.go = "stormystart";
+					switch(GetMySimpleOldName(PChar))
+					{
+						case "Blackbeard":
+    							dialog.text = DLG_TEXT[300];
+    							link.l1 = DLG_TEXT[301];
+						break;
+
+						case "Eduardo Villanueva":
+							dialog.text = DLG_TEXT[302];
+							link.l1 = DLG_TEXT[303];
+							link.l1.go = "exit_Villanueva_options_open";
+							link.l2 = DLG_TEXT[304];
+							link.l2.go = "exit_Villanueva_Pirate";
+							link.l3 = DLG_TEXT[305];
+							link.l3.go = "exit_Villanueva_Spain";
+						break;
+
+						case "Sao Feng":
+    							dialog.text = DLG_TEXT[306];
+    							link.l1 = DLG_TEXT[307] + GetMyName(NPChar) + DLG_TEXT[308];
+    							link.l1.go = "stormystart";
+						break;
+					}
 				break;
 
 				case PLAYER_TYPE_CASTAWAY:
-					dialog.text = DLG_TEXT[262];
-					link.l1 = DLG_TEXT[263];
+					switch(GetMySimpleOldName(PChar))
+					{
+						case "Black Caesar":
+							dialog.text = DLG_TEXT[311];
+							link.l1 = DLG_TEXT[312];
+						break;
+						dialog.text = DLG_TEXT[262];
+						link.l1 = DLG_TEXT[263];
+					}
 					link.l1.go = "stormystart";
+				break;
+
+				case PLAYER_TYPE_REBEL:
+					switch(GetMySimpleOldName(PChar))
+					{
+						case "Dark Teacher":
+    							dialog.text = DLG_TEXT[296];
+    							link.l1 = DLG_TEXT[297];
+    							link.l1.go = "stormystart";
+						break;
+						dialog.text = DLG_TEXT[0];
+						link.l1 = DLG_TEXT[1];
+						link.l1.go = "intro2";
+						link.l2 = DLG_TEXT[2];
+						link.l2.go = "start1";
+						link.l3 = DLG_TEXT[3];
+						link.l3.go = "stormystart";
+					}
+				break;
+
+				case PLAYER_TYPE_SWORD_MASTER:
+					switch(GetMySimpleOldName(PChar))
+					{
+						case "Will Turner":
+							if (PChar.model == "will")
+							{
+	    							dialog.text = DLG_TEXT[294];
+    								link.l1 = DLG_TEXT[295];
+							}
+							else
+							{
+	    							dialog.text = DLG_TEXT[298];
+    								link.l1 = DLG_TEXT[299];
+							}
+							AddDialogExitQuest("rename_PoTC");
+    							link.l1.go = "stormystart";
+						break;
+					}
 				break;
 
 				dialog.text = DLG_TEXT[0];
@@ -1196,7 +1298,7 @@ void ProcessDialogEvent()
 			addDialogExitQuest("Tut_SkipTutorialOnShip");
 			NextDiag.Tempnode = "Questions";
 			dialog.text = DLG_TEXT[210];
-			if (GetCurrentFlag() == ENGLAND) dialog.text = dialog.text + "\n" + DLG_TEXT[211];
+//			if (GetCurrentFlag() == ENGLAND && GetServedNation() != ENGLAND) dialog.text = dialog.text + "\n" + DLG_TEXT[211];
 			dialog.text = dialog.text + DLG_TEXT[212];
 			link.l1 = DLG_TEXT[213];
 			link.l1.go = "Exit";
@@ -1496,6 +1598,65 @@ void ProcessDialogEvent()
 			dialog.text = DLG_TEXT[245] + GetMyAddressForm(NPChar, PChar, ADDR_CIVIL, false, true) + ".";
 			link.l1 = DLG_TEXT[246];
 			link.l1.go = "stormystart";
+		break;
+
+		case "agent_start2":
+			ref agent = CharacterFromID("TQ_Char1");
+			if (rand(100) < FEMALE_OFFICER_PERCENTAGE) agent.sex = "woman";
+			else agent.sex = "man";
+			// First set contact's real name according to real nation
+			agent.nation = NPChar.nation;
+			SetRandomNameToCharacter(agent);
+			agent.old.name = agent.name;
+			if (CheckAttribute(agent, "middlename")) agent.old.middlename = agent.middlename;
+			agent.old.lastname = agent.lastname;
+
+			// Now set contact's fake nation and name
+			agent.nation = FindEnemyNation2Nation(sti(NPChar.nation));
+			SetRandomNameToCharacter(agent);
+			PChar.quest.agent_start.officername = GetMyFullName(NPChar);
+
+			dialog.text = DLG_TEXT[283] + GetMySimpleName(agent) + DLG_TEXT[284] + FirstLetterUp(XI_ConvertString(GetMyPronounPossessive(agent))) + DLG_TEXT[285] + GetMySimpleOldName(agent) + DLG_TEXT[286] + (XI_ConvertString(GetMyPronounSubj(agent))) + DLG_TEXT[287] + FirstLetterUp(XI_ConvertString(GetMyPronounSubj(agent))) + DLG_TEXT[288];
+			link.l1 = DLG_TEXT[289];
+			link.l1.go = "stormystart";
+		break;
+
+		case "exit_Villanueva_options_open":
+			SetRank(PChar, SPAIN, 0);
+			SetServedNation(PIRATE);
+			SetRMRelation(PChar, PIRATE, REL_AMNESTY);
+			addDialogExitQuest("stormystart");
+			DialogExit();
+			bChangeNation = true;
+		break;
+
+		case "exit_Villanueva_Pirate":
+			SetServedNation(PIRATE);
+			if (HaveLetterOfMarque(SPAIN)) LeaveService(PChar, SPAIN, false);
+			addDialogExitQuest("stormystart");
+			DialogExit();
+			bChangeNation = true;
+		break;
+
+		case "exit_Villanueva_Spain":
+			SetRank(PChar, SPAIN, 0);
+			SetRelationsAsNation(SPAIN);
+			addDialogExitQuest("stormystart");
+			DialogExit();
+			bChangeNation = true;
+		break;
+
+		case "Purpure_storm":
+			dialog.text = DLG_TEXT[316];
+			link.l1 = DLG_TEXT[317];
+			link.l1.go = "stormystart";
+		break;
+
+		case "exit_Purpure_no_storm":
+			bDisableFastReload = 0;
+			addDialogExitQuest("Tut_SkipTutorialOnShip");
+			NextDiag.Tempnode = "Questions";
+			DialogExit();
 		break;
 		
 		case "exit":

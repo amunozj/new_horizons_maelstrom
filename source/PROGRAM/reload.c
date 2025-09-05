@@ -360,6 +360,8 @@ int Reload(aref reload_group, string locator_name, string current_location)
 
 void ReloadStartFade()
 {
+    //#20191123-01 Fix
+    DialogExit();
 	//ResetSoundScheme();
 	ResetSound();
 	PauseAllSounds();

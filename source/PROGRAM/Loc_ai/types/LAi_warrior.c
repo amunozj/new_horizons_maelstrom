@@ -58,8 +58,39 @@ void LAi_type_warrior_Init(aref chr)
 		if(!CheckAttribute(chr, "chr_ai.type.index")) chr.chr_ai.type.index = "";
 		if(!CheckAttribute(chr, "chr_ai.type.dialog")) chr.chr_ai.type.dialog = "0";
 	}
-	//”становим анимацию персонажу
-	LAi_SetDefaultStayAnimation(chr);
+	bool isMusk = false;
+		string sAni = "";
+	if (CheckAttribute(chr, "model.animation"))
+	{
+		sAni = strcut(chr.model.animation, 0, 8);
+		if (sAni == "mushketer")
+			isMusk = true;
+	}
+	if (isMusk && !CheckAttribute(chr, "isMusketer.weapon") && chr.index != getmaincharacterindex() && !isOfficer(chr))
+	{
+        while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
+        }
+        while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
+        }
+		GiveItem2Character(chr, "unarmed");
+		EquipCharacterbyItem(chr, "unarmed");
+		string sMush = "mushket";
+		if (chr.model == "MusketeerEnglish_2") sMush = "mushket2x2";
+		GiveItem2Character(chr, sMush);
+		EquipCharacterbyItem(chr, sMush);
+		chr.items.bullet = 300;
+		chr.isMusketer = true;
+		if (!CheckAttribute(chr, "MusketerDistance"))
+			chr.MusketerDistance = 10.0 + frand(10.0);
+	}
+	else
+	{
+		LAi_SetDefaultStayAnimation(chr);
+	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
@@ -106,7 +137,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 			}else{
 				//Ќатравливаем на новую цель
 				LAi_tmpl_SetFight(chr, &Characters[trg]);
-				if(rand(100) < 20)
+				if(rand(100) > 95)
 				{
 					LAi_type_warrior_PlaySound(chr);
 				}
@@ -147,7 +178,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		{
 			//Ќападаем на новую цель
 			LAi_tmpl_SetFight(chr, &Characters[trg]);
-			if(rand(100) < 70)
+			if(rand(100) > 95)
 			{
 				LAi_type_warrior_PlaySound(chr);
 			}
@@ -196,7 +227,7 @@ void LAi_type_warrior_NeedDialog(aref chr, aref by)
 
 //«апрос на диалог, если возвратить true то в этот момент можно начать диалог
 bool LAi_type_warrior_CanDialog(aref chr, aref by)
-{	
+{
 	if(sti(chr.chr_ai.type.dialog) == 0) return false;
 	//≈сли просто стоим, то согласимс€
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY) return true;
@@ -224,13 +255,13 @@ void LAi_type_warrior_EndDialog(aref chr, aref by)
 //ѕерсонаж атаковал другого персонажа
 void LAi_type_warrior_Attack(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
-	
+
 }
 
 //ѕерсонаж атоковал заблокировавшегос€ персонажа
 void LAi_type_warrior_Block(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
-	
+
 }
 
 //ѕерсонаж выстрелил
@@ -264,7 +295,7 @@ void LAi_type_warrior_Attacked(aref chr, aref by)
 		LAi_tmpl_SetFight(chr, by);*/
 //boal fix ai -->
     float dist = -1.0;
-	
+
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
@@ -273,7 +304,7 @@ void LAi_type_warrior_Attacked(aref chr, aref by)
     // boal <--
     // TIH reduced this repetitive sound by only doing it on change of target and less percent - Aug29'06
     if ( LAi_tmpl_fight_GetTarget(chr) != sti(by.index) ) {
-		if(rand(100) < 40)
+		if(rand(100) > 95)
 		{
 			LAi_type_warrior_PlaySound(chr);
 		}

@@ -22,6 +22,7 @@ void LAi_type_citizen_Init(aref chr)
 		LAi_tmpl_walk_InitTemplate(chr);
 	}	
 	chr.chr_ai.type.notalk = rand(10);
+	chr.chr_ai.type.checkFight = rand(5)+2;
 	//Установим анимацию персонажу
 	LAi_SetDefaultStayAnimation(chr);
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
@@ -30,6 +31,7 @@ void LAi_type_citizen_Init(aref chr)
 //Процессирование типа персонажа
 void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 {	
+	int i;
 	int trg = -1;
 	float time;
 	if(chr.chr_ai.tmpl == LAI_TMPL_WALK)
@@ -51,6 +53,41 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 			// NK 05-07-17 allow citizens to pause when player is near for dlg.
 			bool isDialog = false; // NK move here
 			time = stf(chr.chr_ai.type.notalk) - dltTime;
+			int num = FindNearCharacters(chr, 3.0, -1.0, -1.0, 0.001, true, true);
+			if (CheckAttribute(chr, "talker") && time < 10.0)
+			{
+				for(i = 0; i < num; i++)
+				{
+					idx = sti(chrFindNearCharacters[i].index);
+					if (idx == nMainCharacterIndex)
+					{
+						if (sti(chr.talker) > rand(10) && LAi_Character_CanDialog(chr, pchar))
+						{
+							LAi_tmpl_SetDialog(chr, pchar, -1.0);
+							DeleteAttribute(chr, "talker");
+							break;
+						}
+						else time = 50.0;
+					}
+				}
+			}
+			if (stf(chr.chr_ai.type.checkFight) < 0.0)
+			{
+				for(i = 0; i < num; i++)
+				{
+					idx = sti(chrFindNearCharacters[i].index);
+					by = &Characters[idx];
+					chr.chr_ai.type.checkFight = 1.5;
+					if (LAi_CheckFightMode(by))
+					{
+						LAi_tmpl_afraid_SetAfraidCharacter(chr, by, true);
+					}
+				}
+			}
+			else
+			{
+				chr.chr_ai.type.checkFight = stf(chr.chr_ai.type.checkFight) - dltTime;
+			}
 			if(time <= 0.0)
 			{
 				if(rand(100) < 10)

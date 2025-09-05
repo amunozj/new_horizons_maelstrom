@@ -183,7 +183,7 @@ void ProcessDialogEvent()
 // PB -->
 		//	Why bother doing all this? The guy is only ever at Martinique anyway
 		//	string island = FindIslandName(Islands[GetCharacterCurrentIsland(CharacterFromID("Raymond Bouchez"))].id); // KK
-		//	dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35] + XI_ConvertString(island) + ".";//MAXIMUS: just for eye-candy 
+		//	dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35] + XI_ConvertString(island) + ".";//MAXIMUS: just for eye-candy :)
 			dialog.text = DLG_TEXT[33] + GetCharacterFullName(DLG_TEXT[34]) + DLG_TEXT[35];
 // PB <--
 			link.l1 = DLG_TEXT[36];
@@ -279,6 +279,7 @@ void ProcessDialogEvent()
 			AddPassenger(pchar, npchar, 1);
 			OfficersReaction("bad");
 			pchar.quest.gambling_with_girl = "prisoned";
+			NPChar.quest.no_escape = true;	// GR: make sure she can't jump overboard and leave the quest uncompletable
 			DeleteAttribute(pchar,"quest.gambling_with_girl.guard");
 		break;
 	}

@@ -19,6 +19,34 @@ int Fantom_GenerateEncounter(string sGroupName, int iEType, int iNation) // NK /
 	int		iWarClassMax, iWarClassMin, iMerchantClassMax, iMerchantClassMin;
 
 	ref rCharacter = GetMainCharacter();
+	// Mirsaneli --> Inject SilentMarry if this is the special encounter type
+	/*
+	if (iEType == ENCOUNTER_TYPE_SM)
+	{
+		int iShipTypeSM = GetShipIndex("SilentMarry");
+		if (iShipTypeSM != INVALID_SHIP_TYPE)
+		{
+			iNation = SPAIN; // force nation here as well, just in case
+			Fantom_AddFantomCharacter(sGroupName, iShipTypeSM, "war", iEType, iNation);
+			trace("SilentMarry has been spawned from ENCOUNTER_TYPE_SM");
+
+			// --- FORCE STORMY WEATHER HERE ---
+			WeatherParams.Storm = true;
+			WeatherParams.Tornado = false;
+			Whr_GenerateValues(false); // Refresh values
+			Whr_UpdateWeather(true);   // Force apply weather system-wide
+			trace("SilentMarry triggered stormy weather!");
+
+			return 1;
+		}
+		else
+		{
+			trace("Failed to get SilentMarry ship index");
+			return 0;
+		}
+	}
+	*/
+	// <-- Silent Marry
 
 	makeref(rEnc, EncountersTypes[iEType]);
 	makearef(aWar, rEnc.War);
@@ -110,11 +138,30 @@ int Fantom_GenerateEncounter(string sGroupName, int iEType, int iNation) // NK /
 	if (iNumWarShips > 1)
 	{
 		if(iNumShips >= MAX_SHIPS_ON_SEA) return 0; // NK bugfix
-		iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation);
+
+		if (CheckAttribute(GetMainCharacter(), "forceShipID"))
+		{
+			string shipID = GetAttributeValue(GetMainCharacter(), "forceShipID");
+			if (shipID == "SilentMarry")
+			{
+				iShipType = GetShipIndex("SilentMarry");
+				DeleteAttribute(GetMainCharacter(), "forceShipID");
+				trace("SilentMarry has been injected into this encounter!");
+			}
+			else
+			{
+				iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation);
+			}
+		}
+		else
+		{
+			iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation);
+		}
+
 		if (iShipType != INVALID_SHIP_TYPE)
 		{
 			Fantom_AddFantomCharacter(sGroupName, iShipType, "war", iEType, iNation);
-			iLeadWarship =1;
+			iLeadWarship = 1;
 		}
 	}
 	
@@ -127,21 +174,41 @@ int Fantom_GenerateEncounter(string sGroupName, int iEType, int iNation) // NK /
 		Fantom_AddFantomCharacter(sGroupName, iShipType, "trade", iEType, iNation);
 	}
 
-	for (i=0; i<(iNumWarShips-iLeadWarship); i++)
+	for (i = 0; i < (iNumWarShips - iLeadWarship); i++)
+{
+	if (iNumShips + iNumMerchantShips + i >= MAX_SHIPS_ON_SEA) return iNumMerchantShips + i; // NK bugfix
+
+	if (CheckAttribute(GetMainCharacter(), "forceShipID"))
 	{
-		if(iNumShips + iNumMerchantShips + i >= MAX_SHIPS_ON_SEA) return iNumMerchantShips + i; // NK bugfix
-		iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation); // NK fixed to swap min,max 04-09-13 Change to Force
-
-		if(iShipType == GetShipIndex("FastGalleon4") && TreasureFleet == true)
+		shipID = GetAttributeValue(GetMainCharacter(), "forceShipID");
+		if (shipID == "SilentMarry")
 		{
-			trace("Fantom_GenerateEncounter: replacing FastGalleon4 with Mariana");
-			iShipType = GetShipIndex("Mariana");	// GR: use custom fast war galleon for treasure fleet
+			iShipType = GetShipIndex("SilentMarry");
+			DeleteAttribute(GetMainCharacter(), "forceShipID");
+			trace("SilentMarry has been injected into this war fleet!");
 		}
-
-		if (iShipType == INVALID_SHIP_TYPE) continue;
-		//Trace("War ship class = " + ShipsTypes[iShipType].Class + ", name = " + ShipsTypes[iShipType].Name);
-		Fantom_AddFantomCharacter(sGroupName, iShipType, "war", iEType, iNation);
+		else
+		{
+			iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation);
+		}
 	}
+	else
+	{
+		iShipType = Force_GetShipType(iWarClassMax, iWarClassMin, "War", iNation);
+	}
+
+	// Replace FastGalleon4 in treasure fleet with Mariana
+	if (iShipType == GetShipIndex("FastGalleon4") && TreasureFleet == true)
+	{
+		trace("Fantom_GenerateEncounter: replacing FastGalleon4 with Mariana");
+		iShipType = GetShipIndex("Mariana");
+	}
+
+	if (iShipType == INVALID_SHIP_TYPE) continue;
+
+	// Add the ship
+	Fantom_AddFantomCharacter(sGroupName, iShipType, "war", iEType, iNation);
+}
 	
 	// DeathDaisy: Save these data for the booty!
 	iGetNumMerchantShips = iNumMerchantShips;
@@ -698,7 +765,85 @@ void Fantom_SetCharacterGoods(ref rFantom, int iGoods, int iQuantity)
 }
 
 
+// START MOD Code by Stone-D : 01/08/2003
+// Sorry, no notes yet.
 
+// KK --> unused
+/*int skillbase = 1;
+
+void SD_GenSkills(ref NPchar) // This function is not yet 'set in stone', ongoing testing.
+{
+	aref NPSkill;
+	ref Pchar = GetMainCharacter();
+
+//	NPchar.name = NPchar.name + " SD"; // Holdover from earlier attempt so I could ID who was affected by this function.
+
+	int level, health, skillz, pointz, NPClass;
+
+	NPClass = GetCharacterShipClass(NPchar);
+	level = makeint((sti(Pchar.Rank)/2) + rand(sti(Pchar.Rank)+NPClass) + Rand(10)); // Nasty.
+	skillz = (level*2)+NPClass; // Yes, I'm cheating. So sue me.
+	pointz = level+NPClass; // Ditto.
+
+	SDLog_AIFantom("Skill Gen: L=" + level + ", S=" + skillz + ", P=" + pointz + ", Class=" + NPClass);
+
+	makearef(NPSkill, NPchar.skill);
+
+		NPSkill.Leadership = SD_CalcSkills(skillz, 9); // Countdown the number of remaining skills
+			skillz = skillz - sti(NPSkill.Leadership);
+		NPSkill.Defence = SD_CalcSkills(skillz, 8);
+			skillz = skillz - sti(NPSkill.Defence);
+		NPSkill.Fencing = SD_CalcSkills(skillz, 7);
+			skillz = skillz - sti(NPSkill.Fencing);
+		NPSkill.Accuracy = SD_CalcSkills(skillz, 6);
+			skillz = skillz - sti(NPSkill.Accuracy);
+		NPSkill.Cannons = SD_CalcSkills(skillz, 5);
+			skillz = skillz - sti(NPSkill.Cannons);
+		NPSkill.Sneak = SD_CalcSkills(skillz, 4);
+			skillz = skillz - sti(NPSkill.Sneak);
+		NPSkill.Sailing = SD_CalcSkills(skillz, 3);
+			skillz = skillz - sti(NPSkill.Sailing);
+		NPSkill.Repair = SD_CalcSkills(skillz, 2);
+			skillz = skillz - sti(NPSkill.Repair);
+		NPSkill.Grappling = SD_CalcSkills(skillz, 1);
+			skillz = skillz - sti(NPSkill.Grappling);
+		NPSkill.Commerce = SD_CalcSkills(skillz, 0);
+			skillz = skillz - sti(NPSkill.Commerce);
+
+		NPSkill.Leadership = sti(NPSkill.Leadership) + skillbase;
+		NPSkill.Sneak = sti(NPSkill.Sneak) + skillbase;
+		NPSkill.Fencing = sti(NPSkill.Fencing) + skillbase;
+		NPSkill.Sailing = sti(NPSkill.Sailing) + skillbase;
+		NPSkill.Accuracy = sti(NPSkill.Accuracy) + skillbase;
+		NPSkill.Cannons = sti(NPSkill.Cannons) + skillbase;
+		NPSkill.Defence = sti(NPSkill.Defence) + skillbase;
+		NPSkill.Repair = sti(NPSkill.Repair) + skillbase;
+		NPSkill.Grappling = sti(NPSkill.Grappling) + skillbase;
+		NPSkill.Commerce = sti(NPSkill.Commerce) + skillbase;
+
+//		SDLog_AIFantom("Skill Gen: LD=" + sti(NPSkill.Leadership) + ", LK=" + sti(NPSkill.Sneak) + ", FE=" + sti(NPSkill.Leadership) + ", SA=" + sti(NPSkill.Sailing) + ", AC=" + sti(NPSkill.Accuracy) + ", CN=" + sti(NPSkill.Cannons) + ", DF=" + sti(NPSkill.Defence) + ", RP=" + sti(NPSkill.Repair) + ", GR=" + sti(NPSkill.Grappling) + ", CM=" + sti(NPSkill.Commerce));
+
+	if (skillz<1) skillz = 0;
+	NPchar.skill.freeskill = skillz;
+	NPchar.perks.freepoints = pointz; // Dealt with but having issues so not released.
+	NPchar.rank = level;
+	NPchar.experience = CalculateExperienceFromRank(level) + rand(1000); // Hey, he might level during a fight.  :)
+	health = makeint(40 + (level*5) + rand(40));
+	LAi_SetHP(NPchar, makeint(rand(health)), health);
+	SDLog_AIFantom("Skill Gen: XP=" + sti(NPchar.experience));
+}
+
+int SD_CalcSkills(int sp, int r) // This should generate characters with 10 across the board at high levels.
+{
+	int sm = MAX_CHARACTER_SKILL-skillbase;
+	r++;
+	sp = makeint(sp/(10-r)); // Leadership gets top priority. Change, if you wish, to something like Accuracy for a laugh.
+	sp = makeint((sp-2) + rand(r+1));
+	if(sp<1) sp = 0;
+	if(sp>sm) sp = sm;
+	return sp;
+}*/
+// <-- KK
 
 void SDLog_AIFantom(string logtext)
 {

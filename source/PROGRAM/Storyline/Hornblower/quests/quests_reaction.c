@@ -19,6 +19,9 @@ void QuestComplete(string sQuestName)
 	string nearloc;// MAXIMUS
 	aref arship; // PB
 
+	string voice_path = "VOICE\ENGLISH\";
+	if (CheckDirectory("RESOURCE\Sounds\VOICE\"+LanguageGetLanguage()+"\","*") > 0) voice_path = "VOICE\" + LanguageGetLanguage() + "\";
+	
 	switch(sQuestName)
 	{
 		case "Start":
@@ -51,13 +54,13 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Sir Edward Pellew"), "Antigua_Residence", "goto", "goto9");
 			ChangeCharacterAddress(characterFromID("Antigua_Regulating"), "None", "");
 			ChangeCharacterAddressGroup(characterFromID("Major Dunnitt"), "Antigua_Port", "goto", "goto5");
-			LAi_SetGuardianType(characterFromID("Major Dunnitt"));
+			LAi_SetGuardianTypeNoGroup(characterFromID("Major Dunnitt"));
 
-			LAi_ActorGoToLocator(characterfromID("Rifleman Cooper"), "merchant", "merchant2", "", 0.0);
-			LAi_ActorGoToLocator(characterfromID("Rifleman Haggman"), "merchant", "merchant2", "", 0.0);
-			LAi_ActorGoToLocator(characterfromID("Rifleman Harris"), "merchant", "merchant2", "", 0.0);
-			LAi_ActorGoToLocator(characterfromID("Rifleman Higgins"), "merchant", "merchant2", "", 0.0);
-			LAi_ActorGoToLocator(characterfromID("Rifleman Tongue"), "merchant", "merchant2", "", 0.0);
+			LAi_ActorGoToLocator(characterfromID("Rifleman Cooper"), "goto", "goto21", "", 0.0);
+			LAi_ActorGoToLocator(characterfromID("Rifleman Haggman"), "goto", "goto21", "", 0.0);
+			LAi_ActorGoToLocator(characterfromID("Rifleman Harris"), "goto", "goto21", "", 0.0);
+			LAi_ActorGoToLocator(characterfromID("Rifleman Higgins"), "goto", "goto21", "", 0.0);
+			LAi_ActorGoToLocator(characterfromID("Rifleman Tongue"), "goto", "goto21", "", 0.0);
 
 			LAi_SetCitizenType(characterFromID("Able Seaman Wilks"));
 			LAi_SetCitizenType(characterFromID("Able Seaman Tompkins"));
@@ -109,8 +112,22 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Oldroyd"));
 			LAi_SetActorType(characterFromID("Styles"));
 
+			LAi_QuestDelay("reset_riflemen", 0.0);
 			LAi_QuestDelay("Antigua_for_battle", 0.0);
 		break; // end testing
+
+		case "reset_riflemen":
+			LAi_SetActorType(characterFromID("Rifleman Cooper"));
+			LAi_SetActorType(characterFromID("Rifleman Haggman"));
+			LAi_SetActorType(characterFromID("Rifleman Harris"));
+			LAi_SetActorType(characterFromID("Rifleman Higgins"));
+			LAi_SetActorType(characterFromID("Rifleman Tongue"));
+			LAi_type_Actor_Reset(characterFromID("Rifleman Cooper"));
+			LAi_type_Actor_Reset(characterFromID("Rifleman Haggman"));
+			LAi_type_Actor_Reset(characterFromID("Rifleman Harris"));
+			LAi_type_Actor_Reset(characterFromID("Rifleman Higgins"));
+			LAi_type_Actor_Reset(characterFromID("Rifleman Tongue"));
+		break;
 
 		case "Join_the_ship_crew":
 			locations[FindLocation("Antigua_port")].type = "port";
@@ -120,11 +137,12 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Rifleman Harris"), "None", "");
 			ChangeCharacterAddress(characterFromID("Rifleman Higgins"), "None", "");
 			ChangeCharacterAddress(characterFromID("Rifleman Tongue"), "None", "");
+			LAi_QuestDelay("reset_riflemen", 0.0);
 			ChangeCharacterAddressGroup(CharacterFromID("C.S. Forester"), "none", "", ""); // PB
 
 			ChangeCharacterAddressGroup(characterFromID("Captain Keene"), "Antigua_academy", "goto", "goto4");
 			ChangeCharacterAddressGroup(characterFromID("Captain James Sawyer"), "Antigua_academy", "sit", "sit1");
-			LAi_ActorSetSitMode(characterFromID("Captain James Sawyer"));
+//			LAi_ActorSetSitMode(characterFromID("Captain James Sawyer"));
 			ChangeCharacterAddressGroup(characterFromID("Jack Simpson"), "Antigua_Academy", "goto", "goto6");
 			ChangeCharacterAddressGroup(characterFromID("Archie Kennedy"), "Antigua_Academy", "goto", "goto3");
 			ChangeCharacterAddressGroup(characterFromID("Clayton"), "Antigua_Academy", "goto", "goto2");
@@ -133,8 +151,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("William Chumley"), "Antigua_Academy", "goto", "goto5");
 			LAi_SetActorType(characterFromID("William Chumley"));
 			LAi_SetActorType(characterFromID("Jack Simpson"));
+//			LAi_SetActorType(characterFromID("Captain James Sawyer"));
 			LAi_SetSitType(characterfromID("Captain James Sawyer"));
-			LAi_SetActorType(characterFromID("Captain James Sawyer"));
 			characters[GetCharacterIndex("Captain James Sawyer")].Dialog.Filename = "Captain James Sawyer_dialog.c";
 			Characters[GetCharacterIndex("Captain James Sawyer")].dialog.currentnode = "Continue_with_Justinian";
 			LAi_SetActorType(pchar);
@@ -144,7 +162,7 @@ void QuestComplete(string sQuestName)
 		case "arrived_from_England":
 			LAi_SetPlayerType(pchar);
 			LAi_SetActorType(characterFromID("Captain James Sawyer"));
-			LAi_ActorSetSitMode(characterFromID("Captain James Sawyer"));
+//			LAi_ActorSetSitMode(characterFromID("Captain James Sawyer"));
 			LAi_ActorDialog(characterfromID("Captain James Sawyer"), pchar, "", 1.0, 1.0);
 			Characters[GetCharacterIndex("Captain James Sawyer")].dialog.currentnode = "Continue_with_Justinian";
 			Characters[GetCharacterIndex("Captain Keene")].dialog.currentnode = "Board_at_Charlestown";
@@ -158,6 +176,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Agent_supply_run":
+			LAi_SetSitType(characterfromID("Captain James Sawyer"));
 			AddQuestRecord("My First Ship", 8);
 			AddQuestRecord("My First Ship", 9);
 			SetOfficersIndex(Pchar, 1, getCharacterIndex("Archie Kennedy"));
@@ -189,7 +208,7 @@ void QuestComplete(string sQuestName)
 
 		case "more_of_the_same2":
 			LAi_SetPlayerType(pchar);
-			PlaySound("VOICE\ENGLISH\Clayton01.wav");
+			PlaySound(voice_path + "Clayton01.wav");
 			LAi_SetActorType(characterFromID("Clayton"));
 			LAi_SetActorType(characterFromID("Archie Kennedy"));
 			LAi_ActorDialog(characterfromID("Clayton"), pchar, "", 1.0, 1.0);
@@ -202,12 +221,6 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Rifleman Harris"), "Antigua_port", "reload", "houseS4");
 			ChangeCharacterAddressGroup(characterFromID("Rifleman Higgins"), "Antigua_port", "reload", "houseS4");
 			ChangeCharacterAddressGroup(characterFromID("Rifleman Tongue"), "Antigua_port", "reload", "houseS4");
-
-			LAi_SetActorType(characterFromID("Rifleman Cooper"));
-			LAi_SetActorType(characterFromID("Rifleman Haggman"));
-			LAi_SetActorType(characterFromID("Rifleman Harris"));
-			LAi_SetActorType(characterFromID("Rifleman Higgins"));
-			LAi_SetActorType(characterFromID("Rifleman Tongue"));
 
 			LAi_ActorDialog(characterfromID("Archie Kennedy"), pchar, "", 1.0, 1.0);
 		break;
@@ -234,6 +247,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Sir Hew Dalrymple"), "Antigua_Residence", "goto", "goto8");
 			ChangeCharacterAddressGroup(characterFromID("Archie Kennedy"), "Antigua_Residence", "goto", "goto4");
 			ChangeCharacterAddressGroup(characterFromID("Clayton"), "Antigua_Residence", "goto", "goto6");
+			LAi_QuestDelay("reset_riflemen", 0.0);
 			LAi_QuestDelay("First Briefing2", 0.0);
 		break;
 
@@ -303,14 +317,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Get_back_to_the_ship":
-			LAi_ActorAnimation(characterFromID("Jack Simpson"), "attack_fast_2", "Simpson_runs_off", -1);
+			LAi_ActorAnimation(characterFromID("Jack Simpson"), "attack_2", "Simpson_runs_off", -1);
 			PlaySound("OBJECTS\duel\punch1.wav");
 			Characters[GetCharacterIndex("Clayton")].dialog.currentnode = "Charlestown_fight";
 		break;
 
 		case "Simpson_runs_off":
 			LAi_SetImmortal(Pchar, false);
-			PlaySound("VOICE\ENGLISH\Clayton01.wav");
+			PlaySound(voice_path + "Clayton01.wav");
 			LAi_ActorRunToLocator(characterFromID("Jack Simpson"), "goto", "goto9", "",10);
 			LAi_ActorDialog(characterfromID("Clayton"), pchar, "", 1.0, 1.0);
 			Characters[GetCharacterIndex("Clayton")].dialog.currentnode = "Charlestown_fight";
@@ -325,6 +339,11 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("Clayton"));
 			LAi_SetOfficerType(characterFromID("Archie Kennedy"));
 
+			ChangeCharacterAddressGroup(characterFromID("Rifleman Cooper"), "Antigua_port", "goto", "goto3");
+			ChangeCharacterAddressGroup(characterFromID("Rifleman Haggman"), "Antigua_port", "goto", "goto3");
+			ChangeCharacterAddressGroup(characterFromID("Rifleman Harris"), "Antigua_port", "goto", "goto3");
+			ChangeCharacterAddressGroup(characterFromID("Rifleman Higgins"), "Antigua_port", "goto", "goto3");
+			ChangeCharacterAddressGroup(characterFromID("Rifleman Tongue"), "Antigua_port", "goto", "goto3");
 			LAi_ActorGoToLocator(characterfromID("Rifleman Cooper"), "reload", "houseS4", "", 0.0);
 			LAi_ActorGoToLocator(characterfromID("Rifleman Haggman"), "reload", "houseS4", "", 0.0);
 			LAi_ActorGoToLocator(characterfromID("Rifleman Harris"), "reload", "houseS4", "", 0.0);
@@ -335,6 +354,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Now_Join_The_Justinian":
+			LAi_QuestDelay("reset_riflemen", 0.0);
 			Locations[FindLocation("Antigua_port")].reload.l3.disable = 0;
 			Locations[FindLocation("Antigua_port")].reload.l5.disable = 0;
 			LAi_Fade("", "");
@@ -354,7 +374,7 @@ void QuestComplete(string sQuestName)
 
 		case "Another_run_in_with_Simson":
 			Locations[FindLocation("Quest_ShipDeck6")].vcskip = true;
-			ChangeCharacterAddressGroup(characterFromID("Captain Keene"), "Quest_ShipDeck6", "goto", "goto5"); 
+			ChangeCharacterAddressGroup(characterFromID("Captain Keene"), "Quest_ShipDeck6", "goto", "goto5"); //"reload", "boatr");
 			ChangeCharacterAddressGroup(characterFromID("Clayton"), "Quest_ShipDeck6", "goto", "goto11");
 			ChangeCharacterAddressGroup(characterFromID("Jack Simpson"), "Quest_ShipDeck6", "reload", "boatl");
 			ChangeCharacterAddressGroup(characterFromID("Archie Kennedy"), "Quest_ShipDeck6", "goto", "goto4");
@@ -424,7 +444,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Sail_for_Guadeloupe2":
-			LAi_SetGuardianType(characterFromID("Helmsman"));
+			LAi_SetCivilianGuardianType(characterFromID("Helmsman"));
 			characters[GetCharacterIndex("Helmsman")].Dialog.Filename = "Helmsman_dialog.c";
 			Characters[GetCharacterIndex("Helmsman")].dialog.CurrentNode = "First_sailing_orders";
 			LAi_ActorDialog(characterFromID("Helmsman"), pchar, "", 10.0, 10.0);
@@ -506,7 +526,7 @@ void QuestComplete(string sQuestName)
 
 		case "The Lieutenant Arrives Back":
 			LAi_Fade("The Lieutenant Arrives Back2", "The Lieutenant Arrives Back3");
-			LAi_ActorAnimation(characterFromID("Clayton"), "attack_fast_2", "The Lieutenant Arrives Back2", -1);
+			LAi_ActorAnimation(characterFromID("Clayton"), "attack_2", "The Lieutenant Arrives Back2", -1);
 			PlaySound("OBJECTS\duel\punch1.wav");
 		break;
 
@@ -571,7 +591,7 @@ void QuestComplete(string sQuestName)
 			}
 			else {AddPartyExp(pchar, 2000);}
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"HMS_Indefatigable","Indefatigable",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"HMS_Indefatigable",TranslateString("","Indefatigable"),-1,ENGLAND,true,true);
 			pchar.quest.My_First_ship = "meet the captain";
 			SetCharacterRemovable(characterFromID("Jack Simpson"), true);
 			SetCharacterRemovable(characterFromID("Archie Kennedy"), true);
@@ -786,7 +806,7 @@ void QuestComplete(string sQuestName)
 		case "reprovision_Charlestown":
 			DisableFastTravel(false);
 			Characters[GetCharacterIndex("Sir Edward Pellew")].dialog.currentnode = "First time";
-			LAi_ActorGoToLocator(characterFromID("Sir Edward Pellew"), "reload", "reload10_1", "", 0.0); 
+			LAi_ActorGoToLocator(characterFromID("Sir Edward Pellew"), "reload", "reload10_1", "", 0.0); //"reprovision_Charlestown2", 0.0);
 			AddQuestRecord("My First Ship", 3);
 
 			Pchar.quest.reprovision_Charlestown2.win_condition.l1 = "location";
@@ -929,7 +949,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Greenford_port")].reload.l3.disable = 1;
 
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"Tartane50","Happy Times", -1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"Tartane50",TranslateString("","Happy Times"), -1,ENGLAND,true,true);
 			SetCrewQuantity(pchar, 3);
 			AddCharacterGoods(pchar, GOOD_RUM, 2);
 			AddCharacterGoods(pchar, GOOD_WHEAT, 4);
@@ -1021,7 +1041,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Rally_the_crew":
-			PostVideoAndQuest("Hornblower\Declaration of War",100, "");
+			switch(LanguageGetLanguage())
+			{
+				case "RUSSIAN": PostVideoAndQuest("Hornblower\RUSSIAN\Declaration of War",100, ""); break;
+				case "SPANISH": PostVideoAndQuest("Hornblower\SPANISH\Declaration of War",100, ""); break;
+				PostVideoAndQuest("Hornblower\Declaration of War",100, "");
+			}
 		break;
 
 		case "French_Battle_Setup":
@@ -1211,7 +1236,7 @@ void QuestComplete(string sQuestName)
 
 		case "Bush_Leaves_Upstairs":
 			LAi_SetActorType(PChar);
-			LAi_ActorGoToLocator(characterFromID("Ebenezer Bracegirdle"), "reload", "reload1", "", 0.0); 
+			LAi_ActorGoToLocator(characterFromID("Ebenezer Bracegirdle"), "reload", "reload1", "", 0.0); //"Bush_Leaves_Upstairs2", 0.0);
 			LAi_QuestDelay("Bush_Leaves_Upstairs2", 3.0);
 		break;
 
@@ -1260,7 +1285,7 @@ void QuestComplete(string sQuestName)
 			SetRank(pchar, ENGLAND, 2); // PB: 3rd Lieutenant
 			GiveModel2Player("brtH3rdLt_18", true);
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"Tartane50","Jolly Boat",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"Tartane50",TranslateString("","Jolly Boat"),-1,ENGLAND,true,true);
 			SetCrewQuantity(pchar, 3);
 			AddCharacterGoods(pchar, GOOD_RUM, 2);
 			AddCharacterGoods(pchar, GOOD_WHEAT, 4);
@@ -1352,9 +1377,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Off_to_the_Mystery_House2A":
-			CreateParticleSystemX("blast_inv", 116.4, 1.5766, -141.82, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 116.4, 1.5766, -141.82, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 116.4, 1.5766, -141.82, -1.57, 0.0, 0.0,20);
+			//CreateParticleSystemX("blast_inv", 116.4, 1.5766, -141.82, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemXPS("splash_big", 116.4, 1.5766, -141.82, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 116.4, 1.5766, -141.82, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Off_to_the_Mystery_House3", 0.0);
 		break;
@@ -1363,7 +1388,8 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Charlestown_port", "fire", "fire1", "", -1, 116.21, 1.5753, -140.46, false);
 			Locations[FindLocation("Charlestown_port")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Charlestown_port")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 116.21, 1.5753, -140.46, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 116.21, 1.5753, -140.46, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_smoke", 116.21, 1.5753, -140.46, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("Off_to_the_Mystery_House4", 2.0);
 		break;
 
@@ -1399,7 +1425,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Charlestown_port", "fire", "fire2", "", -1, 90.519, 1.5425, -153.6, false);
 			Locations[FindLocation("Charlestown_port")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Charlestown_port")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 90.519, 1.5425, -153.6, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 90.519, 1.5425, -153.6, -1.57, 0.0, 0.0,0);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Killed_at_Charlestown2", 1.0);
 		break;
@@ -1412,7 +1438,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Charlestown_port", "fire", "fire3", "", -1, 97.805, 1.5984, -152.8, false);
 			Locations[FindLocation("Charlestown_port")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Charlestown_port")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 97.805, 1.5984, -152.8, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 97.805, 1.5984, -152.8, -1.57, 0.0, 0.0,0);
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Killed_at_Charlestown3", 1.0);
@@ -1451,7 +1477,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Big Bryan"));
 			LAi_ActorGoToLocator(characterFromID("Big Bryan"), "goto", "guard", "", 0.0);
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"FR_Sloop","Le R?ve",-1,FRANCE,true,true);
+			GiveShip2Character(pchar,"FR_Sloop",TranslateString("","Le Rève"),-1,FRANCE,true,true);
 			SetCrewQuantity(pchar, 150);
 			AddCharacterGoods(pchar, GOOD_BALLS, 500);
 			AddCharacterGoods(pchar, GOOD_GRAPES, 300);
@@ -1625,7 +1651,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Now_take_the_ship3":
-			PostVideoAndQuest("Hornblower\Capture Le Reve", 100, "Back_to_the_Indy");
+			switch(LanguageGetLanguage())
+			{
+				case "RUSSIAN": PostVideoAndQuest("Hornblower\RUSSIAN\Capture Le Reve", 100, "Back_to_the_Indy"); break;
+				case "SPANISH": PostVideoAndQuest("Hornblower\SPANISH\Capture Le Reve", 100, "Back_to_the_Indy"); break;
+				PostVideoAndQuest("Hornblower\Capture Le Reve", 100, "Back_to_the_Indy");
+			}
 			bMainMenuLaunchAfterVideo = true;
 		break;
 
@@ -1763,7 +1794,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Return_Mystery_House2":
-			LAi_ActorAnimation(characterFromID("Lt. Uriah Quelp"), "attack_fast_2", "", 0.0);
+			LAi_ActorAnimation(characterFromID("Lt. Uriah Quelp"), "attack_2", "", 0.0);
 			Lai_KillCharacter(characterFromID("Smug Larr"));
 			LAi_SetActorType(PChar);
 			LAi_ActorRunToLocator((Pchar), "goto", "goto1", "", 3.0);
@@ -2607,8 +2638,13 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Get_to_port_fire_ship":
+			DisableFastTravel(true);
+			Locations[FindLocation("REDMOND_PORT")].reload.l2.disable = 1;
+			Locations[FindLocation("REDMOND_PORT")].reload.l3.disable = 1;
+			Locations[FindLocation("REDMOND_PORT")].reload.l4.disable = 1;
+			Locations[FindLocation("REDMOND_PORT")].reload.l5.disable = 1;
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Corvette","Fire Ship", -1, ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Corvette",TranslateString("","Fire Ship"), -1, ENGLAND,true,true);
 			LAi_ActorRunToLocator(characterFromID("Black Charlie Hammond"), "reload", "reload1", "Get_to_port_fire_ship2",2);
 			LAi_ActorRunToLocator(characterFromID("Dreadnought Foster"), "reload", "reload1", "",2);
 			LAi_ActorRunToLocator(characterFromID("Lt. Chadd"), "reload", "reload1", "",2);
@@ -2744,87 +2780,87 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire1", "", -1, 2.3644, 1.2625, -3.3012, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 14.0; 
-			CreateParticleSystemX("fireball", 2.3644, 1.2625, -3.3012, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.3644, 1.2625, -3.3012, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire2", "", -1, 3.883, 1.2621, -2.4903, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 12.0; 
-			CreateParticleSystemX("fireball", 3.883, 1.2621, -2.4903, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 3.883, 1.2621, -2.4903, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire3", "", -1, 2.9455, 1.2825, -2.3531, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 2.9455, 1.2825, -2.3531, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.9455, 1.2825, -2.3531, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire4", "", -1, 2.9433, 1.9979, -3.0595, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 2.9433, 1.9979, -3.0595, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.9433, 1.9979, -3.0595, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire5", "", -1, 3.462, 1.2632, -5.2719, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 3.462, 1.2632, -5.2719, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 3.462, 1.2632, -5.2719, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire6", "", -1, 3.1343, 2.57, -4.3232, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 3.1343, 2.57, -4.3232, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 3.1343, 2.57, -4.3232, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire7", "", -1, 2.9436, 4.0647, 15.705, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 2.9436, 4.0647, -18.79, 15.705, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.9436, 4.0647, -18.79, 15.705, 0.0, 0.0,0);
 			
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire8", "", -1, 1.9071, 4.0407, 15.968, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 1.9071, 4.0407, 15.968, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 1.9071, 4.0407, 15.968, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire9", "", -1, 0.79502, 4.0407, 15.659, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 0.79502, 4.0407, 15.659, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 0.79502, 4.0407, 15.659, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire10", "", -1, -0.45385, 3.9986, 14.222, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.45385, 3.9986, 14.222, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.45385, 3.9986, 14.222, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire11", "", -1, -3.8888, 3.8873, 10.637, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -3.8888, 3.8873, 10.637, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -3.8888, 3.8873, 10.637, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire12", "", -1, 0.99486, 1.3999, 13.563, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 0.99486, 1.3999, 13.563, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 0.99486, 1.3999, 13.563, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire13", "", -1, -0.036598, 1.3999, 9.2421, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.036598, 1.3999, 9.2421, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.036598, 1.3999, 9.2421, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire14", "", -1, -0.41291, 1.2632, -5.2352, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.41291, 1.2632, -5.2352, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.41291, 1.2632, -5.2352, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire15", "", -1, -1.6877, 1.2632, -5.7083, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -1.6877, 1.2632, -2.6928, -5.7083, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -1.6877, 1.2632, -2.6928, -5.7083, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire16", "", -1, -2.5388, 4.2031, -10.719, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -2.5388, 3.2031, -10.719, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -2.5388, 3.2031, -10.719, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire17", "", -1, -1.1732, 4.2031, -10.844, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -1.1732, 4.2031, -10.844, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -1.1732, 4.2031, -10.844, -1.57, 0.0, 0.0,0);
 
 			LAi_SetActorType(characterfromID("Dreadnought Foster"));
 			Characters[GetCharacterIndex("Dreadnought Foster")].dialog.CurrentNode = "Go_to_the_wheel";
@@ -2854,17 +2890,17 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire18", "", -1, -0.93506, 4.0546, -5.8339, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.93506, 4.0546, -5.8339, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.93506, 4.0546, -5.8339, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire19", "", -1, -3.878, 1.2607, 6.356, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -3.878, 1.2607, 6.356, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -3.878, 1.2607, 6.356, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire20", "", -1, -2.357, 4.1373, -8.8529, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -2.357, 4.1373, -8.8529, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -2.357, 4.1373, -8.8529, -1.57, 0.0, 0.0,0);
 
 			LAi_QuestDelay("Fire_ship_main_deck6", 3.0);
 		break;
@@ -2873,7 +2909,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire21", "", -1, -0.27019, 4.2062, -6.7042, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.27019, 4.2062, -6.7042, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.27019, 4.2062, -6.7042, -1.57, 0.0, 0.0,0);
 
 			LAi_SetActorType(characterfromID("Dreadnought Foster"));
 			Characters[GetCharacterIndex("Dreadnought Foster")].dialog.CurrentNode = "Hold_her_steady";
@@ -2884,17 +2920,17 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire22", "", -1, -0.62579, 1.2609, 0.1415, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.62579, 1.2609, 0.1415, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.62579, 1.2609, 0.1415, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire23", "", -1, 2.2474, 3.8861, 10.467, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -2.2474, 3.8861, 10.467, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -2.2474, 3.8861, 10.467, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire24", "", -1, 2.8259, 3.918, -4.9551, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 2.8259, 3.918, -4.9551, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.8259, 3.918, -4.9551, -1.57, 0.0, 0.0,0);
 
 			LAi_QuestDelay("Fire_ship_main_deck8", 3.0);
 		break;
@@ -2907,7 +2943,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire25", "", -1, 2.7801, 4.0797, -6.7173, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 2.7801, 4.0797, -6.7173, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.7801, 4.0797, -6.7173, -1.57, 0.0, 0.0,0);
 		break;
 
 		case "Fire_ship_main_deck9":
@@ -2917,37 +2953,37 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire26", "", -1, 1.9447, 1.2603, 2.6549, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 1.9447, 1.2603, 2.6549, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 1.9447, 1.2603, 2.6549, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire27", "", -1, 0.98859, 1.3993, 2.6636, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 0.98859, 1.3993, 2.6636, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 0.98859, 1.3993, 2.6636, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire28", "", -1, 0.085868, 1.3993, 2.4401, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", 0.085868, 1.3993, 2.4401, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 0.085868, 1.3993, 2.4401, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire29", "", -1, -0.83161, 1.3993, 2.8752, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.83161, 1.3993, 2.8752, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.83161, 1.3993, 2.8752, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire30", "", -1, -1.9815, 1.2604, 4.2799, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -1.9815, 1.2604, 4.2799, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -1.9815, 1.2604, 4.2799, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire31", "", -1, -0.76749, 1.2617, -1.3553, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.76749, 1.2617, -1.3553, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.76749, 1.2617, -1.3553, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Quest_FireShipDeck", "fire", "fire32", "", -1, -0.64864, 1.2619, -1.9218, false);
 			Locations[FindLocation("Quest_FireShipDeck")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Quest_FireShipDeck")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -0.64864, 1.2619, -1.9218, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.64864, 1.2619, -1.9218, -1.57, 0.0, 0.0,0);
 		break;
 
 		case "Fire_ship_main_deck10":
@@ -3003,7 +3039,7 @@ void QuestComplete(string sQuestName)
 			LAi_Fade("", "");
 			SetCurrentTime(6, 0);
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"FR_Sloop","Le R?ve",-1,FRANCE,true,true);
+			GiveShip2Character(pchar,"FR_Sloop",TranslateString("","Le Rève"),-1,FRANCE,true,true);
 			SetCrewQuantity(pchar, 150);
 			AddCharacterGoods(pchar, GOOD_BALLS, 500);
 			AddCharacterGoods(pchar, GOOD_GRAPES, 300);
@@ -3260,6 +3296,11 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "initial_set_up_for_capture":
+			DisableFastTravel(false);
+			Locations[FindLocation("REDMOND_PORT")].reload.l2.disable = 0;
+			Locations[FindLocation("REDMOND_PORT")].reload.l3.disable = 0;
+			Locations[FindLocation("REDMOND_PORT")].reload.l4.disable = 0;
+			Locations[FindLocation("REDMOND_PORT")].reload.l5.disable = 0;
 			characters[GetCharacterIndex("Midshipman Hunter")].Dialog.Filename = "Midshipman Hunter_dialog.c";
 			LAi_SetActorType(characterFromID("Midshipman Hunter"));
 			LAi_ActorDialogNow(characterFromID("Midshipman Hunter"),PChar,"",1.0);
@@ -3278,7 +3319,12 @@ void QuestComplete(string sQuestName)
 		case "Le_Reve_Capture_at_sea2":
 			CI_CreateAndSetControls( "WorldMapControls", "WMapCancel", -1, 0, true );// TIH worldmap cancel screwup prevention Sep3'06
 			StorePassengers("Blaze");
-			PostVideoAndQuest("Hornblower\Le Reve Capture",100, "Go_to_Beach_for_Prison");
+			switch(LanguageGetLanguage())
+			{
+				case "RUSSIAN": PostVideoAndQuest("Hornblower\RUSSIAN\Le Reve Capture",100, "Go_to_Beach_for_Prison"); break;
+				case "SPANISH": PostVideoAndQuest("Hornblower\SPANISH\Le Reve Capture",100, "Go_to_Beach_for_Prison"); break;
+				PostVideoAndQuest("Hornblower\Le Reve Capture",100, "Go_to_Beach_for_Prison");
+			}
 			bMainMenuLaunchAfterVideo = true;
 			SetNextWeather("Blue Sky");
 		break;
@@ -3395,8 +3441,6 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(characterFromID("Midshipman Hunter"), BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Midshipman Hunter"), GUN_ITEM_TYPE);
-			EnableEquip(pchar, BLADE_ITEM_TYPE, false);
-			EnableEquip(pchar, GUN_ITEM_TYPE, false);
 
 			RemoveCharacterEquip(characterFromID("Styles"), BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Styles"), GUN_ITEM_TYPE);
@@ -3404,8 +3448,8 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(characterFromID("Matthews"), BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Matthews"), GUN_ITEM_TYPE);
 
-			RemoveCharacterEquip(characterFromID("Helmsman"), BLADE_ITEM_TYPE);
-			RemoveCharacterEquip(characterFromID("Helmsman"), GUN_ITEM_TYPE);
+			RemoveCharacterEquip(CharacterFromID("Helmsman"), BLADE_ITEM_TYPE);
+			RemoveCharacterEquip(CharacterFromID("Helmsman"), GUN_ITEM_TYPE);
 
 			RemoveCharacterEquip(characterFromID("Perrin"), BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Perrin"), GUN_ITEM_TYPE);
@@ -4121,14 +4165,15 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("The Duchess and the Devil", 6);
 			LAi_Fade("", "");
 			SetCurrentTime(22.00, 0);
-			SetNextWeather("Black Pearl Fight");
+		//	SetNextWeather("Black Pearl Fight");
+			SetNextWeather("Stormy");
 			ChangeCharacterAddress(characterFromID("Don Masseredo"), "None", "");
 			DoQuestReloadToLocation("Prison_Shore", "goto", "goto11", "On_the_wreck_beach");
 		break;
 
 		case "On_the_wreck_beach":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"Tartane50","Rescue",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"Tartane50",TranslateString("","Rescue"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Cuba_Shore_04");
 
 			ChangeCharacterAddressGroup(characterFromID("Don Masseredo"), "Prison_Shore", "goto", "goto16");
@@ -4226,7 +4271,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "rescue_boat_to_sea2":
-			PostVideoAndQuest("Hornblower\SHIPWRECK_0001", 100, "Again_Back_to_the_Indy");
+			switch(LanguageGetLanguage())
+			{
+				case "RUSSIAN": PostVideoAndQuest("Hornblower\RUSSIAN\SHIPWRECK_0001", 100, "Again_Back_to_the_Indy"); break;
+				case "SPANISH": PostVideoAndQuest("Hornblower\SPANISH\SHIPWRECK_0001", 100, "Again_Back_to_the_Indy"); break;
+				PostVideoAndQuest("Hornblower\SHIPWRECK_0001", 100, "Again_Back_to_the_Indy");
+			}
 			bMainMenuLaunchAfterVideo = true;
 		break;
 
@@ -4262,7 +4312,7 @@ void QuestComplete(string sQuestName)
 			SetCurrentTime(10.00, 0);
 			SetNextWeather("Blue Sky");
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"HMS_Indefatigable","Indefatigable",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"HMS_Indefatigable",TranslateString("","Indefatigable"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Cuba_Shore_04");
 			LAi_SetActorType(characterFromID("Arthur Wellesley"));
 
@@ -4564,7 +4614,7 @@ void QuestComplete(string sQuestName)
 		case "FREE_back_to_the_Indy":
 			AddQuestRecord("The Duchess and the Devil", 8);
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"HMS_Indefatigable","Indefatigable",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"HMS_Indefatigable",TranslateString("","Indefatigable"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Cuba_Shore_04");
 
 			LAi_SetActorType(characterFromID("Styles"));
@@ -4714,7 +4764,7 @@ void QuestComplete(string sQuestName)
 
 		case "Redmond_Sharpe_Chumley":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"SchoonerWar","Magicienne",-1,FRANCE,true,true);
+			GiveShip2Character(pchar,"SchoonerWar",TranslateString("","Magicienne"),-1,FRANCE,true,true);
 			DeleteAttribute(PChar, "isnotcaptain");
 			SetCrewQuantity(pchar, 150);
 			AddCharacterGoods(pchar, GOOD_BALLS, 500);
@@ -5818,7 +5868,7 @@ void QuestComplete(string sQuestName)
 			LAi_type_actor_Reset(characterFromID("Captain James Sawyer"));
 			LAi_SetActorType(characterFromID("Captain James Sawyer"));
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Superbe","Renown",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Superbe",TranslateString("","Renown"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Greenford_port");
 
 			ChangeCharacterAddressGroup(characterFromID("Henry Wellard"), "Greenford_town", "reload", "reload21");
@@ -6474,9 +6524,10 @@ void QuestComplete(string sQuestName)
 
 		case "The_fort_opens_fire":
 			LAi_SetPlayerType(PChar);
-			CreateParticleSystemX("blast_inv", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -0.12996, 2.7257, -10.364, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("Blast", -0.12996, 2.7257, -10.364, 0.0, 0.0, 0.0,0);
+			//CreateParticleSystemX("cancloud", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,20);
+			//CreateParticleSystemX("cancloud", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 			LAi_QuestDelay("The_fort_opens_fire2", 1.0);
@@ -6486,11 +6537,11 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Cuba_Shore_04", "fire", "fire1", "", -1, -0.12996, 2.7257, -10.364, false);
 			Locations[FindLocation("Cuba_Shore_04")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Cuba_Shore_04")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -0.12996, 2.7257, -10.364, -1.57, 0.0, 0.0,0);
 
-			CreateParticleSystemX("blast_inv", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemXPS("Blast", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			//CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 			LAi_QuestDelay("The_fort_opens_fire3", 1.0);
@@ -6500,11 +6551,11 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Cuba_Shore_04", "fire", "fire2", "", -1, -1.3729, 2.76, -11.064, false);
 			Locations[FindLocation("Cuba_Shore_04")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Cuba_Shore_04")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
 
-			CreateParticleSystemX("blast_inv", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemXPS("Blast", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,20);
+			// CreateParticleSystemX("cancloud", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 			LAi_QuestDelay("The_fort_opens_fire4", 1.0);
@@ -6514,7 +6565,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Cuba_Shore_04", "fire", "fire3", "", -1, -3.2834, 2.7341, -11.181, false);
 			Locations[FindLocation("Cuba_Shore_04")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Cuba_Shore_04")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -3.2834, 2.7341, -11.181, -1.57, 0.0, 0.0,0);
 
 			LAi_SetActorType(characterFromID("Archie Kennedy"));
 			characters[GetCharacterIndex("Archie Kennedy")].Dialog.Filename = "Archie Kennedy_dialog.c";
@@ -6523,9 +6574,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Sharpe_asks_a_question":
-			CreateParticleSystemX("blast_inv", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemXPS("Blast", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			// CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 
@@ -6536,9 +6587,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "decide_to_try_the_bridge":
-			CreateParticleSystemX("blast_inv", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemXPS("Blast", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
+			// CreateParticleSystemX("cancloud", -1.3729, 2.76, -11.064, -1.57, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 
@@ -6636,7 +6687,8 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("Rifleman Tongue"));
 			characters[GetCharacterIndex("Richard Sharpe")].Dialog.Filename = "Richard Sharpe_dialog.c";
 			LAi_ActorDialog(characterFromID("Richard Sharpe"),PChar,"",5.0,5.0);
-			Characters[GetCharacterIndex("Richard Sharpe")].dialog.CurrentNode = "Bad_just_the_two_of_us";
+			// Characters[GetCharacterIndex("Richard Sharpe")].dialog.CurrentNode = "Bad_just_the_two_of_us";	mirsaneli: this line and the next, disabled the trap which was stupid and non functional
+			Characters[GetCharacterIndex("Richard Sharpe")].dialog.CurrentNode = "just_the_two_of_us";
 		break;
 
 		case "Bad_Looking_at_bridge":
@@ -7221,16 +7273,16 @@ void QuestComplete(string sQuestName)
 
 		case "Fire_at_rebel_Army":
 			CreateParticleSystemX("blast_inv", -8.9532, 12.8, 13.448, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -8.9532, 12.8, 13.448, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -8.9532, 12.8, 13.448, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", -8.9532, 12.8, 13.448, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud2", -8.9532, 12.8, 13.448, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Fire_at_rebel_Army2", 2.0);
 		break;
 
 		case "Fire_at_rebel_Army2":
-			CreateParticleSystemX("blast_inv", -8.5683, 11.659, -17.734, -1.57, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -8.5683, 11.659, -17.734, -1.57, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -8.5683, 11.659, -17.734, -1.57, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -8.5683, 11.659, -17.734, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -8.5683, 11.659, -17.734, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -8.5683, 11.659, -17.734, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 
@@ -7279,7 +7331,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, -5.6791, 12.234, 20.157, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -5.6791, 12.234, 20.157, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -5.6791, 12.234, 20.157, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up2", 2.0);
 		break;
 
@@ -7293,7 +7345,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire2", "", -1, -4.702, 12.164, 18.35, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 6.0; 
-			CreateParticleSystemX("fireball", -4.702, 12.164, 18.35, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -4.702, 12.164, 18.35, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up3", 1.0);
 		break;
 
@@ -7307,7 +7359,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire3", "", -1, -6.5704, 12.176, 18.313, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -6.5704, 12.176, 18.313, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -6.5704, 12.176, 18.313, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up4", 1.0);
 		break;
 
@@ -7321,12 +7373,12 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire4", "", -1, -8.3331, 12.111, 18.56, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -8.3331, 12.111, 18.56, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -8.3331, 12.111, 18.56, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire5", "", -1, -6.3263, 11.632, 11.541, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -6.3263, 11.632, 11.541, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -6.3263, 11.632, 11.541, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up5", 1.0);
 		break;
 
@@ -7340,7 +7392,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire6", "", -1, -2.6377, 12.089, 18.329, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -2.6377, 12.089, 18.329, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -2.6377, 12.089, 18.329, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up6", 1.0);
 		break;
 
@@ -7354,7 +7406,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire7", "", -1, -10.825, 11.576, 18.945, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -10.825, 11.576, 18.945, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -10.825, 11.576, 18.945, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("the_fort_goes_up7", 1.0);
 		break;
 
@@ -7368,12 +7420,12 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire8", "", -1, -8.9954, 11.82, 14.951, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -8.9954, 11.82, 14.951, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -8.9954, 11.82, 14.951, -1.57, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, -5.6791, 12.234, 20.157, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -5.6791, 12.234, 20.157, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -5.6791, 12.234, 20.157, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("The_Fort_is_blown", 2.0);
 		break;
 
@@ -7669,7 +7721,7 @@ void QuestComplete(string sQuestName)
 
 		case "the_burial_party":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Superbe","Renown",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Superbe",TranslateString("","Renown"),-1,ENGLAND,true,true);
 			SetCharacterRemovable(characterFromID("Richard Sharpe"), true);
 			RemoveOfficersIndex(pchar, GetCharacterIndex("Richard Sharpe"));
 			RemoveCharacterCompanion(Pchar, characterFromID("Richard Sharpe"));
@@ -7704,6 +7756,7 @@ void QuestComplete(string sQuestName)
 
 			SetOfficersIndex(Pchar, 1, getCharacterIndex("Lt. Percy Buckland"));
 			SetCharacterRemovable(characterFromID("Lt. Percy Buckland"), false);
+			setCharacterShipLocation(CharacterFromID("Sir Edward Pellew"), "REDMOND_PORT");
 
 			pchar.quest.Arrested_at_Redmond.win_condition.l1 = "location";
 			Pchar.quest.Arrested_at_Redmond.win_condition.l1.character = Pchar.id;
@@ -7831,7 +7884,7 @@ void QuestComplete(string sQuestName)
 
 		case "A_new_Quest_Line":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"HMS_Sophie","Retribution",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"HMS_Sophie",TranslateString("","Retribution"),-1,ENGLAND,true,true);
 			DeleteAttribute(PChar, "isnotcaptain");
 			setCharacterShipLocation(Pchar, "Redmond_port");
 			pchar.quest.Players_Rank = "Commander";
@@ -8196,17 +8249,17 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire1", "", -1, -18.5, 1.5, 14.289, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -18.5, 1.5, 14.289, -2.6805, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -18.5, 1.5, 14.289, -2.6805, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire1", "", -1, -5.4461, 2.5, 6.8121, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -5.4461, 2.5, 6.8121, -1.317, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -5.4461, 2.5, 6.8121, -1.317, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire1", "", -1, -5.6766, 3.0, 6.8121, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -5.6766, 3.0, 6.8121, -1.317, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -5.6766, 3.0, 6.8121, -1.317, 0.0, 0.0,0);
 
 			LAi_ActorRunToLocator(characterFromID("Rifleman Higgins"), "goto", "goto34", "", 15.0);
 			LAi_ActorRunToLocator(characterFromID("Rifleman Cooper"), "goto", "goto33", "", 15.0);
@@ -8237,30 +8290,30 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Antigua_Land_battle3_1":
-			CreateParticleSystemX("blast_inv", -22.122, -0.62642, 23.738, 1.7537, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -22.122, -0.62642, 23.738, 1.7537, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -22.122, -0.62642, 23.738, 1.7537, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -22.122, -0.62642, 23.738, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -22.122, -0.62642, 23.738, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -22.122, -0.62642, 23.738, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire1", "", -1, -22.122, -0.62642, 23.738, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -22.122, -0.62642, 23.738, 1.7537, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -22.122, -0.62642, 23.738, 1.7537, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire2", "", -1, -22.122, 0.62642, 23.738, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -22.122, 0.62642, 23.738, 1.7537, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -22.122, 0.62642, 23.738, 1.7537, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire3", "", -1, -22.0, 1.0, 23.738, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -22.0, 1.0, 23.738, 1.7537, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -22.0, 1.0, 23.738, 1.7537, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire4", "", -1, -23.575, 1.0, 26.57, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -23.575, 1.0, 26.57, -1.9035, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -23.575, 1.0, 26.57, -1.9035, 0.0, 0.0,0);
 
 			LAi_QuestDelay("Antigua_Land_battle3AAA", 0.0);
 		break;
@@ -8304,9 +8357,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gets_blown_up1":
-			CreateParticleSystemX("blast_inv", -10.749, 0.39496, 22.555, -0.52835, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -10.749, 0.39496, 22.555, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -10.749, 0.39496, 22.555, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -10.749, 0.39496, 22.555, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -10.749, 0.39496, 22.555, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -10.749, 0.39496, 22.555, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Player_gets_blown_up2", 0.0);
@@ -8322,36 +8375,36 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Shot_by_the_French":
-			CreateParticleSystemX("blast_inv", 3.8167, 0.97968, 108.32, -2.9496, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 
 			LAi_QuestDelay("Cannon_explosion", 1.0);
 		break;
 
 		case "Cannon_explosion":
-			CreateParticleSystemX("blast_inv", -8.0892, 2.1621, 55.201, 1.0, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -8.0892, 2.1621, 55.201, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -8.0892, 2.1621, 55.201, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -8.0892, 2.1621, 55.201, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -8.0892, 2.1621, 55.201, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -8.0892, 2.1621, 55.201, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Player_gets_blown_up2", 1.0);
 		break;
 
 		case "French_shoot_player":
-			CreateParticleSystemX("blast_inv", 3.8167, 0.97968, 108.32, -2.9496, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 
 			LAi_QuestDelay("Cannon_explosionA2", 1.0);
 		break;
 
 		case "Cannon_explosionA2":
-			CreateParticleSystemX("blast_inv", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -5.5041, 1.7323, 49.54, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -5.5041, 1.7323, 49.54, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -5.5041, 1.7323, 49.54, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -5.5041, 1.7323, 49.54, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -5.5041, 1.7323, 49.54, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Player_gets_blown_up2", 1.0);
@@ -8408,9 +8461,9 @@ void QuestComplete(string sQuestName)
 		break;
 // cannon 1
 		case "Fire_cannon1":
-			CreateParticleSystemX("blast_inv", 3.8167, 0.97968, 108.32, -2.9496, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 3.8167, 0.97968, 108.32, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Cannon_bang_OneXXX", 0.0);
@@ -8422,18 +8475,18 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Cannon_bang_One":
-			CreateParticleSystemX("blast_inv", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -5.5041, 1.7323, 49.54, 0.99246, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Fire_cannon2", 1.0);
 		break;
 // cannon 2
 		case "Fire_cannon2":
-			CreateParticleSystemX("blast_inv", 12.879, 0.14554, 107.56, -3.0157, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 12.879, 0.14554, 107.56, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 12.879, 0.14554, 107.56, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 12.879, 0.14554, 107.56, -3.0157, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 12.879, 0.14554, 107.56, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 12.879, 0.14554, 107.56, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Cannon_bang_TwoXXX", 0.0);
@@ -8445,23 +8498,23 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Cannon_bang_Two":
-			CreateParticleSystemX("blast_inv", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -9.5927, 0.19974, 9.6287, 0.041649, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire5", "", -1, -23.575, 2.0, 26.57, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -23.575, 2.0, 26.57, -1.9035, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -23.575, 2.0, 26.57, -1.9035, 0.0, 0.0,0);
 
 			LAi_QuestDelay("Fire_cannon3", 1.0);
 		break;
 // cannon 3
 		case "Fire_cannon3":
-			CreateParticleSystemX("blast_inv", 23.234, 0.64429, 105.12, -2.8216, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 23.234, 0.64429, 105.12, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 23.234, 0.64429, 105.12, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 23.234, 0.64429, 105.12, -2.8216, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 23.234, 0.64429, 105.12, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 23.234, 0.64429, 105.12, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Cannon_bang_ThreeXXX", 0.0);
@@ -8473,28 +8526,28 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Cannon_bang_Three":
-			CreateParticleSystemX("blast_inv", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -12.354, 0.25733, 23.062, 0.15646, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire6", "", -1, -9.5927, 0.2, 9.6287, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", -9.5927, 0.2, 9.6287, 0.041649, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -9.5927, 0.2, 9.6287, 0.041649, 0.0, 0.0,0);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire7", "", -1, -9.5927, 2.0, 9.6287, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 12.0; 
-			CreateParticleSystemX("fireball", -9.5927, 2.0, 9.6287, 0.041649, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -9.5927, 2.0, 9.6287, 0.041649, 0.0, 0.0,0);
 
 			LAi_QuestDelay("Fire_British_one", 1.0);
 		break;
 // Brit cannon
 		case "Fire_British_one":
-			CreateParticleSystemX("blast_inv", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20); // ay = -1.404 
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20); // ay = -1.404 
+			CreateParticleSystemX("cannon_embers", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("British_Bang_OneXXX", 0.0);
@@ -8506,9 +8559,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "British_Bang_One":
-			CreateParticleSystemX("blast_inv", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("the_Cannon_fired", 1.0);
@@ -8549,10 +8602,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "take_out_a_cannon":
-			CreateParticleSystemX("blast_inv", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
-			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
+			CreateParticleSystemX("KNBcancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", -12.115, 2.8464, 48.167, 0.0, 0.0, 0.0,20);
+			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");	// mirsaneli, was cannon_fire_HB.wav, but there was no sound
 
 			LAi_QuestDelay("British_Bang_TwoXXX", 0.0);
 		break;
@@ -8564,20 +8617,20 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "British_Bang_Two":
-			CreateParticleSystemX("blast_inv", 13.924, -0.83922, 108.78, -1.1836, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 13.924, -0.83922, 108.78, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 13.924, -0.83922, 108.78, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 13.924, -0.83922, 108.78, -1.1836, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 13.924, -0.83922, 108.78, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 13.924, -0.83922, 108.78, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire7", "", -1, 13.924, -0.83922, 109.39, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 20.0; 
-			CreateParticleSystemX("fireball", 13.924, -0.83922, 109.39, -1.1836, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 13.924, -0.83922, 109.39, -1.1836, 0.0, 0.0,0);
 			
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire7", "", -1, 13.924, 0.63922, 109.39, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 20.0; 
-			CreateParticleSystemX("fireball", 13.924, 0.63922, 109.39, -1.1836, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 13.924, 0.63922, 109.39, -1.1836, 0.0, 0.0,0);
 
 			Lai_KillCharacter(characterFromID("soldier3X"));
 			Lai_KillCharacter(characterFromID("soldier4X"));
@@ -8754,7 +8807,7 @@ void QuestComplete(string sQuestName)
 
 		case "Quelp_has_some_information":
 			LAi_SetActorType(characterFromID("Lt. Uriah Quelp")); */
-			LAi_SetGuardianType(characterFromID("Lt. Uriah Quelp"));
+			LAi_SetCivilianGuardianType(characterFromID("Lt. Uriah Quelp"));
 			characters[GetCharacterIndex("Lt. Uriah Quelp")].Dialog.Filename = "Lt. Uriah Quelp_dialog.c";
 //			LAi_ActorDialog(characterFromID("Lt. Uriah Quelp"),PChar,"",5.0,5.0);
 			Characters[GetCharacterIndex("Lt. Uriah Quelp")].dialog.CurrentNode = "An_interesting_find";
@@ -8985,18 +9038,18 @@ void QuestComplete(string sQuestName)
 
 		case "Other_French_Valley_Trap2AA":
 			LAi_SetActorType(PChar);
-			CreateParticleSystemX("blast_inv", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 9.2328, 0.815108, 16.672, 1.5466, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Other_French_Valley_Trap3", 1.0);
 		break;
 
 		case "Other_French_Valley_Trap3":
-			CreateParticleSystemX("blast_inv", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 32.631, -0.065334, 16.931, 1.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Player_gets_blown_up2", 0.0);
@@ -9115,18 +9168,18 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Antigua_French_Valley_Trap3":
-			CreateParticleSystemX("blast_inv", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -37.548, 0.831665, -7.1746, -0.69242, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Antigua_French_Valley_Trap4", 1.0);
 		break;
 
 		case "Antigua_French_Valley_Trap4":
-			CreateParticleSystemX("blast_inv", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -51.974, 0.031665, 12.411, 1.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			LAi_QuestDelay("Player_gets_blown_up2", 0.0);
@@ -9455,7 +9508,8 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire7", "", -1, 13.484, -0.88979, 109.63, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 20.0; 
-			CreateParticleSystemX("fireball", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,0);
+			CreateParticleSystemX("smoke", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,0);
 
 			ChangeCharacterAddressGroup(characterFromID("The Earl of Edrington"), "Antigua_outskirts", "goto", "goto70");
 			ChangeCharacterAddressGroup(characterFromID("Patrick Harper"), "Antigua_outskirts", "goto", "goto22");
@@ -9676,87 +9730,88 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "The_French_assualt5": // French 1 fires
-			CreateParticleSystemX("blast_inv", 33.962, 1.31601, 166.22, 1.6885, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 33.962, 1.31601, 166.22, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 33.962, 1.31601, 166.22, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 33.962, 1.31601, 166.22, 1.6885, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 33.962, 1.31601, 166.22, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 33.962, 1.31601, 166.22, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("The_French_assualt5A", 1.0);
 		break;
 
 		case "The_French_assualt5A": // French 2 fires
-			CreateParticleSystemX("blast_inv", 29.668, 1.61576, 169.26, 1.7125, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 29.668, 1.61576, 169.26, 1.7125, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("The_French_assualt5B", 1.0);
 		break;
 
 		case "The_French_assualt5B": // French 1 blast
-			CreateParticleSystemX("blast_inv", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", -2.9419, 1.545, 60.121, 0.57372, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_SetStunnedTypeNoGroup(characterFromID("The Earl of Edrington"));
 			LAi_QuestDelay("The_French_assualt5C", 1.0);
 		break;
 
 		case "The_French_assualt5C": // French 2 blast
-			CreateParticleSystemX("blast_inv", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 16.77, -0.39693, 65.962, -0.094352, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Return_French_fire1", 5.0);
 		break;
 
 		case "Return_French_fire1": // Gun 3 fires
-			CreateParticleSystemX("blast_inv", 13.104, 0.91, 57.777, -1.5555, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 13.104, 0.91, 57.777, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 13.104, 0.91, 57.777, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 13.104, 0.91, 57.777, -1.5555, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 13.104, 0.91, 57.777, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 13.104, 0.91, 57.777, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("Return_French_fire2", 3.0); // 1.0
 		break;
 
 		case "Return_French_fire2": // Gun 2 fires
-			CreateParticleSystemX("blast_inv", 4.7827, 1.85934, 55.878, -1.5253, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 4.7827, 1.85934, 55.878, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 4.7827, 1.85934, 55.878, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 4.7827, 1.85934, 55.878, -1.5253, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 4.7827, 1.85934, 55.878, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 4.7827, 1.85934, 55.878, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("Return_French_fire3", 1.0);
 		break;
 
 		case "Return_French_fire3": // Blast 3 here
-			CreateParticleSystemX("blast_inv", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 21.314, 1.4649, 152.13, 0.29548, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("Return_French_fire3Z", 0.5);
 		break;
 
 		case "Return_French_fire3Z": // Gun 1 fires
-			CreateParticleSystemX("blast_inv", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("French_second_volley1", 1.0);
 		break;
 
 		case "French_second_volley1": // Blast 2 here
-			CreateParticleSystemX("blast_inv", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 26.705, 1.0901, 155.58, 0.61948, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("French_second_volley2", 1.0);
 		break;
 
 		case "French_second_volley2": // Blast 1 here - kill French gun
-			CreateParticleSystemX("blast_inv", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,20);
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire1", "", -1, 34.503, 0.31109, 169.04, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 20.0; 
-			CreateParticleSystemX("fireball", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,0);
+			CreateParticleSystemX("smoke", 34.503, 0.31109, 169.04, 2.1042, 0.0, 0.0,0);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("What_an_awful_mess", 10.0);
 		break;
@@ -9777,25 +9832,26 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "French_Blast_two": // French 2 2nd shot
-			CreateParticleSystemX("blast_inv", 29.668, 1.61576, 169.26, 1.7125, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 29.668, 1.61576, 169.26, 1.7125, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", 29.668, 1.61576, 169.26, 0.0, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 ////////////			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("French_Blast_vol2_1", 2.0);
 		break;
 
 		case "French_Blast_vol2_1": // French 1 blast kills our gun
-			CreateParticleSystemX("blast_inv", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,20);
+			CreateParticleSystemX("ShipExplode", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,0);
+			CreateParticleSystemX("blast", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,20);
+			CreateParticleSystemX("blast", 5.2852, 0.69082, 54.312, -1.594, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			PlaySound("OBJECTS\shipcharge\hit_torock.wav");
 
 			WriteLocatorGlobal("Antigua_outskirts", "fire", "fire2", "", -1, 5.1668, 0.6619, 54.985, false);
 			Locations[FindLocation("Antigua_outskirts")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Antigua_outskirts")].locators_radius.fire = 20.0; 
-			CreateParticleSystemX("fireball", 5.1668, 0.6619, 54.985, -30857, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 5.1668, 0.6619, 54.985, -30857, 0.0, 0.0,0);
+			CreateParticleSystemX("smoke", 5.1668, 0.6619, 54.985, -30857, 0.0, 0.0,0);
 			LAi_QuestDelay("French_Blast_vol2_2", 1.0);
 		break;
 
@@ -9893,26 +9949,26 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("soldier9X"));
 			LAi_SetActorType(characterFromID("soldier10X"));
 
-			CreateParticleSystemX("blast_inv", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
+			CreateParticleSystemX("cannon_embers", -12.115, 2.8464, 48.167, -1.404, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("The_Fire_Fight6", 1.0);
 		break;
 
 		case "The_Fire_Fight6": // gun 3 
-			CreateParticleSystemX("blast_inv", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,0);
+			CreateParticleSystemX("KNBcancloud2", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,20);
+			CreateParticleSystemX("KNBcancloud2", 13.198, 0.91, 58.747, -1.5555, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			LAi_QuestDelay("The_Fire_Fight7", 1.0);
 		break;
 
 		case "The_Fire_Fight7": // blast 1
 			LAi_ActorTurnToCharacter((Pchar), characterFromID("soldier5X"));
-			CreateParticleSystemX("blast_inv", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 13.484, -0.88979, 109.63, 0.67745, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 
 			Lai_KillCharacter(characterFromID("soldier7X"));
@@ -9921,9 +9977,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "The_Fire_Fight9": // blast 2
-			CreateParticleSystemX("blast_inv", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,0);
-			CreateParticleSystemX("cancloud", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
-			CreateParticleSystemX("cancloud", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
+			CreateParticleSystemXPS("ShipExplode", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,0);
+			CreateParticleSystemXPS("blast", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
+			CreateParticleSystemXPS("blast", 9.9351, -0.9602, 105.36, 0.65145, 0.0, 0.0,20);
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
 			LAi_QuestDelay("The_Fire_Fight10", 1.0);
 		break;
@@ -10050,7 +10106,7 @@ void QuestComplete(string sQuestName)
 
 		case "Deliver_the_documents":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"Tartane50","Happy Times", -1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"Tartane50",TranslateString("","Happy Times"), -1,ENGLAND,true,true);
 			SetCrewQuantity(pchar, 3);
 			AddCharacterGoods(pchar, GOOD_RUM, 2);
 			AddCharacterGoods(pchar, GOOD_WHEAT, 4);
@@ -10109,7 +10165,7 @@ void QuestComplete(string sQuestName)
 			SetRank(pchar, ENGLAND, 4);
 			GiveModel2Player("brtH3rdLt_18", true);
 			Locations[FindLocation("Mrs. Mason's House")].vcskip = true;
-			ChangeCharacterAddressGroup(characterFromID("Mrs. Mason"), "Greenford_town", "officers", "reload11_1"); 
+			ChangeCharacterAddressGroup(characterFromID("Mrs. Mason"), "Greenford_town", "officers", "reload11_1"); //"goto", "goto16");
 
 			LAi_SetActorType(characterFromID("Mrs. Mason"));
 			characters[GetCharacterIndex("Mrs. Mason")].Dialog.Filename = "Mrs. Mason_dialog.c";
@@ -10244,7 +10300,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Quelp_at_lighthouse":
-			ChangeCharacterAddressGroup(characterFromID("Lt. Uriah Quelp"), "Oxbay_Lighthouse", "goto", "goto3"); 
+			ChangeCharacterAddressGroup(characterFromID("Lt. Uriah Quelp"), "Oxbay_Lighthouse", "goto", "goto3"); //"goto2");
 			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m6, "officers", "reload2_1");
 			sld.id = "soldier1X";
 
@@ -10273,7 +10329,8 @@ void QuestComplete(string sQuestName)
 		case "Attack_the_Midshipman":
 			LAi_SetOfficerType(characterFromID("Lt. Uriah Quelp"));
 
-			Locations[FindLocation("Oxbay_Lighthouse")].locators_radius.goto.goto25 = 5.0;
+		//	Locations[FindLocation("Oxbay_Lighthouse")].locators_radius.goto.goto25 = 5.0;		// Permanent change, needs to be done before loading this location
+			SetLocatorRadius(locations[FindLocation("Oxbay_Lighthouse")], "goto", "goto25", 5.0);	// Temporary change, effective immediately
 			Pchar.quest.Attack_the_Midshipman2.win_condition.l1 = "locator";
 			Pchar.quest.Attack_the_Midshipman2.win_condition.l1.character = Pchar.id;
 			Pchar.quest.Attack_the_Midshipman2.win_condition.l1.location = "Oxbay_Lighthouse";
@@ -10448,6 +10505,7 @@ void QuestComplete(string sQuestName)
 
 			ChangeCharacterAddressGroup(characterFromID("Lt. William Bush"), "Greenford_town", "goto", "goto5");
 			LAi_SetOfficerType(characterFromID("Lt. William Bush"));
+			setCharacterShipLocation(CharacterFromID("Sir Edward Pellew"), "Greenford_port");
 
 			LAi_QuestDelay("An_unexpected_meeting2", 3.0);
 		break;
@@ -10744,7 +10802,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(PChar, "isnotcaptain");								// GR: Return to normal play
 			pchar.quest.story_path = "neutral";
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Volage","Hotspur",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Volage",TranslateString("","Hotspur"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Greenford_port");
 			GiveModel2Player("brtHComdr_18", true);
 			if(AUTO_SKILL_SYSTEM)
@@ -10988,6 +11046,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Lt. Uriah Quelp"), "None", "");
 			Characters[GetCharacterIndex("Lt. William Bush")].dialog.CurrentNode = "First time";
 
+			LAi_SetActorType(CharacterFromID("Rifleman Mansfield"));
+			LAi_type_Actor_Reset(CharacterFromID("Rifleman Mansfield"));
 
 			Pchar.quest.find_the_95th2.win_condition.l1 = "location";
 			PChar.quest.find_the_95th2.win_condition.l1.character = Pchar.id;
@@ -11003,7 +11063,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Able Seaman Stanley"), "Grand_Cayman_Tavern", "goto", "goto6");
 			LAi_SetCitizenType(characterFromID("Able Seaman Stanley")); // PB: Allow dialog with this character
 			Characters[GetCharacterIndex("Able Seaman Stanley")].dialog.CurrentNode = "Rifleman";
-			LAi_SetGuardianType(characterFromID("Rifleman Mansfield"));
+			LAi_SetCivilianGuardianType(CharacterFromID("Rifleman Mansfield"));
 			Characters[GetCharacterIndex("Rifleman Mansfield")].dialog.CurrentNode = "Take_you_to_camp";
 		break;
 
@@ -11029,7 +11089,7 @@ void QuestComplete(string sQuestName)
 
 		case "Talk_to_Murray":
 			LAi_SetActorType(characterFromID("Rifleman Mansfield"));
-			LAi_SetGuardianType(characterFromID("Captain Murray"));
+			LAi_SetCivilianGuardianType(characterFromID("Captain Murray"));
 			Characters[GetCharacterIndex("Captain Murray")].dialog.CurrentNode = "Looking_for_who";
 		break;
 
@@ -11043,6 +11103,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Captain Murray"));
 			ChangeCharacterAddressGroup(characterFromID("Captain Murray"), "Outskirts_House", "goto", "goto2");
 			ChangeCharacterAddressGroup(characterFromID("Major Dunnitt"), "Outskirts_House", "goto", "goto1");
+			LAi_SetGuardianTypeNoGroup(characterFromID("Major Dunnitt"));
 			Characters[GetCharacterIndex("Captain Murray")].dialog.CurrentNode = "First time";
 			Characters[GetCharacterIndex("Major Dunnitt")].dialog.CurrentNode = "Transfer Sharpe";
 		break;
@@ -11157,7 +11218,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(pchar);
 			ChangeCharacterAddressGroup(characterFromID("Richard Sharpe"), "Mystery_House", "goto", "goto1");
 			LAi_SetActorType(characterFromID("Richard Sharpe"));
-			LAi_SetGuardianType(characterFromID("Lt. William Bush"));
+			LAi_SetCivilianGuardianType(characterFromID("Lt. William Bush"));
 			LAi_QuestDelay("To_see_Teresa3", 0.0);
 		break;
 
@@ -11346,7 +11407,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Rifleman Tongue"), "None", "");
 			ChangeCharacterAddress(characterFromID("Rifleman Mansfield"), "None", "");
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"FR_Sloop","Le R?ve",-1,FRANCE,true,true); // Teresa's ship
+			GiveShip2Character(pchar,"FR_Sloop",TranslateString("","Le Rève"),-1,FRANCE,true,true); // Teresa's ship
 			SetCrewQuantity(pchar, 100);
 			AddCharacterGoods(pchar, GOOD_RUM, 40);
 			AddCharacterGoods(pchar, GOOD_WHEAT, 40);
@@ -11784,7 +11845,7 @@ void QuestComplete(string sQuestName)
 		case "Hogan_Discussion":
 			LAi_SetActorType(characterFromID("Teresa Moreno"));
 			LAi_SetActorType(characterFromID("Richard Sharpe"));
-			ChangeCharacterAddress(characterFromID("Fran?ois de Vigny"), "None", "");
+			ChangeCharacterAddress(characterFromID("François de Vigny"), "None", "");
 			ChangeCharacterAddressGroup(characterFromID("Major Hogan"), "Guadeloupe_Plantation_inside", "goto", "goto8");
 			ChangeCharacterAddressGroup(characterFromID("Richard Sharpe"), "Guadeloupe_Plantation_inside", "goto", "goto1");
 			ChangeCharacterAddressGroup(characterFromID("Teresa Moreno"), "Guadeloupe_Plantation_inside", "goto", "goto2");
@@ -12545,9 +12606,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("Soldier8X"));
 			Lai_KillCharacter(characterFromID("Soldier3X"));
 
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
 			LAi_ActorAnimation(characterFromID("Rifleman Tongue"), "shot", "", 1.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
 			GetCharacterPos(characterFromID("Rifleman Tongue"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
@@ -12558,7 +12619,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Harper_explains_Cooper":
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
 			LAi_SetActorType(characterFromID("Rifleman Tongue"));
 
 			LAi_SetActorType(characterFromID("Patrick Harper"));
@@ -12569,12 +12630,12 @@ void QuestComplete(string sQuestName)
 
 		case "French_pull_back":
 			LAi_ActorAnimation(characterFromID("Soldier1X"), "shot", "French_pull_back2", 1.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
 			GetCharacterPos(characterFromID("Soldier1X"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
 			LAi_ActorAnimation(characterFromID("Soldier2X"), "shot", "", 0.0);
-			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); 
+			PlaySound("OBJECTS\duel\pistol_shoot3.wav"); //PlaySound("OBJECTS\duel\pistol_bbus.wav");
 			GetCharacterPos(characterFromID("Soldier2X"), &locx, &locy, &locz);
 			CreateParticleSystemX("gunfire", locx, (locy + 1), locz, locx, (locy + 1), locz,5);
 
@@ -12763,7 +12824,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Rifleman Higgins"), "Guadeloupe_Plantation", "goto", "goto54");
 			ChangeCharacterAddressGroup(characterFromID("Rifleman Tongue"), "Guadeloupe_Plantation", "goto", "goto18");
 
-			LAi_SetGuardianType(characterFromID("Richard Sharpe"));
+			LAi_SetCivilianGuardianType(characterFromID("Richard Sharpe"));
 			characters[GetCharacterIndex("Richard Sharpe")].Dialog.Filename = "Richard Sharpe_dialog.c";
 			LAi_ActorDialog(characterFromID("Richard Sharpe"),PChar,"",5.0,5.0);
 			Characters[GetCharacterIndex("Richard Sharpe")].dialog.CurrentNode = "Back_to_Hotspur_wounded";
@@ -12913,7 +12974,7 @@ void QuestComplete(string sQuestName)
 
 		case "Hogan_Quest_Done":
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Volage","Hotspur",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Volage",TranslateString("","Hotspur"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Guadeloupe_shore_01");
 
 			ChangeCharacterAddressGroup(characterFromID("Lt. William Bush"), "Guadeloupe_shore_01", "goto", "locator10");
@@ -13078,7 +13139,7 @@ void QuestComplete(string sQuestName)
 		case "Go_to_Find_Maria":
 			AddQuestRecord("Old Friends - New Enemies", 12);
 			ChangeCharacterAddressGroup(characterFromID("Bernard Gosling"), "Greenford_town", "reload", "reload21");
-			LAi_SetGuardianType(characterFromID("Bernard Gosling"));
+			LAi_SetCivilianGuardianType(characterFromID("Bernard Gosling"));
 
 			Pchar.quest.Go_to_Find_Maria2.win_condition.l1 = "location";
 			PChar.quest.Go_to_Find_Maria2.win_condition.l1.character = Pchar.id;
@@ -13087,7 +13148,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Go_to_Find_Maria2":
-			LAi_SetGuardianType(characterFromID("Bernard Gosling"));
+			LAi_SetCivilianGuardianType(characterFromID("Bernard Gosling"));
 			characters[GetCharacterIndex("Bernard Gosling")].Dialog.Filename = "RN_Sailor_dialog.c";
 			LAi_ActorDialog(characterFromID("Bernard Gosling"),PChar,"",5.0,5.0);
 			Characters[GetCharacterIndex("Bernard Gosling")].dialog.CurrentNode = "Nail_up_house";
@@ -13688,7 +13749,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, 1.7085, 16.89, -10.585, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 8.0; 
-			CreateParticleSystemX("fireball", 1.7085, 16.89, -10.585, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 1.7085, 16.89, -10.585, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("Lighthouse_Bangs_Now2", 0.0);
 		break;
 
@@ -13702,7 +13763,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, 2.1397, 16.89, -10.585, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 9.0; 
-			CreateParticleSystemX("fireball", 2.1397, 16.89, -10.585, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 2.1397, 16.89, -10.585, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("Lighthouse_Bangs_Now3", 0.0);
 		break;
 
@@ -13716,7 +13777,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, 11.049, 16.864, -4.8695, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 10.0; 
-			CreateParticleSystemX("fireball", 11.049, 16.864, -4.8695, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 11.049, 16.864, -4.8695, -1.57, 0.0, 0.0,0);
 			LAi_QuestDelay("Lighthouse_Bangs_Now4", 0.0);
 		break;
 
@@ -13730,7 +13791,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Prison_Shore", "fire", "fire1", "", -1, 6.0759, 16.869, -8.4767, false);
 			Locations[FindLocation("Prison_Shore")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Prison_Shore")].locators_radius.fire = 10.0; 
-			CreateParticleSystemX("fireball", 6.0759, 16.869, -8.4767, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 6.0759, 16.869, -8.4767, -1.57, 0.0, 0.0,0);
 
 			Characters[GetCharacterIndex("Styles")].dialog.CurrentNode = "That_should_do_it";
 			LAi_QuestDelay("Lighthouse_Bangs_Now5", 6.0);
@@ -13744,10 +13805,10 @@ void QuestComplete(string sQuestName)
 
 		case "Hammond_the_wimp":
 			SetModelfromArray(PChar, GetModelIndex("Wellard_18"));
-			PChar.name = "Jack";
-			PChar.lastname = "Hammond";
+			PChar.name = TranslateString("","Jack");
+			PChar.lastname = TranslateString("","Hammond");
 			
-			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Guadeloupe_shore_01", "goto", "seaman2");
+			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Guadeloupe_shore_01", "goto", "seaman2"); //"citizen04");
 			Characters[GetCharacterIndex("Matthews")].dialog.CurrentNode = "Were's_Captain_Hornblower";
 			DoQuestReloadToLocation("Guadeloupe_shore_01", "officers", "locator3_3", "Hammond_the_wimp_two");
 		break;
@@ -13802,8 +13863,8 @@ void QuestComplete(string sQuestName)
 
 		case "Hammond_the_wimp_threeXXX":
 			SetModelfromArray(PChar, GetModelIndex("BushLtn_18"));
-			PChar.name = "Lt. William";
-			PChar.lastname = "Bush";
+			PChar.name = TranslateString("","Lt. William");
+			PChar.lastname = TranslateString("","Bush");
 
 			ChangeCharacterAddressGroup(characterFromID("Jack Hammond"), "Quest_ShipDeck1", "goto", "goto4");
 			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Quest_ShipDeck1", "goto", "goto6");
@@ -13851,13 +13912,13 @@ void QuestComplete(string sQuestName)
 
 		case "Hornblower_taken":
 			SetModelfromArray(PChar, GetModelIndex("brtHComdr_18"));
-			PChar.name = "Horatio";
-			PChar.lastname = "Hornblower";
+			PChar.name = TranslateString("","Horatio");
+			PChar.lastname = TranslateString("","Hornblower");
 
 //			GiveModel2Player("brtHComdr_18", true);
 			pchar.quest.story_path = "neutral";
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Volage","Hotspur",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Volage",TranslateString("","Hotspur"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Greenford_port");
 
 			Characters[GetCharacterIndex("Styles")].dialog.CurrentNode = "Almost there";
@@ -14005,8 +14066,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Soldier6X"), "None", "");
 			ChangeCharacterAddress(characterFromID("Soldier7X"), "None", "");
 			SetModelfromArray(PChar, GetModelIndex("BushLtn_18"));
-			PChar.name = "Lt. William";
-			PChar.lastname = "Bush";
+			PChar.name = TranslateString("","Lt. William");
+			PChar.lastname = TranslateString("","Bush");
 
 			LAi_SetActorType(characterFromID("Sir Edward Pellew"));
 			DoQuestReloadToLocation("Cabin2SJG", "reload", "reload1", "Bush_sees_Pellew2");
@@ -14031,8 +14092,8 @@ void QuestComplete(string sQuestName)
 
 		case "Crew_Wolfe_Prison":
 			SetModelfromArray(PChar, GetModelIndex("brtHComdr_18"));
-			PChar.name = "Horatio";
-			PChar.lastname = "Hornblower";
+			PChar.name = TranslateString("","Horatio");
+			PChar.lastname = TranslateString("","Hornblower");
 			Locations[FindLocation("PaP_Guardhouse")].reload.l1.disable = 1;
 			Locations[FindLocation("PaP_Guardhouse")].reload.l2.disable = 1;
 			LAi_ActorSetSitMode(characterFromID("Able Seaman Wilks"));
@@ -14149,8 +14210,8 @@ void QuestComplete(string sQuestName)
 
 		case "Soldiers_Wolfe_BeachYYY":
 			SetModelfromArray(PChar, GetModelIndex("WolfFrench"));
-			PChar.name = "Thomas";
-			PChar.lastname = "Wolfe";
+			PChar.name = TranslateString("","Thomas");
+			PChar.lastname = TranslateString("","Wolfe");
 		break;
 
 		case "Soldiers_Wolfe_BeachZZZ":
@@ -14298,7 +14359,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("soldier5X"), "goto", "goto13", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier6X"), "goto", "goto14", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier7X"), "goto", "goto15", "Soldiers_Wolfe_Beach5", 40);
-			LAi_ActorRunToLocator(characterFromID("soldier8X"), "goto", "seaman2", "",40);
+			LAi_ActorRunToLocator(characterFromID("soldier8X"), "goto", "seaman2", "",40); //"citizen04", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier9X"), "goto", "locator14", "", 40);
 			LAi_ActorRunToLocator(characterFromID("soldier10X"), "goto", "seaman1", "", 40);
 		break;
@@ -14386,7 +14447,7 @@ void QuestComplete(string sQuestName)
 
 		case "Interupt_for_Hotspur":
 			SetModelfromArray(PChar, GetModelIndex("MatthewsHB"));
-			PChar.name = "Matthews";
+			PChar.name = TranslateString("","Matthews");
 			PChar.lastname = "";
 
 			ChangeCharacterAddressGroup(characterFromID("Lt. William Bush"), "Quest_ShipDeck1", "reload", "boatl");
@@ -14462,8 +14523,8 @@ void QuestComplete(string sQuestName)
 
 		case "Hornblower_and_picklock2":
 			SetModelfromArray(PChar, GetModelIndex("brtHComdr_18"));
-			PChar.name = "Horatio";
-			PChar.lastname = "Hornblower";
+			PChar.name = TranslateString("","Horatio");
+			PChar.lastname = TranslateString("","Hornblower");
 			Locations[FindLocation("PaP_Guardhouse")].reload.l1.disable = 1;
 			Locations[FindLocation("PaP_Guardhouse")].reload.l2.disable = 1;
 			LAi_ActorSetSitMode(characterFromID("Able Seaman Wilks"));
@@ -14671,8 +14732,8 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Lt. Chadd"), "None", "");
 			ChangeCharacterAddressGroup(characterFromID("Lt. William Bush"), "Quest_ShipDeck1", "goto", "goto7");
 			ChangeCharacterAddressGroup(characterFromID("Jack Hammond"), "Quest_ShipDeck1", "goto", "goto6");
-			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10");
-			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3");
+			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10"); //"goto1");
+			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3"); //"goto5");
 			ChangeCharacterAddressGroup(characterFromID("Oldroyd"), "Quest_ShipDeck1", "goto", "goto9");
 			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Quest_ShipDeck1", "goto", "goto8");
 			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "goto", "goto14");
@@ -14683,8 +14744,8 @@ void QuestComplete(string sQuestName)
 
 		case "Hotspur_underfire3":
 			SetModelfromArray(PChar, GetModelIndex("EcclestonH"));
-			PChar.name = "Lt.";
-			PChar.lastname = "Chadd";
+			PChar.name = TranslateString("","Lt.");
+			PChar.lastname = TranslateString("","Chadd");
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire_HB.wav");
 			Characters[GetCharacterIndex("Lt. William Bush")].dialog.CurrentNode = "Bring_her_inshore";
@@ -14777,8 +14838,8 @@ void QuestComplete(string sQuestName)
 		
 		case "Battery_Plan_Two":
 			SetModelfromArray(PChar, GetModelIndex("brtHComdr_18"));
-			PChar.name = "Horatio";
-			PChar.lastname = "Hornblower";
+			PChar.name = TranslateString("","Horatio");
+			PChar.lastname = TranslateString("","Hornblower");
 
 			DoQuestReloadToLocation("PaP_Arsenal", "goto", "goto5", "Battery_Plan_Three");
 		break;
@@ -14859,7 +14920,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(sld, "FRANCE_SOLDIERS");
 			sld.id = "soldier7X";
 
-			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m3, "rld", "loc6");
+			sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, Nations[FRANCE].fantomModel.m3, "rld", "loc6"); //"goto", "goto4"); //"rld", "loc6");
 			GiveItem2Character(sld, "blade4");
 			EquipCharacterByItem(sld, "blade4");
 			LAi_group_MoveCharacter(sld, "FRANCE_SOLDIERS");
@@ -14905,7 +14966,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Able Seaman Stanley"));
 			LAi_SetActorType(characterFromID("Able Seaman Wilks"));
 
-			LAi_ActorRunToLocator(characterFromID("soldier8X"), "rld", "loc4", "", 40);
+			LAi_ActorRunToLocator(characterFromID("soldier8X"), "rld", "loc4", "", 40); //"Destroy_the_Battery3", 40);
 
 			LAi_QuestDelay("Destroy_the_Battery2", 0.0);
 		break;
@@ -15132,21 +15193,21 @@ void QuestComplete(string sQuestName)
 
 		case "Another_Hotspur_visit2":
 			ChangeCharacterAddress(characterFromID("Lt. William Bush"), "None", "");
-			ChangeCharacterAddressGroup(characterFromID("Lt. Chadd"), "Quest_ShipDeck1", "goto", "goto14"); 
+			ChangeCharacterAddressGroup(characterFromID("Lt. Chadd"), "Quest_ShipDeck1", "goto", "goto14"); //"rld", "startloc");
 			ChangeCharacterAddressGroup(characterFromID("Jack Hammond"), "Quest_ShipDeck1", "goto", "goto7");
 			ChangeCharacterAddressGroup(characterFromID("Perrin"), "Quest_ShipDeck1", "goto", "goto10");
 			ChangeCharacterAddressGroup(characterFromID("Marsh"), "Quest_ShipDeck1", "goto", "goto3");
 			ChangeCharacterAddressGroup(characterFromID("Oldroyd"), "Quest_ShipDeck1", "goto", "goto9");
 			ChangeCharacterAddressGroup(characterFromID("Matthews"), "Quest_ShipDeck1", "goto", "goto8");
-			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "rld", "startloc"); 
+			ChangeCharacterAddressGroup(characterFromID("Helmsman"), "Quest_ShipDeck1", "rld", "startloc"); //"goto", "goto14");
 			LAi_SetActorType(characterFromID("Jack Hammond"));
 			LAi_SetActorType(characterFromID("Lt. William Bush"));
 		break;
 
 		case "Check_that_signal":
 			SetModelfromArray(PChar, GetModelIndex("BushLtn_18"));
-			PChar.name = "Lt. William";
-			PChar.lastname = "Bush";
+			PChar.name = TranslateString("","Lt. William");
+			PChar.lastname = TranslateString("","Bush");
 
 			Characters[GetCharacterIndex("Jack Hammond")].dialog.CurrentNode = "Withdraw_Signal_from_flagship";
 			DoQuestReloadToLocation("Quest_ShipDeck1", "goto", "goto4", "Check_that_signal2");
@@ -15176,8 +15237,8 @@ void QuestComplete(string sQuestName)
 		case "Back_to_Fort_Bomb":
 //Grey Roger: return you to Horatio Hornblower
 			SetModelfromArray(PChar, GetModelIndex("brtHComdr_18"));
-			PChar.name = "Horatio";
-			Pchar.lastname = "Hornblower";
+			PChar.name = TranslateString("","Horatio");
+			Pchar.lastname = TranslateString("","Hornblower");
 			ChangeCharacterAddressGroup(characterFromID("Styles"), "Fake_Guadeloupe_fort", "goto", "goto7");
 			ChangeCharacterAddressGroup(characterFromID("Able Seaman Tompkins"), "Fake_Guadeloupe_fort", "reload", "reload2");
 			ChangeCharacterAddressGroup(characterFromID("Able Seaman Stanley"), "Fake_Guadeloupe_fort", "reload", "reload2");
@@ -15211,7 +15272,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Fake_Guadeloupe_fort", "fire", "fire1", "", -1, 4.4705, 2.7257, -4.9335, false);
 			Locations[FindLocation("Fake_Guadeloupe_fort")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Fake_Guadeloupe_fort")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 4.4705, 2.7257, -4.9335, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 4.4705, 2.7257, -4.9335, -1.57, 0.0, 0.0,0);
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire3.wav");
 			CreateParticleSystemX("blast_inv", 4.4705, 2.7257, -4.9335, 1.7537, 0.0, 0.0,0);
@@ -15224,7 +15285,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Fake_Guadeloupe_fort", "fire", "fire1", "", -1, 4.4705, 2.7257, -4.9335, false);
 			Locations[FindLocation("Fake_Guadeloupe_fort")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Fake_Guadeloupe_fort")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", 4.4705, 2.7257, -4.9335, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", 4.4705, 2.7257, -4.9335, -1.57, 0.0, 0.0,0);
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire3.wav");
 			CreateParticleSystemX("blast_inv", 4.4705, 2.7257, -4.9335, 1.7537, 0.0, 0.0,0);
@@ -15237,7 +15298,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Fake_Guadeloupe_fort", "fire", "fire1", "", -1, -7.0333, 2.7295, -8.0215, false);
 			Locations[FindLocation("Fake_Guadeloupe_fort")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Fake_Guadeloupe_fort")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -7.0333, 2.7295, -8.0215, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -7.0333, 2.7295, -8.0215, -1.57, 0.0, 0.0,0);
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire3.wav");
 			CreateParticleSystemX("blast_inv", -7.0333, 2.7295, -8.0215, 1.7537, 0.0, 0.0,0);
@@ -15250,7 +15311,7 @@ void QuestComplete(string sQuestName)
 			WriteLocatorGlobal("Fake_Guadeloupe_fort", "fire", "fire1", "", -1, -1.1921, 7.6318, -1.1495, false);
 			Locations[FindLocation("Fake_Guadeloupe_fort")].models.night.lights.fire = "heater"; 
 			Locations[FindLocation("Fake_Guadeloupe_fort")].locators_radius.fire = 4.0; 
-			CreateParticleSystemX("fireball", -1.1921, 7.6318, -1.1495, -1.57, 0.0, 0.0,0);
+			CreateParticleSystemX("fort_fire", -1.1921, 7.6318, -1.1495, -1.57, 0.0, 0.0,0);
 
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire3.wav");
 			CreateParticleSystemX("blast_inv", -1.1921, 7.6318, -1.1495, 1.7537, 0.0, 0.0,0);
@@ -15281,7 +15342,7 @@ void QuestComplete(string sQuestName)
 		case "AND_onto_The_BEACH":
 			PlayStereoSound("OBJECTS\SHIPCHARGE\cannon_fire3.wav");
 			SetShipRemovable(pchar, true);
-			GiveShip2Character(pchar,"RN_Volage","Hotspur",-1,ENGLAND,true,true);
+			GiveShip2Character(pchar,"RN_Volage",TranslateString("","Hotspur"),-1,ENGLAND,true,true);
 			setCharacterShipLocation(Pchar, "Guadeloupe_shore_01");
 			Locations[FindLocation("Guadeloupe_Jungle_03")].vcskip = false;
 			Locations[FindLocation("Guadeloupe_Jungle_02")].vcskip = false;
@@ -15441,7 +15502,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("Thomas Wolfe"), "reload", "locator3_back", "", 40);
 			LAi_ActorRunToLocator(characterFromID("Black Charlie Hammond"), "goto", "goto03", "", 40);
 
-			PlaySound("VOICE\ENGLISH\Bush21.wav");
+			PlaySound(voice_path + "Bush21.wav");
 			LAi_group_SetRelation("FRANCE_SOLDIERS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("FRANCE_SOLDIERS", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("FRANCE_SOLDIERS", "Hammond Suicide");
@@ -15690,14 +15751,16 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Married":
-			characters[GetCharacterIndex("Maria Mason")].married = MR_MARRIED;
-			characters[GetCharacterIndex("Maria Mason")].quest.meeting = "1"
-			characters[GetCharacterIndex("Maria Mason")].Dialog.Filename = "Gov MR_dialog.c";
-			characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "First time";
+			Characters[GetCharacterIndex("Maria Mason")].married = MR_MARRIED;
+			Characters[GetCharacterIndex("Maria Mason")].quest.meeting = "1"
+//			characters[GetCharacterIndex("Maria Mason")].Dialog.Filename = "Gov MR_dialog.c";
+//			characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "First time";
 			characters[GetCharacterIndex("Maria Mason")].talkpoints = 0;
 			characters[GetCharacterIndex("Maria Mason")].marpoints = 1;
 			characters[GetCharacterIndex("Maria Mason")].pcounter = 0;
-			characters[GetCharacterIndex("Maria Mason")].lastname = TranslateString("","Hornblower");
+			Characters[GetCharacterIndex("Maria Mason")].Dialog.Filename = "Maria Mason_dialog.c";
+			Characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "At_home_freeplay";
+			Characters[GetCharacterIndex("Maria Mason")].lastname = TranslateString("","Hornblower");
 //			LAi_SetStayType(characterFromID("Maria Mason"));
 			PChar.married = MR_MARRIED;
 			PChar.married.id = "Maria Mason";
@@ -15720,7 +15783,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddress(characterFromID("Lt. William Bush"), "None", "");
 			LAi_SetPriestType(characterFromID("Father Jerald"));
 			LAi_SetOfficerType(CharacterFromID("Mrs. Mason"));
-			LAi_ActorFollowEverywhere(CharacterFromID("Mrs. Mason"), "", 1.0);
+//			LAi_ActorFollowEverywhere(CharacterFromID("Mrs. Mason"), "", 1.0);
 			Pchar.quest.firstnight.win_condition.l1 = "location";
 			PChar.quest.firstnight.win_condition.l1.character = Pchar.id;
 			Pchar.quest.firstnight.win_condition.l1.location = "Mrs. Mason's House";
@@ -15794,7 +15857,7 @@ void QuestComplete(string sQuestName)
 
 		case "assigned_to_atropos4":
 			LAi_ActorSetSitMode(characterFromID("Lt. Eccleston"));
-			LAi_SetGuardianType(characterFromID("Sir Edward Pellew"));
+			LAi_SetCivilianGuardianType(characterFromID("Sir Edward Pellew"));
 			characters[GetCharacterIndex("Sir Edward Pellew")].Dialog.Filename = "Sir Edward Pellew_dialog.c";
 //			LAi_ActorDialog(characterFromID("Sir Edward Pellew"),PChar,"",5.0,5.0);
 			Characters[GetCharacterIndex("Sir Edward Pellew")].dialog.CurrentNode = "Give_atropos";
@@ -15803,8 +15866,8 @@ void QuestComplete(string sQuestName)
 		case "assigned_to_atropos5":
 			ReceiveLetterOfMarque(ENGLAND);							// PB: Enable regular governor dialogs
 //			DeleteAttribute(PChar, "isnotcaptain");						// PB: Return to normal play
-			AddStorylineVar(FindCurrentStoryline(), "CHANGING_RELATIONS", "1");		// PB: Enable changing nation relations
-			GiveShip2Character(pchar, "HMS_Greyhound", "Atropos", -1, ENGLAND, true, true); // 6th Rate Frigate
+//			AddStorylineVar(FindCurrentStoryline(), "CHANGING_RELATIONS", "1");		// PB: Enable changing nation relations
+			GiveShip2Character(pchar, "HMS_Greyhound", TranslateString("","Atropos"), -1, ENGLAND, true, true); // 6th Rate Frigate
 			AddQuestRecord("Old Friends - New Enemies", 19);
 			LAi_QuestDelay("End_of_story", 0.1);
 		break;
@@ -15821,19 +15884,19 @@ void QuestComplete(string sQuestName)
 
 		case "wolfes_ship":
 			pchar.quest.know_about_Wolfe = "None";
-			GiveShip2Character(characterFromID("Teresa Moreno"),"FR_Sloop","Le R?ve",-1,FRANCE,true,true);
+			GiveShip2Character(characterFromID("Teresa Moreno"),"FR_Sloop",TranslateString("","Le Rève"),-1,FRANCE,true,true);
 			setCharacterShipLocation(characterFromID("Teresa Moreno"), "Charlestown_port");
 			ChangeCharacterAddressGroup(characterFromID("Teresa Moreno"), "Mystery_House", "goto", "goto5");
 			LAi_SetGuardianType(characterFromID("Teresa Moreno"));
 			Characters[GetCharacterIndex("Teresa Moreno")].dialog.CurrentNode = "looking_for_Wolfe";
 			ChangeCharacterAddressGroup(characterFromID("Major Hogan"), "Guadeloupe_Plantation_inside", "goto", "goto8");
-			LAi_SetGuardianType(characterFromID("Major Hogan"));
+			LAi_SetCivilianGuardianType(characterFromID("Major Hogan"));
 			Characters[GetCharacterIndex("Major Hogan")].dialog.CurrentNode = "looking_for_Wolfe";
 
 			LAi_SetImmortal(characterFromID("Thomas Wolfe"), false);
 			characters[GetCharacterIndex("Thomas Wolfe")].nation = FRANCE
 			SetRMRelation(characterFromID("Thomas Wolfe"), ENGLAND, REL_WAR);
-			GiveShip2Character(characterFromID("Thomas Wolfe"), "FR_Sloop", "Loup-Garou", -1, FRANCE, true, true);
+			GiveShip2Character(characterFromID("Thomas Wolfe"), "FR_Sloop", TranslateString("","Loup-Garou"), -1, FRANCE, true, true);
 
 			Group_CreateGroup("wolfes_Ship"); 
 			Group_AddCharacter("wolfes_Ship", "Thomas Wolfe");
@@ -15860,7 +15923,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.imprison_wolfe.win_condition.l1 = "location";
 			PChar.quest.imprison_wolfe.win_condition.l1.character = Pchar.id;
 			Pchar.quest.imprison_wolfe.win_condition.l1.location = "Greenford_port";
-			Pchar.quest.imprison_wolfe.win_condition = "bush_locks_up_wolfe"
+			Pchar.quest.imprison_wolfe.win_condition = "bush_locks_up_wolfe";
 		break;
 
 		case "bush_locks_up_wolfe":
@@ -15889,8 +15952,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "interrogation_wolfe_start":
-			characters[GetCharacterIndex("Thomas Wolfe")].name = TranslateString("","Thomas");
-			characters[GetCharacterIndex("Thomas Wolfe")].lastname = TranslateString("","Wolfe");
+			Characters[GetCharacterIndex("Thomas Wolfe")].name = TranslateString("","Thomas");
+			Characters[GetCharacterIndex("Thomas Wolfe")].lastname = TranslateString("","Wolfe");
+			Characters[GetCharacterIndex("Thomas Wolfe")].Dialog.Filename = "Thomas Wolfe_Dialog.c";
+			Characters[GetCharacterIndex("Thomas Wolfe")].Dialog.CurrentNode = "turnabout";
 			ChangeCharacterAddress(characterFromID("Lt. William Bush"), "None", "");
 			LAi_SetActorType(characterFromID("Richard Sharpe"));
 			Characters[GetCharacterIndex("Richard Sharpe")].Dialog.Filename = "Richard Sharpe_Dialog.c";
@@ -15899,7 +15964,8 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "interrogate_wolfe1":
-			LAi_ActorGotoLocator(characterFromID("Richard Sharpe"),"goto", "goto23", "", 30.0);
+			LAi_SetActorType(CharacterFromID("Richard Sharpe"));
+			LAi_ActorGotoLocator(CharacterFromID("Richard Sharpe"),"goto", "goto23", "", 30.0);
 			pchar.quest.wolfe_in_jail1.win_condition.l1 = "locator";
 			pchar.quest.wolfe_in_jail1.win_condition.l1.location = "Greenford_prison";
 			pchar.quest.wolfe_in_jail1.win_condition.l1.locator_group = "reload";
@@ -15908,7 +15974,8 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "interrogate_wolfe1a":
-			LAi_ActorTurnToCharacter(characterFromID("Richard Sharpe"), pchar);
+			LAi_SetActorType(CharacterFromID("Richard Sharpe"));
+			LAi_ActorTurnToCharacter(CharacterFromID("Richard Sharpe"), pchar);
 			LAi_SetActorType(characterFromID("Thomas Wolfe"));
 			Characters[GetCharacterIndex("Thomas Wolfe")].Dialog.Filename = "Thomas Wolfe_Dialog.c";
 			Characters[GetCharacterIndex("Thomas Wolfe")].Dialog.CurrentNode = "turnabout";
@@ -15916,11 +15983,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "interrogate_wolfe2":
+			PChar.quest.wolfe_in_jail1.over = "yes";	// In case you talked to Wolfe without hitting the locator to trigger "interrogate_wolfe1a"
+			LAi_SetActorType(CharacterFromID("Richard Sharpe"));
 			Characters[GetCharacterIndex("Richard Sharpe")].Dialog.CurrentNode = "bad_cop";
 			LAi_ActorDialog(characterFromID("Richard Sharpe"),PChar,"",5.0,5.0);
 		break;
 
 		case "interrogate_wolfe3":
+			LAi_SetActorType(CharacterFromID("Thomas Wolfe"));
 			Characters[GetCharacterIndex("Thomas Wolfe")].Dialog.CurrentNode = "good_cop";
 			LAi_ActorDialogNow(characterFromID("Thomas Wolfe"),PChar,"",2.0);
 		break;
@@ -15932,9 +16002,10 @@ void QuestComplete(string sQuestName)
 
 		case "take_wolfe":
 			ChangeCharacterAddressGroup(characterFromID("Thomas Wolfe"), "Greenford_prison", "goto", "goto23");
-			LAi_ActorGotoLocator(characterFromID("Thomas Wolfe"),"officers", "reload1_2", "", 30.0);
-			SetOfficersIndex(Pchar, 1, getCharacterIndex("Richard Sharpe"));
-			SetCharacterRemovable(characterFromID("Richard Sharpe"), false);
+			LAi_SetActorType(CharacterFromID("Thomas Wolfe"));
+			LAi_ActorGotoLocator(CharacterFromID("Thomas Wolfe"),"officers", "reload1_2", "", 30.0);
+			SetOfficersIndex(PChar, 1, GetCharacterIndex("Richard Sharpe"));
+			SetCharacterRemovable(CharacterFromID("Richard Sharpe"), false);
 			Pchar.quest.wolfe_out_of_jail.win_condition.l1 = "location";
 			PChar.quest.wolfe_out_of_jail.win_condition.l1.character = Pchar.id;
 			Pchar.quest.wolfe_out_of_jail.win_condition.l1.location = "Greenford_town";
@@ -16552,7 +16623,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "restore_sound":
-	//			locations[FindLocation("Greenford_port")].type = "port";
+//			locations[FindLocation("Greenford_port")].type = "port";
 			ChangeCharacterAddress(CharacterFromID("Richard Sharpe"), "None", "");
 			ChangeCharacterAddress(CharacterFromID("Patrick Harper"), "None", "");
 			ChangeCharacterAddress(CharacterFromID("Rifleman Haggman"), "None", "");
@@ -16607,8 +16678,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "back_home2":
-			Characters[GetCharacterIndex("Maria Mason")].Dialog.Filename = "Gov MR_dialog.c";
-			Characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "First time";
+//			Characters[GetCharacterIndex("Maria Mason")].Dialog.Filename = "Gov MR_dialog.c";
+//			Characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "First time";
+			Characters[GetCharacterIndex("Maria Mason")].Dialog.CurrentNode = "At_home_freeplay";
 			LAi_SetStayType(CharacterFromID("Maria Mason"));
 			LAi_Fade("", "");
 			WaitDate("", 0, 0, 1, 0, 0);

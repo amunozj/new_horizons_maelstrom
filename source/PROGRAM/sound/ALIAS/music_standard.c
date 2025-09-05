@@ -7,7 +7,7 @@ void InitMusic()
 
 	//============ MAIN MENU ========================
 	// added by NK so it can be done in code.
-	tmpref.music_main_menu.f1.name = "MUSIC\Main_Title.ogg";						// PB: Cutthroat Island
+	tmpref.music_main_menu.f1.name = "MUSIC\Black_Sails.ogg";						// PB: Cutthroat Island
 
 	//============ MAIN THEME ========================
 	tmpref.music_main_theme.f1.name = "MUSIC\Main_Theme.ogg";
@@ -122,6 +122,18 @@ void InitMusic()
 
 	//============================| GOLDBUG QUEST |===========================//<-- JRH
 
+	//============================| DEVLIN QUEST |===========================//BTP -->
+	tmpref.OP_celtic.f1.name = "MUSIC\op_celtictheme.ogg";
+
+	tmpref.OP_road.f1.name = "MUSIC\op_roadtheme.ogg";
+
+	tmpref.OP_village.f1.name = "MUSIC\op_villagetheme.ogg";
+
+	tmpref.OP_wood.f1.name = "MUSIC\op_woodtheme.ogg";
+
+
+	//============================| DEVLIN QUEST |===========================//<-- BTP
+
 	//===========================| Hornblower Quest |===========================// Grey Roger -->
 	if (FindCurrentStoryline() == FindStoryline("Hornblower"))
 	{
@@ -165,7 +177,8 @@ void InitMusic()
 
 	tmpref.music_spa_town.f1.name = "MUSIC\Spa_Town.ogg";							// PB: Sea Dogs
 	tmpref.music_spa_town.f2.name = "MUSIC\Spa_Town2.ogg";							// PB: Sea Dogs
-	tmpref.music_spa_town.f3.name = "MUSIC\Spa_Town3.ogg";							// PB: Sea Dogs
+//	tmpref.music_spa_town.f3.name = "MUSIC\Spa_Town3.ogg";							// PB: Sea Dogs
+	tmpref.music_spa_town.f3.name = "MUSIC\36-BF-Townspain.ogg";						// GR: AoP Supermod
 
 	tmpref.music_pir_town.f1.name = "MUSIC\Pir_Town.ogg";							// ASVS: Sea Dogs
 	tmpref.music_pir_town.f2.name = "MUSIC\Pir_Town2.ogg";							// SJG: PotC
@@ -198,6 +211,10 @@ void InitMusic()
 	tmpref.storyteller_sad.f1.name = "MUSIC\bensound-tomorrow.ogg";
 	tmpref.storyteller_fun.f1.name = "MUSIC\bensound-smile.ogg";
 
+
+	//===========================| Tribute to Captain Murphy |===========================	// This track is by Flannery, originally for the game "Buccaneers"
+	tmpref.murphy_tribute.f1.name = "MUSIC\Hail Captain Murphy.ogg";			// and included in "New Horizons" with his permission.
+												// Republishing or uploading this track is strictly prohibited.
 
 	//============ SHOP, TAVERN, SHIPYARD ============
 	tmpref.music_shop.f1.name = "MUSIC\Taverna.ogg";

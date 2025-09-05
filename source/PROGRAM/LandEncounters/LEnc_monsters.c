@@ -273,12 +273,13 @@ bool LEnc_MonstersLoginStart(ref location)
 							location_or_nation = GetLocationNation(location);
 						switch(location_or_nation)
 						{
-							case 0 : if(GetServedNation() != ENGLAND) {Random_Raid("Soldiers", 10, ENGLAND,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
-							case 1 : if(GetServedNation() != FRANCE)  {Random_Raid("Soldiers", 10, FRANCE,   LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
-							case 2 : if(GetServedNation() != SPAIN)   {Random_Raid("Soldiers", 10, SPAIN,    LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
-							case 4 : if(GetServedNation() != HOLLAND) {Random_Raid("Soldiers", 10, HOLLAND,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
-							case 5 : if(GetServedNation() != PORTUGAL){Random_Raid("Soldiers", 10, PORTUGAL, LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;	
-							case 6 : if(GetServedNation() != AMERICA) {Random_Raid("Soldiers", 10, AMERICA,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;	
+							case ENGLAND : if(GetServedNation() != ENGLAND) {Random_Raid("Soldiers", 10, ENGLAND,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
+							case FRANCE : if(GetServedNation() != FRANCE)  {Random_Raid("Soldiers", 10, FRANCE,   LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
+							case SPAIN : if(GetServedNation() != SPAIN)   {Random_Raid("Soldiers", 10, SPAIN,    LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
+							case HOLLAND : if(GetServedNation() != HOLLAND) {Random_Raid("Soldiers", 10, HOLLAND,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
+							case PORTUGAL : if(GetServedNation() != PORTUGAL){Random_Raid("Soldiers", 10, PORTUGAL, LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;	
+							case GUEST1_NATION : if(GetServedNation() != GUEST1_NATION) {Random_Raid("Soldiers", 10, GUEST1_NATION,  LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL,  "MILITARY RAID!!!");}break;
+							case PERSONAL_NATION: if(GetServedNation() != PERSONAL_NATION) {Random_Raid("smugglers", 10, PIRATE, LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL, "AMBUSH!!!");}break;
 						}
 					break;
 
@@ -286,7 +287,7 @@ bool LEnc_MonstersLoginStart(ref location)
 						Random_Raid("smugglers", 8, PIRATE, LAI_GROUP_ENEMY, LAI_GROUP_NEUTRAL, "AMBUSH!!!");
 					break;
 
-					case 2: 
+					case 2:
 						if (CheckAttribute(location, "townsack"))
 							location_or_nation = GettownNation(location.townsack);
 						else
@@ -294,7 +295,7 @@ bool LEnc_MonstersLoginStart(ref location)
 						if (location_or_nation != PIRATE) Random_Patrol("Soldiers", RAND(15), location_or_nation,"SOLDIERS PATROL!");
 					break;
 
-					case 3: 
+					case 3:
 						if (CheckAttribute(location, "townsack"))
 							location_or_nation = GettownNation(location.townsack);
 						else
@@ -322,7 +323,7 @@ bool LEnc_MonstersLoginStart(ref location)
 			{
 				if (makeint(environment.time) > 22.0 || makeint(environment.time) < 8.0 && GettownNation(location.townsack)!=3)
 				{
-					if(rand(20)==0){Random_Raid("smugglers", 20, PIRATE,LAI_GROUP_NEUTRAL,LAI_GROUP_ENEMY,"ALERT!!! PIRATES RAID!!!");}
+					if(rand(20)==0){Random_Raid("smugglers", 20, PIRATE, LAI_GROUP_ENEMY, LAI_GROUP_ENEMY, "ALERT!!! PIRATES RAID!!!");}	// was 'LAI_GROUP_NEUTRAL,LAI_GROUP_ENEMY' which makes them attack everyone except you!
 				}
 				if (makeint(GetLocationNation(location))!=PIRATE) //(GettownNation(location.townsack)!=3)
 				{
@@ -678,7 +679,7 @@ bool LEnc_MonstersLoginStart(ref location)
 		LEnc_MonstersLoginObject.monkey = "0";
 		LEnc_MonstersLoginObject.mummy = "0";
 		LEnc_MonstersLoginObject.vagabond = "0";	// ccc Nov05 "0.1";
-		Logit("You are ALONE now. No other LIVING soul dares to enter here..");	// ccc Nov05
+		Logit(TranslateString("","You are ALONE now. No other LIVING soul dares to enter here.."));	// ccc Nov05
 	}
 
 	// ccc to enable encounters in fake forts
@@ -909,6 +910,9 @@ bool LEnc_MonstersLoginSelectModel(ref location, aref modelInfo, string group, s
 					modelInfo.model = "Soldiers";
 				}
 				// Cap'n Crunch <--
+				if(ModelIsType(PChar.model, "Animists")) modelinfo.model = "Animists";
+				if(CheckCharacterItem(PChar, "Davy_Chest")) modelinfo.model = "Davycrew";
+				if(CheckCharacterItem(PChar, "Devil_Contract")) modelinfo.model = "Ghost";
 			break;
 
 			case "own_deck":
@@ -921,6 +925,8 @@ bool LEnc_MonstersLoginSelectModel(ref location, aref modelInfo, string group, s
 					modelInfo.model = "Soldiers";
 				}
 				// Cap'n Crunch <--
+				if(ModelIsType(PChar.model, "Animists")) modelinfo.model = "Animists";
+				if(CheckCharacterItem(PChar, "Davy_Chest")) modelinfo.model = "Davycrew";
 			break;
 
 			case "ship":
@@ -933,6 +939,8 @@ bool LEnc_MonstersLoginSelectModel(ref location, aref modelInfo, string group, s
 					modelInfo.model = "Soldiers";
 				}
 				// Cap'n Crunch <--
+				if(ModelIsType(PChar.model, "Animists")) modelinfo.model = "Animists";
+				if(CheckCharacterItem(PChar, "Davy_Chest")) modelinfo.model = "Davycrew";
 			break;
 
 			case "Brothel":
@@ -1090,8 +1098,10 @@ void LEnc_MonstersLoginCorrectParams(ref location, aref chr, string group, strin
 
 		// ccc -->
 		chr.money = 0;
-		chr.name = VC_MONKEY_NAME;
-		chr.lastname = VC_MONKEY_LNAME;
+	//	chr.name = VC_MONKEY_NAME;
+	//	chr.lastname = VC_MONKEY_LNAME;
+		chr.name = TranslateString(VC_MONKEY_NAME, VC_MONKEY_LNAME);	// GR: translatable Akellani
+		chr.lastname = "";						// GR
 		// ccc <--
 		break;
 		
@@ -1296,9 +1306,9 @@ void LEnc_MonstersLoginCorrectParams(ref location, aref chr, string group, strin
 			break;
 
 			case "Brothel":
-				chr.dialog.filename = "wenched_dialog.c";
+				chr.dialog.filename = "wench_dialog.c";
 				chr.greeting = "Gr_Wench";
-				if(!CheckAttribute(location,"brothels_mom") && !HasSubStr(location.id,"QC"))//MAXIMUS: brothel's mom must be equipped to protect her girls 
+				if(!CheckAttribute(location,"brothels_mom") && !CheckAttribute(location, "permanent_mom"))//MAXIMUS: brothel's mom must be equipped to protect her girls ;)
 				{
 					chr.dialog.filename = "mistress_dialog.c";
 					chr.greeting = "Gr_Brothel's mom";
@@ -1376,8 +1386,10 @@ void LEnc_MonstersLoginCorrectParams(ref location, aref chr, string group, strin
 	if (sti(GetAttribute(chr, "isIndian")) == true)
 	{
 		gunProb = 1.0;
-		chr.name = VC_MUMMY_NAME; // ccc10.2
-		chr.lastname = VC_MUMMY_LNAME; // ccc10.2
+	//	chr.name = VC_MUMMY_NAME; // ccc10.2
+	//	chr.lastname = VC_MUMMY_LNAME; // ccc10.2
+		chr.name = TranslateString(VC_MUMMY_NAME, VC_MUMMY_LNAME);	// GR: translatable Akellani
+		chr.lastname = "";						// GR
 		if(VC_MUMMY_NOMONEY) chr.money = 0; // NK
 		GiveItem2Character(chr, "indian"+ makeint(1 + rand(15)) );	// jun05 booty for stealing
 		GiveItem2Character(chr, "mineral"+ makeint(1 + rand(2)) );	// jun05 booty for stealing

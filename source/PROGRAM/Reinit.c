@@ -165,7 +165,6 @@ void Reinit(bool start, bool show)
 		}
 
 		WeatherInit();
-		makeCurrentFutureRealizations(MakeInt(GetHour()));
 
 		if(show) Log_SetStringToLog(TranslateString("","Weather..."));
 
@@ -226,7 +225,7 @@ void Reinit(bool start, bool show)
 		Interfaces[INTERFACE_NEWS].SectionName = "interface\news.c";
 		Interfaces[INTERFACE_NEWS].IniFile = "NEW_INTERFACES\news.ini";
 		Interfaces[INTERFACE_MONKEY].SectionName = "interface\monkey.c";
-		Interfaces[INTERFACE_MONKEY].IniFile = "NEW_INTERFACES\monkey.ini";
+		Interfaces[INTERFACE_MONKEY].IniFile = "INTERFACES\monkey.ini";
 	}
 	else
 	{
@@ -626,7 +625,7 @@ void Reinit(bool start, bool show)
 }
 
 //To save typing:
-bool DebugLog(string ltext) //shamelessly ripped from Stone-D. Thanks, SD! 
+bool DebugLog(string ltext) //shamelessly ripped from Stone-D. Thanks, SD! :)
 {
 	if(DEBUGINFO) Log_SetStringToLog(ltext);
 	return DEBUGINFO;
@@ -738,7 +737,6 @@ void BS_Reinit()
 		IslandsInit();
 		trace("Gauging: islands");
 		WeatherInit();
-		makeCurrentFutureRealizations(MakeInt(GetHour()));		
 		trace("Gauging: weather");
 		Alias_Init();
 		trace("Gauging: Aliases");

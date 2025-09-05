@@ -20,25 +20,29 @@ void CreateSea(string sExecuteLayer, string sRealizeLayer)
 {
 //	if (IsEntity(&Sea)) DeleteSeaEnvironment(); // KK { Trace("ERROR: Sea Already Loaded!!!"); return; }
 //JA 5DEC06 returned to old function as DeleteSeaEnvironment appears to delete ships models on the sea. Need to leave sea stuff there so can reload after going to deck. (I think)
- 	if (IsEntity(&Sea)) { return; }
 
+ 	//if (IsEntity(&Sea)) { return; }
+    if (!IsEntity(&Sea)) {
+        CreateEntity(&Sea, "sea");
+    }
 
-	CreateEntity(&Sea, "sea");
+    if (!IsEntity(&ShipLights)) {
+        //Boyer add
+        if (LoadSegment("sea_ai\ShipLights.c"))
+        {
+            InitShipLights();
+            UnloadSegment("sea_ai\ShipLights.c");
+        }
+        CreateEntity(&ShipLights, "ShipLights");		ReloadProgressUpdate();
+        LayerAddObject(sExecuteLayer, &ShipLights, 0);
+        LayerAddObject(sRealizeLayer, &ShipLights, -1);
+        LayerAddObject("sea_sunroad", &ShipLights, -1);
+        //End Boyer add
+    }
+
 	MoveSeaToLayers(sExecuteLayer, sRealizeLayer);
 
 	LayerFreeze("sea_reflection", false);
-
-	//Boyer add
-	if (LoadSegment("sea_ai\ShipLights.c"))
-	{
-		InitShipLights();
-		UnloadSegment("sea_ai\ShipLights.c");
-	}
-	CreateEntity(&ShipLights, "ShipLights");		ReloadProgressUpdate();
-	LayerAddObject(sExecuteLayer, &ShipLights, 0);
-	LayerAddObject(sRealizeLayer, &ShipLights, -1);
-	LayerAddObject("sea_sunroad", &ShipLights, -1);
-	//End Boyer add
 
 	Sea.AbordageMode = false;
 }
@@ -76,52 +80,72 @@ void SeaAI_SailToEndFade()
 			aref rIslLoc = FindIslandReloadLocator(rCharacter.Location, sSailToString);
 			// Screwface : Lagoon mod : Check if the locator is in a lagoon or not to update the color
 			aref aCurWeather = GetCurrentWeather();
-			aref arLocator, arReload;
-			ref rIsland = GetIslandByIndex(FindIsland(rCharacter.location));
-			makearef(arReload, rIsland.reload);
-			int iNumReload = GetAttributesNum(arReload);
-			for (int i=0;i<iNumReload;i++)
-			{
-				arLocator = GetAttributeN(arReload, i);
-				if (arLocator.Name == rIslLoc.name)
-				{
-					if(stf(Locations[FindLocation(arLocator.go)].type =="seashore"))
-					{
-						if(aCurWeather.id == "Blue Sky" && wRain < 75)
-						{
-							//Sea.GF3.WaterColor = argb(0,45,129,153);
-							//Sea.GF3.WaterColor = argb(0,124,202,215);
-							//Sea.GF3.SkyColor = argb(0,109,185,240);
-							//Sea.WaterAttenuation = 0.3;
-							Sea.Sea2.WaterColor = argb(0,124,202,215);
-                            Sea.Sea2.SkyColor = argb(0,109,185,240);
-                            Sea.Sea2.Attenuation = 0.3;
-							arLocator.inlagoon = 1;
-						}
-						else
-						{
-							//Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
-							//Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
-							//Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
-							Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
+			if(wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //aCurWeather.id == "Blue Sky" && wRain < 75)
+            {
+                aref arLocator, arReload;
+                ref rIsland = GetIslandByIndex(FindIsland(rCharacter.location));
+                makearef(arReload, rIsland.reload);
+                int iNumReload = GetAttributesNum(arReload);
+                for (int i=0;i<iNumReload;i++)
+                {
+                    arLocator = GetAttributeN(arReload, i);
+                    if (arLocator.Name == rIslLoc.name)
+                    {
+                        string sType = Locations[FindLocation(arLocator.go)].type;
+                        if(sType == "seashore" || sType == "port")
+                        {
+                            //if(wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //aCurWeather.id == "Blue Sky" && wRain < 75)
+                            //{
+                                //Sea.GF3.WaterColor = argb(0,45,129,153);
+                                //Sea.GF3.WaterColor = argb(0,124,202,215);
+                                //Sea.GF3.SkyColor = argb(0,109,185,240);
+                                //Sea.WaterAttenuation = 0.3;
+                                Sea.Sea2.WaterColor = argb(0,84,162,175);
+                                Sea.Sea2.SkyColor = argb(0,255,255,255);
+                                Sea.Sea2.Attenuation = 0.3;
+								Sea.Sea2.Transparency = 0.6;
+                                arLocator.inlagoon = 1;
+                                aCurWeather.Sea.inlagoon = 1;
+                                //trace("AISea in lagoon1 " + aCurWeather.id);
+                                break;
+                            //}
+                            //else
+                            //{
+                                //Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
+                                //Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
+                                //Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
+                           //     Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
+                           //     Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
+                           //     Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
+                           //     Deleteattribute(arLocator, "inlagoon");
+                            //}
+                            //logit("locator : " + arLocator.name);
+                        }
+                        else
+                        {
+                            //Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
+                            //Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
+                            //Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
+                            Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
                             Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
                             Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
-							if(Checkattribute(arLocator, "inlagoon")) Deleteattribute(arLocator, "inlagoon");
-						}
-						//logit("locator : " + arLocator.name);
-					}
-					else
-					{
-						//Sea.GF3.WaterColor = aCurWeather.Sea.Water.Color;
-						//Sea.GF3.SkyColor = aCurWeather.Sea.Sky.Color;
-						//Sea.WaterAttenuation = aCurWeather.Sea.WaterAttenuation;
-						Sea.Sea2.WaterColor = aCurWeather.Sea2.WaterColor;
-                        Sea.Sea2.SkyColor = aCurWeather.Sea2.SkyColor;
-                        Sea.Sea2.Attenuation = aCurWeather.Sea2.Attenuation;
-						if(Checkattribute(arLocator, "inlagoon")) Deleteattribute(arLocator, "inlagoon");
-					}
-				}else{if(Checkattribute(arLocator, "inlagoon")) Deleteattribute(arLocator, "inlagoon");}
-			} // Screwface : end
+							Sea.Sea2.Transparency = aCurWeather.Sea2.Transparency;
+                            Deleteattribute(arLocator, "inlagoon");
+                            DeleteAttribute(aCurWeather, "Sea.inlagoon");
+                            //trace("AISea removing lagoon1 " + aCurWeather.id);
+                        }
+                    }
+                    else {
+                        //trace("AISea removing lagoon2 " + aCurWeather.id);
+                        Deleteattribute(arLocator, "inlagoon");
+                        DeleteAttribute(aCurWeather, "Sea.inlagoon");
+                    }
+                } // Screwface : end
+            }
+            else {
+                //trace("AISea removing lagoon3 " + aCurWeather.id);
+                DeleteAttribute(aCurWeather, "Sea.inlagoon");
+            }
 			SendMessage(AISea,"lffff", AI_MESSAGE_SAIL_2_LOCATOR, stf(rIslLoc.x), stf(rIslLoc.y), stf(rIslLoc.z), stf(rIslLoc.ay));
 		break;
 		case SAIL_TO_CHARACTER:
@@ -140,7 +164,8 @@ void SeaAI_SailToCreateFader()
 	SendMessage(SailToFader, "l", FADER_STARTFRAME);
 	SendMessage(&SailToFader, "ls", FADER_PICTURE, FindReloadPicture("Sea.tga")); // KK
 	// NK sailto time 04-09-21
-	AddSeaTimeToCurrent();
+	//#20220816-01
+	AddSeaTimeToCurrent(true);
 	ref pchar = GetMainCharacter();
 	LogIt(pchar.sailtostring); DeleteAttribute(pchar, "sailtostring");
 	// NK <--

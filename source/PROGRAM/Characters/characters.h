@@ -42,6 +42,8 @@ string  MoraleTable[MORALE_TABLE_SIZE];
 #define REPUTATIONT_VERYGOOD    7
 #define REPUTATIONT_HERO        8
 string  ReputationTable[REPUTATION_TABLE_SIZE];
+#define SKILL_MAX           100
+#define SPECIAL_MAX         10
 
 //#define PASSENGERS_MAX	32
 //#define COMPANION_MAX	4
@@ -61,6 +63,10 @@ int Last_Capt = 0;
 #define SKILL_DEFENCE		"Defence"
 #define SKILL_COMMERCE		"Commerce"
 #define SKILL_SNEAK			"Sneak"
+#define SKILL_F_LIGHT		"FencingLight"  //1
+#define SKILL_F_HEAVY		"FencingHeavy"
+#define SKILL_PISTOL		"Pistol" // boal
+#define SKILL_FORTUNE	    "Fortune"     //5
 
 #define KILL_BY_BALL		1
 #define KILL_BY_ABORDAGE	2

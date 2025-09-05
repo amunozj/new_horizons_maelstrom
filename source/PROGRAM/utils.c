@@ -39,7 +39,7 @@ string GetRandSubString(string sStr)
 		iLastPos = iFindPos + 1;
 	}
 
-	return "If you see this, you can kick Vano ";
+	return "If you see this, you can kick Vano :)";
 }
 
 float GetDotProduct(float fA1, float fA2)
@@ -197,6 +197,7 @@ float roundto(float num, int decimals)
 {
 	return makefloat(round(num*pow(10,decimals)))/pow(10,decimals);
 }
+
 // new 05-04-05
 int round(float num)
 {
@@ -1096,13 +1097,13 @@ string toupperpol(string c)
 	switch(c)
 	{
 		case "є": return "•"; break;
-		case "е": return "ю"; break;
+		case "ё": return "ю"; break;
 		case "„": return "љ"; break;
 		case "≥": return "£"; break;
 		case "р": return "э"; break;
 		case "у": return "”"; break;
-		case "Ы": return "Э"; break;
-		case "Я": return "Э"; break;
+		case "Ы": return "Н"; break;
+		case "Я": return "П"; break;
 		case "Ю": return "ѓ"; break;
 	}
 	return touppereng(c);
@@ -1113,13 +1114,13 @@ string tolowerpol(string c)
 	switch(c)
 	{
 		case "•": return "є"; break;
-		case "ю": return "е"; break;
+		case "ю": return "ё"; break;
 		case "љ": return "„"; break;
 		case "£": return "≥"; break;
 		case "э": return "р"; break;
 		case "”": return "у"; break;
-		case "Э": return "Ы"; break;
-		case "Э": return "Я"; break;
+		case "Н": return "Ы"; break;
+		case "П": return "Я"; break;
 		case "ѓ": return "Ю"; break;
 	}
 	return tolowereng(c);
@@ -1146,6 +1147,8 @@ string tolowerswe(string c)
 	}
 	return tolowereng(c);
 }
+
+
 // Returns characteristic letter for language when ALT is pressed together with "c"
 string GetDiacriticalChar(string c, string lang)
 {
@@ -1193,7 +1196,7 @@ string GetDiacriticalChar(string c, string lang)
 		case "Polish":
 			switch (c) {
 				case "a": return "є"; break;
-				case "c": return "е"; break;
+				case "c": return "ё"; break;
 				case "e": return "„"; break;
 				case "l": return "≥"; break;
 				case "n": return "р"; break;
@@ -1201,6 +1204,13 @@ string GetDiacriticalChar(string c, string lang)
 				case "s": return "Ы"; break;
 				case "x": return "Я"; break;
 				case "z": return "Ю"; break;
+			}
+		break;
+		case "Swedish":
+			switch (c) {
+				case "q": return "е"; break;
+				case "a": return "д"; break;
+				case "o": return "ц"; break;
 			}
 		break;
 	}
@@ -1319,9 +1329,9 @@ string ChrFromCode(int code)
 		case 138: return ""; break;
 		case 139: return ""; break;
 		case 140: return "М"; break;
-		case 141: return "Э"; break;
+		case 141: return "Н"; break;
 		case 142: return ""; break;
-		case 143: return "Э"; break;
+		case 143: return "П"; break;
 		case 144: return ""; break;
 		case 145: return "С"; break;
 		case 146: return "Т"; break;
@@ -1433,6 +1443,7 @@ string ChrFromCode(int code)
 		case 252: return "ь"; break;
 		case 253: return "э"; break;
 		case 254: return "ю"; break;
+		case 255: return "€"; break; // was lost
 	}
 	return "";
 }
@@ -1537,8 +1548,8 @@ int ascii(string chr)
 		case "|": return 124; break;
 		case "}": return 125; break;
 		case "М": return 140; break;
-		case "Э": return 141; break;
-		case "Э": return 143; break;
+		case "Н": return 141; break;
+		case "П": return 143; break;
 		case "С": return 145; break;
 		case "Т": return 146; break;
 		case "У": return 147; break;
@@ -1554,7 +1565,7 @@ int ascii(string chr)
 		case "§": return 164; break;
 		case "•": return 165; break;
 		case "І": return 167; break;
-		case "®": return 168; break;
+		case "®": return 168; break; 
 		case "Ђ": return 171; break;
 		case "≠": return 173; break;
 		case "ѓ": return 175; break;
@@ -1633,8 +1644,8 @@ int ascii(string chr)
 
 string GetCursorSymbol()
 {
-	if (bKeyboardOverwriteMode) return "А";
-	return "€";
+	if (bKeyboardOverwriteMode) return "<";
+	return "|";
 }
 // <-- KK
 
@@ -1813,7 +1824,27 @@ string GetHumanDate(int year, int month, int day)
 	if (day == 1 || day == 21 || day == 31) sufix = "st";
 	if (day == 2 || day == 22) sufix = "nd";
 	if (day == 3 || day == 23) sufix = "rd";
-	return XI_ConvertString("g_month_" + month) + " " + day + XI_ConvertString(sufix) + ", " + year; // PB: Formatting changed to appear more historically appropriate
+	string formatted = XI_ConvertString("g_month_" + month) + " " + day + XI_ConvertString(sufix) + ", " + year; // PB: Formatting changed to appear more historically appropriate
+	//MAXIMUS 22.04.2019: different formatting for different languages ==> 
+	int ifcelng = GetInterfaceLanguage();
+	switch (ifcelng) {
+		case ILANG_RUS:
+			formatted =  day + XI_ConvertString(sufix) + " " + XI_ConvertString("g_month_" + month) + " " + year + XI_ConvertString("yr");
+		break;
+		case ILANG_FRA:
+		break;
+		case ILANG_GER:
+		break;
+		case ILANG_SPA:
+			formatted =  day + XI_ConvertString(sufix) + " de " + XI_ConvertString("g_month_" + month) + " de " + year + XI_ConvertString("yr");
+		break;
+		case ILANG_POL:
+		break;
+		case ILANG_SWE:
+		break;
+	}
+	return formatted:
+	//MAXIMUS 22.04.2019: different formatting for different languages <==
 }
 // <-- KK
 
@@ -2044,9 +2075,9 @@ void Preprocessor_Init()
 			SetRandomNameToCharacter(ch);
 			ch.name = "Padre"; // Override random first name
 		}
-		Preprocessor_Save("FatherBernard",	GetMySimpleName(CharacterFromID("Father Bernard")));  // GR: For "Church Help"
-		Preprocessor_Save("FatherJerald",	GetMySimpleName(CharacterFromID("Father Jerald")));  // and "Animists"
-		Preprocessor_Save("FatherGareth",	GetMySimpleName(CharacterFromID("Father Gareth")));  // side quests.
+		Preprocessor_Save("FatherBernard",	GetMySimpleName(CharacterFromID("Father Bernard")));	// GR: For "Church Help"
+		Preprocessor_Save("FatherJerald",	GetMySimpleName(CharacterFromID("Father Jerald")));	// and "Animists"
+		Preprocessor_Save("FatherGareth",	GetMySimpleName(CharacterFromID("Father Gareth")));	// side quests.
 	}
 }
 
@@ -2078,13 +2109,12 @@ void InitStorylines()
 		// PB: Disable certain storylines -->
 		send  = strcut(sfile, strlen(sfile) - 6, strlen(sfile) - 3);
 		if (send == "_off")		continue;
-		else					n++;
 		// PB: Disable certain storylines <--
 
-		if (LoadSegment("Storyline\" + sfile)) {
+		if (LoadSegment("Storyline\\" + sfile)) {
 			RegisterStoryline(n); // PB: was i
-			UnloadSegment("Storyline\" + sfile);
-
+			UnloadSegment("Storyline\\" + sfile);
+			n++;
 		}
 	}
 }
@@ -2117,10 +2147,7 @@ void DeleteStoryline(int idx)
 
 string GetStoryline(int idx)
 {
-	if (idx < 0 || idx > GetStorylinesQuantity() - 1) {
-            return GetStoryline(FindDefaultStoryline());
-
-	}
+	if (idx < 0 || idx > GetStorylinesQuantity() - 1) return GetStoryline(FindDefaultStoryline());
 	ref storyline; makeref(storyline, Storylines);
 	aref sl; makearef(sl, storyline.list);
 	int num = GetAttributesNum(sl);
@@ -2128,14 +2155,12 @@ string GetStoryline(int idx)
 		aref arsl = GetAttributeN(sl, i);
 		if (!CheckAttribute(arsl, "index")) continue;
 		if (sti(arsl.index) == idx) {
-			if (CheckAttribute(arsl, "id")) {
+			if (CheckAttribute(arsl, "id"))
 				return arsl.id;
-			}
 			else
 				break;
 		}
 	}
-
 	return GetStoryline(FindDefaultStoryline());
 }
 
@@ -2156,7 +2181,7 @@ int GetStorylinesQuantity()
 {
 	ref storyline; makeref(storyline, Storylines);
 	aref sl; makearef(sl, storyline.list);
-	return GetAttributesNum(sl) + 1;
+	return GetAttributesNum(sl);
 }
 
 int FindDefaultStoryline()
@@ -2305,7 +2330,8 @@ void RefreshStorylines()
 	CopyAttributes(tsl, sl);
 	DeleteAttribute(sl, "");
 	int num = GetAttributesNum(tsl);
-	for (int i = 0; i < num; i++) {
+	for (int i = 0; i < num; i++)
+	{
 		aref arsl = GetAttributeN(tsl, i);
 		string sfile = "Storyline\" + arsl.dir;
 		sfile = strcut(sfile, 0, strlen(sfile) - 2) + ".c";
@@ -2377,7 +2403,7 @@ int GetCurrentModelrNumber()
 	aref arModel;
 	if (FindClass(&arModel, "modelr")) {
 		n++;
-		while (FindClassNext(&arModel))
+		while (FindClassNext(&arModel)) 
 		{
 			n++;
 		}
@@ -2390,13 +2416,11 @@ object SaveProfiles;
 void InitProfiles()
 {
 	int SLinesNum = GetStorylinesQuantity();
-	// trace("InitProfiles: Number of storylines: " + SLinesNum);
 	string storyline;
 	ref rSP; makeref(rSP, SaveProfiles);
 	for (int i = 0; i < SLinesNum; i++) {
 		storyline = GetStoryline(i);
 		GameInterface.SavePath = "SAVE\" + GetStorylineDir(i);
-		// trace("InitProfiles: Savepath: " + "SAVE\" + GetStorylineDir(i));
 		string saveName = "";
 		int fSize = 0;
 		int j = 0;
@@ -2405,7 +2429,6 @@ void InitProfiles()
 				j++;
 				continue;
 			}
-			// trace("InitProfiles: Savename: " + saveName);
 			string profile = "";
 			if (strcut(saveName, 0, 1) == "-=") {
 				int epos = findSubStr(saveName, "=", 3);
@@ -2578,7 +2601,7 @@ void Log_Info(string _str)
 
 void Log_TestInfo(string logtext)
 {
-	if (true) //bBettaTestMode
+	if (true) //bBettaTestMode)
 	{
 		Log_SetStringToLog(logtext);
 		//trace("TestInfo: " + GetQuestBookDataDigit() + " " + logtext)
@@ -2605,15 +2628,17 @@ void CreateGrass(string sDataFile, string sTextureFile, float fScale, float fW,f
 	{
 		LayerAddObject(SEA_EXECUTE,&objGrass,1000);
 		LayerAddObject(SEA_REALIZE,&objGrass,1000);
+		SendMessage(objGrass,"lss",43680, "GrassExSea", "GrassEx_darkSea"));	// ChezJfrey's latest change that separates land grass from sea grass
 	}
 	else
 	{
 		LayerAddObject("execute",&objGrass,1000);
 		LayerAddObject("realize",&objGrass,1000);
+		SendMessage(objGrass,"lss",43680,  "GrassEx", "GrassEx_dark"));	// ChezJfrey's latest change that separates land grass from sea grass
 	}
-	SendMessage(objGrass,"ls",41666, sTextureFile); // #define MSG_GRASS_SET_TEXTURE 41666
-	SendMessage(objGrass,"lffffff",42666, fScale, fW,fH, fMinDist,fMaxDist, fMinLod); // #define MSG_GRASS_SET_PARAM 42666
-	SendMessage(objGrass,"ls",40666, sDataFile); // #define MSG_GRASS_LOAD_DATA 40666
+	SendMessage(objGrass,"ls",41666, sTextureFile); // Set texture
+	SendMessage(objGrass,"lffffff",42666, fScale, fW,fH, fMinDist,1200, fMinLod); // Set parameters
+	SendMessage(objGrass,"ls",40666, sDataFile); // Load jungle data
 }
 
 void DeleteGrass()
@@ -2663,7 +2688,7 @@ void CalcLocalTime(float _inc)
 }
 void RefreshWeather()
 {
-    Whr_UpdateWeather(false);
+    Whr_UpdateWeather(true);
 	// звуки
 	/*
 	if (bSeaActive && !bAbordageStarted)

@@ -2,7 +2,7 @@ void InitInterface_BB(string iniName, ref book)
 {
 	int lngFileID = -1;
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	CreateString(false, "Book_StoryTitle", GetAssembledString(TranslateString("" , book.name),book), FONT_QUESTBOOK, COLOR_WHITE, 320, 50, SCRIPT_ALIGN_CENTER, 1.2);
 	if(CheckAttribute(book,"UnlockedPerk"))
 	{

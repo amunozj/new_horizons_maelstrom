@@ -40,19 +40,19 @@ void wdmInitWorldMap()
 
 	//Label types description
 	worldMap.labeltype.Island.icon = -1;				//Default icon
-	worldMap.labeltype.Island.font = "SEADOGS";			//Default font
+	worldMap.labeltype.Island.font = "INTERFACE_WORLDMAP";			//Default font
 	worldMap.labeltype.Island.pivotX = -0.5;			//Default label shifting left-upper point by X (1 -> full width)
 	worldMap.labeltype.Island.pivotY = -0.5;			//Default label shifting left-upper point by Y (1 -> full height)
 	worldMap.labeltype.Island.heightView = 1000.0;		//Default camera height when hide this labels
 	worldMap.labeltype.Island.weight = 100;				//Weight is use when shake intersection labels
 	worldMap.labeltype.Town.icon = -1;
-	worldMap.labeltype.Town.font = "SEADOGS_SMALL";
+	worldMap.labeltype.Town.font = "INTERFACE_SMALL";
 	worldMap.labeltype.Town.pivotX = -0.5;
 	worldMap.labeltype.Town.pivotY = -0.5;
 	worldMap.labeltype.Town.heightView = 1000.0;
 	worldMap.labeltype.Town.weight = 50;
 	worldMap.labeltype.Shore.icon = -1;
-	worldMap.labeltype.Shore.font = "SEADOGS_SMALL";
+	worldMap.labeltype.Shore.font = "INTERFACE_SMALL";
 	worldMap.labeltype.Shore.pivotX = -0.5;
 	worldMap.labeltype.Shore.pivotY = -0.5;
 	worldMap.labeltype.Shore.heightView = 1000.0;
@@ -83,28 +83,29 @@ void wdmInitWorldMap()
     //=========================================================================
 	//Island Antigua
 	//=========================================================================
+	
 	worldMap.labels.FalaiseDeFleur.type = "Island";
 	worldMap.labels.FalaiseDeFleur.id = "FalaiseDeFleur";
 	worldMap.labels.FalaiseDeFleur.locator = "FalaiseDeFleur";
 	worldMap.labels.FalaiseDeFleur.text = FindIslandName("Falaise De Fleur");
 
 	worldMap.labels.Redmond.type = "Island";
-	worldMap.labels.Redmond.id = "Redmond";
+	worldMap.labels.Redmond.id = "Jamaica";
 	worldMap.labels.Redmond.locator = "Redmond";
 	worldMap.labels.Redmond.text = FindIslandName("Redmond");
 
 	worldMap.labels.Oxbay.type = "Island";
-	worldMap.labels.Oxbay.id = "Oxbay";
+	worldMap.labels.Oxbay.id = "Barbados";
 	worldMap.labels.Oxbay.locator = "Oxbay";
 	worldMap.labels.Oxbay.text = FindIslandName("Oxbay");
 
 	worldMap.labels.Douwesen.type = "Island";
-	worldMap.labels.Douwesen.id = "Douwesen";
+	worldMap.labels.Douwesen.id = "Bonaire";
 	worldMap.labels.Douwesen.locator = "Douwesen";
 	worldMap.labels.Douwesen.text = FindIslandName("Douwesen");
 
 	worldMap.labels.Conceicao.type = "Island";
-	worldMap.labels.Conceicao.id = "Conceicao";
+	worldMap.labels.Conceicao.id = "Grenada";
 	worldMap.labels.Conceicao.locator = "Conceicao";
 	worldMap.labels.Conceicao.text = FindIslandName("Conceicao");
 
@@ -164,7 +165,7 @@ void wdmInitWorldMap()
 	worldMap.labels.Curacao.text = FindIslandName("Curacao");
 
 	worldMap.labels.Eleuthera.type = "Island";
-	worldMap.labels.Eleuthera.id = "Eleuthera";
+	worldMap.labels.Eleuthera.id = "Eleuth";
 	worldMap.labels.Eleuthera.locator = "Eleuthera";
 	worldMap.labels.Eleuthera.text = FindIslandName("Eleuthera");
 
@@ -187,6 +188,16 @@ void wdmInitWorldMap()
 	worldMap.labels.Colombia.id = "Colombia";
 	worldMap.labels.Colombia.locator = "Colombia";
 	worldMap.labels.Colombia.text = FindIslandName("Colombia");
+	
+	worldMap.labels.SantaCatalina.type = "Island";
+	worldMap.labels.SantaCatalina.id = "SantaCatalina";
+	worldMap.labels.SantaCatalina.locator = "SantaCatalina";
+	worldMap.labels.SantaCatalina.text = FindIslandName("SantaCatalina");
+	
+	worldMap.labels.PortoBello.type = "Island";
+	worldMap.labels.PortoBello.id = "PortoBello";
+	worldMap.labels.PortoBello.locator = "PortoBello";
+	worldMap.labels.PortoBello.text = FindIslandName("PortoBello");
 
 	//-------  TOWN ----------------------------------------------------
 
@@ -262,12 +273,12 @@ void wdmInitWorldMap()
 	worldMap.labels.QCcity2.island = "QuebradasCostillas";
 	//worldMap.labels.QCcity2.icon = SPAIN;
 
-	worldMap.labels.KhaelRoacity1.type = "Town";
-	worldMap.labels.KhaelRoacity1.id = "Khael Roa";
-	worldMap.labels.KhaelRoacity1.locator = "KhaelRoacity1";
-	worldMap.labels.KhaelRoacity1.text = FindTownName("Khael Roa");
-	worldMap.labels.KhaelRoacity1.visible = "true";
-	worldMap.labels.KhaelRoacity1.island = "KhaelRoa";
+	//worldMap.labels.KhaelRoacity1.type = "Town";
+	//worldMap.labels.KhaelRoacity1.id = "Khael Roa";
+	//worldMap.labels.KhaelRoacity1.locator = "KhaelRoacity1";
+	//worldMap.labels.KhaelRoacity1.text = FindTownName("Khael Roa");
+	//worldMap.labels.KhaelRoacity1.visible = "true";
+	//worldMap.labels.KhaelRoacity1.island = "KhaelRoa";
 	//worldMap.labels.KhaelRoacity1.icon = PIRATE;
 
 	worldMap.labels.Caymancity1.type = "Town";
@@ -339,7 +350,7 @@ void wdmInitWorldMap()
 	worldMap.labels.SMcity2.locator = "SMcity2";
 	worldMap.labels.SMcity2.text = FindTownName("Marigot");
 	worldMap.labels.SMcity2.visible = "true";
-	worldMap.labels.SMcity2.island = "SaintMarti";
+	worldMap.labels.SMcity2.island = "SaintMartin";
 	//worldMap.labels.SMcity2.icon = HOLLAND;
 
 	worldMap.labels.Antiguacity1.type = "Town";
@@ -417,15 +428,15 @@ void wdmInitWorldMap()
 	worldMap.labels.RShore2.text = "Rocky Shore";
 	worldMap.labels.RShore2.visible = "true";
 
-	worldMap.labels.OShore2.type = "Shore";
-	worldMap.labels.OShore2.id = "OShore2";
-	worldMap.labels.OShore2.locator = "OShore2";
-	worldMap.labels.OShore2.text = "Gray Rock Bay";
-	worldMap.labels.OShore2.visible = "true";
+	//worldMap.labels.OShore2.type = "Shore";
+	//worldMap.labels.OShore2.id = "OShore2";
+	//worldMap.labels.OShore2.locator = "OShore2";
+	//worldMap.labels.OShore2.text = "Gray Rock Bay";
+	//worldMap.labels.OShore2.visible = "true";
 
 	worldMap.labels.OLight.type = "Shore";
 	worldMap.labels.OLight.id = "OLight";
-	worldMap.labels.OLight.locator = "OShore2";
+	worldMap.labels.OLight.locator = "OLight";
 	worldMap.labels.OLight.text = "Lighthouse";
 	worldMap.labels.OLight.visible = "true";
 
@@ -512,6 +523,12 @@ void wdmInitWorldMap()
 	worldMap.labels.HiShore4.locator = "HiShore4";
 	worldMap.labels.HiShore4.text = "Ile a Vache";
 	worldMap.labels.HiShore4.visible = "true";
+	
+	worldMap.labels.HiShore5.type = "Shore";
+	worldMap.labels.HiShore5.id = "HiShore5";
+	worldMap.labels.HiShore5.locator = "Tortuga";
+	worldMap.labels.HiShore5.text = "Tortuga";
+	worldMap.labels.HiShore5.visible = "true";
 
 	worldMap.labels.CubShore1.type = "Shore";
 	worldMap.labels.CubShore1.id = "CubShore1";
@@ -626,6 +643,18 @@ void wdmInitWorldMap()
 	worldMap.labels.ColShore1.locator = "ColShore1";
 	worldMap.labels.ColShore1.text = "Dolphin Sands";
 	worldMap.labels.ColShore1.visible = "true";
+	
+	worldMap.labels.BShore1.type = "Shore";
+	worldMap.labels.BShore1.id = "Shore3";
+	worldMap.labels.BShore1.locator = "Shore3";
+	worldMap.labels.BShore1.text = "Ruin Shore";
+	worldMap.labels.BShore1.visible = "true";
+	
+	worldMap.labels.BShore2.type = "Shore";
+	worldMap.labels.BShore2.id = "shoreship1";
+	worldMap.labels.BShore2.locator = "shoreship1";
+	worldMap.labels.BShore2.text = "Shipwreck Shore";
+	worldMap.labels.BShore2.visible = "true";
 
 	//=========================================================================
 	//Internal information - !!!Beware, nor any checks!!!
@@ -641,6 +670,7 @@ void wdmInitWorldMap()
 
 	//Camera
 	worldMap.wdmCameraAY = 0.0;					//Rotation angle of the camera
+	// worldmap.wdmCameraAYDefault = PI;
 	worldMap.wdmCameraY = 250.0;				//Camera Height
 	worldMap.wdmCameraRotLock = 1;				//Lock camera
 	//Enemy ship
@@ -655,7 +685,7 @@ void wdmInitWorldMap()
 	worldMap.stormDistKill = 190.0;				//Distance at which the killing storm
 	worldMap.stormBrnDistMin = 100.0;			//The minimum distance at which the storm Rozsa
 	worldMap.stormBrnDistMax = 140.0;			//The maximum distance at which the storm Rozsa
-	worldMap.stormZone = 150.0;					//Overall range of storm
+	worldMap.stormZone = 120.0;					//Overall range of storm
 
 	//=========================================================================
 	//Storm interface
@@ -699,9 +729,9 @@ void wdmInitWorldMap()
 	//=========================================================================
 	//Wind (read only)
 	//=========================================================================
-	worldMap.WindX = 0.0;//Нормализованное направление
-	worldMap.WindZ = 1.0;//ветра
-	worldMap.WindF = 0.5;//Нормализованая сила ветра 0..1
+	worldMap.WindX = 0.0;//??????????????? ???????????
+	worldMap.WindZ = 1.0;//?????
+	worldMap.WindF = 0.5;//?????????????? ???? ????? 0..1
 	//=========================================================================
 	//Old internal GUI params
 	//=========================================================================
@@ -717,8 +747,8 @@ void wdmInitWorldMap()
 	worldMap.date.day = CharDay;
 	worldMap.date.month = CharMonth;
 	worldMap.date.year = CharYear;
-	
-	//Output info	
+
+	//Output info
 	worldMap.date.font = "normal";
 
 	//=========================================================================
@@ -732,11 +762,11 @@ void wdmInitWorldMap()
 	//Name
 	worldMap.islands.FalaiseDeFleur.name = "FalaiseDeFleur";
 	//Geometry parameters
-	worldMap.islands.FalaiseDeFleur.position.x = -746.6099;
+	worldMap.islands.FalaiseDeFleur.position.x = 731.684;
 	worldMap.islands.FalaiseDeFleur.position.y = 30.0;
-	worldMap.islands.FalaiseDeFleur.position.z = 234.9465;
-	worldMap.islands.FalaiseDeFleur.position.rx = -730.7285;
-	worldMap.islands.FalaiseDeFleur.position.rz = 246.8357;
+	worldMap.islands.FalaiseDeFleur.position.z = -282.2946;
+	worldMap.islands.FalaiseDeFleur.position.rx = 731.684;
+	worldMap.islands.FalaiseDeFleur.position.rz = -282.2946;
 	worldMap.islands.FalaiseDeFleur.radius = 110.0;
 	worldMap.islands.FalaiseDeFleur.kradius = 0.75;
 	//Island label
@@ -776,7 +806,7 @@ void wdmInitWorldMap()
 	//Label
 	worldMap.islands.FalaiseDeFleur.locations.city1.label.text = "Octopus Bay";
 	worldMap.islands.FalaiseDeFleur.locations.city1.label.icon = -1;
-	worldMap.islands.FalaiseDeFleur.locations.city1.label.visible = "false";	
+	worldMap.islands.FalaiseDeFleur.locations.city1.label.visible = "false";
 	// initial ship location
 	worldMap.islands.FalaiseDeFleur.locations.city1.ship.pos.x = -696.8785; // KK
 	worldMap.islands.FalaiseDeFleur.locations.city1.ship.pos.z = 280.8657; // KK
@@ -787,26 +817,26 @@ void wdmInitWorldMap()
 	worldMap.islands.Redmond.name = "Redmond";
 	//Geometry parameters
 	worldMap.islands.Redmond.isVisibleName = 0;
-	worldMap.islands.Redmond.position.x = 300.9059;
+	worldMap.islands.Redmond.position.x = -360.991;
 	worldMap.islands.Redmond.position.y = 30.0;
-	worldMap.islands.Redmond.position.z = -188.6696;
-	worldMap.islands.Redmond.position.rx = 312.9202;
-	worldMap.islands.Redmond.position.rz = -174.4065;
+	worldMap.islands.Redmond.position.z = 387.095;
+	worldMap.islands.Redmond.position.rx = -360.991;
+	worldMap.islands.Redmond.position.rz = 387.095;
 	worldMap.islands.Redmond.radius = 140.0;
 	worldMap.islands.Redmond.kradius = 0.75;
 	//Island label
 	worldMap.islands.Redmond.label.text = FindIslandName("Redmond");
 	worldMap.islands.Redmond.label.icon = -1;
 	worldMap.islands.Redmond.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.Redmond.locations.city3.name = "Redmond";
 	worldMap.islands.Redmond.locations.city3.real = "Redmond";
 	//Geometry parameters
-	worldMap.islands.Redmond.locations.city3.position.x = 254.3152;
+	worldMap.islands.Redmond.locations.city3.position.x = -321.162;
 	worldMap.islands.Redmond.locations.city3.position.y = 3.0;
-	worldMap.islands.Redmond.locations.city3.position.z = -196.9065;
+	worldMap.islands.Redmond.locations.city3.position.z = 369.594;
 	worldMap.islands.Redmond.locations.city3.position.ay = 0.0;
 	worldMap.islands.Redmond.locations.city3.modelName = "town";
 	worldMap.islands.Redmond.locations.city3.visible = "false";
@@ -815,14 +845,14 @@ void wdmInitWorldMap()
 	wdmSetIcon("Redmond", FindTownName("Redmond"), GetTownNation("Redmond")); // KK
 	worldMap.islands.Redmond.locations.city3.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Redmond.locations.city3.ship.pos.x = 261.1002; // KK
-	worldMap.islands.Redmond.locations.city3.ship.pos.z = -180.3465; // KK
+	worldMap.islands.Redmond.locations.city3.ship.pos.x = -313.69; // KK
+	worldMap.islands.Redmond.locations.city3.ship.pos.z = 360.718; // KK
 	//Name
 	worldMap.islands.Redmond.locations.city1.name = "RShore 1";
 	//Geometry parameters
-	worldMap.islands.Redmond.locations.city1.position.x = 304.1752;
+	worldMap.islands.Redmond.locations.city1.position.x = -346.313;
 	worldMap.islands.Redmond.locations.city1.position.y = 2.445;
-	worldMap.islands.Redmond.locations.city1.position.z = -198.6085;
+	worldMap.islands.Redmond.locations.city1.position.z = 354.889;
 	worldMap.islands.Redmond.locations.city1.position.ay = 0.0;
 	worldMap.islands.Redmond.locations.city1.modelName = "leaf";
 	worldMap.islands.Redmond.locations.city1.visible = "false";
@@ -832,21 +862,21 @@ void wdmInitWorldMap()
 	{
 		worldMap.islands.Redmond.locations.city1.label.text = "Woodes Rogers' Port";
 	}
-	else 
+	else
 	{
 		worldMap.islands.Redmond.locations.city1.label.text = "Devil's Throat";
 	}
 	worldMap.islands.Redmond.locations.city1.label.icon = -1;
 	worldMap.islands.Redmond.locations.city1.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Redmond.locations.city1.ship.pos.x = 310.6102; // KK
-	worldMap.islands.Redmond.locations.city1.ship.pos.z = -183.0665; // KK
+	worldMap.islands.Redmond.locations.city1.ship.pos.x = -336.75; // KK
+	worldMap.islands.Redmond.locations.city1.ship.pos.z = 351.11; // KK
 	//Name
 	worldMap.islands.Redmond.locations.city2.name = "RShore 2";
 	//Geometry parameters
-	worldMap.islands.Redmond.locations.city2.position.x = 279.0622;
+	worldMap.islands.Redmond.locations.city2.position.x = -459.917;
 	worldMap.islands.Redmond.locations.city2.position.y = 2.445;
-	worldMap.islands.Redmond.locations.city2.position.z = -230.4625;
+	worldMap.islands.Redmond.locations.city2.position.z = 403.452;
 	worldMap.islands.Redmond.locations.city2.position.ay = 0.0;
 	worldMap.islands.Redmond.locations.city2.modelName = "leaf";
 	worldMap.islands.Redmond.locations.city2.visible = "false";
@@ -863,26 +893,26 @@ void wdmInitWorldMap()
 	worldMap.islands.Redmond.locations.city2.label.icon = -1;
 	worldMap.islands.Redmond.locations.city2.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Redmond.locations.city2.ship.pos.x = 267.8302; // KK
-	worldMap.islands.Redmond.locations.city2.ship.pos.z = -233.9565; // KK
+	worldMap.islands.Redmond.locations.city2.ship.pos.x = -465.7; // KK
+	worldMap.islands.Redmond.locations.city2.ship.pos.z = 394.14; // KK
 
 	//3=========================================================================
 	//Name
 	worldMap.islands.Oxbay.name = "Oxbay";
 	//Geometry parameters
 	worldMap.islands.Oxbay.isVisibleName = 0;
-	worldMap.islands.Oxbay.position.x = -915.4337;
+	worldMap.islands.Oxbay.position.x = 943.035;
 	worldMap.islands.Oxbay.position.y = 30.0;
-	worldMap.islands.Oxbay.position.z = 415.2678;
-	worldMap.islands.Oxbay.position.rx = -876.6284;
-	worldMap.islands.Oxbay.position.rz = 409.4471;
+	worldMap.islands.Oxbay.position.z = -481.125;
+	worldMap.islands.Oxbay.position.rx = 943.035;
+	worldMap.islands.Oxbay.position.rz = -481.125;
 	worldMap.islands.Oxbay.radius = 120.0;
 	worldMap.islands.Oxbay.kradius = 0.75;
 	//Island label
 	worldMap.islands.Oxbay.label.text = FindIslandName("Oxbay");
 	worldMap.islands.Oxbay.label.icon = -1;
 	worldMap.islands.Oxbay.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.Oxbay.locations.city5.name = "Oxbay";
@@ -902,7 +932,7 @@ void wdmInitWorldMap()
 	worldMap.islands.Oxbay.locations.city5.ship.pos.x = -957.7789; // KK
 	worldMap.islands.Oxbay.locations.city5.ship.pos.z = 485.0871; // KK
 	//Name
-	worldMap.islands.Oxbay.locations.city1.name = "OShore 2";
+	worldMap.islands.Oxbay.locations.city1.name = "OShore2";
 	//Geometry parameters
 	worldMap.islands.Oxbay.locations.city1.position.x = -900.3443;
 	worldMap.islands.Oxbay.locations.city1.position.y = 4.0;
@@ -914,12 +944,12 @@ void wdmInitWorldMap()
 	//Label
 	worldMap.islands.Oxbay.locations.city1.label.text = "Gray Rock Bay";
 	worldMap.islands.Oxbay.locations.city1.label.icon = -1;
-	worldMap.islands.Oxbay.locations.city1.label.visible = "false";	
+	worldMap.islands.Oxbay.locations.city1.label.visible = "false";
 	// initial ship location
 	worldMap.islands.Oxbay.locations.city1.ship.pos.x = -878.0484; // KK
 	worldMap.islands.Oxbay.locations.city1.ship.pos.z = 479.1171; // KK
 	//Name
-	worldMap.islands.Oxbay.locations.city4.name = "OShore 1";
+	worldMap.islands.Oxbay.locations.city4.name = "OShore1";
 	//Geometry parameters
 	worldMap.islands.Oxbay.locations.city4.position.x = -955.7721;
 	worldMap.islands.Oxbay.locations.city4.position.y = 4.1908;
@@ -931,7 +961,7 @@ void wdmInitWorldMap()
 	//Label
 	worldMap.islands.Oxbay.locations.city4.label.text = "Far Beach";
 	worldMap.islands.Oxbay.locations.city4.label.icon = -1;
-	worldMap.islands.Oxbay.locations.city4.label.visible = "false";	
+	worldMap.islands.Oxbay.locations.city4.label.visible = "false";
 	// initial ship location
 	worldMap.islands.Oxbay.locations.city4.ship.pos.x = -968.0349; // KK
 	worldMap.islands.Oxbay.locations.city4.ship.pos.z = 393.2861; // KK
@@ -975,18 +1005,18 @@ void wdmInitWorldMap()
 	worldMap.islands.Douwesen.name = "Douwesen";
 	//Geometry parameters
 	worldMap.islands.Douwesen.isVisibleName = 0;
-	worldMap.islands.Douwesen.position.x = -503.5165;
+	worldMap.islands.Douwesen.position.x = 663.7469;
 	worldMap.islands.Douwesen.position.y = 30.0;
-	worldMap.islands.Douwesen.position.z = 685.5855;
-	worldMap.islands.Douwesen.position.rx = -471.2567;
-	worldMap.islands.Douwesen.position.rz = 674.4498;
+	worldMap.islands.Douwesen.position.z = -752.8892;
+	worldMap.islands.Douwesen.position.rx = 663.7469;
+	worldMap.islands.Douwesen.position.rz = -752.8892;
 	worldMap.islands.Douwesen.radius = 90.0;
 	worldMap.islands.Douwesen.kradius = 0.75;
 	//Island label
 	worldMap.islands.Douwesen.label.text = FindIslandName("Douwesen");
 	worldMap.islands.Douwesen.label.icon = -1;
 	worldMap.islands.Douwesen.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.Douwesen.locations.city1.name = "Douwesen";
@@ -1045,12 +1075,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Conceicao.name = "Conceicao";
 	//Geometry parameters
 	worldMap.islands.Conceicao.isVisibleName = 0;
-	worldMap.islands.Conceicao.position.x = -780.4724;
+	worldMap.islands.Conceicao.position.x = 884.1373;
 	worldMap.islands.Conceicao.position.y = 30.0;
-	worldMap.islands.Conceicao.position.z = 663.7298;
-	worldMap.islands.Conceicao.position.rx = -707.8312;
-	worldMap.islands.Conceicao.position.rz = 673.5406;
-	worldMap.islands.Conceicao.radius = 100.0;
+	worldMap.islands.Conceicao.position.z = -774.5847;
+	worldMap.islands.Conceicao.position.rx = 884.1373;
+	worldMap.islands.Conceicao.position.rz = -774.5847;
+	worldMap.islands.Conceicao.radius = 120.0;
 	worldMap.islands.Conceicao.kradius = 0.75;
 	//Island label
 	worldMap.islands.Conceicao.label.text = FindIslandName("Conceicao");
@@ -1114,18 +1144,18 @@ void wdmInitWorldMap()
 	worldMap.islands.IslaMuelle.name = "IslaMuelle";
 	//Geometry parameters
 	worldMap.islands.IslaMuelle.isVisibleName = 0;
-	worldMap.islands.IslaMuelle.position.x = -451.9622;
+	worldMap.islands.IslaMuelle.position.x = 506.489;
 	worldMap.islands.IslaMuelle.position.y = 30.0;
-	worldMap.islands.IslaMuelle.position.z = -314.4281;
-	worldMap.islands.IslaMuelle.position.rx = -519.2072;
-	worldMap.islands.IslaMuelle.position.rz = -323.7959;
+	worldMap.islands.IslaMuelle.position.z = 460.815;
+	worldMap.islands.IslaMuelle.position.rx = 506.489;
+	worldMap.islands.IslaMuelle.position.rz = 460.815;
 	worldMap.islands.IslaMuelle.radius = 140.0;
 	worldMap.islands.IslaMuelle.kradius = 0.75;
 	//Island label
 	worldMap.islands.IslaMuelle.label.text = FindIslandName("Isla Muelle");
 	worldMap.islands.IslaMuelle.label.icon = -1;
 	worldMap.islands.IslaMuelle.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.IslaMuelle.locations.city1.name = "Isla Muelle";
@@ -1184,11 +1214,11 @@ void wdmInitWorldMap()
 	worldMap.islands.QuebradasCostillas.name = "QuebradasCostillas";
 	//Geometry parameters
 	worldMap.islands.QuebradasCostillas.isVisibleName = 0;
-	worldMap.islands.QuebradasCostillas.position.x = -662.419;
+	worldMap.islands.QuebradasCostillas.position.x = 682.611;
 	worldMap.islands.QuebradasCostillas.position.y = 30.0;
-	worldMap.islands.QuebradasCostillas.position.z = -201.8127;
-	worldMap.islands.QuebradasCostillas.position.rx = -641.6077;
-	worldMap.islands.QuebradasCostillas.position.rz = -168.2621;
+	worldMap.islands.QuebradasCostillas.position.z = 254.76;
+	worldMap.islands.QuebradasCostillas.position.rx = 682.611;
+	worldMap.islands.QuebradasCostillas.position.rz = 254.76;
 	worldMap.islands.QuebradasCostillas.radius = 90.0;
 	worldMap.islands.QuebradasCostillas.kradius = 0.75;
 	//Island label
@@ -1254,25 +1284,25 @@ void wdmInitWorldMap()
 	worldMap.islands.KhaelRoa.name = "KhaelRoa";
 	//Geometry parameters
 	worldMap.islands.KhaelRoa.isVisibleName = 0;
-	worldMap.islands.KhaelRoa.position.x = 801.3779;
+	worldMap.islands.KhaelRoa.position.x = -830.6093;
 	worldMap.islands.KhaelRoa.position.y = 30.0;
-	worldMap.islands.KhaelRoa.position.z = -445.5364;
-	worldMap.islands.KhaelRoa.position.rx = 805.0779;
-	worldMap.islands.KhaelRoa.position.rz = -437.1364;
+	worldMap.islands.KhaelRoa.position.z = 370.2058;
+	worldMap.islands.KhaelRoa.position.rx = -830.6093;
+	worldMap.islands.KhaelRoa.position.rz = 370.2058;
 	worldMap.islands.KhaelRoa.radius = 70.0;
 	worldMap.islands.KhaelRoa.kradius = 0.75;
 	//Island label
 	worldMap.islands.KhaelRoa.label.text = FindIslandName("Khael Roa");
 	worldMap.islands.KhaelRoa.label.icon = -1;
 	worldMap.islands.KhaelRoa.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.KhaelRoa.locations.city1.name = "Khael Roa";
 	//Geometry parameters
-	worldMap.islands.KhaelRoa.locations.city1.position.x = 786.8229;
+	worldMap.islands.KhaelRoa.locations.city1.position.x = -823.56;
 	worldMap.islands.KhaelRoa.locations.city1.position.y = 3.545;
-	worldMap.islands.KhaelRoa.locations.city1.position.z = -440.5574;
+	worldMap.islands.KhaelRoa.locations.city1.position.z = 354.151;
 	worldMap.islands.KhaelRoa.locations.city1.position.ay = 0.0;
 	worldMap.islands.KhaelRoa.locations.city1.modelName = "leaf";
 	worldMap.islands.KhaelRoa.locations.city1.visible = "false";
@@ -1289,18 +1319,18 @@ void wdmInitWorldMap()
 	worldMap.islands.Cayman.name = "Cayman";
 	//Geometry parameters
 	worldMap.islands.Cayman.isVisibleName = 0;
-	worldMap.islands.Cayman.position.x = 600.5008;
+	worldMap.islands.Cayman.position.x = -599.5073;
 	worldMap.islands.Cayman.position.y = 30.0;
-	worldMap.islands.Cayman.position.z = -266.3481;
-	worldMap.islands.Cayman.position.rx = 594.8008;
-	worldMap.islands.Cayman.position.rz = -254.6481;
-	worldMap.islands.Cayman.radius = 100.0;
+	worldMap.islands.Cayman.position.z = 582.0206;
+	worldMap.islands.Cayman.position.rx = -600.9249;
+	worldMap.islands.Cayman.position.rz = 574.8171;
+	worldMap.islands.Cayman.radius = 90.0;
 	worldMap.islands.Cayman.kradius = 0.75;
 	//Island label
 	worldMap.islands.Cayman.label.text = FindIslandName("Cayman");
 	worldMap.islands.Cayman.label.icon = -1;
 	worldMap.islands.Cayman.label.visible = "true";
-	
+
 	//City
 	//Name
 	worldMap.islands.Cayman.locations.city1.name = "Grand Cayman";
@@ -1376,12 +1406,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Hispaniola.name = "Hispaniola";
 	//Geometry parameters
 	worldMap.islands.Hispaniola.isVisibleName = 0;
-	worldMap.islands.Hispaniola.position.x = -63.4097;
+	worldMap.islands.Hispaniola.position.x = 94.1282;
 	worldMap.islands.Hispaniola.position.y = 30.0;
-	worldMap.islands.Hispaniola.position.z = -455.923;
-	worldMap.islands.Hispaniola.position.rx = -73.0069;
-	worldMap.islands.Hispaniola.position.rz = -444.6382;
-	worldMap.islands.Hispaniola.radius = 275.0;
+	worldMap.islands.Hispaniola.position.z = 610.214;
+	worldMap.islands.Hispaniola.position.rx = 94.1282;
+	worldMap.islands.Hispaniola.position.rz = 610.214;
+	worldMap.islands.Hispaniola.radius = 230.0;
 	worldMap.islands.Hispaniola.kradius = 0.75;
 	//Island label
 	worldMap.islands.Hispaniola.label.text = FindIslandName("Hispaniola");
@@ -1514,12 +1544,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.name = "Cuba";
 	//Geometry parameters
 	worldMap.islands.Cuba.isVisibleName = 0;
-	worldMap.islands.Cuba.position.x = 458.8936;
+	worldMap.islands.Cuba.position.x = -488.757;
 	worldMap.islands.Cuba.position.y = 30.0;
-	worldMap.islands.Cuba.position.z = -684.1776;
-	worldMap.islands.Cuba.position.rx = 469.0741;
-	worldMap.islands.Cuba.position.rz = -724.3237;
-	worldMap.islands.Cuba.radius = 345.0;
+	worldMap.islands.Cuba.position.z = 878.791;
+	worldMap.islands.Cuba.position.rx = -488.757;
+	worldMap.islands.Cuba.position.rz = 878.791;
+	worldMap.islands.Cuba.radius = 90.0;
 	worldMap.islands.Cuba.kradius = 0.75;
 	//Island label
 	worldMap.islands.Cuba.label.text = FindIslandName("Cuba");
@@ -1531,9 +1561,9 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city1.name = "Havana";
 	worldMap.islands.Cuba.locations.city1.real = "Havana";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city1.position.x = 665.9487;
+	worldMap.islands.Cuba.locations.city1.position.x = -654.793;
 	worldMap.islands.Cuba.locations.city1.position.y = 3.5548;
-	worldMap.islands.Cuba.locations.city1.position.z = -794.3237;
+	worldMap.islands.Cuba.locations.city1.position.z = 910.373;
 	worldMap.islands.Cuba.locations.city1.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city1.modelName = "town";
 	worldMap.islands.Cuba.locations.city1.visible = "false";
@@ -1542,15 +1572,15 @@ void wdmInitWorldMap()
 	wdmSetIcon("Havana", FindTownName("Havana"), GetTownNation("Havana")); // KK
 	worldMap.islands.Cuba.locations.city1.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city1.ship.pos.x = 679.4241; // KK
-	worldMap.islands.Cuba.locations.city1.ship.pos.z = -807.0537; // KK
+	//worldMap.islands.Cuba.locations.city1.ship.pos.x = 679.4241; // KK
+	//worldMap.islands.Cuba.locations.city1.ship.pos.z = -807.0537; // KK
 	//Name
 	worldMap.islands.Cuba.locations.city2.name = "Santiago";
 	worldMap.islands.Cuba.locations.city2.real = "Santiago";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city2.position.x = 341.0741;
+	worldMap.islands.Cuba.locations.city2.position.x = -325.826;
 	worldMap.islands.Cuba.locations.city2.position.y = 4.0596;
-	worldMap.islands.Cuba.locations.city2.position.z = -466.252;
+	worldMap.islands.Cuba.locations.city2.position.z = 772.679;
 	worldMap.islands.Cuba.locations.city2.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city2.modelName = "town";
 	worldMap.islands.Cuba.locations.city2.visible = "false";
@@ -1559,14 +1589,14 @@ void wdmInitWorldMap()
 	wdmSetIcon("Santiago", FindTownName("Santiago"), GetTownNation("Santiago")); // KK
 	worldMap.islands.Cuba.locations.city2.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city2.ship.pos.x = 341.1041; // KK
-	worldMap.islands.Cuba.locations.city2.ship.pos.z = -450.5037; // KK
+	//worldMap.islands.Cuba.locations.city2.ship.pos.x = 341.1041; // KK
+	//worldMap.islands.Cuba.locations.city2.ship.pos.z = -450.5037; // KK
 	//Name
 	worldMap.islands.Cuba.locations.city3.name = "CubShore 1";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city3.position.x = 427.9565;
+	worldMap.islands.Cuba.locations.city3.position.x = -396.706;
 	worldMap.islands.Cuba.locations.city3.position.y = 4.441;
-	worldMap.islands.Cuba.locations.city3.position.z = -608.8666;
+	worldMap.islands.Cuba.locations.city3.position.z = 810.874;
 	worldMap.islands.Cuba.locations.city3.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city3.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city3.visible = "false";
@@ -1576,14 +1606,14 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city3.label.icon = -1;
 	worldMap.islands.Cuba.locations.city3.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city3.ship.pos.x = 439.6841;
-	worldMap.islands.Cuba.locations.city3.ship.pos.z = -632.2637;
+	//worldMap.islands.Cuba.locations.city3.ship.pos.x = 439.6841;
+	//worldMap.islands.Cuba.locations.city3.ship.pos.z = -632.2637;
 	//Name
 	worldMap.islands.Cuba.locations.city4.name = "CubShore 2";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city4.position.x = 607.7595;
+	worldMap.islands.Cuba.locations.city4.position.x = -555.491;
 	worldMap.islands.Cuba.locations.city4.position.y = 3.6814;
-	worldMap.islands.Cuba.locations.city4.position.z = -723.2116;
+	worldMap.islands.Cuba.locations.city4.position.z = 856.709;
 	worldMap.islands.Cuba.locations.city4.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city4.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city4.visible = "false";
@@ -1593,14 +1623,14 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city4.label.icon = -1;
 	worldMap.islands.Cuba.locations.city4.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city4.ship.pos.x = 607.9641;
-	worldMap.islands.Cuba.locations.city4.ship.pos.z = -708.4737;
+	//worldMap.islands.Cuba.locations.city4.ship.pos.x = 607.9641;
+	//worldMap.islands.Cuba.locations.city4.ship.pos.z = -708.4737;
 	//Name
 	worldMap.islands.Cuba.locations.city5.name = "CubShore 3";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city5.position.x = 314.6297;
+	worldMap.islands.Cuba.locations.city5.position.x = -300.275;
 	worldMap.islands.Cuba.locations.city5.position.y = 5.665;
-	worldMap.islands.Cuba.locations.city5.position.z = -608.3251;
+	worldMap.islands.Cuba.locations.city5.position.z = 860.448;
 	worldMap.islands.Cuba.locations.city5.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city5.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city5.visible = "false";
@@ -1610,14 +1640,14 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city5.label.icon = -1;
 	worldMap.islands.Cuba.locations.city5.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city5.ship.pos.x = 297.9401;
-	worldMap.islands.Cuba.locations.city5.ship.pos.z = -609.159;
+	//worldMap.islands.Cuba.locations.city5.ship.pos.x = 297.9401;
+	//worldMap.islands.Cuba.locations.city5.ship.pos.z = -609.159;
 	//Name
 	worldMap.islands.Cuba.locations.city6.name = "CubShore 4";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city6.position.x = 605.6831;
+	worldMap.islands.Cuba.locations.city6.position.x = -555.62;
 	worldMap.islands.Cuba.locations.city6.position.y = 4.0355;
-	worldMap.islands.Cuba.locations.city6.position.z = -822.7637;
+	worldMap.islands.Cuba.locations.city6.position.z = 934.341;
 	worldMap.islands.Cuba.locations.city6.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city6.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city6.visible = "false";
@@ -1627,14 +1657,14 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city6.label.icon = -1;
 	worldMap.islands.Cuba.locations.city6.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city6.ship.pos.x = 606.7924;
-	worldMap.islands.Cuba.locations.city6.ship.pos.z = -836.8972;
+	//worldMap.islands.Cuba.locations.city6.ship.pos.x = 606.7924;
+	//worldMap.islands.Cuba.locations.city6.ship.pos.z = -836.8972;
 	//Name
 	worldMap.islands.Cuba.locations.city7.name = "CubShore 5";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city7.position.x = 390.3229;
+	worldMap.islands.Cuba.locations.city7.position.x = -614.341 ;
 	worldMap.islands.Cuba.locations.city7.position.y = 4.1671;
-	worldMap.islands.Cuba.locations.city7.position.z = -470.0433;
+	worldMap.islands.Cuba.locations.city7.position.z = 896.017;
 	worldMap.islands.Cuba.locations.city7.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city7.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city7.visible = "false";
@@ -1644,14 +1674,14 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city7.label.icon = -1;
 	worldMap.islands.Cuba.locations.city7.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city7.ship.pos.x = 388.8241;
-	worldMap.islands.Cuba.locations.city7.ship.pos.z = -448.9037;
+	//worldMap.islands.Cuba.locations.city7.ship.pos.x = 388.8241;
+	//worldMap.islands.Cuba.locations.city7.ship.pos.z = -448.9037;
 	//Name
 	worldMap.islands.Cuba.locations.city8.name = "CubShore 6";
 	//Geometry parameters
-	worldMap.islands.Cuba.locations.city8.position.x = 475.8303;
+	worldMap.islands.Cuba.locations.city8.position.x = -492.626;
 	worldMap.islands.Cuba.locations.city8.position.y = 3.736;
-	worldMap.islands.Cuba.locations.city8.position.z = -654.3232;
+	worldMap.islands.Cuba.locations.city8.position.z = 847.313;
 	worldMap.islands.Cuba.locations.city8.position.ay = 2.5765;
 	worldMap.islands.Cuba.locations.city8.modelName = "leaf";
 	worldMap.islands.Cuba.locations.city8.visible = "false";
@@ -1661,20 +1691,20 @@ void wdmInitWorldMap()
 	worldMap.islands.Cuba.locations.city8.label.icon = -1;
 	worldMap.islands.Cuba.locations.city8.label.visible = "false";
 	// initial ship location
-	worldMap.islands.Cuba.locations.city8.ship.pos.x = 479.5174;
-	worldMap.islands.Cuba.locations.city8.ship.pos.z = -643.6989;
+	//worldMap.islands.Cuba.locations.city8.ship.pos.x = 479.5174;
+	//worldMap.islands.Cuba.locations.city8.ship.pos.z = -643.6989;
 
 	//12=========================================================================
 	//Name
 	worldMap.islands.Guadeloupe.name = "Guadeloupe";
 	//Geometry parameters
 	worldMap.islands.Guadeloupe.isVisibleName = 0;
-	worldMap.islands.Guadeloupe.position.x = -720.2772;
+	worldMap.islands.Guadeloupe.position.x = 536.8777;
 	worldMap.islands.Guadeloupe.position.y = 30.0;
-	worldMap.islands.Guadeloupe.position.z = 13.939;
-	worldMap.islands.Guadeloupe.position.rx = -740.3181;
-	worldMap.islands.Guadeloupe.position.rz = 19.6724;
-	worldMap.islands.Guadeloupe.radius = 110.0;
+	worldMap.islands.Guadeloupe.position.z = -25.08266;
+	worldMap.islands.Guadeloupe.position.rx = 536.8777;
+	worldMap.islands.Guadeloupe.position.rz = -25.08266;
+	worldMap.islands.Guadeloupe.radius = 120.0;
 	worldMap.islands.Guadeloupe.kradius = 0.75;
 	//Island label
 	worldMap.islands.Guadeloupe.label.text = FindIslandName("Guadeloupe");
@@ -1737,12 +1767,12 @@ void wdmInitWorldMap()
 	worldMap.islands.SaintMartin.name = "SaintMartin";
 	//Geometry parameters
 	worldMap.islands.SaintMartin.isVisibleName = 0;
-	worldMap.islands.SaintMartin.position.x = -725.3333;
+	worldMap.islands.SaintMartin.position.x = 924.0563;
 	worldMap.islands.SaintMartin.position.y = 30.0;
-	worldMap.islands.SaintMartin.position.z = -366.6779;
-	worldMap.islands.SaintMartin.position.rx = -722.6486;
-	worldMap.islands.SaintMartin.position.rz = -368.5712;
-	worldMap.islands.SaintMartin.radius = 80.0;
+	worldMap.islands.SaintMartin.position.z = 518.6871;
+	worldMap.islands.SaintMartin.position.rx = 924.0563;
+	worldMap.islands.SaintMartin.position.rz = 518.6871;
+	worldMap.islands.SaintMartin.radius = 100.0;
 	worldMap.islands.SaintMartin.kradius = 0.75;
 	//Island label
 	worldMap.islands.SaintMartin.label.text = FindIslandName("Saint Martin");
@@ -1824,11 +1854,11 @@ void wdmInitWorldMap()
 	worldMap.islands.Antigua.name = "Antigua";
 	//Geometry parameters
 	worldMap.islands.Antigua.isVisibleName = 0;
-	worldMap.islands.Antigua.position.x = -907.983;
+	worldMap.islands.Antigua.position.x = 898.268;
 	worldMap.islands.Antigua.position.y = 30.0;
-	worldMap.islands.Antigua.position.z = -236.7188;
-	worldMap.islands.Antigua.position.rx = -905.6271;
-	worldMap.islands.Antigua.position.rz = -239.7206;
+	worldMap.islands.Antigua.position.z = 133.11;
+	worldMap.islands.Antigua.position.rx = 898.268;
+	worldMap.islands.Antigua.position.rz = 133.11;
 	worldMap.islands.Antigua.radius = 90.0;
 	worldMap.islands.Antigua.kradius = 0.75;
 	//Island label
@@ -1878,11 +1908,11 @@ void wdmInitWorldMap()
 	worldMap.islands.Turks.name = "Turks";
 	//Geometry parameters
 	worldMap.islands.Turks.isVisibleName = 0;
-	worldMap.islands.Turks.position.x = -144.7866;
+	worldMap.islands.Turks.position.x = 343.7293;
 	worldMap.islands.Turks.position.y = 30.0;
-	worldMap.islands.Turks.position.z = -819.767;
-	worldMap.islands.Turks.position.rx = -129.5201;
-	worldMap.islands.Turks.position.rz = -812.7909;
+	worldMap.islands.Turks.position.z = 829.4725;
+	worldMap.islands.Turks.position.rx = 343.7293;
+	worldMap.islands.Turks.position.rz = 829.4725;
 	worldMap.islands.Turks.radius = 90.0;
 	worldMap.islands.Turks.kradius = 0.75;
 	//Island label
@@ -1982,12 +2012,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Curacao.name = "Curacao";
 	//Geometry parameters
 	worldMap.islands.Curacao.isVisibleName = 0;
-	worldMap.islands.Curacao.position.x = -341.0551;
+	worldMap.islands.Curacao.position.x = 432.6981;
 	worldMap.islands.Curacao.position.y = 30.0;
-	worldMap.islands.Curacao.position.z = 608.5984;
-	worldMap.islands.Curacao.position.rx = -323.7226;
-	worldMap.islands.Curacao.position.rz = 636.0241;
-	worldMap.islands.Curacao.radius = 85.0;
+	worldMap.islands.Curacao.position.z = -696.1951;
+	worldMap.islands.Curacao.position.rx = 432.6981;
+	worldMap.islands.Curacao.position.rz = -696.1951;
+	worldMap.islands.Curacao.radius = 125.0;
 	worldMap.islands.Curacao.kradius = 0.75;
 	//Island label
 	worldMap.islands.Curacao.label.text = FindIslandName("Curacao");
@@ -2053,12 +2083,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Eleuthera.name = "Eleuthera";
 	//Geometry parameters
 	worldMap.islands.Eleuthera.isVisibleName = 0;
-	worldMap.islands.Eleuthera.position.x = 133.2902;
+	worldMap.islands.Eleuthera.position.x = -31.8557;
 	worldMap.islands.Eleuthera.position.y = 30.0;
-	worldMap.islands.Eleuthera.position.z = -950.2642;
-	worldMap.islands.Eleuthera.position.rx = 164.3902;
-	worldMap.islands.Eleuthera.position.rz = -977.6642;
-	worldMap.islands.Eleuthera.radius = 70.0;
+	worldMap.islands.Eleuthera.position.z = 938.472;
+	worldMap.islands.Eleuthera.position.rx = -31.8557;
+	worldMap.islands.Eleuthera.position.rz = 938.472;
+	worldMap.islands.Eleuthera.radius = 80.0;
 	worldMap.islands.Eleuthera.kradius = 0.75;
 	//Island label
 	worldMap.islands.Eleuthera.label.text = FindIslandName("Eleuthera");
@@ -2125,12 +2155,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Aruba.name = "Aruba";
 	//Geometry parameters
 	worldMap.islands.Aruba.isVisibleName = 0;
-	worldMap.islands.Aruba.position.x = -168.6169;
+	worldMap.islands.Aruba.position.x = 162.2475;
 	worldMap.islands.Aruba.position.y = 30.0;
-	worldMap.islands.Aruba.position.z = 550.3819;
-	worldMap.islands.Aruba.position.rx = -169.8129;
-	worldMap.islands.Aruba.position.rz = 565.5464;
-	worldMap.islands.Aruba.radius = 85.0;
+	worldMap.islands.Aruba.position.z = -581.9412;
+	worldMap.islands.Aruba.position.rx = 162.2475;
+	worldMap.islands.Aruba.position.rz = -581.9412;
+	worldMap.islands.Aruba.radius = 90.0;
 	worldMap.islands.Aruba.kradius = 0.75;
 	//Island label
 	worldMap.islands.Aruba.label.text = FindIslandName("Aruba");
@@ -2191,11 +2221,11 @@ void wdmInitWorldMap()
 	worldMap.islands.IslaMona.name = "IslaMona";
 	//Geometry parameters
 	worldMap.islands.IslaMona.isVisibleName = 0;
-	worldMap.islands.IslaMona.position.x = -288.5556;  // East  = +, West  = -
+	worldMap.islands.IslaMona.position.x = 309.5177;  // East  = +, West  = -
 	worldMap.islands.IslaMona.position.y = 20.0;
-	worldMap.islands.IslaMona.position.z = -235.5098;   // North = -, South = +
-	worldMap.islands.IslaMona.position.rx = -314.0483; // What's this???
-	worldMap.islands.IslaMona.position.rz = -201.129;  // What's this???
+	worldMap.islands.IslaMona.position.z = 392.258;   // North = -, South = +
+	worldMap.islands.IslaMona.position.rx = 309.5177; // What's this???
+	worldMap.islands.IslaMona.position.rz = 392.258;  // What's this???
 	worldMap.islands.IslaMona.radius = 40.0;
 	worldMap.islands.IslaMona.kradius = 0.75;
 	//Island label
@@ -2218,12 +2248,12 @@ void wdmInitWorldMap()
 	worldMap.islands.Battle_Rocks.name = "Battle_Rocks";
 	//Geometry parameters
 	worldMap.islands.Battle_Rocks.isVisibleName = 0;
-	worldMap.islands.Battle_Rocks.position.x = -806.0774;
+	worldMap.islands.Battle_Rocks.position.x = 917.1944;
 	worldMap.islands.Battle_Rocks.position.y = 20.0;
-	worldMap.islands.Battle_Rocks.position.z = 537.4297;
-	worldMap.islands.Battle_Rocks.position.rx = -776.2158;
-	worldMap.islands.Battle_Rocks.position.rz = 567.0417;
-	worldMap.islands.Battle_Rocks.radius = 30.0;
+	worldMap.islands.Battle_Rocks.position.z = -618.1356;
+	worldMap.islands.Battle_Rocks.position.rx = 917.1944;
+	worldMap.islands.Battle_Rocks.position.rz = -618.1356;
+	worldMap.islands.Battle_Rocks.radius = 35.0;
 	worldMap.islands.Battle_Rocks.kradius = 0.75;
 	//Island label
 	worldMap.islands.Battle_Rocks.label.text = FindIslandName("Petit Tabac"); // PB
@@ -2239,18 +2269,72 @@ void wdmInitWorldMap()
 	worldMap.islands.Battle_Rocks.locations.city0.modelName = "leaf";
 	worldMap.islands.Battle_Rocks.locations.city0.visible = "false";
 	worldMap.islands.Battle_Rocks.locations.city0.move = "false";
-
+	
 	//20=========================================================================
+	//Name SantaCatalina
+	worldMap.islands.SantaCatalina.name = "SantaCatalina";
+	//Geometry parameters
+	worldMap.islands.SantaCatalina.isVisibleName = 0;
+	worldMap.islands.SantaCatalina.position.x = -742.269;
+	worldMap.islands.SantaCatalina.position.y = 20.0;
+	worldMap.islands.SantaCatalina.position.z = -563.205;
+	worldMap.islands.SantaCatalina.position.rx = -742.269;
+	worldMap.islands.SantaCatalina.position.rz = -563.205;
+	worldMap.islands.SantaCatalina.radius = 200.0;
+	worldMap.islands.SantaCatalina.kradius = 0.75;
+	//Island label
+	worldMap.islands.SantaCatalina.label.text = FindIslandName("SantaCatalina"); // PB
+	worldMap.islands.SantaCatalina.label.icon = -1;
+	worldMap.islands.SantaCatalina.label.visible = "true";
+
+	//Cities - way for adding new fake island-model into the WorldMap
+	//Geometry parameters
+	worldMap.islands.SantaCatalina.locations.city0.position.x = worldMap.islands.SantaCatalina.position.x;
+	worldMap.islands.SantaCatalina.locations.city0.position.y = 0.9333;
+	worldMap.islands.SantaCatalina.locations.city0.position.z = worldMap.islands.SantaCatalina.position.z;
+	worldMap.islands.SantaCatalina.locations.city0.position.ay = 0.0;
+	worldMap.islands.SantaCatalina.locations.city0.modelName = "leaf";
+	worldMap.islands.SantaCatalina.locations.city0.visible = "false";
+	worldMap.islands.SantaCatalina.locations.city0.move = "false";
+	
+	//21=========================================================================
+	//Name PortoBello
+	worldMap.islands.PortoBello.name = "PortoBello";
+	//Geometry parameters
+	worldMap.islands.PortoBello.isVisibleName = 0;
+	worldMap.islands.PortoBello.position.x = -435.73;
+	worldMap.islands.PortoBello.position.y = 20.0;
+	worldMap.islands.PortoBello.position.z = -895.763;
+	worldMap.islands.PortoBello.position.rx = -435.73;
+	worldMap.islands.PortoBello.position.rz = -895.763;
+	worldMap.islands.PortoBello.radius = 200.0;
+	worldMap.islands.PortoBello.kradius = 0.75;
+	//Island label
+	worldMap.islands.PortoBello.label.text = FindIslandName("Porto Bello"); // PB
+	worldMap.islands.PortoBello.label.icon = -1;
+	worldMap.islands.PortoBello.label.visible = "true";
+
+	//Cities - way for adding new fake island-model into the WorldMap
+	//Geometry parameters
+	worldMap.islands.PortoBello.locations.city0.position.x = worldMap.islands.PortoBello.position.x;
+	worldMap.islands.PortoBello.locations.city0.position.y = 0.9333;
+	worldMap.islands.PortoBello.locations.city0.position.z = worldMap.islands.PortoBello.position.z;
+	worldMap.islands.PortoBello.locations.city0.position.ay = 0.0;
+	worldMap.islands.PortoBello.locations.city0.modelName = "leaf";
+	worldMap.islands.PortoBello.locations.city0.visible = "false";
+	worldMap.islands.PortoBello.locations.city0.move = "false";
+	
+	//22=========================================================================
 	//Name
 	worldMap.islands.Colombia.name = "Colombia";
 	//Geometry parameters
 	worldMap.islands.Columbia.isVisibleName = 0;
-	worldMap.islands.Colombia.position.x = -55.4972;
+	worldMap.islands.Colombia.position.x = -51.7746;
 	worldMap.islands.Colombia.position.y = 30.0;
-	worldMap.islands.Colombia.position.z = 801.376;
-	worldMap.islands.Colombia.position.rx = -24.6888;
-	worldMap.islands.Colombia.position.rz = 807.4202;
-	worldMap.islands.Colombia.radius = 180.0;
+	worldMap.islands.Colombia.position.z = -851.78;
+	worldMap.islands.Colombia.position.rx = -51.7746;
+	worldMap.islands.Colombia.position.rz = -851.78;
+	worldMap.islands.Colombia.radius = 150.0;
 	worldMap.islands.Colombia.kradius = 0.75;
 
 	//Island label
@@ -2361,29 +2445,29 @@ void wdmInitWorldMap()
 
 void InitializationLabels()
 {
-	//Переберём все острова
+	//????????? ??? ???????
 	aref arrayLabels;
 	makearef(arrayLabels, worldMap.labels);
 	int num = GetAttributesNum(arrayLabels);
 	for(int i = 0; i < num; i++)
 	{
-		//Ссылка на описание метки
+		//?????? ?? ???????? ?????
 		aref label = GetAttributeN(arrayLabels, i);
-		//Получаем тип метки
+		//???????? ??? ?????
 		if(!CheckAttribute(label, "type")) continue;
 		string typeName = label.type;
-		//Параметры типа метки
+		//????????? ???? ?????
 		aref typeParams;
 		makearef(typeParams, worldMap.labeltype.(typeName));
-		//Перебераем параметры типа метки и добавляем к метке
+		//?????????? ????????? ???? ????? ? ????????? ? ?????
 		int numParams = GetAttributesNum(typeParams);
 		for(int j = 0; j < numParams; j++)
 		{
-			//Имя параметра
+			//??? ?????????
 			string param = GetAttributeName(GetAttributeN(typeParams, j));
-			//Проверяем наличие в метке
+			//????????? ??????? ? ?????
 			if(CheckAttribute(label, param) != 0) continue;
-			//Копируем параметр
+			//???????? ????????
 			label.(param) = typeParams.(param);
 		}
 	}

@@ -5,16 +5,16 @@
 //--------------------------------------------------------------------------------------
 
 //Частота штормов в секунду
-#define WDM_STORM_RATE			0.002
+#define WDM_STORM_RATE   0.0001	 // original 0.002, changed for less frequent storm encounters
 //Частота торговцев в секунду
-#define WDM_MERCHANTS_RATE		0.3 // NK upped to 0.3, was 0.2. I will now use them as also warfleets (with simple orders, not chase-player orders)  05-06-27
+#define WDM_MERCHANTS_RATE		0.09 // NK upped to 0.3, was 0.2. I will now use them as also warfleets (with simple orders, not chase-player orders)  05-06-27
 //Частота воюищих кораблей в секунду
-#define WDM_WARRING_RATE		0.04 // NK upped slightly. We _are_ at war, folks. Was 0.03
+#define WDM_WARRING_RATE		0.010 // NK upped slightly. We _are_ at war, folks. Was 0.03
 //Частота нападающих кораблей в секунду
-#define WDM_FOLLOW_RATE			0.04 // was 0.06; because of using merchant as also warfleet
+#define WDM_FOLLOW_RATE			0.005 // was 0.06; because of using merchant as also warfleet
 
-#define ENC_NONFOLLOW_WARFLEET_CHANCE 0.25 // chance for merchant (i.e. nonfollow) enc to be warfleet minding its own business...a chance for non-hostile warfleets.
-#define WARRING_CHANCE_TRADE		0.5 // chance for a side in the warring enc to not be type war.
+#define ENC_NONFOLLOW_WARFLEET_CHANCE 0.015 // chance for merchant (i.e. nonfollow) enc to be warfleet minding its own business...a chance for non-hostile warfleets.
+#define WARRING_CHANCE_TRADE		0.010 // chance for a side in the warring enc to not be type war.
 
 //--------------------------------------------------------------------------------------
 

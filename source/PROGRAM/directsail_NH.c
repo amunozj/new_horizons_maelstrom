@@ -1057,7 +1057,7 @@ void SwimGoodEvent(ref rCharacter, int iQuantity)
 					Log_SetStringToLog("" + iQuantity + " " + TranslateString("","survivors rescued"));   //screenmessage
 					if (ENABLE_EXTRA_SOUNDS == 1) PlaySound("objects\abordage\abordage_loosing.wav");   //soundeffect
 				}
-				ChangeCharacterReputation(rCharacter, 1);   //rescuer deserves praise 
+				ChangeCharacterReputation(rCharacter, 1);   //rescuer deserves praise :)
 			}
 // <-- KK
 		// ccc rescue survivors end
@@ -1103,7 +1103,7 @@ string GetCompassDirFromAY(float ay)
 	if(ay < 5.15) return "east";
 	if(ay < 5.9) return "southeast";
 	if(ay < 6.31) return "south";
-	return "somewhere"; // just in case 
+	return "somewhere"; // just in case :)
 }
 
 

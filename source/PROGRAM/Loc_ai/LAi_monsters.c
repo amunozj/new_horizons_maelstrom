@@ -16,7 +16,7 @@ void LAi_CreateMonsters(ref location)
 	//NK, this will reset all LAI group params, which are screwed up if FightGroups is called.
 
 	// ccc sneakmod-> This lets you "sneak" if you wear a "camouflage"
-	// Thanks to NK for providing the basis 
+	// Thanks to NK for providing the basis :)
 
 	float grdlook = LAI_GROUP_GRD_LOOK; // KK
 	float grdhear = LAI_GROUP_GRD_HEAR; // KK
@@ -69,7 +69,7 @@ void LAi_CreateMonsters(ref location)
 	LAi_group_SetLookRadius(LAI_DEFAULT_GROUP, mnslook);	
 	LAi_group_SetHearRadius(LAI_DEFAULT_GROUP, mnshear);	
 
-	// for all soldiers and citizens, based on NK RM mod, thanks 
+	// for all soldiers and citizens, based on NK RM mod, thanks :)
 	for(int j = 0; j < NATIONS_QUANTITY; j++)
 	{
 		LAi_group_SetRelation(LAI_GROUP_GUARDS, LAI_GROUP_PLAYER, relation); // KK
@@ -100,7 +100,7 @@ void LAi_CreateMonsters(ref location)
 	LAi_group_SetLookRadius(LAI_GROUP_MONSTERS, mnslook);	
 	LAi_group_SetHearRadius(LAI_GROUP_MONSTERS, mnshear);
 
-	// ccc sneakmod <-	 The following section may be superflous now, NK, pls check 
+	// ccc sneakmod <-	 The following section may be superflous now, NK, pls check :)
 
 	//player
 	/*LAi_group_Register(LAI_GROUP_PLAYER);
@@ -159,6 +159,7 @@ void LAi_CreateMonsters(ref location)
 
 	if(location.id == "QC_brothel_upstairs") return; // ccc Nov06 no residents in brothelbedroom
 	if(HasSubStr(location.id,"brothel") && HasSubStr(location.id,"upstairs")) return;//MAXIMUS: no monsters in brothels bedrooms
+	if(HasSubStr(location.id,"brothel") && HasSubStr(location.id,"bedroom")) return;// GR: no residents in brothels bedrooms
 	if(bMutinyDeckStarted || HasSubStr(location.id,"Tutorial") || HasSubStr(location.id,"Cap") || HasSubStr(location.id,"Cabin") || HasSubStr(location.id,"Hold")) return;//MAXIMUS: no monsters in these locations
 
 	//MAXIMUS: no monsters on Isla De Muerte
@@ -285,7 +286,7 @@ void LAi_CreateMonsters(ref location)
 	{
 		if(maxMonsters > 4) maxMonsters = 4;
 		int mtemp = rand(3)+1; if(mtemp < maxMonsters) maxMonsters = mtemp; //NK because I set the select_model thing to always work
-		if(CheckAttribute(location,"lastentermonth"))
+		if(CheckAttribute(location,"lastentermonth")) // && !CheckAttribute(location,"savethesevags"))
 			{ maxMonsters = 1; } //for debug only one
 			//{ maxMonsters = sti(location.vags.quantity); location.curvag = 0; }
 	}

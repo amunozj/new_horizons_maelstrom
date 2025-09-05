@@ -17,7 +17,7 @@ void CreateStoryCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Captain Keene_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Justinian";
+	ch.Ship.Name = TranslateString("","Justinian");
 	ch.Ship.Type = "HMS_Bellona";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -61,7 +61,7 @@ void CreateStoryCharacters(ref n)
 	//JRH ammo mod <--
 	ch.Dialog.Filename = "Sir Edward Pellew_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Indefatigable";
+	ch.Ship.Name = TranslateString("","Indefatigable");
 	ch.Ship.Type = "HMS_Indefatigable";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -101,7 +101,7 @@ void CreateStoryCharacters(ref n)
 	ch.equip.blade = "blade4";
 	ch.Dialog.Filename = "Dreadnought Foster_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Dreadnought";
+	ch.Ship.Name = TranslateString("","Dreadnought");
 	ch.Ship.Type = "RN_SuperiorWarship";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -141,7 +141,7 @@ void CreateStoryCharacters(ref n)
 	ch.Dialog.Filename = "Black Charlie Hammond_dialog.c";
 	ch.greeting = "Gr_Black Charlie Hammond";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Phantom";
+	ch.Ship.Name = TranslateString("","Phantom");
 	ch.Ship.Type = "RN_FirstRate";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -214,7 +214,7 @@ void CreateStoryCharacters(ref n)
 	ch.equip.blade = "blade4";
 	ch.Dialog.Filename = "Captain Harvey_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Hound";
+	ch.Ship.Name = TranslateString("","Hound");
 	ch.Ship.Type = "RN_Corvette";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -769,7 +769,7 @@ void CreateStoryCharacters(ref n)
 	ch.equip.blade = "blade4";
 	ch.Dialog.Filename = "Captain James Sawyer_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Renown";
+	ch.Ship.Name = TranslateString("","Renown");
 	ch.Ship.Type = "RN_Superbe";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 30;
@@ -815,7 +815,7 @@ void CreateStoryCharacters(ref n)
 	//JRH ammo mod <--
 	ch.Dialog.Filename = "Lt. Percy Buckland_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Lydia";
+	ch.Ship.Name = TranslateString("","Lydia");
 	ch.Ship.Type = "RN_Essex";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -904,7 +904,7 @@ void CreateStoryCharacters(ref n)
 	//JRH ammo mod <--
 	ch.Dialog.Filename = "Lt. William Bush_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Mulberry";
+	ch.Ship.Name = TranslateString("","Mulberry");
 	ch.Ship.Type = "RN_BattleFrigate";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -950,7 +950,7 @@ void CreateStoryCharacters(ref n)
 	//JRH ammo mod <--
 	ch.Dialog.Filename = "Lt. Uriah Quelp_dialog.c";
 	ch.nation = ENGLAND;
-	ch.Ship.Name = "Resource";
+	ch.Ship.Name = TranslateString("","Resource");
 	ch.Ship.Type = "HMS_Speedy";
 	ch.Ship.Stopped = true;
 	ch.rank 	= 20;
@@ -1097,7 +1097,7 @@ void CreateStoryCharacters(ref n)
 	ch.lastname = TranslateString("","Wellesley");
 	ch.id		= "Lady Barbara Wellesley";
 	ch.model = "Lady_Barbara_Wellesley";
-	ch.model.animation = "woman_sit";
+	ch.model.animation = "woman_ab_PoTC";
 	ch.sex = "woman";
 //	ch.sound_type = "female_citizen";
 	ch.location	= "";
@@ -1356,7 +1356,7 @@ void CreateStoryCharacters(ref n)
 //	LAi_SetStayType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
-	SetRankTitle(ch, TranslateString("", "Doctor"));
+	SetRankTitle(ch, TranslateString("", "DoctorW"));
 	ch.quest.officertype = OFFIC_TYPE_DOCTOR;
 	ch.questchar = true;
 	AddGameCharacter(n, ch);
@@ -1432,7 +1432,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = TranslateString("","Richard");
 	ch.lastname = TranslateString("","Sharpe");
 	ch.id		= "Richard Sharpe";
-	ch.model = "Soldier_Eng7_18"; //"Soldier_Eng3_18";
+	ch.model = "Sold_E33_Sharp"; //"Soldier_Eng3_18";
 	ch.sex = "man";
 	ch.location	= "";
 	ch.location.group = "";
@@ -1514,7 +1514,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Higgins");
 	ch.id		= "Rifleman Higgins";
-	ch.model = "Higgins_Eng2_18"; //"Soldier_Eng2_18";
+	ch.model = "Sold_E33_Higgins"; //"Soldier_Eng2_18";
 	ch.sex = "man";
 	ch.location	= "Antigua_port"; // PB
 	ch.location.group = "reload"; // PB
@@ -1556,7 +1556,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Cooper");
 	ch.id		= "Rifleman Cooper";
-	ch.model = "CooperR_Eng6_18"; //"Soldier_Eng6_18";
+	ch.model = "Sold_E33_Cooper"; //"Soldier_Eng6_18";
 	ch.sex = "man";
 	ch.location	= "Antigua_port"; // PB
 	ch.location.group = "reload"; // PB
@@ -1598,7 +1598,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Haggman");
 	ch.id		= "Rifleman Haggman";
-	ch.model = "Haggman_Eng5_18"; //"Soldier_Eng5_18";
+	ch.model = "Sold_E33_19_3"; //"Soldier_Eng5_18";
 	ch.sex = "man";
 	ch.location	= "Antigua_port"; // PB
 	ch.location.group = "reload"; // PB
@@ -1640,7 +1640,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Harris");
 	ch.id		= "Rifleman Harris";
-	ch.model = "HarrisRed_Eng5_18"; //"Soldier_Eng3_18";
+	ch.model = "Sold_E33_19_5"; //"Soldier_Eng3_18";
 	ch.sex = "man";
 	ch.location	= "Antigua_port"; // PB
 	ch.location.group = "reload"; // PB
@@ -2018,7 +2018,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Tongue");
 	ch.id		= "Rifleman Tongue";
-	ch.model = "TongueR_Eng6_18"; //"Soldier_Eng_18";
+	ch.model = "Sold_E33_19_6"; //"Soldier_Eng_18";
 	ch.sex = "man";
 	ch.location	= "Antigua_port"; // PB
 	ch.location.group = "reload"; // PB
@@ -2060,7 +2060,7 @@ void CreateStoryCharacters(ref n)
 	ch.name = "";
 	ch.lastname = TranslateString("","Mansfield");
 	ch.id		= "Rifleman Mansfield";
-	ch.model = "Mansfld_Eng6_18"; //"Soldier_Eng2_18";
+	ch.model = "Sold_E33_19_4"; //"Soldier_Eng2_18";
 	ch.sex = "man";
 	ch.location	= "";
 	ch.location.group = "";
@@ -2284,7 +2284,7 @@ void CreateStoryCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 //	ch.professionalnavy = ch.nation;
-	SetRankTitle(ch, TranslateString("","Captain")); // GR: Army captain, not navy
+	SetRankTitle(ch, TranslateString("","CaptainA")); // GR: Army captain, not navy
 	ch.quest.officertype = OFFIC_TYPE_REGCAP;
 	ch.questchar = true;
 //	SetRank(ch, ENGLAND, 6);

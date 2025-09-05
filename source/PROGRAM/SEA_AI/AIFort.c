@@ -136,6 +136,11 @@ void Fort_Login(int iIslandIndex)
 				break;
 			}
 
+			/*if (iDeadDays > 0)
+			{
+				// NK - rCharacter.Ship.Crew.Quantity = iDeadDays * 200 + rand(100);
+			}*/
+
 			if (bFortRessurect)
 			{
 				SetFortCharacterCaptured(rCharacter, false);
@@ -181,7 +186,7 @@ void Fort_Login(int iIslandIndex)
 
 			//Update the contriblist and skill multipliers and do auto level up for NPC's
 			InitAutoSkillsSystem(rCharacter, true); //Levis, the check for autoskill will happen later.
-			if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList"); //Levis refresh contriblist on login
+			if(CheckAttribute(rCharacter,"ContribList")) DeleteAttribute(rCharacter,"ContribList")); //Levis refresh contriblist on login
 
 			ReloadProgressUpdate();
 		}
@@ -282,6 +287,13 @@ float Fort_CannonDamage()
 
 // KK -->
 	fHullDamage = stf(rBall.DamageHull) * fCannonDamageMultiply * 0.4;
+// edited by MAXIMUS [was divide by zero] -->
+	/*if (GetTownNumForts(rFortCharacter.town) > 0)
+		fCrewDamage *= (0.01 * (stf(rFortCharacter.Ship.Crew.Quantity) / makefloat(GetTownSize(rFortCharacter.town) * TOWN_TROOPS_SCALAR / GetTownNumForts(rFortCharacter.town)))); // 04-09-22
+	else
+		fCrewDamage *= (0.01 * (stf(rFortCharacter.Ship.Crew.Quantity) / makefloat(GetTownSize(rFortCharacter.town) * TOWN_TROOPS_SCALAR)));*/ // 04-09-22
+// edited by MAXIMUS [was divide by zero] <--
+// <-- KK
 
 	rFortCharacter.Ship.HP = makeint((1.0 - MakeFloat(iNumDamagedCannons) / MakeFloat(iNumAllCannons)) * stf(rFortCharacter.Fort.HP));
 
@@ -298,10 +310,10 @@ float Fort_CannonDamage()
 			if (iRelation == RELATION_FRIEND)	{ fCurPlayerDamage = fCurPlayerDamage + fDamagePiece * 0.8; }
 			if (iRelation == RELATION_NEUTRAL)	{ fCurPlayerDamage = fCurPlayerDamage + fDamagePiece * 0.5; }
 
-			if (fCurPlayerDamage >= 1.0)
+			if (fCurPlayerDamage >= 1.0) //100.0)
 			{
 				SetCharacterRelationBoth(iBallCharacterIndex, iFortCharacterIndex, RELATION_ENEMY);
-				AttackRMRelation(GetMainCharacter(), sti(rFortCharacter.Nation)); 
+				AttackRMRelation(GetMainCharacter(), sti(rFortCharacter.Nation)); // RM - SetNationRelation2MainCharacter(sti(rFortCharacter.Nation), RELATION_ENEMY);
 				UpdateRelations();
 			}
 
@@ -309,14 +321,19 @@ float Fort_CannonDamage()
 		}
 	}
 
-	if (fDamage >= 1.0)
+	if (fDamage >= 1.0) //100.0)
 	{
 		bImmortal = LAi_IsImmortal(rFortCharacter);
 
 		Play3DSound("fort_cann_explode", x, y, z);
 		CreateBlast(x, y, z);
-		CreateParticleSystem("blast_inv", x, y, z, 0.0, 0.0, 0.0, 0);
-		CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0);
+		if (rand(8) == 0)
+		{
+			CreateParticleSystem("geo", x, y, z, 0.0, 0.0, 0.0, 0);		// Mirsaneli: takes particles from models\particles
+		}
+		CreateParticleSystemXPS("ShipExplode", x, y, z, 0.0, 0.0, 0.0, 0);
+		CreateParticleSystemXPS("blast_inv_explode", x, y, z, 0.0, 0.0, 0.0, 0);
+		CreateParticleSystemXPS("blast_dirt", x, y, z, 0.0, 0.0, 0.0, 0);
 
 // KK -->
 		if (!bImmortal) {
@@ -328,10 +345,12 @@ float Fort_CannonDamage()
 				case 0:
 					CreateParticleSystem("fort_fire", x, y, z, -1.57, 0.0, 0.0, 0);
 					CreateParticleSystem("fort_smoke", x, y, z, -1.57, 0.0, 0.0, 0);
+					CreateParticleSystemXPS("FortFire", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 				case 1:
 					CreateParticleSystem("fort_fire", x, y, z, -1.57, 0.0, 0.0, 0);
 					CreateParticleSystem("fort_gray_smoke", x, y, z, -1.57, 0.0, 0.0, 0);
+					CreateParticleSystemXPS("FortFire", x, y, z, 0.0, 0.0, 0.0, 0);
 				break;
 			}
 
@@ -351,7 +370,7 @@ float Fort_CannonDamage()
 // <-- KK
 	}
 
-	if (iNumDamagedCannons > 0.75 * iNumAllCannons) Fort_SetAbordageMode(rBallCharacter, rFortCharacter); // KK
+	if (iNumDamagedCannons > 0.9 * iNumAllCannons) Fort_SetAbordageMode(rBallCharacter, rFortCharacter); // KK
 
 	return fDamage;
 }

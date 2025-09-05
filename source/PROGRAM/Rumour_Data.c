@@ -48,7 +48,7 @@ void SetRumourDefaults(bool isreinit)
 	//(trade rumors are 25)
 
 	//if you give a rumor an ID it then counts as a quest rumor. If there are any quest rumors
-	//available, and frnd() < QUESTRUM_CHANCE, POTC will be forced to choose one even
+	//available, and frnd() < QUESTRUM_CHANCE, POTC will be forced to choose one (even
 	//if frnd()>, it may choose one normally...
 	//if the qr hasn't been given yet, it's vs. QUESTRUM_UNGIVEN_CHANCE
 	//also, if the rumor has an ID, you can set it active or inactive.

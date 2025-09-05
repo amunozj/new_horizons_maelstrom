@@ -140,9 +140,14 @@ bool CreateCharacter(ref character)
 		return false;
 	}
 // <-- KK
-
+    //#20190515-02
+	if(CheckAttribute(loadedLocation, "ambientLight") && sti(loadedLocation.ambientLight) != 0)
+	{
+	    object persRef = GetCharacterModel(character);
+        SendMessage(persRef, "ll", MSG_MODEL_SET_AMBIENT_LIGHT, sti(loadedLocation.ambientLight));
+	}
 	ExecuteCharacterEquip(character);
-	if (!CheckAttribute(character,"completeinit") && !AllowCharacterPostInit()) 
+	if (!CheckAttribute(character,"completeinit") && !AllowCharacterPostInit())
 	{
 		//These are characters which are created after loading is done. To increase performance we are going to add them to the post init too if the queue isn't too large
 		if(GetAmountInPostInitQueue() < 5) //No idea why I picked 5, but sounds good to me.
@@ -268,7 +273,7 @@ bool Sidestep(ref pchar, float mag, bool docheck)
 	z += cos(ay) * mag; // add Z component
 	x += sin(ay) * mag; // add X component
 	if(docheck)
-	{//MAXIMUS: low mag will not be recognized, by some reason - 0.8 minimum. So I made an additional check. But CheckLocationPosition only checks target point for characters - not checks patch 
+	{//MAXIMUS: low mag will not be recognized, by some reason - 0.8 minimum. So I made an additional check. But CheckLocationPosition only checks target point for characters - not checks patch :(
 		float chkX, chkY, chkZ, chkAY, side;
 		if(mag>=0.0) side = 1;
 		else side = -1;
@@ -358,7 +363,7 @@ void SetDefaultStayIdle(ref character)
 
 //Character is sit where play idle animation
 void SetDefaultSitIdle(ref character)
-{	
+{
 	character.actions.idle.i1 = "Sit_Look_Around";
 	character.actions.idle.i2 = "Sit_Lower_head";
 	character.actions.idle.i3 = "Sit_Idle01";
@@ -393,11 +398,19 @@ void SetDefaultNormWalk(ref character)
 		character.actions.stsDownRun = "run stairs down";
     }
 // MAXIMUS: <-[unlinks from character.id]-
-   
+	character.actions.walk = "walk";
+	character.actions.backwalk = "back walk";
+	character.actions.run = "run";
+	character.actions.backrun = "back run";
+	character.actions.stsUp = "stairs up";
+	character.actions.stsUpRun = "run stairs up";
+	character.actions.stsDown = "stairs down";
+	character.actions.stsDownRun = "run stairs down";
+
    character.actions.stsUpBack = "back stairs up";
    character.actions.stsDownBack = "back stairs down";
-   
-   
+
+
    character.actions.stsUpRunBack = "back run stairs up";
    character.actions.stsDownRunBack = "back run stairs down";
    character.actions.turnLeft = "turn left";
@@ -435,10 +448,14 @@ void SetDefaultFight(ref character)
 		character.actions.fightbackrun = "fight back run";
 	}
 // MAXIMUS: <-[unlinks from character.id]-
-	
+	character.actions.fightwalk = "fight walk";
+	character.actions.fightbackwalk = "fight back walk";
+	character.actions.fightrun = "fight run";
+	character.actions.fightbackrun = "fight back run";
+
 	// mitrokosta add COAS actions
 	if (GetAttribute(character,"model.animation") == "man" || GetAttribute(character,"model.animation") == "woman_sit") {
-		//???????? ? ?????? ???
+		//�������� � ������ ���
 		//Fast (max 3) --------------------------------------------------
 		character.actions.attack_fast.a1 = "attack_fast_1";
 		character.actions.attack_fast.a2 = "attack_fast_2";
@@ -488,12 +505,12 @@ void SetDefaultFight(ref character)
 		character.actions.parry.p3 = "parry_3";
 		character.actions.parry.p4 = "parry_4";
 		//Strafes--------------------------------------------------------------------
-		character.actions.recoil = "recoil";					//?????
-		character.actions.strafeleft = "straif_weapon_left";	//?????
-		character.actions.straferight = "straif_weapon_right";	//??????
+		character.actions.recoil = "recoil";					//�����
+		character.actions.strafeleft = "straif_weapon_left";	//�����
+		character.actions.straferight = "straif_weapon_right";	//������
 		//Death
 		SetDefaultFightDead(character);
-		//Idle ???????? ? ?????? ???
+		//Idle �������� � ������ ���
 		character.actions.fightidle.i1 = "fight stand_1";
 		character.actions.fightidle.i2 = "fight stand_2";
 		character.actions.fightidle.i3 = "fight stand_3";
@@ -540,19 +557,19 @@ void SetDefaultFight(ref character)
 
 		SetDefaultFightDead(character);
 
-		//Idle ???????? ? ?????? ???
+		//Idle �������� � ������ ���
 		character.actions.fightidle.i1 = "fight stand_1";
 		character.actions.fightidle.i2 = "fight stand_2";
 		character.actions.fightidle.i3 = "fight stand_3";
 		character.actions.fightidle.i4 = "fight stand_4";
-		if(GetAttribute(character,"model.animation")=="blaze" || GetAttribute(character,"model.animation")=="new_man") // PB: missed attribute: model ???
+		if(GetAttribute(character,"model.animation")=="blaze") // PB: missed attribute: model ???
 		{
 			character.actions.fightidle.i5 = "fight stand_5";
 			character.actions.fightidle.i6 = "fight stand_6";
 		}
 	}
 
-	
+
 
 }
 
@@ -560,7 +577,7 @@ void SetDefaultDead(ref character)
 {
 	character.actions.dead.d1 = "death_citizen_1";
 	character.actions.dead.d2 = "death_citizen_2";
-	if(GetAttribute(character,"model.animation")=="blaze" || GetAttribute(character,"model.animation")=="new_man") // PB: missed attribute: model ???
+	if(GetAttribute(character,"model.animation")=="blaze") // PB: missed attribute: model ???
 	{
 		character.actions.dead.d3 = "death_citizen_3";
 		character.actions.dead.d4 = "death_citizen_4";
@@ -585,7 +602,7 @@ void SetDefaultFightDead(ref character)
 	character.actions.fightdead.d2 = "death_1";
 	character.actions.fightdead.d3 = "death_2";
 	character.actions.fightdead.d4 = "death_3";
-	if(GetAttribute(character,"model.animation")=="blaze" || GetAttribute(character,"model.animation")=="new_man") // PB: missed attribute: model ???
+	if(GetAttribute(character,"model.animation")=="blaze") // PB: missed attribute: model ???
 	{
 		character.actions.fightdead.d5 = "death_4";
 		character.actions.fightdead.d6 = "death_p";

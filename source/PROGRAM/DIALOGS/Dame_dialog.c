@@ -29,15 +29,21 @@ void ProcessDialogEvent()
 			Dialog.cam = "1";
 			
 			dialog.snd = "Voice\CLLA\CLLA004";
-			dialog.text = GetMyName(NPChar) + "! How are you?";
-			link.l1 = LinkRandPhrase("Why have you been away so long?", "I thought you'd never come back.", "Fine. But no thanks to you.");
+			dialog.text = "";
+			link.l1 = DLG_TEXT[0] + GetMyName(NPChar) + DLG_TEXT[1];
+			link.l1.go = "First time part 2";
+		break;
+
+		case "First time part 2":
+			dialog.text = LinkRandPhrase(DLG_TEXT[2], DLG_TEXT[3], DLG_TEXT[4]);
+			link.l1 = "";
 			link.l1.go = "begin_1";
 		break;
                  
 		case "begin_1":
 			TortugaDame1 = NPChar;
 			Lai_SetActorType(TortugaDame1);
-			LAi_ActorAnimation(TortugaDame1, "attack_fast_2", "Dame_1", -1);
+			LAi_ActorAnimation(TortugaDame1, "attack_2", "Dame_1", -1);
 			LAi_SetCurHPMax(pchar); // PB: No need for them to kill you
 			LAi_CharacterPlaySound(PChar, "OBJECTS\duel\punch"+sti(Rand(2)+1)+".wav");
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -46,14 +52,14 @@ void ProcessDialogEvent()
 
 		case "begin_2":
 			TortugaDame2 = NPChar;
-			dialog.text = LinkRandPhrase("Who was she?", "Do you know her?", "I thought I was the only one for you. Who is that?");
-			link.l1 = LinkRandPhrase("Who?", "What are you talking about?", "Who do you mean?");
+			dialog.text = LinkRandPhrase(DLG_TEXT[5], DLG_TEXT[6], DLG_TEXT[7]);
+			link.l1 = LinkRandPhrase(DLG_TEXT[8], DLG_TEXT[9], DLG_TEXT[10]);
 			link.l1.go = "begin_3";
 		break;
 
 		case "begin_3":
 			Lai_SetActorType(TortugaDame2);
-			LAi_ActorAnimation(TortugaDame2, "attack_fast_2", "Dame_3", -1);
+			LAi_ActorAnimation(TortugaDame2, "attack_2", "Dame_3", -1);
 			LAi_SetCurHPMax(pchar); // PB: No need for them to kill you
 			LAi_CharacterPlaySound(PChar, "OBJECTS\duel\punch"+sti(Rand(2)+1)+".wav");
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -61,14 +67,14 @@ void ProcessDialogEvent()
 		break;
 
 		case "begin_4":
-			dialog.text = LinkRandPhrase("Who were they?", "Do you know them?", "I thought I was the only one for you. Who are they??");
-			link.l1 = LinkRandPhrase("WHO?", "What the HECK are you all talking about?", "I don't know either of them. And I don't know you either.");
+			dialog.text = LinkRandPhrase(DLG_TEXT[11], DLG_TEXT[12], DLG_TEXT[13]);
+			link.l1 = LinkRandPhrase(DLG_TEXT[14], DLG_TEXT[15], DLG_TEXT[16]);
 			link.l1.go = "begin_5";
 		break;
 
 		case "begin_5":
 			Lai_SetActorType(TortugaDame3);
-			LAi_ActorAnimation(TortugaDame3, "attack_fast_2", "Dame_5", -1);
+			LAi_ActorAnimation(TortugaDame3, "attack_2", "Dame_5", -1);
 			LAi_SetCurHPMax(pchar); // PB: No need for them to kill you
 			LAi_CharacterPlaySound(PChar, "OBJECTS\duel\punch"+sti(Rand(2)+1)+".wav");
 			NextDiag.CurrentNode = NextDiag.TempNode;

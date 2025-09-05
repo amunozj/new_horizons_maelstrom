@@ -41,7 +41,7 @@ void ProcessDialogEvent()
 			{
 				if (ProfessionalNavyNation() == sti(GetAttribute(NPChar, "nation")))
 				{
-					Dialog.text =  DLG_TEXT[25] + GetRankName(PChar, sti(GetAttribute(NPChar, "nation"))) + DLG_TEXT[26];
+					Dialog.text =  DLG_TEXT[25] + XI_ConvertString(GetRankName(PChar, sti(GetAttribute(NPChar, "nation")))) + DLG_TEXT[26];
 					link.l1 = DLG_TEXT[27];
 					link.l1.go = "exit";
 					link.l2 = DLG_TEXT[2] + GetMyFullName(PChar) + DLG_TEXT[3];
@@ -67,7 +67,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				if(IsInServiceOf(ENGLAND))
+				if(IsInServiceOf(sti(NPChar.nation)))
 				{
 					Dialog.text = DLG_TEXT[5];
 					link.l2 = DLG_TEXT[21];
@@ -75,8 +75,9 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					Preprocessor_Add("nation_desc", GetNationDescByType(Npchar.nation));
-					Dialog.text = DLG_TEXT[23];
+					Preprocessor_Add("nation_desc", XI_ConvertString(GetNationDescByType(sti(NPChar.nation))));
+					if(LanguageGetLanguage()=="English" && sti(NPChar.nation)==ENGLAND && GetCurrentPeriod()<=PERIOD_THE_SPANISH_MAIN) Dialog.text = DLG_TEXT[32];
+					else Dialog.text = DLG_TEXT[23];
 					link.l2 = DLG_TEXT[24];
 					link.l2.go = "exit";
 				}

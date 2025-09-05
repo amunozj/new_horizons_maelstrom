@@ -14,6 +14,8 @@
 #define FONT_SHIPSLOG   "seadogs" // Sulan : Shipslog
 #define FONT_SEADOGS	"seadogs" // KK
 #define FONT_RELOAD "interface_normal" // KK
+#define INTERFACE_WORLDMAP "interface_worldmap" // Mirsaneli
+#define INTERFACE_COAS "interface_coas" // Mirsaneli
 
 #define COLOR_DESELECT		4286611584
 #define COLOR_NORMAL		4294967295
@@ -70,6 +72,7 @@ extern void InitInterface_I(string iniFile, int iParam1);
 extern void InitInterface_B(string iniFile, bool bParam1);
 extern void InitInterface_RRS(string iniFile, ref rParam1, ref rParam2, string sParam3);
 extern void InitInterface_SS(string iniFile, string sParam1, string sParam2);
+extern void InitInterface_RIS(string iniFile, ref rParam1, int iParam2, string sParam3);
 
 extern ref GetMyCharacterRef();
 extern ref GetEnemyCharacterRef();
@@ -228,12 +231,12 @@ void ContinueQuickSave()
 	//PostEvent("evntSave",0,"ss", GameInterface.SavePath+"\"+curSave, sSaveDescriber);
 	PostEvent("evntSave", 0, "sss", GameInterface.SavePath, curSave + " " + n, sSaveDescriber); // KK
 }
- 
+
 void ClearScreenShoter()
 {
 	DeleteEntitiesByType("scrshoter");
 	aref arScrShoter;
-	if(FindClass(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter);
+	if(FindClass(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter));
 	if(CheckAttribute(&InterfaceStates,"MakeScreenShot")) DeleteAttribute(&InterfaceStates,"MakeScreenShot");
 }
 
@@ -879,7 +882,7 @@ void LaunchShipState()
 void LaunchStore(int storeNum)
 {
     if(storeNum<0)	return;
-    if(storeNum>STORE_QUANTITY-1)	return;
+    if(storeNum != SHIP_STORE && storeNum>STORE_QUANTITY-1)	return;
 	gStoreNum=storeNum;
 
 	// TIH --> ship chooser handler Jul17'06
@@ -1449,16 +1452,14 @@ void IDeleteSoundEvents()
 {
 	DelEventHandler(ISOUND_EVENT,"IDoSoundEvent");
 }
+
 void IDoSoundEvent()
 {
 	int comCode = GetEventData();
-	if (comCode == ACTION_DEACTIVATE) // KK
+	switch( comCode )
 	{
-		PlaySound("interface\cancel.wav");
-	}
-	else
-	{
-		PlaySound("interface\ok.wav");
+	case 1: PlaySound("interface\ok.wav"); break;
+	case 2: PlaySound("interface\menu_select_01.wav"); break;
 	}
 }
 
@@ -2272,3 +2273,19 @@ void ChangeShowIntarface()
         }
     }
 }
+
+//================= Philippe ==============================
+void LaunchSpeakInterface(aref chr, int whospeak, string sMode)
+{
+trace("LaunchSpeakInterface, chr.id:" + chr.id + ", whospeak: " + whospeak + ",sMode:" + sMode);
+	if(procInterfacePrepare(INTERFACE_SPEAK))
+	{
+		nPrevInterface = -1;
+		//pchar.speakchr = chr.id;
+		//pchar.whospeak = whospeak;
+		CurrentInterface = INTERFACE_SPEAK;
+
+		InitInterface_RIS(Interfaces[CurrentInterface].IniFile, chr, whospeak, sMode);
+	}
+}
+//=========================================================

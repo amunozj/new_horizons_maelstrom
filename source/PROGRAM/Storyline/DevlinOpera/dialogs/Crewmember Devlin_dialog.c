@@ -82,5 +82,37 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddDialogExitQuest("Meet_Blaze_Guad3");
 		break;
+
+		case "Found_Navigator":
+			dialog.text = DLG_TEXT[8];
+			link.l1 = DLG_TEXT[9];
+			link.l1.go = "Found_Navigator2";
+		break;
+
+		case "Found_Navigator2":
+			dialog.text = DLG_TEXT[10];
+			link.l1 = DLG_TEXT[11];
+			link.l1.go = "Found_Navigator3";
+		break;
+
+		case "Found_Navigator3":
+			dialog.text = DLG_TEXT[12];
+			link.l1 = DLG_TEXT[13];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Santiago_split");
+		break;
+
+		case "Siblings_gone":
+			dialog.text = DLG_TEXT[14];
+			link.l1 = DLG_TEXT[15];
+			link.l1.go = "Siblings_gone2";
+		break;
+
+		case "Siblings_gone2":
+			dialog.text = DLG_TEXT[16];
+			link.l1 = DLG_TEXT[17];
+			link.l1.go = "exit";
+			AddDialogExitQuest("Find_BB_in_SD");
+		break;
 	}
 }

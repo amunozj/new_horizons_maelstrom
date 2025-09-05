@@ -14,7 +14,7 @@ string DLG_TEXT[52] = {
 "Will I have to pay salary for you and your crew?",
 "No, of course not, and my crew will not be require food from your rations at sea; but... Hear me well! If and when you cease our partnership, all the plunder must be divided into two equal parts and must not be less than ",
 "Calm down. I live by the code! We have an accord. When do we set sail?",
-"Sorry, but I think I want to make expeditions without partner, 100% of the plunder is better, ha ha!",
+"Sorry, but I think I want to make expeditions without partner, 100%% of the plunder is better, ha ha!",
 "As soon as possible! I want to smell the perfume of powder, blood and sweat and listen to the music of the guns! Ah Ah!",
 "Fantastic, but, if I need to talk to you or want to cease our partnership? How do we proceed?",
 "We'll meet here in town. This port offers good protection from our enemies.",

@@ -129,7 +129,7 @@ bool CheckQuestRecord(aref qref,string textId)
 		pos0 = 0;
 		while(true)
 		{
-			pos1 = findSubStr(qref.Text,",",pos0);
+			pos1 = findSubStr(qref.Text,",",pos0));
 			if(pos1==-1)
 			{
 			}
@@ -978,6 +978,8 @@ bool DoReloadFromSeaToLocation(string idLocation, string idGroup, string idLocat
 	pchar.tmpWDMtoLand.group = idGroup;
 	pchar.tmpWDMtoLand.locator = idLocator;
 
+	if(HasSubstr(idLocation, "port") || HasSubstr(idLocation, "shore")) UpdateAllTowns(false);	// GR: towns are updated by normal reload to port or shore, so do it here as well
+
 	SetEventHandler("FaderEvent_EndFade", "EndReloadToLocation", 0);
 	CreateEntity(&reload_fader, "fader");
 	if(IsEntity(&reload_fader) == 0) Trace("Reload fader not created!!!");
@@ -1735,10 +1737,10 @@ bool LoadQuestBookData(string qname)
 	}
 	//Changes for multiple istances of same quest by Levis <--
 	string language = LanguageGetLanguage();
-	string dirname = GetResourceDirectory() + "INI\TEXTS\" + language + "\" + GetStorylinePath(FindCurrentStoryline()) + "QUESTBOOK\";
+	string dirname = "RESOURCE\INI\TEXTS\" + language + "\" + GetStorylinePath(FindCurrentStoryline()) + "QUESTBOOK\";
 	string filename = qname + ".txt";
 	if (FindFile(dirname, "*.txt", filename) == "") {
-		dirname = GetResourceDirectory() + "INI\TEXTS\" + language + "\QUESTBOOK\";
+		dirname = "RESOURCE\INI\TEXTS\" + language + "\QUESTBOOK\";
 		if (FindFile(dirname, "*.txt", filename) == "") return false;
 	}
 	filename = dirname + filename;

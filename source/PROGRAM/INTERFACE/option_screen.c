@@ -55,9 +55,11 @@ int iSelectedKeyboardLayout = GetKeyboardLayout();
 ref PlayerProfile;
 string current_profile;
 // <-- KK
+int iOrigMode = iRealismMode;
 
 void InitInterface(string iniName)
 {
+	 iOrigMode = iRealismMode;
 	// PB: Prevent players from seeing the "stuck with all menu options" bug -->
 	// Code responsible for this found and disabled below in IDoExit
 	// InterfaceStates.Buttons.Resume.enable = false;
@@ -118,14 +120,14 @@ void InitInterface(string iniName)
 	InitBuildOptions(false, true);
 	makearef(bSet, PlayerProfile.BuildSettings);
 
-	CreateString(false,"GameOptionTitle","",FONT_NORMAL,COLOR_NORMAL,320,90,SCRIPT_ALIGN_CENTER,1.3);
+	CreateString(false,"GameOptionTitle","",FONT_NORMAL,COLOR_NORMAL,324,54,SCRIPT_ALIGN_CENTER,1.2);
 // KK -->
 	iSelectedInterfaceLanguage = GetInterfaceLanguage();
 	iSelectedKeyboardLayout = GetKeyboardLayout();
-	CreateString(false, "LanguagesList", XI_ConvertString("Int" + GetInterfaceLanguageName(iSelectedInterfaceLanguage)), FONT_NORMAL, COLOR_NORMAL, 440, 250, SCRIPT_ALIGN_CENTER, 1.0);
-	CreateString(false, "KeyboardLayoutList", XI_ConvertString("Int" + GetInterfaceLanguageName(iSelectedKeyboardLayout)), FONT_NORMAL, COLOR_NORMAL, 440, 300, SCRIPT_ALIGN_CENTER, 1.0);
+	CreateString(false, "LanguagesList", XI_ConvertString("Int" + GetInterfaceLanguageName(iSelectedInterfaceLanguage)), FONT_NORMAL, COLOR_NORMAL, 440, 252, SCRIPT_ALIGN_CENTER, 1.0);
+	CreateString(false, "KeyboardLayoutList", XI_ConvertString("Int" + GetInterfaceLanguageName(iSelectedKeyboardLayout)), FONT_NORMAL, COLOR_NORMAL, 440, 302, SCRIPT_ALIGN_CENTER, 1.0);
 // <-- KK
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	SetSelectable("EXIT_BUTTON",true);
 //	SetSelectable("B_ADDITIONAL", false); // KK
 	// MAXIMUS <--
@@ -177,7 +179,7 @@ void InitInterface(string iniName)
 
 	SetNodeUsing("MB_CAMERA",g_bDisableControlChange);
 // added by KAM -->
-	CreateString(false,"DifficultyTitle",XI_ConvertString("Difficulty"),FONT_NORMAL,COLOR_NORMAL,320,90,SCRIPT_ALIGN_CENTER,1.3);
+	CreateString(false,"DifficultyTitle",XI_ConvertString("Difficulty"),FONT_NORMAL,COLOR_NORMAL,324,54,SCRIPT_ALIGN_CENTER,1.2);
 	CreateString(false,"NotificationTitle",XI_ConvertString("KAMNotification"),FONT_NORMAL,COLOR_NORMAL,320,310,SCRIPT_ALIGN_CENTER,1.0);
 
 	SetSelectable("MB_DIFFICULTY",sti(InterfaceStates.Buttons.Resume.enable));
@@ -289,6 +291,7 @@ void IProcessFrame()
 
 void ProcessCancelExit()
 {
+	StartVideoSetting();
 	IDoExit(RC_INTERFACE_OPTIONSCREEN_EXIT);
 }
 
@@ -344,6 +347,11 @@ void IDoExit(int exitCode)
 //	ClearPostEvents();				// PB: This prevents actions from updating properly during the game
 
 	interfaceResultCommand = exitCode;
+	if (iOrigMode != iRealismMode && IsEntity(&objISpyGlass))
+    {
+        InterfaceSpyGlassRelease();
+        InterfaceSpyGlassInit();
+	}
 	if( CheckAttribute(&InterfaceStates,"InstantExit") && sti(InterfaceStates.InstantExit)==true ) {
 		EndCancelInterface(true);
 	} else {
@@ -1549,9 +1557,15 @@ void ShowOptionsPage(int pageNum)
 		SetNodeUsing("SUBTITLE",true);
 		SetNodeUsing("STRINGS_VIDEO",true);
 		SetNodeUsing("VIDEO_DEFAULT",true);
+		bool bGamma = sti(Render.full_screen);
+        if (CheckAttribute(&Render, "SupportsGamma"))
+            bGamma = sti(Render.SupportsGamma);
 		SetNodeUsing("GAMMA_SLIDE",true);
-		SetNodeUsing("BRIGHT_SLIDE",true);
-		SetNodeUsing("CONTRAST_SLIDE",true);
+        SetNodeUsing("BRIGHT_SLIDE",true);
+        SetNodeUsing("CONTRAST_SLIDE",true);
+        SetSelectable("GAMMA_SLIDE",bGamma);
+		SetSelectable("BRIGHT_SLIDE",bGamma);
+		SetSelectable("CONTRAST_SLIDE",bGamma);
 		SetNodeUsing("VIDEO_SAVE",true);
 		SetCurrentNode("VIDEO_DEFAULT");
 	break;
@@ -2234,7 +2248,6 @@ void StartVideoSetting()
 	if( CheckAttribute(&InterfaceStates,"video.brightness") ) {
 		fB = stf(InterfaceStates.video.brightness);
 	}
-
 	ISetColorCorrection( fC, fG, fB );
 }
 
@@ -2264,7 +2277,7 @@ float ConvertBright(float fBright, bool Real2Slider)
 	{
 		return (fBright+100.0)/200.0;
 	}
-	return fBright*200-100;
+	return fBright*200.0-100.0;
 }
 
 void SaveVideoSettings()
@@ -2326,7 +2339,7 @@ void SetNewLanguageView()
 {
 	if(GetSelectable("B_LANGUAGES")) GameInterface.strings.GameOptionTitle = XI_ConvertString("Changeinterface");
 	else GameInterface.strings.GameOptionTitle = XI_ConvertString("Available Languages");//MAXIMUS
-	CreateExitString(); // KK//MAXIMUS
+	// CreateExitString(); // KK//MAXIMUS
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"MB_VIDEO",0,"#"+XI_ConvertString("Video Settings"));
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"MB_SAILING",0,"#"+XI_ConvertString("Sailing Mode"));
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"MB_SOUNDS",0,"#"+XI_ConvertString("Sounds"));
@@ -2354,7 +2367,7 @@ void SetNewLanguageView()
 
 void AdditionalHide()
 {
-	CreateExitString(); // KK//MAXIMUS
+	// CreateExitString(); // KK//MAXIMUS
 	SetNodeUsing("CANCEL",false);
 	SetNodeUsing("OPTIONS",false);
 	SetNodeUsing("SUBTITLE",false);
@@ -2666,7 +2679,7 @@ void SetSettingsList()
 	int i;
 
 	SendMessage(&GameInterface,"ll", MSG_INTERFACE_LOCK_NODE, 0);
-	CreateString(false,"BuildSettingsTitle",XI_ConvertString("BuildSettingsTitle"),FONT_NORMAL,COLOR_YELLOW_LIGHT,320,37,SCRIPT_ALIGN_CENTER,1.3);
+	CreateString(false,"BuildSettingsTitle",XI_ConvertString("BuildSettingsTitle"),FONT_NORMAL,COLOR_YELLOW_LIGHT,320,39,SCRIPT_ALIGN_CENTER,1.2);
 	CreateString(false,"BuildSettingsDescr",XI_ConvertString("BuildSettingsDescr"),FONT_NORMAL,COLOR_RED_LIGHT,320,74,SCRIPT_ALIGN_CENTER,1.0);
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"SETTINGS_OK_BUTTON",0,"#"+XI_ConvertString("Ok"));
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"SETTINGS_CANCEL_BUTTON",0,"#"+XI_ConvertString("Cancel"));
@@ -2773,7 +2786,7 @@ void ShowSettingsDescribe(string settingName, int textNum)
 
 		SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"SETTINGS_NAME",0,
 			"SettingName", LanguageConvertString(tmpLangFileID,settingName), FONT_NORMAL,
-			320,108, COLOR_NORMAL,0, SCRIPT_ALIGN_CENTER, true, 1.5, 420);
+			320,108, COLOR_NORMAL,0, SCRIPT_ALIGN_CENTER, true, 1.2, 420);
 
 		SetNodeUsing("SETTINGS_DESCRIBEWINDOW2",true);
 		SetFormatedText("SETTINGS_DESCRIBEWINDOW2",LanguageConvertString(tmpLangFileID,settingName+"info"));
@@ -2786,8 +2799,8 @@ void ShowSettingsDescribe(string settingName, int textNum)
 	}
 
 	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"SETTINGS_NAME",0,
-		"SettingName", LanguageConvertString(tmpLangFileID,settingName), FONT_NORMAL,
-		320,108, COLOR_NORMAL,0, SCRIPT_ALIGN_CENTER, true, 1.5, 420);
+		"SettingName", LanguageConvertString(tmpLangFileID,settingName), INTERFACE_COAS,
+		320,108, COLOR_NORMAL,0, SCRIPT_ALIGN_CENTER, true, 1.2, 420);
 
 	posY = 0;
 	chkCount = 0;
@@ -2809,7 +2822,7 @@ void ShowSettingsDescribe(string settingName, int textNum)
 
 				if(strlen(LanguageConvertString(tmpLangFileID,iName))<=85 && !HasSubStr(LanguageConvertString(tmpLangFileID,iName),"#"))
 				{
-					SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,nName,0,sName, translString, FONT_NORMAL,93,sti(258+posY)+2, COLOR_NORMAL,0, SCRIPT_ALIGN_LEFT, true, 0.8, 480);
+					SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,nName,0,sName, translString, INTERFACE_COAS,93,sti(258+posY)+2, COLOR_NORMAL,0, SCRIPT_ALIGN_LEFT, true, 0.8, 480);
 					//SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,nName, 5);
 				}
 				else
@@ -3657,7 +3670,9 @@ bool CheckForNum(string settingName)
 float CheckForMaxFloatValue(string settingName)
 {
 	if(settingName=="SURR_GLOBAL_SCL") return 0.5;
-	if(settingName=="DIALOG_CAMERA") return 1.0;
+	// if(settingName=="DIALOG_CAMERA") return 1.0;
+	if(settingName=="HUD_SCALING") return 4.0;
+	if(settingName=="SHIP_CAMERA_DISTANCE") return 2.0;	// Mirsaneli add
 
 	return 0.0;
 }
@@ -3665,7 +3680,9 @@ float CheckForMaxFloatValue(string settingName)
 float CheckForMinFloatValue(string settingName)
 {
 	if(settingName=="SURR_GLOBAL_SCL") return 0.0;
-	if(settingName=="DIALOG_CAMERA") return 0.0;
+	// if(settingName=="DIALOG_CAMERA") return 0.0;
+	if(settingName=="HUD_SCALING") return 0.25;
+	if(settingName=="SHIP_CAMERA_DISTANCE") return 1.0;	// Mirsaneli add
 
 	return 0.0;
 }

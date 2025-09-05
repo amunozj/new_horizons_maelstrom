@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------Диалог первый - первая встреча
+		// -----------------------------------?????? ?????? - ?????? ???????
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;

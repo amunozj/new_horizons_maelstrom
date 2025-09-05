@@ -4,7 +4,8 @@
 #define WDM_NONE_ISLAND		"open_sea"
 float	WDM_MAP_TO_SEA_SCALE;					// Set in function InitOpenSeaMod() in PROGRAM\NK.c
 float	WDM_MAP_TO_SEA_ENCOUNTERS_SCALE;		// Set in function InitOpenSeaMod() in PROGRAM\NK.c
-
+#define CUBA_MAP_SCALE 50
+#define CONTINENT_SCALE 25
 
 #define WDM_ETYPE_MERCHANT	0
 #define WDM_ETYPE_FOLLOW	1

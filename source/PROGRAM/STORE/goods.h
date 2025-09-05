@@ -1,5 +1,5 @@
 // Aconcagua: now defined as constant, replacing the MAX_GOODS var.
-#define GOODS_QUANTITY 33
+#define GOODS_QUANTITY 34
 
 #define GOOD_WHEAT		0	// PB: Rations first
 #define GOOD_RUM		1	// PB: Rations first
@@ -35,6 +35,8 @@
 #define GOOD_LEATHER		30	// 3.6
 #define GOOD_COPRA		31	// 3
 #define GOOD_BRICKS	32	// 2.5
+#define GOOD_SLAVES	33
+
 
 object  Goods[GOODS_QUANTITY]; // NK
 

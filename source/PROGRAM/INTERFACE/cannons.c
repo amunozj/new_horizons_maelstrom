@@ -88,7 +88,7 @@ void InitInterface(string iniName)
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
-	CreateExitString();
+	// CreateExitString();
 	CreateString(true,"Money",MakeMoneyShow(sti(Characters[GetMainCharacterIndex()].Money),"","."),FONT_NORMAL,COLOR_MONEY,320,385,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(true,"ShipName","",FONT_NORMAL,COLOR_NORMAL,320,181,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(true,"FireRange","",FONT_NORMAL,COLOR_NORMAL,400,216,SCRIPT_ALIGN_RIGHT,0.8);
@@ -511,7 +511,14 @@ void FillFourImage()
 	int bSelected;
 	
 	ref refMainCh = GetMainCharacter();
+	
+	if(bNewInterface==true)
+	{
 	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship.tga";
+	} else {
+	GameInterface.FourImage.BadTwoPicture = "interfaces\blank_ship2.tga";
+	}
+	
 	GameInterface.FourImage.ImagesGroup.t0 = "ICONS";
 	GameInterface.FourImage.ImagesGroup.t1 = "SHIPS16";
 	GameInterface.FourImage.ImagesGroup.t2 = "SHIPS1";

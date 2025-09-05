@@ -5,7 +5,7 @@ void LocationInitCuracao(ref n)
 	locations[n].id.label = "#stown_name# port."; // KK
 	locations[n].worldmap = "Curacao";
 	Locations[n].image = "Town_FalaiseDeFleur_Port_Holland.tga";
-	Locations[n].filespath.models = "locations\Town_FalaiseDeFleur\port";
+	Locations[n].filespath.models = "locations\Town_Willemstad\port";
 	Locations[n].filespath.textures = "locations\HOLLAND";
 
 	//Town sack

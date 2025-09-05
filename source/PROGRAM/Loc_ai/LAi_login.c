@@ -65,7 +65,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 	//Проверим на захваченность локации
 	if(LAi_IsCapturedLocation)
 	{
-		if(GetMainCharacterIndex() != sti(chr.index)) // 04-12-05 this is making things worse   // NK 04-11-10 allow override
+		if(GetMainCharacterIndex() != sti(chr.index)) // 04-12-05 this is making things worse && !always) // NK 04-11-10 allow override
 		{
 			for(int i_ofc = 1; i_ofc < OFFICER_MAX; i_ofc++)
 			{
@@ -135,6 +135,11 @@ bool LAi_CharacterLogin(aref chr, string locID)
 			chr.chr_ai.hp = hpmax;
 			hp = hpmax;
 			SetRandomNameToCharacter(chr);
+			if(CheckAttribute(chr, "chr_ai.soldiertype"))
+			{
+				chr.chr_ai.type = chr.chr_ai.soldiertype;
+				if(CheckAttribute(chr, "old.chr_ai.type") && chr.old.chr_ai.type != chr.chr_ai.soldiertype) chr.old.chr_ai.type = chr.chr_ai.type;
+			}
 			func = chr.chr_ai.type;
 			chr.chr_ai.type = "";
 			chr.chr_ai.tmpl = "";
@@ -300,7 +305,7 @@ void LAi_PostLoginInit(aref chr)
 	}
 	//Update the contriblist and skill multipliers and do auto level up for NPC's
 	InitAutoSkillsSystem(chr, true); //Levis, the check for autoskill will happen later.
-	if(CheckAttribute(chr,"ContribList")) DeleteAttribute(chr,"ContribList"); //Levis refresh contriblist on login
+	if(CheckAttribute(chr,"ContribList")) DeleteAttribute(chr,"ContribList")); //Levis refresh contriblist on login
 	DeleteAttribute(&PostInitQueue,"restorelist"); //Levis: Because everything is restored by the autoskill system already now
 }
 

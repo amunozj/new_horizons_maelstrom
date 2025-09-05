@@ -61,9 +61,10 @@ void ProcessDialogEvent()
 			else
 			// <-- SJG
 			{
-				if (ProfessionalNavyNation() == sti(GetAttribute(NPChar, "nation")))
+				if (ProfessionalNavyNation() == sti(GetAttribute(NPChar, "nation")) || sti(GetAttribute(NPChar, "nation")) == PERSONAL_NATION)
 				{
-					d.Text = DLG_TEXT[68] + GetRankName(PChar, sti(GetAttribute(NPChar, "nation"))) + DLG_TEXT[69];
+					if(sti(GetAttribute(NPChar, "nation")) == PERSONAL_NATION) d.Text = DLG_TEXT[68] + GetMyAddressForm(NPChar, PChar, ADDR_POLITE, false, false) + DLG_TEXT[69];
+					else d.Text = DLG_TEXT[68] + XI_ConvertString(GetRankName(PChar, sti(GetAttribute(NPChar, "nation")))) + DLG_TEXT[69];
 					Link.l1 = DLG_TEXT[70];
 					Link.l1.go = "trade";
 					Link.l2 = DLG_TEXT[5];
@@ -216,8 +217,11 @@ void ProcessDialogEvent()
 			{
 			Link.l1.go = "EITC Trading2";
 			}
-
-			if (CheckCharacterItem(Pchar,"Map_Doc_1"))
+			/*if (CheckCharacterItem(Pchar,"Map_Doc_1") && !checkCharacterItem(Pchar, "Map_Doc_2"))
+			{
+			Link.l1.go = "EITC Trading5";
+			}*/
+			if (CheckCharacterItem(Pchar,"Map_Doc_1"))// && checkCharacterItem(Pchar, "Map_Doc_2"))
 			{
 			Link.l1.go = "EITC Trading6";
 			}
@@ -379,7 +383,7 @@ void ProcessDialogEvent()
 				//проверка враждебности нам страны торговца
 				if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY) // KK
 				{
-					Preprocessor_Add("nation_desc", GetNationDescByType(sti(NPChar.nation)));
+					Preprocessor_Add("nation_desc", XI_ConvertString(GetNationDescByType(sti(NPChar.nation))));
 					dialog.text = DLG_TEXT[51];
 					link.l1 = DLG_TEXT[52];
 					link.l1.go = "exit";
@@ -400,6 +404,7 @@ void ProcessDialogEvent()
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice); // KK
 						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string
+						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.text = DLG_TEXT[55];

@@ -16,19 +16,19 @@ void ProcessDialogEvent()
 	{
 		if (CheckAttribute(NPChar, "married"))
 		{
-			villain_title_France = "Madame";
-			villain_title_England = "Mrs.";
+			villain_title_France = XI_ConvertString("Madame");
+			villain_title_England = XI_ConvertString("Mrs.");
 		}
 		else
 		{
-			villain_title_France = "Mademoiselle";
-			villain_title_England = "Miss";
+			villain_title_France = XI_ConvertString("Mademoiselle");
+			villain_title_England = XI_ConvertString("Miss");
 		}
 	}
 	else
 	{
-		villain_title_France = "Monsieur";
-		villain_title_England = "Mr.";
+		villain_title_France = XI_ConvertString("Monsieur");
+		villain_title_England = XI_ConvertString("Mr.");
 	}
 
 	ref PChar;
@@ -245,7 +245,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "hunt_guadeloupe_encounter1_2":
-			dialog.text = DLG_TEXT[58] + GetMyPronounObj(PChar) + "!";
+			dialog.text = DLG_TEXT[58] + XI_ConvertString(GetMyPronounObj(PChar)) + "!";
 			link.l1 = DLG_TEXT[59];
 			AddDialogExitQuest("hunt_guadeloupe_arrest1");
 			link.l1.go = "exit";
@@ -271,8 +271,9 @@ void ProcessDialogEvent()
 		break;
 
 		case "hunt_better_idea":
-			if (PChar.sex == "man") Preprocessor_Add("pronoun", XI_ConvertString("his"));
-			else Preprocessor_Add("pronoun", XI_ConvertString("her"));
+		//	if (PChar.sex == "man") Preprocessor_Add("pronoun", XI_ConvertString("his"));
+		//	else Preprocessor_Add("pronoun", XI_ConvertString("her"));
+			Preprocessor_Add("pronoun", XI_ConvertString(GetMyPronounPossessive(PChar)));
 			dialog.text = DLG_TEXT[66];
 			link.l1 = "";
 			link.l1.go = "exit";
@@ -376,9 +377,10 @@ void ProcessDialogEvent()
 		break;
 
 		case "hunt_villain_plans2":
-			Preprocessor_Add("person", XI_ConvertString(Characters[GetCharacterIndex(PChar.quest.villain)].sex));
-			if (Characters[GetCharacterIndex(PChar.quest.villain)].sex == "man") PreProcessor_Add("pronoun2", XI_ConvertString("his"));
-			else PreProcessor_Add("pronoun2", XI_ConvertString("her"));
+			Preprocessor_Add("person", XI_ConvertString(NPChar.sex));
+		//	if (Characters[GetCharacterIndex(PChar.quest.villain)].sex == "man") PreProcessor_Add("pronoun2", XI_ConvertString("his"));
+		//	else PreProcessor_Add("pronoun2", XI_ConvertString("her"));
+			Preprocessor_Add("pronoun2", XI_ConvertString(GetMyPronounPossessive(NPChar)));
 			dialog.text = DLG_TEXT[93];
 			link.l1 = DLG_TEXT[94];
 			link.l1.go = "hunt_villain_plans3";
@@ -388,6 +390,17 @@ void ProcessDialogEvent()
 			if (CheckQuestAttribute("hunt_romance_on_ship", "true")) dialog.text = DLG_TEXT[95] + DLG_TEXT[96] + GetMyName(characterFromID(PChar.quest.romance)) + DLG_TEXT[97];
 			else dialog.text = DLG_TEXT[95];
 			link.l1 = DLG_TEXT[98] + villain_title_England + " " + GetMyLastName(characterFromID(PChar.quest.villain)) + ".";
+			if (CheckAttribute(PChar, "quest.hunt_french_released")) link.l1.go = "hunt_french_release";
+			else
+			{
+				AddDialogExitQuest("hunt_villain_leaves_hold");
+				link.l1.go = "exit";
+			}
+		break;
+
+		case "hunt_french_release":
+			dialog.text = DLG_TEXT[135];
+			link.l1 = DLG_TEXT[136];
 			AddDialogExitQuest("hunt_villain_leaves_hold");
 			link.l1.go = "exit";
 		break;

@@ -74,7 +74,7 @@ void InitInterface_RRS(string iniName,ref pCharacter,ref enemyCh,string newCurNo
 // MAXIMUS interface MOD <--
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 	/*/ NK -->
 	LAi_SetHP(GetCharacter(GetOfficersIndex(xi_refCharacter, 0)), LAI_DEFAULT_HP + sti(Characters[GetOfficersIndex(xi_refCharacter, 0)].rank) * 5, LAI_DEFAULT_HP + sti(Characters[GetOfficersIndex(xi_refCharacter, 0)].rank) * 5);
 	for(i = 1; i < 4; i++)

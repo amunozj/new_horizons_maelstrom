@@ -5,14 +5,14 @@ void ProcessDialogEvent()
 	PChar = GetMainCharacter();
 	aref Link, Diag;
 	string NPC_Meeting;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makeref(d, Dialog);
 	makearef(Diag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		// -----------------------------------Диалог первый - первая встреча
@@ -76,7 +76,7 @@ void ProcessDialogEvent()
 				}
 			}
 		break;
-		
+
 		//Added by Levis for the smugglers guild -->
 		case "LookAtThis":
 			pchar.quest.smuggling_guild.governor_quest.usedpaper = true;
@@ -85,29 +85,29 @@ void ProcessDialogEvent()
 			d.Text = DLG_TEXT[30];
 			Link.l1 = DLG_TEXT[31];
 			Link.l1.go = "exit";
-			AddDialogExitQuest("Remove Coast Guard"); 
+			AddDialogExitQuest("Remove Coast Guard");
 		break;
 		//Added by Levis for the smugglers guild <--
 
 		case "ThisTimeFree":
-			dialog.snd = "Voice\COGU\COGU002";		
+			dialog.snd = "Voice\COGU\COGU002";
 			Preprocessor_Add("gender", GetMyAddressForm(NPChar, PChar, ADDR_GENDER, false, false)); // DeathDaisy
 			d.Text = DLG_TEXT[4] + GetMyName(Pchar) + DLG_TEXT[5];
 			Link.l1 = DLG_TEXT[6];
 			Link.l1.go = "ThisTimeFree_1";
 			Link.l2 = DLG_TEXT[7];
-			Link.l2.go = "ThisTimeFree_fight";				
+			Link.l2.go = "ThisTimeFree_fight";
 		break;
 
-		case "ThisTimeFree_1":	
-			dialog.snd = "Voice\COGU\COGU003";	
+		case "ThisTimeFree_1":
+			dialog.snd = "Voice\COGU\COGU003";
 			ChangeCharacterReputation(pchar, -40);
 			d.Text = DLG_TEXT[8];
 			Link.l1 = DLG_TEXT[9];
 			Link.l1.go = "ThisTimeFree_exit";
 		break;
 
-		case "ThisTimeFree_fight":			
+		case "ThisTimeFree_fight":
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;
 			DialogExit();
@@ -115,9 +115,9 @@ void ProcessDialogEvent()
 		//	Pchar.quest.Rand_ContrabandInterruptionAtSeaEnded.win_condition.l1 = "MapEnter";
 		//	Pchar.quest.Rand_ContrabandInterruptionAtSeaEnded.win_condition = "Rand_ContrabandInterruptionAtSeaEnded";
 			ChangeRMRelation(Pchar, GetSmugglingNation(), -10); // PB: was UpdateRMRelation
-			
+
 			LAi_group_FightGroups("Smugglers", "CoastalGuards", true);
-			LAi_group_FightGroups(LAI_GROUP_PLAYER, "CoastalGuards", true);
+            LAi_group_FightGroups(LAI_GROUP_PLAYER, "CoastalGuards", true);
 			LAi_group_SetAlarmReaction(LAI_GROUP_PLAYER,"Smugglers",LAI_GROUP_FRIEND, LAI_GROUP_FRIEND); //Levis: now you can hit smugglers by accident
 
 			LAi_SetPlayerType(Pchar);
@@ -134,6 +134,7 @@ void ProcessDialogEvent()
 
 			StopCoastalGuardPursuit();
 
+			LAi_group_SetRelation("Smugglers", "CoastalGuards", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("Smugglers", "CoastalGuards", true);
 			LAi_group_SetAlarmReaction(LAI_GROUP_PLAYER,"CoastalGuards",LAI_GROUP_FRIEND, LAI_GROUP_FRIEND); //Levis: now you can hit guards by accident
 			LAi_SetPlayerType(Pchar);
@@ -146,8 +147,8 @@ void ProcessDialogEvent()
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 
-		case "GiveMeSomeMoneyToo":	
-			dialog.snd = "Voice\COGU\COGU005";		
+		case "GiveMeSomeMoneyToo":
+			dialog.snd = "Voice\COGU\COGU005";
 			d.Text = DLG_TEXT[12];
 			Link.l1 = DLG_TEXT[13] + makeint(sti(Pchar.money)/10) + DLG_TEXT[14] ;
 			if(makeint(Pchar.rank)*1000 <= makeint(sti(Pchar.money)/10))
@@ -194,7 +195,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 
-		// ccc stormy start; bribing NEVER worked cause "MoneyAccepted" leads to a fight! Sloppy Akella! 
+		// ccc stormy start; bribing NEVER worked cause "MoneyAccepted" leads to a fight! Sloppy Akella!
 		// Or righteous Disney censorship? Added three new cases instead:
 
 		case "MoneyAccepted10":

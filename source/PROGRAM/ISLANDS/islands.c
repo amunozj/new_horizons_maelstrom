@@ -1,6 +1,7 @@
-// #include "islands\islands_loader.c"
+#include "islands\islands_loader.c"
 
 extern void InitIslands();
+int iNumIslands = 0;
 
 // KK -->
 void IslandsInit()
@@ -14,9 +15,9 @@ void IslandsInit()
 }
 // <-- KK
 
-ref GetIslandByIndex(int iIslandIndex)
+ref GetIslandByIndex(int iIslandIndex) 
 {
-	return &Islands[iIslandIndex];
+	return &Islands[iIslandIndex]; 
 }
 
 ref GetIslandByID(string sIslandID)
@@ -170,6 +171,7 @@ string FindIslandName(string islandid)
 		case "Khael Roa":           islandid = "KhaelRoa";           break;
 		case "Petit Tabac":         islandid = "Battle_Rocks";       break;
 		case "Isla Mona":           islandid = "IslaMona";           break;
+		case "Redmond":           	islandid = "Redmond";           break;
 	}
 	iIsland = FindIsland(islandid);
 	if (iIsland >= 0 && CheckAttribute(&Islands[iIsland], "name") == true) return XI_ConvertString(Islands[iIsland].name);
@@ -349,4 +351,201 @@ string FindIslandByLocation(string locID)//MAXIMUS
 	if(CheckAttribute(&locations[FindLocation(locID)],"island")) return locations[FindLocation(locID)].island;
 	if(FindIslandBySeaLocation(FindSeaShoreForLocation(locID))!=-1) return Islands[FindIslandBySeaLocation(FindSeaShoreForLocation(locID))].id;
 	return "";*/
+}
+
+void CreateJunglesOnIslands()
+{
+	int n = -1;
+
+	n = FindIsland("Antigua");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Antigua_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Colombia");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Cartahena_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 10.0;
+	}
+
+	n = FindIsland("Cayman");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Cayman_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Conceicao");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Conceicao_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Curacao");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Curacao_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Dominica");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "dominica_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("FalaiseDeFleur");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "FalaiseDeFleur_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Gaity");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Gaity_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 25.0;
+	}
+
+	n = FindIsland("Guadeloupe");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Guadelupa_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("IslaMona");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "islamona_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 10.0;
+	}
+
+	n = FindIsland("IslaMuelle");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "IslaMuelle_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Redmond");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Redmond_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Oxbay");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Oxbay_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("PortoBello");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "PortoBello_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("QuebradasCostillas");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "QuebradasCostillas_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 10.0;
+	}
+	
+	n = FindIsland("SantaCatalina");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "SantaCatalina_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 16.0;
+	}
+	
+	n = FindIsland("SaintMartin");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Sent_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+
+	n = FindIsland("Turks");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Terks_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+	
+	n = FindIsland("KhaelRoa");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "KhaelRoa_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+	
+	n = FindIsland("Douwesen");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Douwesen_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+	
+	n = FindIsland("Aruba");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Aruba_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+	
+	n = FindIsland("Cuba");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Cuba_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 25.0;
+	}
+	
+	n = FindIsland("Eleuthera");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "Eleuthera_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
+	
+	n = FindIsland("Battle_Rocks");
+	if(n != -1)
+	{
+		Islands[n].jungle.patch = "dominica_jungle";
+		Islands[n].jungle.texture = "junglesprites2";
+		Islands[n].jungle.scale = 12.5;
+	}
 }

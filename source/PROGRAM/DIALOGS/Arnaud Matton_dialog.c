@@ -77,6 +77,7 @@ void ProcessDialogEvent()
 				{
 					dialog.snd = "Voice\ARMA\ARMA006";
 					dialog.text = DLG_TEXT[315] + DLG_TEXT[57] + GetMyFullName(&Characters[GetCharacterIndex(DLG_TEXT[58])]) + DLG_TEXT[60];
+					//dialog.text = DLG_TEXT[57] + GetMyFullName(&Characters[GetCharacterIndex(DLG_TEXT[58])]) + DLG_TEXT[60];
 					
 					link.l1 = DLG_TEXT[311];
 					Link.l1.go = "First_job_done_enemy";
@@ -669,7 +670,7 @@ void ProcessDialogEvent()
 
 		case "baldewyn_work_done":
 			PlayStereoSound("INTERFACE\took_item.wav");
-			AddMoneyToCharacter(pchar, -2500);
+			AddMoneyToCharacter(pchar, -2500));
 			dialog.snd = "Voice\ARMA\ARMA034";
 			dialog.text = DLG_TEXT[149];
 			link.l1 = pcharrepphrase(DLG_TEXT[150], DLG_TEXT[151]);
@@ -685,7 +686,7 @@ void ProcessDialogEvent()
 			npchar.quest.money = "0";
 			if (characters[GetCharacterIndex("Sabine Matton")].quest.hire == "0") Characters[GetCharacterIndex("Sabine Matton")].location = "Falaise_De_Fleur_store";
 		break;
-
+)
 		case "baldewyn_work_done_one":
 			dialog.snd = "Voice\ARMA\ARMA035";
 			dialog.text = DLG_TEXT[156];
@@ -759,13 +760,13 @@ void ProcessDialogEvent()
 			dialog.snd = "Voice\ARMA\ARMA041";
 			if(GetNationRelation(GetTownNation("Falaise de Fleur"), GetTownNation("Redmond")) == RELATION_ENEMY)
 			{
-				Preprocessor_Add("nationF", GetNationNameByType(GetTownNation("Falaise de Fleur")));
-				Preprocessor_Add("nationR", GetNationNameByType(GetTownNation("Redmond")));
+				Preprocessor_Add("nationF", XI_ConvertString(GetNationNameByType(GetTownNation("Falaise de Fleur"))));
+				Preprocessor_Add("nationR", XI_ConvertString(GetNationNameByType(GetTownNation("Redmond"))));
 				dialog.Text = DLG_TEXT[176];
 			}
 			else
 			{
-				Preprocessor_Add("nation", GetNationDescByType(GetTownNation("Falaise de Fleur")));
+				Preprocessor_Add("nation", XI_ConvertString(GetNationDescByType(GetTownNation("Falaise de Fleur"))));
 				dialog.Text = DLG_TEXT[324];
 			}
 			Link.l1 = DLG_TEXT[177];
@@ -777,13 +778,13 @@ void ProcessDialogEvent()
 			dialog.snd = "Voice\ARMA\ARMA041";
 			if(GetNationRelation(GetTownNation("Falaise de Fleur"), GetTownNation("Redmond")) == RELATION_ENEMY)
 			{
-				Preprocessor_Add("nationF", GetNationNameByType(GetTownNation("Falaise de Fleur")));
-				Preprocessor_Add("nationR", GetNationNameByType(GetTownNation("Redmond")));
+				Preprocessor_Add("nationF", XI_ConvertString(GetNationNameByType(GetTownNation("Falaise de Fleur"))));
+				Preprocessor_Add("nationR", XI_ConvertString(GetNationNameByType(GetTownNation("Redmond"))));
 				dialog.Text = DLG_TEXT[314];
 			}
 			else
 			{
-				Preprocessor_Add("nation", GetNationDescByType(GetTownNation("Falaise de Fleur")));
+				Preprocessor_Add("nation", XI_ConvertString(GetNationDescByType(GetTownNation("Falaise de Fleur"))));
 				dialog.Text = DLG_TEXT[325];
 			}
 			Link.l1 = DLG_TEXT[177];
@@ -809,15 +810,15 @@ void ProcessDialogEvent()
 			Preprocessor_AddQuestData("Thomas", GetMyName(CharacterFromID("Thomas O'Reily")));
 			if(GetNationRelation(GetTownNation("Falaise de Fleur"), GetTownNation("Redmond")) == RELATION_ENEMY)
 			{
-				Preprocessor_AddQuestData("nationF", GetNationNameByType(GetTownNation("Falaise de Fleur")));
-				Preprocessor_AddQuestData("nationR", GetNationNameByType(GetTownNation("Redmond")));
+				Preprocessor_AddQuestData("nationF", XI_ConvertString(GetNationNameByType(GetTownNation("Falaise de Fleur"))));
+				Preprocessor_AddQuestData("nationR", XI_ConvertString(GetNationNameByType(GetTownNation("Redmond"))));
 				AddQuestRecord("Thomas_delivery", 2); // NK
 				Preprocessor_Remove("nationR");
 				Preprocessor_Remove("nationF");
 			}
 			else
 			{
-				Preprocessor_AddQuestData("nation", GetNationDescByType(GetTownNation("Falaise de Fleur")));
+				Preprocessor_AddQuestData("nation", XI_ConvertString(GetNationDescByType(GetTownNation("Falaise de Fleur"))));
 				AddQuestRecord("Thomas_delivery", 4); // NK
 				Preprocessor_Remove("nation");
 			}
@@ -842,7 +843,7 @@ void ProcessDialogEvent()
 				//проверка враждебности нам страны торговца
 				if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY) // KK
 				{
-					Preprocessor_Add("nation_desc", GetNationDescByType(sti(NPChar.nation)));
+					Preprocessor_Add("nation_desc", XI_ConvertString(GetNationDescByType(sti(NPChar.nation))));
 					dialog.snd = "Voice\ARMA\ARMA045";
 					dialog.text = DLG_TEXT[187];
 					link.l1 = DLG_TEXT[188];
@@ -864,7 +865,7 @@ void ProcessDialogEvent()
 						float fprice, tprice;
 						// NK redo this to take price into account 05-05-12 -->
 						int iTradeGoods = GenerateGoodForTrade(sti(NPChar.nation), iTradeNation, &fprice, &tprice); // TIH nation fix Aug30'06 // KK
-						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string						//проверяем свободное место при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
+						string sNation = GenerateTradeQuest(pchar, iTradeNation, iTradeGoods, fprice, tprice, true);// MAXIMUS: all was moved into MAXIMUS_Functions.c - returns translated string						//проверяем свободное место (при этом должно вмещаться по меньшей мере 100 единиц выбранного груза
 						if (GetSquadronFreeSpace(pchar, iTradeGoods) < 100 || sNation=="")
 						{
 							dialog.snd = "Voice\ARMA\ARMA047";

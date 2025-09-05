@@ -15,7 +15,7 @@ void InitInterface_RRS(string iniName,ref myCh,ref enemyCh,string newCurNod)
     GameInterface.title = "titleTransfer";
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	if(newCurNod=="")
 	{

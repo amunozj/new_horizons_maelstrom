@@ -13,37 +13,38 @@ int music_scheme = 0;
 int Play3DSound(string name, float x, float y, float z)
 {
 	InitSound();
-	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, false, 0, x, y, z);
+	return SendMessage(&Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, false, 0, x, y, z);
 }
 
 int Play3DSoundCached(string name, float x, float y, float z)
 {
 	InitSound();
-	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, true, 0, x, y, z);
+	return SendMessage(&Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, true, 0, x, y, z);
 }
 
 int Play3DSoundComplex(string name, float x, float y, float z, bool bLooped, bool bCached)
 {
 	InitSound();
-	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, bLooped, bCached, 0, x, y, z);
+	return SendMessage(&Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, bLooped, bCached, 0, x, y, z);
 }
 
 int PlayStereoSound(string name)
 {
 	InitSound();
-	return SendMessage(Sound,"lslllll",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, false, false, false);
+	return SendMessage(&Sound,"lslllll",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, false, false, false);
 }
 
 int PlayStereoSoundLooped(string name)
 {
 	InitSound();
-	return SendMessage(Sound,"lsllll",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, false, true, false);
+	return SendMessage(&Sound,"lsllll",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, false, true, false);
 }
 
-int PlayStereoSoundLooped_JustCache(string name)
+int PlayStereoSoundLooped_JustCache(string name, float vol)
 {
 	InitSound();
-	return SendMessage(Sound,"lslllll",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, true, true, false);
+	//return SendMessage(&Sound,"lslllllllf",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, true, true, false, 0, 0, vol);
+	return SendMessage(&Sound,"lslllllllf",MSG_SOUND_PLAY, Sound_GetName(name), SOUND_WAV_STEREO, VOLUME_FX, false, true, false, 0, 0, vol);
 }
 
 int PlayStereoOGG(string name)
@@ -60,7 +61,7 @@ int PlayStereoOGG(string name)
 	string lnode = "f" + (rand(num - 1) + 1);
 	string music_name = MusicRef.(lnode).name;
 	// LDH this should be VOLUME_MUSIC but since it's used to alert the player we'll leave it at VOLUME_FX in case music is turned off
-	return SendMessage(Sound,"lslllll",MSG_SOUND_PLAY, music_name, SOUND_MP3_STEREO, VOLUME_FX, false, false, false);
+	return SendMessage(&Sound,"lslllll",MSG_SOUND_PLAY, music_name, SOUND_MP3_STEREO, VOLUME_FX, false, false, false);
 // <-- KK
 }
 //MAXIMUS -->
@@ -82,21 +83,21 @@ void StopSound(int id,int fade)
 {
 	InitSound();
 	//Trace("StopSound : "+id);
-	SendMessage(Sound,"lll",MSG_SOUND_STOP,id,fade);
+	SendMessage(&Sound,"lll",MSG_SOUND_STOP,id,fade);
 }
 
 void ResumeSound(int id,int fade)
 {
 	InitSound();
 	//Trace("ResumeSound : "+id);
-	SendMessage(Sound,"lll",MSG_SOUND_RESUME,id,fade);
+	SendMessage(&Sound,"lll",MSG_SOUND_RESUME,id,fade);
 }
 
 void ReleaseSound(int id)
 {
 	InitSound();
 	//Trace("ReleaseSound : "+id);
-	SendMessage(Sound,"ll",MSG_SOUND_RELEASE,id);
+	SendMessage(&Sound,"ll",MSG_SOUND_RELEASE,id);
 }
 
 // SOUND SCHEMES
@@ -104,21 +105,21 @@ void ResetSoundScheme()
 {
 	InitSound();
 	//Trace("ResetSoundScheme");
-	SendMessage(Sound,"l",MSG_SOUND_SCHEME_RESET);
+	SendMessage(&Sound,"l",MSG_SOUND_SCHEME_RESET);
 }
 
 void SetSoundScheme(string schemeName)
 {
 	InitSound();
 	//Trace("SetSoundScheme: "+schemeName);
-	SendMessage(Sound,"ls",MSG_SOUND_SCHEME_SET,schemeName);
+	SendMessage(&Sound,"ls",MSG_SOUND_SCHEME_SET,schemeName);
 }
 
 void AddSoundScheme(string schemeName)
 {
 	InitSound();
 	//Trace("AddSoundScheme: "+schemeName);
-	SendMessage(Sound,"ls",MSG_SOUND_SCHEME_ADD,schemeName);
+	SendMessage(&Sound,"ls",MSG_SOUND_SCHEME_ADD,schemeName);
 }
 
 void SetWeatherScheme(string scheme)
@@ -935,6 +936,28 @@ void SetSchemeForLocation(ref loc)
 			break;
 
 	// <-- GOLDBUG
+	// DEVLIN -->
+		case "OP_celtic":
+			SetSoundScheme("cave");
+			SetMusicAlarm("OP_celtic");
+			break;
+		case "OP_road":
+			SetSoundScheme("jungle");
+			SetMusicAlarm("OP_road");
+			break;
+		case "OP_village":
+			SetSoundScheme("jungle");
+			SetMusicAlarm("OP_village");
+			break;
+		case "OP_wood":
+			SetSoundScheme("jungle");
+			SetMusicAlarm("OP_wood");
+			break;
+                case "yohoho_tavern":
+                        SetSoundScheme("tavern");
+                        SetMusicAlarm("music_yohoho");
+                        break;
+	//<-- DEVLIN
 	// CARTAGENA -->
 		case "inquisition":
 			SetSoundScheme("inquisition");
@@ -954,10 +977,25 @@ void SetSchemeForLocation(ref loc)
 			else
 			{
 				SetMusicAlarm("music_brothel_QC");
-				PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_001.wav");
-				PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_002.wav");
-				PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_004.wav");
-				PlayStereoSoundLooped("brothel");
+
+				switch(GetAttribute(loc,"id"))
+				{
+					case "QC_brothel":		// brothel looks like a tavern, crowded, this is where people go for a good time
+						PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_001.wav");
+						PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_002.wav");
+						PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_004.wav");
+						PlayStereoSoundLooped("AMBIENT\BROTHEL\Brothel_00" + (rand(3)+1) + ".wav");
+					break;
+
+					case "Charlestown_Brothel":	// quiet, everyone who wants a party is round at Pirate Settlement
+						PlayStereoSoundLooped("brothel_talks");
+						PlayStereoSoundLooped("brothel");
+					break;
+
+					// Everywhere else: somewhere in between
+					PlayStereoSoundLooped("AMBIENT\BROTHEL\razg_00" + (rand(3)+1) + ".wav");
+					PlayStereoSoundLooped("AMBIENT\BROTHEL\Brothel_00" + (rand(3)+1) + ".wav");
+				}
 			}
 			break;
 		case "brothel_room":
@@ -983,13 +1021,13 @@ void SetSchemeForLocation(ref loc)
 			{
 			    if(HasSubStr(loc.id,"ShipDeck"))
 				{
-					rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm");
-					SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
-					SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
+					rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm", 0.5);
+					//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+					//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 				}
-			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm");
-			    SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
-			    SendMessage(Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
+			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm", 0.45);
+			    //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
+			    //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
 			}
 			else
 			{
@@ -998,43 +1036,43 @@ void SetSchemeForLocation(ref loc)
 			        if(HasSubStr(loc.id,"ShipDeck"))
 					{
 						rainSoundID = PlayStereoSoundLooped("rain");
-						SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
-						SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
+						SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+						//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 					}
-			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
+			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.6);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
 			    }
 			    else
 			    {
-			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
+			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.35);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 			    }
 			}
 			if(HasSubStr(loc.id,"ShipDeck"))
 			{
 				if(bSeaActive && !bCanEnterToLand)
 				{
-					shipSoundID = PlayStereoSoundLooped_JustCache("squeak_sea");
-					SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, shipSoundID, 0.45);
-					SendMessage(Sound,"lll",MSG_SOUND_RESUME, shipSoundID, 0);
+					shipSoundID = PlayStereoSoundLooped_JustCache("squeak_sea", 0.45);
+					//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, shipSoundID, 0.45);
+					//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, shipSoundID, 0);
 
-					ship2SoundID = PlayStereoSoundLooped_JustCache("sails_ambient");
-					SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, ship2SoundID, 0.45);
-					SendMessage(Sound,"lll",MSG_SOUND_RESUME, ship2SoundID, 0);
+					ship2SoundID = PlayStereoSoundLooped_JustCache("sails_ambient", 0.45);
+					//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, ship2SoundID, 0.45);
+					//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, ship2SoundID, 0);
 				}
 				if(bCanEnterToLand)
 				{
-					shipSoundID = PlayStereoSoundLooped_JustCache("squeak_sea");
-					SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, shipSoundID, 0.35);
-					SendMessage(Sound,"lll",MSG_SOUND_RESUME, shipSoundID, 0);
+					shipSoundID = PlayStereoSoundLooped_JustCache("squeak_sea", 0.35);
+					//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, shipSoundID, 0.35);
+					//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, shipSoundID, 0);
 
 					if(!Whr_IsStorm() && !Whr_IsRain() && !Whr_IsNight())
 					{
-						ship2SoundID = PlayStereoSoundLooped_JustCache("NATURE\seagulls2.wav");
-						SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, ship2SoundID, 0.45);
-						SendMessage(Sound,"lll",MSG_SOUND_RESUME, ship2SoundID, 0);
+						ship2SoundID = PlayStereoSoundLooped_JustCache("NATURE\seagulls2.wav", 0.45);
+						//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, ship2SoundID, 0.45);
+						//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, ship2SoundID, 0);
 					}
 				}
 			}
@@ -1051,13 +1089,13 @@ void SetSchemeForLocation(ref loc)
 			{
 				if(HasSubStr(loc.id,"ShipDeck"))
 				{
-					rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm");
-					SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
-					SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
+					rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm", 0.5);
+					//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+					//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 				}
-			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm");
-			    SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
-			    SendMessage(Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
+			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm", 0.45);
+			    //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
+			    //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
 			}
 			else
 			{
@@ -1066,18 +1104,18 @@ void SetSchemeForLocation(ref loc)
 			        if(HasSubStr(loc.id,"ShipDeck"))
 					{
 						rainSoundID = PlayStereoSoundLooped("rain");
-						SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
-						SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
+						SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+						//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
 					}
-			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
+			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.6);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
 			    }
 			    else
 			    {
-			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
+			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.35);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 			    }
 			}
 			if(HasSubStr(loc.id,"ShipDeck")) break;
@@ -1097,23 +1135,23 @@ void SetSchemeForLocation(ref loc)
 			else SetSoundScheme("crew");
 			if (Whr_IsStorm())
 			{
-			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm");
-			    SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
-			    SendMessage(Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
+			    windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm", 0.45);
+			    //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
+			    //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
 			}
 			else
 			{
 			    if (Whr_IsRain())
 			    {
-			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
+			        waterSoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.6);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
 			    }
 			    else
 			    {
-			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			        SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
-			        SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
+			        water2SoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.35);
+			        //SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
+			        //SendMessage(&Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 			    }
 			}
 			if(Whr_IsNight())		SetMusicAlarm("music_night_sailing");
@@ -1146,7 +1184,7 @@ void SetStaticSounds(ref loc)
 		while (isDigit(locatorType, strLen(locatorType)-1)) locatorType = strLeft(locatorType, strLen(locatorType)-1);	// LDH 19Mar09
 //TraceAndLog("SetStaticSounds: locatorName = " + locatorName + ", locatorType = " + locatorType);	// LDH test 26Mar09
 		if (locatorType=="tree") continue;	// LDH we don't have a tree sound defined - 19Mar09
-		SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, locatorType, SOUND_WAV_3D, VOLUME_FX, false, true, true, 0, stf(locator.x), stf(locator.y), stf(locator.z));//MAXIMUS
+		SendMessage(&Sound,"lsllllllfff",MSG_SOUND_PLAY, locatorType, SOUND_WAV_3D, VOLUME_FX, false, true, true, 0, stf(locator.x), stf(locator.y), stf(locator.z));//MAXIMUS
 	}
 }
 
@@ -1167,12 +1205,12 @@ void SetSchemeForSea()
 	if (Whr_IsStorm())
 	{
 		AddSoundScheme("sea_weather_storm");
-		int rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm");
-		SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
-		SendMessage(Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
-		int windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm");
-		SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
-		SendMessage(Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
+		int rainSoundID = PlayStereoSoundLooped_JustCache("rain_storm", 0.5);
+		//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, rainSoundID, 0.5);
+		//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, rainSoundID, 0);
+		int windSoundID = PlayStereoSoundLooped_JustCache("water_sea_storm", 0.45);
+		//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, windSoundID, 0.45);
+		//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, windSoundID, 0);
 		SetMusic("music_storm");
 	}
 	else
@@ -1215,19 +1253,19 @@ void SetSchemeForSea()
 		{
 			AddSoundScheme("sea_weather_rain");
 			PlayStereoSoundLooped("rain");
-			int waterSoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
-			SendMessage(Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
+			int waterSoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.6);
+			//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, waterSoundID, 0.6);
+			//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, waterSoundID, 0);
 		}
 		else
 		{
-			AddSoundScheme("sea_weather");
-			int water2SoundID = PlayStereoSoundLooped_JustCache("water_sea");
-			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
-			SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
+		    AddSoundScheme("sea_weather");
+			int water2SoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.35);
+			//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.35);
+			//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 		}
 	}
-	ResumeAllSounds();
+	//ResumeAllSounds();
 }
 
 void SetSchemeForMap()
@@ -1237,9 +1275,9 @@ void SetSchemeForMap()
 	SetMusic("music_map");
 	ResumeAllSounds();
 
-	int water2SoundID = PlayStereoSoundLooped_JustCache("water_sea");
-	SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.05);
-	SendMessage(Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
+	int water2SoundID = PlayStereoSoundLooped_JustCache("water_sea", 0.05);
+	//SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, water2SoundID, 0.05);
+	//SendMessage(&Sound,"lll",MSG_SOUND_RESUME, water2SoundID, 0);
 }
 
 // MUSIC
@@ -1265,19 +1303,19 @@ void SetMusic(string name)
 	if (name == "") return;			// LDH 30Mar09
 	if (name == musicName)
 	{
-		SendMessage(Sound,"lll",MSG_SOUND_RESUME, musicID, SOUNDS_FADE_TIME);
+		SendMessage(&Sound,"lll",MSG_SOUND_RESUME, musicID, SOUNDS_FADE_TIME);
 		return;
 	}
 
 	//Trace("SetMusic : "+name);
 	if (oldMusicID)
 	{
-		SendMessage(Sound,"ll",MSG_SOUND_RELEASE, oldMusicID);
+		SendMessage(&Sound,"ll",MSG_SOUND_RELEASE, oldMusicID);
 	}
 
 	if (musicID)
 	{
-		SendMessage(Sound,"lll",MSG_SOUND_STOP, musicID, MUSIC_CHANGE_TIME);
+		SendMessage(&Sound,"lll",MSG_SOUND_STOP, musicID, MUSIC_CHANGE_TIME);
 		oldMusicID = musicID;
 	}
 
@@ -1325,20 +1363,20 @@ void SetMusic(string name)
 //TraceAndLog("MUSIC: scheme = " + name + ", name = " + music_name + ", (" + musicnumber + " of " + num + ")");	// LDH 13Feb09
 	}
 
-	musicID = SendMessage(Sound,"lslllllll",MSG_SOUND_PLAY, music_name, SOUND_MP3_STEREO, VOLUME_MUSIC, true, true, false, MUSIC_CHANGE_TIME, silenceTime*1000);
+	musicID = SendMessage(&Sound,"lslllllll",MSG_SOUND_PLAY, music_name, SOUND_MP3_STEREO, VOLUME_MUSIC, true, true, false, MUSIC_CHANGE_TIME, silenceTime*1000);
 	if (musicID == 0)	// LDH 24Mar09
 	{
 //Trace("****** Set music got musicID of zero, would have reset all sound volumes *******");
-		SendMessage(Sound,"lll",MSG_SOUND_RESUME, 0, 0);		// LDH resume all sounds immediately - 26Mar09
+		SendMessage(&Sound,"lll",MSG_SOUND_RESUME, 0, 0);		// LDH resume all sounds immediately - 26Mar09
 	}
 	else
 	{
 		if (bExist && CheckAttribute(Music_Alias, name + ".Volume"))
-			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, musicID, stf(Music_Alias.(name).Volume));
+			SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, musicID, stf(Music_Alias.(name).Volume));
 		else
-			SendMessage(Sound,"llf",MSG_SOUND_SET_VOLUME, musicID, 0.55);
+			SendMessage(&Sound,"llf",MSG_SOUND_SET_VOLUME, musicID, 0.55);
 // <-- KK
-		SendMessage(Sound,"lll",MSG_SOUND_RESUME, musicID, MUSIC_CHANGE_TIME);
+		SendMessage(&Sound,"lll",MSG_SOUND_RESUME, musicID, MUSIC_CHANGE_TIME);
 	}
 
 	oldMusicName = musicName;
@@ -1359,13 +1397,13 @@ void FadeOutMusic(int _time)
 void PauseAllSounds()
 {
 	Trace("PauseAllSounds");
-	SendMessage(Sound,"lll",MSG_SOUND_STOP, 0, SOUNDS_FADE_TIME);
+	SendMessage(&Sound,"lll",MSG_SOUND_STOP, 0, SOUNDS_FADE_TIME);
 }
 
 void ResumeAllSounds()
 {
 	Trace("ResumeAllSounds");
-	SendMessage(Sound,"lll",MSG_SOUND_RESUME, musicID, SOUNDS_FADE_TIME);
+	SendMessage(&Sound,"lll",MSG_SOUND_RESUME, musicID, SOUNDS_FADE_TIME);
 }
 
 // OLD VERSIONS
@@ -1391,7 +1429,7 @@ int PlaySound(string name)
 
 int PlaySoundComplex(string sSoundName, bool bSimpleCache, bool bLooped, bool bCached, int iFadeTime)
 {
-	return SendMessage(Sound,"lsllllll",MSG_SOUND_PLAY,VOLUME_FX,sSoundName,SOUND_WAV_3D,bSimpleCache,bLooped,bCached,iFadeTime);
+	return SendMessage(&Sound,"lsllllll",MSG_SOUND_PLAY,VOLUME_FX,sSoundName,SOUND_WAV_3D,bSimpleCache,bLooped,bCached,iFadeTime);
 }
 
 void StopMusic()
@@ -1630,7 +1668,7 @@ int PlayVoice(ref chr, string name)
 	GetCharacterPos(chr,&x,&y,&z);
 
 	InitSound();
-	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_SPEECH, false, false, false, 0, x, y, z);
+	return SendMessage(&Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_SPEECH, false, false, false, 0, x, y, z);
 //	return Play3DSound(refChar.greeting, x, y, z);				// plays soundFX volume with range attenuation
 //	return PlayStereoSound(Sound_GetName(refChar.greeting));	// plays soundFX volume at full volume
 

@@ -60,7 +60,7 @@ void Deck_ReloadStartFade()
 
 	if (CheckAttribute(Sea, "MaxSeaHeight")) { // KK
 		fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-		Sea.MaxSeaHeight = 1.15;						// set maxinum sea height for ship Deck
+		Sea.MaxSeaHeight = 2.0;						// set maxinum sea height for ship Deck
 		ref lcn = &Locations[FindLocation(DeckID)];
 		if(CheckAttribute(lcn,"MaxSeaHeight")) Sea.MaxSeaHeight = stf(lcn.MaxSeaHeight); // screwface : limit wave height
 	}
@@ -87,6 +87,7 @@ void Return2SeaAfterDeck()
 	SendMessage(&boarding_fader, "lfl", FADER_OUT, fadeOutTime, false);
 	SendMessage(&boarding_fader, "l", FADER_STARTFRAME);
 	if(CheckAttribute(GetMainCharacter(),"IsOnDeck")) { DeleteAttribute(GetMainCharacter(),"IsOnDeck"); }//MAXIMUS
+	WhrCreateRainEnvironment();
 }
 
 void Deck_ReloadEndFade()
@@ -95,12 +96,13 @@ void Deck_ReloadEndFade()
 	AIBalls.Clear = "";
 
 	// unload all models
-	aref arModel;
-	if (FindClass(&arModel, "modelr"))
-	{
-		SendMessage(arModel, "l", MSG_MODEL_RELEASE);
-		while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
-	}
+	//#20230719-01 Terrible idea
+	//aref arModel;
+	//if (FindClass(&arModel, "modelr"))
+	//{
+	//	SendMessage(arModel, "l", MSG_MODEL_RELEASE);
+	//	while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
+	//}
 
 	PauseParticles(true);
 
@@ -385,7 +387,7 @@ void Deck_LoadLocation(string locID) // KK //MAXIMUS
 	}
 
 	if (HasSubStr(FindCurrentDeck(), "ShipDeck")) {
-		Whr_UpdateWeather(false);//JA 8DEC06 on deck so resume raining
+		Whr_UpdateWeather(true);//JA 8DEC06 on deck so resume raining
 	} else {
 		WhrDeleteRainEnvironment();// otherwise, stop raining
 	}
@@ -454,7 +456,7 @@ void Deck_ReloadEndFadeAfter()
 	MoveWeatherToLayers(SEA_EXECUTE, SEA_REALIZE);
 	MoveSeaToLayers(SEA_EXECUTE, SEA_REALIZE);
 
-	Sea.MaxSeaHeight = fOldMaxSeaHeight;		// restore old MaxSeaHeight
+	Sea.MaxSeaHeight = 14.0;		// Mirsaneli: fix the flat sea after going from deck to sea
 	ClearDeck();//MAXIMUS
 	bAbordageStarted = false;
 	Sea.AbordageMode = false;
@@ -470,7 +472,7 @@ void Deck_ReloadEndFadeAfter()
 
 	bSeaReloadStarted = false;
 
-	Whr_UpdateWeather(false); //JA 8DEC06 on deck so resume raining
+	Whr_UpdateWeather(true); //JA 8DEC06 on deck so resume raining
 
 	ReloadProgressEnd(); // KK
 }
@@ -496,7 +498,7 @@ void Cabin_ReloadStartFade()
 
 	if (CheckAttribute(Sea, "MaxSeaHeight")) { // KK
 		fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-		Sea.MaxSeaHeight = 1.15;						// set maxinum sea height for ship Cabin
+		Sea.MaxSeaHeight = 1.15;						// set maximum sea height for ship Cabin
 	}
 }
 
@@ -957,7 +959,7 @@ void DeckToSea_ReloadEndFadeAfter()
 	SendMessage(&boarding_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 	PostEvent("LoadSceneSound", 500);
 
-	Whr_UpdateWeather(false); //JA 8DEC06 on deck so resume raining
+	Whr_UpdateWeather(true); //JA 8DEC06 on deck so resume raining
 
 	ReloadProgressEnd();
 }
@@ -1270,7 +1272,7 @@ void Land_ToPort()
 	bEmergeOnStartloc = false;	// LDH 14Feb09
 	DelEventHandler("Control Activation", "TeleportToDeck");
 
-	Whr_UpdateWeather(false); //JA 8DEC06 Resume weather if leaving cabin/deck
+	Whr_UpdateWeather(true); //JA 8DEC06 Resume weather if leaving cabin/deck
 
 	if(CheckAttribute(GetMainCharacter(),"IsOnDeck")) DeleteAttribute(GetMainCharacter(),"IsOnDeck");
 
@@ -1477,9 +1479,9 @@ void PlaceOfficersToDeck(string deckType)
 			logined = 1;
 // KK -->
 			if (iShipCaptain == GetMainCharacterIndex()) {
-				for (i = 1; i < GetPassengersQuantity(mchr); i++)
+				for (i = 1; i <= GetPassengersQuantity(mchr); i++)
 				{
-					PsgAttrName = "id"+(i+1);
+					PsgAttrName = "id"+i;
 					_curCharIdx = sti(pRef.(PsgAttrName));
 					tmpChr = GetCharacter(_curCharIdx);
 					if(!CheckAttribute(tmpChr,"prisoned") && CheckAttribute(tmpChr,"quest.officertype"))

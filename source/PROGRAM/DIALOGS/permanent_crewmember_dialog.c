@@ -159,7 +159,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			TavernWaitDate("wait_night");
 			PlaySound("objects\abordage\abordage_loosing.wav");
-			Whr_UpdateWeather(false);
+			Whr_UpdateWeather(true);
 
 		break;
 
@@ -171,7 +171,7 @@ void ProcessDialogEvent()
 			PlaySound("AMBIENT\town\cough.wav");
 			PlaySound("AMBIENT\tavern\man1.wav");
 			PlaySound("AMBIENT\tavern\open_bottle.wav");
-			Whr_UpdateWeather(false);
+			Whr_UpdateWeather(true);
 		break;
 
 		case "take_no_ammo":

@@ -31,10 +31,10 @@ void QuestComplete(string sQuestName)
 	switch(sQuestName)
 	{
 
-		//..........................................................................................................................
-		//JRH: Caroline K quest -->
+//..........................................................................................................................
+//JRH: Caroline K quest -->
 
-		//---------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------
 
 		case "clear_weather":
 			SetNextWeather("Clear");
@@ -183,7 +183,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "recoil_sound":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");	
 		break;
 
 		case "creak_sound":
@@ -199,7 +199,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "quest_item":
-			PlaySound("INTERFACE\important_item.wav");
+			PlaySound("INTERFACE\important_item.wav");	
 			Logit(TranslateString("","An item has been removed from your inventory"));
 		break;
 
@@ -298,12 +298,12 @@ void QuestComplete(string sQuestName)
 			TakenItems(Pchar, "gunpowder", -100);
 			TakenItems(Pchar, "pistolbullets", -100);
 
-			TakenItems(Pchar, "gunpowder", gp2);
+			TakenItems(Pchar, "gunpowder", gp2));
 			TakenItems(Pchar, "pistolbullets", pb2);
 		break;
 
 		case "mutiny_cabin":
-			Pchar.quest.JRH_rain = "";
+			//Pchar.quest.JRH_rain = "";	
 			PlaySound("AMBIENT\JAIL\sigh2.wav");
 			PlaySound("AMBIENT\JAIL\sigh2.wav");
 
@@ -571,7 +571,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("Midshipman Young"));
 			LAi_SetOfficerType(characterFromID("Constable Mills"));
 
-			Pchar.quest.marooned_items = "yes";
+			Pchar.quest.marooned_items = "yes";			
 
 			pchar.quest.mutiny_deck.win_condition.l1 = "location";
 			pchar.quest.mutiny_deck.win_condition.l1.location = "mutiny_deckWR";
@@ -797,26 +797,21 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(CharacterFromID("mutineer_27"));
 		break;
 
-	//-------------------------------------------------------------------------------------------
-	//swamp island1
+//-------------------------------------------------------------------------------------------
+//swamp island1
+	
 		case "swamp1_pos1_turn_sea":
 			PlaySound("PEOPLE\step_water.wav");
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "look1");
 
 			LAi_QuestDelay("Pchar_playertype1", 1.0);
 		break;
-
+	
 		case "Pchar_playertype1":
 			LAi_SetPlayerType(Pchar);
 
 			LAi_QuestDelay("no_ships_in_sight1", 1.0);
 		break;
-
-		case "Pchar_playertype":
-			LAi_SetPlayerType(Pchar);
-		break;
-
+	
 		case "no_ships_in_sight1":
 			if(Locations[FindLocation(Pchar.location)].models.always.locators == "jungle2_locators_JRH1")
 			{
@@ -834,68 +829,6 @@ void QuestComplete(string sQuestName)
 				}
 			}
 			else PlaySound("VOICE\ENGLISH\blaze_scream.wav");
-		break;
-
-		case "swamp1_pos1_move_to_land":
-			PlaySound("PEOPLE\step_water2.wav");
-			LAi_SetPlayerType(Pchar);
-
-			ChangeCharacterAddressGroup(Pchar, "Swamp_island1", "goto", "goto1");
-		break;
-	//------------------------------------------------------------------------------------
-		case "swamp1_pos2_turn_sea":
-			PlaySound("PEOPLE\step_water.wav");
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "look2");
-
-			LAi_QuestDelay("Pchar_playertype2", 1.0);
-		break;
-
-		case "Pchar_playertype2":
-			LAi_SetPlayerType(Pchar);
-
-			LAi_QuestDelay("no_ships_in_sight2", 1.0);
-		break;
-
-		case "no_ships_in_sight2":
-			PlaySound("VOICE\ENGLISH\blaze_no_escape.wav");
-			Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"That island is the only land in sight. I have to get there!"));
-		break;
-
-		case "swamp1_pos2_move_to_land":
-			PlaySound("PEOPLE\step_water2.wav");
-			LAi_SetPlayerType(Pchar);
-
-			ChangeCharacterAddressGroup(Pchar, "Swamp_island1", "goto", "goto2");
-		break;
-	//------------------------------------------------------------------------------------
-		case "swamp1_pos3_turn_sea":
-			PlaySound("PEOPLE\step_water.wav");
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "look3");
-
-			LAi_QuestDelay("Pchar_playertype3", 1.0);
-		break;
-
-		case "Pchar_playertype3":
-			LAi_SetPlayerType(Pchar);
-
-			LAi_QuestDelay("no_ships_in_sight3", 1.0);
-		break;
-
-		case "no_ships_in_sight3":
-			if(Locations[FindLocation(Pchar.location)].models.always.locators == "jungle2_locators_JRH1")
-			{
-				PlaySound("VOICE\ENGLISH\blaze_help.wav");
-			}
-			else PlaySound("VOICE\ENGLISH\blaze_scream.wav");
-		break;
-
-		case "swamp1_pos3_move_to_land":
-			PlaySound("PEOPLE\step_water2.wav");
-			LAi_SetPlayerType(Pchar);
-
-			ChangeCharacterAddressGroup(Pchar, "Swamp_island1", "goto", "goto3");
 		break;
 	//------------------------------------------------------------------------------------
 		case "push_tree1":
@@ -927,19 +860,17 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "sloop_sailaway2":
-
 			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "box", "box4");
+			LAi_ActorTurnToLocator(Pchar, "goto", "goto1");
 
 			LAi_QuestDelay("sloop_sailaway3", 1.0);
 		break;
 
 		case "sloop_sailaway3":
-			LAi_ActorGoToLocator(Pchar, "box", "box4", "sloop_sailaway4", 12.0);
+			LAi_ActorGoToLocator(Pchar, "goto", "at_sea1", "sloop_sailaway4", 20.0);
 		break;
 
 		case "sloop_sailaway4":
-
 			PlaySound("PEOPLE\step_water2.wav");
 			ChangeCharacterAddressGroup(Pchar, "Swamp_island1", "goto", "at_sea1");
 
@@ -982,7 +913,6 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "push_tree3B":
-			LAi_SetPlayerType(Pchar);
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 		break;
 
@@ -1008,8 +938,8 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.tree_boat = "ready";
 		break;
 
-	//-------------------------------------------------------------------------------------------
-	//swamp island2
+//-------------------------------------------------------------------------------------------
+//swamp island2
 		case "Swamp_island2_start":
 			LAi_SetPlayerType(Pchar);
 			SetCharacterShipLocation(characterFromID("gm_crew2"), "none");		//fallen_tree swamp_island2
@@ -1028,6 +958,9 @@ void QuestComplete(string sQuestName)
 		case "timberlog_check":
 			if(CheckCharacterItem(Pchar,"koster1") || CheckCharacterItem(Pchar,"koster3") || CheckCharacterItem(Pchar,"koster4"))
 			{
+		LAi_SetSitType(Pchar);
+		LAi_QuestDelay("Pchar_playertype", 0.5);
+
 				RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 				TakeItemFromCharacter(Pchar, "koster1" );
 				TakeItemFromCharacter(Pchar, "koster3" );
@@ -1157,11 +1090,18 @@ void QuestComplete(string sQuestName)
 
 				Locations[FindLocation("Swamp_island2")].locators_radius.box.box8 = 0.0001;
 				Locations[FindLocation("Swamp_island2")].locators_radius.randitem.randitem15 = 2.0;
+		
+				LAi_QuestDelay("swamp2_box8_off", 1.0);
 			}
 		break;
+
+		case "swamp2_box8_off":
+			Pchar.swamp2_box8 = "off";
+		break;
+
 	//.................................................................................................................
 		case "use_Minerspick_on_mud":
-			//from itemlogic box8
+			//from itemlogic box9
 			PlaySound("OBJECTS\DUEL\club1.wav");
 			PlaySound("OBJECTS\DUEL\sword_cutbody.wav");
 			CreateParticleSystemX("ball_splash", 36.0, 0.5, 5.2, 0.0, 0.0, 0.0, 0);
@@ -1196,7 +1136,13 @@ void QuestComplete(string sQuestName)
 
 				Locations[FindLocation("Swamp_island2")].locators_radius.box.box9 = 0.0001;
 				Locations[FindLocation("Swamp_island2")].locators_radius.randitem.randitem20 = 2.0;
+
+				LAi_QuestDelay("swamp2_box9_off", 1.0);
 			}
+		break;
+
+		case "swamp2_box9_off":
+			Pchar.swamp2_box9 = "off";
 		break;
 	//.................................................................................................................
 		case "use_MinersSpade_on_grave":
@@ -1233,6 +1179,8 @@ void QuestComplete(string sQuestName)
 				Pchar.quest.buried_skeleton = "visible";
 
 				LAi_QuestDelay("barmansknife_check", 0.1);
+
+				LAi_QuestDelay("swamp_grot_off", 1.0);
 			}
 		break;
 	//.................................................................................................................
@@ -1284,6 +1232,12 @@ void QuestComplete(string sQuestName)
 			}
 
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead1.wav");
+
+			LAi_QuestDelay("swamp_grot_off", 1.0);
+		break;
+
+		case "swamp_grot_off":
+			Pchar.swamp_grot = "off";
 		break;
 	//.................................................................................................................
 		case "wrong_use_MinersSpade_on_stone":
@@ -1313,11 +1267,13 @@ void QuestComplete(string sQuestName)
 
 				PlaySound("OBJECTS\DUEL\man_attack5.wav");
 				Logit(TranslateString("","Hmm. That's not a good idea"));
+
+				LAi_QuestDelay("swamp2_box8_off", 1.0);
 			}
 		break;
 	//.................................................................................................................
 		case "wrong_use_MinersSpade_on_mud":
-			//from itemlogic box8 Swamp_island2
+			//from itemlogic box9 Swamp_island2
 			PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			CreateParticleSystemX("ball_splash", 36.0, 0.5, 5.2, 0.0, 0.0, 0.0, 0);
 
@@ -1346,10 +1302,22 @@ void QuestComplete(string sQuestName)
 
 				PlaySound("OBJECTS\DUEL\man_attack5.wav");
 				Logit(TranslateString("","Hmm. That's not a good idea"));
+
+				LAi_QuestDelay("swamp2_box9_off", 1.0);
 			}
 		break;
 	//-----------------------------------------------------------------------------------------------------------------
 	//.................................................................................................................
+		case "jump_to_wreck_inside":
+			LAi_QuestDelay("jump_to_wreck_inside1", 0.5);
+		break;
+
+		case "jump_to_wreck_inside1":
+			PlaySound("PEOPLE\jump.wav");
+			LAi_SetSitType(Pchar);
+			LAi_QuestDelay("Pchar_playertype", 0.5);
+		break;
+
 		case "swamp_wreck1":
 			if(CheckAttribute(Pchar,"quest.raft_ropes") && Pchar.quest.raft_ropes == "picked_up")
 			{
@@ -1564,7 +1532,7 @@ void QuestComplete(string sQuestName)
 
 		case "meet_manowar7":
 			Pchar.quest.take_items = "no";
-			Pchar.quest.JRH_rain = "";
+			//Pchar.quest.JRH_rain = "";
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 
@@ -1872,7 +1840,7 @@ void QuestComplete(string sQuestName)
 			int p1; int p2; int p3; int p4; int p5;	int ptot;
 
 			if(CheckAttribute(Pchar,"quest.wr_quest1") && Pchar.quest.wr_quest1 == "off") return;
-			//after QC: don?t read here no more, go instead to "QC_sound_check_done"
+			//after QC: don´t read here no more, go instead to "QC_sound_check_done"
 
 
 			//this is what can happen - no other cases
@@ -2089,7 +2057,7 @@ void QuestComplete(string sQuestName)
 
 			SetNextWind("E",30);
 			SetServedNation(ENGLAND);
-			GiveShip2Character(pchar,"SloopBermuda","Marquis",-1,PIRATE,true,true);
+			GiveShip2Character(pchar,"SloopBermuda",TranslateString("","Marquis"),-1,PIRATE,true,true);
 			SetCharacterShipLocation(Pchar, "Redmond_port");
 
 			Locations[FindLocation("Tutorial_Deck")].WeaponsLocker.items.blade1 = 1;
@@ -2248,7 +2216,7 @@ void QuestComplete(string sQuestName)
 				case "visit_Natalia":
 					Characters[GetCharacterIndex("Wench1")].dialog.Filename  = "wench_dialog.c";
 					ChangeCharacterAddress(characterFromID("Wench1"), "QC_brothel", "goto6");
-					pchar.quest.wr_quest2 = "neutral";//so the same girl doesn?t teleports again & again to goto6
+					pchar.quest.wr_quest2 = "neutral";//so the same girl doesn´t teleports again & again to goto6
 					LAi_QuestDelay("after_wench", 0.1);
 				break;
 
@@ -2330,9 +2298,10 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("ready_to_break_window1", 0.5);
 		break;
-
-
+//pär roofs start
 		case "ready_to_break_window1":
+			Locations[FindLocation("QC_town")].models.day.charactersPatch = "QCtown_roofs_low";
+			Locations[FindLocation("QC_town")].models.night.charactersPatch = "QCtown_roofs_low";
 			Locations[FindLocation("QC_town")].models.always.locators = "QCtown_l_JRH";
 
 			Locations[FindLocation("QC_Brothel")].reload.l1.disable = 1;//temp locked
@@ -2352,7 +2321,7 @@ void QuestComplete(string sQuestName)
 			PauseAllSounds();//stops music
 			PlaySound("AMBIENT\TOWN\window_dog_pistol.wav");
 
-		locations[FindLocation("QC_town")].type = "silent_town";//stops music only
+			locations[FindLocation("QC_town")].type = "silent_town";//stops music only
 
 			LAi_QuestDelay("window_broken", 1.0);
 		break;
@@ -2413,147 +2382,115 @@ void QuestComplete(string sQuestName)
 		case "both_on_brothel_roof_1":
 			LAi_ActorTurnToLocator(characterFromID("Wench3"), "goto", "roof2");
 			PlaySound("VOICE\ENGLISH\gr_wench3_mhm.wav");
-			LAi_QuestDelay("both_on_brothel_roof_2", 1.0);		//was 2.0
+			LAi_QuestDelay("both_on_brothel_roof_2", 1.0);
 		break;
 
 		case "both_on_brothel_roof_2":
-			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "roof2");
 			PlaySound("PEOPLE\Jump_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_1", 1.0);
-		break;
-	//-----------------------------------------------------------------------------------------------------------------
-		case "Caroline_walk_1":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto113w");
-			PlaySound("PEOPLE\Run_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_1A", 0.5);
-		break;
 
-		case "Caroline_walk_1A":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto114");
-			LAi_QuestDelay("Caroline_jump_2", 0.5);
+			LAi_QuestDelay("Caroline_walk_1", 0.5);
+		break;
+//-----------------------------------------------------------------------------------------------------------------
+
+		case "Caroline_walk_1":
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "box", "box2", "Caroline_jump_2", 2.0);
 		break;
 
 		case "Caroline_jump_2":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto114j");
+			
 			LAi_QuestDelay("Caroline_jump_2A", 0.2);
 		break;
 
 		case "Caroline_jump_2A":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "roof3");
 			PlaySound("PEOPLE\Jump_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_2", 1.0);
+
+			LAi_QuestDelay("Caroline_walk_2", 0.5);
 		break;
 
-		case "Caroline_walk_2":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto115w");
-			PlaySound("PEOPLE\Run_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_2A", 0.5);
-		break;
-
-		case "Caroline_walk_2A":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto116");
-			LAi_QuestDelay("Caroline_jump_3", 0.5);
+		case "Caroline_walk_2":	
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "box", "box3", "Caroline_jump_3", 2.5);
 		break;
 
 		case "Caroline_jump_3":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto116j");
+
 			LAi_QuestDelay("Caroline_jump_3A", 0.2);
 		break;
 
 		case "Caroline_jump_3A":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "roof4");
 			PlaySound("PEOPLE\Jump_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_3", 1.0);
+
+			LAi_QuestDelay("Caroline_walk_3", 0.5);
 		break;
 
 		case "Caroline_walk_3":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto117w");
-			PlaySound("PEOPLE\Run_Roof.wav");
-			LAi_QuestDelay("Caroline_walk_3A", 0.5);
-		break;
-
-		case "Caroline_walk_3A":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto118");
-			LAi_QuestDelay("Caroline_jump_4", 0.5);
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "box", "box4", "Caroline_jump_4", 3.5);
 		break;
 
 		case "Caroline_jump_4":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto118j");
+
 			LAi_QuestDelay("Caroline_jump_4A", 0.2);
 		break;
 
 		case "Caroline_jump_4A":
-			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "reload", "reload20");
+			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "reload20");
 			PlaySound("PEOPLE\Jump_Stone.wav");
-			LAi_QuestDelay("Caroline_on_terrace", 0.5);
+	
+			LAi_QuestDelay("Caroline_jump_4B", 1.0);
+		break;
+
+		case "Caroline_jump_4B":
+			LAi_SetActorType(characterFromID("Wench3"));
+			LAi_ActorTurnToLocator(characterFromID("Wench3"), "goto", "goto107");
+
+			LAi_QuestDelay("Caroline_on_terrace", 1.0);
 		break;
 
 		case "Caroline_on_terrace":
-			LAi_SetActorType(characterFromID("Wench3"));
-			LAi_ActorTurnToCharacter(characterFromID("Wench3"), PChar);
-			LAi_ActorDialog(characterFromID("Wench3"), pchar, "", 1.0, 1.0);
-			LAi_ActorWaitDialog(Pchar, characterFromID("Wench3"));
+			LAi_ActorSelfDialog(characterFromID("Wench3"), "");
 		break;
-	//---------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
 		case "Blaze_ready_to_walk_0":
 			//from Caroline dialog
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "roof2");
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box1");
-		break;
-
-		case "Blaze_walk_0":
-			PlaySound("PEOPLE\Run_stone.wav");
-			LAi_QuestDelay("Blaze_walk_0A", 0.5);
-		break;
-
-		case "Blaze_walk_0A":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto111");
-			LAi_QuestDelay("Blaze_roof_fencing_1", 0.7);
-		break;
-	//....................................................................................................
-		case "Blaze_roof_fencing_1":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "roof2");
-			PlaySound("PEOPLE\Jump_Roof.wav");
+			LAi_SetPlayerType(Pchar);
 
 			RemoveCharacterEquip(CharacterFromID("Mistress"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(CharacterFromID("Mistress"), "blade5" );
 			GiveItem2Character(characterFromID("Mistress"), "bladebbuss");
 			EquipCharacterByItem(characterFromID("Mistress"), "bladebbuss");
 
-			LAi_QuestDelay("Blaze_roof_fencing_1A", 1.0);
+			pchar.quest.Blaze_roof_fencing_1A.win_condition.l1 = "locator"
+			pchar.quest.Blaze_roof_fencing_1A.win_condition.l1.location = "QC_town";
+			pchar.quest.Blaze_roof_fencing_1A.win_condition.l1.locator_group = "goto";
+			pchar.quest.Blaze_roof_fencing_1A.win_condition.l1.locator = "roof2";
+			pchar.quest.Blaze_roof_fencing_1A.win_condition = "Blaze_roof_fencing_1A";
 		break;
-
+	
 		case "Blaze_roof_fencing_1A":
 			PlaySound("AMBIENT\TAVERN\tinkle4.wav");
 			PlaySound("AMBIENT\TAVERN\drop4.wav");
-
-			LAi_group_MoveCharacter(characterFromID("Brthug7"), "ROOF_THUGS_1");
-			LAi_group_Register("ROOF_THUGS_1");
-			LAi_group_SetRelation(LAI_GROUP_PLAYER, "ROOF_THUGS_1", LAI_GROUP_ENEMY);
-			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_1", true);
-
+		
 			LAi_QuestDelay("Blaze_roof_fencing_2", 1.0);
 		break;
 
 		case "Blaze_roof_fencing_2":
 			pchar.quest.wr_quest2 = "warning_thug_behind";
 
-			LAi_SetActorType(characterFromID("Wench3"));
-			LAi_ActorTurnToCharacter(characterFromID("Wench3"), PChar);
-			LAi_ActorDialog(characterFromID("Wench3"), pchar, "", 0.0, 0.0);
-			LAi_ActorWaitDialog(Pchar, characterFromID("Wench3"));
+			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "dialog1");
+			LAi_ActorSelfDialog(characterFromID("Wench3"), "");
 		break;
 
 		case "Blaze_roof_fencing_3":
 			PlaySound("PEOPLE\Run_stone.wav");
 
 			ChangeCharacterAddressGroup(characterFromID("Brthug7"), "QC_town", "goto", "goto111");
-			TakenItems(characterFromID("Brthug7"), "potion1", 2);
-
+			
 			ChangeCharacterAddressGroup(characterFromID("Mistress"), "QC_town", "goto", "goto108");
-
 			LAi_SetActorType(characterFromID("Mistress"));
 			LAi_ActorTurnToLocator(characterFromID("Mistress"), "goto", "roof2");
 
@@ -2565,6 +2502,8 @@ void QuestComplete(string sQuestName)
 
 		case "Blaze_roof_fencing_4":
 			PlaySound("OBJECTS\DUEL\man_attack6.wav");
+			LAi_SetActorType(characterFromID("Brthug7"));
+			LAi_ActorAttack(CharacterFromID("Brthug7"), Pchar, "");
 
 			LAi_SetPlayerType(Pchar);
 
@@ -2575,13 +2514,15 @@ void QuestComplete(string sQuestName)
 
 		case "Blaze_roof_fencing_5":
 			PlaySound("OBJECTS\VOICES\DEAD\female\dead_wom6.wav");
+			
+			LAi_QuestDelay("Blaze_roof_fencing_5A", 1.0);
+		break;
 
-			LAi_group_MoveCharacter(characterFromID("Mistress"), "ROOF_THUGS_2");
-			LAi_group_Register("ROOF_THUGS_2");
-			LAi_group_SetRelation(LAI_GROUP_PLAYER, "ROOF_THUGS_2", LAI_GROUP_ENEMY);
-			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_2", true);
+		case "Blaze_roof_fencing_5A":
+			LAi_SetPlayerType(characterFromID("Mistress"));
+			LAi_SetFightMode(CharacterFromID("Mistress"), true);
 
-			LAi_QuestDelay("Blaze_roof_fencing_6", 2.0);	//was 1.0
+			LAi_QuestDelay("Blaze_roof_fencing_6", 1.0);
 		break;
 
 		case "Blaze_roof_fencing_6":
@@ -2598,108 +2539,60 @@ void QuestComplete(string sQuestName)
 			LAi_ApplyCharacterDamage(Pchar, Php3);
 
 			LAi_QuestDelay("Blaze_roof_fencing_6A", 1.0);
-			LAi_QuestDelay("Blaze_roof_fencing_7", 2.0);
+			LAi_QuestDelay("Blaze_roof_fencing_8", 3.0);
 		break;
 
 		case "Blaze_roof_fencing_6A":
 			PlaySound("OBJECTS\duel\man_hit4.wav");
 		break;
 
-		case "Blaze_roof_fencing_7":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto110");
-			PlaySound("PEOPLE\Jump_Stone.wav");
-			LAi_QuestDelay("Blaze_roof_fencing_8", 1.0);
-		break;
-
 		case "Blaze_roof_fencing_8":
 			ChangeCharacterAddressGroup(characterFromID("Mistress"), "QC_town", "goto", "goto107");
 			PlaySound("PEOPLE\Run_roof.wav");
+
 			LAi_QuestDelay("Blaze_roof_fencing_9", 0.5);
 		break;
 
 		case "Blaze_roof_fencing_9":
-			ChangeCharacterAddressGroup(characterFromID("Mistress"), "QC_town", "goto", "goto106");
+			PlaySound("INTERFACE\closed_door.wav");
+			ChangeCharacterAddressGroup(characterFromID("Mistress"), "none", "", "");
+
 			LAi_QuestDelay("Blaze_roof_fencing_10", 1.0);
 		break;
 
 		case "Blaze_roof_fencing_10":
-			PlaySound("INTERFACE\closed_door.wav");
-
 			ChangeCharacterAddressGroup(characterFromID("Brthug7"), "none", "", "");
-			ChangeCharacterAddressGroup(characterFromID("Mistress"), "none", "", "");
 
 			RemoveCharacterEquip(CharacterFromID("Mistress"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(CharacterFromID("Mistress"), "bladebbuss" );
 			GiveItem2Character(characterFromID("Mistress"), "blade5");
 			EquipCharacterByItem(characterFromID("Mistress"), "blade5");
 
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "roof2");
 			LAi_QuestDelay("Blaze_jump_1", 3.0);
 		break;
-	//....................................................................................................
+//....................................................................................................
 		case "Blaze_jump_1":
 			LAi_SetPlayerType(Pchar);
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box2");
-			PlaySound("PEOPLE\Jump_Roof.wav");
+
+			pchar.quest.Roof_knifeman_attack1.win_condition.l1 = "locator"
+			pchar.quest.Roof_knifeman_attack1.win_condition.l1.location = "QC_town";
+			pchar.quest.Roof_knifeman_attack1.win_condition.l1.locator_group = "goto";
+			pchar.quest.Roof_knifeman_attack1.win_condition.l1.locator = "roof5";
+			pchar.quest.Roof_knifeman_attack1.win_condition = "Roof_knifeman_attack1";
 		break;
 
-		case "Blaze_walk_1":
-			PlaySound("PEOPLE\Run_roof.wav");
-			LAi_QuestDelay("Blaze_walk_1A", 0.5);
-		break;
-
-		case "Blaze_walk_1A":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto114");
-			LAi_QuestDelay("Blaze_jump_2", 0.5);
-		break;
-
-		case "Blaze_jump_2":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "roof3");
-			PlaySound("PEOPLE\Jump_Roof.wav");
-		break;
-
-		case "Blaze_walk_2":
-			PlaySound("PEOPLE\Run_roof.wav");
-			LAi_QuestDelay("Blaze_walk_2A", 0.5);
-		break;
-
-		case "Blaze_walk_2A":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto116");
-			LAi_QuestDelay("Blaze_jump_3", 0.5);
-		break;
-
-		case "Blaze_jump_3":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "roof4");
-			PlaySound("PEOPLE\Jump_Roof.wav");
-		break;
-
-		case "Blaze_walk_3":
-			PlaySound("PEOPLE\Run_roof.wav");
-			LAi_QuestDelay("Blaze_walk_3A", 0.5);
-		break;
-
-		case "Blaze_walk_3A":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto118");
-			LAi_QuestDelay("Blaze_jump_4", 0.5);
-		break;
-
-
-		case "Blaze_jump_4":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "roof5");
-			PlaySound("PEOPLE\Jump_Stone.wav");
+		case "Roof_knifeman_attack1":
 			LAi_SetStayType(Pchar);
-
-			LAi_QuestDelay("Roof_knifeman_attack2", 1.0);
+			LAi_QuestDelay("Roof_knifeman_attack2", 0.5);		//was 1.0
 		break;
 
 		case "Roof_knifeman_attack2":
 			LAi_SetPlayerType(Pchar);
-
-			LAi_SetActorType(characterFromID("Brthug3"));
-			LAi_ActorAttack(CharacterFromID("Brthug3"), Pchar, "");
+		
 			ChangeCharacterAddressGroup(characterFromID("Brthug3"), "QC_town", "goto", "goto118");
 			GiveItem2Character(CharacterFromID("Brthug3"), "bladeX4");//no blade no laydown
+			LAi_SetPlayerType(characterFromID("Brthug3"));
+			LAi_SetFightMode(CharacterFromID("Brthug3"), true);
 
 			PlaySound("OBJECTS\duel\knife_woodrattle.wav");
 
@@ -2754,7 +2647,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("OBJECTS\duel\knife_male.wav");
 
 			LAi_ApplyCharacterDamage(Pchar, 10 + rand(5));
-			LAi_tmpl_ani_PlayAnimation(Pchar, "afraid", 4.5);		//was 1 0r 1.5
+			LAi_tmpl_ani_PlayAnimation(Pchar, "afraid", 4.5);
 
 			RemoveCharacterEquip(CharacterFromID("Brthug3"), BLADE_ITEM_TYPE);
 	              	TakeItemFromCharacter(CharacterFromID("Brthug3"), "blade5" );//a fake throwing knife
@@ -2805,8 +2698,7 @@ void QuestComplete(string sQuestName)
 		case "afraid_to_jump":
 			//from Caroline dialog1
 
-			ChangeCharacterAddressGroup(CharacterFromID("Wench3"), "QC_town", "goto", "roof6");
-			PlaySound("PEOPLE\Run_stone.wav");
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "goto", "roof6", "_", 2.0);
 
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "roof6");
@@ -2817,26 +2709,29 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "afraid_to_jump_1":
-			LAi_SetPlayerType(Pchar);
-
 			LAi_SetActorType(characterFromID("Wench3"));
 			LAi_ActorTurnToCharacter(characterFromID("Wench3"), PChar);
 			LAi_ActorDialog(characterFromID("Wench3"), pchar, "", 1.0, 1.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Wench3"));
 		break;
-	//=================================================================================================================
+//=================================================================================================================
 		case "afraid_to_jump_2":
 			//from Caroline dialog2
-			PlaySound("PEOPLE\recoil.wav");
+			LAi_SetPlayerType(Pchar);
 
-			ChangeCharacterAddressGroup(CharacterFromID("Wench3"), "QC_town", "reload", "reload22");
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box5");
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "goto", "reload22", "_", 2.0);
+		//	ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box5");
 
 			pchar.quest.wr_quest2 = "store_upperdoor_talk";
+
+			pchar.quest.afraid_to_jump_3.win_condition.l1 = "locator"
+			pchar.quest.afraid_to_jump_3.win_condition.l1.location = "QC_town";
+			pchar.quest.afraid_to_jump_3.win_condition.l1.locator_group = "goto";
+			pchar.quest.afraid_to_jump_3.win_condition.l1.locator = "roof6";	//was roof6
+			pchar.quest.afraid_to_jump_3.win_condition = "afraid_to_jump_3";
 		break;
 
 		case "afraid_to_jump_3":
-			PlaySound("PEOPLE\Run_stone.wav");//pchar running
 			LAi_QuestDelay("afraid_to_jump_4", 2.0);
 		break;
 
@@ -2849,25 +2744,27 @@ void QuestComplete(string sQuestName)
 
 		case "store_upperdoor":
 			//from CK dialog
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box6");
+		//	ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box6");
 			pchar.quest.wr_quest2 = "go_on_Captain";
 
 			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "reload", "reload25");
+			LAi_ActorTurnToLocator(Pchar, "goto", "reload25");
 
-			ChangeCharacterAddressGroup(CharacterFromID("Wench3"), "QC_town", "goto", "roof5");
-			PlaySound("PEOPLE\Run_stone.wav");
-
-			LAi_QuestDelay("store_upperdoor_1", 0.5);
+			LAi_ActorRunToLocator(characterFromID("Wench3"), "goto", "roof5", "store_upperdoor_1", 2.0);
 		break;
-
+//pär här
 		case "store_upperdoor_1":
+			LAi_SetActorType(characterFromID("Wench3"));
+			LAi_ActorTurnToCharacter(characterFromID("Wench3"), PChar);
+
 			LAi_SetPlayerType(Pchar);
+			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box7", 0.7);
+			Locations[FindLocation("QC_town")].locators_radius.box.box7 = 0.7;
+
+			LAi_QuestDelay("store_upperdoor_2", 0.01);
 		break;
 
 		case "store_upperdoor_2":
-			PlaySound("PEOPLE\Run_stone.wav");
-
 			pchar.quest.store_upstairs.win_condition.l1 = "locator";
 			pchar.quest.store_upstairs.win_condition.l1.location = "QC_store_upstairs";
 			pchar.quest.store_upstairs.win_condition.l1.locator_group = "goto";
@@ -3092,7 +2989,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Wench3"));
 		break;
 
-		//-----------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------------
 		case "arrive_store_upstairs":
 			//from itemlogic
 			DoQuestReloadToLocation("QC_store_upstairs", "goto", "goto30", "_");
@@ -3306,20 +3203,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(CharacterFromID("Brthug4"), "QC_town", "goto", "goto36");
 				PlaySound("PEOPLE\Run_stone.wav");
 			}
-
-			if(!LAi_IsDead(CharacterFromID("Brthug5")) )
-			{
-				//change thug5 weapons
-				RemoveCharacterEquip(CharacterFromID("Brthug5"), BLADE_ITEM_TYPE);
-	              		TakeItemFromCharacter(CharacterFromID("Brthug5"), "bladep2" );
-				RemoveCharacterEquip(CharacterFromID("Brthug5"), GUN_ITEM_TYPE);
-	              		TakeItemFromCharacter(CharacterFromID("Brthug5"), "pistolb1" );
-
-				GiveItem2Character(CharacterFromID("Brthug5"), "blade1");
-				EquipCharacterByItem(CharacterFromID("Brthug5"), "blade1");
-				GiveItem2Character(CharacterFromID("Brthug5"), "pistol2");
-				EquipCharacterByItem(CharacterFromID("Brthug5"), "pistol2");
-			}
+		
 			LAi_QuestDelay("3thugs_4adv2", 0.2);
 		break;
 
@@ -3367,7 +3251,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("ck_bladep0_terrace", 0.1);
 			LAi_QuestDelay("3thugs_5adv1", 1.0);
 		break;
-	//----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 		case "ck_bladep0_terrace":
 			if(CheckAttribute(Pchar,"quest.terrace_ambush") && Pchar.quest.terrace_ambush == "started")
 			{
@@ -3387,7 +3271,7 @@ void QuestComplete(string sQuestName)
 			}
 			else return;
 		break;
-	//----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 		case "3thugs_5adv1":
 			if(!LAi_IsDead(CharacterFromID("Brthug5")) )
 			{
@@ -3416,7 +3300,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("3thugs_checkdead", 0.5);
 		break;
-
+//pär här
 		case "3thugs_checkdead":
 			Pchar.quest.3thugs_dead_yes.win_condition.l1 = "NPC_Death";
 			Pchar.quest.3thugs_dead_yes.win_condition.l1.character = "Brthug5";
@@ -3444,7 +3328,9 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "reload", "reload23");
+		//	LAi_ActorTurnToLocator(Pchar, "reload", "reload23");
+		LAi_ActorTurnToCharacter(PChar, CharacterFromID("Wench3"));
+
 			LAi_QuestDelay("3thugs_dead_yes_2", 2.0);
 		break;
 
@@ -3458,22 +3344,57 @@ void QuestComplete(string sQuestName)
 			//from caroline dialog
 			ChangeCharacterAddressGroup(Pchar, "QC_town", "box", "box8");
 			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "reload", "reload22");
-		break;
+		//	LAi_ActorTurnToLocator(Pchar, "reload", "reload22");
+	//	LAi_ActorTurnToLocator(Pchar, "goto", "reload22");
 
+			LAi_SetPlayerType(Pchar);
+
+			pchar.quest.run_and_jump_A.win_condition.l1 = "locator";
+			pchar.quest.run_and_jump_A.win_condition.l1.location = "QC_town";
+			pchar.quest.run_and_jump_A.win_condition.l1.locator_group = "goto";
+			pchar.quest.run_and_jump_A.win_condition.l1.locator = "goto28";
+			pchar.quest.run_and_jump_A.win_condition = "run_and_jump_3";
+
+			pchar.quest.run_and_jump_B.win_condition.l1 = "locator";
+			pchar.quest.run_and_jump_B.win_condition.l1.location = "QC_town";
+			pchar.quest.run_and_jump_B.win_condition.l1.locator_group = "goto";
+			pchar.quest.run_and_jump_B.win_condition.l1.locator = "goto29";
+			pchar.quest.run_and_jump_B.win_condition = "run_and_jump_3";
+
+			pchar.quest.run_and_jump_C.win_condition.l1 = "locator";
+			pchar.quest.run_and_jump_C.win_condition.l1.location = "QC_town";
+			pchar.quest.run_and_jump_C.win_condition.l1.locator_group = "goto";
+			pchar.quest.run_and_jump_C.win_condition.l1.locator = "goto30";
+			pchar.quest.run_and_jump_C.win_condition = "run_and_jump_3";
+
+			pchar.quest.run_and_jump_D.win_condition.l1 = "locator";
+			pchar.quest.run_and_jump_D.win_condition.l1.location = "QC_town";
+			pchar.quest.run_and_jump_D.win_condition.l1.locator_group = "goto";
+			pchar.quest.run_and_jump_D.win_condition.l1.locator = "reload22";
+			pchar.quest.run_and_jump_D.win_condition = "run_and_jump_3";
+		break;
+	/*
 		case "run_and_jump_1":
-			PlaySound("PEOPLE\Run_stone.wav");
-			LAi_QuestDelay("run_and_jump_2", 0.5);
-		break;
+			//from box8
 
+		LAi_SetActorType(Pchar);
+		LAi_ActorGoToLocator(Pchar, "goto", "reload22", "run_and_jump_3", 2.0);
+		//	PlaySound("PEOPLE\Run_stone.wav");
+
+		//	LAi_QuestDelay("run_and_jump_2", 0.5);
+		break;
+	
 		case "run_and_jump_2":
-			ChangeCharacterAddressGroup(Pchar, "QC_town", "reload", "reload22");
+		//	ChangeCharacterAddressGroup(Pchar, "QC_town", "reload", "reload22");
+		ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "reload22");
+
 			LAi_QuestDelay("run_and_jump_3", 0.2);
 		break;
-
+	*/
 		case "run_and_jump_3":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload1");
+
 			LAi_QuestDelay("run_and_jump_5", 0.5);//was 0.2
 		break;
 
@@ -3481,6 +3402,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(Pchar, "QC_town", "goto", "goto40");
 			LAi_SetSitType(Pchar);
 			PlaySound("PEOPLE\Jump_roof.wav");
+
 			LAi_QuestDelay("run_and_jump_8", 0.7);
 		break;
 
@@ -3489,11 +3411,13 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(Pchar);
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto40");
 			PlaySound("PEOPLE\Jump.wav");
+
 			LAi_QuestDelay("run_and_jump_9", 0.8);
 		break;
 
 		case "run_and_jump_9":
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "goto", "goto40A");
+
 			LAi_QuestDelay("run_and_jump_10", 0.1);//was 0.2
 		break;
 
@@ -3674,9 +3598,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			Pchar.quest.kill_mistress = "yes";
 		break;
-
+	
 		case "run_and_jump_29":
-			Pchar.quest.kill_mistress = "no";		//reset to normal
+			Pchar.quest.kill_mistress = "no";		//reset to normal	
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload17");
 			LAi_QuestDelay("run_and_jump_30", 2.0);
@@ -3732,7 +3656,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Peter Blowhorn"), pchar, "", 1.5, 1.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Peter Blowhorn"));
 		break;
-	//...................................................................................................................
+//...................................................................................................................
 		case "leave_town":
 			//from PB dialog [1/5]
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_Store_JRH", "goto", "locator6");
@@ -4039,7 +3963,7 @@ void QuestComplete(string sQuestName)
 			LAi_KillCharacter(Pchar);
 		break;
 
-	//...................................................................................................................
+//...................................................................................................................
 		case "store_deal":
 			LAi_SetActorType(Pchar);
 			LAi_SetStayType(Pchar);
@@ -4390,7 +4314,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 
-	//------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
 		case "coastbrothers_kill":
 			//Locations[FindLocation("QC_Store_upstairs")].reload.l1.disable = 0;//to store
 			// no never
@@ -4450,7 +4374,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother22"), Pchar);
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother23"), Pchar);
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother24"), Pchar);
-			// LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother25"), Pchar);
+			//LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother25"), Pchar);
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother26"), Pchar);
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother27"), Pchar);
 			LAi_ActorTurnToCharacter(CharacterFromID("CoastBrother29"), Pchar);
@@ -4498,7 +4422,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorAttack(CharacterFromID("CoastBrother22"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("CoastBrother23"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("CoastBrother24"), Pchar, "");
-			// LAi_ActorAttack(CharacterFromID("CoastBrother25"), Pchar, "");
+			//LAi_ActorAttack(CharacterFromID("CoastBrother25"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("CoastBrother26"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("CoastBrother27"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("CoastBrother29"), Pchar, "");
@@ -4509,7 +4433,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("OBJECTS\ABORDAGE\abordage2.wav");
 		break;
 
-	//------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
 		case "coastbrothers_7intro":
 			PauseAllSounds();
 
@@ -4778,7 +4702,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.coastbrothers_pursuit.win_condition = "coastbrothers_pursuit";
 		break;
 
-	//......................................................................................................
+//......................................................................................................
 
 		case "coastbrothers_pursuit":
 			LAi_SetActorType(Pchar);
@@ -4801,16 +4725,20 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("cb_blaze_ready", 1.0);
 
+		Locations[FindLocation("QC_town")].models.day.charactersPatch = "QCtown_p";		//reset
+		Locations[FindLocation("QC_town")].models.night.charactersPatch = "QCtown_p";
+	
 			pchar.quest.store_roof_1.win_condition.l1 = "location";
 			pchar.quest.store_roof_1.win_condition.l1.location = "QC_town";
 			pchar.quest.store_roof_1.win_condition = "store_roof_1";
+	
 		break;
 
 		case "cb_blaze_ready":
 			LAi_SetPlayerType(Pchar);
 			LAi_QuestDelay("cb10_below_wait", 0.1); //was 2.5
 		break;
-	//......................................................................................................
+//......................................................................................................
 
 		case "cb10_below_wait":
 			LAi_SetActorType(CharacterFromID("CoastBrother10"));
@@ -5266,7 +5194,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("shya_take_sack_box6", 0.1);
 		break;
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//[2?] from here
+//[2½] from here
 		case "fill_shya_boxes":
 			pchar.quest.fill_shya_boxes1.win_condition.l1 = "locator";
 			pchar.quest.fill_shya_boxes1.win_condition.l1.location = "QC_shipyard2_JRH";
@@ -6259,7 +6187,7 @@ void QuestComplete(string sQuestName)
 				//to see better + avoid ev interfence boxes
 			}
 		break;
-	//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 		case "shipyard_9":
 			//Caroline wakes up
 			LAi_SetStayType(Pchar);
@@ -6365,7 +6293,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "shipyard_23":
-			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box9", 0.001);	//no more pushing beams
+	SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box9", 0.001);	//no more pushing beams
 
 			LAi_SetActorType(characterFromID("Wench3"));
 			LAi_ActorDialog(characterFromID("Wench3"), pchar, "", 0.5, 0.5);
@@ -6402,8 +6330,8 @@ void QuestComplete(string sQuestName)
 			SetModel(characterFromID("Peter Blowhorn"), "Blowhorn_monk", "man", "man", 1.8, true);
 			ChangeCharacterAddressGroup(characterFromID("Peter Blowhorn"), "QC_store", "sit", "sit1");
 			LAi_SetStayType(characterFromID("Peter Blowhorn"));
-			Characters[GetCharacterIndex("Peter Blowhorn")].Dialog.Filename = "Kate Blowhorn_dialog.c";
-			Characters[GetCharacterIndex("Peter Blowhorn")].Dialog.Currentnode = "First time";
+		Characters[GetCharacterIndex("Peter Blowhorn")].Dialog.Filename = "Kate Blowhorn_dialog.c";
+		Characters[GetCharacterIndex("Peter Blowhorn")].Dialog.Currentnode = "First time";
 
 			SetModel(characterFromID("Jakob Nickerson"), "Nickerson_poor", "man", "man", 1.8, true);
 			ChangeCharacterAddressGroup(characterFromID("Jakob Nickerson"), "QC_shipyard", "sit", "sit3");
@@ -6413,7 +6341,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("QC_town")].reload.l1.disable = 1;//closed
 
-			AddMoneyToCharacter(characterFromID("Wench3"), 5);
+		AddMoneyToCharacter(characterFromID("Wench3"), 5);
 			ChangeCharacterAddressGroup(characterFromID("Wench3"), "QC_town", "reload", "reload4");
 			LAi_SetOfficerType(characterFromID("Wench3"));
 			PlaySound("INTERFACE\closed_locked_door.wav");
@@ -7421,7 +7349,7 @@ void QuestComplete(string sQuestName)
 				Characters[GetCharacterIndex("wr_voy")].dialog.CurrentNode  = "hint_green_door";
 
 				Locations[FindLocation("Tavern_storeroom")].reload.l4.disable = 0;//to Windem room
-				locations[FindLocation("Charles_Windem_room")].id.label = "Charles Windem's room";
+				locations[FindLocation("Charles_Windem_room")].id.label = TranslateString("","Charles Windem's room");
 				Locations[FindLocation("Tavern_storeroom")].reload.l3.disable = 1;//to library
 
 				Locations[FindLocation("wr_library")].locators_radius.reload.reload2 = 1.0;
@@ -7688,7 +7616,7 @@ void QuestComplete(string sQuestName)
 			Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"Woodes Rogers' kitchen"));
 			PlaySound("INTERFACE\closed_locked_door.wav");
 			TakeItemFromCharacter(Pchar, "key5");
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
 			Locations[FindLocation("Redmond_tavern")].reload.l2.disable = 1;//to tavern_upstairs
 			Locations[FindLocation("JRH_tavern_upstairs")].reload.l2.disable = 1;//to wr bed
 
@@ -7761,7 +7689,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.go = "WR_kitchen";
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.emerge = "reload1";
-			Locations[FindLocation("Redmond_Town_01")].reload.l16.label = "Woodes Rogers' kitchen.";
+			Locations[FindLocation("Redmond_Town_01")].reload.l16.label = TranslateString("","Woodes Rogers' kitchen.");
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.disable = 0;
 		break;
 
@@ -7808,7 +7736,7 @@ void QuestComplete(string sQuestName)
 				EquipCharacterByItem(Pchar, "pistol202");
 				Locations[FindLocation("wr_residence")].reload.l7.disable = 0;//open to armory
 				ChangeCharacterAddressGroup(CharacterFromID("wr_voy"), "none", "", "");//doc
-				locations[FindLocation("wr_armory")].id.label = "Woodes Rogers' armory";
+				locations[FindLocation("wr_armory")].id.label = TranslateString("","Woodes Rogers' armory");
 
 				LAi_QuestDelay("pistol2", 0.1);
 			}
@@ -8303,7 +8231,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToLocator(characterFromID("Woodes Rogers"), "officers", "reload2_2");
 			LAi_QuestDelay("governor_back9", 1.0);
 		break;
-
+//pär terrace
 		case "governor_back9":
 			Locations[FindLocation("wr_residence")].reload.l1.disable = 0;
 			LAi_SetActorType(characterFromID("Woodes Rogers"));
@@ -8311,8 +8239,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "governor_back10":
-			ChangeCharacterAddressGroup(CharacterFromID("Woodes Rogers"), "Redmond_town_04", "goto", "goto_45");
-			Pchar.quest.wr_terrace = "first_time";
+			ChangeCharacterAddressGroup(CharacterFromID("Woodes Rogers"), "wr_terrace", "goto", "goto_45");
 			Locations[FindLocation("wr_armory")].reload.l2.disable = 0;//open now to residence
 			Locations[FindLocation("wr_residence")].reload.l3.disable = 1;//window now closed
 			Locations[FindLocation("Redmond_Town_01")].reload.l18.disable = 1;//window now closed
@@ -8325,7 +8252,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("bladepickaxe1_check", 0.1);
 
 			pchar.quest.terrace_out0.win_condition.l1 = "locator";
-			pchar.quest.terrace_out0.win_condition.l1.location = "Redmond_town_04";
+			pchar.quest.terrace_out0.win_condition.l1.location = "wr_terrace";
 			pchar.quest.terrace_out0.win_condition.l1.locator_group = "goto";
 			pchar.quest.terrace_out0.win_condition.l1.locator = "terr_out1";
 			pchar.quest.terrace_out0.win_condition = "terrace_out0";
@@ -8333,96 +8260,16 @@ void QuestComplete(string sQuestName)
 //...................................................................................................................
 		case "terrace_out0":
 			PlaySound("INTERFACE\closed_door.wav");
+			Locations[FindLocation("wr_residence")].reload.l1.emerge = "reload2";
 
 			LAi_QuestDelay("terrace_out1", 2.0);
 		break;
 
 		case "terrace_out1":
 			PlaySound("PEOPLE\recoil.wav");
-			ChangeCharacterAddressGroup(Pchar, "Redmond_town_04", "goto", "terr_out1X");
+			ChangeCharacterAddressGroup(Pchar, "wr_terrace", "goto", "terr_out1X");
 
-			if(CheckAttribute(Pchar,"quest.wr_terrace") && Pchar.quest.wr_terrace == "first_time")
-			{
-				LAi_QuestDelay("terrace1", 0.1);	//starts Rogers dialog
-			}
-			else
-			{
-				LAi_QuestDelay("terrace_out1_A", 1.0);
-
-			}
-		break;
-
-		case "terrace_out1_A":
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "terr_in1");
-
-			LAi_QuestDelay("terrace_out2", 1.0);
-		break;
-
-		case "terrace_out2":
-			LAi_SetPlayerType(Pchar);
-			PlaySound("PEOPLE\Run_stone.wav");
-			ChangeCharacterAddressGroup(Pchar, "Redmond_town_04", "goto", "terr_out2");
-
-			LAi_QuestDelay("terrace_out3", 2.0);
-		break;
-
-		case "terrace_out3":
-			DoQuestReloadToLocation("Redmond_town_01", "goto", "terr_out3", "terrace_out4");
-		break;
-
-		case "terrace_out4":
-			PlaySound("PEOPLE\Run_stone.wav");
-
-			LAi_QuestDelay("terrace_out5", 2.0);
-		break;
-
-		case "terrace_out5":
-			PlaySound("INTERFACE\rusty.wav");
-			ChangeCharacterAddressGroup(Pchar, "Redmond_town_01", "reload", "reload6");
-
-	//RESTARTS WAY IN
-			pchar.quest.terrace_in1.win_condition.l1 = "locator";
-			pchar.quest.terrace_in1.win_condition.l1.location = "Redmond_town_04";
-			pchar.quest.terrace_in1.win_condition.l1.locator_group = "goto";
-			pchar.quest.terrace_in1.win_condition.l1.locator = "terr_in1";
-			pchar.quest.terrace_in1.win_condition = "terrace_in1";
-		break;
-//...................................................................................................................
-		case "terrace_in1":
-			//Locations[FindLocation("wr_residence")].reload.l1.disable = 0;		//if locked to terrace
-			PlaySound("INTERFACE\rusty.wav");
-
-			LAi_QuestDelay("terrace_in2", 2.0);
-		break;
-
-		case "terrace_in2":
-			PlaySound("PEOPLE\Run_stone.wav");
-			ChangeCharacterAddressGroup(Pchar, "Redmond_town_04", "goto", "terr_in2");
-
-			LAi_QuestDelay("terrace_in3", 2.0);
-		break;
-
-		case "terrace_in3":
-			PlaySound("PEOPLE\Run_stone.wav");
-			ChangeCharacterAddressGroup(Pchar, "Redmond_town_04", "reload", "reload7");
-
-			pchar.quest.terrace_in4.win_condition.l1 = "locator";
-			pchar.quest.terrace_in4.win_condition.l1.location = "wr_residence";
-			pchar.quest.terrace_in4.win_condition.l1.locator_group = "reload";
-			pchar.quest.terrace_in4.win_condition.l1.locator = "reload1";
-			pchar.quest.terrace_in4.win_condition = "terrace_in4";
-		break;
-
-		case "terrace_in4":
-			PlaySound("INTERFACE\closed_door.wav");
-
-	//RESTARTS WAY OUT
-			pchar.quest.terrace_out0.win_condition.l1 = "locator";
-			pchar.quest.terrace_out0.win_condition.l1.location = "Redmond_town_04";
-			pchar.quest.terrace_out0.win_condition.l1.locator_group = "goto";
-			pchar.quest.terrace_out0.win_condition.l1.locator = "terr_out1";
-			pchar.quest.terrace_out0.win_condition = "terrace_out0";
+			LAi_QuestDelay("terrace1", 0.1);	//starts Rogers dialog
 		break;
 //...................................................................................................................
 		case "governor_back11":
@@ -8447,7 +8294,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("wr_oman1X"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("powdermonkey"), "none", "", "");
 			if(CheckCharacterItem(Pchar,"cannonballs")) TakeItemFromCharacter(Pchar, "cannonballs");
-
+		
 			LAi_QuestDelay("terrace2", 1.0);
 		break;
 
@@ -8474,19 +8321,11 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "after_terrace_dialog":
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "terr_in1");
-
-			LAi_QuestDelay("after_terrace_dialog1", 2.5);
-		break;
-
-		case "after_terrace_dialog1":
-			Pchar.quest.wr_terrace = "second_time";
 			LAi_SetPlayerType(Pchar);
-
-			LAi_QuestDelay("terrace_out2", 1.0);
+			SetLocatorRadius(locations[FindLocation(Pchar.location)], "reload", "reload2", 1.0);
+			locations[FindLocation("wr_terrace")].locators_radius.reload.reload2 = 1.0;		//was small from start
 		break;
-
+	
 		case "bladepickaxe1_check":
 			if(CheckCharacterItem(Pchar,"bladepickaxe1"))
 			{
@@ -8566,7 +8405,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_UsurerHouse")].locators_radius.randitem.randitem3 = 1.1;
 			Locations[FindLocation("Redmond_UsurerHouse")].locators_radius.box.box2 = 0.0001;
 			Locations[FindLocation("Redmond_UsurerHouse")].locators_radius.reload.reload4 = 0.0001;
-			locations[FindLocation("Loanshark_cellar")].id.label = "Loanshark cellar";
+			locations[FindLocation("Loanshark_cellar")].id.label = TranslateString("","Loanshark cellar");
 
 			LAi_QuestDelay("stick_on_floorhatch1", 0.1);
 		break;
@@ -8681,7 +8520,7 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("Redmond_tavern")].reload.l1.disable = 1;//to town
 				Locations[FindLocation("Redmond_town_01")].reload.l31.disable = 1;//to tavern from balcony
 				Locations[FindLocation("Redmond_tavern")].reload.l3.disable = 1;//to balcony
-				locations[FindLocation("Redmond_tavern")].id.label = "CLOSED BECAUSE OF ILLNESS - Charles Windem innkeeper";
+				locations[FindLocation("Redmond_tavern")].id.label = TranslateString("","CLOSED BECAUSE OF ILLNESS - Charles Windem innkeeper");
 
 				Locations[FindLocation("Redmond_tavern")].reload.l2.disable = 0;//to room upstairs
 				Locations[FindLocation("JRH_tavern_upstairs")].reload.l2.disable = 0;//to wr bed
@@ -8702,7 +8541,7 @@ void QuestComplete(string sQuestName)
 
 				ChangeCharacterAddressGroup(CharacterFromID("Dave Edna"), "wr_shop", "sit", "sit1");
 
-				locations[FindLocation("storeroom_attic")].id.label = "Storeroom attic";
+				locations[FindLocation("storeroom_attic")].id.label = TranslateString("","Storeroom attic");
 
 				LAi_QuestDelay("pistol3_start", 0.1);
 			}
@@ -9059,7 +8898,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 
 			Pchar.quest.wr_quest2 = "shut_up_Caroline";
-			locations[FindLocation("ck_bedroom")].id.label = "Caroline K's bedroom";
+			locations[FindLocation("ck_bedroom")].id.label = TranslateString("","Caroline K's bedroom");
 			Locations[FindLocation("wr_kitchen")].reload.l5.disable = 0;//kitchen to Car bed
 
 			LAi_QuestDelay("key8", 0.1);
@@ -9183,14 +9022,14 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\gr_WR_friend2.wav");
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l1.disable = 1;//to town
 			Locations[FindLocation("Redmond_Town_01")].reload.l10.disable = 1;//to LS
-			locations[FindLocation("Redmond_UsurerHouse")].id.label = "TEMPORARY OUT OF GOLD. OPEN SOON AGAIN. Robyn Corrick - bank manager";
+			locations[FindLocation("Redmond_UsurerHouse")].id.label = TranslateString("","TEMPORARY OUT OF GOLD. OPEN SOON AGAIN. Robyn Corrick - bank manager");
 			ChangeCharacterAddressGroup(CharacterFromID("Redmond Usurer"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("Dave Edna"), "none", "", "");
 
 			Locations[FindLocation("Tavern_storeroom")].reload.l4.disable = 0;//to Windem room
 			Locations[FindLocation("Charles_Windem_room")].reload.l2.disable = 0;//to attic
-			locations[FindLocation("storeroom_attic")].id.label = "Storeroom attic";
-			locations[FindLocation("storeroom_attic")].id.label = "Storeroom attic";
+			locations[FindLocation("storeroom_attic")].id.label = TranslateString("","Storeroom attic");
+			locations[FindLocation("storeroom_attic")].id.label = TranslateString("","Storeroom attic");
 
 			locations[FindLocation("Redmond_tavern")].type = "house";
 			Locations[FindLocation("Redmond_tavern")].models.always.locators = "LT_l_JRH3";//without characters
@@ -9409,14 +9248,14 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_library")].reload.l6.go = "Redmond_UsurerHouse";
 			Locations[FindLocation("wr_library")].reload.l6.emerge = "reload5";
 			Locations[FindLocation("wr_library")].reload.l6.autoreload = "0";
-			Locations[FindLocation("wr_library")].reload.l6.label = "Loanshark's Office.";
+			Locations[FindLocation("wr_library")].reload.l6.label = TranslateString("","Loanshark's Office.");
 			Locations[FindLocation("wr_library")].reload.l6.disable = 0;
 
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.name = "reload5";
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.go = "wr_library";
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.emerge = "reload6";
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.autoreload = "0";
-			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.label = "Woodes Rogers? library.";
+			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.label = TranslateString("","Woodes Rogers' library");
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l3.disable = 0;
 
 			pchar.quest.padlock_shop.win_condition.l1 = "location";
@@ -9455,7 +9294,7 @@ void QuestComplete(string sQuestName)
 		case "shop_closet0":
 			ChangeCharacterAddressGroup(CharacterFromID("Dave Edna"), "wr_shop", "reload", "reload3");
 			LAi_SetStayType(CharacterFromID("Dave Edna"));
-			Locations[FindLocation("wr_shop")].reload.l3.disable = 0;//to shop entr?
+			Locations[FindLocation("wr_shop")].reload.l3.disable = 0;//to shop entré
 			Locations[FindLocation("Redmond_Town_01")].reload.l27.disable = 0;//to shop
 			LAi_QuestDelay("shop_closet1", 0.5);
 		break;
@@ -9519,7 +9358,7 @@ void QuestComplete(string sQuestName)
 
 			GiveItem2Character(CharacterFromID("wr_fsh"), "bladearmchair");
 			EquipCharacterbyItem(characterFromID("wr_fsh"), "bladearmchair");
-
+			
 			PlaySound("INTERFACE\Closet_open.wav");
 			LAi_SetStayType(CharacterFromID("wr_fsh"));
 			ChangeCharacterAddressGroup(CharacterFromID("wr_fsh"), "wr_shop", "reload", "reload2");
@@ -9755,7 +9594,7 @@ void QuestComplete(string sQuestName)
 		case "shop_walkers11":
 			PlaySound("PEOPLE\run_wood.wav");
 			ChangeCharacterAddressGroup(Pchar, "wr_shop", "box", "box4");
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 			LAi_QuestDelay("shop_walkers12", 1.0);
 		break;
 
@@ -9906,7 +9745,7 @@ void QuestComplete(string sQuestName)
 
 		case "bladetalk_over2":
 			LAi_SetPlayerType(Pchar);		//to enable pchar-started dialog
-
+		
 			if (WEAPONSLOCKER == 1)
 			{
 				pchar.quest.upgrade_weaponslocker.win_condition.l1 = "location";
@@ -9914,7 +9753,7 @@ void QuestComplete(string sQuestName)
 				pchar.quest.upgrade_weaponslocker.win_condition = "upgrade_weaponslocker";
 			}
 		break;
-
+	
 		case "upgrade_weaponslocker":
 			//these are added even if there are better border weapons in the weaponslocker already - maybe there is only one better gun
 			//or does it matter?
@@ -9923,7 +9762,7 @@ void QuestComplete(string sQuestName)
 		//	locations[FindLocation(Pchar.location)].box2.items.blade11 = 12;//how many borders?
 		//	locations[FindLocation(Pchar.location)].box2.items.pistol3 = 12;//how many borders?
 		break;
-
+	
 		case "try_blade1":
 			//from E Cook dialog
 			PlaySound("OBJECTS\duel\sword_out.wav");
@@ -10000,11 +9839,11 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Selkirk"), "wr_library", "goto", "goto6");
 			LAi_SetStayType(CharacterFromID("Selkirk"));
 			Pchar.quest.wr_gunroom = "locked";
-			locations[FindLocation("wr_gunroom")].id.label = "Officers only!";
+			locations[FindLocation("wr_gunroom")].id.label = TranslateString("","Officers only!");
 			Locations[FindLocation("wr_library")].reload.l6.disable = 1;//closed to loanshark
 			Locations[FindLocation("wr_library")].reload.l3.disable = 1;//closed to attic
 			Locations[FindLocation("wr_residence")].locators_radius.reload.reload4 = 0.0001;//to clock
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 
 			Pchar.quest.wr_defoe = "start";
 			Pchar.quest.rum_water = "empty";	//start = empty
@@ -10439,8 +10278,8 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_library")].reload.l2.disable = 1;//locked to residence
 			ChangeCharacterAddressGroup(CharacterFromID("wr_voy"), "none", "", "");
 			Locations[FindLocation("wr_residence")].models.always.locators = "Res01_l_JRH1";
-			locations[FindLocation("Redmond_UsurerHouse")].id.label = "Loanshark's Office";
-			locations[FindLocation("Tavern_storeroom")].id.label = "Tavern storeroom";
+			locations[FindLocation("Redmond_UsurerHouse")].id.label = TranslateString("","Loanshark's Office");
+			locations[FindLocation("Tavern_storeroom")].id.label = TranslateString("","Tavern storeroom");
 			LAi_QuestDelay("librarian", 2.0);
 		break;
 
@@ -11831,7 +11670,7 @@ void QuestComplete(string sQuestName)
 			Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"A note falls out of the Medicine book!"));
 			PlaySound("AMBIENT\SHOP\paper.wav");
 			GiveItem2Character(Pchar, "note1");
-			locations[FindLocation("wr_study")].id.label = "Woodes Rogers' study";
+			locations[FindLocation("wr_study")].id.label = TranslateString("","Woodes Rogers' study");
 
 			LAi_QuestDelay("book26_finished2", 2.0);
 		break;
@@ -13101,7 +12940,7 @@ void QuestComplete(string sQuestName)
 		break;
 //...................................................................................................................
 		case "reputation_mother":
-			locations[FindLocation("wr_mother_stairs")].id.label = "Grandma's stairs";
+			locations[FindLocation("wr_mother_stairs")].id.label = TranslateString("","Grandma's stairs");
 			LAi_QuestDelay("office_ladder", 0.1);
 			LAi_SetActorType(CharacterFromID("grandma"));
 			LAi_ActorGoToLocator(characterFromID("grandma"), "goto", "goto7", "reputation_mother1", 3.0);
@@ -13130,7 +12969,7 @@ void QuestComplete(string sQuestName)
 
 		case "reputation_up":
 			//from grandma rogers dialog
-			locations[FindLocation("wr_shop_office")].id.label = "Shop office";
+			locations[FindLocation("wr_shop_office")].id.label = TranslateString("","Shop office");
 
 			ChangeCharacterReputation(pchar, 40);//5p per level. this should give 'Hero'
 			PlaySound("VOICE\ENGLISH\blaze_hah.wav");
@@ -13383,7 +13222,7 @@ void QuestComplete(string sQuestName)
 			bDisableFastReload = 0;
 			locations[FindLocation("Loanshark_cellar")].id.label = "";
 			Locations[FindLocation("Redmond_Town_01")].models.always.locators = "Red01_l_JRH4";	//bridge visible
-			locations[FindLocation("Redmond_tavern")].id.label = "Redmond tavern";
+			locations[FindLocation("Redmond_tavern")].id.label = TranslateString("","#stown_name# tavern");
 			Locations[FindLocation("Tavern_storeroom")].reload.l2.disable = 0;//open to tavern
 			ChangeCharacterAddressGroup(CharacterFromID("Charles Windem"), "none", "", "");//temp gone
 
@@ -13392,10 +13231,10 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_kitchen")].reload.l3.disable = 0;//open to food cellar
 			Locations[FindLocation("wr_kitchen")].reload.l4.disable = 1;//closed to bootyroom
 			Locations[FindLocation("Shop_stairs")].reload.l4.disable = 1;//closed to shop
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 			ChangeCharacterAddressGroup(CharacterFromID("Woodes Rogers"), "wr_kitchen", "goto", "goto6");
 			LAi_SetStayType(CharacterFromID("Woodes Rogers"));
-			locations[FindLocation("wr_food_supply")].id.label = "Woodes Rogers' food cellar";
+			locations[FindLocation("wr_food_supply")].id.label = TranslateString("","Woodes Rogers' food cellar");
 			Pchar.quest.gas_level = "0";			//start value
 			Pchar.quest.very_foggy_mine = "no";		//start value
 			Pchar.quest.key14_check = "not_started";	//start value
@@ -13429,7 +13268,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Woodes_Rogers_reward_6", "1");
 			DeleteQuestHeader("Woodes_Rogers_reward_5");
 
-			locations[FindLocation("wr_crew")].id.label = "Crew's quarter";
+			locations[FindLocation("wr_crew")].id.label = TranslateString("","Crew's quarter");
 			PlaySound("VOICE\ENGLISH\gr_WR_friend2.wav");
 			LAi_SetActorType(CharacterFromID("Woodes Rogers"));
 			LAi_ActorGoToLocator(characterFromID("Woodes Rogers"), "goto", "goto9", "mission6_given1", 7.0);//was goto9 hmm?
@@ -13495,7 +13334,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("wr_boc1"), "Redmond_Town_04", "goto", "goto_48");
 			ChangeCharacterAddressGroup(CharacterFromID("wr_kor"), "Redmond_Town_04", "goto", "goto_49");
 			Locations[FindLocation("wr_kitchen")].reload.l2.disable = 1;//to wr_bed
-			locations[FindLocation("wr_mine")].id.label = "Redmond old mine";//off from start
+			locations[FindLocation("wr_mine")].id.label = TranslateString("","Redmond old mine");//off from start
 			Locations[FindLocation("Redmond_Town_04")].reload.l19.disable = 0;//open from town to crew
 			Locations[FindLocation("Redmond_Town_01")].reload.l26.disable = 1;//town to tavern storeroom
 
@@ -13673,7 +13512,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToLocator(Pchar, "box", "box10");
 			PlaySound("INTERFACE\key_unlock.wav");
 			Pchar.quest.mine_enabled = "yes";
-			locations[FindLocation("wr_mine")].id.label = "Port Royal old mine";
+			locations[FindLocation("wr_mine")].id.label = TranslateString("","Port Royal old mine");
 
 			LAi_QuestDelay("mine_open2", 1.0);
 		break;
@@ -14283,7 +14122,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_UsurerHouse")].locators_radius.reload.locator1 = 1.0;
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l2.disable = 0;
 
-			locations[FindLocation("wr_shop")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("wr_shop")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 			Locations[FindLocation("Redmond_UsurerHouse")].image = "";
 			DoQuestReloadToLocation("wr_shop", "reload", "reload6", "after_unlock_shop");
 		break;
@@ -14323,12 +14162,12 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_Town_01")].reload.l26.go = "Tavern_storeroom";
 			Locations[FindLocation("Redmond_Town_01")].reload.l26.emerge = "reload1";
 			Locations[FindLocation("Redmond_Town_01")].reload.l26.autoreload = "0";
-			Locations[FindLocation("Redmond_Town_01")].reload.l26.label = "Tavern storeroom.";
+			Locations[FindLocation("Redmond_Town_01")].reload.l26.label = TranslateString("","Tavern storeroom");
 
 			Pchar.quest.wr_elevator = "up";
 			Locations[FindLocation("wr_shop")].models.always.locators = "residence05_locators_JRH_Lup";
 			Locations[FindLocation("Redmond_Town_01")].reload.l23.disable = 1;//reload6 to terrace
-			locations[FindLocation("Redmond_UsurerHouse")].id.label = "TEMPORARY OUT OF GOLD. OPEN SOON AGAIN. Robyn Corrick - bank manager";
+			locations[FindLocation("Redmond_UsurerHouse")].id.label = TranslateString("","TEMPORARY OUT OF GOLD. OPEN SOON AGAIN. Robyn Corrick - bank manager");
 
 			ChangeCharacterAddressGroup(CharacterFromID("grandma"), "wr_mother", "goto", "goto2");
 			LAi_SetStayType(CharacterFromID("grandma"));
@@ -14587,7 +14426,7 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("wr_mine")].locators_radius.box.box3 = 1.0;		//box1 in charge
 				Locations[FindLocation("wr_mine")].locators_radius.reload.reload4 = 0.0001;
 
-				LAi_SetStayType(Pchar);
+				LAi_SetStayType(Pchar));
 
 				LAi_QuestDelay("selkirk_in_prison", 1.0);	//story continues here
 
@@ -15125,7 +14964,7 @@ void QuestComplete(string sQuestName)
 			//Log_SetStringToLog("2F");
 		break;
 
-		case "mine_lights_3F":
+		case "mine_lights_3F":´
 			if(CheckAttribute(Pchar,"quest.very_foggy_mine") && Pchar.quest.very_foggy_mine == "yes")
 			{
 				Pchar.quest.mine_skeletons = "mode3";
@@ -15134,7 +14973,7 @@ void QuestComplete(string sQuestName)
 			else
 			{
 				Pchar.quest.mine_skeletons = "mode2";
-				LAi_QuestDelay("mine_skeletons_mode2", 0.1);	//endast h?r & ett st?lle till
+				LAi_QuestDelay("mine_skeletons_mode2", 0.1);	//endast här & ett ställe till
 			}
 
 			Locations[FindLocation("wr_mine_control")].image = "";
@@ -15362,7 +15201,7 @@ void QuestComplete(string sQuestName)
 				else
 				{
 					Pchar.quest.mine_skeletons = "mode2";
-					LAi_QuestDelay("mine_skeletons_mode2", 0.1);	//endast h?r & ett st?lle till
+					LAi_QuestDelay("mine_skeletons_mode2", 0.1);	//endast här & ett ställe till
 				}
 
 				Locations[FindLocation("wr_dungeon3_right")].models.always.locators = "d03_l_JRH_R1";
@@ -15821,7 +15660,15 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "place_plank_on_floor":
-			//from itemlogic prison box7
+			//from SL_utils wr_prison box7
+
+			//extra check as bladeplank still could be in pchars hands
+			if(CheckCharacterItem(Pchar,"bladeplank"))
+			{
+				if(IsEquipCharacterByItem(Pchar, "bladeplank")) RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
+				TakeItemFromCharacter(Pchar, "bladeplank");
+			}
+
 			Locations[FindLocation("wr_prison")].image = "wr_prison.tga";
 			PlaySound("PEOPLE\wood2.wav");
 
@@ -16044,7 +15891,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "selkirk_in_prison2":
-			LAi_SetStayType(Pchar);
+			LAi_SetStayType(Pchar));
 			LAi_SetActorType(characterFromID("Selkirk"));
 			LAi_ActorGoToLocator(characterFromID("Selkirk"), "goto", "goto13", "selkirk_in_prison3", 0.7);
 		break;
@@ -16110,7 +15957,7 @@ void QuestComplete(string sQuestName)
 
 		case "selkirk_in_prison9":
 			ChangeCharacterAddressGroup(CharacterFromID("Selkirk"), "none", "", "");
-			LAi_SetPlayerType(Pchar);
+			LAi_SetPlayerType(Pchar));
 		break;
 
 		case "selkirk_in_prison10":
@@ -17170,7 +17017,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.church_attic.win_condition.l1.location = "wr_church_outside";
 			pchar.quest.church_attic.win_condition = "church_attic";
 		break;
-
+//pär attic patch
 		case "church_attic":
 			//Log_SetStringToLog("reading church_attic");
 
@@ -17183,6 +17030,7 @@ void QuestComplete(string sQuestName)
 
 		case "church_attic1":
 			//Log_SetStringToLog("reading church_attic1");
+			LAi_SetStayType(pchar);
 
 			LAi_SetActorType(CharacterFromID("pir_cap1"));
 			LAi_SetActorType(CharacterFromID("pir_cap2"));
@@ -17282,12 +17130,6 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(CharacterFromID("pir_cap32"));
 
 			LAi_QuestDelay("church_attic_sound", 1.0);
-
-			pchar.quest.church_attic_sound3.win_condition.l1 = "locator";
-			pchar.quest.church_attic_sound3.win_condition.l1.location = "wr_church_attic";
-			pchar.quest.church_attic_sound3.win_condition.l1.locator_group = "goto";
-			pchar.quest.church_attic_sound3.win_condition.l1.locator = "goto4";
-			pchar.quest.church_attic_sound3.win_condition = "church_attic_sound3";
 		break;
 
 		case "church_attic_sound":
@@ -17303,116 +17145,67 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "church_attic_sound2":
-			PlaySound("VOICE\ENGLISH\pir_capDD.wav");
-		break;
-
-		case "church_attic_sound3":
 			PlaySound("VOICE\ENGLISH\pir_capP.wav");
+			LAi_SetPlayerType(pchar);
+
+			LAi_QuestDelay("church_attic2", 2.5);
 
 			pchar.quest.church_attic4.win_condition.l1 = "locator";
 			pchar.quest.church_attic4.win_condition.l1.location = "wr_church_attic";
 			pchar.quest.church_attic4.win_condition.l1.locator_group = "goto";
 			pchar.quest.church_attic4.win_condition.l1.locator = "goto11";
 			pchar.quest.church_attic4.win_condition = "church_attic4";
-		break;
 
+
+		break;
+	
 		case "church_attic2":
 			//from itemlogic
 			LAi_SetActorType(CharacterFromID("pir_cap2"));
 			LAi_SetActorType(CharacterFromID("pir_cap3"));
 			LAi_SetActorType(CharacterFromID("pir_cap4"));
-			LAi_SetActorType(CharacterFromID("pir_cap5"));
 			LAi_SetActorType(CharacterFromID("pir_cap6"));
 			LAi_SetActorType(CharacterFromID("pir_cap7"));
 			LAi_SetActorType(CharacterFromID("pir_cap8"));
-			LAi_SetActorType(CharacterFromID("pir_cap9"));
-			LAi_SetActorType(CharacterFromID("pir_cap10"));
 			LAi_SetActorType(CharacterFromID("pir_cap11"));
 			LAi_SetActorType(CharacterFromID("pir_cap14"));
 			LAi_SetActorType(CharacterFromID("pir_cap15"));
 			LAi_SetActorType(CharacterFromID("pir_cap16"));
-			LAi_SetActorType(CharacterFromID("pir_cap17"));
 			LAi_SetActorType(CharacterFromID("pir_cap18"));
-			LAi_SetActorType(CharacterFromID("pir_cap20"));
 			LAi_SetActorType(CharacterFromID("pir_cap21"));
-			LAi_SetActorType(CharacterFromID("pir_cap22"));
-			LAi_SetActorType(CharacterFromID("pir_cap23"));
 			LAi_SetActorType(CharacterFromID("pir_cap24"));
 
-			//---------------------------------------------
+			LAi_ActorTurnToLocator(characterFromID("pir_cap2"), "goto", "locator9");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap3"), "sit", "sit1");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap4"), "sit", "sit9");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap8"), "sit", "sit14");
 
-			LAi_SetActorType(CharacterFromID("pir_cap26"));
-			LAi_SetActorType(CharacterFromID("pir_cap27"));
-			LAi_SetActorType(CharacterFromID("pir_cap28"));
-			LAi_SetActorType(CharacterFromID("pir_cap29"));
-			LAi_SetActorType(CharacterFromID("pir_cap30"));
-			LAi_SetActorType(CharacterFromID("pir_cap31"));
-			LAi_SetActorType(CharacterFromID("pir_cap32"));
-
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap2"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap3"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap4"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap5"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap6"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap7"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap8"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap9"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap10"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap11"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap14"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap15"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap16"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap17"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap18"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap20"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap21"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap22"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap23"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap24"), Pchar);
-
-			//------------------------------------------------------------
-
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap26"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap27"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap28"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap29"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap30"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap31"), Pchar);
-			LAi_ActorTurnToCharacter(characterFromID("pir_cap32"), Pchar);
+			LAi_ActorTurnToLocator(characterFromID("pir_cap11"), "sit", "sit2");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap14"), "sit", "sit11");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap15"), "sit", "sit8");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap16"), "goto", "goto10");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap18"), "goto", "goto2");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap21"), "sit", "sit17");
+			LAi_ActorTurnToLocator(characterFromID("pir_cap24"), "sit", "sit18");
 
 			LAi_SetStayType(CharacterFromID("pir_cap2"));
 			LAi_SetStayType(CharacterFromID("pir_cap3"));
 			LAi_SetStayType(CharacterFromID("pir_cap4"));
-			LAi_SetStayType(CharacterFromID("pir_cap5"));
 			LAi_SetStayType(CharacterFromID("pir_cap6"));
 			LAi_SetStayType(CharacterFromID("pir_cap7"));
 			LAi_SetStayType(CharacterFromID("pir_cap8"));
-			LAi_SetStayType(CharacterFromID("pir_cap9"));
-			LAi_SetStayType(CharacterFromID("pir_cap10"));
 			LAi_SetStayType(CharacterFromID("pir_cap11"));
 			LAi_SetStayType(CharacterFromID("pir_cap14"));
 			LAi_SetStayType(CharacterFromID("pir_cap15"));
 			LAi_SetStayType(CharacterFromID("pir_cap16"));
-			LAi_SetStayType(CharacterFromID("pir_cap17"));
 			LAi_SetStayType(CharacterFromID("pir_cap18"));
-			LAi_SetStayType(CharacterFromID("pir_cap20"));
 			LAi_SetStayType(CharacterFromID("pir_cap21"));
-			LAi_SetStayType(CharacterFromID("pir_cap22"));
-			LAi_SetStayType(CharacterFromID("pir_cap23"));
 			LAi_SetStayType(CharacterFromID("pir_cap24"));
-
-			//--------------------------------------------
-
-			LAi_SetStayType(CharacterFromID("pir_cap26"));
-			LAi_SetStayType(CharacterFromID("pir_cap27"));
-			LAi_SetStayType(CharacterFromID("pir_cap28"));
-			LAi_SetStayType(CharacterFromID("pir_cap29"));
-			LAi_SetStayType(CharacterFromID("pir_cap30"));
-			LAi_SetStayType(CharacterFromID("pir_cap31"));
-			LAi_SetStayType(CharacterFromID("pir_cap32"));
 		break;
 
 		case "church_attic4":
+			LAi_SetStayType(pchar);
+			ChangeCharacterAddressGroup(Pchar, "wr_church_attic", "goto", "goto11");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap1"), "wr_church_attic", "sit", "stay1");
 			LAi_SetActorType(CharacterFromID("pir_cap1"));
 			LAi_ActorTurnToCharacter(characterFromID("pir_cap1"), Pchar);
@@ -17723,9 +17516,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			Locations[FindLocation("wr_church_attic_stairs")].reload.l2.disable = 1;	//to attic
 			Locations[FindLocation("wr_church_inside")].reload.l8.disable = 0;		//chapel stairs
-			locations[FindLocation("wr_chapel_stairs")].id.label = "Chapel stairs";
-			PlaySound("PEOPLE\Run_roof.wav");
-			ChangeCharacterAddressGroup(Pchar, "wr_church_attic", "reload", "reload4");
+			locations[FindLocation("wr_chapel_stairs")].id.label = TranslateString("","Chapel stairs");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap19"), "wr_church_inside", "goto", "goto11");//crew
 
 			LAi_QuestDelay("chapel_prisoners", 1.5);
@@ -17865,10 +17656,10 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("wr_mine")].reload.l2.go = "Loanshark_cellar";
 			Locations[FindLocation("wr_mine")].reload.l2.emerge = "reload1";
-			Locations[FindLocation("wr_mine")].reload.l2.label = "Loanshark cellar.";
+			Locations[FindLocation("wr_mine")].reload.l2.label = TranslateString("","Loanshark cellar.");
 			Locations[FindLocation("wr_mine")].reload.l2.disable = 0;
 			Locations[FindLocation("Loanshark_cellar")].reload.l1.disable = 0;
-			locations[FindLocation("Loanshark_cellar")].id.label = "Loanshark cellar";
+			locations[FindLocation("Loanshark_cellar")].id.label = TranslateString("","Loanshark cellar");
 			Locations[FindLocation("Redmond_UsurerHouse")].models.always.locators = "ss_l_JRH3";
 			LAi_SetPlayerType(Pchar);
 			SetCurrentTime(9.00, 0);
@@ -17892,7 +17683,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_Town_01")].reload.l13.disable = 1;	//to governor (kidnapped)
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.go = "WR_kitchen";
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.emerge = "reload1";
-			Locations[FindLocation("Redmond_Town_01")].reload.l16.label = "Woodes Rogers' kitchen.";
+			Locations[FindLocation("Redmond_Town_01")].reload.l16.label = TranslateString("","Woodes Rogers' kitchen.");
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.disable = 0;	//to kitchen
 			Locations[FindLocation("Redmond_Town_01")].reload.l23.disable = 1;	//to terrace
 			Locations[FindLocation("Redmond_Town_01")].reload.l26.disable = 0;	//to tavern storeroom
@@ -21288,7 +21079,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Woodes Rogers"), "none", "", "");
 			SetCurrentTime(20.00, 0);
 			SetNextWeather("Red Sky");
-
+		
 			LAi_SetPlayerType(Pchar);
 			DoQuestReloadToLocation("Redmond_shore_02", "reload", "reload2", "ayeaye_Captain");
 		break;
@@ -21382,6 +21173,9 @@ void QuestComplete(string sQuestName)
 		//[10] starts from here
 
 		case "cannon_tower":
+	Pchar.perks.list.BasicDefence = true;
+	Pchar.perks.freepoints = 0;
+
 			Pchar.quest.mandala_position = "1";		//start value
 	//Pchar.quest.cavern_chestkey = "no";		//pchar has to find the key (in the cannon tower)
 			Pchar.quest.cell2_check = "off";		//start value => cell4 is chosen (bomb)
@@ -21458,7 +21252,10 @@ void QuestComplete(string sQuestName)
 			Bperks = Mperks - Aperks; if(Bperks <= 0) Bperks = 0; Tperks = Aperks + Bperks;
 			Pchar.quest.Aperks = Aperks; Pchar.quest.Bperks = Bperks; Pchar.quest.Tperks = Tperks;
 
-		/*	LogIt("Mperks = " + Mperks);
+	/*	LogIt("p1 = " + p1);
+		LogIt("p2 = " + p2);
+		LogIt("ptot = " + ptot);
+			LogIt("Mperks = " + Mperks);
 			LogIt("Aperks = " + Pchar.quest.Aperks);
 			LogIt("Bperks = " + Pchar.quest.Bperks);
 			LogIt("Tperks = " + Pchar.quest.Tperks);	*/
@@ -21663,7 +21460,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_cave_shore")].reload.l111.disable = 0;
 			Locations[FindLocation("wr_Cavern")].reload.l2.disable = 0;
 			locations[FindLocation("wr_cannon_tower")].image = "wr_cannon_tower.tga";
-
+		
 			if(CheckAttribute(Pchar, "quest.Spriggs") && Pchar.quest.Spriggs == "on_shore")
 			{
 				if(CheckAttribute(Pchar, "Winter_walks") && Pchar.Winter_walks == "done")
@@ -22017,7 +21814,7 @@ void QuestComplete(string sQuestName)
 
 			TakeNItems(Pchar, "gunpowder", 12);
 			TakeNItems(Pchar, "pistolbullets", 12);
-
+		
 			LAi_QuestDelay("Vane_sacristy_Rackham_items2", 0.5);
 		break;
 
@@ -22707,7 +22504,7 @@ void QuestComplete(string sQuestName)
 					}
 				}
 				else
-				{
+				{		
 					//Aperks left
 
 					if(Pchar.location == "wr_church_inside")
@@ -22747,7 +22544,7 @@ void QuestComplete(string sQuestName)
 			//from Vane dialog
 			AddQuestRecord("Charles_Vanes_quest", "5");
 
-		Characters[GetCharacterIndex("pir_cap1")].dialog.CurrentNode  = "First time";
+		Characters[GetCharacterIndex("pir_cap1")].dialog.CurrentNode  = "First time";	
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap1"), "wr_sacristy", "sit", "sit1");
 			LAi_SetSitType(CharacterFromID("pir_cap1"));
 
@@ -22916,7 +22713,7 @@ void QuestComplete(string sQuestName)
 		case "fill_temple_boxes":
 			locations[FindLocation("wr_crypt")].id.label = "Port Royal catacombs";
 			Locations[FindLocation("wr_chapel")].environment.weather = "false";
-			Pchar.quest.JRH_rain = "";
+			//Pchar.quest.JRH_rain = "";
 			locations[FindLocation(Pchar.location)].box4.items.pistolmine = 1;
 			locations[FindLocation(Pchar.location)].box5.items.note3 = 1;
 
@@ -23785,13 +23582,13 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_Town_exit_2")].reload.l1.disable = 0;	//to town
 			Locations[FindLocation("Redmond_Town_exit_2")].reload.l5.disable = 1;	//to well
 
-			locations[FindLocation("wr_crypt")].id.label = "Port Royal catacombs";
-			locations[FindLocation("WR_kitchen")].id.label = "Woodes Rogers' kitchen";
-			locations[FindLocation("Tavern_storeroom")].id.label = "Tavern storeroom";
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
-			locations[FindLocation("wr_crew")].id.label = "Crew's quarter";
-			locations[FindLocation("wr_library")].id.label = "Woodes Rogers' library";
-			locations[FindLocation("Loanshark_cellar")].id.label = "Loanshark cellar";
+			locations[FindLocation("wr_crypt")].id.label = TranslateString("","Port Royal catacombs");
+			locations[FindLocation("WR_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
+			locations[FindLocation("Tavern_storeroom")].id.label = TranslateString("","Tavern storeroom");
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
+			locations[FindLocation("wr_crew")].id.label = TranslateString("","Crew's quarter");
+			locations[FindLocation("wr_library")].id.label = TranslateString("","Woodes Rogers' library");
+			locations[FindLocation("Loanshark_cellar")].id.label = TranslateString("","Loanshark cellar");
 
 			Locations[FindLocation("Redmond_shipyard")].locators_radius.officers.reload2_1 = 2.0;
 
@@ -26328,9 +26125,9 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.alchemy_fire_level_down2.win_condition.l1.location = "wr_farm_alchemy";
 			Pchar.quest.alchemy_fire_level_down2.win_condition = "alchemy_fire_level_down2";
 		break;
-//JRH LY1_gas is lost if leaving alchemy
+//JRH LY1_gas is lost if leaving alchemy 
 		case "alchemy_fire_level_down2":
-			if(locations[FindLocation("wr_farm_alchemy")].models.always.l16 == "bottle_LY1_gas")
+			if(locations[FindLocation("wr_farm_alchemy")].models.always.l16 == "bottle_LY1_gas") 
 			{
 				locations[FindLocation("wr_farm_alchemy")].models.always.l16 = "bottle_LE0";
 				Pchar.gas_is_lost = "yes";
@@ -26392,7 +26189,7 @@ void QuestComplete(string sQuestName)
 			{
 				if(CheckCharacterItem(Pchar,"bladebottle_CT1_nitr") && CheckCharacterItem(Pchar,"bladebottle_CV1_sc"))
 				{
-					Pchar.postman = "arrived";
+					Pchar.postman = "arrived";					
 
 					LAi_QuestDelay("postman1", 1.0);
 				}
@@ -26402,7 +26199,7 @@ void QuestComplete(string sQuestName)
 			{
 				if(CheckCharacterItem(Pchar,"bladebottle_BS2_LH"))
 				{
-					Pchar.sloop = "arrived";
+					Pchar.sloop = "arrived";					
 
 					LAi_QuestDelay("sloop1", 1.0);
 				}
@@ -26414,7 +26211,7 @@ void QuestComplete(string sQuestName)
 				{
 					//only first time you make cognac from alcohol & water
 
-					LAi_SetStayType(Pchar);	//waiting for 1 switch to potion cognac 2 Minerva to arrive
+					LAi_SetStayType(Pchar);	//waiting for 1) switch to potion cognac 2) Minerva to arrive
 				}
 			}
 			else LAi_SetPlayerType(Pchar);
@@ -26511,7 +26308,7 @@ void QuestComplete(string sQuestName)
 				PauseAllSounds();//stops music
 				locations[FindLocation("wr_farm_alchemy")].type = "silent_residence";
 				PostEvent("LoadSceneSound", 0.1);
-
+				
 				PlaySound("PEOPLE\transform.wav");
 				PlaySound("PEOPLE\transform.wav");
 				CreateParticleSystem("stars_short" , -1.25, 1.4, -2.2, 0.0, 0.0, 0.0, sti(20) );
@@ -26521,12 +26318,12 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("pchar_playertype", 4.0);
 				Logit(LanguageConvertString(tmpLangFileID,"I think that's the right mixture."));
 			}
-		break;
+		break;		
 //postman--------------------------------------------------------------------------------------------------------
 		case "postman1":
 			PlaySound("AMBIENT\SEASHORE\fanfare2.wav");
 			ChangeCharacterAddressGroup(characterFromID("postman"), "wr_port", "goto", "goto13");
-
+		
 			LAi_QuestDelay("postman2", 3.0);
 			LAi_QuestDelay("postman5", 10.0);
 
@@ -26536,7 +26333,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "postman2":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "cavalry";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -26562,7 +26359,7 @@ void QuestComplete(string sQuestName)
 			{
 				//don't play it here
 			}
-			else
+			else 
 			{
 				PlaySound("AMBIENT\SEASHORE\fanfare2.wav");
 
@@ -26656,11 +26453,11 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("pchar_huh", 3.0);
 			LAi_QuestDelay("sloop_new_shot", 20.0);
 
-			ChangeCharacterAddressGroup(characterFromID("Claire Voyant"), "wr_port", "goto", "claire");
+			ChangeCharacterAddressGroup(characterFromID("Claire Voyant"), "wr_port", "goto", "claire");	
 			ChangeCharacterAddressGroup(characterFromID("Defoe"), "wr_port", "goto", "defoe");
 			LAi_SetStayType(characterFromID("Claire Voyant"));
 			LAi_SetStayType(characterFromID("Defoe"));
-
+	
 			pchar.quest.sloop2.win_condition.l1 = "locator";
 			pchar.quest.sloop2.win_condition.l1.location = "wr_port";
 			pchar.quest.sloop2.win_condition.l1.locator_group = "goto";
@@ -26690,7 +26487,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Claire Voyant"));
 			Characters[GetCharacterIndex("Claire Voyant")].dialog.CurrentNode  = "sloop2";
 		break;
-
+		
 		case "sloop3":
 			LAi_SetActorType(CharacterFromID("Defoe"));
 			LAi_ActorDialog(characterFromID("Defoe"), pchar, "", 0.0, 0.0);
@@ -26718,12 +26515,12 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Claire Voyant"));
 			Characters[GetCharacterIndex("Claire Voyant")].dialog.CurrentNode  = "sloop6";
 		break;
-
+	
 	case "HOP_read_check":
-			if(GetAttribute(pchar, "book72_edenL") == "read" && GetAttribute(pchar, "book72_handsL") == "read"
+			if(GetAttribute(pchar, "book72_edenL") == "read" && GetAttribute(pchar, "book72_handsL") == "read" 
 			&& GetAttribute(pchar, "book72_richardsL") == "read" && GetAttribute(pchar, "book72_caesarL") == "read")
 			{
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "HOP_is_read";
 				LAi_ActorSelfDialog(pchar, "");
 			}
@@ -26786,14 +26583,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "sloop8_C":
-			PlaySound("VOICE\ENGLISH\Fre_f_a_003.wav");
+			PlaySound("VOICE\ENGLISH\Fre_f_a_003.wav");		
 			LAi_SetActorType(CharacterFromID("Minerva"));
 			LAi_ActorGoToLocator(CharacterFromID("Minerva"), "reload", "reload2", "sloop8_D", 3.5);
 		break;
 
 		case "sloop8_D":
 			PlaySound("INTERFACE\closed_locked_door.wav");
-			Locations[FindLocation("wr_port")].reload.l2.disable = 1;
+			Locations[FindLocation("wr_port")].reload.l2.disable = 1;	
 			ChangeCharacterAddressGroup(characterFromID("Minerva"), "none", "", "");
 
 			LAi_QuestDelay("sloop8_E", 2.0);
@@ -26830,15 +26627,15 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Defoe_Claire_gone":
-			if(GetAttribute(pchar, "book72_edenL") == "read" && GetAttribute(pchar, "book72_handsL") == "read"
+			if(GetAttribute(pchar, "book72_edenL") == "read" && GetAttribute(pchar, "book72_handsL") == "read" 
 			&& GetAttribute(pchar, "book72_richardsL") == "read" && GetAttribute(pchar, "book72_caesarL") == "read")
 			{
 				//you have got all info from the book
 				AddQuestRecord("Blackbeards_crew","5");
 			}
-
+			
 			LAi_SetPlayerType(pchar);
-			ChangeCharacterAddressGroup(characterFromID("Claire Voyant"), "none", "", "");
+			ChangeCharacterAddressGroup(characterFromID("Claire Voyant"), "none", "", "");	
 			ChangeCharacterAddressGroup(characterFromID("Defoe"), "none", "", "");
 
 			//no way back from boat shore now
@@ -26856,7 +26653,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_port")].reload.l2.disable = 0;
 			ChangeCharacterAddressGroup(characterFromID("Minerva"), "wr_farm_kitchen", "goto", "goto1");
 			LAi_SetStayType(CharacterFromID("Minerva"));
-
+	
 			pchar.quest.Minerva_alchemy2.win_condition.l1 = "locator";
 			pchar.quest.Minerva_alchemy2.win_condition.l1.location = "wr_farm_kitchen";
 			pchar.quest.Minerva_alchemy2.win_condition.l1.locator_group = "goto";
@@ -26893,10 +26690,10 @@ void QuestComplete(string sQuestName)
 
 				Locations[FindLocation("wr_farm_alchemy2")].reload.l2.disable = 0;
 				Locations[FindLocation("wr_farm_alchemy2")].reload.l3.disable = 0;
-				locations[FindLocation("wr_farm_booty2")].id.label = "Rogers' secret storeroom";
+				locations[FindLocation("wr_farm_booty2")].id.label = TranslateString("","Rogers' secret storeroom");
 
-				locations[FindLocation("wr_farm_servant")].id.label = "Minervas room";
-				locations[FindLocation("wr_farm_corridor")].id.label = "Rogers' passage";
+				locations[FindLocation("wr_farm_servant")].id.label = TranslateString("","Minervas room");
+				locations[FindLocation("wr_farm_corridor")].id.label = TranslateString("","Rogers' passage");
 
 				Locations[FindLocation("wr_farm_alchemy")].locators_radius.box.box7 = 0.5;	//mixtable big bottle
 				locations[FindLocation("wr_farm_alchemy")].models.always.l16 = "bottle_LE0";	//should be on here
@@ -26916,12 +26713,12 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("wr_farm_alchemy")].locators_radius.randitem.randitem6 = 0.0001;
 				Locations[FindLocation("wr_farm_alchemy2")].locators_radius.box.box17 = 0.0001;
 				Locations[FindLocation("wr_farm_alchemy2")].locators_radius.box.box18 = 0.0001;
-
+	
 				Pchar.quest.distillery_items = "open";
 				//Pchar.quest.farm_water = "off";
 				Pchar.quest.alchemy_lever = "down";
 				Pchar.quest.alchemy_plank = "up";
-				Pchar.quest.apparatus_level = "glass_tube";
+				Pchar.quest.apparatus_level = "glass_tube";		
 				Pchar.quest.farmbooty_fillbottle = "off";
 				Pchar.quest.apparatus_liquid = "none";
 				Pchar.quest.apparatus_cooling = "2";
@@ -26930,7 +26727,7 @@ void QuestComplete(string sQuestName)
 				Pchar.quest.cauldron = "water";
 				Pchar.quest.retort = "yes";
 				Pchar.quest.block_water = "yes";
-
+		
 				//new attributes Q2
 				Pchar.alchemy2_grinder = "empty";
 				Pchar.use_only_big_bottle = "yes";
@@ -26958,7 +26755,7 @@ void QuestComplete(string sQuestName)
 				pchar.quest.alchemy2_fire_level_down1.win_condition.l1 = "location";
 				pchar.quest.alchemy2_fire_level_down1.win_condition.l1.location = "wr_farm_alchemy2";
 				pchar.quest.alchemy2_fire_level_down1.win_condition = "alchemy2_fire_level_down1";
-
+			
 				pchar.quest.ovenstop1.win_condition.l1 = "locator";
 				pchar.quest.ovenstop1.win_condition.l1.location = "wr_farm_alchemy2";
 				pchar.quest.ovenstop1.win_condition.l1.locator_group = "goto";
@@ -27015,7 +26812,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_port")].reload.l2.disable = 0;
 			ChangeCharacterAddressGroup(characterFromID("Minerva"), "wr_farm_kitchen", "goto", "goto1");
 			LAi_SetStayType(CharacterFromID("Minerva"));
-
+	
 			pchar.quest.Minerva_alchemy2.win_condition.l1 = "locator";
 			pchar.quest.Minerva_alchemy2.win_condition.l1.location = "wr_farm_kitchen";
 			pchar.quest.Minerva_alchemy2.win_condition.l1.locator_group = "goto";
@@ -27069,12 +26866,12 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("wr_farm_alchemy")].locators_radius.randitem.randitem6 = 0.0001;
 				Locations[FindLocation("wr_farm_alchemy2")].locators_radius.box.box17 = 0.0001;
 				Locations[FindLocation("wr_farm_alchemy2")].locators_radius.box.box18 = 0.0001;
-
+	
 				Pchar.quest.distillery_items = "open";
 				//Pchar.quest.farm_water = "off";
 				Pchar.quest.alchemy_lever = "down";
 				Pchar.quest.alchemy_plank = "up";
-				Pchar.quest.apparatus_level = "glass_tube";
+				Pchar.quest.apparatus_level = "glass_tube";		
 				Pchar.quest.farmbooty_fillbottle = "off";
 				Pchar.quest.apparatus_liquid = "none";
 				Pchar.quest.apparatus_cooling = "2";
@@ -27083,7 +26880,7 @@ void QuestComplete(string sQuestName)
 				Pchar.quest.cauldron = "water";
 				Pchar.quest.retort = "yes";
 				Pchar.quest.block_water = "yes";
-
+		
 				//new attributes Q2
 				Pchar.alchemy2_grinder = "empty";
 				Pchar.use_only_big_bottle = "yes";
@@ -27119,7 +26916,7 @@ void QuestComplete(string sQuestName)
 				pchar.quest.p2_servant_items.win_condition.l1 = "location";
 				pchar.quest.p2_servant_items.win_condition.l1.location = "wr_farm_servant";
 				pchar.quest.p2_servant_items.win_condition = "p2_servant_items";
-
+		
 		break;
 
 		case "Minerva_alchemy2":
@@ -27132,9 +26929,9 @@ void QuestComplete(string sQuestName)
 		case "Minerva_alchemy2_done":
 			TakeNItems(pchar, "gunpowder", -100);
 			TakeNItems(pchar, "pistolbullets", -100);
-			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
+			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE); 
 			TakeItemFromCharacter(Pchar, "pistol6" );
-			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
+			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE); 
 			TakeItemFromCharacter(Pchar, "blade11" );
 
 			GiveItem2Character(characterFromID("Minerva"),"blade11");
@@ -27215,7 +27012,7 @@ void QuestComplete(string sQuestName)
 		case "making_gold1":
 			LAi_SetFightMode(pchar, false);
 			LAi_SetStayType(Pchar);
-
+				
 			PlaySound("OBJECTS\duel\rocket.wav");
 			CreateParticleSystem("rocket_fire" , -7.3, 3.8, 7.3, 5.1, 4.0, 0.0, sti(20) );
 			CreateParticleSystem("smoke_short" , -7.3, 3.8, 7.3, 5.1, 4.0, 0.0, sti(20) );	//3
@@ -27239,11 +27036,11 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "after_single_goldbar":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "after_single_goldbar";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+	
 	//................................................................................................
 //gold, pile of bars
 		case "making_more_gold":
@@ -27257,7 +27054,7 @@ void QuestComplete(string sQuestName)
 		case "making_more_gold1":
 			LAi_SetFightMode(pchar, false);
 			LAi_SetStayType(Pchar);
-
+				
 			PlaySound("OBJECTS\duel\rocket.wav");
 			CreateParticleSystem("rocket_fire" , 0.7, 1.0, 2.3, 5.1, 4.0, 0.0, sti(20) );
 			CreateParticleSystem("rocket_fire" , 1.0, 1.1, 2.1, 5.1, 4.0, 0.0, sti(20) );
@@ -27307,7 +27104,7 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("wr_farm_booty2")].type = "Blackbeard_house";
 			PostEvent("LoadSceneSound", 0.1);
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "after_many_goldbars";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -27333,7 +27130,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("grandma"), "wr_farm_alchemy2", "quest", "floor1");
 			ChangeCharacterAddressGroup(CharacterFromID("Defoe"), "wr_farm_alchemy2", "quest", "floor2");
 			ChangeCharacterAddressGroup(CharacterFromID("Claire Voyant"), "wr_farm_alchemy2", "quest", "floor4");
-
+		
 			ChangeCharacterAddressGroup(CharacterFromID("caesar"), "wr_farm_alchemy2", "quest", "officer1");
 			ChangeCharacterAddressGroup(CharacterFromID("hands"), "wr_farm_alchemy2", "quest", "officer3");
 			ChangeCharacterAddressGroup(CharacterFromID("pell"), "wr_farm_alchemy2", "quest", "officer2");
@@ -27345,7 +27142,7 @@ void QuestComplete(string sQuestName)
 			SetModel(characterFromID("Friday"), "Friday_officer", "man", "man", 1.8, true);
 			SetModel(characterFromID("hands"), "bb_hands2", "man", "man", 1.8, true);
 			SetModel(characterFromID("Pell"), "bb_Pell", "man", "man", 1.8, true);
-
+			
 			LAi_SetActorType(CharacterFromID("grandma"));
 			LAi_SetActorType(CharacterFromID("Dave Edna"));
 			LAi_SetActorType(CharacterFromID("wench3"));
@@ -27375,7 +27172,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("grandma_finale", 3.0);
 		break;
-//p?r end
+//pär end
 		case "grandma_finale":
 			LAi_SetActorType(CharacterFromID("grandma"));
 			LAi_ActorDialog(characterFromID("grandma"), pchar, "", 0.0, 0.0);
@@ -27431,7 +27228,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "corvette_painting":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "corvette_painting";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -27470,7 +27267,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToLocator(Pchar, "quest", "officer3");
 
 			LAi_QuestDelay("grandma_finale1_A", 2.0);
-		break;
+		break;		
 
 		case "grandma_finale1_A":
 			LAi_SetActorType(CharacterFromID("grandma"));
@@ -27524,7 +27321,7 @@ void QuestComplete(string sQuestName)
        			locy = stf(loadedLocation.locators.quest.turn_around.y);
        			locz = stf(loadedLocation.locators.quest.turn_around.z);
        			locCameraToPos(locx, locy, locz, false);
-
+		
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "quest", "turn_around");
 			PlaySound("INTERFACE\blues_end.wav");
@@ -27571,7 +27368,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("Friday"));
 			LAi_SetActorType(CharacterFromID("Defoe"));
 			LAi_SetActorType(CharacterFromID("Claire Voyant"));
-
+			
 			LAi_ActorTurnToLocator(CharacterFromID("grandma"), "reload", "reload2");
 			LAi_ActorTurnToLocator(CharacterFromID("Dave Edna"), "reload", "reload2");
 			LAi_ActorTurnToLocator(CharacterFromID("wench3"), "reload", "reload2");
@@ -27647,12 +27444,12 @@ void QuestComplete(string sQuestName)
 
 			DoQuestReloadToLocation("Santiago_townhall", "quest", "pyle" ,"B_A1");
 		break;
-//p?r bonus
+//pär bonus
 	//................................................................................................
 		case "glass_on_stool_sound":
 			PlaySound("PEOPLE\step_stairway2.wav");
 		break;
-
+	
 		case "retort_check":
 			//from itemlogic box
 			if(CheckCharacterItem(Pchar,"pistolretort"))
@@ -27731,7 +27528,7 @@ void QuestComplete(string sQuestName)
 			{
 				weaponID7 = GetCharacterEquipByGroup(Pchar,BLADE_ITEM_TYPE);
 				if(weaponID7 == "") EquipCharacterByItem(Pchar, "bladeX4");
-
+				
 				PlaySound("INTERFACE\cancel.wav");
 				RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 				EquipCharacterByItem(Pchar, "pistolbucket_dung");
@@ -27776,7 +27573,7 @@ void QuestComplete(string sQuestName)
 			{
 				weaponID7 = GetCharacterEquipByGroup(Pchar,BLADE_ITEM_TYPE);
 				if(weaponID7 == "") EquipCharacterByItem(Pchar, "bladeX4");
-
+				
 				PlaySound("INTERFACE\button2.wav");
 				RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 				EquipCharacterByItem(Pchar, "pistolretort3");
@@ -28691,11 +28488,11 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\gas_on.wav");
 
 			LAi_QuestDelay("alchemy_acid_small_boiling1", 3.0);
-			LAi_QuestDelay("alchemy_acid_small_boiling2", 5.0);
+			LAi_QuestDelay("alchemy_acid_small_boiling2", 5.0);	
 		break;
 //JRH small boil
 		case "alchemy_acid_small_boiling1":
-			CreateParticleSystem("smoke_short" , -2.1, 1.4, -2.4, 4.5, 1.5, 0.0, sti(20) );
+			CreateParticleSystem("smoke_short" , -2.1, 1.4, -2.4, 4.5, 1.5, 0.0, sti(20) );	
 		break;
 
 		case "alchemy_acid_small_boiling2":
@@ -28815,7 +28612,7 @@ void QuestComplete(string sQuestName)
 				if(CheckAttribute(Pchar, "quest.mixtable_bottle"))
 				{
 					GetCharacterPos(Pchar, &u, &v, &w);
-
+					
 					if(Pchar.quest.mixtable_bottle == "MT1_sulf" || Pchar.quest.mixtable_bottle == "MT1_hydr"
 					|| Pchar.quest.mixtable_bottle == "MT2_hydr")
 					{
@@ -28850,13 +28647,13 @@ void QuestComplete(string sQuestName)
 			if(Pchar.location == "wr_farm_alchemy")
 			{
 				GetCharacterPos(Pchar, &u, &v, &w);
-
+				
 				if(locations[FindLocation("wr_farm_alchemy")].models.always.l16 == "bottle_LTa_sulf"
 				|| locations[FindLocation("wr_farm_alchemy")].models.always.l16 == "bottle_LT1_hydr")
 				{
 					Play3DSound("gunner_cough", u, v, w);
 					CreateParticleSystem("waterfog_light" , -1.2, 1.3, -2.2, 5.0, 1.5, 0.0, sti(20) );
-					Pchar.chr_ai.poison =  1.0;
+					Pchar.chr_ai.poison =  1.0;	
 					LAi_QuestDelay("alchemy_acid_fogL", 4.0);
 				}
 				else return;
@@ -31447,7 +31244,32 @@ void QuestComplete(string sQuestName)
 			CloseQuestHeader("Alchemy_gold");
 
 			LAi_QuestDelay("enter_gall_cap_outer1", 0.5);
+
+			pchar.quest.qdeck_sound.win_condition.l1 = "location";
+			pchar.quest.qdeck_sound.win_condition.l1.location = "wr_gall_qdeck";
+			pchar.quest.qdeck_sound.win_condition = "qdeck_sound";
 		break;
+	
+	//-------------------------------------------------------------------------------------------------
+	//pär sound loop
+
+		case "qdeck_sound":
+			PlaySound("INTERFACE\key_lock.wav");
+
+			pchar.quest.cap_outer_sound.win_condition.l1 = "location";
+			pchar.quest.cap_outer_sound.win_condition.l1.location = "wr_gall_cap_outer";
+			pchar.quest.cap_outer_sound.win_condition = "cap_outer_sound";
+		break;
+
+		case "cap_outer_sound":
+			PlaySound("INTERFACE\key_lock.wav");
+
+			pchar.quest.qdeck_sound.win_condition.l1 = "location";
+			pchar.quest.qdeck_sound.win_condition.l1.location = "wr_gall_qdeck";
+			pchar.quest.qdeck_sound.win_condition = "qdeck_sound";
+		break;
+
+	//-------------------------------------------------------------------------------------------------
 
 		case "enter_gall_cap_outer1":
 			//remove all alchemy stuff
@@ -31595,18 +31417,18 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_gall_cap_outer")].locators_radius.reload.reload1 = 0.00001;
 			Locations[FindLocation("wr_gall_cap_outer")].locators_radius.goto.goto7 = 1.5;
 
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "reload", "reload14");
+		//LAi_SetActorType(Pchar);
+		//LAi_ActorTurnToLocator(Pchar, "reload", "reload14");
 
-			LAi_QuestDelay("captains_door1", 1.5);
+		//LAi_QuestDelay("captains_door1", 1.5);
 		break;
-
+	/*
 		case "captains_door1":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "wr_ships", "reload", "reload14");
 			PlaySound("PEOPLE\Run_wood.wav");
 		break;
-
+	*/
 		case "close_captains_door":
 			PlaySound("INTERFACE\rusty.wav");
 
@@ -31617,8 +31439,8 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_gall_cap_outer")].locators_radius.reload.reload1 = 1.5;
 			Locations[FindLocation("wr_gall_cap_outer")].locators_radius.goto.goto7 = 0.00001;
 
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "reload", "reload14");
+		//LAi_SetActorType(Pchar);
+		//LAi_ActorTurnToLocator(Pchar, "reload", "reload14");
 
 			if(CheckAttribute(Pchar,"quest.gunner2") && Pchar.quest.gunner2 == "upper_decks")
 			{
@@ -31638,13 +31460,14 @@ void QuestComplete(string sQuestName)
 				Pchar.quest.gunner2 = "in_hold";
 			}
 
-			LAi_QuestDelay("captains_door1", 1.5);
+		//LAi_QuestDelay("captains_door1", 1.5);
 		break;
-
+	/*
 		case "captains_door1":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "wr_ships", "reload", "reload14");
 		break;
+	*/
 	//----------------------------------------------------------------------------------------
 		case "guncrew_S0_long":
 			PlaySound("PEOPLE\roof_broken1.wav");
@@ -31856,7 +31679,7 @@ void QuestComplete(string sQuestName)
 		case "compasses_and_map":
 			if(CheckCharacterItem(Pchar,"bladecompasses") && CheckCharacterItem(Pchar,"pistolmap1"))
 			{
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "compasses_and_map";
 				LAi_ActorSelfDialog(pchar, "");
 			}
@@ -31996,7 +31819,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("dummy_belt_check", 0.1);
 		break;
-//???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 		case "dummy_belt_check":
 			if(CheckCharacterItem(Pchar,"dummy_belt"))
 			{
@@ -32190,6 +32013,11 @@ void QuestComplete(string sQuestName)
 			DeleteQuestHeader("Open_the_galley"); DeleteQuestHeader("Cannon_drill"); DeleteQuestHeader("Repair_the_anchor");
 			LAi_SetPlayerType(Pchar);
 			PlaySound("OBJECTS\DUEL\man_attack6.wav");
+
+		TakenItems(Pchar, "gunpowder", -100);
+		TakenItems(Pchar, "gunpowder", 12);
+		TakenItems(Pchar, "pistolbullets", -100);
+		TakenItems(Pchar, "pistolbullets", 12);
 
 			Pchar.quest.BB6 = "normal";
 		break;
@@ -32739,7 +32567,7 @@ void QuestComplete(string sQuestName)
 
 		case "claire_and_defoe14":
 			//from claire dialog
-			Pchar.quest.JRH_rain = "";
+			//Pchar.quest.JRH_rain = "";
 			Pchar.quest.med_Claire = "acetum";
 			Pchar.quest.defoes_cabin = "talk_over";
 
@@ -32759,7 +32587,7 @@ void QuestComplete(string sQuestName)
 			DoQuickSave();			//before shipyard fight
 
 			LAi_QuestDelay("claire_and_defoe15", 2.0);
-
+			
 			pchar.quest.shipyard_ambush.win_condition.l1 = "location";
 			pchar.quest.shipyard_ambush.win_condition.l1.location = "Redmond_shipyard";
 			pchar.quest.shipyard_ambush.win_condition = "shipyard_ambush";
@@ -33049,7 +32877,7 @@ void QuestComplete(string sQuestName)
 		case "lets_leave_the_shipyard4":
 			if(!CheckCharacterItem(characterFromID("wr_bochat"),"bladeplank"))
 			{
-				GiveItem2Character(characterFromID("wr_bochat"),"bladeplank");
+				GiveItem2Character(characterFromID("wr_bochat"),"bladeplank"));
 			}
 
 			LAi_QuestDelay("lets_leave_the_shipyard5", 0.1);
@@ -33063,7 +32891,7 @@ void QuestComplete(string sQuestName)
 				{
 					RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 					EquipCharacterbyItem(Pchar, "bladeplank");
-					EquipCharacterbyItem(Pchar, "pistol20");
+					EquipCharacterbyItem(Pchar, "pistol20");		
 				}
 				else LAi_QuestDelay("lets_leave_the_shipyard5", 0.5);
 			}
@@ -33346,7 +33174,7 @@ void QuestComplete(string sQuestName)
 		case "throw_pistols_done2":
 			PlaySound("INTERFACE\closed_door.wav");
 			ChangeCharacterAddressGroup(characterFromID("grandma"), "none", "", "");
-
+			
 			DoQuickSave();  	//before shop fight
 
 			pchar.quest.shop_fight.win_condition.l1 = "locator";
@@ -33406,7 +33234,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "shop_fight3":
-	//		LAi_QuestDelay("shop_fight4", 1.0);		//wr_boc1 skipped as he didn't shop up at all
+	//		LAi_QuestDelay("shop_fight4", 1.0);		//wr_boc1 skipped as he didn't show up at all
 			LAi_QuestDelay("shop_fight5", 1.0);		//was 4.0
 			LAi_QuestDelay("shop_fight6", 4.0);		//was 7.0
 			LAi_QuestDelay("shop_fight7", 7.0);		//was 9.0
@@ -33457,7 +33285,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("wr_fralut"), "pistol1");
 			RemoveCharacterEquip(characterFromID("wr_fralut"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("wr_fralut"), "blade3carpets");
-			if(!CheckCharacterItem(characterFromID("wr_fralut"),"blade4"))
+			if(!CheckCharacterItem(characterFromID("wr_fralut"),"blade4")) 
 			{ GiveItem2Character(characterFromID("wr_fralut"), "blade4"); }
 			EquipCharacterbyItem(characterFromID("wr_fralut"), "blade4");
 			LAi_SetActorType(characterFromID("wr_fralut"));
@@ -33473,7 +33301,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("wr_mong"), "pistol1");
 			RemoveCharacterEquip(characterFromID("wr_mong"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("wr_mong"), "bladebarrel");
-			if(!CheckCharacterItem(characterFromID("wr_mong"),"blade4"))
+			if(!CheckCharacterItem(characterFromID("wr_mong"),"blade4")) 
 			{ GiveItem2Character(characterFromID("wr_mong"), "blade4"); }
 			EquipCharacterbyItem(characterFromID("wr_mong"), "blade4");
 			LAi_SetActorType(characterFromID("wr_mong"));
@@ -33560,13 +33388,13 @@ void QuestComplete(string sQuestName)
 
 			if(LAi_IsDead(CharacterFromID("wr_oman1X")))
 			{
-
+		
 				//just to be sure he's got the boom
 				if(!CheckCharacterItem(CharacterFromID("wr_oman1X"),"bladeboom"))
 				{
 					GiveItem2Character(CharacterFromID("wr_oman1X"), "bladeboom");
 				}
-
+		
 				return;
 			}
 			else
@@ -33612,7 +33440,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("wr_pir4"), "pistol1");
 			RemoveCharacterEquip(characterFromID("wr_pir4"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("wr_pir4"), "bladeglobe");
-			if(!CheckCharacterItem(characterFromID("wr_pir4"),"blade4"))
+			if(!CheckCharacterItem(characterFromID("wr_pir4"),"blade4")) 
 			{ GiveItem2Character(characterFromID("wr_pir4"), "blade4"); }
 			EquipCharacterbyItem(characterFromID("wr_pir4"), "blade4");
 			LAi_SetActorType(characterFromID("wr_pir4"));
@@ -33745,6 +33573,10 @@ void QuestComplete(string sQuestName)
 		case "shop_guards_defeated_check1":
 			Pchar.quest.shop_fight = "over";
 
+	LAi_SetFightMode(pchar, false);
+	LAi_SetPlayerType(Pchar);
+	LAi_LocationFightDisable(&Locations[FindLocation("wr_shop")], true);
+
 			if(!IsEquipCharacterByItem(CharacterFromID("Dave Edna"), "bladestool"))
 			{
 				//just to be sure he's got the stool
@@ -33804,7 +33636,7 @@ void QuestComplete(string sQuestName)
 			if(pchar.location == "wr_shop")
 			{
 				if(CheckCharacterItem(Pchar,"pistol201") && CheckCharacterItem(Pchar,"pistol202") && CheckCharacterItem(Pchar,"pistol204")
-				&& CheckCharacterItem(Pchar,"pistol205") && CheckCharacterItem(Pchar,"pistol206"))
+				&& CheckCharacterItem(Pchar,"pistol205") && CheckCharacterItem(Pchar,"pistol206") && CheckCharacterItem(Pchar,"bladeboom"))
 				{
 			//logit("5_P");
 					if(CheckAttribute(Pchar,"shop_fight_end") && Pchar.shop_fight_end == "on")
@@ -33820,7 +33652,7 @@ void QuestComplete(string sQuestName)
 		case "pistolthrow5_check":
 			if(pchar.location == "wr_shop")
 			{
-				if(CheckCharacterItem(Pchar,"pistolthrow5"))
+				if(CheckCharacterItem(Pchar,"pistolthrow5") && CheckCharacterItem(Pchar,"bladeboom"))
 				{
 			//logit("PTR5");
 					if(CheckAttribute(Pchar,"shop_fight_end") && Pchar.shop_fight_end == "on")
@@ -33879,7 +33711,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("shop_fight_end1", 0.5);			//direct to dialog without checking for boom
 		break;
-
+	
 		case "shop_fight_end1":
 			if(CheckAttribute(Pchar,"quest.p20andboom") && Pchar.quest.p20andboom == "ok")
 			{
@@ -33895,7 +33727,7 @@ void QuestComplete(string sQuestName)
 				Characters[GetCharacterIndex("grandma")].dialog.CurrentNode  = "shop_fight";
 			}
 		break;
-
+	
 		case "shop_fight_done":
 			//from grandma dialog
 			LAi_SetActorType(characterFromID("Dave Edna"));
@@ -33910,6 +33742,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"blade5-1", -20);
 			TakeNItems(Pchar,"blade4", -20);
 			TakeNItems(Pchar,"blade4-1", -20);
+		TakeNItems(Pchar,"pistol1", -20);
 
 			DeleteAttribute(CharacterFromID("wr_boc1"), "items");
 			DeleteAttribute(CharacterFromID("wr_pir2"), "items");
@@ -34037,7 +33870,7 @@ void QuestComplete(string sQuestName)
 				Characters[GetCharacterIndex("grandma")].dialog.CurrentNode  = "shop_fight";
 			}
 		break;
-
+	
 		case "shop_pistol20_given":
 			//from Dave dialog
 			//from grandma dialog
@@ -34052,7 +33885,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("wr_fat2"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("wr_nap"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("wr_pir4"), "none", "", "");
-
+		
 			RemoveCharacterEquip(Pchar, BELT_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "pistolbelt");
 
@@ -34150,16 +33983,16 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("INTERFACE\closed_locked_door.wav");
 
-			locations[FindLocation("wr_mine")].id.label = "Port Royal old mine";
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
-			locations[FindLocation("wr_crew")].id.label = "Crew's quarter";
-			locations[FindLocation("ck_bedroom")].id.label = "Caroline K's bedroom";
-			locations[FindLocation("wr_friday")].id.label = "Friday's room";
-			locations[FindLocation("church_wine_cellar")].id.label = "Church wine cellar";
+			locations[FindLocation("wr_mine")].id.label = TranslateString("","Port Royal old mine");
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
+			locations[FindLocation("wr_crew")].id.label = TranslateString("","Crew's quarter");
+			locations[FindLocation("ck_bedroom")].id.label = TranslateString("","Caroline K's bedroom");
+			locations[FindLocation("wr_friday")].id.label = TranslateString("","Friday's room");
+			locations[FindLocation("church_wine_cellar")].id.label = TranslateString("","Church wine cellar");
 
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
-			locations[FindLocation("wr_mine")].id.label = "Redmond old mine";
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
+			locations[FindLocation("wr_mine")].id.label = TranslateString("","Redmond old mine");
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
 
 			Locations[FindLocation("Loanshark_cellar")].environment.weather = "true";
 			//SetNextWeather("Medium Foggy Mine");
@@ -34385,7 +34218,7 @@ void QuestComplete(string sQuestName)
 		case "friday_room17":
 			PlaySound("INTERFACE\closed_door.wav");
 			ChangeCharacterAddressGroup(CharacterFromID("Selkirk"), "wr_booty", "goto", "goto14");
-			locations[FindLocation("wr_wine_cellar")].id.label = "Roger's wine cellar";
+			locations[FindLocation("wr_wine_cellar")].id.label = TranslateString("","Roger's wine cellar");
 			Locations[FindLocation("wr_food_supply")].reload.l5.disable = 0;		//finally open
 			LAi_SetPlayerType(Pchar);
 
@@ -34840,7 +34673,7 @@ void QuestComplete(string sQuestName)
 		case "steplock_churchcellar1":
 			PlaySound("INTERFACE\step_open.wav");
 			Locations[FindLocation("church_wine_cellar")].reload.l1.disable = 0;
-			//locations[FindLocation("church_choir")].id.label = "Port Royal Church Choir";
+			//locations[FindLocation("church_choir")].id.label = TranslateString("","Port Royal Church Choir");
 			Locations[FindLocation("church_choir")].reload.l4.disable = 0;
 
 			LAi_QuestDelay("steplock_churchcellar2", 35.0);
@@ -34921,7 +34754,7 @@ void QuestComplete(string sQuestName)
 				GiveItem2Character(characterFromID("wr_boc5"), "bladeanchor");
 				EquipCharacterbyItem(characterFromID("wr_boc5"), "bladeanchor");
 
-				locations[FindLocation("church_choir")].id.label = "Port Royal Church Choir";
+				locations[FindLocation("church_choir")].id.label = TranslateString("","Port Royal Church Choir");
 			}
 
 			LAi_QuestDelay("church_wine_cellar_water_out3", 1.0);
@@ -34984,7 +34817,7 @@ void QuestComplete(string sQuestName)
 
 		case "switch_weather_wine_cellars1":
 			Locations[FindLocation("wr_wine_cellar")].image = "wr_wine_cellar.tga";
-			locations[FindLocation("wr_wine_cellar")].id.label = "Roger's wine cellar";
+			locations[FindLocation("wr_wine_cellar")].id.label = TranslateString("","Roger's wine cellar");
 
 			if(locations[FindLocation("church_wine_cellar")].environment.sea == "true")
 			{
@@ -35011,7 +34844,7 @@ void QuestComplete(string sQuestName)
 		case "switch_weather_wine_cellars3":
 			//SetNextWeather("Medium Foggy Mine");
 			Locations[FindLocation("church_wine_cellar")].image = "church_wine_cellar.tga";
-			locations[FindLocation("church_wine_cellar")].id.label = "Church wine cellar";
+			locations[FindLocation("church_wine_cellar")].id.label = TranslateString("","Church wine cellar");
 
 			pchar.quest.switch_weather_wine_cellars.win_condition.l1 = "location";
 			pchar.quest.switch_weather_wine_cellars.win_condition.l1.location = "wr_wine_cellar";
@@ -35206,14 +35039,14 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("fake_father_Bernard"), "Redmond_church", "goto", "goto11");
 			LAi_SetPriestType(CharacterFromID("fake_father_Bernard"));
 
-			locations[FindLocation("church_wine_cellar")].id.label = "Church wine cellar";
-			locations[FindLocation("church_choir")].id.label = "Port Royal Church Choir";
+			locations[FindLocation("church_wine_cellar")].id.label = TranslateString("","Church wine cellar");
+			locations[FindLocation("church_choir")].id.label = TranslateString("","Port Royal Church Choir");
 			Locations[FindLocation("church_choir")].reload.l4.disable = 1;			//to wine cellar
 
 			Locations[FindLocation("Redmond_church")].reload.l1.disable = 1;		//to town
 			Locations[FindLocation("Redmond_church")].reload.l3.disable = 1;		//to crypt
 			Locations[FindLocation("Redmond_church")].models.always.locators = "Church_l_JRH";
-			locations[FindLocation("wr_crypt")].id.label = "Port Royal catacombs";
+			locations[FindLocation("wr_crypt")].id.label = TranslateString("","Port Royal catacombs");
 			Locations[FindLocation("wr_crypt")].models.always.locators = "d01_l_JRH2";	//mummies
 
 			Locations[FindLocation("wr_animists")].models.always.locators = "scave_l_JRH_ON5";
@@ -35221,12 +35054,12 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_animists")].filespath.textures = "locations\inside\ANIMISTS_Cave\mandala5";
 
 			Locations[FindLocation("wr_animists")].reload.l1.disable = 0;		//to crypt open????
-			locations[FindLocation("wr_crypt")].id.label = "Port Royal catacombs";
+			locations[FindLocation("wr_crypt")].id.label = TranslateString("","Port Royal catacombs");
 			Locations[FindLocation("wr_animists")].reload.l2.disable = 1;		//to animists_stairs
 
-			locations[FindLocation("wr_animists_stairs")].id.label = "Temple stairs";
-			locations[FindLocation("wr_chapel_stairs")].id.label = "Chapel stairs";
-			locations[FindLocation("wr_sacristy")].id.label = "Sacristy";
+			locations[FindLocation("wr_animists_stairs")].id.label = TranslateString("","Temple stairs");
+			locations[FindLocation("wr_chapel_stairs")].id.label = TranslateString("","Chapel stairs");
+			locations[FindLocation("wr_sacristy")].id.label = TranslateString("","Sacristy");
 
 			ChangeCharacterAddressGroup(CharacterFromID("prisoner_Silehard"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("prisoner_Laurence_Wellman"), "none", "", "");
@@ -35359,7 +35192,7 @@ void QuestComplete(string sQuestName)
 			else LAi_QuestDelay("choir_lockpick_check", 0.5);
 		break;
 	//......................................................................................................
-
+		
 		case "choir_box2A_off":
 			Pchar.quest.choir_box2A = "off";
 		break;
@@ -35386,7 +35219,7 @@ void QuestComplete(string sQuestName)
 
 		case "stay_at_choir_box2":
 			//from itemlogic church_choir box2
-
+			
 			if(!LAi_IsFightMode(Pchar))
 			{
 				ChangeCharacterAddressGroup(Pchar, "church_choir", "goto", "free2");
@@ -35466,7 +35299,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("choir_clockkey_check", 0.1);
 		break;
 	//......................................................................................................
-
+		
 		case "choir_box3_off":
 			Pchar.quest.choir_box3 = "off";
 		break;
@@ -35506,11 +35339,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 		break;
 	//......................................................................................................
-
+		
 		case "choir_box4_off":
-			//if(!CheckAttribute(Pchar, "quest.choir_box4") || Pchar.quest.choir_box4 != "open") {
-                Pchar.quest.choir_box4 = "off";
-			//}
+			Pchar.quest.choir_box4 = "off";
 		break;
 
 		case "stay_at_choir_box4":
@@ -35527,7 +35358,6 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.choir_box4 = "open";
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "bladelockpick");
-			GiveItem2Character(Pchar, "bladeX4");
 			EquipCharacterbyItem(Pchar, "bladeX4");
 
 			LAi_QuestDelay("exit_choir_box4", 0.1);
@@ -35548,7 +35378,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 		break;
 	//......................................................................................................
-
+		
 		case "choir_box5_off":
 			Pchar.quest.choir_box5 = "off";
 		break;
@@ -35725,7 +35555,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(Pchar, "church_choir", "goto", "free6");
 		break;
 	//......................................................................................................
-
+		
 		case "choir_box12_off":
 			Pchar.quest.choir_box12 = "off";
 		break;
@@ -36048,7 +35878,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.escape_mummies.win_condition.l1.location = "wr_animists";
 			pchar.quest.escape_mummies.win_condition = "escape_mummies";
 		break;
-//p?r rain
+//pär rain
 		case "escape_mummies":
 			PlaySound("INTERFACE\closed_locked_door.wav");
 			Locations[FindLocation("wr_animists")].reload.l1.disable = 1;
@@ -36147,12 +35977,12 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_animists")].reload.l1.disable = 1;		//to crypt open
 			Locations[FindLocation("wr_animists")].reload.l2.disable = 0;		//to animists_stairs
 
-			locations[FindLocation("wr_animists_stairs")].id.label = "Temple stairs";
-			locations[FindLocation("wr_chapel_stairs")].id.label = "Chapel stairs";
-			locations[FindLocation("wr_sacristy")].id.label = "Sacristy";
+			locations[FindLocation("wr_animists_stairs")].id.label = TranslateString("","Temple stairs");
+			locations[FindLocation("wr_chapel_stairs")].id.label = TranslateString("","Chapel stairs");
+			locations[FindLocation("wr_sacristy")].id.label = TranslateString("","Sacristy");
 
-			locations[FindLocation("church_wine_cellar")].id.label = "Church wine cellar";
-			locations[FindLocation("church_choir")].id.label = "Port Royal Church Choir";
+			locations[FindLocation("church_wine_cellar")].id.label = TranslateString("","Church wine cellar");
+			locations[FindLocation("church_choir")].id.label = TranslateString("","Port Royal Church Choir");
 			Locations[FindLocation("church_choir")].reload.l4.disable = 1;			//to wine cellar
 
 			Locations[FindLocation("Redmond_church")].reload.l1.disable = 1;		//to town
@@ -36301,7 +36131,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap30"), "wr_church_attic", "goto", "goto13");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap31"), "wr_church_attic", "goto", "goto14");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap32"), "wr_church_attic", "goto", "goto15");
-
+//pär attic rum
 			pchar.quest.lay_pircaps_down.win_condition.l1 = "locator";
 			pchar.quest.lay_pircaps_down.win_condition.l1.location = "wr_church_attic";
 			pchar.quest.lay_pircaps_down.win_condition.l1.locator_group = "goto";
@@ -36310,6 +36140,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "lay_pircaps_down":
+			ChangeCharacterAddressGroup(Pchar, "wr_church_attic", "goto", "window");
+			LAi_SetStayType(Pchar);
+	
 			LAi_SetActorType(CharacterFromID("pir_cap2"));
 			LAi_ActorSetLayMode(CharacterFromID("pir_cap2"));
 			LAi_SetActorType(CharacterFromID("pir_cap3"));
@@ -36355,6 +36188,8 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("pir_cap31"));
 			LAi_ActorSetLayMode(CharacterFromID("pir_cap31"));
 			LAi_SetCitizenType(CharacterFromID("pir_cap32"));
+
+			LAi_QuestDelay("Vane_returns_to_attic", 1.0);
 		break;
 
 		case "Vane_returns_to_attic":
@@ -36370,10 +36205,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Vane_returns_to_attic1":
+			locations[FindLocation("wr_church_attic")].reload.l4.disable = 1;		//no way down this way, temp
 			Locations[FindLocation("wr_church_inside")].reload.l2.disable = 0;		//to sacristy
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap1"), "wr_church_attic", "goto", "goto11");
 			Locations[FindLocation("wr_church_attic_stairs")].reload.l2.emerge = "reload4";	//reset
 
+			LAi_SetStayType(Pchar);	//during dialogs with Vane
 			LAi_SetActorType(CharacterFromID("pir_cap1"));
 			LAi_ActorDialog(characterFromID("pir_cap1"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("pir_cap1"));
@@ -36382,7 +36219,6 @@ void QuestComplete(string sQuestName)
 
 		case "red_rolls_exchange":
 			//from Vane dialog
-			LAi_SetPlayerType(Pchar);
 
 			LAi_QuestDelay("red_rolls_exchange1", 0.5);
 		break;
@@ -36553,7 +36389,6 @@ void QuestComplete(string sQuestName)
 			LAi_SetCitizenType(CharacterFromID("pir_cap31"));
 			LAi_SetCitizenType(CharacterFromID("pir_cap32"));
 
-			LAi_SetPlayerType(Pchar);
 			PlaySound("VOICE\ENGLISH\pir_capR3.wav");
 
 			LAi_QuestDelay("Vane_fires_cannon10", 2.0);
@@ -36573,13 +36408,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "cave_door_done":
-			LAi_SetPlayerType(Pchar);
 			PlaySound("PEOPLE\counter_openclose.wav");
+			locations[FindLocation("wr_church_attic")].reload.l3.disable = 0;
 
 			LAi_QuestDelay("cave_door_done1", 1.0);
 		break;
 
 		case "cave_door_done1":
+			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap1"), "wr_church_inside", "barmen", "stay");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap18"), "wr_church_inside", "goto", "rackham");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap23"), "wr_church_inside", "goto", "stay_s11");
@@ -36592,9 +36428,6 @@ void QuestComplete(string sQuestName)
 		case "cave_door_done2":
 			Locations[FindLocation("wr_church_attic")].type = "Vane_jungle";
 			Locations[FindLocation("wr_church_outside")].type = "Vane_jungle";
-
-			PlaySound("PEOPLE\Run_roof.wav");
-			ChangeCharacterAddressGroup(Pchar, "wr_church_attic", "reload", "reload3");
 
 			pchar.quest.move_pircaps_down.win_condition.l1 = "location";
 			pchar.quest.move_pircaps_down.win_condition.l1.location = "wr_church_outside";
@@ -36632,6 +36465,8 @@ void QuestComplete(string sQuestName)
 		case "move_pircaps_down2":
 			LAi_SetSitType(Pchar);
 			PlaySound("PEOPLE\jump.wav");
+			locations[FindLocation("wr_church_attic")].reload.l3.disable = 1;	//fall down hatch closed
+			locations[FindLocation("wr_church_attic")].reload.l4.disable = 0;	//standard hatch open again
 
 			LAi_QuestDelay("move_pircaps_down3", 0.5);
 		break;
@@ -37019,7 +36854,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "sacristy_scales_other_coin":
-			Logit(LanguageConvertString(tmpLangFileID,"Allright, I can weigh all the coins - and then what?"));
+			Logit(LanguageConvertString(tmpLangFileID,"Alright, I can weigh all the coins - and then what?"));
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 		break;
 	//................................................................................................
@@ -37279,10 +37114,10 @@ void QuestComplete(string sQuestName)
 		case "pchar_churchsilver_check2":
 			int blanc = GetCharacterItem(Pchar, "bladeanchor");
 			int fanc = GetCharacterItem(Pchar, "fake_anchor");
-
+		
 			if(CheckCharacterItem(Pchar,"bladeanchor"))
 			{
-				if(blanc > 1)
+				if(blanc > 1) 
 				{
 					TakeNItems(Pchar,"bladeanchor", blanc-1);
 				}
@@ -37292,12 +37127,12 @@ void QuestComplete(string sQuestName)
 			{
 				if(CheckCharacterItem(Pchar,"fake_anchor"))
 				{
-					if(fanc > 1)
+					if(fanc > 1) 
 					{
 						TakeNItems(Pchar,"fake_anchor", fanc-1);
 					}
 				}
-				else GiveItem2Character(Pchar, "bladeanchor");			//just in case
+				else GiveItem2Character(Pchar, "bladeanchor");			//just in case				
 			}
 		break;
 	//................................................................................................
@@ -38323,7 +38158,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			LAi_SetFightMode(Pchar, false);
 			locations[FindLocation("wr_cannon_tower")].image = "wr_cannon_tower.tga";
-
+	
 			LAi_QuestDelay("equip_boathook", 0.1);
 		break;
 	//...............................................................................................
@@ -38711,7 +38546,7 @@ void QuestComplete(string sQuestName)
 
 		case "Spriggs_flag2":
 			PlaySound("PEOPLE\clothes1.wav");
-
+			
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "bladeflag_pir");
 			if(!CheckCharacterItem(Pchar,"bladeX4")) GiveItem2Character(Pchar, "bladeX4");
@@ -38733,7 +38568,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Spriggs_flag4":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "tower_too_high";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -38742,10 +38577,10 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\closed_door.wav");
 			ChangeCharacterAddressGroup(CharacterFromID("pir_cap24"), "none", "", "");
 			LAi_SetPlayerType(Pchar);
-
+	
 			SetLocatorRadius(locations[FindLocation("wr_cave_shore")], "box", "box6", 0.0001);
 			Locations[FindLocation("wr_cave_shore")].locators_radius.box.box6 = 0.0001;
-
+	
 			pchar.quest.delay_hoist_spanish_flag.win_condition.l1 = "locator";
 			pchar.quest.delay_hoist_spanish_flag.win_condition.l1.location = "wr_cave_shore";
 			pchar.quest.delay_hoist_spanish_flag.win_condition.l1.locator_group = "goto";
@@ -38811,7 +38646,7 @@ void QuestComplete(string sQuestName)
 		case "hoist_spanish_flag4":
 			CreateParticleSystem("KNBcancloud" , 145.8, 2.0, 251.3, 4.5, 1.5, 0.0, sti(20) );
 			CreateParticleSystem("KNBcancloud" , 145.8, 2.0, 250.0, 4.5, 1.5, 0.0, sti(20) );
-
+		
 			LAi_SetFightMode(Pchar, false);
 			LAi_SetStayType(Pchar);
 
@@ -38825,9 +38660,9 @@ void QuestComplete(string sQuestName)
 			pchar.quest.hoist_spanish_flag5.win_condition.l1.location = "wr_wood_tower3";
 			pchar.quest.hoist_spanish_flag5.win_condition = "hoist_spanish_flag5";
 		break;
-
+	
 		case "hoist_spanish_flag5":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "send_boat";
 			LAi_ActorSelfDialog(pchar, "");
 
@@ -38854,7 +38689,7 @@ void QuestComplete(string sQuestName)
 			SetNextWeather("Clear");
 			Pchar.quest.JRH_rain = "Clear";
 			Pchar.quest.JRH_sky = "";
-
+		
 			pchar.quest.hoist_spanish_flag7.win_condition.l1 = "locator";
 			pchar.quest.hoist_spanish_flag7.win_condition.l1.location = "wr_cave_shore";
 			pchar.quest.hoist_spanish_flag7.win_condition.l1.locator_group = "quest";
@@ -39799,13 +39634,13 @@ void QuestComplete(string sQuestName)
 			//Locations[FindLocation("wr_mine")].reload.l2.disable = 1;		//to LS cellar
 			Locations[FindLocation("wr_mine")].reload.l3.disable = 1;		//to guard room
 			Locations[FindLocation("wr_mine")].reload.l6.disable = 0;		//arrive tunnel
-			locations[FindLocation("wr_mine")].id.label = "Port Royal old mine";
+			locations[FindLocation("wr_mine")].id.label = TranslateString("","Port Royal old mine");
 
 			ChangeCharacterAddressGroup(CharacterFromID("wr_boc5"), "none", "", "");//bsw away from food supply, if not earlier
 			Locations[FindLocation("wr_food_supply")].reload.l4.disable = 0;	//'fence'
-			locations[FindLocation("wr_food_supply")].id.label = "Woodes Rogers' food cellar";
+			locations[FindLocation("wr_food_supply")].id.label = TranslateString("","Woodes Rogers' food cellar");
 
-			locations[FindLocation("wr_wine_cellar")].id.label = "Roger's wine cellar";
+			locations[FindLocation("wr_wine_cellar")].id.label = TranslateString("","Roger's wine cellar");
 
 			Locations[FindLocation("wr_kitchen")].reload.l2.disable = 1;			//to wr bedroom
 			Locations[FindLocation("wr_kitchen")].reload.l3.disable = 0;			//to food_supply
@@ -39814,10 +39649,10 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("wr_prt7"), "none", "", "");	//in kitchen
 			ChangeCharacterAddressGroup(CharacterFromID("wr_cor1_3"), "none", "", "");	//in kitchen
 			Pchar.quest.wr_kitchendoor = "stuck";
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
 
 			Locations[FindLocation("wr_crew")].reload.l5.disable = 1;			//to town
-			locations[FindLocation("wr_crew")].id.label = "Crew's quarter";
+			locations[FindLocation("wr_crew")].id.label = TranslateString("","Crew's quarter");
 			locations[FindLocation("wr_crew")].type = "Rogers_cellar";				//empty tavern
 			ChangeCharacterAddressGroup(CharacterFromID("wr_raoul"), "none", "", "");
 			ChangeCharacterAddressGroup(CharacterFromID("wr_omat1"), "none", "", "");
@@ -39849,9 +39684,9 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_booty")].reload.l3.disable = 0;
 
 			Locations[FindLocation("wr_friday")].reload.l2.disable = 0;			//window to facade
-			locations[FindLocation("wr_friday")].id.label = "Friday's room";
+			locations[FindLocation("wr_friday")].id.label = TranslateString("","Friday's room");
 
-			locations[FindLocation("ck_bedroom")].id.label = "Caroline K's bedroom";
+			locations[FindLocation("ck_bedroom")].id.label = TranslateString("","Caroline K's bedroom");
 
 			Locations[FindLocation("Redmond_UsurerHouse")].models.always.locators = "SS_l_JRH3";
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l1.disable = 1;		//to town
@@ -39860,9 +39695,9 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("Redmond_UsurerHouse")].type = "Rogers_neutral";			//to avoid people there at night
 
 			Locations[FindLocation("Loanshark_cellar")].reload.l1.disable = 0;		//to mine
-			locations[FindLocation("Loanshark_cellar")].id.label = "Loanshark cellar";
+			locations[FindLocation("Loanshark_cellar")].id.label = TranslateString("","Loanshark cellar");
 
-			locations[FindLocation("wr_library")].id.label = "Woodes Rogers' library";
+			locations[FindLocation("wr_library")].id.label = TranslateString("","Woodes Rogers' library");
 
 			Locations[FindLocation("Redmond_Town_01")].models.always.locators = "Red01_l_JRH7";	//was 6
 			Locations[FindLocation("Redmond_Town_01")].reload.l16.disable = 1;		//kitchen
@@ -39880,15 +39715,36 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_tavern")].reload.l3.disable = 0;		//balcony
 			Locations[FindLocation("Redmond_tavern")].reload.l6.disable = 1;		//tavern storeroom
 
-			locations[FindLocation("Tavern_storeroom")].id.label = "Tavern storeroom";
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("Tavern_storeroom")].id.label = TranslateString("","Tavern storeroom");
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 
 			LAi_SetActorType(CharacterFromID("pir_cap10"));
 			LAi_ActorRunToLocator(characterFromID("pir_cap10"), "reload", "reload2", "Vane_ladder35", 3.0);
 
+		Locations[FindLocation("wr_dungeon4_low")].locators_radius.randitem.randitem5 = 0.000001;
+		Locations[FindLocation("wr_dungeon4_low")].items.randitem5 = "key8";	//invisible
+		
 			pchar.quest.make_moon_night1.win_condition.l1 = "location";
 			pchar.quest.make_moon_night1.win_condition.l1.location = "wr_dungeon4_low";
 			pchar.quest.make_moon_night1.win_condition = "make_moon_night1";
+
+		pchar.quest.tunnel_lowA_loop1.win_condition.l1 = "locator";
+			pchar.quest.tunnel_lowA_loop1.win_condition.l1.location = "wr_dungeon4_low";
+			pchar.quest.tunnel_lowA_loop1.win_condition.l1.locator_group = "reload";
+			pchar.quest.tunnel_lowA_loop1.win_condition.l1.locator = "reload4";
+			pchar.quest.tunnel_lowA_loop1.win_condition = "tunnel_lowA_loop1";
+
+			pchar.quest.tunnel_lowB_loop1.win_condition.l1 = "locator";
+			pchar.quest.tunnel_lowB_loop1.win_condition.l1.location = "wr_dungeon4_low";
+			pchar.quest.tunnel_lowB_loop1.win_condition.l1.locator_group = "reload";
+			pchar.quest.tunnel_lowB_loop1.win_condition.l1.locator = "reload5";
+			pchar.quest.tunnel_lowB_loop1.win_condition = "tunnel_lowB_loop1";
+
+			pchar.quest.tunnel1back_loop1.win_condition.l1 = "locator";
+			pchar.quest.tunnel1back_loop1.win_condition.l1.location = "wr_dungeon3_right";
+			pchar.quest.tunnel1back_loop1.win_condition.l1.locator_group = "reload";
+			pchar.quest.tunnel1back_loop1.win_condition.l1.locator = "reload7";
+			pchar.quest.tunnel1back_loop1.win_condition = "tunnel1back_loop1";
 		break;
 
 		case "Vane_ladder35":
@@ -40296,7 +40152,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Woodes Rogers"), "none", "", "");
 			Pchar.quest.wr_quest1 = "off";
 			Pchar.quest.woodesrogers = "dead";
-
+	
 			LAi_QuestDelay("cat_burglar", 0.1);
 		break;
 
@@ -41566,7 +41422,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_ships")].locators_radius.box.box6 = 0.0001;		//cannon down - box not visible from start
 			Locations[FindLocation("wr_ships")].locators_radius.box.box7 = 0.7;		//cannon high up
 
-			Locations[FindLocation("wr_corv_smallcabin_R")].id.label = "Cabin";
+			Locations[FindLocation("wr_corv_smallcabin_R")].id.label = TranslateString("","Cabin");
 			Locations[FindLocation("wr_corv_deck1")].models.always.locators = "deck1_l_JRH_fight";
 			Locations[FindLocation("wr_corv_deck1")].reload.l5.disable = 1;			//to weather deck
 			Locations[FindLocation("wr_corv_deck1")].reload.l4.disable = 1;			//small cab L
@@ -42040,7 +41896,7 @@ void QuestComplete(string sQuestName)
 		case "end_corvette_fight7":
 			LAi_ActorGoToLocator(characterFromID("Selkirk"), "goto", "unlock_key", "end_corvette_fight8", 2.0);
 		break;
-//p?r wr_ships some locators small
+//pär wr_ships some locators small
 		case "end_corvette_fight8":
 			PlaySound("INTERFACE\key_unlock.wav");
 			Locations[FindLocation("wr_corv_capmd")].reload.l1.disable = 0;		//to wr_ships
@@ -42249,7 +42105,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("corvette_broadside1", 1.5);
 		break;
-//p?r p20 fix
+//pär p20 fix
 		case "corvette_broadside1":
 			PlaySound("VOICE\ENGLISH\alarm1.wav");
 			ChangeCharacterAddressGroup(characterFromID("wr_pir7"), "wr_ships", "goto", "alarm");
@@ -42619,35 +42475,35 @@ void QuestComplete(string sQuestName)
 
 		ChangeCharacterAddressGroup(characterFromID("pir_cap16"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap16"), LAI_GROUP_PLAYER);
-
+		
 		ChangeCharacterAddressGroup(characterFromID("pir_cap23"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap23"), LAI_GROUP_PLAYER);
 
 		ChangeCharacterAddressGroup(characterFromID("pir_cap9"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap9"), LAI_GROUP_PLAYER);
-
+		
 		ChangeCharacterAddressGroup(characterFromID("pir_cap18"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap18"), LAI_GROUP_PLAYER);
 
 		ChangeCharacterAddressGroup(characterFromID("pir_cap4"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap4"), LAI_GROUP_PLAYER);
-
+		
 		ChangeCharacterAddressGroup(characterFromID("pir_cap26"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap26"), LAI_GROUP_PLAYER);
 
 		ChangeCharacterAddressGroup(characterFromID("pir_cap3"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap3"), LAI_GROUP_PLAYER);
-
+		
 		ChangeCharacterAddressGroup(characterFromID("pir_cap30"), "wr_ships", "goto", "hidden_allies");
 		LAi_group_MoveCharacter(characterFromID("pir_cap30"), LAI_GROUP_PLAYER);
 
 			LAi_group_Register("WR_GUARDS_5");
 			LAi_group_SetRelation(LAI_GROUP_PLAYER, "WR_GUARDS_5", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "WR_GUARDS_5", true);
-
+	
 			LAi_QuestDelay("Friday_bladecheck", 0.1);
 			LAi_QuestDelay("corvette_deckfight_2wave", 4.0);
-
+	
 			Pchar.quest.corvette_deckfight_over.win_condition.l1 = "NPC_Death";
 			Pchar.quest.corvette_deckfight_over.win_condition.l1.character = "wr_solhol";
 			Pchar.quest.corvette_deckfight_over.win_condition.l2 = "NPC_Death";
@@ -42962,6 +42818,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "corvette_deckfight_over":
+	//pär remove guards seen from qdeck
+	ChangeCharacterAddressGroup(characterFromID("wr_man5_1_copy"), "none", "", "");
+	ChangeCharacterAddressGroup(characterFromID("wr_fsh1_copy"), "none", "", "");
+
 			AddQuestRecord("Woodes_Rogers_crew", "5");
 
 			Pchar.quest.wr_deckfight = "over";
@@ -43600,11 +43460,12 @@ void QuestComplete(string sQuestName)
 
 		case "galleon_search9":
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload1");
-			PlaySound("OBJECTS\SHIPCHARGE\_Abandon1.wav");
+			if(LanguageGetLanguage() == "RUSSIAN") PlaySound("RUSSIAN\OBJECTS\SHIPCHARGE\_Abandon1.wav");
+			else PlaySound("OBJECTS\SHIPCHARGE\_Abandon1.wav");
 
 			LAi_QuestDelay("galleon_search10", 1.0);
 		break;
-//p?r guncrew neutral 1
+//pär guncrew neutral 1
 		case "galleon_search10":
 			PlaySound("INTERFACE\closed_door.wav");
 			LAi_SetPlayerType(Pchar);
@@ -43662,7 +43523,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("guncrew_1"));
 			Characters[GetCharacterIndex("guncrew_1")].dialog.CurrentNode  = "anvil";
 		break;
-//p?r guncrew neutral 2
+//pär guncrew neutral 2
 		case "anvil_push":
 			//from guncrew_1 dialog
 			PlaySound("OBJECTS\DUEL\woman_hit3.wav");
@@ -43670,7 +43531,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetFightMode(CharacterFromID("guncrew_1"), true);
 
 			Characters[GetCharacterIndex("guncrew_1")].dialog.CurrentNode  = "neutral";
-
+			
 			LAi_QuestDelay("anvil_push1", 1.0);
 		break;
 
@@ -43711,7 +43572,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_gall_hold_first")].reload.l1.disable = 0;
 			Locations[FindLocation("wr_gall_hold_first")].locators_radius.reload.reload3 = 0.0001;	//stairs to irontool
 			Locations[FindLocation("wr_gall_hold_first")].models.always.l2 = "plank1";		//deck
-			Locations[FindLocation("wr_gall_hold_second")].id.label = "Cargo Hold";
+			Locations[FindLocation("wr_gall_hold_second")].id.label = TranslateString("","Cargo Hold");
 			Locations[FindLocation("wr_gall_hold_second")].reload.l2.disable = 0;			//start up to inner
 			Locations[FindLocation("wr_gall_hold_second")].locators_radius.reload.reload3 = 1.0;
 			Locations[FindLocation("wr_gall_hold_second")].reload.l2.go = "wr_gall_cap_inner";
@@ -43724,7 +43585,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_gall_deck2_stern")].reload.l4.go = "wr_gall_cap_outer";
 			Locations[FindLocation("wr_gall_deck2_stern")].reload.l4.emerge = "goto4";
 
-			Locations[FindLocation("wr_gall_cap_outer")].id.label = "Captain's deck";
+			Locations[FindLocation("wr_gall_cap_outer")].id.label = TranslateString("","Captain's deck");
 			ChangeCharacterAddressGroup(characterFromID("wr_pir9"), "none", "", "");
 
 			Locations[FindLocation("wr_gall_captain")].locators_radius.box.box1 = 0.0001;
@@ -43767,7 +43628,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterbyItem(CharacterFromID("wr_cor1_3"), "pistol2");
 			TakenItems(CharacterFromID("wr_cor1_3"), "gunpowder", 1);
 			TakenItems(CharacterFromID("wr_cor1_3"), "pistolbullets", 2);
-
+	
 			pchar.quest.galleon_search11.win_condition.l1 = "location";
 			pchar.quest.galleon_search11.win_condition.l1.location = "wr_gall_hold_second";
 			pchar.quest.galleon_search11.win_condition = "galleon_search11";
@@ -43778,7 +43639,8 @@ void QuestComplete(string sQuestName)
 			SetNextWeather("Clear");
 
 			pchar.quest.galleon_search12.win_condition.l1 = "locator";
-			pchar.quest.galleon_search12.win_condition.l1.location = "wr_ships";
+		//	pchar.quest.galleon_search12.win_condition.l1.location = "wr_ships";
+		pchar.quest.galleon_search12.win_condition.l1.location = "wr_gall_qdeck";
 			pchar.quest.galleon_search12.win_condition.l1.locator_group = "goto";
 			pchar.quest.galleon_search12.win_condition.l1.locator = "qdeck";
 			pchar.quest.galleon_search12.win_condition = "galleon_search12";
@@ -44565,6 +44427,10 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\closet_open.wav");
 			ChangeCharacterAddressGroup(characterFromID("guncrew_3"), "wr_gall_captain", "goto", "stay11");
 
+	//pär reset qdeck
+	Locations[FindLocation("wr_gall_cap_outer")].reload.l3.go = "wr_ships";
+	Locations[FindLocation("wr_gall_cap_outer")].reload.l4.go = "wr_ships";	
+
 			LAi_QuestDelay("galleon_sinking1", 1.0);
 		break;
 
@@ -44831,7 +44697,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.galleon_sinking7.win_condition.l1.location = "wr_ships";
 			pchar.quest.galleon_sinking7.win_condition = "galleon_sinking7";
 		break;
-//p?r pyle turn
+//pär pyle turn
 		case "galleon_sinking7":
 			PlaySound("OBJECTS\SHIPCHARGE\_Abandon0.wav");
 
@@ -45210,7 +45076,7 @@ void QuestComplete(string sQuestName)
 		case "galleon_sinking20":
 			PostVideoAndQuest("Undersea",1, "galleon_sinking21");
 		break;
-//p?r small loc wr_corvette
+//pär small loc wr_corvette
 		case "galleon_sinking21":
 			SetCurrentTime(7.00, 0);
 			SetNextWeather("Clear");
@@ -45997,10 +45863,10 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_study")].locators_radius.box.box11 = 0.5;
 			Locations[FindLocation("wr_study")].locators_radius.goto.wr_dead = 2.0;
 
-			locations[FindLocation("Tavern_storeroom")].id.label = "Tavern storeroom";
-			locations[FindLocation("wr_study")].id.label = "Woodes Rogers' study";
-			locations[FindLocation("wr_gunroom")].id.label = "Gunroom";
-			locations[FindLocation("storeroom_attic")].id.label = "Storeroom attic";
+			locations[FindLocation("Tavern_storeroom")].id.label = TranslateString("","Tavern storeroom");
+			locations[FindLocation("wr_study")].id.label = TranslateString("","Woodes Rogers' study");
+			locations[FindLocation("wr_gunroom")].id.label = TranslateString("","Gunroom");
+			locations[FindLocation("storeroom_attic")].id.label = TranslateString("","Storeroom attic");
 
 			LAi_QuestDelay("goodbye_Vane_Pchar17", 1.0);
 
@@ -46101,7 +45967,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("Defoe"), "pistol201");
 			EquipCharacterbyItem(characterFromID("Defoe"), "pistol201");
 
-			locations[FindLocation("wr_library")].id.label = "Woodes Rogers' library";
+			locations[FindLocation("wr_library")].id.label = TranslateString("","Woodes Rogers' library");
 
 			locations[FindLocation(Pchar.location)].box7.items.bladelever = 4;
 			locations[FindLocation(Pchar.location)].box7.items."bladeA5" = 1;
@@ -46192,7 +46058,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.quest.study_lever2 = "up";
 			Locations[FindLocation("wr_study")].models.always.l2 = "lever2_up";
-
+			
 			LAi_QuestDelay("study_place_lever2_B", 0.5);
 		break;
 
@@ -46205,7 +46071,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.quest.study_lever3 = "up";
 			Locations[FindLocation("wr_study")].models.always.l3 = "lever3_up";
-
+			
 			LAi_QuestDelay("study_place_lever3_B", 0.5);
 		break;
 
@@ -46218,7 +46084,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.quest.study_lever1 = "up";
 			Locations[FindLocation("wr_study")].models.always.l1 = "lever1_up";
-
+			
 			LAi_QuestDelay("study_place_lever1_B", 0.5);
 		break;
 
@@ -46231,7 +46097,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.quest.study_lever4 = "up";
 			Locations[FindLocation("wr_study")].models.always.l4 = "lever4_up";
-
+			
 			LAi_QuestDelay("study_place_lever4_B", 0.5);
 		break;
 	//..............................................................................................
@@ -46650,18 +46516,18 @@ void QuestComplete(string sQuestName)
 		case "fill_secret_box":
 			Pchar.quest.drawing_kit = "none";
 
-			locations[FindLocation(Pchar.location)].box1.items.red_uniform = 1;	//mycket snygg kostym, ihoplagd, aldrig anv?nd
+			locations[FindLocation(Pchar.location)].box1.items.red_uniform = 1;	//mycket snygg kostym, ihoplagd, aldrig använd
 			locations[FindLocation(Pchar.location)].box1.items.sextant = 1;		//kvadrant
 			locations[FindLocation(Pchar.location)].box1.items.tin_jug = 1;		//liten tennkanna
-			locations[FindLocation(Pchar.location)].box1.items.tobacco = 3;		//flera tobaksfl?tor
+			locations[FindLocation(Pchar.location)].box1.items.tobacco = 3;		//flera tobaksflätor
 			locations[FindLocation(Pchar.location)].box1.items."pistol9+2" = 2;	//2 par mycket vackra pistoler
 			locations[FindLocation(Pchar.location)].box1.items.silver_bar = 1;	//silvertacka
 			locations[FindLocation(Pchar.location)].box1.items.clock1 = 1;		//gammal spansk klocka och (1 el 2 itms)
- 			locations[FindLocation(Pchar.location)].box1.items.foreign_items = 1;	//n?gra andra sm?saker av ringa v?rde
-			locations[FindLocation(Pchar.location)].box1.items.drawing_kit = 1;	//cirkelbestick av m?ssing
-			locations[FindLocation(Pchar.location)].box1.items.strange_shells = 1;	//5 el 6 underliga sn?ckor
-			locations[FindLocation(Pchar.location)].box1.items.package = 1;		//gammal sj?manskappa, med oljedukspaket (karta + anteckningsbok)
-			locations[FindLocation(Pchar.location)].box1.items.temp_purse = 2660;	//p?se med pengar
+ 			locations[FindLocation(Pchar.location)].box1.items.foreign_items = 1;	//några andra småsaker av ringa värde
+			locations[FindLocation(Pchar.location)].box1.items.drawing_kit = 1;	//cirkelbestick av mässing
+			locations[FindLocation(Pchar.location)].box1.items.strange_shells = 1;	//5 el 6 underliga snäckor
+			locations[FindLocation(Pchar.location)].box1.items.package = 1;		//gammal sjömanskappa, med oljedukspaket (karta + anteckningsbok)
+			locations[FindLocation(Pchar.location)].box1.items.temp_purse = 2660;	//påse med pengar
 
 	//		LAi_QuestDelay("red_uniform", 0.1);
 
@@ -46678,9 +46544,9 @@ void QuestComplete(string sQuestName)
 					if(CheckCharacterItem(Pchar,"mapBB1"))
 					{
 						Locations[FindLocation("wr_library")].reload.l4.disable = 0;
-						locations[FindLocation("ck_drawing_room")].id.label = "Caroline K's drawing room";
+						locations[FindLocation("ck_drawing_room")].id.label = TranslateString("","Caroline K's drawing room");
 						AddQuestRecord("Secrets", "8");
-						CloseQuestHeader("Secrets");
+						CloseQuestHeader("Secrets");			
 
 						LAi_QuestDelay("secret_room_finished", 0.1);
 					}
@@ -46733,15 +46599,15 @@ void QuestComplete(string sQuestName)
 				if(CheckAttribute(Pchar,"quest.study_notebook") && Pchar.quest.study_notebook == "yes")
 				{
 					Locations[FindLocation("wr_library")].reload.l4.disable = 0;
-					locations[FindLocation("ck_drawing_room")].id.label = "Caroline K's drawing room";
+					locations[FindLocation("ck_drawing_room")].id.label = TranslateString("","Caroline K's drawing room");
 					AddQuestRecord("Secrets", "8");
 					CloseQuestHeader("Secrets");
 				}
 			}
 		break;
-
+	
 //package B
-
+	
 		case "package1":
 			if(CheckCharacterItem(Pchar,"folding_knife"))
 			{
@@ -46852,7 +46718,7 @@ void QuestComplete(string sQuestName)
 				if(CheckAttribute(Pchar,"quest.red_uniform") && Pchar.quest.red_uniform == "yes")
 				{
 					Locations[FindLocation("wr_library")].reload.l4.disable = 0;
-					locations[FindLocation("ck_drawing_room")].id.label = "Caroline K's drawing room";
+					locations[FindLocation("ck_drawing_room")].id.label = TranslateString("","Caroline K's drawing room");
 					AddQuestRecord("Secrets", "8");
 					CloseQuestHeader("Secrets");
 				}
@@ -46893,7 +46759,7 @@ void QuestComplete(string sQuestName)
 		case "package12":
 			TakeItemFromCharacter(Pchar, "sealed_map");
 			GiveItem2Character(Pchar, "mapBB1");
-
+		
 			LAi_SetFightMode(PChar, false);
 
 			if(CheckAttribute(Pchar,"quest.study_notebook") && Pchar.quest.study_notebook == "yes")
@@ -46901,7 +46767,7 @@ void QuestComplete(string sQuestName)
 				if(CheckAttribute(Pchar,"quest.red_uniform") && Pchar.quest.red_uniform == "yes")
 				{
 					Locations[FindLocation("wr_library")].reload.l4.disable = 0;
-					locations[FindLocation("ck_drawing_room")].id.label = "Caroline K's drawing room";
+					locations[FindLocation("ck_drawing_room")].id.label = TranslateString("","Caroline K's drawing room");
 					AddQuestRecord("Secrets", "8");
 					CloseQuestHeader("Secrets");
 				}
@@ -48352,7 +48218,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("Defoe"));
 			LAi_ActorDialog(characterFromID("Defoe"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Defoe"));
-
+			
 		break;
 
 		case "drawing_room_map15":
@@ -48369,7 +48235,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("Defoe"));
 			LAi_ActorDialog(characterFromID("Defoe"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Defoe"));
-
+		
 		break;
 	//.......................................................................................................
 //scene Hornigold start
@@ -49059,7 +48925,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("wr_man3"), "none", "", "");	//terrace guard
 			ChangeCharacterAddressGroup(characterFromID("wr_pir7"), "none", "", "");	//terrace guard
 
-			locations[FindLocation("wr_crew")].id.label = "Crew's quarter";
+			locations[FindLocation("wr_crew")].id.label = TranslateString("","Crew's quarter");
 
 			Locations[FindLocation("Redmond_UsurerHouse")].models.always.locators = "SS_l_JRH3";
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l1.disable = 0;		//to town
@@ -49069,10 +48935,10 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_UsurerHouse")].reload.l7.disable = 1;		//to town behind counter
 			locations[FindLocation("Redmond_UsurerHouse")].type = "house";			//reset
 
-			locations[FindLocation("Loanshark_cellar")].id.label = "Loanshark cellar";
-			locations[FindLocation("wr_library")].id.label = "Woodes Rogers' library";
+			locations[FindLocation("Loanshark_cellar")].id.label = TranslateString("","Loanshark cellar");
+			locations[FindLocation("wr_library")].id.label = TranslateString("","Woodes Rogers' library");
 
-			locations[FindLocation("Shop_stairs")].id.label = "Rogers' Paintings Furniture & Weapons";
+			locations[FindLocation("Shop_stairs")].id.label = TranslateString("","Rogers' Paintings Furniture & Weapons");
 
 		LAi_LocationFightDisable(&Locations[FindLocation("Redmond_Town_01")], true);		//so officers don't get lost
 		LAi_LocationFightDisable(&Locations[FindLocation("Redmond_Town_04")], true);
@@ -49084,17 +48950,17 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Redmond_Town_01")].reload.l20.disable = 1;		//LS back door
 		//	Locations[FindLocation("Redmond_Town_01")].reload.l9.close_for_night = 1;	//shipyard
 			Locations[FindLocation("Redmond_shipyard")].reload.l2.disable = 0;		//shipyard stairs
-			locations[FindLocation("shipyard_stairs")].id.label = "Shipyard stairs";
+			locations[FindLocation("shipyard_stairs")].id.label = TranslateString("","Shipyard stairs");
 			Locations[FindLocation("Shipyard_shore")].reload.l1.disable = 1;		//to docks
 			Locations[FindLocation("Shipyard_shore")].reload.l2.disable = 1;		//to docks
-
+		
 			Locations[FindLocation("Redmond_tavern")].models.always.locators = "LT_l_JRH3";
 			Locations[FindLocation("Redmond_tavern")].reload.l3.disable = 1;		//balcony: officer problems
 			Locations[FindLocation("Redmond_tavern")].reload.l4.disable = 1;		//counter: officer problems
 			Locations[FindLocation("Redmond_tavern")].reload.l6.disable = 1;		//tavern storeroom
 
-			locations[FindLocation("Tavern_storeroom")].id.label = "Tavern storeroom";
-			locations[FindLocation("wr_kitchen")].id.label = "Woodes Rogers' kitchen";
+			locations[FindLocation("Tavern_storeroom")].id.label = TranslateString("","Tavern storeroom");
+			locations[FindLocation("wr_kitchen")].id.label = TranslateString("","Woodes Rogers' kitchen");
 
 			Locations[FindLocation("Redmond_Town_01")].reload.l13.disable = 0;	//to governor's residence
 			Locations[FindLocation("Redmond_Port")].reload.l6.disable = 0;		//to harbour office
@@ -49103,8 +48969,8 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("Redmond_church")].reload.l1.disable = 0;
 			locations[FindLocation("Redmond_church")].reload.l2.disable = 1;
 			locations[FindLocation("Redmond_church")].reload.l3.disable = 1;
-			locations[FindLocation("church_choir")].id.label = "Port Royal Church Choir";
-			locations[FindLocation("wr_crypt")].id.label = "Port Royal catacombs";
+			locations[FindLocation("church_choir")].id.label = TranslateString("","Port Royal Church Choir");
+			locations[FindLocation("wr_crypt")].id.label = TranslateString("","Port Royal catacombs");
 
 			Locations[FindLocation("Redmond_town_exit_2")].models.always.locators = "Redexit2_l_JRH";
 			locations[FindLocation("Redmond_town_exit_2")].reload.l5.disable = 1;		//to well
@@ -49137,9 +49003,9 @@ void QuestComplete(string sQuestName)
 			bDisableFastReload = 0;
 		*/
 			LAi_QuestDelay("goodbye_blues", 1.5);
-
+		
 		break;
-
+	
 		case "goodbye_blues":
 			PlaySound("INTERFACE\blues_end.wav");
 		//	Pchar.quest.WR_part1 = "finished";			//the quest guns can now be lost if reincarnated
@@ -49164,7 +49030,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "to_the_farm1":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "to_the_farm";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -49184,7 +49050,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Shipyard_shore_ambush.win_condition.l1.location = "Shipyard_shore";
 			pchar.quest.Shipyard_shore_ambush.win_condition = "Shipyard_shore_ambush";
 		break;
-
+		
 		case "Shipyard_shore_ambush":
 			PlaySound("INTERFACE\key_lock.wav");
 			Locations[FindLocation("Shipyard_shore")].reload.l30.disable = 1;	//back to stairs
@@ -49197,7 +49063,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Shipyard_shore_ambush_officers", 1.0);		//0.01 possible
 		break;
-
+	
 		case "Shipyard_shore_ambush1":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Shipyard_shore", "goto", "target");
@@ -49214,7 +49080,7 @@ void QuestComplete(string sQuestName)
 		case "Shipyard_shore_ambush2":
 			LAi_SetActorType(characterFromID("wr_boc3"));
 			LAi_ActorAttack(CharacterFromID("wr_boc3"), Pchar, "");
-
+			
 			LAi_QuestDelay("Shipyard_shore_ambush3", 2.5);		//was 1.5
 			LAi_QuestDelay("Shipyard_shore_ambush5", 3.0);
 		break;
@@ -49247,14 +49113,14 @@ void QuestComplete(string sQuestName)
 		case "Shipyard_shore_ambush_officers":
 			PlaySound("OBJECTS\DUEL\pistol_bbus.wav");
 			CreateParticleSystem("gunfire" , -21.3, 6.1, 48.7, -21.3, 6.1, 48.7, sti(20) );
-
+			
 			LAi_QuestDelay("Shipyard_shore_ambush_officers1", 0.75);
 		break;
-//p?r kill
+//pär kill
 		case "Shipyard_shore_ambush_officers1":
 			PlaySound("OBJECTS\DUEL\pistol_bbus.wav");
 			CreateParticleSystem("gunfire" , -21.4, 6.1, 45.3, -21.4, 6.1, 45.3, sti(20) );
-
+		
 			if(IsOfficer(CharacterFromID("gm_crew1"))) LAi_KillCharacter(characterFromID("gm_crew1"));
 			if(IsOfficer(CharacterFromID("gm_crew3"))) LAi_KillCharacter(characterFromID("gm_crew3"));
 			if(IsOfficer(CharacterFromID("gm_crew4"))) LAi_KillCharacter(characterFromID("gm_crew4"));
@@ -49268,10 +49134,10 @@ void QuestComplete(string sQuestName)
 		/*	for (i = 1; i < 24; i++)
 			{
 				LAi_KillCharacter(characterFromID("gm_crew" + i));
-			}
+			}	
 		*/
 		break;
-
+	
 		case "Shipyard_shore_ambush6":
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
@@ -49298,7 +49164,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "bandana");
 
 			Locations[FindLocation("Shipyard_shore")].image = "Shipyard_shore.tga";
-
+			
 			LAi_QuestDelay("Shipyard_shore_ambush8", 3.0);
 		break;
 
@@ -49314,7 +49180,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Shipyard_shore_ambush9":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "hidden_items";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -49324,11 +49190,11 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_port")].reload.l2.disable = 0;			//to farm
 		//these 3 if playing without jump starts
 		Locations[FindLocation("wr_port")].models.always.locators = "QCport_l_JRH";
-		SetLocatorRadius(locations[FindLocation("wr_port")], "reload", "reload1", 0.0001);
+		SetLocatorRadius(locations[FindLocation("wr_port")], "reload", "reload1", 0.0001);	
 		Locations[FindLocation("wr_port")].locators_radius.reload.reload1 = 0.001;
 	Pchar.quest.alchemy_lever = "up";
 	Pchar.quest.mixtable_bottle = "none";		//21-11-28
-
+	
 			SetCharacterShipLocation(characterFromID("Coastbrother25"), "none");		//boat3 at wr_port
 			SetCharacterShipLocation(characterFromID("Coastbrother26"), "none");		//corvette at wr_port
 			SetCharacterShipLocation(characterFromID("Coastbrother27"), "none");		//boat2 at wr_port
@@ -50030,14 +49896,14 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("stars_short" , u, v, w, 0.0, 0.0, 0.0, sti(20) );
 
 			if(Pchar.location != "bb_lower_cave") SetModel(PChar, "Skel4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
-		//	SetModel(PChar, "Skel4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
+		//	SetModel(PChar, "Skel4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);			
 
 			LAi_QuestDelay("Teach_head_teleport1", 2.5);	//was 1.5
 		break;
 
 		case "Teach_head_teleport1":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead6.wav");
-
+			
 			LAi_QuestDelay("Teach_head_teleport2", 1.5);
 		break;
 
@@ -50049,7 +49915,7 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.quest.Teach_head)
 				{
 					case "1":
-						DoQuestReloadToLocation("Redmond_Town_01", "reload", "reload_2_3" ,"Teach_head_1");
+						DoQuestReloadToLocation("Redmond_Town_01", "reload", "reload_2_3" ,"Teach_head_1");		
 					break;
 
 					case "2":
@@ -50059,13 +49925,13 @@ void QuestComplete(string sQuestName)
 					case "3":
 						DoQuestReloadToLocation("Redmond_Port", "reload", "reload_2_city" ,"Teach_head_3");
 					break;
-
+				
 					case "4":
 						DoQuestReloadToLocation("Redmond_Town_01", "reload", "reload5" ,"Teach_head_4");
 					break;
-
+				
 					case "5":
-						DoQuestReloadToLocation("Redmond_Town_01", "reload", "reload_2_3" ,"Teach_head_5");
+						DoQuestReloadToLocation("Redmond_Town_01", "reload", "reload_2_3" ,"Teach_head_5");	
 					break;
 
 					case "6":
@@ -50073,7 +49939,7 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "7":
-						DoQuestReloadToLocation("Redmond_Town_04", "officers", "reload_4_1_2" ,"Teach_head_7");
+						DoQuestReloadToLocation("Redmond_Town_04", "officers", "reload_4_1_2" ,"Teach_head_7");		
 					break;
 
 					case "8":
@@ -50092,7 +49958,7 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "11":
-						DoQuestReloadToLocation("Redmond_Port", "reload", "reload_2_city" ,"Teach_head_11");
+						DoQuestReloadToLocation("Redmond_Port", "reload", "reload_2_city" ,"Teach_head_11");	
 					break;
 
 					case "12":
@@ -50104,7 +49970,7 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "15":
-						DoQuestReloadToLocation("wr_church_outside", "reload", "reload2" ,"Teach_head_15");
+						DoQuestReloadToLocation("wr_church_outside", "reload", "reload2" ,"Teach_head_15");		
 					break;
 
 					case "16":
@@ -50112,7 +49978,7 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "17":
-						DoQuestReloadToLocation("wr_cavern", "reload", "reload3" ,"Teach_head_17");
+						DoQuestReloadToLocation("wr_cavern", "reload", "reload3" ,"Teach_head_17");		
 					break;
 
 					case "18":
@@ -50146,7 +50012,7 @@ void QuestComplete(string sQuestName)
 					case "26":
 						DoQuestReloadToLocation("Tortuga_port", "reload", "reload2_back" ,"Teach_head_26");
 					break;
-
+				
 					case "27":
 						DoQuestReloadToLocation("Charlestown_port", "reload", "reload1_back" ,"Teach_head_27");
 					break;
@@ -50201,13 +50067,13 @@ void QuestComplete(string sQuestName)
 						DoQuestReloadToLocation("IslaMona_port", "quest", "pyle2" ,"Teach_head_38");
 					break;
 				}
-			}
+			}				
 		break;
 
 
 
 
-//p?r jump starts
+//pär jump starts
 
 	//....................................................................................................
 
@@ -50225,7 +50091,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "bladeX4");
 			EquipCharacterByItem(Pchar, "bladeX4");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_2":
@@ -50260,7 +50126,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Woodes_Rogers_quest", "1");
 			AddQuestRecord("Woodes_Rogers_quest", "2");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_3":
@@ -50296,9 +50162,9 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Woodes_Rogers_quest", "5");
 			AddQuestRecord("Woodes_Rogers_quest", "6");
 			AddQuestRecord("Woodes_Rogers_quest", "7");
-			CloseQuestHeader("Woodes_Rogers_quest");
+			CloseQuestHeader("Woodes_Rogers_quest");		
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_4":
@@ -50309,9 +50175,9 @@ void QuestComplete(string sQuestName)
 			Pchar.perks.list.BasicDefence = true;
 
 			Pchar.skill.Sailing = 2;
-
+					
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
-			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
+			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);	
 			DeleteAttribute(Pchar, "items");
 
 			AddMoneyToCharacter(Pchar,-2000);
@@ -50325,11 +50191,11 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "pistol202");
 			EquipCharacterbyItem(Pchar, "pistol202");
 			TakeItemFromCharacter(Pchar, "map");
-			TakeNItems(Pchar,"medical1", 2);
+			TakeNItems(Pchar,"medical1", 2);			
 
 			LAi_QuestDelay("selkirk_gone2", 0.1);	//4 only obs
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_5":
@@ -50339,7 +50205,7 @@ void QuestComplete(string sQuestName)
 
 			Pchar.perks.list.BasicDefence = true;
 
-			Pchar.skill.Sailing = 2;
+			Pchar.skill.Sailing = 2;	
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
@@ -50375,7 +50241,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Woodes_Rogers_reward_3", "4");
 			AddQuestRecord("Woodes_Rogers_reward_3", "5");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_6":
@@ -50383,11 +50249,11 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 55;	//Bloke
 			SetModel(PChar, "Pira4M_H", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 
 			Pchar.skill.Sailing = 2;
 			Pchar.skill.Sneak = 2;
-
+		
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			DeleteAttribute(Pchar, "items");
@@ -50414,7 +50280,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"medical1", 2);
 			TakeNItems(Pchar,"chinatiger", 1);
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_7":
@@ -50423,9 +50289,9 @@ void QuestComplete(string sQuestName)
 			SetModel(PChar, "Pira4M_HT", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
 			Pchar.perks.list.BasicDefence = true;
-
+	
 			Pchar.skill.Sailing = 2;
-			Pchar.skill.Sneak = 2;
+			Pchar.skill.Sneak = 2;	
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
@@ -50457,7 +50323,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar,"jewelry12", 1);
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_8":
@@ -50503,8 +50369,8 @@ void QuestComplete(string sQuestName)
 
 			AddQuestRecord("Woodes_Rogers_reward_5", "2");
 			CloseQuestHeader("Woodes_Rogers_reward_5");
-
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_9":
@@ -50526,7 +50392,7 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(Pchar,-2000);
 			AddWealthToCharacter(Pchar, 600);
 
-			//GiveItem2Character(Pchar, "map");
+			//GiveItem2Character(Pchar, "map");		
 			GiveItem2Character(Pchar, "bladeX4");
 			EquipCharacterByItem(Pchar, "bladeX4");
 			GiveItem2Character(Pchar, "pistol206");
@@ -50539,7 +50405,7 @@ void QuestComplete(string sQuestName)
 			SetQuestHeader("Charles_Vanes_quest");
 			AddQuestRecord("Charles_Vanes_quest", "1");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_10":
@@ -50562,23 +50428,23 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(Pchar, 2009);
 			AddWealthToCharacter(Pchar, 600);
 
-			//GiveItem2Character(Pchar, "map");
+			//GiveItem2Character(Pchar, "map");			
 			GiveItem2Character(Pchar, "bladeX4");
 			EquipCharacterByItem(Pchar, "bladeX4");
 			GiveItem2Character(Pchar, "pistol206");
 			EquipCharacterByItem(Pchar, "pistol206");
 			GiveItem2Character(Pchar, "bladesurgcan3_r");
 			EquipCharacterByItem(Pchar, "bladesurgcan3_r");
-			GiveItem2Character(Pchar, "pistolmdchest_F6_CS");
+			GiveItem2Character(Pchar, "pistolmdchest_F6_CS");		
 			EquipCharacterByItem(Pchar, "pistolmdchest_F6_CS");
 			GiveItem2Character(Pchar, "leeches");
 			GiveItem2Character(Pchar, "prescriptions");
 			GiveItem2Character(Pchar, "rolls_of_bandages");
-			GiveItem2Character(Pchar, "medicine_leaves");
+			GiveItem2Character(Pchar, "medicine_leaves");			
 			//GiveItem2Character(Pchar, "spyglass2");
 			//EquipCharacterbyItem(Pchar, "spyglass2");
 			//TakeNItems(Pchar,"medical1", 2);
-			//TakeNItems(Pchar,"chinatiger", 1);
+			//TakeNItems(Pchar,"chinatiger", 1);			
 
 			SetQuestHeader("Charles_Vanes_quest");
 			AddQuestRecord("Charles_Vanes_quest", "1");
@@ -50590,7 +50456,7 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("VOICE\ENGLISH\ayay_captain.wav");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_11":
@@ -50598,7 +50464,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "Pira4M_HTUS", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50617,7 +50483,7 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(Pchar, 2009);
 			AddWealthToCharacter(Pchar, 600);
 
-			//GiveItem2Character(Pchar, "map");
+			//GiveItem2Character(Pchar, "map");			
 			GiveItem2Character(Pchar, "bladeX4");
 			GiveItem2Character(Pchar, "bladeA11");
 			EquipCharacterByItem(Pchar, "bladeA11");
@@ -50649,7 +50515,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Charles_Vanes_quest", "4");
 			AddQuestRecord("Charles_Vanes_quest", "5");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_12":
@@ -50657,7 +50523,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "Pira4M_HTUS_b", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50677,7 +50543,7 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(Pchar, 2009);
 			AddWealthToCharacter(Pchar, 600);
 
-			//GiveItem2Character(Pchar, "map");
+			//GiveItem2Character(Pchar, "map");	
 			GiveItem2Character(Pchar, "bladeX4");
 			EquipCharacterByItem(Pchar, "bladeX4");
 			GiveItem2Character(Pchar, "pistol20");
@@ -50692,7 +50558,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"pistolbullets", 12);
 			TakeNItems(PChar, "cognac",1);
 			//TakeNItems(PChar, "spyglass2",1);
-			//EquipCharacterbyItem(PChar, "spyglass2");
+			//EquipCharacterbyItem(PChar, "spyglass2"); 
 			//TakeNItems(Pchar,"medical1", 2);
 			//TakeNItems(Pchar,"chinatiger", 1);
 			GiveItem2Character(Pchar, "amnesty_doc");
@@ -50720,7 +50586,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Woodes_Rogers_reward_7", "3");
 			AddQuestRecord("Woodes_Rogers_reward_7", "4");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_14":
@@ -50728,7 +50594,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "Pira4M_HTUS_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50748,8 +50614,8 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(Pchar, 2099);
 			AddWealthToCharacter(Pchar, 600);
 
-			//GiveItem2Character(Pchar, "map");
-			GiveItem2Character(Pchar, "bladeanchor");
+			//GiveItem2Character(Pchar, "map");	
+			GiveItem2Character(Pchar, "bladeanchor");			
 			EquipCharacterByItem(Pchar, "bladeanchor");
 			GiveItem2Character(Pchar, "bladepclub203");
 			TakeItemFromCharacter(Pchar, "bladeX4");
@@ -50762,7 +50628,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"gunpowder", 18);
 			TakeNItems(Pchar,"pistolbullets", 18);
 			//TakeNItems(PChar, "spyglass2",1);
-			//EquipCharacterbyItem(PChar, "spyglass2");
+			//EquipCharacterbyItem(PChar, "spyglass2"); 
 			//TakeNItems(Pchar,"medical1", 2);
 			//TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar, "blade1-2", 8);
@@ -50780,7 +50646,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Charles_Vanes_quest", "5");
 			CloseQuestHeader("Wine_cellars");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_15":
@@ -50788,7 +50654,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "PriestRedM_cloth", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50808,7 +50674,7 @@ void QuestComplete(string sQuestName)
 			AddWealthToCharacter(Pchar, 600);
 
 			//GiveItem2Character(Pchar, "map");
-			TakeItemFromCharacter(Pchar, "bladeX4");
+			TakeItemFromCharacter(Pchar, "bladeX4");			
 			GiveItem2Character(Pchar, "bladechurchsilver");
 			EquipCharacterByItem(Pchar, "bladechurchsilver");
 			GiveItem2Character(Pchar, "pistol20");
@@ -50822,7 +50688,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"gunpowder", 18);
 			TakeNItems(Pchar,"pistolbullets", 18);
 			//TakeNItems(PChar, "spyglass2",1);
-			//EquipCharacterbyItem(PChar, "spyglass2");
+			//EquipCharacterbyItem(PChar, "spyglass2"); 
 			//TakeNItems(Pchar,"medical1", 2);
 			//TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar, "cognac", 3);
@@ -50844,9 +50710,9 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Charles_Vanes_quest", "5");
 			AddQuestRecord("Charles_Vanes_quest", "9");
 			AddQuestRecord("Charles_Vanes_quest", "6");
-			DeleteQuestHeader("Wine_cellars");
+			DeleteQuestHeader("Wine_cellars");	
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_16":
@@ -50854,7 +50720,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "PriestRedM_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50875,7 +50741,7 @@ void QuestComplete(string sQuestName)
 			AddWealthToCharacter(Pchar, 600);
 
 			//GiveItem2Character(Pchar, "map");
-			GiveItem2Character(Pchar, "bladeanchor");
+			GiveItem2Character(Pchar, "bladeanchor");			
 			EquipCharacterByItem(Pchar, "bladeanchor");
 			GiveItem2Character(Pchar, "bladepclub203");
 			TakeItemFromCharacter(Pchar, "bladeX4");
@@ -50888,7 +50754,7 @@ void QuestComplete(string sQuestName)
 			TakeNItems(Pchar,"gunpowder", 18);
 			TakeNItems(Pchar,"pistolbullets", 18);
 			//TakeNItems(PChar, "spyglass2",1);
-			//EquipCharacterbyItem(PChar, "spyglass2");
+			//EquipCharacterbyItem(PChar, "spyglass2"); 
 			//TakeNItems(Pchar,"medical1", 2);
 			//TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar, "cognac", 3);
@@ -50899,7 +50765,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Cave_shore", "1");
 			AddQuestRecord("Cave_shore", "2");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_17":
@@ -50907,7 +50773,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "PriestRedM_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50929,7 +50795,7 @@ void QuestComplete(string sQuestName)
 			AddWealthToCharacter(Pchar, 600);
 
 			//GiveItem2Character(Pchar, "map");
-			GiveItem2Character(Pchar, "bladeanchor");
+			GiveItem2Character(Pchar, "bladeanchor");			
 			EquipCharacterByItem(Pchar, "bladeanchor");
 			GiveItem2Character(Pchar, "bladepclub203");
 			TakeItemFromCharacter(Pchar, "bladeX4");
@@ -50946,8 +50812,8 @@ void QuestComplete(string sQuestName)
 			//TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar, "cognac", 3);
 			TakeNItems(Pchar, "potionwine2", 1);
-			TakeNItems(Pchar, "bible", 1);
-
+			TakeNItems(Pchar, "bible", 1); 
+			
 			SetQuestHeader("Cave_shore");
 			AddQuestRecord("Cave_shore", "1");
 			AddQuestRecord("Cave_shore", "2");
@@ -50956,7 +50822,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Cave_shore", "5");
 			AddQuestRecord("Cave_shore", "6");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_18":
@@ -50964,7 +50830,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "PriestRedM_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -50986,7 +50852,7 @@ void QuestComplete(string sQuestName)
 			AddWealthToCharacter(Pchar, 600);
 
 			//GiveItem2Character(Pchar, "map");
-			GiveItem2Character(Pchar, "bladeanchor");
+			GiveItem2Character(Pchar, "bladeanchor");			
 			EquipCharacterByItem(Pchar, "bladeanchor");
 			GiveItem2Character(Pchar, "bladepclub203");
 			TakeItemFromCharacter(Pchar, "bladeX4");
@@ -51002,16 +50868,16 @@ void QuestComplete(string sQuestName)
 			//EquipCharacterbyItem(PChar, "spyglass2");
 			//TakeNItems(Pchar,"chinatiger", 1);
 			TakeNItems(Pchar, "cognac", 3);
-			TakeNItems(Pchar, "potionwine2", 1);
+			TakeNItems(Pchar, "potionwine2", 1); 
 			GiveItem2Character(Pchar, "bible");
-
+			
 			SetQuestHeader("Revenge");
 			AddQuestRecord("Revenge", "1");
 			AddQuestRecord("Revenge", "2");
-
+	
 			LAi_QuestDelay("Vane_at_corvette", 0.1);
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_20":
@@ -51019,7 +50885,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "Pira4M_TUS_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.GunFighter = true;
 			Pchar.perks.list.IronWill = true;
@@ -51042,9 +50908,9 @@ void QuestComplete(string sQuestName)
 			AddWealthToCharacter(Pchar, 600);
 
 			//GiveItem2Character(Pchar, "map");
-			GiveItem2Character(Pchar, "blade1");
+			GiveItem2Character(Pchar, "blade1");		
 			EquipCharacterbyItem(Pchar, "blade1");
-			GiveItem2Character(Pchar, "pistol20");
+			GiveItem2Character(Pchar, "pistol20");		
 			EquipCharacterbyItem(Pchar, "pistol20");
 			GiveItem2Character(Pchar, "ammobag2");
 			EquipCharacterbyItem(Pchar, "ammobag2");
@@ -51065,7 +50931,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Revenge", "5");
 			CloseQuestHeader("Revenge");
 
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 //PART 2 from here ..............................................................................................................
 		case "Teach_head_21":
@@ -51073,7 +50939,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 85;		//Hero
 			SetModel(PChar, "ShkiperM_UH_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51091,7 +50957,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			DeleteAttribute(Pchar, "items");
-
+		
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 953);
 			AddWealthToCharacter(Pchar, 600);
@@ -51133,8 +50999,8 @@ void QuestComplete(string sQuestName)
 
 			LAi_SetOfficerType(characterFromID("gm_crew1"));
 			LAi_SetOfficerType(characterFromID("gm_crew20"));
-
-			LAi_QuestDelay("Teach_head_all1", 0.01);
+		
+			LAi_QuestDelay("Teach_head_all1", 0.01);	
 		break;
 
 		case "Teach_head_22":
@@ -51143,7 +51009,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_2", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51163,7 +51029,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(Pchar, "items");
 
 			AddMoneyToCharacter(Pchar,-2000);
-			AddWealthToCharacter(Pchar, 600);
+			AddWealthToCharacter(Pchar, 600);		
 
 			GiveItem2Character(Pchar, "bladeX4");
 			GiveItem2Character(Pchar, "myrrh");
@@ -51193,7 +51059,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51210,7 +51076,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,2000);
 			AddWealthToCharacter(Pchar, 600);
@@ -51235,7 +51101,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "myrrh");
 			GiveItem2Character(Pchar, "medical2");
 			TakeNItems(Pchar,"potionrum", 2);
-
+			
 			SetQuestHeader("Benjamin_Hornigold");
 			AddQuestRecord("Benjamin_Hornigold", "3");
 			CloseQuestHeader("Benjamin_Hornigold");
@@ -51263,7 +51129,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51280,7 +51146,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddWealthToCharacter(Pchar, 707);
@@ -51333,7 +51199,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51350,7 +51216,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 544);
@@ -51394,7 +51260,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Blackbeards_crew", "3"); AddQuestRecord("Blackbeards_crew", "4");
 		//..............................................
 			AddQuestRecord("Caesar", "4");
-
+			
 			LAi_QuestDelay("Teach_head_all1", 0.01);
 		break;
 
@@ -51404,7 +51270,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51421,7 +51287,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 1173);
@@ -51453,7 +51319,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "bladekit");
 
 			Pchar.killed_wr_officers = 1;
-
+			
 			SetQuestHeader("Benjamin_Hornigold");
 			AddQuestRecord("Benjamin_Hornigold", "3");
 			CloseQuestHeader("Benjamin_Hornigold");
@@ -51470,7 +51336,7 @@ void QuestComplete(string sQuestName)
 			SetQuestHeader("Blackbeards_crew"); AddQuestRecord("Blackbeards_crew", "1"); AddQuestRecord("Blackbeards_crew", "2");
 			AddQuestRecord("Blackbeards_crew", "3"); AddQuestRecord("Blackbeards_crew", "4");
 		//..............................................
-			AddQuestRecord("Richards", "3");
+			AddQuestRecord("Richards", "3"); 
 		//..............................................
 			AddQuestRecord("Richards", "13");
 
@@ -51483,7 +51349,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51500,7 +51366,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 250);
@@ -51546,7 +51412,7 @@ void QuestComplete(string sQuestName)
 		//..............................................
 			AddQuestRecord("Israel_Hands", "4");
 		//..............................................
-			AddQuestRecord("Israel_Hands", "5");
+			AddQuestRecord("Israel_Hands", "5"); 
 			GiveItem2Character(Pchar, "doc61");
 
 			LAi_QuestDelay("Teach_head_all1", 0.01);
@@ -51558,7 +51424,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51575,7 +51441,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar, 2000);
 			AddWealthToCharacter(Pchar, 600);
@@ -51633,7 +51499,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51650,7 +51516,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 1328);
@@ -51708,7 +51574,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51725,7 +51591,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 1043);
@@ -51760,7 +51626,7 @@ void QuestComplete(string sQuestName)
 		//..............................................
 			GiveItem2Character(Pchar, "mapBB4C");
 			Pchar.mapBB4C = "info";
-
+			
 			SetQuestHeader("Benjamin_Hornigold");
 			AddQuestRecord("Benjamin_Hornigold", "3");
 			CloseQuestHeader("Benjamin_Hornigold");
@@ -51777,7 +51643,7 @@ void QuestComplete(string sQuestName)
 			SetQuestHeader("Blackbeards_crew"); AddQuestRecord("Blackbeards_crew", "1"); AddQuestRecord("Blackbeards_crew", "2");
 			AddQuestRecord("Blackbeards_crew", "3"); AddQuestRecord("Blackbeards_crew", "4");
 		//..............................................
-			AddQuestRecord("Richards", "3");
+			AddQuestRecord("Richards", "3"); 
 		//..............................................
 			AddQuestRecord("Richards", "13");
 		//..............................................
@@ -51794,7 +51660,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51811,7 +51677,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 655);
@@ -51841,7 +51707,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(Pchar, "pistol203");
 			GiveItem2Character(Pchar, "ammobag1");
 			GiveItem2Character(Pchar, "doctortoolkit");
-
+		
 			Pchar.killed_wr_officers = 1;
 		//..............................................
 			GiveItem2Character(Pchar, "mapBB5B");
@@ -51873,7 +51739,7 @@ void QuestComplete(string sQuestName)
 			DeleteQuestHeader("Israel_Hands");
 			AddQuestRecord("Israel_Hands", "14");
 			CloseQuestHeader("Israel_Hands");
-
+	
 			LAi_QuestDelay("Teach_head_all1", 0.01);
 		break;
 
@@ -51883,7 +51749,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_4", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51900,7 +51766,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 2216);
@@ -51932,7 +51798,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "pistol203");
 			EquipCharacterByItem(Pchar, "pistol203");
 			GiveItem2Character(Pchar, "ammobag1");
-			GiveItem2Character(Pchar, "clock2");
+			GiveItem2Character(Pchar, "clock2");			
 			GiveItem2Character(Pchar, "mapBB3T");
 
 			Pchar.killed_wr_officers = 1;
@@ -51972,7 +51838,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_5", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -51989,7 +51855,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 3005);
@@ -52021,7 +51887,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "pistol203");
 			EquipCharacterByItem(Pchar, "pistol203");
 			GiveItem2Character(Pchar, "ammobag1");
-			GiveItem2Character(Pchar, "clock2");
+			GiveItem2Character(Pchar, "clock2");			
 			GiveItem2Character(Pchar, "mapBB3T");
 
 			GiveItem2Character(Pchar, "pistol201");
@@ -52066,7 +51932,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -52083,7 +51949,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 1392);
@@ -52096,7 +51962,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterbyItem(Pchar, "spyglass3");
 			GiveItem2Character(Pchar, "compass2");
 			EquipCharacterbyItem(Pchar, "compass2");
-
+			
 			GiveItem2Character(Pchar, "map");
 			TakeNItems(Pchar,"myrrh", 2);
 			TakeNItems(Pchar,"incense", 6);
@@ -52119,11 +51985,11 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(Pchar, "mapBB4C");
 			GiveItem2Character(Pchar, "mapBB5B");
 
-			GiveItem2Character(Pchar, "clock2");
+			GiveItem2Character(Pchar, "clock2");			
 			GiveItem2Character(Pchar, "sextant");
 			GiveItem2Character(Pchar, "bladekit");
 			GiveItem2Character(Pchar, "doctortoolkit");
-
+			
 			Pchar.killed_wr_officers = 4;
 
 			TakeNItems(characterFromID("Hands"),"pistolbullets", 6);
@@ -52175,7 +52041,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetModel(PChar, "Howard_Pyle_hat", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -52192,7 +52058,7 @@ void QuestComplete(string sQuestName)
 
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			DeleteAttribute(Pchar, "items");
+			DeleteAttribute(Pchar, "items");		
 
 			AddMoneyToCharacter(Pchar,-2000);
 			AddMoneyToCharacter(Pchar, 1272);
@@ -52206,7 +52072,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterbyItem(Pchar, "spyglass3");
 			GiveItem2Character(Pchar, "compass2");
 			EquipCharacterbyItem(Pchar, "compass2");
-
+			
 			GiveItem2Character(Pchar, "map");
 			GiveItem2Character(Pchar, "medical2");
 			TakeNItems(Pchar,"potionrum", 2);
@@ -52223,7 +52089,7 @@ void QuestComplete(string sQuestName)
 
 			GiveItem2Character(Pchar, "wr5");
 
-			GiveItem2Character(Pchar, "clock2");
+			GiveItem2Character(Pchar, "clock2");			
 			GiveItem2Character(Pchar, "sextant");
 			GiveItem2Character(Pchar, "bladekit");
 			GiveItem2Character(Pchar, "doctortoolkit");
@@ -52274,9 +52140,9 @@ void QuestComplete(string sQuestName)
 
 		case "Teach_head_36":
 			AddCharacterExpNS(Pchar, 41015*3+3);
-			Pchar.reputation = 65;		//Matey
+			Pchar.reputation = 65;		//Matey		
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -52290,7 +52156,7 @@ void QuestComplete(string sQuestName)
 			Pchar.skill.Accuracy = 2;
 			Pchar.skill.Commerce = 2;
 			Pchar.skill.Cannons = 2;
-
+		
 			Pchar.killed_wr_officers = 4;
 
 			AddMoneyToCharacter(Pchar,-2000);
@@ -52304,7 +52170,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 65;		//Matey
 			SetModel(PChar, "Howard_Pyle", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -52318,7 +52184,7 @@ void QuestComplete(string sQuestName)
 			Pchar.skill.Accuracy = 2;
 			Pchar.skill.Commerce = 2;
 			Pchar.skill.Cannons = 2;
-
+		
 			Pchar.killed_wr_officers = 4;
 
 			AddMoneyToCharacter(Pchar,-2000);
@@ -52333,7 +52199,7 @@ void QuestComplete(string sQuestName)
 			Pchar.reputation = 65;		//Matey
 			SetModel(PChar, "Howard_Pyle_hat_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 
-			Pchar.perks.list.BasicDefence = true;
+			Pchar.perks.list.BasicDefence = true;	
 			Pchar.perks.list.GunProfessional = true;
 			Pchar.perks.list.IronWill = true;
 			Pchar.perks.list.GunFighter = true;
@@ -52347,7 +52213,7 @@ void QuestComplete(string sQuestName)
 			Pchar.skill.Accuracy = 2;
 			Pchar.skill.Commerce = 2;
 			Pchar.skill.Cannons = 2;
-
+		
 			Pchar.killed_wr_officers = 4;
 
 			DeleteAttribute(Pchar, "items");
@@ -52388,7 +52254,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 
-//p?r jump starts
+//pär jump starts
 	//....................................................................................................
 
 		case "Teach_head_all1":
@@ -52398,14 +52264,14 @@ void QuestComplete(string sQuestName)
 
 			}
 			else LAi_SetPlayerType(Pchar);
-
+		
 			GetCharacterPos(Pchar, &u, &v, &w);
 			CreateParticleSystem("blast_dirt" , u, v+1.5, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("blast_dirt" , u, v+1.0, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("blast_dirt" , u, v+0.5, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("blast_dirt" , u, v, w, 0.0, 0.0, 0.0, sti(20) );
-
-			LAi_QuestDelay("Teach_head_all2", 2.0);
+		
+			LAi_QuestDelay("Teach_head_all2", 2.0);	
 		break;
 
 		case "Teach_head_all2":
@@ -52419,7 +52285,7 @@ void QuestComplete(string sQuestName)
 				PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 			}
 		break;
-
+	
 	//....................................................................................................
 
 		case "antidote_test":
@@ -52482,7 +52348,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.estate_doors_locked2.win_condition.l1.location = "BB_Eden_estate";
 			pchar.quest.estate_doors_locked2.win_condition.l1.locator_group = "reload";
 			pchar.quest.estate_doors_locked2.win_condition.l1.locator = "reload2";
-			pchar.quest.estate_doors_locked2.win_condition = "estate_doors_locked_A";
+			pchar.quest.estate_doors_locked2.win_condition = "estate_doors_locked_A";	
 
 			pchar.quest.estate_doors_locked3.win_condition.l1 = "locator";
 			pchar.quest.estate_doors_locked3.win_condition.l1.location = "BB_Eden_estate";
@@ -52494,7 +52360,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.estate_doors_locked4.win_condition.l1.location = "BB_Eden_estate";
 			pchar.quest.estate_doors_locked4.win_condition.l1.locator_group = "reload";
 			pchar.quest.estate_doors_locked4.win_condition.l1.locator = "reload4";
-			pchar.quest.estate_doors_locked4.win_condition = "estate_doors_locked_A";
+			pchar.quest.estate_doors_locked4.win_condition = "estate_doors_locked_A";	
 
 			pchar.quest.estate_doors_locked5.win_condition.l1 = "locator";
 			pchar.quest.estate_doors_locked5.win_condition.l1.location = "BB_Eden_estate";
@@ -52506,7 +52372,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.estate_doors_locked6.win_condition.l1.location = "BB_Eden_estate";
 			pchar.quest.estate_doors_locked6.win_condition.l1.locator_group = "reload";
 			pchar.quest.estate_doors_locked6.win_condition.l1.locator = "reload6";
-			pchar.quest.estate_doors_locked6.win_condition = "estate_doors_locked_A";
+			pchar.quest.estate_doors_locked6.win_condition = "estate_doors_locked_A";	
 
 			pchar.quest.estate_doors_locked9.win_condition.l1 = "locator";
 			pchar.quest.estate_doors_locked9.win_condition.l1.location = "BB_Eden_estate";
@@ -52514,7 +52380,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.estate_doors_locked9.win_condition.l1.locator = "reload9";
 			pchar.quest.estate_doors_locked9.win_condition = "estate_doors_locked_A";
 		break;
-
+	
 		case "estate_doors_locked_A":
 			if(!CheckAttribute(Pchar,"estate_doors") || Pchar.estate_doors != "locked")
 			{
@@ -52528,7 +52394,7 @@ void QuestComplete(string sQuestName)
 		case "enter_estate":
 			PlaySound("PEOPLE\counter_close.wav");
 
-			LAi_QuestDelay("Estate_change_soundtype", 2.0);
+			LAi_QuestDelay("Estate_change_soundtype", 2.0);	
 		break;
 
 		case "Estate_change_soundtype":
@@ -52548,7 +52414,7 @@ void QuestComplete(string sQuestName)
 	//----------------------------------------------------------------------------------------------------------------
 		case "servant_is_Caesar":
 			ChangeCharacterAddressGroup(characterFromID("Hands"), "BB_Eden_estate", "goto", "hands2");
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				ChangeCharacterAddressGroup(characterFromID("Pell"), "BB_Eden_estate", "goto", "pell2");
 			}
@@ -52601,40 +52467,40 @@ void QuestComplete(string sQuestName)
 			{
 				switch(Pchar.servants_info)
 				{
-					case "0":
+					case "0": 
 						//no servants info
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "repeat_look_around";
 					break;
 
-					case "1":
-						//you have only basic info
+					case "1": 
+						//you have only basic info	
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "repeat_look_around";
 					break;
 
-					case "2":
+					case "2": 
 						//you have tried locked doors
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "locked_doors";
 					break;
 
-					case "3":
+					case "3": 
 						//you know about the curtain
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "repeat_look_around";
 					break;
 
-					case "4":
+					case "4": 
 						//you are back from the garden house
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "repeat_look_around";
 					break;
 			/*
 			//No, this will not happen at all if Pchar.servants_info = "5"
 			//change of road is earlier - in Caesar_dialog.c
-					case "5":
-		//here's the big difference - the dialog must continue with Hands talk of the wine cellar and Pough showing up too
+					case "5": 
+		//here's the big difference - the dialog must continue with Hands talk of the wine cellar and Pough showing up too 
 						//you are through with the Estate rooms tour
 						characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "repeat_look_around";
 					break;
 			*/
-
+					
 				}
 			}
 			LAi_SetActorType(characterFromID("Caesar"));
@@ -52649,11 +52515,11 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("Caesar"));
 
 			LAi_SetPlayerType(Pchar);
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands")))				
 			{
 				LAi_SetOfficerType(characterFromID("Hands"));
 			}
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				LAi_SetOfficerType(characterFromID("Pell"));
 			}
@@ -52665,7 +52531,7 @@ void QuestComplete(string sQuestName)
 				Pchar.Caesar.message10 = "done";
 			}
 		break;
-
+	
 		case "servant_is_Caesar7":
 			ChangeCharacterAddressGroup(characterFromID("black_servant1"), "BB_Eden_estate", "goto", "servant1");
 			ChangeCharacterAddressGroup(characterFromID("Caesar"), "BB_Eden_estate", "goto", "servant2");
@@ -52673,11 +52539,11 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("Caesar"));
 
 			LAi_SetPlayerType(Pchar);
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands")))				
 			{
 				LAi_SetOfficerType(characterFromID("Hands"));
 			}
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				LAi_SetOfficerType(characterFromID("Pell"));
 			}
@@ -52731,15 +52597,15 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_Eden_estate")].locators_radius.reload.reload8 = 0.7;
 
 			LAi_SetPlayerType(Pchar);
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands")))				
 			{
 				LAi_SetOfficerType(characterFromID("Hands"));
 			}
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				LAi_SetOfficerType(characterFromID("Pell"));
 			}
-
+			
 			pchar.quest.Margaret_Pough_to_maze.win_condition.l1 = "location";
 			pchar.quest.Margaret_Pough_to_maze.win_condition.l1.location = "BB_Eden_garden_house";
 			pchar.quest.Margaret_Pough_to_maze.win_condition = "Margaret_Pough_to_maze";
@@ -52749,7 +52615,7 @@ void QuestComplete(string sQuestName)
 			SetNextWeather("Clear");
 
 			ChangeCharacterAddressGroup(characterFromID("Margaret_Pough"), "BB_Eden_maze", "goto", "margaret");
-
+						
 			LAi_SetStayType(characterFromID("Margaret_Pough"));
 
 			pchar.quest.Margaret_Pough.win_condition.l1 = "location";
@@ -52766,7 +52632,7 @@ void QuestComplete(string sQuestName)
 					if(CheckAttribute(Pchar,"GH_box3") && Pchar.GH_box3 == "checked")
 					{
 						ChangeCharacterAddressGroup(characterFromID("Margaret_Pough"), "BB_Eden_maze", "goto", "margaret");
-
+						
 						LAi_SetStayType(characterFromID("Margaret_Pough"));
 
 						pchar.quest.Margaret_Pough.win_condition.l1 = "location";
@@ -52879,25 +52745,25 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_3":
-						Pchar.Pyle_model = "3";
+						Pchar.Pyle_model = "3";	
 					break;
 
 					case "Howard_Pyle_4":
-						Pchar.Pyle_model = "4";
+						Pchar.Pyle_model = "4";		
 					break;
 
 					case "Howard_Pyle_5":
-						Pchar.Pyle_model = "5";
+						Pchar.Pyle_model = "5";		
 					break;
 
 					case "Howard_Pyle":
-						Pchar.Pyle_model = "0";
+						Pchar.Pyle_model = "0";		
 					break;
 				}
 			}
 
 			LAi_QuestDelay("Eden_bribing_scene", 1.0);
-		break;
+		break;	
 
 		case "Eden_bribing_scene":
 			LAi_SetStayType(Pchar);
@@ -52907,7 +52773,7 @@ void QuestComplete(string sQuestName)
 
 			aref ito, ifrom;
 			DeleteAttribute(characterFromID("Brthug1"), "items");
-
+			
 			if(CheckAttribute(Pchar, "items"))
 			{
 				makearef(ifrom, Pchar.items);
@@ -52916,9 +52782,9 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Pchar, "items");
 			}
-
+		
 			GiveItem2Character(Pchar, "bladeX4");
-			GiveItem2Character(Pchar, "blade1");
+			GiveItem2Character(Pchar, "blade1");	
 			EquipCharacterByItem(Pchar, "blade1");
 			GiveItem2Character(Pchar, "pistol206");
 			EquipCharacterByItem(Pchar, "pistol206");
@@ -52928,15 +52794,15 @@ void QuestComplete(string sQuestName)
 			pchar.old.name = "Israel";
 			pchar.old.lastname = "Hands";
 			pchar.name = TranslateString("","Israel");
-			pchar.lastname = TranslateString("","Hands");
-
-			if(IsOfficer(CharacterFromID("Hands")))
+			pchar.lastname = TranslateString("","Hands");	
+		
+			if(IsOfficer(CharacterFromID("Hands"))) 
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Hands"));
 				RemovePassenger(pchar, characterFromID("Hands"));
 				Pchar.Hands_officer = "yes";
 			}
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))  
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Pell"));
 				RemovePassenger(pchar, characterFromID("Pell"));
@@ -52961,19 +52827,19 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("Teach"), "bladeX4");
 			GiveItem2Character(characterFromID("Teach"), "bladeMap_Hgold");
 			EquipCharacterbyItem(characterFromID("Teach"), "bladeMap_Hgold");
-
+		
 			RemoveCharacterEquip(characterFromID("bb_crew5"), BLADE_ITEM_TYPE);
 			TakenItems(characterFromID("bb_crew5"), "blade4", -1);
-			GiveItem2Character(characterFromID("bb_crew5"), "bladeaxe2");
+			GiveItem2Character(characterFromID("bb_crew5"), "bladeaxe2");		
 			EquipCharacterbyItem(characterFromID("bb_crew5"), "bladeaxe2");
-
+			
 			RemoveCharacterEquip(characterFromID("bb_crew8"), BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("bb_crew8"), GUN_ITEM_TYPE);
 			TakenItems(characterFromID("bb_crew8"), "piratespistol", -1);
 			TakenItems(characterFromID("bb_crew8"), "blade4", -1);
 			GiveItem2Character(characterFromID("bb_crew8"), "pistolbbuss");
 			EquipCharacterByItem(characterFromID("bb_crew8"), "pistolbbuss");
-			GiveItem2Character(characterFromID("bb_crew8"), "piratesdagger");
+			GiveItem2Character(characterFromID("bb_crew8"), "piratesdagger");		
 			EquipCharacterbyItem(characterFromID("bb_crew8"), "piratesdagger");
 
 			Locations[FindLocation("BB_Eden_office")].image = "Eden_estate.tga";
@@ -53008,10 +52874,10 @@ void QuestComplete(string sQuestName)
 			Characters[GetCharacterIndex("Richards")].dialog.CurrentNode  = "neutral";
 			Characters[GetCharacterIndex("Teach")].dialog.CurrentNode  = "neutral";
 			characters[GetCharacterIndex("Knight")].dialog.CurrentNode = "office1";
-
+			
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "sit", "sit2", 2.0);
 			Locations[FindLocation("BB_Eden_office")].locators_radius.sit.sit2 = 2.0;
-
+	
 			pchar.quest.Eden_bribing_scene4.win_condition.l1 = "locator";
 			pchar.quest.Eden_bribing_scene4.win_condition.l1.location = "BB_Eden_office";
 			pchar.quest.Eden_bribing_scene4.win_condition.l1.locator_group = "sit";
@@ -53035,7 +52901,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialog(characterFromID("Knight"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Knight"));
 		break;
-
+	
 		case "Knight_office2_done":
 			//from Knight desk dialog, may be repeated
 			Characters[GetCharacterIndex("Knight")].dialog.CurrentNode  = "office2";
@@ -53098,7 +52964,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_bribing_scene11":
 			PlaySound("VOICE\ENGLISH\Eden_so.wav");
-
+			
 			LAi_QuestDelay("Eden_bribing_scene12", 1.0);
 		break;
 
@@ -53137,7 +53003,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToCharacter(characterFromID("bb_crew5"), characterFromID("Eden"));
 			LAi_SetActorType(characterFromID("bb_crew8"));
 			LAi_ActorTurnToCharacter(characterFromID("bb_crew8"), characterFromID("Eden"));
-
+			
 			LAi_QuestDelay("Eden_bribing_scene14", 1.0);
 		break;
 
@@ -53165,7 +53031,7 @@ void QuestComplete(string sQuestName)
 		case "Eden_bribing_scene16":
 			ChangeCharacterAddressGroup(characterFromID("bb_crew5"), "BB_Eden_office", "goto", "gunner");
 			ChangeCharacterAddressGroup(Pchar, "BB_Eden_office", "goto", "hands1");		//was hands
-
+	
 			LAi_SetActorType(characterFromID("Teach"));
 			LAi_ActorDialog(characterFromID("Teach"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Teach"));
@@ -53216,7 +53082,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_bribing_scene23":
 			PlaySound("OBJECTS\DUEL\man_attack5.wav");
-
+		
 			LAi_QuestDelay("Eden_bribing_scene24", 1.5);
 		break;
 
@@ -53250,7 +53116,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_bribing_scene28":
 			LAi_SetActorType(characterFromID("Eden"));
-			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("bb_crew5"));
+			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("bb_crew5"));			
 			LAi_SetActorType(characterFromID("Knight"));
 			LAi_ActorTurnToCharacter(characterFromID("Knight"), characterFromID("bb_crew5"));
 			LAi_SetActorType(characterFromID("Teach"));
@@ -53281,7 +53147,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_bribing_scene30":
 			LAi_SetActorType(characterFromID("Eden"));
-			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("Teach"));
+			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("Teach"));			
 			LAi_SetActorType(characterFromID("Knight"));
 			LAi_ActorTurnToCharacter(characterFromID("Knight"), characterFromID("Teach"));
 			LAi_SetActorType(characterFromID("Teach"));
@@ -53295,7 +53161,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Eden_bribing_scene30_A", 1.0);
 		break;
-
+	
 		case "Eden_bribing_scene30_A":
 			LAi_SetActorType(characterFromID("Teach"));
 			LAi_ActorDialog(characterFromID("Teach"), pchar, "", 0.0, 0.0);
@@ -53324,7 +53190,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterbyItem(characterFromID("Teach"), "bladeX4");
 			TakenItems(characterFromID("Teach"), "bladeMap_Hgold", -1);
 
-			GiveItem2Character(characterFromID("Eden"), "pistolMap_Hgold");
+			GiveItem2Character(characterFromID("Eden"), "pistolMap_Hgold");		
 			EquipCharacterbyItem(characterFromID("Eden"), "pistolMap_Hgold");
 
 			LAi_QuestDelay("Eden_bribing_scene34", 1.0);
@@ -53376,7 +53242,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_bribing_scene40":
 			LAi_SetActorType(characterFromID("Eden"));
-			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("Knight"));
+			LAi_ActorTurnToCharacter(characterFromID("Eden"), characterFromID("Knight"));			
 			LAi_SetActorType(characterFromID("bb_crew5"));
 			LAi_ActorTurnToCharacter(characterFromID("bb_crew5"), characterFromID("Knight"));
 			LAi_SetActorType(characterFromID("Teach"));
@@ -53430,10 +53296,10 @@ void QuestComplete(string sQuestName)
 		case "Eden_bribing_scene44":
 			PlaySound("INTERFACE\key_unlock.wav");
 		break;
-
+	
 		case "Eden_bribing_scene46":
 			ChangeCharacterAddressGroup(characterFromID("Knight"), "none", "", "");
-			PlaySound("VOICE\ENGLISH\blaze_follow_you.wav");
+			PlaySound("VOICE\ENGLISH\blaze_follow_you.wav");			
 			LAi_SetActorType(characterFromID("bb_crew8"));
 			LAi_ActorGoToLocator(characterFromID("bb_crew8"), "reload", "reload1", "Eden_bribing_scene47", 4.0);
 		break;
@@ -53455,7 +53321,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Eden"));
 			characters[GetCharacterIndex("Eden")].dialog.CurrentNode = "bribing17";
 		break;
-
+		
 		case "Eden_bribing_scene49":
 			ChangeCharacterAddressGroup(characterFromID("Eden"), "BB_Eden_office", "goto", "goto6");
 			LAi_SetActorType(characterFromID("Eden"));
@@ -53482,7 +53348,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("Eden_bribing_scene51", 1.0);
 		break;
 
-		case "Eden_bribing_scene51":
+		case "Eden_bribing_scene51":	
 			LAi_ActorGoToLocator(characterFromID("Richards"), "reload", "reload2", "Eden_bribing_scene53", 5.0);
 
 			LAi_QuestDelay("Eden_bribing_scene51_A", 1.5);	//was 1.0
@@ -53509,12 +53375,12 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(Pchar, "goto", "crew2", "Eden_bribing_scene56", 4.0);
 		break;
 
-		case "Eden_bribing_scene55":
+		case "Eden_bribing_scene55":	
 			LAi_SetActorType(characterFromID("Teach"));
 			LAi_ActorTurnToLocator(characterFromID("Teach"), "officers", "reload3_1");
 		break;
 
-		case "Eden_bribing_scene56":
+		case "Eden_bribing_scene56":	
 			LAi_SetActorType(characterFromID("Eden"));
 			LAi_ActorDialog(characterFromID("Eden"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Eden"));
@@ -53522,7 +53388,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Eden_bribing_scene57":
-			PlaySound("VOICE\ENGLISH\Eden_yeah.wav");
+			PlaySound("VOICE\ENGLISH\Eden_yeah.wav");	
 			LAi_SetPlayerType(CharacterFromID("Eden"));
 			LAi_SetFightMode(CharacterFromID("Eden"), true);
 
@@ -53535,17 +53401,17 @@ void QuestComplete(string sQuestName)
 			EquipCharacterbyItem(characterFromID("Eden"), "bladeX4");
 			TakenItems(characterFromID("Eden"), "bladep204", -1);
 
-			GiveItem2Character(characterFromID("Teach"), "pistol204");
+			GiveItem2Character(characterFromID("Teach"), "pistol204");		
 			EquipCharacterbyItem(characterFromID("Teach"), "pistol204");
 
 			LAi_QuestDelay("Eden_bribing_scene59", 1.0);
 		break;
 
 		case "Eden_bribing_scene59":
-			PlaySound("VOICE\ENGLISH\gr_Teach4.wav");
+			PlaySound("VOICE\ENGLISH\gr_Teach4.wav");	
 			LAi_SetFightMode(CharacterFromID("Eden"), false);
 			LAi_SetStayType(CharacterFromID("Eden"));
-
+			
 			LAi_QuestDelay("Eden_bribing_scene60", 2.0);
 		break;
 
@@ -53582,7 +53448,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("burning_ship_sound", 0.1);
 			LAi_QuestDelay("burning_ship1", 2.0);
-
+			
 		break;
 
 		case "burning_ship_sound":
@@ -53687,15 +53553,15 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "4":
-						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 
 					case "5":
-						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);		
 					break;
 
 					case "0":
-						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 				}
 			}
@@ -53703,7 +53569,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			DeleteAttribute(Pchar, "items");
-
+			
 			if(CheckAttribute(characterFromID("Brthug1"), "items"))
 			{
 				makearef(ifrom, Characters[GetCharacterIndex("Brthug1")].items);
@@ -53712,7 +53578,7 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Characters[GetCharacterIndex("Brthug1")], "items");
 			}
-
+		
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
 
@@ -53721,7 +53587,7 @@ void QuestComplete(string sQuestName)
 				AddPassenger(Pchar, characterFromID("Hands"), 0);
 				SetOfficersIndex(Pchar, 1, getCharacterIndex("Hands"));
 				LAi_SetOfficerType(characterFromID("Hands"));
-			}
+			}	
 			if(CheckAttribute(Pchar, "Pell_officer") && Pchar.Pell_officer == "yes")
 			{
 				AddPassenger(Pchar, characterFromID("Pell"), 0);
@@ -53732,7 +53598,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_Eden_office")].image = "Inside_estate_office.tga";			//reset
 			Locations[FindLocation("BB_Eden_office")].reload.l2.go = "BB_Eden_tunnel";
 			Locations[FindLocation("BB_Eden_office")].reload.l2.disable = 1;
-
+			
 			SetCurrentTime(12, 0);
 			SetNextWeather("Clear");
 			if(CheckAttribute(Pchar, "hands_dialogG") && Pchar.hands_dialogG == "yes")
@@ -53782,7 +53648,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("Charles_Eden", "7");
 			LAi_SetStayType(characterFromID("Margaret_Pough"));
 			Characters[GetCharacterIndex("Margaret_Pough")].dialog.CurrentNode  = "neutral";
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				RemovePassenger(Pchar, characterFromID("Pell"));
 				LAi_SetActorType(characterFromID("Pell"));
@@ -53825,7 +53691,7 @@ void QuestComplete(string sQuestName)
 			characters[GetCharacterIndex("Hands")].dialog.CurrentNode = "flood";
 			LAi_SetActorType(characterFromID("Hands"));
 			LAi_ActorDialog(characterFromID("Hands"), Pchar, "", 0.0, 0.0);
-			LAi_ActorWaitDialog(Pchar, characterFromID("Hands"));
+			LAi_ActorWaitDialog(Pchar, characterFromID("Hands"));	
 		break;
 
 		case "Estate_low_tide":
@@ -53841,7 +53707,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Hands_door_where.win_condition.l1.locator = "door_where";
 			pchar.quest.Hands_door_where.win_condition = "Hands_door_where";
 		break;
-
+	
 		//------------------------------------------------------------------------------
 
 		case "Cayman_turn_to_ri3":
@@ -53975,7 +53841,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
-
+		
 		case "Estate_turn_to_box13":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "box", "box13");
@@ -54078,7 +53944,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maze_F1_back.win_condition.l1.locator = "F1";
 			pchar.quest.maze_F1_back.win_condition = "maze_F1_back";
 		break;
-
+		
 		case "maze_F1_back":
 			ChangeCharacterAddressGroup(Pchar, "BB_Eden_maze", "goto", "F1_back");
 
@@ -54092,7 +53958,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maze_F2_back.win_condition.l1.locator = "F2";
 			pchar.quest.maze_F2_back.win_condition = "maze_F2_back";
 		break;
-
+		
 		case "maze_F2_back":
 			ChangeCharacterAddressGroup(Pchar, "BB_Eden_maze", "goto", "F2_back");
 
@@ -54106,7 +53972,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maze_F3_back.win_condition.l1.locator = "F3";
 			pchar.quest.maze_F3_back.win_condition = "maze_F3_back";
 		break;
-
+		
 		case "maze_F3_back":
 			ChangeCharacterAddressGroup(Pchar, "BB_Eden_maze", "goto", "F3_back");
 
@@ -54120,7 +53986,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maze_F4_back.win_condition.l1.locator = "F4";
 			pchar.quest.maze_F4_back.win_condition = "maze_F4_back";
 		break;
-
+		
 		case "maze_F4_back":
 			ChangeCharacterAddressGroup(Pchar, "BB_Eden_maze", "goto", "F4_back");
 
@@ -54163,7 +54029,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_door_where":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "door_where";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -54185,7 +54051,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_steplocks":
 			//starts Eden tunnel puzzle
-
+		
 			pchar.quest.Eden_elevator1.win_condition.l1 = "locator";
 			pchar.quest.Eden_elevator1.win_condition.l1.location = "BB_Eden_tunnel";
 			pchar.quest.Eden_elevator1.win_condition.l1.locator_group = "goto";
@@ -54209,7 +54075,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Eden_gate_stop2.win_condition.l1.locator_group = "goto";
 			pchar.quest.Eden_gate_stop2.win_condition.l1.locator = "gate_stop2";
 			pchar.quest.Eden_gate_stop2.win_condition = "Eden_gate_stop2";
-
+		
 			pchar.quest.Eden_gate2_stop.win_condition.l1 = "locator";
 			pchar.quest.Eden_gate2_stop.win_condition.l1.location = "BB_Eden_tunnel";
 			pchar.quest.Eden_gate2_stop.win_condition.l1.locator_group = "goto";
@@ -54299,7 +54165,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Eden_steplock_4":
-			Locations[FindLocation("BB_Eden_tunnel")].image = "church_wine_cellar.tga";
+			Locations[FindLocation("BB_Eden_tunnel")].image = "church_wine_cellar.tga";	
 			PlaySound("INTERFACE\key_unlock2.wav");
 			LAi_SetPlayerType(Pchar);
 
@@ -54371,7 +54237,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_tunnel_gate_up":
 			//from box6 Eden_tunnel
-
+			
 			Locations[FindLocation("BB_Eden_tunnel")].image = "";
 			DoQuestReloadToLocation("BB_Eden_tunnel", "box", "box6", "Eden_tunnel_gate_up1");
 		break;
@@ -54381,7 +54247,7 @@ void QuestComplete(string sQuestName)
 			RemovePassenger(Pchar, characterFromID("Hands"));
 			ChangeCharacterAddressGroup(characterFromID("Hands"), "BB_Eden_tunnel", "goto", "H_lever6");
 			Locations[FindLocation("BB_Eden_tunnel")].image = "church_wine_cellar.tga";
-
+	
 			LAi_QuestDelay("Hands_reset_officer", 0.2);
 			LAi_QuestDelay("Eden_tunnel_gate_up2", 2.0);
 		break;
@@ -54417,7 +54283,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_tunnel_gate_down":
 			//from box6 Eden_tunnel
-
+			
 			Locations[FindLocation("BB_Eden_tunnel")].image = "";
 			DoQuestReloadToLocation("BB_Eden_tunnel", "box", "box6", "Eden_tunnel_gate_down1");
 		break;
@@ -54427,7 +54293,7 @@ void QuestComplete(string sQuestName)
 			RemovePassenger(Pchar, characterFromID("Hands"));
 			ChangeCharacterAddressGroup(characterFromID("Hands"), "BB_Eden_tunnel", "goto", "H_lever6");
 			Locations[FindLocation("BB_Eden_tunnel")].image = "church_wine_cellar.tga";
-
+	
 			LAi_QuestDelay("Hands_reset_officer", 0.2);
 			LAi_QuestDelay("Eden_tunnel_gate_down2", 2.0);
 		break;
@@ -54444,7 +54310,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_tunnel_elevator_up":
 			//from box7 Eden_tunnel
-
+			
 			Locations[FindLocation("BB_Eden_tunnel")].image = "";
 			DoQuestReloadToLocation("BB_Eden_tunnel", "box", "box7", "Eden_tunnel_elevator_up1");
 		break;
@@ -54466,7 +54332,7 @@ void QuestComplete(string sQuestName)
 
 		case "Eden_tunnel_elevator_down":
 			//from box7 Eden_tunnel
-
+			
 			if(CheckAttribute(Pchar,"wine_bottles") && Pchar.wine_bottles == "4")
 			{
 				Locations[FindLocation(Pchar.location)].models.always.l4 = "bars_down";
@@ -54502,16 +54368,16 @@ void QuestComplete(string sQuestName)
 			if(CheckAttribute(Pchar,"wine_bottles") && Pchar.wine_bottles == "5")
 			{
 				//do nothing
-			}
+			} 			
 			else
 			{
-				if(CheckAttribute(Pchar,"wine_bottles") && Pchar.wine_bottles == "4")
+				if(CheckAttribute(Pchar,"wine_bottles") && Pchar.wine_bottles == "4") 
 				{
 					LAi_QuestDelay("open_Eden_office_from_upper_floor", 4.0);
 				}
-			}
+			}	
 			else LAi_QuestDelay("elevator_not_heavy_enough", 4.0);
-
+			
 		break;
 
 		case "elevator_not_heavy_enough":
@@ -54571,7 +54437,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Eden_tunnel_take_empty_barrel0":
-			GiveItem2Character(Pchar, "bladebarrel3");
+			GiveItem2Character(Pchar, "bladebarrel3"); 
 			EquipCharacterbyItem(Pchar, "bladebarrel3");
 			LAi_SetPlayerType(Pchar);
 			RemovePassenger(Pchar, characterFromID("Hands"));
@@ -54612,7 +54478,7 @@ void QuestComplete(string sQuestName)
 
 		case "equip_wine_bottles_box1":
 			if(CheckCharacterItem(Pchar,"bladebottlew5")) EquipCharacterByItem(Pchar, "bladebottlew5");
-			if(CheckCharacterItem(Pchar,"pistolbottlew5"))
+			if(CheckCharacterItem(Pchar,"pistolbottlew5")) 
 			{
 				string weaponID13 = GetCharacterEquipByGroup(Pchar,BLADE_ITEM_TYPE);
 				aref weapon13;
@@ -54620,12 +54486,12 @@ void QuestComplete(string sQuestName)
 
 				if(weapon13.model == "")
 				{
-					if(!CheckCharacterItem(Pchar,"bladeX4"))
+					if(!CheckCharacterItem(Pchar,"bladeX4")) 
 					{
 						GiveItem2Character(Pchar, "bladeX4");
 					}
 					if(!IsEquipCharacterByItem(Pchar, "bladeX4"))
-					{
+					{					
 						EquipCharacterByItem(Pchar, "bladeX4");
 					}
 				}
@@ -54635,19 +54501,19 @@ void QuestComplete(string sQuestName)
 
 		case "equip_wine_bottles_box2":
 			if(CheckCharacterItem(Pchar,"bladebottlew5")) EquipCharacterByItem(Pchar, "bladebottlew5");
-			if(CheckCharacterItem(Pchar,"pistolbottlew5"))
+			if(CheckCharacterItem(Pchar,"pistolbottlew5")) 
 			{
 				weaponID13 = GetCharacterEquipByGroup(Pchar,BLADE_ITEM_TYPE);
 				Items_FindItem(weaponID13, &weapon13);
 
 				if(weapon13.model == "")
 				{
-					if(!CheckCharacterItem(Pchar,"bladeX4"))
+					if(!CheckCharacterItem(Pchar,"bladeX4")) 
 					{
-						GiveItem2Character(Pchar, "bladeX4");
-					}
+						GiveItem2Character(Pchar, "bladeX4");	
+					}				
 					if(!IsEquipCharacterByItem(Pchar, "bladeX4"))
-					{
+					{					
 						EquipCharacterByItem(Pchar, "bladeX4");
 					}
 				}
@@ -54669,7 +54535,7 @@ void QuestComplete(string sQuestName)
 			if(!CheckCharacterItem(Pchar,"bladeX4"))
 			{
 				GiveItem2Character(Pchar, "bladeX4");
-			}
+			}					
 			EquipCharacterByItem(Pchar, "bladeX4");
 			LAi_SetPlayerType(Pchar);
 
@@ -54681,28 +54547,28 @@ void QuestComplete(string sQuestName)
 			{
 				switch(Pchar.wine_bottles)
 				{
-					case "1":
-						LAi_QuestDelay("pchar_1", 1.0);
+					case "1": 
+						LAi_QuestDelay("pchar_1", 1.0); 
 						LAi_QuestDelay("count_bottles1", 2.0);
 					break;
 
-					case "2":
-						LAi_QuestDelay("pchar_2", 1.0);
+					case "2": 
+						LAi_QuestDelay("pchar_2", 1.0); 
 						LAi_QuestDelay("count_bottles1", 2.0);
 					break;
 
-					case "3":
-						LAi_QuestDelay("pchar_3", 1.0);
+					case "3": 
+						LAi_QuestDelay("pchar_3", 1.0); 
 						LAi_QuestDelay("count_bottles1", 2.0);
 					break;
 
-					case "4":
+					case "4": 
 						EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
 						SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box3", 0.001);
 						Locations[FindLocation("BB_Eden_tunnel")].locators_radius.box.box3 = 0.001;
 						Locations[FindLocation("BB_Eden_office")].models.always.locators = "EstateOffice_locators_Q2";//reset to the old one
 
-						LAi_QuestDelay("pchar_4", 1.0);
+						LAi_QuestDelay("pchar_4", 1.0); 
 						LAi_QuestDelay("count_bottles1", 2.0);
 					break;
 				}
@@ -54724,7 +54590,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("open_Eden_office_from_upper_floor2", 1.0);
 		break;
-//p?r Courtney equip weapons
+//pär Courtney equip weapons
 		case "open_Eden_office_from_upper_floor2":
 			PlaySound("INTERFACE\key_unlock2.wav");
 
@@ -54811,7 +54677,7 @@ void QuestComplete(string sQuestName)
 					break;
 				}
 			}
-
+			
 			LAi_QuestDelay("pchar_yah", 1.0);
 
 			SetNextWeather("Clear");
@@ -54868,20 +54734,20 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_3":
-						locations[FindLocation(Pchar.location)].box4.items.socks_sewing = 1;
+						locations[FindLocation(Pchar.location)].box4.items.socks_sewing = 1;	
 					break;
 
 					case "Howard_Pyle_4":
-						locations[FindLocation(Pchar.location)].box4.items.waistcoat = 1;
+						locations[FindLocation(Pchar.location)].box4.items.waistcoat = 1;	
 					break;
 
 					case "Howard_Pyle_5":
-						locations[FindLocation(Pchar.location)].box4.items.sash = 1;
+						locations[FindLocation(Pchar.location)].box4.items.sash = 1;	
 					break;
 
 				/*
 					case "Howard_Pyle":
-						//this is the 4:th mission and the only upgrade will be the visible belt & bag
+						//this is the 4:th mission and the only upgrade will be the visible belt & bag	
 					break;
 				*/
 				}
@@ -54926,7 +54792,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetFightMode(CharacterFromID("Hands"), false);
 			Pchar.killed_wr_officers = sti(Pchar.killed_wr_officers) + 1;
 			if(Pchar.killed_wr_officers == 4) {LAi_QuestDelay("restore_p20_check", 0.1);}
-
+			
 			//reset
 			Locations[FindLocation("BB_Eden_estate")].models.always.locators = "Estate_locators_Q2";
 			Locations[FindLocation("BB_Eden_estate")].environment.sea = "true";
@@ -54956,12 +54822,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "return_Eden_pictures":
-			if(CheckCharacterItem(Pchar,"picture1") || CheckCharacterItem(Pchar,"picture3")
+			if(CheckCharacterItem(Pchar,"picture1") || CheckCharacterItem(Pchar,"picture3") 
 			|| CheckCharacterItem(Pchar,"picture5") || CheckCharacterItem(Pchar,"picture6"))
 			{
 				Log_SetStringToLog(LanguageConvertString(tmpLangFileID,"No, I don't bother to take anything."));
 				PlaySound("INTERFACE\paper_small.wav");
-				TakenItems(Pchar, "picture1", -1); TakenItems(Pchar, "picture3", -1);
+				TakenItems(Pchar, "picture1", -1); TakenItems(Pchar, "picture3", -1); 
 				TakenItems(Pchar, "picture5", -1); TakenItems(Pchar, "picture6", -1);
 				locations[FindLocation(Pchar.location)].box2.items.picture1 = 0;
 				locations[FindLocation(Pchar.location)].box2.items.picture3 = 0;
@@ -54988,7 +54854,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "empty_Eden_box4_check":
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands")))				
 			{
 				ChangeCharacterAddressGroup(characterFromID("Hands"), "BB_Eden_office", "box", "box5");
 			}
@@ -54997,20 +54863,20 @@ void QuestComplete(string sQuestName)
 			&& locations[FindLocation(Pchar.location)].box4.items.sash == 0)
 			{
 				Pchar.Eden.Pyle_outfit = "yes";
-
+				
 				LAi_QuestDelay("Eden_office_done", 0.1);
 			}
 		break;
 
 		case "Eden_office_done":
-			if(CheckAttribute(Pchar,"Courtney.looted") && Pchar.Courtney.looted == "yes")
+			if(CheckAttribute(Pchar,"Courtney.looted") && Pchar.Courtney.looted == "yes") 
 			{
-				if(CheckAttribute(Pchar,"Eden.Pyle_outfit") && Pchar.Eden.Pyle_outfit == "yes")
+				if(CheckAttribute(Pchar,"Eden.Pyle_outfit") && Pchar.Eden.Pyle_outfit == "yes") 
 				{
 					PlaySound("INTERFACE\key_unlock.wav");
 					Locations[FindLocation("BB_Eden_office")].reload.l1.disable = 0;
 					Locations[FindLocation("BB_Eden_estate")].reload.l5.disable = 0;
-
+					
 					LAi_QuestDelay("Eden_office_done1", 1.0);
 				}
 			}
@@ -55046,7 +54912,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Margaret_Pough"), "BB_Eden_estate", "goto", "pough_end");
 			ChangeCharacterAddressGroup(characterFromID("Caesar"), "BB_Eden_estate", "goto", "caesar_kill");
 			LAi_SetPoorType(characterFromID("Knight"));
-
+		
 			pchar.quest.Estate_end.win_condition.l1 = "location";
 			pchar.quest.Estate_end.win_condition.l1.location = "BB_Eden_estate";
 			pchar.quest.Estate_end.win_condition = "Estate_end";
@@ -55120,7 +54986,7 @@ void QuestComplete(string sQuestName)
 
 		case "Estate_end8":
 			AddPassenger(Pchar, characterFromID("Caesar"), 0);
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))				
 			{
 				SetOfficersIndex(Pchar, 3, getCharacterIndex("Caesar"));
 			}
@@ -55164,7 +55030,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Caesar"), "bladeX4");
 			LAi_SetPlayerType(characterFromID("Caesar"));
 			LAi_SetFightMode(CharacterFromID("Caesar"), true);
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell"))) 
 			{
 				LAi_SetPlayerType(characterFromID("Pell"));
 				LAi_SetFightMode(CharacterFromID("Pell"), true);
@@ -55187,7 +55053,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetFightMode(Pchar, false);
 			LAi_SetFightMode(CharacterFromID("Hands"), false);
 			LAi_SetFightMode(CharacterFromID("Caesar"), false);
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell"))) 
 			{
 				LAi_SetFightMode(CharacterFromID("Pell"), false);
 				LAi_SetOfficerType(characterFromID("Pell"));
@@ -55228,7 +55094,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Caesar_mapBB3", 1.5);
 		break;
-
+		
 		case "Caesar_mapBB3":
 			characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "mapBB3";
 			LAi_SetActorType(characterFromID("Caesar"));
@@ -55258,14 +55124,14 @@ void QuestComplete(string sQuestName)
 		case "U2":
 			if(CheckCharacterItem(Pchar,"mapBB3T"))
 			{
-				//you can't have all 5 maps in Cayman town as when you get mapBB3T (Eden's) you also get Caesar for the first time.
+				//you can't have all 5 maps in Cayman town as when you get mapBB3T (Eden's) you also get Caesar for the first time. 
 				//But not his map.
 			}
 			else
 			{
 				ChangeCharacterAddressGroup(Pchar, "Grand_Cayman_town", "quest", "goto30_back");
 
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "U2";
 				LAi_ActorSelfDialog(pchar, "");
 				//turn around included
@@ -55287,14 +55153,14 @@ void QuestComplete(string sQuestName)
 			{
 				//means if pchar goes direct from mapBB3 or mapBB6 to archpel map this is not needed and skipped
 
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "which_island";
 				LAi_ActorSelfDialog(pchar, "");
 			}
 		break;
-
+	
 		case "I_know_which_island":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "I_know_which_island";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -55304,7 +55170,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Caesars_map":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Caesars_map";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -55347,29 +55213,29 @@ void QuestComplete(string sQuestName)
 
 		case "Teach_sloop":
 			SetCurrentTime(12, 0);
-
+		
 			if(CheckAttribute(Pchar,"model"))
 			{
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_2":
-						Pchar.Pyle_model = "2";
+						Pchar.Pyle_model = "2";	
 					break;
 
 					case "Howard_Pyle_3":
-						Pchar.Pyle_model = "3";
+						Pchar.Pyle_model = "3";	
 					break;
 
 					case "Howard_Pyle_4":
-						Pchar.Pyle_model = "4";
+						Pchar.Pyle_model = "4";		
 					break;
 
 					case "Howard_Pyle_5":
-						Pchar.Pyle_model = "5";
+						Pchar.Pyle_model = "5";		
 					break;
 
 					case "Howard_Pyle":
-						Pchar.Pyle_model = "0";
+						Pchar.Pyle_model = "0";		
 					break;
 				}
 			}
@@ -55380,7 +55246,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 
 			DeleteAttribute(characterFromID("Brthug1"), "items");
-
+			
 			if(CheckAttribute(Pchar, "items"))
 			{
 				makearef(ifrom, Pchar.items);
@@ -55438,13 +55304,13 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("bb_crew19"), "BB_sloop", "quest", "border5");
 			ChangeCharacterAddressGroup(characterFromID("bb_crew20"), "BB_sloop", "quest", "border6");
 			ChangeCharacterAddressGroup(characterFromID("bb_crew21"), "BB_sloop", "quest", "ratline");
-
+			
 			pchar.quest.Teach_sloop24.win_condition.l1 = "locator";
 			pchar.quest.Teach_sloop24.win_condition.l1.location = "BB_sloop";
 			pchar.quest.Teach_sloop24.win_condition.l1.locator_group = "reload";
 			pchar.quest.Teach_sloop24.win_condition.l1.locator = "loc0";
 			pchar.quest.Teach_sloop24.win_condition = "Teach_sloop24";
-
+			
 			SetCurrentTime(12.00, 0);
 			SetNextWeather("Clear");
 			SetNextWind("S",30);
@@ -55459,7 +55325,7 @@ void QuestComplete(string sQuestName)
 
 		case "Teach_sloop2":
 			PlaySound("OBJECTS\DUEL\man_attack5.wav");
-
+			
 			LAi_QuestDelay("Teach_sloop3", 1.0);
 		break;
 
@@ -55585,7 +55451,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Teach"));
 			Characters[GetCharacterIndex("Teach")].dialog.CurrentNode  = "Caesar4";	//mission
 		break;
-
+	
 		case "Teach_sloop19":
 			PlaySound("OBJECTS\DUEL\man_attack5.wav");
 			characters[GetCharacterIndex("wr_mummy8")].sailaway = true;
@@ -55603,7 +55469,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Teach_sloop22", 0.5);
 		break;
-
+	
 		case "Teach_sloop22":
 			LAi_SetActorType(characterFromID("fake_Caesar"));
 			LAi_ActorGoToLocator(characterFromID("fake_Caesar"), "reload", "loc0", "Teach_sloop25", 12.0);
@@ -55614,7 +55480,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Teach_sloop23":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "stop_Caesar";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -55626,7 +55492,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("pchar_oh", 1.0);
 			LAi_QuestDelay("Teach_sloop24_A", 3.0);
 		break;
-
+	
 		case "Teach_sloop24_A":
 			PlaySound("INTERFACE\_EvShip0.wav");
 
@@ -55681,7 +55547,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("bb_crew14"));
 			LAi_SetStayType(characterFromID("bb_crew2"));
 		break;
-
+		
 		case "Teach_sloop29_A":
 			CreateParticleSystem("gunfire" , 3.9, 1.6, 4.2, 0.0, 4.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 4.2, 1.6, 4.2, 0.0, 4.5, 0.0, sti(20) );
@@ -55690,13 +55556,13 @@ void QuestComplete(string sQuestName)
 		case "Teach_sloop30":
 			LAi_SetSitType(characterFromID("bb_crew8"));
 			PlaySound("OBJECTS\SHIPCHARGE\LG18J.wav");
-
+			
 			CreateParticleSystem("smoke_short" , 4.1, 1.5, 0.9, 4.5, 1.5, 0.0, sti(20) );
 			CreateParticleSystem("smoke_short" , 4.4, 1.5, 0.9, 4.5, 1.5, 0.0, sti(20) );
 
 			CreateParticleSystem("gunfire" , 4.1, 1.5, 0.9, 0.0, 4.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 4.4, 1.5, 0.9, 0.0, 4.5, 0.0, sti(20) );
-
+			
 			LAi_QuestDelay("reset_ocracoke_gunners", 0.5);
 			LAi_QuestDelay("Teach_sloop31", 0.8);			//was 0.6
 			LAi_QuestDelay("Teach_sloop30_A", 3.0);
@@ -55736,7 +55602,7 @@ void QuestComplete(string sQuestName)
 
 			CreateParticleSystem("gunfire" , 3.8, 1.9, -5.1, 0.0, 4.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 4.1, 1.9, -5.1, 0.0, 4.5, 0.0, sti(20) );
-
+			
 			LAi_QuestDelay("reset_ocracoke_gunners", 0.5);
 			LAi_QuestDelay("Teach_sloop33", 0.8);			//was 0.4
 			LAi_QuestDelay("Teach_sloop32_A", 3.0);
@@ -55746,7 +55612,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("gunfire" , 3.8, 1.9, -5.1, 0.0, 4.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 4.1, 1.9, -5.1, 0.0, 4.5, 0.0, sti(20) );
 		break;
-
+	
 		case "Teach_sloop33":
 			LAi_SetSitType(characterFromID("bb_crew2"));
 			PlaySound("OBJECTS\SHIPCHARGE\CR12C.wav");
@@ -55757,7 +55623,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("gunfire_red" , 2.9, 4.0, -8.0, 0.0, 4.5, 0.0, sti(20) );
 
 			CreateParticleSystem("gunfire" , 2.9, 4.0, -8.0, 0.0, 4.5, 0.0, sti(20) );
-
+			
 			LAi_QuestDelay("reset_ocracoke_gunners", 0.5);
 			LAi_QuestDelay("Teach_sloop34", 2.0);
 			LAi_QuestDelay("Teach_sloop33_A", 3.0);
@@ -55771,13 +55637,13 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "ships_other", "ship_1");
 
-
+			
 			PlaySound("INTERFACE\_GTBoard3.wav");			//slaughter
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "ships_other", "ship_1");
 
 			LAi_QuestDelay("Teach_sloop37", 2.5);
-
+			
 		break;
 
 		case "Teach_sloop37":
@@ -55849,15 +55715,15 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "4":
-						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 
 					case "5":
-						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);		
 					break;
 
 					case "0":
-						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 				}
 			}
@@ -55865,7 +55731,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			DeleteAttribute(Pchar, "items");
-
+			
 			if(CheckAttribute(characterFromID("Brthug1"), "items"))
 			{
 				makearef(ifrom, Characters[GetCharacterIndex("Brthug1")].items);
@@ -55874,7 +55740,7 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Characters[GetCharacterIndex("Brthug1")], "items");
 			}
-
+		
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
 
@@ -55982,7 +55848,7 @@ void QuestComplete(string sQuestName)
 		case "Eleuthera_shore_locked":
 			PlaySound("INTERFACE\girder_close.wav");
 
-			LAi_QuestDelay("pchar_huh", 2.0);
+			LAi_QuestDelay("pchar_huh", 2.0);	
 		break;
 
 		case "maynard_start":
@@ -56052,79 +55918,79 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Maynard"));
 			Characters[GetCharacterIndex("Maynard")].dialog.CurrentNode  = "bridge";
 		break;
-
+	
 		case "maynard_bridge_done":
 			AddQuestRecord("Caesar","15");
-		break;
+		break;	
 
 		case "Citadel_to_box2":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box2");
 
 			LAi_QuestDelay("pchar_playertype", 0.25);
 		break;
 
 		case "Citadel_to_box1":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box1");
 
 			LAi_QuestDelay("pchar_playertype", 0.25);
 		break;
 
 		case "Citadel_to_quest5":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "quest", "quest5");
 
-			LAi_QuestDelay("Citadel_to_box29", 0.5);
+			LAi_QuestDelay("Citadel_to_box29", 0.5);	
 		break;
 
 		case "Citadel_to_box29":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box29");
 		break;
 
 		case "Citadel_to_reload6":
 			LAi_SetPlayerType(Pchar);
-			PlaySound("PEOPLE\recoil.wav");
-			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "reload", "reload6");
+			PlaySound("PEOPLE\recoil.wav");		
+			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "reload", "reload6");			
 		break;
 
 		case "Citadel_to_box38":
 			LAi_SetPlayerType(Pchar);
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box38");
 		break;
 
 		case "Citadel_to_box32":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box32");
 		break;
 
 		case "Citadel_to_quest9":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "quest", "quest9");
 
-			LAi_QuestDelay("Citadel_to_box35", 0.5);
+			LAi_QuestDelay("Citadel_to_box35", 0.5);	
 		break;
 
-		case "Citadel_to_box35":
-			PlaySound("PEOPLE\recoil.wav");
+		case "Citadel_to_box35":			
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box35");
 		break;
 
 		case "Citadel_to_box26":
 			LAi_SetPlayerType(Pchar);
-			PlaySound("PEOPLE\jump_roof.wav");
+			PlaySound("PEOPLE\jump_roof.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box26");
 		break;
 
 		case "Citadel_to_box17":
-			PlaySound("PEOPLE\creak2.wav");
+			PlaySound("PEOPLE\creak2.wav");	
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box17");
 		break;
 
-		case "Citadel_to_box21":
-			PlaySound("PEOPLE\run_stone.wav");
+		case "Citadel_to_box21":			
+			PlaySound("PEOPLE\run_stone.wav");	
 			ChangeCharacterAddressGroup(Pchar, "Eleuthera_shore", "box", "box21");
 		break;
 
@@ -56141,7 +56007,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
-
+		
 		case "Citadel_turn_box10":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "box", "box10");
@@ -56179,7 +56045,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.citadel_lever = "up";
 			Locations[FindLocation("Eleuthera_shore")].models.always.l5 = "leverC_up";
-
+			
 			LAi_QuestDelay("Citadel_place_lever1", 0.5);
 		break;
 
@@ -56312,7 +56178,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Maynard"));
 			Characters[GetCharacterIndex("Maynard")].dialog.CurrentNode  = "anchor";
 		break;
-
+	
 		case "Citadel_place_anchor":
 			Locations[FindLocation("Eleuthera_shore")].image = "";
 			DoQuestReloadToLocation("Eleuthera_shore", "box", "box39", "Citadel_place_anchor1");
@@ -56337,7 +56203,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maynard_tower_dialog.win_condition.l1.location = "Eleuthera_shore";
 			pchar.quest.maynard_tower_dialog.win_condition.l1.locator_group = "goto";
 			pchar.quest.maynard_tower_dialog.win_condition.l1.locator = "quest3";
-			pchar.quest.maynard_tower_dialog.win_condition = "maynard_tower_dialog";
+			pchar.quest.maynard_tower_dialog.win_condition = "maynard_tower_dialog";	
 		break;
 
 		case "maynard_tower_dialog":
@@ -56364,7 +56230,7 @@ void QuestComplete(string sQuestName)
 				Locations[FindLocation("Citadel_tower_bedroom")].locators_radius.box.box4 = 1.0;
 				Locations[FindLocation("Citadel_tower_bedroom")].locators_radius.box.box5 = 1.0;
 			}
-
+			
 			DoQuestReloadToLocation("Citadel_tower_bedroom", "reload", "reload2", "maynard_tower_done1");
 		break;
 
@@ -56375,7 +56241,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.maynard_repeat.win_condition.l1.locator = "quest3";
 			pchar.quest.maynard_repeat.win_condition = "maynard_repeat";
 		break;
-
+	
 		case "maynard_repeat":
 			LAi_SetActorType(characterFromID("Maynard"));
 			LAi_ActorDialog(characterFromID("Maynard"), pchar, "", 1.5, 1.0);
@@ -56389,8 +56255,8 @@ void QuestComplete(string sQuestName)
 			if(CheckCharacterItem(Pchar,"key30"))
 			{
 				Pchar.key30 = "done";
-				Locations[FindLocation("Eleuthera_shore")].locators_radius.reload.reload1_back = 0.0001;
-				Locations[FindLocation("Eleuthera_shore")].locators_radius.box.box40 = 0.8;
+				Locations[FindLocation("Eleuthera_shore")].locators_radius.reload.reload1_back = 0.0001;				
+				Locations[FindLocation("Eleuthera_shore")].locators_radius.box.box40 = 0.8;	
 			}
 			else
 			{
@@ -56399,7 +56265,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "unlock_citadel_tunnel":
-			Locations[FindLocation("Eleuthera_shore")].locators_radius.reload.reload1_back = 1.5;
+			Locations[FindLocation("Eleuthera_shore")].locators_radius.reload.reload1_back = 1.5;				
 			Locations[FindLocation("Eleuthera_shore")].locators_radius.box.box40 = 0.0001;
 			TakeItemFromCharacter(Pchar, "key30");
 			Locations[FindLocation("Eleuthera_shore")].reload.l3.disable = 0;
@@ -56436,8 +56302,8 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Mistress"), "blade5");
 			GiveItem2Character(characterFromID("Mistress"), "pistolbbuss");
 			EquipCharacterByItem(characterFromID("Mistress"), "pistolbbuss");
-			TakeNItems(characterFromID("Mistress"),"gunpowder", 2);
-			TakeNItems(characterFromID("Mistress"),"pistolgrapes", 2);
+			TakeNItems(characterFromID("Mistress"),"gunpowder", 2); 
+			TakeNItems(characterFromID("Mistress"),"pistolgrapes", 2); 
 
 			Locations[FindLocation("Turks_Jungle_03")].locators_radius.goto.barrels = 6.0;
 			LAi_LocationFantomsGen(&locations[FindLocation("Turks_Jungle_03")], false);
@@ -56456,7 +56322,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(Pchar);
 			PauseAllSounds();//stops music
 			Locations[FindLocation("Turks_Jungle_03")].type = "silent_jungle";
-
+			
 			LAi_ActorTurnToCharacter(characterFromID("Mistress"), Pchar);
 			PlaySound("VOICE\ENGLISH\gr_mistress2.wav");
 
@@ -56483,19 +56349,19 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Turks_mistress_attack3", 1.0);
 		break;
-
+	
 		case "Turks_mistress_attack3":
 			Locations[FindLocation("Turks_Jungle_03")].reload.l4.disable = 1;		//locked to port
 			PlaySound("INTERFACE\shelf_close.wav");
 			ChangeCharacterAddressGroup(characterFromID("Mistress"), "none", "", "");
 		break;
-
+	
 		case "Turks_mistress_attack4":
 			PlaySound("VOICE\ENGLISH\gr_mistress.wav");
 		break;
-
+	
 		case "Turks_gate_locked":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "gate_locked";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -56511,7 +56377,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Turks_armory_turn_to_gpb":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "candles", "candle6");
 
 			LAi_QuestDelay("pchar_playertype", 0.5);
@@ -56535,7 +56401,7 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("Turks_bladebarrel_gpS_check", 0.5);//loop check
 			}
 		break;
-
+		
 		case "Turks_pistolbarrel_gpS_check":
 			if(CheckCharacterItem(Pchar,"pistolbarrel_gpS"))
 			{
@@ -56571,7 +56437,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(pchar);
 			Locations[FindLocation("Turks_Jungle_03")].image = "Outside_Jungle_6.tga";
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "gate_runaway";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -56585,7 +56451,7 @@ void QuestComplete(string sQuestName)
 			{
 				LAi_KillCharacter(Pchar);
 			}
-
+		
 			if(gate_dist <= 25.0)
 			{
 				//survive but wounded
@@ -56602,7 +56468,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("smoke_inv" , 27.7, 0.4, 1.1, 5.1, 4.0, 0.0, sti(20) );		//4 black smoke
 			CreateParticleSystemX("blast_dirt", 27.7, 0.9, 1.1, 27.7, 0.9, 1.1,10);
 			CreateParticleSystemX("blast_dirt", 27.7, 0.4, 1.1, 27.7, 0.9, 1.1,10);
-
+			
 			PlaySound("OBJECTS\DUEL\pistol_musket.wav");
 			PlaySound("OBJECTS\DUEL\pistol_musket.wav");
 			PlaySound("OBJECTS\SHIPCHARGE\cannon_fire1.wav");
@@ -56612,7 +56478,7 @@ void QuestComplete(string sQuestName)
 			if(!LAi_IsDead(Pchar)) LAi_QuestDelay("Turks_gate_explosion1", 2.0);
 		break;
 
-		case "Turks_gate_explosion1":
+		case "Turks_gate_explosion1":	
 			Locations[FindLocation("Turks_Jungle_03")].image = "";
 			Locations[FindLocation("Turks_Jungle_03")].models.always.l5 = "";	//no barrels
 			Locations[FindLocation("Turks_Jungle_03")].models.always.gate = "";
@@ -56643,7 +56509,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("smoke_inv" , 27.7, 0.4, 0.6, 5.1, 4.0, 0.0, sti(20) );		//4 black smoke
 			CreateParticleSystem("smoke_inv" , 27.7, 0.9, 1.1, 5.1, 4.0, 0.0, sti(20) );		//4 black smoke
 			CreateParticleSystem("smoke_inv" , 27.7, 0.9, 1.6, 5.1, 4.0, 0.0, sti(20) );		//4 black smoke
-
+			
 			Locations[FindLocation("Turks_Jungle_03")].image = "Outside_Jungle_6.tga";
 			Locations[FindLocation("Turks_port")].models.always.l9 = "Margarita_gatebroken";
 			Locations[FindLocation("Turks_Jungle_03")].reload.l4.disable = 0;		//unlocked to port
@@ -56707,7 +56573,7 @@ void QuestComplete(string sQuestName)
 			LAi_NoRebirthEnable(CharacterFromID("wr_cor4"));
 			LAi_NoRebirthEnable(CharacterFromID("wr_blm"));
 			LAi_NoRebirthEnable(CharacterFromID("wr_9SNat"));
-
+		
 			RemoveCharacterEquip(characterFromID("wr_boc4"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("wr_boc4"), BLADE_ITEM_TYPE);
 			DeleteAttribute(characterFromID("wr_boc4"), "items");
@@ -56768,7 +56634,7 @@ void QuestComplete(string sQuestName)
 		//	LAi_SetHP(CharacterFromID("wr_18_1"), 100.0, 100.0);
 			LAi_SetActorType(CharacterFromID("wr_18_1_copy"));
 			ChangeCharacterAddressGroup(CharacterFromID("wr_18_1_copy"), "Turks_port", "quest", "enemy1");
-
+			
 			LAi_QuestDelay("Turks_enemy1_A", 0.5);
 		break;
 
@@ -56922,10 +56788,10 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Turks_splash.win_condition.l1.locator_group = "quest";
 			pchar.quest.Turks_splash.win_condition.l1.locator = "splash";
 			pchar.quest.Turks_splash.win_condition = "Turks_splash";
-		break;
+		break;	
 
 		case "Turks_cannon_turn":
-			if(Pchar.location == "Turks_port")
+			if(Pchar.location == "Turks_port") 
 			{
 				LAi_SetActorType(Pchar);
 				LAi_ActorTurnToLocator(Pchar, "quest", "look1");
@@ -56942,13 +56808,13 @@ void QuestComplete(string sQuestName)
 
 			CreateParticleSystem("canfire2" , 15.0, 6.3, -42.3, 5.1, 4.0, 0.0, sti(20) );		//19
 			CreateParticleSystem("gunfire_revolver" , 15.0, 6.3, -42.3, 5.1, 4.0, 0.0, sti(20) );	//66
-			CreateParticleSystem("smoke_inv" , 15.0, 6.3, -42.3, 5.1, 4.0, 0.0, sti(20) );
+			CreateParticleSystem("smoke_inv" , 15.0, 6.3, -42.3, 5.1, 4.0, 0.0, sti(20) );	
 
 			LAi_QuestDelay("Turks_cannon_fire1", 1.0);
 		break;
 
 		case "Turks_cannon_fire1":
-			if(Pchar.location == "Turks_port")
+			if(Pchar.location == "Turks_port") 
 			{
 				Locations[FindLocation("Turks_port")].reload.l17.disable = 1;
 				LAi_KillCharacter(Pchar);
@@ -56989,7 +56855,7 @@ void QuestComplete(string sQuestName)
 		//	LAi_SetHP(CharacterFromID("wr_9SNat"), 100.0, 100.0);
 			PlaySound("PEOPLE\recoil.wav");
 			LAi_SetActorType(CharacterFromID("wr_9SNat_copy"));
-			ChangeCharacterAddressGroup(CharacterFromID("wr_9SNat_copy"), "Turks_port", "quest", "shot3");
+			ChangeCharacterAddressGroup(CharacterFromID("wr_9SNat_copy"), "Turks_port", "quest", "shot3");		
 
 			LAi_QuestDelay("pchar_staytype", 1.0);
 			LAi_QuestDelay("Turks_enemy5", 2.0);
@@ -57000,7 +56866,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("wr_blm_copy"), "Turks_port", "quest", "enemy8");
 			LAi_SetActorType(CharacterFromID("wr_blm_copy"));
 		//	LAi_SetHP(CharacterFromID("wr_blm"), 75.0, 75.0);
-
+			
 			LAi_QuestDelay("Turks_enemy5_1", 1.0);
 		break;
 
@@ -57046,14 +56912,14 @@ void QuestComplete(string sQuestName)
 
 		case "Turks_enemy6_dead":
 			Pchar.killed_wr_officers = sti(Pchar.killed_wr_officers) + 1;
-			if(Pchar.killed_wr_officers == 4) {LAi_QuestDelay("restore_p20_check", 0.1);}
+			if(Pchar.killed_wr_officers == 4) {LAi_QuestDelay("restore_p20_check", 0.1);}			
 
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box3", 0.5);
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box4", 0.5);
 
 			LAi_QuestDelay("Turks_steplocks", 0.1);
 		break;
-
+	
 		case "Turks_jump":
 			pchar.quest.Turks_jump_back.win_condition.l1 = "locator";
 			pchar.quest.Turks_jump_back.win_condition.l1.location = "Turks_port";
@@ -57069,7 +56935,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Turks_jump", 0.5);
 		break;
-
+	
 		case "Turks_splash":
 			LAi_QuestDelay("Turks_splash1", 0.5);
 		break;
@@ -57079,7 +56945,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystemX("ball_splash", 41.2, -4.0, 18.4, 0.0, 0.0, 0.0, 0);
 			if(IsEquipCharacterByItem(Pchar, "longrifle_W")) {RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);}
 			TakeItemFromCharacter(pchar, "longrifle_W");
-			if(IsEquipCharacterByItem(Pchar, "blade4") || IsEquipCharacterByItem(Pchar, "bladeA2")) {RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);}
+			if(IsEquipCharacterByItem(Pchar, "blade4") || IsEquipCharacterByItem(Pchar, "bladeA2")) {RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);}	
 			TakenItems(Pchar, "blade4", -6);
 			TakenItems(Pchar, "potion1", -10); TakenItems(Pchar, "potion2", -10); TakenItems(Pchar, "potion3", -10); TakenItems(Pchar, "potion4", -10);
 			TakenItems(Pchar, "potionrum", -10); TakenItems(Pchar, "potionwine", -10); TakenItems(Pchar, "potionwine2", -10); TakenItems(Pchar, "cognac", -10);
@@ -57183,9 +57049,9 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("OBJECTS\SHIPCHARGE\ball_splash1.wav");
 				PlaySound("INTERFACE\rum_wheel.wav");
-				PlaySound("INTERFACE\rum_wheel.wav");
+				PlaySound("INTERFACE\rum_wheel.wav");		
 			}
-			else
+			else 
 			{
 				PlaySound("OBJECTS\SHIPCHARGE\ball_splash1.wav");
 				PlaySound("INTERFACE\shelf_close.wav");
@@ -57197,7 +57063,7 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockM_4":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "ships_other", "ship1");
-			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";
+			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";	
 
 			LAi_QuestDelay("pchar_playertype", 1.0);
 
@@ -57211,7 +57077,7 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockM_disabled":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Turks_port", "goto", "stepbackM");
-
+			
 			pchar.quest.Turks_steplockM.win_condition.l1 = "locator";
 			pchar.quest.Turks_steplockM.win_condition.l1.location = "Turks_port";
 			pchar.quest.Turks_steplockM.win_condition.l1.locator_group = "goto";
@@ -57234,7 +57100,7 @@ void QuestComplete(string sQuestName)
 					Locations[FindLocation(Pchar.location)].environment.sea = "false";
 					Locations[FindLocation(Pchar.location)].locators_radius.reload.reload_sewer = 1.0;
 
-					LAi_QuestDelay("Turks_steplockR_2", 0.5);
+					LAi_QuestDelay("Turks_steplockR_2", 0.5);	
 				}
 				else
 				{
@@ -57249,7 +57115,7 @@ void QuestComplete(string sQuestName)
 						Locations[FindLocation(Pchar.location)].environment.sea = "true";
 						Locations[FindLocation(Pchar.location)].locators_radius.reload.reload_sewer = 0.0;
 
-						LAi_QuestDelay("Turks_steplockR_2", 0.5);
+						LAi_QuestDelay("Turks_steplockR_2", 0.5);	
 					}
 					else
 					{
@@ -57291,10 +57157,10 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockR_4":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "ships_other", "ship1");
-			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";
+			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";	
 
 			LAi_QuestDelay("pchar_playertype", 1.0);
-
+		
 			pchar.quest.Turks_steplockR.win_condition.l1 = "locator";
 			pchar.quest.Turks_steplockR.win_condition.l1.location = "Turks_port";
 			pchar.quest.Turks_steplockR.win_condition.l1.locator_group = "goto";
@@ -57305,7 +57171,7 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockR_disabled":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Turks_port", "goto", "stepbackR");
-
+			
 			pchar.quest.Turks_steplockR.win_condition.l1 = "locator";
 			pchar.quest.Turks_steplockR.win_condition.l1.location = "Turks_port";
 			pchar.quest.Turks_steplockR.win_condition.l1.locator_group = "goto";
@@ -57358,11 +57224,11 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockL_3":
 			if(Locations[FindLocation(Pchar.location)].models.always.locators == "Margarita_locators_KR_closed")
 			{
-				PlaySound("INTERFACE\closed_door.wav");
+				PlaySound("INTERFACE\closed_door.wav");	
 			}
-			else
+			else 
 			{
-				PlaySound("INTERFACE\closet_Open.wav");
+				PlaySound("INTERFACE\closet_Open.wav");	
 				SetCurrentTime(12, 0);			//brown sewer water looks best daytime
 			}
 			LAi_QuestDelay("Turks_steplockL_4", 1.0);
@@ -57371,10 +57237,10 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockL_4":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "ships_other", "ship1");
-			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";
+			Locations[FindLocation("Turks_port")].image = "Town_Grand_Turk.tga";	
 
 			LAi_QuestDelay("pchar_playertype", 1.0);
-
+		
 			pchar.quest.Turks_steplockL.win_condition.l1 = "locator";
 			pchar.quest.Turks_steplockL.win_condition.l1.location = "Turks_port";
 			pchar.quest.Turks_steplockL.win_condition.l1.locator_group = "goto";
@@ -57385,7 +57251,7 @@ void QuestComplete(string sQuestName)
 		case "Turks_steplockL_disabled":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Turks_port", "goto", "stepbackL");
-
+			
 			pchar.quest.Turks_steplockL.win_condition.l1 = "locator";
 			pchar.quest.Turks_steplockL.win_condition.l1.location = "Turks_port";
 			pchar.quest.Turks_steplockL.win_condition.l1.locator_group = "goto";
@@ -57396,7 +57262,7 @@ void QuestComplete(string sQuestName)
 		case "Turks_watergate":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Turks_port", "goto", "waterback");
-
+			
 			LAi_QuestDelay("Turks_watergate_1", 0.5);
 		break;
 
@@ -57419,7 +57285,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("fall_to_sewer1", 2.0);
 		break;
-
+		
 		case "fall_to_sewer1":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead7.wav");
 
@@ -57455,7 +57321,7 @@ void QuestComplete(string sQuestName)
 
 	//-------------------------------------------------------------------------------------
 	// Turks_wreck_shore
-
+		
 		case "Turks_shore_turn_to_splash":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "quest", "splash");
@@ -57477,7 +57343,7 @@ void QuestComplete(string sQuestName)
 				RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 				EquipCharacterByItem(pchar, "bladebottle_CB2");
 				PlaySound("INTERFACE\glass1.wav");
-
+	
 				LAi_QuestDelay("bladebottle_CB2_check2", 1.5);
 			}
 			else
@@ -57494,7 +57360,7 @@ void QuestComplete(string sQuestName)
 	// BB_sloop_wreck_hold
 
 		case "return_to_wreck_hold":
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "return_to_wreck_hold";
 			LAi_ActorSelfDialog(Pchar, "");
 		break;
@@ -57518,7 +57384,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "blade_gp_dry_dialog":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "gp_dry";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -57544,20 +57410,20 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_3":
-						locations[FindLocation(Pchar.location)].box1.items.socks_sewing = 1;
+						locations[FindLocation(Pchar.location)].box1.items.socks_sewing = 1;	
 					break;
 
 					case "Howard_Pyle_4":
-						locations[FindLocation(Pchar.location)].box1.items.waistcoat = 1;
+						locations[FindLocation(Pchar.location)].box1.items.waistcoat = 1;	
 					break;
 
 					case "Howard_Pyle_5":
-						locations[FindLocation(Pchar.location)].box1.items.sash = 1;
+						locations[FindLocation(Pchar.location)].box1.items.sash = 1;	
 					break;
 
 				/*
 					case "Howard_Pyle":
-						//this is the 4:th mission and the only upgrade will be the visible belt & bag
+						//this is the 4:th mission and the only upgrade will be the visible belt & bag	
 					break;
 				*/
 				}
@@ -57569,7 +57435,7 @@ void QuestComplete(string sQuestName)
 			&& locations[FindLocation(Pchar.location)].box1.items.waistcoat == 0
 			&& locations[FindLocation(Pchar.location)].box1.items.sash == 0)
 			{
-				if(CheckCharacterItem(Pchar,"Barmansknife") && CheckCharacterItem(Pchar,"Pistolhammer"))
+				if(CheckCharacterItem(Pchar,"Barmansknife") && CheckCharacterItem(Pchar,"Pistolhammer")) 
 				{
 					SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box1", 0.001);
 					Locations[FindLocation("BB_sloop_wreck_cabin")].locators_radius.box.box1 = 0.001;
@@ -57592,7 +57458,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_sloop_wreck_cabin")].image = "wr_wreck_cabin.tga";
 			LAi_LocationFightDisable(&Locations[FindLocation("BB_sloop_wreck_cabin")], true);
 
-			if(CheckCharacterItem(Pchar,"bladebottle_CE0"))
+			if(CheckCharacterItem(Pchar,"bladebottle_CE0")) 
 			{
 				LAi_QuestDelay("pchar_huh", 0.1);
 				LAi_QuestDelay("skip_empty_bottle", 1.0);
@@ -57660,7 +57526,7 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("INTERFACE\paper_small.wav");
 				TakeItemFromCharacter(pchar, "gpmap");
-
+			
 				GiveItem2Character(Pchar, "mapBB2A");
 			SetCurrentTime(11.00, 0);
 				Pchar.Caesar_map = "picked_up";
@@ -57672,7 +57538,7 @@ void QuestComplete(string sQuestName)
 				TakeItemFromCharacter(pchar, "pistolhammer");
 				if(IsEquipCharacterByItem(Pchar, "barmansknife")) {RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);}
 				TakeItemFromCharacter(pchar, "barmansknife");
-
+				
 				LAi_QuestDelay("closer_look", 1.0);
 
 				if(CheckCharacterItem(Pchar,"mapBB1") && CheckCharacterItem(Pchar,"mapBB3T") && CheckCharacterItem(Pchar,"mapBB4C"))
@@ -57712,8 +57578,8 @@ void QuestComplete(string sQuestName)
 //Turks
 		case "closer_look":
 			//when mapBB2A (Caesar) or mapBB5A (Hands) found
-
-			LAi_SetActorType(pchar);
+			
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "closer_look";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -57722,7 +57588,7 @@ void QuestComplete(string sQuestName)
 			//from examine mapBB2A
 			//or restarted after blow map attempt
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "clean_up_map";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -57730,12 +57596,12 @@ void QuestComplete(string sQuestName)
 		case "spoiled_map":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead1.wav");	//ohoh
 			PlaySound("PEOPLE\grass_turn.wav");
-
+			
 			LAi_QuestDelay("spoiled_map_done", 1.0);
 		break;
 
 		case "spoiled_map_done":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "spoiled_map_done";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -57764,11 +57630,11 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "clean_up_map_done":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "clean_up_map_done";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+		
 		case "blow_map":
 			Pchar.blow_map = "tried";
 			LAi_QuestDelay("pchar_puh", 0.1);
@@ -57779,7 +57645,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("clean_up_map", 2.1);
 		break;
 //_________________________________________________________________________________________________________________
-
+		
 		case "start_Hands_Willemstad":
 			//from book read (in items.c) or StartStoryline.c or jump start "22"
 			SetModel(characterFromID("Hands"), "bb_Hands2", "man", "man", 1.8, false);
@@ -57792,7 +57658,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar1"), "Willemstad_port", "goto", "goto10");
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar2"), "Willemstad_port", "goto", "goto15");
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar3"), "Willemstad_port", "goto", "goto19");
-
+			
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar4"), "Willemstad_town", "goto", "goto9");
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar5"), "Willemstad_town", "goto", "goto27");
 			ChangeCharacterAddressGroup(CharacterFromID("WR_beggar6"), "Willemstad_town", "goto", "goto37");
@@ -57803,24 +57669,24 @@ void QuestComplete(string sQuestName)
 
 		case "are_you_Hands_delay":
 			LAi_QuestDelay("are_you_Hands", 0.2);
-		break;
+		break; 
 
 		case "are_you_Hands":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "are_you_Hands";
 			LAi_ActorSelfDialog(pchar, "");
-		break;
+		break; 
 
 		case "are_you_Hands_yes_delay":
 			LAi_QuestDelay("are_you_Hands_yes", 0.2);
-		break;
+		break; 
 
 		case "are_you_Hands_yes":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "are_you_hands_yes";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+		
 		case "beggar_is_Hands_prepare":
 			Characters[GetCharacterIndex("Hands")].name = TranslateString("","Israel");
 			Characters[GetCharacterIndex("Hands")].lastname = TranslateString("","Hands");
@@ -57845,23 +57711,23 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_2":
-						Pchar.Pyle_model = "2";
+						Pchar.Pyle_model = "2";	
 					break;
 
 					case "Howard_Pyle_3":
-						Pchar.Pyle_model = "3";
+						Pchar.Pyle_model = "3";	
 					break;
 
 					case "Howard_Pyle_4":
-						Pchar.Pyle_model = "4";
+						Pchar.Pyle_model = "4";		
 					break;
 
 					case "Howard_Pyle_5":
-						Pchar.Pyle_model = "5";
+						Pchar.Pyle_model = "5";		
 					break;
 
 					case "Howard_Pyle":
-						Pchar.Pyle_model = "0";
+						Pchar.Pyle_model = "0";		
 					break;
 				}
 			}
@@ -57871,7 +57737,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 
 			DeleteAttribute(characterFromID("Brthug1"), "items");
-
+			
 			if(CheckAttribute(Pchar, "items"))
 			{
 				makearef(ifrom, Pchar.items);
@@ -57880,9 +57746,9 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Pchar, "items");
 			}
-
+		
 			GiveItem2Character(Pchar, "bladeX4");
-			GiveItem2Character(Pchar, "blade1");
+			GiveItem2Character(Pchar, "blade1");	
 			EquipCharacterByItem(Pchar, "blade1");
 			GiveItem2Character(Pchar, "pistol206");
 			EquipCharacterByItem(Pchar, "pistol206");
@@ -57899,7 +57765,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("Teach"));
 			ChangeCharacterAddressGroup(CharacterFromID("Bonnet"), "BB_QAR_cabinH", "quest", "bo_start");
 			LAi_SetStayType(characterFromID("Bonnet"));
-
+		
 			RemoveCharacterEquip(characterFromID("Teach"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Teach"), BLADE_ITEM_TYPE);
 			DeleteAttribute(characterFromID("Teach"), "items");
@@ -57950,7 +57816,7 @@ void QuestComplete(string sQuestName)
 		break;
 	//------------------------------------------------------------------------------------
 		case "Hands_shot_scene2":
-			logit("PILOT");
+			logit(TranslateString("","PILOT"));
 			PlaySound("VOICE\ENGLISH\windem_drunk.wav");
 
 			LAi_QuestDelay("Hands_shot_scene2_A", 2.0);
@@ -57963,19 +57829,19 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene3":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\gr_Teach7.wav");
 
 			LAi_QuestDelay("Hands_shot_scene4", 4.0);
 		break;
 
 		case "Hands_shot_scene4":
-			logit("MERCHANT");
+			logit(TranslateString("","WR_MERCHANT"));
 			PlaySound("VOICE\ENGLISH\Poe_ok.wav");
 			PlaySound("VOICE\ENGLISH\Poe_ok.wav");
 
 			LAi_QuestDelay("Hands_shot_scene4_A", 1.5);
-			LAi_QuestDelay("Hands_shot_scene5", 2.5);
+			LAi_QuestDelay("Hands_shot_scene5", 2.5);	
 		break;
 
 		case "Hands_shot_scene4_A":
@@ -57985,7 +57851,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene5":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			PlaySound("VOICE\ENGLISH\Odel_otherwise.wav");
 
 			LAi_QuestDelay("Hands_shot_scene5_A", 1.5);
@@ -57999,7 +57865,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene6":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\Dave_Edna_4.wav");
 
 			LAi_QuestDelay("Hands_shot_scene6_A", 2.0);
@@ -58013,49 +57879,49 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene7":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\gr_Teach4.wav");
 
 			LAi_QuestDelay("Hands_shot_scene8", 4.0);
 		break;
 
 		case "Hands_shot_scene8":
-			logit("MERCHANT");
+			logit(TranslateString("","WR_MERCHANT"));
 			PlaySound("VOICE\ENGLISH\Poe_and.wav");
 
 			LAi_QuestDelay("Hands_shot_scene9", 2.5);
 		break;
 
 		case "Hands_shot_scene9":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\gr_Teach12.wav");
 
 			LAi_QuestDelay("Hands_shot_scene10", 3.5);
 		break;
 
 		case "Hands_shot_scene10":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\Dave_Edna_2.wav");
 
 			LAi_QuestDelay("Hands_shot_scene11", 5.0);
 		break;
 
 		case "Hands_shot_scene11":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			PlaySound("VOICE\ENGLISH\gr_Hands1.wav");
 
 			LAi_QuestDelay("Hands_shot_scene12", 2.0);
 		break;
 
 		case "Hands_shot_scene12":
-			logit("PILOT");
+			logit(TranslateString("","PILOT"));
 			PlaySound("VOICE\ENGLISH\Maynard_big_swindel.wav");
 
-			LAi_QuestDelay("Hands_shot_scene13", 4.5);
+			LAi_QuestDelay("Hands_shot_scene13", 4.5);		
 		break;
 
 		case "Hands_shot_scene13":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\pir_capR3.wav");
 
 			LAi_QuestDelay("Hands_shot_scene14", 3.0);
@@ -58071,26 +57937,26 @@ void QuestComplete(string sQuestName)
 			PauseAllSounds();//stops music
 			Locations[FindLocation("BB_QAR_cabinH")].type = "party";
 
-			LAi_QuestDelay("Hands_shot_scene15_A", 0.5);
+			LAi_QuestDelay("Hands_shot_scene15_A", 0.5);	
 			LAi_QuestDelay("Hands_shot_scene16", 1.5);
 		break;
 
 		case "Hands_shot_scene15_A":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			LAi_QuestDelay("pchar_ohoh", 0.001);
 		break;
 
 		case "Hands_shot_scene16":
-			logit("MERCHANT");
+			logit(TranslateString("","WR_MERCHANT"));
 			PlaySound("VOICE\ENGLISH\Poe_smoke.wav");
 			PlaySound("PEOPLE\creak2.wav");
 			LAi_SetActorType(characterFromID("QAR_guest_merchant"));
 			ChangeCharacterAddressGroup(characterFromID("QAR_guest_merchant"),"BB_QAR_cabinH","goto","merch_stay");
-
+			
 			LAi_QuestDelay("Hands_shot_scene18", 2.0);
 			LAi_QuestDelay("Hands_shot_scene19", 5.0);
 		break;
-
+	
 		case "Hands_shot_scene18":
 			LAi_ActorGoToLocator(characterFromID("QAR_guest_merchant"), "reload", "reload1_back", "Hands_shot_scene18_A", 6.0);
 		break;
@@ -58101,28 +57967,28 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene19":
-			logit("PILOT");
+			logit(TranslateString("","PILOT"));
 			PlaySound("VOICE\ENGLISH\Maynard_steady_there.wav");
 
-			LAi_QuestDelay("Hands_shot_scene20", 3.0);
+			LAi_QuestDelay("Hands_shot_scene20", 3.0);		
 		break;
 
 		case "Hands_shot_scene20":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\pir_capR5.wav");
 
 			LAi_QuestDelay("Hands_shot_scene21", 5.5);
 		break;
-
+	
 		case "Hands_shot_scene21":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\Dave_Edna_3.wav");
 
 			LAi_QuestDelay("Hands_shot_scene22", 2.5);
 		break;
 
 		case "Hands_shot_scene22":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\pir_capR4.wav");
 
 			LAi_QuestDelay("Hands_shot_scene23", 5.0);
@@ -58150,21 +58016,21 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_QAR_cabinH")].models.always.locators = "Cabin01_l_Q2H_2";
 			SetNextWind("N",30);
 			Locations[FindLocation("BB_QAR_cabinH")].type = "silent_cave_seashore";
-			Locations[FindLocation("BB_QAR_cabinH")].image = "";
+			Locations[FindLocation("BB_QAR_cabinH")].image = "";			
 
 			DoQuestReloadToLocation("BB_QAR_cabinH", "sit", "teach", "Hands_shot_scene26");
 		break;
 	//______________________________________LIGHTS OUT_____________________________________________________
 
 		case "Hands_shot_scene26":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\Dave_Edna_5.wav");
 
 			LAi_QuestDelay("Hands_shot_scene27", 4.0);
 		break;
 
 		case "Hands_shot_scene27":
-			logit("PILOT");
+			logit(TranslateString("","PILOT"));
 			PlaySound("PEOPLE\creak2.wav");
 			PlaySound("VOICE\ENGLISH\blaze_drunk2.wav");
 			LAi_SetActorType(characterFromID("QAR_guest_pilot"));
@@ -58174,7 +58040,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("Hands_shot_scene28_B", 2.0);
 			LAi_QuestDelay("Hands_shot_scene28_B", 3.0);
 			LAi_QuestDelay("Hands_shot_scene28_B", 4.0);
-			LAi_QuestDelay("Hands_shot_scene29", 5.0);
+			LAi_QuestDelay("Hands_shot_scene29", 5.0);		
 		break;
 
 		case "Hands_shot_scene28":
@@ -58191,14 +58057,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene29":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			PlaySound("VOICE\ENGLISH\blaze_hah.wav");
 
 			LAi_QuestDelay("Hands_shot_scene30", 2.5);
 		break;
 
 		case "Hands_shot_scene30":
-			logit("EDWARD TEACH");
+			logit(TranslateString("","EDWARD TEACH"));
 			PlaySound("VOICE\ENGLISH\pir_capR2.wav");
 
 			LAi_QuestDelay("Hands_shot_scene31", 3.5);
@@ -58232,7 +58098,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_SetStayType(characterFromID("Bonnet"));
 			ChangeCharacterAddressGroup(characterFromID("Bonnet"),"BB_QAR_cabinH","goto","bonnet_stay");
-
+			
 			Php = LAi_GetCharacterHP(Pchar);
 			Php2 = Php/2;
 			LAi_ApplyCharacterDamage(Pchar, Php2);
@@ -58242,14 +58108,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene34":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead6.wav");
 
 			LAi_QuestDelay("Hands_shot_scene35", 2.5);
 		break;
 
 		case "Hands_shot_scene35":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "whats_the meaning";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -58260,9 +58126,9 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Teach"));
 			Characters[GetCharacterIndex("Teach")].dialog.CurrentNode  = "I_shot_you";
 		break;
-
+	
 		case "Hands_shot_scene37":
-			logit("ISRAEL HANDS");
+			logit(TranslateString("","ISRAEL HANDS"));
 			PlaySound("VOICE\ENGLISH\Odel_yourself_again.wav");
 
 			LAi_QuestDelay("Hands_shot_scene38", 3.5);
@@ -58296,7 +58162,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene41":
-			LAi_SetActorType(characterFromID("Teach"));
+			LAi_SetActorType(characterFromID("Teach"));	
 			LAi_ActorTurnToLocator(characterFromID("Teach"), "goto", "teach_door");
 
 			LAi_QuestDelay("Hands_shot_scene41_A", 1.5);
@@ -58342,7 +58208,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Hands_shot_scene45_A", 1.5);
 		break;
-
+	
 		case "Hands_shot_scene45_A":
 			LAi_SetActorType(characterFromID("Bonnet"));
 			LAi_ActorGoToLocator(characterFromID("Bonnet"), "goto", "pilot_stay", "Hands_shot_scene46", 3.0);
@@ -58352,51 +58218,51 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\recoil.wav");
 			ChangeCharacterAddressGroup(characterFromID("Bonnet"),"BB_QAR_cabinH","goto","looting");
 			LAi_SetPoorType(characterFromID("Bonnet"));
-
+			
 			LAi_QuestDelay("Hands_shot_scene47_A", 2.0);
 		break;
 
 		case "Hands_shot_scene47_A":
 			PlaySound("PEOPLE\clothes1.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene47_B", 1.5);
 		break;
 
 		case "Hands_shot_scene47_B":
 			PlaySound("INTERFACE\clock_small.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene47_C", 3.0);
 		break;
 
 		case "Hands_shot_scene47_C":
-			logit("A small clock that's something.");
+			logit(TranslateString("","A small clock that's something."));
 			PlaySound("VOICE\ENGLISH\Dave_Edna_6.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene48_A", 3.0);
 		break;
 
 		case "Hands_shot_scene48_A":
 			PlaySound("PEOPLE\clothes1.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene48_B", 1.5);
 		break;
 
 		case "Hands_shot_scene48_B":
 			PlaySound("INTERFACE\coins8.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene48_C", 2.5);
 		break;
 
 		case "Hands_shot_scene48_C":
-			logit("A purse with a lot of coins - that's better!");
+			logit(TranslateString("","A purse with a lot of coins - that's better!"));
 			PlaySound("VOICE\ENGLISH\G_good_work.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene49_A", 1.5);
 		break;
 
 		case "Hands_shot_scene49_A":
 			PlaySound("PEOPLE\clothes2.wav");
-
+			
 			LAi_QuestDelay("Hands_shot_scene49_B", 3.0);
 		break;
 
@@ -58404,13 +58270,13 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\paper.wav");
 			GiveItem2Character(characterFromID("Bonnet"), "pistolmap_Hgold");
 			EquipCharacterbyItem(characterFromID("Bonnet"), "pistolmap_Hgold");
-
+			
 			LAi_QuestDelay("pchar_yah", 1.5);
 			LAi_QuestDelay("Hands_shot_scene49_C", 1.5);
 		break;
 
 		case "Hands_shot_scene49_C":
-			logit("I found his map!!!");
+			logit(TranslateString("","I found his map!!!"));
 
 			LAi_QuestDelay("Hands_shot_scene50", 1.5);
 		break;
@@ -58423,10 +58289,10 @@ void QuestComplete(string sQuestName)
 
 		case "Hands_shot_scene51":
 			PlaySound("VOICE\ENGLISH\blaze_help.wav");
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			LAi_SetActorType(characterFromID("Bonnet"));
 			LAi_ActorTurnToLocator(characterFromID("Bonnet"), "reload", "reload1_back");
-
+			
 	//		LAi_QuestDelay("Hands_shot_scene52_A", 2.5);
 			LAi_QuestDelay("Hands_shot_scene_over", 2.5);	//test skip surgeons
 		break;
@@ -58444,21 +58310,21 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene53_A":
-			logit("SURGEON MAJOR");
+			logit(TranslateString("","SURGEON MAJOR"));
 			PlaySound("VOICE\ENGLISH\Fre_m_c_011.wav");
 
 			LAi_QuestDelay("Hands_shot_scene53_B", 3.0);
 		break;
 
 		case "Hands_shot_scene53_B":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\G_tell_you_what.wav");
 
 			LAi_QuestDelay("Hands_shot_scene54_A", 2.0);
 		break;
 
 		case "Hands_shot_scene54_A":
-			logit("SECOND SURGEON");
+			logit(TranslateString("","SECOND SURGEON"));
 			PlaySound("VOICE\ENGLISH\Fre_m_a_001.wav");
 			LAi_ActorTurnToLocator(characterFromID("Bonnet"), "goto", "S2");
 
@@ -58466,14 +58332,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene54_B":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\G_have_to_try.wav");
 
 			LAi_QuestDelay("Hands_shot_scene55_A", 2.5);
 		break;
 
 		case "Hands_shot_scene55_A":
-			logit("GUNSMITH OR THIRD SURGEON");
+			logit(TranslateString("","GUNSMITH OR THIRD SURGEON"));
 			PlaySound("VOICE\ENGLISH\Fre_m_b_020.wav");
 			LAi_ActorTurnToLocator(characterFromID("Bonnet"), "goto", "S3");
 
@@ -58481,14 +58347,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene55_B":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\G_you_could.wav");
 
 			LAi_QuestDelay("Hands_shot_scene56_A", 2.5);
 		break;
 
 		case "Hands_shot_scene56_A":
-			logit("SURGEON'S AIDE");
+			logit(TranslateString("","SURGEON'S AIDE"));
 			PlaySound("VOICE\ENGLISH\Dupin_help.wav");
 			LAi_ActorTurnToLocator(characterFromID("Bonnet"), "goto", "S4");
 
@@ -58496,7 +58362,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Hands_shot_scene56_B":
-			logit("STEDE BONNET");
+			logit(TranslateString("","STEDE BONNET"));
 			PlaySound("VOICE\ENGLISH\Herrick2.wav");
 
 			LAi_QuestDelay("Hands_shot_scene_over", 3.5);	//was 2.5
@@ -58517,15 +58383,15 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "4":
-						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 
 					case "5":
-						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);		
 					break;
 
 					case "0":
-						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 				}
 			}
@@ -58533,7 +58399,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			DeleteAttribute(Pchar, "items");
-
+			
 			if(CheckAttribute(characterFromID("Brthug1"), "items"))
 			{
 				makearef(ifrom, Characters[GetCharacterIndex("Brthug1")].items);
@@ -58542,13 +58408,13 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Characters[GetCharacterIndex("Brthug1")], "items");
 			}
-
+		
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
 			EquipCharacterByItem(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
 
 		float maxHP = LAi_GetCharacterMaxHP(Pchar);
 		LAi_SetHP(Pchar, maxHP, maxHP);
-
+	
 		//	LAi_SetHP(Pchar, Php_CUR, Php_CUR);
 			LAi_SetPlayerType(Pchar);
 
@@ -58570,7 +58436,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "back_to_Wstad1":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Teach_saved_you";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -58585,7 +58451,7 @@ void QuestComplete(string sQuestName)
 		case "back_to_Wstad3":
 			LAi_SetPlayerType(pchar);
 			AddQuestRecord("Israel_Hands","4");
-
+			
 			AddPassenger(Pchar, characterFromID("Hands"), 0);
 			SetOfficersIndex(Pchar, 1, getCharacterIndex("Hands"));
 			LAi_SetOfficerType(characterFromID("Hands"));
@@ -58610,10 +58476,10 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Maltese_soldier4"), "Charlestown_port", "quest", "quest3");
 
 			Pchar.unlocked_cells = "0";
-			Pchar.cell9 = "locked"; Pchar.cell7 = "locked"; Pchar.cell3 = "locked";
+			Pchar.cell9 = "locked"; Pchar.cell7 = "locked"; Pchar.cell3 = "locked"; 
 			Pchar.cell1 = "locked"; Pchar.cell17 = "locked"; Pchar.cell15 = "locked";
 			Pchar.cell5 = "locked"; Pchar.cell19 = "locked"; Pchar.cell2 = "locked";
-
+		
 			pchar.quest.start_Maltains_dialog.win_condition.l1 = "locator";
 			pchar.quest.start_Maltains_dialog.win_condition.l1.location = "bb_Maltains";
 			pchar.quest.start_Maltains_dialog.win_condition.l1.locator_group = "quest";
@@ -58641,7 +58507,7 @@ void QuestComplete(string sQuestName)
 
 		case "Malta_items1":
 			AddQuestRecord("Malta_items","1");
-			Pchar.malta_items = 0;
+			Pchar.malta_items = 0;	
 
 			LAi_QuestDelay("book63_check", 0.5);
 			LAi_QuestDelay("book64_check", 0.5);
@@ -58730,42 +58596,42 @@ void QuestComplete(string sQuestName)
 				switch (Pchar.malta_items)
 				{
 					case "1":
-						Logit("I have got 1 Malta Document.");
+						Logit(TranslateString("","I have got 1 Malta Document."));
 						ChangeCharacterAddressGroup(characterFromID("Maltese_soldier7"), "bb_maltains", "goto", "goto2");
 
 						LAi_QuestDelay("pchar_sigh", 1.0);
 					break;
 
 					case "2":
-						Logit("I have got 2 Malta Documents.");
+						Logit(TranslateString("","I have got 2 Malta Documents."));
 						ChangeCharacterAddressGroup(characterFromID("Maltese_red2"), "bb_maltains", "goto", "goto5");
 
 						LAi_QuestDelay("pchar_puh", 1.0);
 					break;
 
 					case "3":
-						Logit("I have got 3 Malta Documents.");
+						Logit(TranslateString("","I have got 3 Malta Documents."));
 						ChangeCharacterAddressGroup(characterFromID("Maltese_green"), "bb_maltains", "goto", "goto12");
 
 						LAi_QuestDelay("pchar_hah", 1.0);
 					break;
 
 					case "4":
-						Logit("I have got 4 Malta Documents.");
+						Logit(TranslateString("","I have got 4 Malta Documents."));
 						ChangeCharacterAddressGroup(characterFromID("Maltese_black"), "bb_maltains", "goto", "goto8");
 
 						LAi_QuestDelay("pchar_mhm", 1.0);
 					break;
 
 					case "5":
-						Logit("I have got 5 Malta Documents.");
+						Logit(TranslateString("","I have got 5 Malta Documents."));
 						ChangeCharacterAddressGroup(characterFromID("Maltese_knight"), "bb_maltains", "goto", "goto16");
 
 						LAi_QuestDelay("pchar_lets_go", 1.0);
 					break;
 
 					case "6":
-						Logit("I have got all 6 Malta Documents!");
+						Logit(TranslateString("","I have got all 6 Malta Documents!"));
 						AddQuestRecord("Malta_items","2");
 						CloseQuestHeader("Malta_items");
 
@@ -58773,24 +58639,24 @@ void QuestComplete(string sQuestName)
 					break;
 				}
 			}
-		break;
+		break;	
 
 		case "6_malta_books":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "6_malta_books";
 			LAi_ActorSelfDialog(pchar, "");
-		break;
+		break;	
 
 		//------------------------------------------------------------------------------
 
 		case "reset_cells":
 			PlaySound("INTERFACE\step_reset.wav");
 			Pchar.unlocked_cells = "0";
-			Pchar.cell9 = "locked"; Pchar.cell7 = "locked"; Pchar.cell3 = "locked";
+			Pchar.cell9 = "locked"; Pchar.cell7 = "locked"; Pchar.cell3 = "locked"; 
 			Pchar.cell1 = "locked"; Pchar.cell17 = "locked"; Pchar.cell15 = "locked";
-			Pchar.cell5 = "locked"; Pchar.cell19 = "locked"; Pchar.cell2 = "locked";
+			Pchar.cell5 = "locked"; Pchar.cell19 = "locked"; Pchar.cell2 = "locked"; 
 
-			Pchar.cell17_blocked = "no"; Pchar.cell15_blocked = "no";
+			Pchar.cell17_blocked = "no"; Pchar.cell15_blocked = "no"; 
 			Pchar.cell19_blocked = "no"; Pchar.cell2_blocked = "no";
 
 			LAi_QuestDelay("reset_cells1", 2.0);
@@ -58831,7 +58697,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\run_stone.wav");
 			ChangeCharacterAddressGroup(Pchar, "bb_Maltains", "box", "box10");
 		break;
-
+		
 		case "maltains_to_box14":
 			PlaySound("PEOPLE\run_stone.wav");
 			ChangeCharacterAddressGroup(Pchar, "bb_Maltains", "box", "box14");
@@ -58840,10 +58706,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "maltains_sudden_death":
-			GetCharacterPos(Pchar, &u, &v, &w);
+			GetCharacterPos(Pchar, &u, &v, &w);		
 			PlaySound("OBJECTS\DUEL\electricity.wav");
 			PlaySound("NATURE\thunder1.wav");
-			CreateParticleSystem("blast" , u, v+1.2, w, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("blast" , u, v+1.2, w, 0.0, 0.0, 0.0, sti(20) );	
 			CreateParticleSystem("canfire2" , u, v+2.0, w, 5.1, v+1.2, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , u, v+1.8, w, 0.0, 0.0, 0.0, sti(20) );
 			LAi_KillCharacter(Pchar);
@@ -58882,17 +58748,17 @@ void QuestComplete(string sQuestName)
 		case "maltains_to_box28":
 			PlaySound("OBJECTS\DUEL\man_attack1.wav");
 			LAi_SetSitType(Pchar);
-
+			
 			LAi_QuestDelay("maltains_to_box28_1", 0.5);
 		break;
-
+		
 		case "maltains_to_box28_1":
 			PlaySound("PEOPLE\jump_stone.wav");
 			ChangeCharacterAddressGroup(Pchar, "bb_Maltains", "box", "box28");
 
 			LAi_QuestDelay("maltains_to_box28_2", 0.25);
 		break;
-
+		
 		case "maltains_to_box28_2":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "box", "box29");
@@ -58957,13 +58823,13 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("pillow_check", 0.5);//loop check
 			}
 		break;
-
+	
 		case "Deliver_6_malta_books":
 			LAi_SetPlayerType(pchar);
 		break;
-
+		
 		//-------------------------------------------------------------------------------
-
+		
 		case "maltains_bars_up":
 			Locations[FindLocation("bb_maltains")].image = "";
 			DoQuestReloadToLocation("bb_maltains", "box", "box34", "maltains_bars_up1");
@@ -59008,10 +58874,10 @@ void QuestComplete(string sQuestName)
 			//from SL_utils
 			Locations[FindLocation("bb_Maltains")].locators_radius.box.box21 = 0.0001;
 			Locations[FindLocation("bb_Maltains")].locators_radius.reload.reload2 = 1.0;
-
+			
 			TakenItems(Pchar, "key34", -1);
 			Pchar.quest.malta_box21 = "off";
-
+			
 			DoQuestReloadToLocation("bb_maltains_office", "goto", "arrive", "unlock_Malta_secret1");
 		break;
 
@@ -59026,8 +58892,8 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "final_Maltains_dialog":
-			PlaySound("VOICE\ENGLISH\Dupin_help.wav");
-			LAi_SetActorType(pchar);
+			PlaySound("VOICE\ENGLISH\Dupin_help.wav"); 
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "goto", "stay2");
 
 			LAi_SetActorType(characterFromID("Maltese_red2"));
@@ -59043,19 +58909,19 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "final_Maltains_dialog1":
-			PlaySound("VOICE\ENGLISH\pir_capKK.wav");
-			LAi_SetActorType(pchar);
+			PlaySound("VOICE\ENGLISH\pir_capKK.wav"); 
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "goto", "stay1");
 
 			LAi_QuestDelay("final_Maltains_dialog2", 2.5);
 		break;
-
+	
 		case "final_Maltains_dialog2":
 			LAi_SetActorType(characterFromID("Maltese_governor"));
 			LAi_ActorDialog(characterFromID("Maltese_governor"), pchar, "", 1.5, 1.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Maltese_governor"));
 			Characters[GetCharacterIndex("Maltese_governor")].dialog.CurrentNode  = "prison_info";
-		break;
+		break;	
 
 		case "prison_info_done":
 			GiveItem2Character(Pchar, "doc61");
@@ -59064,30 +58930,30 @@ void QuestComplete(string sQuestName)
 		Locations[FindLocation("Charlestown_port")].reload.l17.close_for_day = 0;	//always closed from now
 		locations[FindLocation("Charlestown_port")].reload.l18.disable = 1;		//always closed from now
 		Characters[GetCharacterIndex("Anne_Russel")].dialog.CurrentNode  = "neutral";
-
+		
 			LAi_QuestDelay("prison_info_done0", 1.0);
 		break;
 
 		case "prison_info_done0":
 			Characters[GetCharacterIndex("Maltese_governor")].dialog.CurrentNode  = "neutral_governor";
 
-			PlaySound("VOICE\ENGLISH\pir_capLL.wav");
-			LAi_SetActorType(pchar);
+			PlaySound("VOICE\ENGLISH\pir_capLL.wav"); 
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "goto", "stay4");
 
 			LAi_QuestDelay("prison_info_done1", 2.0);
 		break;
 
 		case "prison_info_done1":
-			PlaySound("VOICE\ENGLISH\gr_Richards.wav");
-			LAi_SetActorType(pchar);
+			PlaySound("VOICE\ENGLISH\gr_Richards.wav"); 
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "goto", "stay3");
 
 			LAi_QuestDelay("prison_info_done2", 1.0);
 		break;
 
 		case "prison_info_done2":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "reload", "locator2");
 
 			LAi_QuestDelay("prison_info_done3", 1.0);
@@ -59101,7 +58967,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "prison_info_done4":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");	
 			ChangeCharacterAddressGroup(characterFromID("Maltese_soldier7"), "bb_maltains_office", "goto", "guard1");
 			LAi_SetPlayerType(pchar);
 
@@ -59112,7 +58978,7 @@ void QuestComplete(string sQuestName)
 
 			//this enables the prison tour
 			locations[FindLocation("Antigua_port")].models.always.locators = "StJohns_locators_JRH";
-
+			
 			pchar.quest.prison_info_done5.win_condition.l1 = "location";
 			pchar.quest.prison_info_done5.win_condition.l1.location = "Charlestown_store";
 			pchar.quest.prison_info_done5.win_condition = "prison_info_done5";
@@ -59126,7 +58992,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("Antigua_fakefort1")].reload.l4.go = "bb_prison_port";
 			Locations[FindLocation("Antigua_fakefort1")].reload.l4.emerge = "reload2";
 			locations[FindLocation("Antigua_port")].reload.l23.disable = 1;	//Antigua port to fort
-
+			
 			Pchar.quest.prison_pier = "phase0";
 			Pchar.quest.prison_elevator = "down";
 			Pchar.quest.prison_opening = "stairs";
@@ -59149,7 +59015,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.bb_prison_opening2.win_condition.l1.locator_group = "goto";
 			pchar.quest.bb_prison_opening2.win_condition.l1.locator = "opening2";
 			pchar.quest.bb_prison_opening2.win_condition = "bb_prison_opening2";
-
+	
 		break;
 
 		case "neutral_clerk_repeat":
@@ -59159,7 +59025,7 @@ void QuestComplete(string sQuestName)
 		case "neutral_governor_repeat":
 			Characters[GetCharacterIndex("Maltese_governor")].dialog.CurrentNode  = "neutral_governor";
 		break;
-
+		
 //malta end
 //_________________________________________________________________________________________________________________
 //prison start
@@ -59193,13 +59059,13 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "quest", "look_gate");
 
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands"))) 
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Hands"));
 				RemovePassenger(pchar, characterFromID("Hands"));
 				Pchar.Hands_officer = "yes";
 			}
-			if(IsOfficer(CharacterFromID("Caesar")))
+			if(IsOfficer(CharacterFromID("Caesar")))  
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Caesar"));
 				RemovePassenger(pchar, characterFromID("Caesar"));
@@ -59212,8 +59078,32 @@ void QuestComplete(string sQuestName)
 		case "arrive_prison_pier":
 			ChangeCharacterAddressGroup(characterFromID("ferryman"), "bb_prison_port", "goto", "ferryman2");
 
-			LAi_QuestDelay("turn_prison_port_guards", 0.1);
+		//	LAi_QuestDelay("prison_pier_checkpoints", 0.1);
+		//	LAi_QuestDelay("turn_prison_port_guards", 0.1);
 
+
+			pchar.quest.piA.win_condition.l1 = "locator";
+			pchar.quest.piA.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piA.win_condition.l1.locator_group = "quest";
+			pchar.quest.piA.win_condition.l1.locator = "piA";
+			pchar.quest.piA.win_condition = "piA";
+
+			pchar.quest.piB1.win_condition.l1 = "locator";
+			pchar.quest.piB1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piB1.win_condition.l1.locator_group = "quest";
+			pchar.quest.piB1.win_condition.l1.locator = "piB1";
+			pchar.quest.piB1.win_condition = "piB1";
+
+			pchar.quest.piB2.win_condition.l1 = "locator";
+			pchar.quest.piB2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piB2.win_condition.l1.locator_group = "quest";
+			pchar.quest.piB2.win_condition.l1.locator = "piB2";
+			pchar.quest.piB2.win_condition = "piB2";
+
+
+
+
+		/*
 			pchar.quest.arrive_prison_pier1.win_condition.l1 = "locator";
 			pchar.quest.arrive_prison_pier1.win_condition.l1.location = "bb_prison_port";
 			pchar.quest.arrive_prison_pier1.win_condition.l1.locator_group = "goto";
@@ -59225,12 +59115,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.arrive_prison_pier2.win_condition.l1.locator_group = "reload";
 			pchar.quest.arrive_prison_pier2.win_condition.l1.locator = "prison_door";
 			pchar.quest.arrive_prison_pier2.win_condition = "arrive_prison_pier2";
-
+		*/
 			pchar.quest.prison_alcove.win_condition.l1 = "location";
 			pchar.quest.prison_alcove.win_condition.l1.location = "bb_prison_alcove";
 			pchar.quest.prison_alcove.win_condition = "prison_alcove";
 		break;
-
+	/*
 		case "arrive_prison_pier1":
 			LAi_QuestDelay("arrive_prison_pier1_A", 2.0);
 		break;
@@ -59240,7 +59130,7 @@ void QuestComplete(string sQuestName)
 			{
 				LAi_SetActorType(Pchar);
 				LAi_ActorTurnToLocator(Pchar, "reload", "prison_door");
-
+					
 				LAi_QuestDelay("prison_pier_phase6", 1.0);
 
 				pchar.quest.pchar_playertype.win_condition.l1 = "location";
@@ -59265,7 +59155,7 @@ void QuestComplete(string sQuestName)
 
 			pchar.quest.pchar_playertype.win_condition.l1 = "location";
 			pchar.quest.pchar_playertype.win_condition.l1.location = "bb_prison_elevator";
-			pchar.quest.pchar_playertype.win_condition = "pchar_playertype";
+			pchar.quest.pchar_playertype.win_condition = "pchar_playertype";	
 		break;
 
 		case "prison_pier_phase6":
@@ -59275,7 +59165,7 @@ void QuestComplete(string sQuestName)
 		case "prison_pier_phase5":
 			Pchar.quest.prison_pier = "phase5";
 		break;
-
+	
 		case "prison_pier_phase3":
 			Pchar.quest.prison_pier = "phase4";
 			PlaySound("VOICE\ENGLISH\blaze_sigh.wav");
@@ -59284,21 +59174,22 @@ void QuestComplete(string sQuestName)
 		case "prison_pier_phase2":
 			Pchar.quest.prison_pier = "phase2";
 		break;
-
+	*/
 		case "return_prison_pier":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(characterFromID("ferryman"), "bb_prison_port", "goto", "ferryman1");
-			LAi_SetStayType(characterFromID("ferryman"));
+			LAi_SetStayType(characterFromID("ferryman")); 
 		break;
-
+	/*
 		case "turn_prison_port_guards":
-			LAi_SetActorType(characterFromID("ferryman"));
-			LAi_SetActorType(characterFromID("P2_guard_gate1"));
+			LAi_SetActorType(characterFromID("ferryman")); 
+			LAi_SetActorType(characterFromID("P2_guard_gate1")); 
 			LAi_SetActorType(characterFromID("P2_guard_gate2"));
 			LAi_ActorTurnToLocator(characterFromID("ferryman"), "goto", "turn1");
 			LAi_ActorTurnToLocator(characterFromID("P2_guard_gate1"), "goto", "prison_entre");
 			LAi_ActorTurnToLocator(characterFromID("P2_guard_gate2"), "goto", "prison_entre");
 		break;
+	*/
 //---------------------------------------------------------------------------------------------------
 		case "bb_prison_elevator_up":
 			Pchar.quest.prison_elevator = "up";
@@ -59321,20 +59212,242 @@ void QuestComplete(string sQuestName)
 		break;
 
 //---------------------------------------------------------------------------------------------------
-		case "prison_bridge_extra_turn":
-			LAi_SetActorType(Pchar);
-			LAi_ActorTurnToLocator(Pchar, "randitem", "randitem5");
+//prison bridge checkpoints
+
+		case "prison_pier_checkpoints":
+			pchar.quest.piA.win_condition.l1 = "locator";
+			pchar.quest.piA.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piA.win_condition.l1.locator_group = "quest";
+			pchar.quest.piA.win_condition.l1.locator = "piA";
+			pchar.quest.piA.win_condition = "piA";
+
+			pchar.quest.piB1.win_condition.l1 = "locator";
+			pchar.quest.piB1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piB1.win_condition.l1.locator_group = "quest";
+			pchar.quest.piB1.win_condition.l1.locator = "piB1";
+			pchar.quest.piB1.win_condition = "piB1";
+
+			pchar.quest.piB2.win_condition.l1 = "locator";
+			pchar.quest.piB2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piB2.win_condition.l1.locator_group = "quest";
+			pchar.quest.piB2.win_condition.l1.locator = "piB2";
+			pchar.quest.piB2.win_condition = "piB2";
+
+			pchar.quest.piC1.win_condition.l1 = "locator";
+			pchar.quest.piC1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piC1.win_condition.l1.locator_group = "quest";
+			pchar.quest.piC1.win_condition.l1.locator = "piC1";
+			pchar.quest.piC1.win_condition = "piC1";
+
+			pchar.quest.piC2.win_condition.l1 = "locator";
+			pchar.quest.piC2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.piC2.win_condition.l1.locator_group = "quest";
+			pchar.quest.piC2.win_condition.l1.locator = "piC2";
+			pchar.quest.piC2.win_condition = "piC2";
 		break;
 
-		case "prison_bridge_start_turn":
-			Pchar.quest.prison_bridge = "start";
-			PlaySound("OBJECTS\VOICES\DEAD\male\dead1.wav");
+		case "prison_bridge_checkpoints":
+			pchar.quest.brA1.win_condition.l1 = "locator";
+			pchar.quest.brA1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brA1.win_condition.l1.locator_group = "quest";
+			pchar.quest.brA1.win_condition.l1.locator = "brA1";
+			pchar.quest.brA1.win_condition = "brA1";
+
+			pchar.quest.brA2.win_condition.l1 = "locator";
+			pchar.quest.brA2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brA2.win_condition.l1.locator_group = "quest";
+			pchar.quest.brA2.win_condition.l1.locator = "brA2";
+			pchar.quest.brA2.win_condition = "brA2";
+
+			pchar.quest.brB1.win_condition.l1 = "locator";
+			pchar.quest.brB1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brB1.win_condition.l1.locator_group = "quest";
+			pchar.quest.brB1.win_condition.l1.locator = "brB1";
+			pchar.quest.brB1.win_condition = "brB1";
+
+			pchar.quest.brB2.win_condition.l1 = "locator";
+			pchar.quest.brB2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brB2.win_condition.l1.locator_group = "quest";
+			pchar.quest.brB2.win_condition.l1.locator = "brB2";
+			pchar.quest.brB2.win_condition = "brB2";
+		
+			pchar.quest.brC1.win_condition.l1 = "locator";
+			pchar.quest.brC1.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brC1.win_condition.l1.locator_group = "quest";
+			pchar.quest.brC1.win_condition.l1.locator = "brC1";
+			pchar.quest.brC1.win_condition = "brC1";
+
+			pchar.quest.brC2.win_condition.l1 = "locator";
+			pchar.quest.brC2.win_condition.l1.location = "bb_prison_port";
+			pchar.quest.brC2.win_condition.l1.locator_group = "quest";
+			pchar.quest.brC2.win_condition.l1.locator = "brC2";
+			pchar.quest.brC2.win_condition = "brC2";
+		break;
+	//..................................................................................................
+		case "piA":
+			if(CheckAttribute(Pchar, "pier_status") && Pchar.pier_status == "stone")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piA_out");
+				Pchar.pier_status = "wood";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piA_in");
+				Pchar.pier_status = "stone";
+			}
+
+			LAi_QuestDelay("prison_pier_checkpoints", 0.01);
+		break;
+	//-----------------------------------------------------------------------------------------------------
+		case "piB1":
+			if(CheckAttribute(Pchar, "pier_status") && Pchar.pier_status == "stone")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piB1_out");
+				Pchar.pier_status = "wood";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piB1_in");
+				Pchar.pier_status = "stone";
+			}
+
+			LAi_QuestDelay("prison_pier_checkpoints", 0.01);
 		break;
 
-		case "prison_bridge_end_turn":
-			Pchar.quest.prison_bridge = "end";
+		case "piB2":
+			if(CheckAttribute(Pchar, "pier_status") && Pchar.pier_status == "stone")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piB2_out");
+				Pchar.pier_status = "wood";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piB2_in");
+				Pchar.pier_status = "stone";
+			}
+
+			LAi_QuestDelay("prison_pier_checkpoints", 0.01);
 		break;
-//---------------------------------------------------------------------------------------------------
+
+		case "piC1":
+			if(CheckAttribute(Pchar, "pier_status") && Pchar.pier_status == "stone")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piC1_out");
+				Pchar.pier_status = "wood";
+			}
+			else
+			{
+				//do nothing
+			}
+
+			LAi_QuestDelay("prison_pier_checkpoints", 0.01);
+		break;
+
+		case "piC2":
+			if(CheckAttribute(Pchar, "pier_status") && Pchar.pier_status == "stone")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "piC2_out");
+				Pchar.pier_status = "wood";
+			}
+			else
+			{
+				//do nothing
+			}
+
+			LAi_QuestDelay("prison_pier_checkpoints", 0.01);
+		break;
+	//..................................................................................................
+		case "brA1":
+			if(CheckAttribute(Pchar, "brA_status") && Pchar.brA_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brA1_elv");
+				Pchar.brA_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brA1_alc");
+				Pchar.brA_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+
+		case "brA2":
+			if(CheckAttribute(Pchar, "brA_status") && Pchar.brA_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brA2_elv");
+				Pchar.brA_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brA2_alc");
+				Pchar.brA_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+	//-----------------------------------------------------------------------------------------------------
+		case "brB1":
+			if(CheckAttribute(Pchar, "brB_status") && Pchar.brB_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brB1_elv");
+				Pchar.brB_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brB1_alc");
+				Pchar.brB_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+
+		case "brB2":
+			if(CheckAttribute(Pchar, "brB_status") && Pchar.brB_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brB2_elv");
+				Pchar.brB_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brB2_alc");
+				Pchar.brB_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+	//-----------------------------------------------------------------------------------------------------
+		case "brC1":
+			if(CheckAttribute(Pchar, "brC_status") && Pchar.brC_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brC1_elv");
+				Pchar.brC_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brC1_alc");
+				Pchar.brC_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+
+		case "brC2":
+			if(CheckAttribute(Pchar, "brC_status") && Pchar.brC_status == "alc")
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brC2_elv");
+				Pchar.brC_status = "elv";
+			}
+			else
+			{
+				ChangeCharacterAddressGroup(Pchar, "bb_prison_port", "goto", "brC2_alc");
+				Pchar.brC_status = "alc";
+			}
+
+			LAi_QuestDelay("prison_bridge_checkpoints", 0.01);
+		break;
+
+//---------------------------------------------------------------------------------------------------	
 		case "swing_alcove_rope":
 			PlaySound("PEOPLE\step_echo.wav");
 			LAi_SetPlayerType(Pchar);
@@ -59419,7 +59532,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alcove_box5.win_condition.l1.locator = "box5";
 			pchar.quest.alcove_box5.win_condition = "alcove_box5";
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "alcove_stop1":
 			LAi_SetStayType(Pchar);
 			Logit(LanguageConvertString(tmpLangFileID,"West crescent"));
@@ -59533,7 +59646,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alcove_stop6.win_condition.l1.locator = "stop6";
 			pchar.quest.alcove_stop6.win_condition = "alcove_stop6";
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 //JRH alcove
 		case "place_alcove_rope":
 			Locations[FindLocation("bb_prison_alcove")].image = "";
@@ -59595,7 +59708,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("BB_prison_alcove")].locators_radius.box.box8 = 0.001;
 			Locations[FindLocation("BB_prison_alcove")].locators_radius.reload.reload2 = 1.0;
-
+	
 			DoQuestReloadToLocation("bb_prison_stairs1", "reload", "reload1", "arrive_bb_prison_stairs1");
 		break;
 
@@ -59613,6 +59726,9 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_prison_port")].image = "wr_prison_port.tga";
 
 			LAi_QuestDelay("pchar_ohoh", 2.0);
+
+			Locations[FindLocation("bb_prison_port")].models.day.charactersPatch = "MuPort_pd";		//reset to normal
+			Locations[FindLocation("bb_prison_port")].models.night.charactersPatch = "MuPort_pn";
 
 			pchar.quest.bb_prison_alarm.win_condition.l1 = "locator";
 			pchar.quest.bb_prison_alarm.win_condition.l1.location = "bb_prison";
@@ -59632,7 +59748,7 @@ void QuestComplete(string sQuestName)
 		case "prisoner9_stay": LAi_SetStayType(characterFromID("bb_prisoner9")); break;
 		case "prisoner10_stay": LAi_SetStayType(characterFromID("bb_prisoner10")); break;
 	//------------------------------------------------------------------------------------------------------------
-//p?r Dover equip weapons
+//pär Dover equip weapons
 		case "bb_prison_alarm":
 			DoQuickSave();
 			PlaySound("INTERFACE\closed_door.wav");
@@ -59646,10 +59762,10 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("wr_voy"), "bladeA4");
 			GiveItem2Character(characterFromID("wr_voy"), "doctortoolkit");
 			TakenItems(characterFromID("wr_voy"), "cognac", 2);
-
+			
 			LAi_QuestDelay("bb_prison_alarm0", 0.5);
 		break;
-
+		
 		case "bb_prison_alarm0":
 			PlaySound("VOICE\ENGLISH\alarm1.wav");
 			LAi_SetStayType(Pchar);
@@ -59709,7 +59825,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToLocator(Pchar, "box", "box15");
 			LAi_SetActorType(CharacterFromID("wr_voy"));
 			LAi_ActorAttack(CharacterFromID("wr_voy"), Pchar, "");
-//Dover dead
+//Dover dead	
 		//ev Dovers crewmembers dead check too
 			Pchar.quest.Dover_dead.win_condition.l1 = "NPC_Death";
 			Pchar.quest.Dover_dead.win_condition.l1.character = "wr_voy";
@@ -59814,7 +59930,7 @@ void QuestComplete(string sQuestName)
 			if(CheckCharacterItem(Pchar,"pistol204")) {EquipCharacterByItem(Pchar, "pistol204");}
 			if(CheckCharacterItem(Pchar,"pistol205")) {EquipCharacterByItem(Pchar, "pistol205");}
 			if(CheckCharacterItem(Pchar,"pistol206")) {EquipCharacterByItem(Pchar, "pistol206");}
-
+			
 			pchar.quest.bb_prison_stop.win_condition.l1 = "locator";
 			pchar.quest.bb_prison_stop.win_condition.l1.location = "bb_prison";
 			pchar.quest.bb_prison_stop.win_condition.l1.locator_group = "quest";
@@ -59881,14 +59997,14 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("prison2_tools3_check", 0.5);
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "prison2_tools3_check":
 			if(CheckCharacterItem(Pchar,"bladesaw") || CheckCharacterItem(Pchar,"bladeaxe4") || CheckCharacterItem(Pchar,"bladehammer"))
 			{
-				if( LAi_IsDead(characterFromID("P2_guard1")) && LAi_IsDead(characterFromID("P2_guard2"))
-				&& LAi_IsDead(characterFromID("P2_guard3")) && LAi_IsDead(characterFromID("P2_guard4")) )
+				if( LAi_IsDead(characterFromID("P2_guard1")) && LAi_IsDead(characterFromID("P2_guard2"))   
+				&& LAi_IsDead(characterFromID("P2_guard3")) && LAi_IsDead(characterFromID("P2_guard4")) ) 
 				{
-
+					
 				}
 				else LAi_QuestDelay("P2_guards_attack_tools", 0.1);
 			}
@@ -59906,7 +60022,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorAttack(CharacterFromID("P2_guard3"), Pchar, "");
 			LAi_ActorAttack(CharacterFromID("P2_guard4"), Pchar, "");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "bb_prison2_tools_done":
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(characterFromID("P2_guard2"), "bb_prison2", "quest", "guard2");
@@ -59914,9 +60030,9 @@ void QuestComplete(string sQuestName)
 			Characters[GetCharacterIndex("P2_guard2")].dialog.CurrentNode  = "First time";
 		break;
 //---------------------------------------------------------------------------------------------------
-//unlock to cell1 (4 maroons)
+//unlock to cell1 (4 maroons)	
 		case "cell1_step_back":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");	
 			ChangeCharacterAddressGroup(Pchar, "bb_prison2", "goto", "step_back1");
 			LAi_SetStayType(Pchar);
 
@@ -59991,7 +60107,7 @@ void QuestComplete(string sQuestName)
 
 		case "maroons_weapons":
 			LAi_SetActorType(pchar);
-			LAi_ActorTurnToLocator(Pchar, "goto", "mar5");
+			LAi_ActorTurnToLocator(Pchar, "goto", "mar5");	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "maroons_weapons";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -60013,7 +60129,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("bb_maroon4"), "bladeclub");
 			EquipCharacterByItem(characterFromID("bb_maroon4"), "bladeclub");
 			TakenItems(Pchar, "bladeclub", -4);
-
+			
 			characters[GetCharacterIndex("bb_maroon1")].dialog.CurrentNode = "maroons_free";
 			characters[GetCharacterIndex("bb_maroon2")].dialog.CurrentNode = "maroons_free";
 			characters[GetCharacterIndex("bb_maroon3")].dialog.CurrentNode = "maroons_free";
@@ -60044,7 +60160,7 @@ void QuestComplete(string sQuestName)
 		break;
 	//.............................................................................................................
 		case "cell2_step_back":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");	
 			ChangeCharacterAddressGroup(Pchar, "bb_prison2", "goto", "step_back2");
 			LAi_SetStayType(Pchar);
 
@@ -60148,7 +60264,7 @@ void QuestComplete(string sQuestName)
 		case "mar4_d2":
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon4"), "bb_prison2", "quest", "door2");
 
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "plan_ambush";
 			LAi_ActorSelfDialog(Pchar, "");
 		break;
@@ -60170,7 +60286,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("bb_maroon2"), "quest", "amb2", "mar2_amb", 4.0);
 			LAi_SetActorType(characterFromID("bb_maroon1"));
 			LAi_ActorRunToLocator(characterFromID("bb_maroon1"), "quest", "amb1", "mar1_amb", 4.0);
-
+			
 			pchar.quest.P2_ambush_trick.win_condition.l1 = "locator";
 			pchar.quest.P2_ambush_trick.win_condition.l1.location = "bb_prison2";
 			pchar.quest.P2_ambush_trick.win_condition.l1.locator_group = "quest";
@@ -60218,7 +60334,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("AMBIENT\UnHappy-001.wav");
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(Pchar, "quest", "trick2", "P2_guards_up", 4.0);
-
+			
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "goto", "opening", 0.0001);
 			Locations[FindLocation("bb_prison2")].locators_radius.goto.opening = 0.0001;
 			LAi_LocationFightDisable(&Locations[FindLocation(Pchar.location)], false);
@@ -60246,12 +60362,12 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("Pell"), LAI_GROUP_PLAYER);
 			LAi_group_MoveCharacter(characterFromID("bb_maroon1"), LAI_GROUP_PLAYER);
 			LAi_group_MoveCharacter(characterFromID("bb_maroon2"), LAI_GROUP_PLAYER);
-
+			
 			LAi_group_MoveCharacter(characterFromID("P2_guard1"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("P2_guard2"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("P2_guard3"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("P2_guard4"), "ROOF_THUGS_1");
-
+			
 			LAi_group_Register("ROOF_THUGS_1");
 			LAi_group_SetRelation(LAI_GROUP_PLAYER, "ROOF_THUGS_1", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_1", true);
@@ -60326,7 +60442,7 @@ void QuestComplete(string sQuestName)
 
 		case "P2_corpse_trick":
 			//move corpses to maroon cell etc
-
+					
 			Pchar.P2_ambush = "sewer";
 			ChangeCharacterAddressGroup(characterFromID("P2_guard1"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("P2_guard2"), "none", "", "");
@@ -60337,7 +60453,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("P2_guard2_dead"), "bb_prison2", "goto", "mar3");
 			ChangeCharacterAddressGroup(characterFromID("P2_guard3_dead"), "bb_prison2", "goto", "mar4");
 			ChangeCharacterAddressGroup(characterFromID("P2_guard4_dead"), "bb_prison2", "goto", "mar5");
-
+					
 			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "step_back1");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon1"), "bb_prison2", "goto", "goto1");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon2"), "bb_prison2", "goto", "freeL");
@@ -60419,7 +60535,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("OBJECTS\DUEL\man_attack5.wav");
 			if(LAi_IsFightMode(Pchar)) LAi_SetFightMode(Pchar, false);
 			LAi_LocationFightDisable(&Locations[FindLocation(Pchar.location)], true);
-
+			
 			LAi_QuestDelay("saw_blunt1", 1.0);
 		break;
 
@@ -60429,14 +60545,14 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(Pchar, "bladeX4");
 			PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 		break;
-
+		
 		case "Took_returns":
 			PlaySound("VOICE\ENGLISH\gr_WR_host9.wav");
 
 			ChangeCharacterAddressGroup(characterFromID("Tookerman"), "bb_prison2", "quest", "Took_last");
-			LAi_SetActorType(characterFromID("Tookerman"));
-			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "sewer_pell");
-
+			LAi_SetActorType(characterFromID("Tookerman"));	
+			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "sewer_pell");		
+			
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon1"), "bb_prison2", "quest", "m1_back");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon2"), "bb_prison2", "quest", "m2_back");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon3"), "bb_prison2", "quest", "m3_back");
@@ -60451,7 +60567,7 @@ void QuestComplete(string sQuestName)
 			LAi_LocationFightDisable(&Locations[FindLocation(Pchar.location)], true);
 
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			TakeItemFromCharacter(Pchar, "bladehammer");
+			TakeItemFromCharacter(Pchar, "bladehammer");		
 			if(CheckCharacterItem(Pchar,"bladeA4"))
 			{
 				EquipCharacterByItem(Pchar, "bladeA4");
@@ -60472,21 +60588,21 @@ void QuestComplete(string sQuestName)
 
 		case "Took_returns2":
 			LAi_SetOfficerType(characterFromID("Pell"));
-
+			
 			LAi_SetActorType(characterFromID("bb_maroon1"));
 			LAi_SetActorType(characterFromID("bb_maroon2"));
-			LAi_SetActorType(characterFromID("Tookerman"));
+			LAi_SetActorType(characterFromID("Tookerman"));	
 			LAi_ActorRunToLocatorJRH(characterFromID("bb_maroon1"), "goto", "box3_pell", 5.0);
 			LAi_ActorRunToLocatorJRH(characterFromID("bb_maroon2"), "goto", "step_back2", 5.0);
 			LAi_ActorRunToLocatorJRH(characterFromID("Tookerman"), "box", "box3", 5.0);
-
+			
 			LAi_QuestDelay("Pchar_playertype", 4.0);
 
 			pchar.quest.Took_in_cell.win_condition.l1 = "locator";
 			pchar.quest.Took_in_cell.win_condition.l1.location = "bb_prison2";
 			pchar.quest.Took_in_cell.win_condition.l1.locator_group = "goto";
 			pchar.quest.Took_in_cell.win_condition.l1.locator = "prison";
-			pchar.quest.Took_in_cell.win_condition = "Took_in_cell";
+			pchar.quest.Took_in_cell.win_condition = "Took_in_cell";	
 		break;
 
 		case "Took_in_cell":
@@ -60573,18 +60689,18 @@ void QuestComplete(string sQuestName)
 		case "prison2_last_fight1":
 			if(IsOfficer(CharacterFromID("Pell"))) { RemovePassenger(Pchar, characterFromID("Pell")); }
 
-			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "prison");
+			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "prison");		
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon1"), "bb_prison2", "quest", "m1_back");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon2"), "bb_prison2", "quest", "m2_back");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon3"), "bb_prison2", "quest", "m3_back");
 			ChangeCharacterAddressGroup(characterFromID("bb_maroon4"), "bb_prison2", "quest", "m4_back");
-
+			
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_SetActorType(characterFromID("bb_maroon1"));
 			LAi_SetActorType(characterFromID("bb_maroon2"));
 			LAi_SetActorType(characterFromID("bb_maroon3"));
 			LAi_SetActorType(characterFromID("bb_maroon4"));
-
+		
 			pchar.quest.prison2_last_fight2.win_condition.l1 = "location";
 			pchar.quest.prison2_last_fight2.win_condition.l1.location = "bb_prison2";
 			pchar.quest.prison2_last_fight2.win_condition = "prison2_last_fight2";
@@ -60615,7 +60731,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("abordage_sound", 1.0);
 			LAi_QuestDelay("prison2_last_fight3", 7.0);
-
+	
 			Pchar.quest.P2_guards2_dead.win_condition.l1 = "NPC_Death";
 			Pchar.quest.P2_guards2_dead.win_condition.l1.character = "bb_prison_officer";
 			Pchar.quest.P2_guards2_dead.win_condition.l2 = "NPC_Death";
@@ -60641,7 +60757,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("OBJECTS\ABORDAGE\abordage1.wav");
 		break;
 
-		case "prison2_last_fight3":
+		case "prison2_last_fight3":	
 			LAi_SetImmortal(CharacterFromID("bb_maroon1"), false);
 			LAi_SetImmortal(CharacterFromID("bb_maroon2"), false);
 			LAi_SetImmortal(CharacterFromID("bb_maroon3"), false);
@@ -60658,7 +60774,7 @@ void QuestComplete(string sQuestName)
 				AddPassenger(Pchar, characterFromID("Hands"), 0);
 				SetOfficersIndex(Pchar, 1, getCharacterIndex("Hands"));
 				LAi_SetOfficerType(characterFromID("Hands"));
-			}
+			}	
 			if(CheckAttribute(Pchar, "Caesar_officer") && Pchar.Caesar_officer == "yes")
 			{
 				AddPassenger(Pchar, characterFromID("Caesar"), 0);
@@ -60666,25 +60782,25 @@ void QuestComplete(string sQuestName)
 				LAi_SetOfficerType(characterFromID("Caesar"));
 			}
 
-			if(LAi_IsDead(characterFromID("bb_maroon1")))
+			if(LAi_IsDead(characterFromID("bb_maroon1"))) 
 			{
 				DeleteAttribute(characterFromID("bb_maroon1"), "items");
 			}
 			else LAi_SetOfficerType(characterFromID("bb_maroon1"));
 
-			if(LAi_IsDead(characterFromID("bb_maroon2")))
+			if(LAi_IsDead(characterFromID("bb_maroon2"))) 
 			{
 				DeleteAttribute(characterFromID("bb_maroon2"), "items");
 			}
 			else LAi_SetOfficerType(characterFromID("bb_maroon2"));
 
-			if(LAi_IsDead(characterFromID("bb_maroon3")))
+			if(LAi_IsDead(characterFromID("bb_maroon3"))) 
 			{
 				DeleteAttribute(characterFromID("bb_maroon3"), "items");
 			}
 			else LAi_SetOfficerType(characterFromID("bb_maroon3"));
 
-			if(LAi_IsDead(characterFromID("bb_maroon4")))
+			if(LAi_IsDead(characterFromID("bb_maroon4"))) 
 			{
 				DeleteAttribute(characterFromID("bb_maroon4"), "items");
 			}
@@ -60702,9 +60818,9 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(characterFromID("P2_guard_alcove2"), "items");
 			DeleteAttribute(characterFromID("P2_guard_alcove3"), "items");
 
-		Characters[GetCharacterIndex("KR_cit13")].Ship.Type = "obj_Boat2";
-		Characters[GetCharacterIndex("KR_cit14")].Ship.Type = "Gunboat";
-		Characters[GetCharacterIndex("KR_cit15")].Ship.Type = "Gunboat";
+		Characters[GetCharacterIndex("KR_cit13")].Ship.Type = "obj_Boat2"; 
+		Characters[GetCharacterIndex("KR_cit14")].Ship.Type = "Gunboat"; 
+		Characters[GetCharacterIndex("KR_cit15")].Ship.Type = "Gunboat"; 
 		setCharacterShipLocation(characterFromID("KR_cit13"), "BB_prison_port");
 		setCharacterShipLocation(characterFromID("KR_cit14"), "BB_prison_port");
 		setCharacterShipLocation(characterFromID("KR_cit15"), "BB_prison_port");
@@ -60791,7 +60907,7 @@ void QuestComplete(string sQuestName)
 
 						Characters[GetCharacterIndex("Defoe")].dialog.CurrentNode  = "neutral";//if spoken to before the auto dialog starts
 					//	locations[FindLocation("Turks_old_fort")].type = "silent_seashore";
-
+				
 						pchar.quest.defoe_whistle.win_condition.l1 = "locator";
 						pchar.quest.defoe_whistle.win_condition.l1.location = "Antigua_port";
 						pchar.quest.defoe_whistle.win_condition.l1.locator_group = "quest";
@@ -60834,8 +60950,8 @@ void QuestComplete(string sQuestName)
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "is_it_defoe";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
-
+			
+		
 
 
 
@@ -60907,7 +61023,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(Pchar, "bb_prison2", "goto", "river");
 				Pchar.quest.prison_opening2 = "river";
 
-				if(IsOfficerType(characterFromID("Pell")))
+				if(IsOfficerType(characterFromID("Pell"))) 
 				{ ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "river_pell"); }
 				if(CheckAttribute(Pchar, "P2_maroons") && Pchar.P2_maroons == "free")
 				{
@@ -60921,7 +61037,7 @@ void QuestComplete(string sQuestName)
 						LAi_SetStayType(characterFromID("bb_maroon2"));
 						ChangeCharacterAddressGroup(characterFromID("bb_maroon2"), "bb_prison2", "quest", "m2");
 					}
-
+					
 					if(CheckAttribute(Pchar, "P2_ambush") && Pchar.P2_ambush != "on")
 					{
 						if(!LAi_IsDead(characterFromID("bb_maroon3")))
@@ -60947,7 +61063,7 @@ void QuestComplete(string sQuestName)
 
 				ChangeCharacterAddressGroup(Pchar, "bb_prison2", "goto", "prison");
 				Pchar.quest.prison_opening2 = "prison";
-				if(IsOfficerType(characterFromID("Pell")))
+				if(IsOfficerType(characterFromID("Pell"))) 
 				{ ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "goto", "prison_pell"); }
 				if(CheckAttribute(Pchar, "P2_maroons") && Pchar.P2_maroons == "free")
 				{
@@ -60978,7 +61094,7 @@ void QuestComplete(string sQuestName)
 							LAi_SetOfficerType(characterFromID("bb_maroon4"));
 						}
 					}
-				}
+				}				
 			}
 
 			LAi_QuestDelay("bb_prison_opening2_start", 0.1);
@@ -61001,7 +61117,7 @@ void QuestComplete(string sQuestName)
 				//		LogIt("water = " + Pchar.prison2.water);
 						PlaySound("NATURE\water_in.wav");
 						Locations[FindLocation("bb_prison2")].models.always.l1 = "a5";
-						Locations[FindLocation("bb_prison2")].models.always.river.uvslide.v0 = -0.1;
+						Locations[FindLocation("bb_prison2")].models.always.river.uvslide.v0 = -0.1;		
 					break;
 
 					case "fast":
@@ -61019,7 +61135,7 @@ void QuestComplete(string sQuestName)
 
 		case "prison2_rope11":
 			//slow/empty
-
+		
 			if(CheckAttribute(Pchar, "prison2.water"))
 			{
 				switch(Pchar.prison2.water)
@@ -61064,7 +61180,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\run_wood.wav");
 			ChangeCharacterAddressGroup(Pchar, "bb_prison_officer", "goto", "back");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "IronMaiden":
 			Locations[FindLocation("bb_prison2")].image = "";
 			DoQuestReloadToLocation("bb_prison2", "box", "box10", "IronMaiden1");
@@ -61074,7 +61190,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\metal_hatch_open.wav");
 			LAi_KillCharacter(Pchar);
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 
 		case "Pell_story":
 			ChangeCharacterAddressGroup(characterFromID("Pell"), "bb_prison2", "box", "box4");
@@ -61097,7 +61213,7 @@ void QuestComplete(string sQuestName)
 		case "Pell_story_interrupted_done":
 			PlaySound("INTERFACE\glass1.wav");
 			TakeNItems(Pchar,"cognac", -1);
-
+			
 			LAi_QuestDelay("Pell_story_interrupted_done0", 0.5);
 			LAi_QuestDelay("Pell_story_interrupted_done1", 1.0);
 		break;
@@ -61142,7 +61258,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(Pchar);
 			LAi_SetStayType(characterFromID("Tookerman"));
 			ChangeCharacterAddressGroup(characterFromID("Tookerman"), "bb_prison_officer", "goto", "stay1");
-
+					
 			LAi_QuestDelay("Took_sit_office", 4.5);
 
 			pchar.quest.Took_soberX.win_condition.l1 = "location";
@@ -61179,10 +61295,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pell_exit":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pell_exit";
 			LAi_ActorSelfDialog(pchar, "");
-		break;
+		break;	
 
 		case "Pell_exit_done":
 			AddQuestRecord("Israel_Hands", "7");
@@ -61213,7 +61329,7 @@ void QuestComplete(string sQuestName)
 			if(CheckAttribute(Pchar, "Pell_story") && Pchar.Pell_story == "done")
 			{
 				if(CheckAttribute(Pchar, "P2_sewer") && Pchar.P2_sewer == "checked")
-				{
+				{	
 					ChangeCharacterAddressGroup(characterFromID("Tookerman"), "bb_prison_officer", "goto", "back");
 					LAi_SetActorType(characterFromID("Tookerman"));
 					LAi_ActorSetLayMode(characterFromID("Tookerman"));
@@ -61229,7 +61345,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Took_snoring":
-			if(CheckAttribute(Pchar,"Took_Pyle_outfit") && Pchar.Took_Pyle_outfit == "placed")
+			if(CheckAttribute(Pchar,"Took_Pyle_outfit") && Pchar.Took_Pyle_outfit == "placed") 
 			{
 				//do nothing
 			}
@@ -61237,25 +61353,25 @@ void QuestComplete(string sQuestName)
 			{
 				//place pchar outfit upgrades here (once)
 				Pchar.Took_Pyle_outfit = "placed";
-
+				
 				if(CheckAttribute(Pchar,"model"))
 				{
 					switch(Pchar.model)
 					{
 						case "Howard_Pyle_3":
-							locations[FindLocation(Pchar.location)].box6.items.socks_sewing = 1;
+							locations[FindLocation(Pchar.location)].box6.items.socks_sewing = 1;	
 						break;
 
 						case "Howard_Pyle_4":
-							locations[FindLocation(Pchar.location)].box6.items.waistcoat = 1;
+							locations[FindLocation(Pchar.location)].box6.items.waistcoat = 1;	
 						break;
 
 						case "Howard_Pyle_5":
-							locations[FindLocation(Pchar.location)].box6.items.sash = 1;
+							locations[FindLocation(Pchar.location)].box6.items.sash = 1;	
 						break;
 					/*
 						case "Howard_Pyle":
-							//this is the 4:th mission and the only upgrade will be the visible belt & bag
+							//this is the 4:th mission and the only upgrade will be the visible belt & bag	
 						break;
 					*/
 					}
@@ -61280,7 +61396,7 @@ void QuestComplete(string sQuestName)
 			}
 		break;
 
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 //JRH Vane about Richards
 
 		case "Vane_Richards_from game":
@@ -61320,23 +61436,23 @@ void QuestComplete(string sQuestName)
 			SetCharacterShipLocation(characterFromID("pir_cap6"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap7"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap8"), "wr_cave_shore");
-
+			
 			SetCharacterShipLocation(characterFromID("pir_cap9"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap10"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap11"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap12"), "wr_cave_shore");
-
+		
 			SetCharacterShipLocation(characterFromID("pir_cap13"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap14"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap15"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap16"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap17"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap18"), "wr_cave_shore");
-
+		
 			SetCharacterShipLocation(characterFromID("pir_cap19"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap20"), "wr_cave_shore");
 			SetCharacterShipLocation(characterFromID("pir_cap21"), "wr_cave_shore");
-
+			
 			ChangeCharacterAddressGroup(characterFromID("pir_cap2"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap3"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap4"), "none", "", "");
@@ -61372,25 +61488,26 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("wr_Cavern")].reload.l1.disable = 0;
 			locations[FindLocation("wr_Cavern")].reload.l2.disable = 0;
 			Locations[FindLocation("wr_Cavern")].locators_radius.box.box1 = 0.001;
-			Locations[FindLocation("wr_Cavern")].locators_radius.reload.reload3 = 0.00001;
-			Locations[FindLocation("wr_Cavern")].models.always.l3 = "";
+		Locations[FindLocation("wr_Cavern")].locators_radius.reload.reload3 = 0.00001;
+		Locations[FindLocation("wr_Cavern")].models.always.l3 = "";
 
 			Locations[FindLocation("wr_church_inside")].reload.l2.disable = 1;
 			Locations[FindLocation("wr_church_inside")].reload.l3.disable = 1;
 			Locations[FindLocation("wr_church_inside")].reload.l8.disable = 1;
-			Locations[FindLocation("wr_church_inside")].reload.l1.disable = 0;				//it was locked for some reason, when playing without jump starts
+		Locations[FindLocation("wr_church_inside")].reload.l1.disable = 0;				//it was locked for some reason, when playing without jump starts
 			Locations[FindLocation("wr_church_inside")].reload.l1.emerge = "richards";
-			Locations[FindLocation("wr_church_inside")].models.always.locators = "church_1_locators_JRH_up";
-			Locations[FindLocation("wr_church_inside")].locators_radius.box.box2 = 0.0001;
-			Locations[FindLocation("wr_church_inside")].locators_radius.box.box4 = 1.0;
+		Locations[FindLocation("wr_church_inside")].models.always.locators = "church_1_locators_JRH_up";
+		Locations[FindLocation("wr_church_inside")].locators_radius.box.box2 = 0.0001;
+		Locations[FindLocation("wr_church_inside")].locators_radius.box.box4 = 1.0;
 			Locations[FindLocation("wr_church_outside")].locators_radius.box.box1 = 0.5;
 
-			locations[FindLocation("wr_chapel_stairs")].id.label = "Chapel stairs";
+			locations[FindLocation("wr_chapel_stairs")].id.label = TranslateString("","Chapel stairs");
 
 			ChangeCharacterAddressGroup(characterFromID("pir_cap1"), "wr_church_outside", "goto", "taylor");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap18"), "wr_church_outside", "goto", "rackham");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap26"), "wr_church_outside", "goto", "read");
-			ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "none", "", "");
+		//	ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "wr_cave_shore", "goto", "flag_pole");
+		ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap13"), "wr_cave_shore", "goto", "guard");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap19"), "wr_cave_shore", "goto", "guard2");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap12"), "wr_church_outside", "officers", "reload2_2");
@@ -61399,6 +61516,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("pir_cap18"));
 			LAi_SetPoorType(characterFromID("pir_cap26"));
 			LAi_SetStayType(characterFromID("pir_cap12"));
+		//	LAi_SetStayType(characterFromID("pir_cap25"));
 			LAi_SetOfficerType(characterFromID("pir_cap13"));
 			LAi_SetOfficerType(characterFromID("pir_cap19"));
 
@@ -61429,12 +61547,13 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_church_inside")].reload.l1.emerge = "richards";
 			Locations[FindLocation("wr_church_outside")].locators_radius.box.box1 = 0.5;
 
-			locations[FindLocation("wr_chapel_stairs")].id.label = "Chapel stairs";
+			locations[FindLocation("wr_chapel_stairs")].id.label = TranslateString("","Chapel stairs");
 
 			ChangeCharacterAddressGroup(characterFromID("pir_cap1"), "wr_church_outside", "goto", "taylor");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap18"), "wr_church_outside", "goto", "rackham");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap26"), "wr_church_outside", "goto", "read");
-			ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "none", "", "");
+		//	ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "wr_cave_shore", "goto", "flag_pole");
+		ChangeCharacterAddressGroup(characterFromID("pir_cap25"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap13"), "wr_cave_shore", "goto", "guard");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap19"), "wr_cave_shore", "goto", "guard2");
 			ChangeCharacterAddressGroup(characterFromID("pir_cap12"), "wr_church_outside", "officers", "reload2_2");
@@ -61443,6 +61562,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("pir_cap18"));
 			LAi_SetPoorType(characterFromID("pir_cap26"));
 			LAi_SetStayType(characterFromID("pir_cap12"));
+		//	LAi_SetStayType(characterFromID("pir_cap25"));
 			LAi_SetOfficerType(characterFromID("pir_cap13"));
 			LAi_SetOfficerType(characterFromID("pir_cap19"));
 
@@ -61487,7 +61607,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Vane_Richards4", 1.0);
 		break;
-
+		
 		case "Vane_Richards4":
 			Characters[GetCharacterIndex("pir_cap1")].dialog.CurrentNode  = "about_Richards4";
 			LAi_SetActorType(characterFromID("pir_cap1"));
@@ -61495,7 +61615,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("pir_cap1"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("pir_cap1"));
 		break;
-
+	
 		case "Vane_Richards5":
 			PlaySound("VOICE\ENGLISH\pir_capR10.wav");
 
@@ -61509,7 +61629,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("pir_cap26"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("pir_cap26"));
 		break;
-
+	
 		case "Vane_Richards8":
 			Characters[GetCharacterIndex("pir_cap1")].dialog.CurrentNode  = "about_Richards8";
 			LAi_SetActorType(characterFromID("pir_cap1"));
@@ -61721,14 +61841,14 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("Vane_rum_explosion10", 2.5);
 		break;
 
-		case "Vane_rum_explosion10":
+		case "Vane_rum_explosion10":			
 			Characters[GetCharacterIndex("pir_cap18")].dialog.CurrentNode  = "I_am";
 			LAi_SetActorType(characterFromID("pir_cap18"));
 			LAi_ActorDialogNow(characterFromID("pir_cap18"), pchar, "", 2.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("pir_cap18"));
 		break;
 
-		case "Vane_rum_explosion11":
+		case "Vane_rum_explosion11":			
 			PlaySound("VOICE\ENGLISH\pir_capR2.wav");
 
 			LAi_QuestDelay("Vane_rum_explosion12", 2.5);
@@ -61849,14 +61969,14 @@ void QuestComplete(string sQuestName)
 				PlaySound3D("INTERFACE\rumble1.wav", 24.0, 2.7, -6.0);		//z was -3
 				if(CheckAttribute(Pchar,"Vane_boiling_bubbles") && Pchar.Vane_boiling_bubbles == "yes")
 				{
-					PlaySound3D("INTERFACE\bubbles2.wav", 24.0, 2.7, 0.0);
+					PlaySound3D("INTERFACE\bubbles2.wav", 24.0, 2.7, 0.0);	
 				}
 				if(CheckAttribute(Pchar,"Vane_boiling_steam") && Pchar.Vane_boiling_steam == "yes")
 				{
 					PlaySound3D("INTERFACE\steam1.wav", 24.0, 2.7, -9.0);
 					PlaySound3D("INTERFACE\steam1.wav", 24.0, 2.7, -9.0);
 				}
-
+				
 				LAi_QuestDelay("Vane_boiling_loop", 4.7);
 			}
 			else return;
@@ -61871,7 +61991,7 @@ void QuestComplete(string sQuestName)
 			}
 		break;
 
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 //JRH surgeons
 		case "Tortuga_surgeons_start":
 			Pchar.Tsurgeon = "yes";	//for citizens dialog hint
@@ -61913,7 +62033,7 @@ void QuestComplete(string sQuestName)
 			}
 
 			Pchar.Tgunsmith = "yes";
-
+			
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload4");
 
@@ -61954,7 +62074,7 @@ void QuestComplete(string sQuestName)
 			}
 
 			Pchar.Tsailmaker = "yes";
-
+			
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload3");
 
@@ -61996,11 +62116,11 @@ void QuestComplete(string sQuestName)
 
 			Pchar.Tassistent = "yes";
 			LAi_SetStayType(characterFromID("french_surgeon1"));
-
+			
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload1");
-
-			Locations[FindLocation("Tortuga_port")].locators_radius.box.box9 = 1.5;
+	
+			Locations[FindLocation("Tortuga_port")].locators_radius.box.box9 = 1.5;	
 
 			LAi_QuestDelay("pchar_playertype", 1.5);
 		break;
@@ -62101,15 +62221,15 @@ void QuestComplete(string sQuestName)
 			}
 
 			Pchar.Ttower = "yes";
-			port = &Locations[FindLocation("Tortuga_port")];
-			if(CheckAttribute(port,"lockCamAngle") ) DeleteAttribute(port,"lockCamAngle");
+			port = &Locations[FindLocation("Tortuga_port")]; 
+			if(CheckAttribute(port,"lockCamAngle") ) DeleteAttribute(port,"lockCamAngle"); 	
 			SetNextWeather("Clear");
 	 		DeleteAttribute(Pchar, "quest.JRH_rain");
 	//Locations[FindLocation("Tortuga_port")].image = "Tortuga_port.tga";
 			//RESET
 
 			LAi_QuestDelay("no_rain_in_tower", 0.1);
-
+		
 	//		DoQuestReloadToLocation("Tortuga_port", "box", "box9", "carriage_girl_end2");
 			DoQuestReloadToLocation("Tortuga_port", "reload", "reloadQ10", "carriage_girl_end2");		//to enable officers locators
 		break;
@@ -62118,20 +62238,20 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			ChangeCharacterAddressGroup(characterFromID("carriage_girl"), "none", "", "");
 		break;
-
+	
 		//only if carriage is closed for night
 		case "Tortuga_carriage_leave":
 			PlaySound("PEOPLE\run_stone.wav");
 			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "box", "box9");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "Tortuga_Cook_fight":
 			PlaySound("PEOPLE\run_stone.wav");
 			ChangeCharacterAddressGroup(CharacterFromID("wr_pir13"), "Tortuga_port", "quest", "fight2");
 			DoQuickSave();
 			LAi_SetImmortal(characterFromID("wr_pir13"), false);
 			LAi_SetHP(CharacterFromID("wr_pir13"), 250.0, 250.0);
-
+			
 			LAi_QuestDelay("Tortuga_Cook_fight1", 0.7);
 		break;
 
@@ -62147,19 +62267,19 @@ void QuestComplete(string sQuestName)
 
 		case "Tortuga_Cook_dead":
 			Pchar.Cook_dead = "yes";
-
-			LAi_QuestDelay("Tortuga_Cook_dead1", 1.0);
+			
+			LAi_QuestDelay("Tortuga_Cook_dead1", 1.0);	
 		break;
 
 		case "Tortuga_Cook_dead1":
 			if(LAi_IsFightMode(Pchar)) LAi_SetFightMode(PChar, false);
 
-			LAi_QuestDelay("Tortuga_Cook_dead2", 2.0);
+			LAi_QuestDelay("Tortuga_Cook_dead2", 2.0);	
 		break;
 
 		case "Tortuga_Cook_dead2":
 			PlaySound("PEOPLE\run_stone.wav");
-			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "quest", "fight2");
+			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "quest", "fight2");	
 		break;
 
 		case "Cook_items0_check":
@@ -62200,14 +62320,14 @@ void QuestComplete(string sQuestName)
 			Pchar.killed_wr_officers = sti(Pchar.killed_wr_officers) + 1;
 			if(Pchar.killed_wr_officers == 4) {LAi_QuestDelay("restore_p20_check", 0.1);}
 
-			LAi_QuestDelay("TT_turn_box16", 0.5);
+			LAi_QuestDelay("TT_turn_box16", 0.5);	
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 	//TOWER TOUR START
 		case "no_rain_in_tower":
 			ChangeCharacterAddressGroup(characterFromID("Bertrand Ogeron"), "none", "", "");
-			Locations[FindLocation("Tortuga_townhall")].reload.l3.disable = 0;	//tower passage
-			locations[FindLocation("Tortuga_tower_passage")].id.label = "Tower passage";
+			Locations[FindLocation("Tortuga_townhall")].reload.l3.disable = 0;	//tower passage	
+			locations[FindLocation("Tortuga_tower_passage")].id.label = TranslateString("","Tower passage");
 
 			pchar.quest.no_rain_in_tower.win_condition.l1 = "location";
 			pchar.quest.no_rain_in_tower.win_condition.l1.location = "Tortuga_tower_passage";
@@ -62226,7 +62346,7 @@ void QuestComplete(string sQuestName)
 
 		case "no_rain_in_tower2":
 			SetNextWeather("Clear");
-	 		DeleteAttribute(Pchar, "quest.JRH_rain");
+	 		DeleteAttribute(Pchar, "quest.JRH_rain");	
 		//logit("RESET");
 			pchar.quest.no_rain_in_tower.win_condition.l1 = "location";
 			pchar.quest.no_rain_in_tower.win_condition.l1.location = "Tortuga_tower_passage";
@@ -62308,21 +62428,21 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Tortuga_dovecote_to_box12":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "box", "box12");
 
 			LAi_QuestDelay("pchar_playertype", 0.25);
 		break;
 
 		case "Tortuga_dovecote_to_box17":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "box", "box17");
 
 			LAi_QuestDelay("pchar_playertype", 0.25);
 		break;
 
 		case "Tortuga_dovecote_to_box25":
-			PlaySound("PEOPLE\recoil.wav");
+			PlaySound("PEOPLE\recoil.wav");		
 			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "box", "box25");
 
 			LAi_QuestDelay("pchar_playertype", 0.25);
@@ -62374,7 +62494,7 @@ void QuestComplete(string sQuestName)
 				Pchar.qbook.richards13 = "done";
 				Locations[FindLocation("cloister_exit")].locators_radius.box.box1 = 2.0;	//opens WoodesRogers part
 				Pchar.monastary = "Sister_Richards";
-
+		
 				pchar.quest.monastary_no_officers.win_condition.l1 = "location";
 				pchar.quest.monastary_no_officers.win_condition.l1.location = "cloister_exit";
 				pchar.quest.monastary_no_officers.win_condition = "monastary_no_officers";
@@ -62389,7 +62509,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("leave_french_surgeon4_A", 1.0);
 		break;
-
+		
 		case "leave_french_surgeon4_A":
 			PlaySound("PEOPLE\run_stone.wav");
 			ChangeCharacterAddressGroup(Pchar, "Tortuga_port", "reload", "reloadQ7");
@@ -62400,7 +62520,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("pchar_playertype", 1.0);
 		break;
 
-	//WAY DOWN
+	//WAY DOWN	
 		case "TT_turn_box21":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "box", "box21");
@@ -62444,26 +62564,26 @@ void QuestComplete(string sQuestName)
 		case "Abbey_info":
 			AddQuestRecord("Richards","14");
 		break;
-//p?r day
+//pär day
 	//this stays
 		case "monastary_no_officers":
 			Pchar.Hands_officer = "no";	//if old things still are on
 			Pchar.Caesar_officer = "no";
 			Pchar.Pell_officer = "no";
 
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands"))) 
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Hands"));
 				RemovePassenger(pchar, characterFromID("Hands"));
 				Pchar.Hands_officer = "yes";
 			}
-			if(IsOfficer(CharacterFromID("Caesar")))
+			if(IsOfficer(CharacterFromID("Caesar")))  
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Caesar"));
 				RemovePassenger(pchar, characterFromID("Caesar"));
 				Pchar.Caesar_officer = "yes";
 			}
-			if(IsOfficer(CharacterFromID("Pell")))
+			if(IsOfficer(CharacterFromID("Pell")))  
 			{
 				RemoveOfficersIndex(pchar, GetCharacterIndex("Pell"));
 				RemovePassenger(pchar, characterFromID("Pell"));
@@ -62482,7 +62602,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_graveyard")].locators_radius.reload.reload6 = 0.001;		//large after Sister Richards dialog
 			ChangeCharacterAddressGroup(characterFromID("bb_nun1"), "BB_graveyard", "reload", "reload6");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 //scene Charleston blockade start
 
 		case "Charleston_blockade_start":
@@ -62498,11 +62618,11 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_3":
-						pchar.uniform = "H_P_3";
+						pchar.uniform = "H_P_3";	
 					break;
 
 					case "Howard_Pyle_4":
-						pchar.uniform = "H_P_4";
+						pchar.uniform = "H_P_4";	
 					break;
 
 					case "Howard_Pyle_5":
@@ -62524,13 +62644,13 @@ void QuestComplete(string sQuestName)
 			}
 
 			SetModel(PChar, "bb_Teach2", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
-
+		
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-
+		
 		//	aref ito, ifrom;
 			DeleteAttribute(characterFromID("Brthug1"), "items");
-
+			
 			if(CheckAttribute(Pchar, "items"))
 			{
 				makearef(ifrom, Pchar.items);
@@ -62539,15 +62659,15 @@ void QuestComplete(string sQuestName)
 				CopyAttributes(&ito, &ifrom);
 				DeleteAttribute(Pchar, "items");
 			}
-
+		
 			GiveItem2Character(Pchar, "bladeX4");
-			GiveItem2Character(Pchar, "blade27");
+			GiveItem2Character(Pchar, "blade27");	
 			EquipCharacterByItem(Pchar, "blade27");
 
 			pchar.old.name = "Edward";
 			pchar.old.lastname = "Teach";
 			pchar.name = TranslateString("","Edward");
-			pchar.lastname = TranslateString("","Teach");
+			pchar.lastname = TranslateString("","Teach");	
 
 			DoQuestReloadToLocation("BB_QAR_cabin", "goto", "window" ,"Charleston_blockade1");
 		break;
@@ -62581,7 +62701,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("bb_crew20"), "BB_qar_deck", "goto", "qar13");
 			ChangeCharacterAddressGroup(characterFromID("bb_crew21"), "BB_qar_deck", "goto", "qar11");
 			ChangeCharacterAddressGroup(characterFromID("fake_Louis_Arot"), "BB_qar_deck", "goto", "revenge4");
-
+		
 			Characters[GetCharacterIndex("bb_crew5")].Dialog.Filename = "bb_crew_dialog.c";
 			Characters[GetCharacterIndex("bb_crew8")].Dialog.Filename = "bb_crew_dialog.c";
 			Characters[GetCharacterIndex("Richards")].Dialog.Filename = "bb_crew2_dialog.c";
@@ -62593,7 +62713,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "wait_for_Richards":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "wait_for_Richards";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -62620,13 +62740,13 @@ void QuestComplete(string sQuestName)
 			cmdr.nation = PIRATE; pchar.tower.flag = "pir2";
 			cmdr.Flags.Pirate = 6; cmdr.Flags.Pirate.texture = 2;
 
-			LAi_QuestDelay("Charleston_gp_explosion1", 7.0);
+			LAi_QuestDelay("Charleston_gp_explosion1", 7.0);	
 		break;
 
 		case "Charleston_gp_explosion1":
 			PlaySound("OBJECTS\SHIPCHARGE\hurrah.wav");
 			LAi_SetPlayerType(pchar);
-			SetNextWind("SE",30);
+			SetNextWind("SE",30);	
 
 			LAi_QuestDelay("Charleston_gp_explosion1_A", 1.5);		//was 3.5
 
@@ -62640,19 +62760,19 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "turn_Bonnet":
-			LAi_SetActorType(CharacterFromID("Bonnet"));
+			LAi_SetActorType(CharacterFromID("Bonnet"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Bonnet"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Herriot"));
+			LAi_SetActorType(CharacterFromID("Herriot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Herriot"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Pell"));
+			LAi_SetActorType(CharacterFromID("fake_Pell"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Pell"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew16"));
+			LAi_SetActorType(CharacterFromID("bb_crew16"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew16"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew17"));
+			LAi_SetActorType(CharacterFromID("bb_crew17"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew17"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));
+			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Louis_Arot"), "quest", "hole");
-
+		
 			pchar.quest.Charleston_gp_explosion2.win_condition.l1 = "locator";
 			pchar.quest.Charleston_gp_explosion2.win_condition.l1.location = "BB_qar_deck";
 			pchar.quest.Charleston_gp_explosion2.win_condition.l1.locator_group = "quest";
@@ -62665,17 +62785,17 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(Pchar, "BB_qar_deck", "quest", "hole");
 			LAi_SetStayType(pchar);
 
-			LAi_SetActorType(CharacterFromID("Bonnet"));
+			LAi_SetActorType(CharacterFromID("Bonnet"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Bonnet"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Herriot"));
+			LAi_SetActorType(CharacterFromID("Herriot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Herriot"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Pell"));
+			LAi_SetActorType(CharacterFromID("fake_Pell"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Pell"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew16"));
+			LAi_SetActorType(CharacterFromID("bb_crew16"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew16"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew17"));
+			LAi_SetActorType(CharacterFromID("bb_crew17"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew17"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));
+			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Louis_Arot"), "quest", "hole");
 
 			LAi_QuestDelay("Charleston_gp_explosion3", 1.5);
@@ -62691,9 +62811,9 @@ void QuestComplete(string sQuestName)
 
 		case "Charleston_gp_explosion4":
 			PlaySound("VOICE\ENGLISH\gr_Teach1.wav");
-			LAi_SetActorType(CharacterFromID("bb_crew8"));
+			LAi_SetActorType(CharacterFromID("bb_crew8"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew8"), "blacksmoke", "bsmoke1");
-
+			
 			LAi_QuestDelay("Charleston_gp_explosion5", 1.0);
 		break;
 
@@ -62714,13 +62834,13 @@ void QuestComplete(string sQuestName)
 
 		case "Charleston_gp_explosion7":
 			PlaySound("VOICE\ENGLISH\gr_Teach7.wav");
-			LAi_SetActorType(CharacterFromID("bb_crew5"));
+			LAi_SetActorType(CharacterFromID("bb_crew5"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew5"), "blacksmoke", "bsmoke1");
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "blacksmoke", "bsmoke1");
-
+			
 			Locations[FindLocation("BB_QAR_cabin")].locators_radius.box.box1 = 1.5;
-
+			
 			LAi_QuestDelay("pchar_playertype", 0.5);
 			LAi_QuestDelay("Charleston_gp_explosion8", 1.0);
 		break;
@@ -62777,9 +62897,9 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("fake_Hands"), "BB_qar_deck", "goto", "adventure4");
 			ChangeCharacterAddressGroup(characterFromID("fake_Odel"), "BB_qar_deck", "goto", "adventure5");
 			LAi_SetStayType(CharacterFromID("fake_Hands"));
-			LAi_SetStayType(CharacterFromID("fake_Caesar"));
-			SetNextWind("SE",30);
-
+			LAi_SetStayType(CharacterFromID("fake_Caesar"));	
+			SetNextWind("SE",30);	
+		
 			LAi_QuestDelay("pchar_hah", 1.0);
 			LAi_QuestDelay("pchar_playertype", 1.0);
 
@@ -62789,26 +62909,26 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "turn_Hands":
-			LAi_SetActorType(CharacterFromID("fake_Hands"));
+			LAi_SetActorType(CharacterFromID("fake_Hands"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Hands"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Hornigold"));
+			LAi_SetActorType(CharacterFromID("Hornigold"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Hornigold"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Odel"));
+			LAi_SetActorType(CharacterFromID("fake_Odel"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Odel"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Caesar"));
+			LAi_SetActorType(CharacterFromID("fake_Caesar"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Caesar"), "quest", "hole");
-
-			LAi_SetActorType(CharacterFromID("Bonnet"));
+	
+			LAi_SetActorType(CharacterFromID("Bonnet"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Bonnet"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Herriot"));
+			LAi_SetActorType(CharacterFromID("Herriot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Herriot"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Pell"));
+			LAi_SetActorType(CharacterFromID("fake_Pell"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Pell"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew16"));
+			LAi_SetActorType(CharacterFromID("bb_crew16"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew16"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew17"));
+			LAi_SetActorType(CharacterFromID("bb_crew17"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew17"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));
+			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Louis_Arot"), "quest", "hole");
 
 			pchar.quest.Richards_back6.win_condition.l1 = "locator";
@@ -62823,26 +62943,26 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(Pchar, "BB_qar_deck", "quest", "hole2");
 			LAi_SetStayType(pchar);
 
-			LAi_SetActorType(CharacterFromID("fake_Hands"));
+			LAi_SetActorType(CharacterFromID("fake_Hands"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Hands"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Hornigold"));
+			LAi_SetActorType(CharacterFromID("Hornigold"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Hornigold"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Odel"));
+			LAi_SetActorType(CharacterFromID("fake_Odel"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Odel"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Caesar"));
+			LAi_SetActorType(CharacterFromID("fake_Caesar"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Caesar"), "quest", "hole");
-
-			LAi_SetActorType(CharacterFromID("Bonnet"));
+	
+			LAi_SetActorType(CharacterFromID("Bonnet"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Bonnet"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("Herriot"));
+			LAi_SetActorType(CharacterFromID("Herriot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Herriot"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Pell"));
+			LAi_SetActorType(CharacterFromID("fake_Pell"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Pell"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew16"));
+			LAi_SetActorType(CharacterFromID("bb_crew16"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew16"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("bb_crew17"));
+			LAi_SetActorType(CharacterFromID("bb_crew17"));	
 			LAi_ActorTurnToLocator(CharacterFromID("bb_crew17"), "quest", "hole");
-			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));
+			LAi_SetActorType(CharacterFromID("fake_Louis_Arot"));	
 			LAi_ActorTurnToLocator(CharacterFromID("fake_Louis_Arot"), "quest", "hole");
 
 			DeleteAttribute(CharacterFromID("Richards"), "items");
@@ -62850,7 +62970,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Richards"), "bladep205");
 			GiveItem2Character(CharacterFromID("Richards"),"pistolmdchest_F1");
 			EquipCharacterByItem(characterFromID("Richards"), "pistolmdchest_F1");
-
+			
 			LAi_QuestDelay("Richards_back7", 2.0);
 		break;
 
@@ -62865,7 +62985,7 @@ void QuestComplete(string sQuestName)
 
 		case "Richards_back8":
 			PlaySound("VOICE\ENGLISH\gr_Teach5.wav");
-
+		
 			LAi_QuestDelay("Richards_back9", 2.0);
 		break;
 
@@ -62881,7 +63001,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Richards_back10.win_condition.l1.locator = "richards2";
 			pchar.quest.Richards_back10.win_condition = "Richards_back10";
 		break;
-
+	
 		case "Richards_back10":
 			LAi_SetStayType(pchar);
 
@@ -62890,13 +63010,13 @@ void QuestComplete(string sQuestName)
 			LAi_ActorWaitDialog(Pchar, characterFromID("Richards"));
 		break;
 
-		case "Richards_back11":
+		case "Richards_back11":	
 			PlaySound("PEOPLE\clothes1.wav");
 			RemoveCharacterEquip(characterFromID("Richards"), GUN_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("Richards"), "pistolmdchest_F1");
 			GiveItem2Character(Pchar, "pistolmdchest_F1");
 			EquipCharacterByItem(Pchar, "pistolmdchest_F1");
-
+			
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			GiveItem2Character(Pchar, "bladeMap_Hgold");
 			EquipCharacterByItem(Pchar, "bladeMap_Hgold");
@@ -62918,7 +63038,7 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("INTERFACE\paper.wav");
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-			TakeItemFromCharacter(Pchar, "bladeMap_Hgold");
+			TakeItemFromCharacter(Pchar, "bladeMap_Hgold");					
 			EquipCharacterByItem(Pchar, "bladeX4");
 			GiveItem2Character(characterFromID("Richards"), "pistolMap_Hgold");
 			EquipCharacterByItem(characterFromID("Richards"), "pistolMap_Hgold");
@@ -62927,7 +63047,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Richards_back16":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Richards_pistol";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -62946,7 +63066,7 @@ void QuestComplete(string sQuestName)
 			if(LAi_IsFightMode(characterFromID("Richards"))) {LAi_SetFightMode(characterFromID("Richards"), false);}
 			PlaySound("OBJECTS\DUEL\pistol_out1original.wav");
 			RemoveCharacterEquip(characterFromID("Richards"), BLADE_ITEM_TYPE);
-			TakeItemFromCharacter(characterFromID("Richards"), "bladep205");
+			TakeItemFromCharacter(characterFromID("Richards"), "bladep205");					
 			EquipCharacterByItem(characterFromID("Richards"), "bladeX4");
 			GiveItem2Character(Pchar, "bladep205");
 			EquipCharacterByItem(Pchar, "bladep205");
@@ -62965,7 +63085,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(pchar);
 			Characters[GetCharacterIndex("Richards")].Dialog.Filename = "bb_crew_dialog.c";
 			PlaySound("VOICE\ENGLISH\blaze_huh.wav");
-
+	
 			LAi_QuestDelay("Richards_back19", 1.5);
 		break;
 
@@ -62997,7 +63117,7 @@ void QuestComplete(string sQuestName)
 
 		case "QAR_broadside1":
 			PlaySound("OBJECTS\SHIPCHARGE\gunner_fire.wav");
-
+			
 			LAi_QuestDelay("QAR_broadside1_A", 1.0);
 			LAi_QuestDelay("QAR_silent", 1.5);
 			LAi_QuestDelay("QAR_broadside2", 2.0);
@@ -63028,7 +63148,7 @@ void QuestComplete(string sQuestName)
 
 		case "QAR_broadside3":
 			PlaySound("INTERFACE\bell2.wav");
-
+	
 			ChangeCharacterAddressGroup(characterFromID("bb_crew16"), "BB_qar_deck", "quest", "a_gunner1");
 			ChangeCharacterAddressGroup(characterFromID("fake_Odel"), "BB_qar_deck", "quest", "a_gunner2");
 			ChangeCharacterAddressGroup(characterFromID("fake_Caesar"), "BB_qar_deck", "quest", "a_gunner3");
@@ -63039,7 +63159,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "QAR_broadside4":
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar);	
 			LAi_ActorTurnToLocator(Pchar, "quest", "a_gunner1");
 
 	//	LAi_QuestDelay("pchar_playertype", 1.5);	//temp
@@ -63161,7 +63281,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("smoke_short" , 78.1, 2.5, 18.05, 4.5, 1.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 78.1, 2.5, 17.75, 0.0, 4.5, 0.0, sti(20) );
 			CreateParticleSystem("gunfire" , 78.1, 2.5, 18.05, 0.0, 4.5, 0.0, sti(20) );
-
+		
 			LAi_QuestDelay("QAR_broadsideA_1", 3.0);
 			LAi_QuestDelay("QAR_broadsideA_1", 6.0);
 			LAi_QuestDelay("QAR_broadsideA_1", 9.0);
@@ -63189,7 +63309,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "QAR_broadsideQ":
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar);	
 			LAi_ActorTurnToLocator(Pchar, "quest", "teach_turn");
 
 			CreateParticleSystem("smoke_short" , 4.1, 4.1, 27.0, 4.5, 1.5, 0.0, sti(20) );
@@ -63215,7 +63335,7 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.uniform)
 				{
 					case "H_P_3":
-						SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
+						SetModel(PChar, "Howard_Pyle_3", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);	
 					break;
 
 					case "H_P_4":
@@ -63244,16 +63364,16 @@ void QuestComplete(string sQuestName)
 			pchar.old.name = "Howard";
 			pchar.old.lastname = "Pyle";
 			pchar.name = TranslateString("","Howard");
-			pchar.lastname = TranslateString("","Pyle");
-
+			pchar.lastname = TranslateString("","Pyle");		
+		
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-
+		
 
 			DeleteAttribute(Pchar, "items");
 
 			if(CheckAttribute(characterFromID("Brthug1"), "items"))
-			{
+			{	
 				makearef(ifrom, Characters[GetCharacterIndex("Brthug1")].items);
 				Pchar.items = "";
 				makearef(ito, Pchar.items);
@@ -63262,11 +63382,11 @@ void QuestComplete(string sQuestName)
 
 			if(pchar.model == "Howard_Pyle_b") { EquipCharacterByItem(Pchar, "pistol20"); }
 			if(pchar.model == "Howard_Pyle_a") { EquipCharacterByItem(Pchar, "pistol20");  EquipCharacterByItem(Pchar, "ammobag2");}
-
+		
 			DoQuestReloadToLocation("BB_graveyard", "goto", "richards", "abbess_info");
 		break;
 
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 
 		case "abbess_info":
 			characters[GetCharacterIndex("bb_nun1")].dialog.CurrentNode = "Richards9";
@@ -63282,7 +63402,7 @@ void QuestComplete(string sQuestName)
 			Pchar.monastary = "repeat_abbess";
 			characters[GetCharacterIndex("bb_nun1")].Dialog.Filename = "monastary_dialog.c";
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "reload", "reload6", 1.0);
-			Locations[FindLocation("BB_graveyard")].locators_radius.reload.reload6 = 1.0;
+			Locations[FindLocation("BB_graveyard")].locators_radius.reload.reload6 = 1.0;	
 			Locations[FindLocation("BB_refectory")].reload.l4.disable = 0;		//to abbess
 
 			Pchar.quest.move_nun1.win_condition.l1 = "ExitFromLocation";
@@ -63319,7 +63439,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("bb_nun8"), "none", "", "");
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "reload", "reload1", 1.0);
 			AddQuestRecord("Richards","21");
-
+			
 			LAi_QuestDelay("abbess_quest_given1", 1.0);
 		break;
 
@@ -63398,14 +63518,14 @@ void QuestComplete(string sQuestName)
 
 					case "8":
 						Locations[FindLocation("BB_refectory")].reload.l5.disable = 0;	//to chapel
-						AddQuestRecord("Richards","19");
+						AddQuestRecord("Richards","19");					
 
 						LAi_QuestDelay("pchar_8", 1.0);
 						LAi_QuestDelay("all_abbess_items", 2.0);
 					break;
 				}
 			}
-		break;
+		break;	
 
 		case "unlock_church_room":
 			//from SL_utils
@@ -63414,7 +63534,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_church_room")].locators_radius.box.box2 = 0.0001;
 			Locations[FindLocation("BB_church_room")].locators_radius.reload.reload1 = 1.0;
 			Locations[FindLocation("BB_graveyard")].reload.l3.disable = 0;	//small chapel
-
+			
 			DoQuestReloadToLocation("BB_graveyard", "reload", "reload3", "_");
 		break;
 
@@ -63439,7 +63559,7 @@ void QuestComplete(string sQuestName)
 			{
 				DoQuestReloadToLocation("BB_graveyard", "reload", "reload6", "graveyard_no_bell1");
 			}
-			else
+			else 
 			{
 				Pchar.graveyard_box1 = "enabled";
 				PlaySound("PEOPLE\run_wood.wav");
@@ -63486,7 +63606,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun2"), "BB_graveyard", "goto", "goto4");
 			LAi_SetStayType(CharacterFromID("bb_nun2"));
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "key33_check":
 			if(CheckCharacterItem(Pchar,"key33"))
 			{
@@ -63528,7 +63648,7 @@ void QuestComplete(string sQuestName)
 			else LAi_QuestDelay("pistolcenser_check", 0.5);//loop check
 		break;
 
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "unlock_crypt2_2":
 			//from SL_utils
 
@@ -63536,17 +63656,17 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_crypt2_1")].locators_radius.box.box2 = 0.0001;
 			Locations[FindLocation("BB_crypt2_1")].locators_radius.reload.reload2 = 1.0;
 			Locations[FindLocation("BB_crypt2_1")].reload.l2.disable = 0;
-
+			
 			TakenItems(Pchar, "key33", -1);
 			Pchar.coffins_sequence = "0";		//start value for coffin sequence
-
+			
 			DoQuestReloadToLocation("BB_crypt2_2", "reload", "reload1", "_");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "crypt2_2_box5_off":
 			Pchar.crypt2_2_box5 = "off";
 		break;
-
+		
 		case "crypt2_2_box6_off":
 			Pchar.crypt2_2_box6 = "off";
 		break;
@@ -63574,9 +63694,9 @@ void QuestComplete(string sQuestName)
 		case "crypt2_2_box8_reset_pchar":
 			ChangeCharacterAddressGroup(Pchar, "BB_crypt2_2", "box", "box8");
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "crypt_skeletons_reset":
-			PlaySound("INTERFACE\shelf_close.wav");
+			PlaySound("INTERFACE\shelf_close.wav");			
 
 			LAi_LocationFightDisable(&Locations[FindLocation("BB_crypt2_2")], true);		//reset
 			ChangeCharacterAddressGroup(characterFromID("crypt_skeleton5"), "none", "", "");
@@ -63611,12 +63731,12 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\closed_locked_door.wav");
 			Locations[FindLocation("BB_crypt2_2")].reload.l2.disable = 1;
 		break;
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------	
 		case "unlock_misericord":
 			//from SL_utils
 
 			PlaySound("INTERFACE\step_path.wav");
-
+	
 			LAi_QuestDelay("unlock_misericord1", 1.0);
 		break;
 
@@ -63641,12 +63761,12 @@ void QuestComplete(string sQuestName)
 						if(!CheckCharacterItem(Pchar,"bladeX4"))
 						{
 							GiveItem2Character(Pchar, "bladeX4");
-						}
+						}					
 						EquipCharacterByItem(Pchar, "bladeX4");
 					}
 
 					RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
-
+			
 					if(CheckCharacterItem(Pchar,"ammobag2"))
 					{
 						RemoveCharacterEquip(Pchar, POUCH_ITEM_TYPE);
@@ -63768,12 +63888,12 @@ void QuestComplete(string sQuestName)
 			{
 				Pchar.abbess_items = sti(Pchar.abbess_items) + 1;
 				PlaySound("PEOPLE\teleport.wav");
-
+				
 				LAi_QuestDelay("count_abbess_items", 0.5);
 			}
 			else LAi_QuestDelay("treasure7_check", 0.5);//loop check
 		break;
-
+	
 //------------------------------------------------------------------------------------------------------------
 		case "broom_in_misericord_free":
 			Pchar.misericord_box3 = "off";
@@ -63794,7 +63914,7 @@ void QuestComplete(string sQuestName)
 		break;
 //------------------------------------------------------------------------------------------------------------
 		case "all_abbess_items":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "all_abbess_items";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -63836,7 +63956,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "precious_items_done":
-			LAi_SetStayType(pchar);
+			LAi_SetStayType(pchar);	
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "wax_candles");
@@ -63884,9 +64004,9 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("cloister_exit")].locators_radius.box.box1 = 0.0001;
 			Locations[FindLocation("cloister_exit")].reload.l1.disable = 1;		//to town
-			Locations[FindLocation("cloister_inside")].reload.l1.disable = 1;	//to exit
+			Locations[FindLocation("cloister_inside")].reload.l1.disable = 1;	//to exit	
 			DoQuickSave();
-
+			
 			Pchar.cloister = "bandits";
 
 			ChangeCharacterAddressGroup(CharacterFromID("BB_monk1"), "cloister_passage", "quest", "m1");
@@ -63910,7 +64030,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Clthug1"));
 			LAi_SetActorType(characterFromID("Clthug2"));
 			LAi_SetActorType(characterFromID("Clthug3"));
-			LAi_SetActorType(characterFromID("Clthug4"));
+			LAi_SetActorType(characterFromID("Clthug4"));	
 			LAi_SetActorType(characterFromID("Clthug5"));
 			LAi_SetActorType(characterFromID("Clthug6"));
 			LAi_SetActorType(characterFromID("Clthug7"));
@@ -63922,16 +64042,16 @@ void QuestComplete(string sQuestName)
 
 		case "abbess_map_given2":
 			//selfdialog, 2 cases tape or not
-
+		
 			if(CheckCharacterItem(Pchar,"tape"))
 			{
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "repair_Richards_map";
 				LAi_ActorSelfDialog(pchar, "");
 			}
 			else
-			{
-				LAi_SetActorType(pchar);
+			{ 
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "search_for_glue";
 				LAi_ActorSelfDialog(pchar, "");
 			}
@@ -63993,12 +64113,12 @@ void QuestComplete(string sQuestName)
 
 				if(!CheckCharacterItem(Pchar,"map")) {GiveItem2Character(Pchar, "map");}
 
-				LAi_SetActorType(pchar);
+				LAi_SetActorType(pchar);	
 				characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "repair_Richards_map";
 				LAi_ActorSelfDialog(pchar, "");
 			}
 		break;
-
+		
 	//------------------------------------------------------------------------------
 	//cloister attack
 
@@ -64038,7 +64158,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("BB_monk2"), "cloister_inside", "quest", "m2");
 			ChangeCharacterAddressGroup(CharacterFromID("BB_monk3"), "cloister_inside", "quest", "m3");
 			ChangeCharacterAddressGroup(CharacterFromID("BB_monk4"), "cloister_inside", "quest", "m4");
-
+	
 			LAi_SetActorType(characterFromID("BB_monk1"));
 			LAi_SetActorType(characterFromID("BB_monk2"));
 			LAi_SetActorType(characterFromID("BB_monk3"));
@@ -64061,10 +64181,10 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Clthug1"));
 			LAi_SetActorType(characterFromID("Clthug2"));
 			LAi_SetActorType(characterFromID("Clthug3"));
-			LAi_SetActorType(characterFromID("Clthug4"));
+			LAi_SetActorType(characterFromID("Clthug4"));	
 			LAi_SetActorType(characterFromID("Clthug5"));
 			LAi_SetActorType(characterFromID("Clthug6"));
-			LAi_SetActorType(characterFromID("Clthug7"));
+			LAi_SetActorType(characterFromID("Clthug7"));			
 			LAi_SetImmortal(characterFromID("Clthug4"), false);
 			LAi_SetImmortal(characterFromID("Clthug6"), false);
 			DeleteAttribute(characterFromID("Clthug3"), "items");
@@ -64072,7 +64192,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Clthug3"), "blade5");
 			GiveItem2Character(characterFromID("Clthug1"), "bladeX2");
 			EquipCharacterByItem(characterFromID("Clthug1"), "bladeX2");
-
+		
 			LAi_SetHP(characterFromID("Clthug1"), 120.0, 120.0);
 			LAi_SetHP(characterFromID("Clthug2"), 120.0, 120.0);
 			LAi_SetHP(characterFromID("Clthug3"), 75.0, 75.0);
@@ -64080,7 +64200,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetHP(characterFromID("Clthug5"), 105.0, 105.0);
 			LAi_SetHP(characterFromID("Clthug6"), 90.0, 90.0);
 			LAi_SetHP(characterFromID("Clthug7"), 90.0, 90.0);
-
+		
 			LAi_group_MoveCharacter(characterFromID("Clthug1"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("Clthug2"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("Clthug3"), "ROOF_THUGS_1");
@@ -64161,7 +64281,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("inq_monk2"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("inq_monk3"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("inq_monk4"), "ROOF_THUGS_1");
-		break;
+		break; 
 
 		case "inquisition3":
 			LAi_SetPlayerType(Pchar);
@@ -64233,8 +64353,8 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("inquisition4", 5.0);
 			LAi_QuestDelay("inquisition5", 10.0);
-		break;
-
+		break; 
+	
 		case "inquisition4":
 			PlaySound("VOICE\ENGLISH\gr_wench3_angry.wav");
 			PlaySound("VOICE\ENGLISH\gr_wench3_angry.wav");
@@ -64247,7 +64367,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun5"), "cloister_inside", "quest", "nunB_1");
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun6"), "cloister_inside", "quest", "nunC_1");
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun7"), "cloister_inside", "quest", "nunD_1");
-		break;
+		break; 
 
 		case "inquisition5":
 			PlaySound("VOICE\ENGLISH\Fre_f_a_012.wav");
@@ -64258,7 +64378,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetImmortal(characterFromID("inq_monk2"), false);
 			LAi_SetImmortal(characterFromID("inq_monk3"), false);
 			LAi_SetImmortal(characterFromID("inq_monk4"), false);
-
+		
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun1"), "cloister_inside", "quest", "inq_B2");
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun2"), "cloister_inside", "quest", "inq_B3");
 			ChangeCharacterAddressGroup(CharacterFromID("bb_nun3"), "cloister_inside", "quest", "inq_B4");
@@ -64284,7 +64404,7 @@ void QuestComplete(string sQuestName)
 		case "5inq_dead_yes":
 			if(LAi_IsFightMode(Pchar)) {LAi_SetFightMode(Pchar, false);}
 
-			LAi_QuestDelay("5inq_dead_yes1", 1.0);
+			LAi_QuestDelay("5inq_dead_yes1", 1.0);			
 		break;
 
 		case "5inq_dead_yes1":
@@ -64366,7 +64486,7 @@ void QuestComplete(string sQuestName)
 				LAi_SetActorType(CharacterFromID("bb_nun1"));
 				LAi_ActorTurnToLocator(CharacterFromID("bb_nun1"), "randitem", "randitem9");
 
-				LAi_QuestDelay("Sister_Richards_leaves5", 1.0);
+				LAi_QuestDelay("Sister_Richards_leaves5", 1.0);	
 			}
 			else
 			{
@@ -64385,12 +64505,12 @@ void QuestComplete(string sQuestName)
 				{
 					case "Howard_Pyle_3":
 						PlaySound("PEOPLE\clothes1.wav");
-						GiveItem2Character(Pchar, "socks_sewing");
+						GiveItem2Character(Pchar, "socks_sewing");	
 					break;
 
 					case "Howard_Pyle_4":
 						PlaySound("PEOPLE\clothes1.wav");
-						GiveItem2Character(Pchar, "waistcoat");
+						GiveItem2Character(Pchar, "waistcoat");	
 					break;
 
 					case "Howard_Pyle_5":
@@ -64400,7 +64520,7 @@ void QuestComplete(string sQuestName)
 
 				/*
 					case "Howard_Pyle":
-						//this is the 4:th mission and the only upgrade will be the visible belt & bag
+						//this is the 4:th mission and the only upgrade will be the visible belt & bag	
 					break;
 				*/
 				}
@@ -64409,7 +64529,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(CharacterFromID("bb_nun1"));
 			LAi_ActorTurnToLocator(CharacterFromID("bb_nun1"), "randitem", "randitem9");
 
-			LAi_QuestDelay("Sister_Richards_leaves5", 1.0);
+			LAi_QuestDelay("Sister_Richards_leaves5", 1.0);	
 		break;
 
 //scene Charleston blockade end
@@ -64417,7 +64537,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\key_unlock2.wav");
 			Locations[FindLocation("cloister_exit")].reload.l1.disable = 0;		//to town
 			SetCurrentTime(11.00, 0);
-
+		
 		//this stays
 			if(CheckAttribute(Pchar, "Hands_officer") && Pchar.Hands_officer == "yes")
 			{
@@ -64461,7 +64581,7 @@ void QuestComplete(string sQuestName)
 
 		//	ChangeCharacterAddressGroup(CharacterFromID("Odel"), "Smugglers_Tavern", "goto", "goto17");
 
-			LAi_QuestDelay("Sister_Richards_leaves6", 1.0);
+			LAi_QuestDelay("Sister_Richards_leaves6", 1.0);	
 
 			Pchar.quest.monastary_reset.win_condition.l1 = "Location";
 			Pchar.quest.monastary_reset.win_condition.l1.location = "Cartagena_town_02";
@@ -64517,7 +64637,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(characterFromID("bb_nun7"), "items");
 			DeleteAttribute(characterFromID("bb_nun8"), "items");
 //Cartagena
-
+	
 			if(CheckCharacterItem(Pchar,"mapBB1") && CheckCharacterItem(Pchar,"mapBB3T") && CheckCharacterItem(Pchar,"mapBB4C"))
 			{
 				if(CheckCharacterItem(Pchar,"mapBB2A") || CheckCharacterItem(Pchar,"mapBB2B"))
@@ -64527,7 +64647,7 @@ void QuestComplete(string sQuestName)
 						ChangeCharacterAddressGroup(CharacterFromID("Defoe"), "new_cloister_garden", "quest", "defoe");
 						LAi_SetSitType(CharacterFromID("Defoe"));
 						Characters[GetCharacterIndex("Defoe")].dialog.CurrentNode  = "neutral";//if spoken to before the auto dialog starts
-
+		
 						ChangeCharacterAddressGroup(CharacterFromID("gm_crew8"), "Cartagena_town_02", "officers", "falaise_de_fleur_location_02_perechod_3");
 						Locations[FindLocation("Cartagena_town_02")].locators_radius.officers.falaise_de_fleur_location_02_perechod_3 = 3.0;
 						SetLocatorRadius(locations[FindLocation(Pchar.location)], "officers", "falaise_de_fleur_location_02_perechod_3", 3.0);
@@ -64549,7 +64669,7 @@ void QuestComplete(string sQuestName)
 		break;
 //......................................................................................................................................................
 //common for all 4 stories
-//p?r p20 loop
+//pär p20 loop
 		case "restore_p20_check":
 			if(CheckCharacterItem(Pchar,"pistolbelt") && CheckCharacterItem(Pchar,"pistol201") && CheckCharacterItem(Pchar,"pistol202")
 			&& CheckCharacterItem(Pchar,"pistol203") && CheckCharacterItem(Pchar,"pistol204") && CheckCharacterItem(Pchar,"pistol205")
@@ -64574,7 +64694,7 @@ void QuestComplete(string sQuestName)
 					TakeItemFromCharacter(Pchar, "ammopouch");
 					TakeItemFromCharacter(Pchar, "powderflask");
 				}
-
+				
 				LAi_QuestDelay("pchar_outfit_check", 0.1);
 				LAi_QuestDelay("pchar_6", 1.0);
 				LAi_QuestDelay("pchar_yah", 1.5);
@@ -64605,7 +64725,7 @@ void QuestComplete(string sQuestName)
 						GiveItem2Character(Pchar, "letter_Cartagena");
 						LAi_SetActorType(characterFromID("gm_crew8"));
 						LAi_ActorRunToLocator(characterFromID("gm_crew8"), "reload", "locator22", "King_gone", 11.0);
-
+						
 						LAi_QuestDelay("pchar_playertype", 5.0);
 					break;
 
@@ -64613,8 +64733,8 @@ void QuestComplete(string sQuestName)
 						GiveItem2Character(Pchar, "letter_Turks");
 						LAi_SetActorType(characterFromID("gm_crew8"));
 						LAi_ActorRunToLocator(characterFromID("gm_crew8"), "patrol", "patrol4", "King_gone", 10.0);
-
-						LAi_QuestDelay("pchar_playertype", 5.0);
+						
+						LAi_QuestDelay("pchar_playertype", 5.0);	
 					break;
 				}
 			}
@@ -64623,7 +64743,7 @@ void QuestComplete(string sQuestName)
 		case "King_gone":
 			ChangeCharacterAddressGroup(CharacterFromID("gm_crew8"), "none", "", "");
 		break;
-//p?r officers staytype
+//pär officers staytype
 		case "defoe_sit_down":
 			LAi_SetStayType(CharacterFromID("Hands"));
 			LAi_SetStayType(CharacterFromID("Caesar"));
@@ -64651,27 +64771,27 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.model)
 				{
 					case "Howard_Pyle_3":
-						Pchar.Pyle_model = "3";
+						Pchar.Pyle_model = "3";	
 					break;
 
 					case "Howard_Pyle_4":
-						Pchar.Pyle_model = "4";
+						Pchar.Pyle_model = "4";		
 					break;
 
 					case "Howard_Pyle_5":
-						Pchar.Pyle_model = "5";
+						Pchar.Pyle_model = "5";		
 					break;
 
 					case "Howard_Pyle":
-						Pchar.Pyle_model = "0";
+						Pchar.Pyle_model = "0";		
 					break;
 
 					case "Howard_Pyle_b":
-						Pchar.Pyle_model = "b";
+						Pchar.Pyle_model = "b";		
 					break;
 
 					case "Howard_Pyle_a":
-						Pchar.Pyle_model = "a";
+						Pchar.Pyle_model = "a";		
 					break;
 				}
 			}
@@ -64681,22 +64801,22 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.location)
 				{
 					case "new_cloister_garden":
-						Pchar.Pyle_loc = "new_cloister_garden";
+						Pchar.Pyle_loc = "new_cloister_garden";	
 					break;
 
 					case "Turks_old_fort":
-						Pchar.Pyle_loc = "Turks_old_fort";
+						Pchar.Pyle_loc = "Turks_old_fort";	
 					break;
 
 					case "Antigua_port":
-						Pchar.Pyle_loc = "Antigua_port";
+						Pchar.Pyle_loc = "Antigua_port";	
 					break;
 				}
 			}
 
 			SetModel(characterFromID("Knight"), "Huber_Hol2_17", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
 			SetModel(characterFromID("Bonnet"), "huber_Hol1_17", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
-
+		
 			ChangeCharacterAddressGroup(CharacterFromID("Knight"), "Bath_tavern", "sit", "sit9L");
 			LAi_SetSitType(CharacterFromID("Knight"));
 			ChangeCharacterAddressGroup(CharacterFromID("Bonnet"), "Bath_tavern", "sit", "sit9R");
@@ -64708,7 +64828,7 @@ void QuestComplete(string sQuestName)
 		case "defoe_map":
 			Pchar.defoe_merge_maps = "on";
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "how_did_you_know";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -64725,7 +64845,7 @@ void QuestComplete(string sQuestName)
 
 			SetModel(Pchar, "Daniel_Defoe", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
 			SetModel(characterFromID("Teach"), "bb_Teach3", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
-			RemoveCharacterEquip(characterFromID("Teach"), BLADE_ITEM_TYPE);
+			RemoveCharacterEquip(characterFromID("Teach"), BLADE_ITEM_TYPE); 
 			GiveItem2Character(characterFromID("Teach"),"bladeX4");
 			GiveItem2Character(characterFromID("Teach"),"bladeMap_Hgold");
 			EquipCharacterByItem(characterFromID("Teach"), "bladeMap_Hgold");
@@ -64741,7 +64861,7 @@ void QuestComplete(string sQuestName)
 			pchar.old.name = "Daniel";
 			pchar.old.lastname = "De Foe";
 			pchar.name = TranslateString("","Daniel");
-			pchar.lastname = TranslateString("","De Foe");
+			pchar.lastname = TranslateString("","De Foe");	
 
 			DoQuestReloadToLocation("Bath_tavern", "quest", "defoe" ,"_");
 		break;
@@ -64752,7 +64872,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(pchar);
 			PlaySound("PEOPLE\creak2.wav");
 			LAi_SetActorType(CharacterFromID("Swift"));
-
+			
 			LAi_QuestDelay("defoe_map4", 1.0);
 		break;
 
@@ -64778,9 +64898,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "defoe_map6":
-			//selfdialog
+			//selfdialog		
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Lilliput";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -64791,13 +64911,13 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\run_wood.wav");
 			LAi_SetActorType(CharacterFromID("fake_Caesar"));
 			ChangeCharacterAddressGroup(CharacterFromID("fake_Caesar"), "Bath_tavern", "tables", "table3");
-
+			
 			LAi_QuestDelay("defoe_map8", 1.0);
 		break;
 
 		case "defoe_map8":
 			PlaySound("VOICE\ENGLISH\defoe_psst.wav");
-
+	
 			LAi_QuestDelay("defoe_map9", 1.0);
 		break;
 
@@ -64805,7 +64925,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("AMBIENT\RESIDENCE\some2.wav");
 			LAi_SetActorType(CharacterFromID("Teach"));
 			LAi_ActorTurnToLocator(CharacterFromID("Teach"), "tables", "table3");
-
+			
 			LAi_QuestDelay("defoe_map10", 0.5);
 		break;
 
@@ -64840,7 +64960,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("AMBIENT\RESIDENCE\some2.wav");
 			LAi_SetSitType(CharacterFromID("Teach"));
 			characters[GetCharacterIndex("Teach")].dialog.CurrentNode = "Teach_tavern";
-
+			
 			LAi_QuestDelay("defoe_map14", 1.0);
 		break;
 
@@ -64868,7 +64988,7 @@ void QuestComplete(string sQuestName)
 
 		case "defoe_map17":
 			PlaySound("INTERFACE\paper.wav");
-			RemoveCharacterEquip(characterFromID("Teach"), BLADE_ITEM_TYPE);
+			RemoveCharacterEquip(characterFromID("Teach"), BLADE_ITEM_TYPE); 
 			TakeItemFromCharacter(characterFromID("Teach"), "bladeMap_Hgold" );
 			EquipCharacterByItem(characterFromID("Teach"), "bladeX4");
 
@@ -64893,7 +65013,7 @@ void QuestComplete(string sQuestName)
 			//from Teach dialog
 
 			PlaySound("PEOPLE\creak2.wav");
-			ChangeCharacterAddressGroup(Pchar, "Bath_tavern", "quest", "defoe_close");
+			ChangeCharacterAddressGroup(Pchar, "Bath_tavern", "quest", "defoe_close");			
 
 			LAi_QuestDelay("defoe_map21", 1.0);
 		break;
@@ -64932,7 +65052,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\pir_capR4.wav");
 			LAi_SetActorType(Pchar);
 
-			LAi_QuestDelay("defoe_map26", 3.0);
+			LAi_QuestDelay("defoe_map26", 3.0);			
 		break;
 
 		case "defoe_map26":
@@ -64950,23 +65070,23 @@ void QuestComplete(string sQuestName)
 					break;
 
 					case "4":
-						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_4", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);		
 					break;
 
 					case "5":
-						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_5", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);		
 					break;
 
 					case "0":
-						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 
 					case "b":
-						SetModel(Pchar, "Howard_Pyle_b", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_b", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 
 					case "a":
-						SetModel(Pchar, "Howard_Pyle_a", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);
+						SetModel(Pchar, "Howard_Pyle_a", Pchar.model.animation, Pchar.sex, stf(Pchar.model.height), true);	
 					break;
 				}
 			}
@@ -64982,15 +65102,15 @@ void QuestComplete(string sQuestName)
 				switch(Pchar.Pyle_loc)
 				{
 					case "new_cloister_garden":
-						DoQuestReloadToLocation("new_cloister_garden", "quest", "pyle" ,"return_to_defoe");
+						DoQuestReloadToLocation("new_cloister_garden", "quest", "pyle" ,"return_to_defoe");	
 					break;
 
 					case "Turks_old_fort":
-						DoQuestReloadToLocation("Turks_old_fort", "quest", "pyle" ,"return_to_defoe");
+						DoQuestReloadToLocation("Turks_old_fort", "quest", "pyle" ,"return_to_defoe");	
 					break;
 
 					case "Antigua_port":
-						DoQuestReloadToLocation("Antigua_port", "quest", "pyle" ,"return_to_defoe");
+						DoQuestReloadToLocation("Antigua_port", "quest", "pyle" ,"return_to_defoe");	
 					break;
 				}
 			}
@@ -65000,7 +65120,7 @@ void QuestComplete(string sQuestName)
 			//selfdialog
 
 			AddQuestRecord("Johnson", "3");
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Defoe_Johnson";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65073,7 +65193,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(Pchar, "mapBB5B");
 			TakeItemFromCharacter(Pchar, "mapBB6T");
 			TakeItemFromCharacter(Pchar, "map");
-
+			
 			LAi_QuestDelay("return_to_defoe8", 2.5);
 		break;
 
@@ -65101,7 +65221,7 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe11":
 			//from examine mapWR1 (letters) 1st time
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Saint_X";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65109,7 +65229,7 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe12":
 			//from examine mapWR1 (letters) 2nd time
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Kristiania";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65149,7 +65269,7 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe16":
 			//from examine WR2
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "draw_lines";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65178,7 +65298,7 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe20":
 			//from examine WR3
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "wrong_lines1";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65207,11 +65327,11 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe24":
 			//from examine WR4
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "wrong_lines2";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+		
 		case "return_to_defoe25":
 			//from self dialog
 
@@ -65257,7 +65377,7 @@ void QuestComplete(string sQuestName)
 		case "return_to_defoe30":
 			PostEvent("LoadSceneSound", 0);
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "right_island";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65306,12 +65426,12 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(CharacterFromID("Hands"));
 			LAi_SetOfficerType(CharacterFromID("Pell"));
 			if(IsOfficer(CharacterFromID("Caesar")))  {LAi_SetOfficerType(CharacterFromID("Caesar"));}	//hmm, wonder why this?
-
+			
 			LAi_QuestDelay("pchar_lets_go", 1.0);
 
-			Island_SetReloadEnableLocal("IslaMona", "reload_1", true);
+			Island_SetReloadEnableLocal("IslaMona", "reload_1", true);	
 			Islands[FindIsland("IslaMona")].reload.l1.goto_enable = true;
-
+		
 			Pchar.quest.prepare_Kristiania.win_condition.l1 = "location";
 			Pchar.quest.prepare_Kristiania.win_condition.l1.location = "IslaMona";
 			Pchar.quest.prepare_Kristiania.win_condition = "prepare_Kristiania";
@@ -65389,7 +65509,7 @@ void QuestComplete(string sQuestName)
 		//	ChangeCharacterAddressGroup(characterFromID("Kr_cit30"), "Kristiania_entre", "quest", "goto6");
 		//	ChangeCharacterAddressGroup(characterFromID("Kr_cit31"), "Kristiania_entre", "quest", "stay14");
 		//	ChangeCharacterAddressGroup(characterFromID("Kr_cit32"), "Kristiania_entre", "quest", "stay14");
-
+	
 			pchar.quest.end_auction.win_condition.l1 = "locator";
 			pchar.quest.end_auction.win_condition.l1.location = "Kristiania_entre";
 			pchar.quest.end_auction.win_condition.l1.locator_group = "quest";
@@ -65410,7 +65530,7 @@ void QuestComplete(string sQuestName)
 		case "end_auction1":
 			LAi_SetStayType(Pchar);
 			PlaySound("PEOPLE\wood1.wav");
-
+			
 			LAi_QuestDelay("end_auction2", 0.5);
 		break;
 
@@ -65450,7 +65570,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("Kr_cit16"));
 
 			locations[FindLocation("Kristiania_entre")].type = "silent_repair_town";
-			PostEvent("LoadSceneSound", 0);
+			PostEvent("LoadSceneSound", 0);	
 
 			Pchar.quest.Kr_characters_split_group.win_condition.l1 = "ExitFromLocation";
 			Pchar.quest.Kr_characters_split_group.win_condition.l1.location = "Kristiania_entre";
@@ -65485,7 +65605,7 @@ void QuestComplete(string sQuestName)
 				LAi_SetCitizenType(characterFromID("Kr_cit29"));
 			}
 		break;
-
+	
 		case "Kr_characters_split_group":
 			Locations[FindLocation("Kristiania_entre")].models.always.locators = "FF01_l_JRH_stop1";
 			LAi_LocationFantomsGen(&locations[FindLocation("Kristiania_entre")], true);
@@ -65607,7 +65727,7 @@ void QuestComplete(string sQuestName)
 			if(CheckAttribute(Pchar, "BB_chapel") && Pchar.BB_chapel == "knowledge")
 			{
 				AddQuestRecord("KR_amulet","1");
-			}
+			}	
 		break;
 
 		case "KR_letter_info1":
@@ -65639,7 +65759,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "BB_tower_found":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "BB_tower_found";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65673,7 +65793,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("Kri_soldier_13"));
 			Characters[GetCharacterIndex("Kri_soldier_13")].dialog.CurrentNode  = "First time";
 		break;
-
+	
 		case "KR_chapel":
 			Pchar.BB_chapel = "knowledge";
 
@@ -65723,7 +65843,7 @@ void QuestComplete(string sQuestName)
 			Characters[GetCharacterIndex("Kr_cit22")].dialog.CurrentNode  = "townhall_neutral";
 			Characters[GetCharacterIndex("Kr_cit26")].dialog.CurrentNode  = "townhall_neutral";
 		break;
-//p?r h?r value = 0
+//pär här value = 0
 		case "auction_list_check":
 			if(CheckCharacterItem(Pchar,"auction_list_roll"))
 			{
@@ -65754,12 +65874,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "salute1":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "quest", "stay6");	//was reload2
 		break;
 
 		case "salute2":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "salute";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -65804,7 +65924,7 @@ void QuestComplete(string sQuestName)
 			if(CheckCharacterItem(Pchar,"doc60A"))
 			{
 		//		PlaySound("INTERFACE\closed_door.wav");
-		//		ChangeCharacterAddressGroup(CharacterFromID("Trafvenfeldt"), "Kristiania_townhall", "reload", "reload2");
+		//		ChangeCharacterAddressGroup(CharacterFromID("Trafvenfeldt"), "Kristiania_townhall", "reload", "reload2");				
 
 				LAi_QuestDelay("Anna_Helena", 2.0);			//was 0.5
 				LAi_QuestDelay("KR_letter_info4", 0.01);		//was 2.0
@@ -65819,7 +65939,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\closed_door.wav");
 			ChangeCharacterAddressGroup(CharacterFromID("Trafvenfeldt"), "Kristiania_townhall", "reload", "reload2");
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload2");
 
 			LAi_QuestDelay("pchar_ohoh", 1.0);
@@ -65878,9 +65998,9 @@ void QuestComplete(string sQuestName)
 
 		case "fort_unlock":
 			PlaySound("VOICE\ENGLISH\gm_crew1A.wav");
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "goto", "goto36");
-			LAi_SetActorType(CharacterFromID("Kri_dragoon_5"));
+			LAi_SetActorType(CharacterFromID("Kri_dragoon_5"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Kri_dragoon_5"), "box", "box1");
 
 			LAi_QuestDelay("fort_unlock1", 1.0);
@@ -65901,11 +66021,11 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Kri_dragoon_5"), "Kristiania_center", "goto", "goto36");
 			LAi_SetStayType(characterFromID("Kri_dragoon_5"));
 			PlaySound("VOICE\ENGLISH\gm_crew1B.wav");
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload19");
 
 			LAi_QuestDelay("pchar_playertype", 0.5);
-
+			
 			LAi_QuestDelay("BB_tower_top_backloop", 0.1);
 			LAi_QuestDelay("BB_upper_cave_backloop", 0.1);
 			LAi_QuestDelay("BB_lower_cave_backloop", 0.1);
@@ -65932,7 +66052,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.KRF_change2B.win_condition.l1.location = "Kristiania_fort";
 			pchar.quest.KRF_change2B.win_condition.l1.locator_group = "quest";
 			pchar.quest.KRF_change2B.win_condition.l1.locator = "change2B";
-			pchar.quest.KRF_change2B.win_condition = "KRF_change2B";
+			pchar.quest.KRF_change2B.win_condition = "KRF_change2B";	
 
 			pchar.quest.at_fort_tower.win_condition.l1 = "locator";
 			pchar.quest.at_fort_tower.win_condition.l1.location = "Kristiania_fort";
@@ -65970,7 +66090,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.KRF_change2B.win_condition.l1.location = "Kristiania_fort";
 			pchar.quest.KRF_change2B.win_condition.l1.locator_group = "quest";
 			pchar.quest.KRF_change2B.win_condition.l1.locator = "change2B";
-			pchar.quest.KRF_change2B.win_condition = "KRF_change2B";
+			pchar.quest.KRF_change2B.win_condition = "KRF_change2B";	
 		break;
 
 		case "KRF_change1":
@@ -65996,13 +66116,13 @@ void QuestComplete(string sQuestName)
 
 		case "KRF_change1_up":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change1_up");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 
 		case "KRF_change1_down":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change1_down");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 
@@ -66030,13 +66150,13 @@ void QuestComplete(string sQuestName)
 
 		case "KRF_change2A_up":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change2A_up");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 
 		case "KRF_change2A_down":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change2A_down");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 
@@ -66064,13 +66184,13 @@ void QuestComplete(string sQuestName)
 
 		case "KRF_change2B_up":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change2B_up");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 
 		case "KRF_change2B_down":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_fort", "quest", "change2B_down");
-
+			
 			LAi_QuestDelay("KRF_changes", 0.01);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -66097,7 +66217,7 @@ void QuestComplete(string sQuestName)
 
 		case "KR_center_backloop1A":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_center", "goto", "goto43");
-
+			
 			LAi_QuestDelay("KR_center_backloop1", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -66111,7 +66231,7 @@ void QuestComplete(string sQuestName)
 
 		case "KR_center_backloop2A":
 			ChangeCharacterAddressGroup(Pchar, "Kristiania_center", "goto", "goto44");
-
+			
 			LAi_QuestDelay("KR_center_backloop2", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -66125,7 +66245,7 @@ void QuestComplete(string sQuestName)
 
 		case "KR_lower_backloopA":
 			ChangeCharacterAddressGroup(Pchar, "Nueva_Suecia_lower_town", "goto", "goto202");
-
+			
 			LAi_QuestDelay("KR_lower_backloop", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -66209,7 +66329,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Kristiania_shipyard_owner"), "Nueva_Suecia_lower_town", "quest", "lodbrok");
 			Pchar.BB_shya = "knowledge";
 			AddQuestRecord("KR_flagchest","1");
-
+	
 			LAi_SetActorType(characterFromID("Kristiania_shipyard_owner"));
 			LAi_ActorDialog(characterFromID("Kristiania_shipyard_owner"), pchar, "", 1.5, 1.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Kristiania_shipyard_owner"));
@@ -66220,7 +66340,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(Pchar, "goto", "goto89", "NS_locked_shipyard_done1", 4.0);
 
-			ChangeCharacterAddressGroup(CharacterFromID("Kristiania_shipyard_owner"), "none", "", "");
+			ChangeCharacterAddressGroup(CharacterFromID("Kristiania_shipyard_owner"), "none", "", "");	
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box8", 0.0001);
 			Locations[FindLocation("Nueva_Suecia_lower_town")].locators_radius.box.box8 = 0.0001;
 		break;
@@ -66233,7 +66353,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "NS_locked_shipyard_done2":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "locked_shipyard";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -66242,7 +66362,7 @@ void QuestComplete(string sQuestName)
 			Pchar.NS_low_bell = "ready";
 			LAi_SetPlayerType(Pchar);
 		break;
-
+	
 		case "NS_low_bell_sound":
 			PlaySound("INTERFACE\bell2.wav");
 		break;
@@ -66254,7 +66374,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("Kristiania_shipyard_owner"), "goto", "goto89", "NS_open_shipyard1", 4.0);
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "goto89");
-			Locations[FindLocation("Nueva_Suecia_lower_town")].reload.l17.disable = 0;	//to shipyard
+			Locations[FindLocation("Nueva_Suecia_lower_town")].reload.l17.disable = 0;	//to shipyard	
 		break;
 
 		case "NS_open_shipyard1":
@@ -66267,15 +66387,15 @@ void QuestComplete(string sQuestName)
 		case "NS_open_shipyard2":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "Nueva_Suecia_lower_town", "quest", "shipyard");
-			PlaySound("PEOPLE\jump.wav");
-
+			PlaySound("PEOPLE\jump.wav");	
+			
 			LAi_QuestDelay("shipyard_owner_attacks", 1.0);
 
 			pchar.quest.NS_open_shipyard3.win_condition.l1 = "location";
 			pchar.quest.NS_open_shipyard3.win_condition.l1.location = "Kristiania_shipyard";
 			pchar.quest.NS_open_shipyard3.win_condition = "NS_open_shipyard3";
 		break;
-
+	
 		case "shipyard_owner_attacks":
 			ChangeCharacterAddressGroup(CharacterFromID("Kristiania_shipyard_owner"), "Nueva_Suecia_lower_town", "quest", "attack");
 			LAi_ActorAttack(CharacterFromID("Kristiania_shipyard_owner"), Pchar, "");
@@ -66292,15 +66412,15 @@ void QuestComplete(string sQuestName)
 
 		case "shipyard_owner_outside":
 			ChangeCharacterAddressGroup(CharacterFromID("Kristiania_shipyard_owner"), "Kristiania_shipyard", "goto", "outside");
-			LAi_SetActorType(CharacterFromID("Kristiania_shipyard_owner"));
+			LAi_SetActorType(CharacterFromID("Kristiania_shipyard_owner"));	
 			LAi_ActorTurnToLocator(CharacterFromID("Kristiania_shipyard_owner"), "goto", "goto1");
 		break;
 
 		case "NS_open_shipyard3":
 			PlaySound("INTERFACE\key_lock.wav");
-			if(!LAi_IsDead(Pchar))
-			{
-				LAi_SetPlayerType(Pchar);
+			if(!LAi_IsDead(Pchar)) 
+			{ 
+				LAi_SetPlayerType(Pchar); 
 			}
 			Locations[FindLocation("Nueva_Suecia_lower_town")].reload.l17.disable = 1;
 			Pchar.cardinal = "start";
@@ -66329,12 +66449,12 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("count_auction_items", 0.5);
 		break;
 
-		case "cardinal_start":
+		case "cardinal_start":	
 			LAi_SetActorType(characterFromID("Kr_cardinal"));
 			LAi_ActorDialog(characterFromID("Kr_cardinal"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Kr_cardinal"));
 			Characters[GetCharacterIndex("Kr_cardinal")].dialog.CurrentNode  = "where_is_he";
-		break;
+		break;	
 
 		case "where_is_he_done":
 			LAi_SetStayType(Pchar);
@@ -66351,13 +66471,13 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(CharacterFromID("Kr_priest1"), "quest", "church_inside", "_", 4.0);
 			LAi_ActorGoToLocator(CharacterFromID("Kr_priest2"), "quest", "church_inside", "_", 4.0);
 			LAi_ActorGoToLocator(CharacterFromID("Kr_cardinal"), "quest", "church_inside", "_", 4.0);
-
+		
 			AddQuestRecord("KR_amulet","6");
 			AddQuestRecord("KR_amulet","7");
 
 			LAi_QuestDelay("pchar_playertype", 3.0);
 			LAi_QuestDelay("cardinal_to_church", 4.0);
-		break;
+		break;	
 
 		case "cardinal_to_church":
 			ChangeCharacterAddressGroup(CharacterFromID("KR_cardinal"), "Kristiania_cathedral", "goto", "goto12");
@@ -66376,7 +66496,7 @@ void QuestComplete(string sQuestName)
 
 //---------------------------------------------------------------------------------------------------
 //church
-		case "reset_Pyle_model":
+		case "reset_Pyle_model": 
 			GetCharacterPos(Pchar, &u, &v, &w);
 			CreateParticleSystem("gunfire_black" , u, v+1.5, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("gunfire_black" , u, v+1.3, w, 0.0, 0.0, 0.0, sti(20) );
@@ -66386,7 +66506,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("reset_Pyle_model1", 0.5);
 		break;
 
-		case "reset_Pyle_model1":
+		case "reset_Pyle_model1": 
 			LAi_SetPoorType(Pchar);
 			PlaySound("PEOPLE\jump.wav");
 			PlaySound("PEOPLE\step_echo1.wav");
@@ -66401,9 +66521,9 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation(Pchar.location)].models.always.l2 = "";
 
 			Locations[FindLocation("Kristiania_cathedral")].image = "";
-			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "place_switch_button1");
+			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "place_switch_button1");	
 		break;
-
+	
 		case "place_switch_button1":
 			Locations[FindLocation("Kristiania_cathedral")].image = "Inside_Church_3.tga";
 
@@ -66416,7 +66536,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.see_oriel.win_condition.l1.locator_group = "quest";
 			pchar.quest.see_oriel.win_condition.l1.locator = "see_oriel";
 			pchar.quest.see_oriel.win_condition = "see_oriel";
-		break;
+		break;		
 //see oriel
 		case "remove_cardinal":
 			locations[FindLocation("Kristiania_cathedral")].type = "Kristiania_church";
@@ -66432,12 +66552,12 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToLocator(Pchar, "goto", "oriel");
 
 			LAi_QuestDelay("see_oriel1", 0.7);
-		break;
+		break;	
 
 		case "see_oriel1":
 			AddQuestRecord("KR_tricorn","2");
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "see_oriel";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -66445,7 +66565,7 @@ void QuestComplete(string sQuestName)
 		case "KR_church_close_door":
 			//from SL_utils
 			Locations[FindLocation("Kristiania_cathedral")].image = "";
-			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "KR_church_close_door1");
+			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "KR_church_close_door1");			
 		break;
 
 		case "KR_church_close_door1":
@@ -66456,7 +66576,7 @@ void QuestComplete(string sQuestName)
 		case "KR_church_open_door":
 			//from SL_utils
 			Locations[FindLocation("Kristiania_cathedral")].image = "";
-			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "KR_church_open_door1");
+			DoQuestReloadToLocation("Kristiania_cathedral", "goto", "see_button", "KR_church_open_door1");			
 		break;
 
 		case "KR_church_open_door1":
@@ -66509,7 +66629,7 @@ void QuestComplete(string sQuestName)
 			AddQuestRecord("KR_amulet","9");
 			CloseQuestHeader("KR_amulet");
 			Pchar.auction_items = sti(Pchar.auction_items) + 1;
-
+			
 			LAi_QuestDelay("count_auction_items", 0.5);
 		break;
 
@@ -66519,7 +66639,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(CharacterFromID("JRH"), "Kristiania_jungle_house", "goto", "jrh");
 				LAi_SetStayType(characterFromID("JRH"));
 				Characters[GetCharacterIndex("JRH")].dialog.CurrentNode  = "red_house";
-
+				
 				AddQuestRecord("KR_logbook","6");
 				CloseQuestHeader("KR_logbook");
 				Pchar.auction_items = sti(Pchar.auction_items) + 1;
@@ -66567,7 +66687,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "NS_upper_town_officers":
-			if(IsOfficer(CharacterFromID("Hands")))
+			if(IsOfficer(CharacterFromID("Hands")))			
 			{
 			//	AddPassenger(chr, characterFromID("Hands"), 0);
 			//	SetOfficersIndex(chr, 1, getCharacterIndex("Hands"));
@@ -66599,7 +66719,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetSitType(Pchar);
 			PlaySound("PEOPLE\recoil.wav");
 			ChangeCharacterAddressGroup(Pchar, "Nueva_Suecia_upper_town", "box", "box4");
-
+			
 			LAi_QuestDelay("pchar_playertype", 0.25);
 		break;
 
@@ -66607,7 +66727,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetSitType(Pchar);
 			PlaySound("PEOPLE\jump_roof.wav");
 			ChangeCharacterAddressGroup(Pchar, "Nueva_Suecia_upper_town", "box", "box5");
-
+			
 			LAi_QuestDelay("pchar_playertype", 0.25);
 			LAi_QuestDelay("NS_up_turn_to_box6", 0.5);
 		break;
@@ -66623,7 +66743,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetSitType(Pchar);
 			PlaySound("PEOPLE\recoil.wav");
 			ChangeCharacterAddressGroup(Pchar, "Nueva_Suecia_upper_town", "box", "box8");
-
+			
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
 
@@ -66642,7 +66762,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "shutter_selfdialog":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "NS_up_shutter";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -66652,7 +66772,7 @@ void QuestComplete(string sQuestName)
 			{
 				return;
 			}
-			else
+			else 
 			{
 				PlaySound("PEOPLE\jump.wav");
 				LAi_SetActorType(Pchar);
@@ -66679,7 +66799,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "beam_selfdialog":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "NS_up_beam";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -66704,7 +66824,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
-
+		
 		case "NS_up_turn_to_box32":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "box", "box32");
@@ -66740,7 +66860,7 @@ void QuestComplete(string sQuestName)
 
 			DoQuestReloadToLocation("Nueva_Suecia_upper_town", "reload", "reload3", "_");
 		break;
-
+	
 		case "check_Teach_hat":
 			if(CheckCharacterItem(Pchar,"BB_hatA1"))
 			{
@@ -66862,7 +66982,7 @@ void QuestComplete(string sQuestName)
 		case "BB_island1_ground_turn_around1":
 			LAi_SetPlayerType(Pchar);
 
-			if(Pchar.model == "Skel4" || Pchar.model == "SkelZ")
+			if(Pchar.model == "Skel4" || Pchar.model == "SkelZ") 
 			{
 				if(CheckAttribute(Pchar, "officers_running") && Pchar.officers_running == "done")
 				{
@@ -66873,7 +66993,7 @@ void QuestComplete(string sQuestName)
 					Pchar.officers_running = "done";
 					PlaySound("OBJECTS\VOICES\DEAD\male\dead0.wav");
 
-					LAi_QuestDelay("pchar_aah", 1.0);
+					LAi_QuestDelay("pchar_aah", 1.0);	
 					LAi_QuestDelay("pchar_lets_go", 2.0);
 					LAi_QuestDelay("officers_run", 2.5);
 				}
@@ -66887,7 +67007,7 @@ void QuestComplete(string sQuestName)
 		case "key_unlock2":
 			PlaySound("INTERFACE\key_unlock2.wav");
 		break;
-
+		
 		case "BB_island1_unlock_tunnel":
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(pchar, "bladeBB");
@@ -66904,10 +67024,10 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_island1")].image = "wr_Kr_swamp.tga";
 			Pchar.BB_isl1_box4 = "off";
 			Pchar.BB_isl1_tunnel = "open";
-
+	
 			LAi_QuestDelay("BB_island1_unlock_tunnel2", 1.5);
 		break;
-
+	
 		case "BB_island1_unlock_tunnel2":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "turn");
@@ -66933,7 +67053,7 @@ void QuestComplete(string sQuestName)
 					RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 					EquipCharacterByItem(Pchar, "bladeX4");
 					EquipCharacterByItem(Pchar, "pistolbladeBB");
-				}
+				}	
 			}
 		break;
 	//--------------------------------------------------------------------------------------------
@@ -66958,7 +67078,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_island2")].image = "wr_BB_tower.tga";
 		//	Pchar.BB_isl2_box7 = "off";		//no should still be "on"
 			Pchar.BB_tower_entrance = "open";
-
+	
 			LAi_QuestDelay("pchar_playertype", 1.5);
 			LAi_QuestDelay("BB_island2_unlock_tower2", 1.5);
 		break;
@@ -66979,7 +67099,7 @@ void QuestComplete(string sQuestName)
 
 		case "BB_tower_top_backloop_A":
 			ChangeCharacterAddressGroup(Pchar, "BB_tower", "goto", "reload4");
-
+			
 			LAi_QuestDelay("BB_tower_top_backloop", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -66995,7 +67115,7 @@ void QuestComplete(string sQuestName)
 		case "BB_tower_backloop_A":
 			PlaySound("INTERFACE\door_locked2.wav");
 			ChangeCharacterAddressGroup(Pchar, "BB_tower", "goto", "stop");			//was goto3
-
+			
 			LAi_QuestDelay("BB_tower_backloop", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -67009,7 +67129,7 @@ void QuestComplete(string sQuestName)
 
 		case "BB_upper_cave_backloop_A":
 			ChangeCharacterAddressGroup(Pchar, "BB_upper_cave", "goto", "goto3");
-
+			
 			LAi_QuestDelay("BB_upper_cave_backloop", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -67024,7 +67144,7 @@ void QuestComplete(string sQuestName)
 		case "BB_lower_cave_backloop_A":
 			PlaySound("INTERFACE\locked_window.wav");
 			ChangeCharacterAddressGroup(Pchar, "BB_lower_cave", "goto", "goto3");
-
+			
 			LAi_QuestDelay("BB_lower_cave_backloop", 0.1);
 		break;
 //---------------------------------------------------------------------------------------------------
@@ -67038,7 +67158,7 @@ void QuestComplete(string sQuestName)
 
 		case "BB_lower_cave_deathtrap1":
 			PlaySound("PEOPLE\recoil.wav");
-
+			
 			LAi_QuestDelay("BB_lower_cave_deathtrap2", 0.5);
 		break;
 
@@ -67051,33 +67171,33 @@ void QuestComplete(string sQuestName)
 		case "BB_lower_cave_deathtrap3":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead1.wav");
 
-			LAi_QuestDelay("BB_lower_cave_deathtrap4", 0.5);
+			LAi_QuestDelay("BB_lower_cave_deathtrap4", 0.5);			
 		break;
 
 		case "BB_lower_cave_deathtrap4":
 			PlaySound("OBJECTS\DUEL\pistol_bbus.wav");
 			CreateParticleSystem("gunfire" , -5.7, 1.9, -4.5, -5.7, 1.9, -4.5, sti(20) );
 
-			LAi_QuestDelay("BB_lower_cave_deathtrap5", 0.3);
+			LAi_QuestDelay("BB_lower_cave_deathtrap5", 0.3);			
 		break;
 
 		case "BB_lower_cave_deathtrap5":
 			PlaySound("OBJECTS\DUEL\pistol_bbus.wav");
 			CreateParticleSystem("gunfire" , -4.0, 1.9, -4.5, -4.0, 1.9, -4.5, sti(20) );
-
+			
 			if(CheckAttribute(Pchar, "quest.escape_trap") && Pchar.quest.escape_trap == "yes")
 			{
 				Pchar.quest.escape_trap = "no_escape";
 			}
 			else
 			{
-				if(Pchar.model == "Skel4" || Pchar.model == "SkelZ")
+				if(Pchar.model == "Skel4" || Pchar.model == "SkelZ") 
 				{
 					//you are immortal already
 				}
 				else LAi_KillCharacter(Pchar);
-			}
-		break;
+			}			
+		break; 
 
 		case "trap_box14_enabled":
 			Pchar.trap_box14 = "enabled";
@@ -67186,14 +67306,14 @@ void QuestComplete(string sQuestName)
 //------------------------------------------------------------------------------------------------------------------------
 		case "place_grotto_boom":
 			ChangeCharacterAddressGroup(Pchar, "BB_upper_cave", "goto", "pole");
-
+		
 			LAi_QuestDelay("place_grotto_boom0", 0.5);
 		break;
 
 		case "place_grotto_boom0":
 			LAi_SetPlayerType(Pchar);
 			LAi_SetFightMode(Pchar, true);
-
+		
 			LAi_QuestDelay("place_grotto_boom1", 1.0);
 		break;
 
@@ -67203,14 +67323,14 @@ void QuestComplete(string sQuestName)
 
 			TakeItemFromCharacter(pchar, "bladeboom");
 			PlaySound("PEOPLE\creak2.wav");
-
+		
 			LAi_QuestDelay("place_grotto_boom2", 0.5);
 		break;
 
 		case "place_grotto_boom2":
 			Locations[FindLocation("BB_upper_cave")].image = "";
 			Locations[FindLocation(Pchar.location)].models.always.locators = "grotto1_l_Hup";
-			DoQuestReloadToLocation("BB_upper_cave", "goto", "pole", "place_grotto_boom3");
+			DoQuestReloadToLocation("BB_upper_cave", "goto", "pole", "place_grotto_boom3");	
 		break;
 
 		case "place_grotto_boom3":
@@ -67227,13 +67347,13 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\lever_placed.wav");
 			Pchar.quest.grotto_lever = "up";
 			Locations[FindLocation("BB_upper_cave")].models.always.locators = "grotto1_l_Hdo_Lup";
-
+			
 			LAi_QuestDelay("place_upper_cave_lever2", 0.5);
 		break;
 
 		case "place_upper_cave_lever2":
 			Locations[FindLocation("BB_upper_cave")].image = "";
-			DoQuestReloadToLocation("BB_upper_cave", "goto", "box7", "place_upper_cave_lever3");
+			DoQuestReloadToLocation("BB_upper_cave", "goto", "box7", "place_upper_cave_lever3");	
 		break;
 
 		case "place_upper_cave_lever3":
@@ -67265,7 +67385,7 @@ void QuestComplete(string sQuestName)
 		case "au_revoir":
 			PlaySound("VOICE\ENGLISH\Fre_m_c_049.wav");
 		break;
-
+		
 //------------------------------------------------------------------------------------------------------------------------
 		case "lower_cave_water_in":
 			//from itemlogic
@@ -67300,7 +67420,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("return_to_uppercave2", 1.0);
 		break;
-
+	
 		case "return_to_uppercave2":
 			LAi_SetPlayerType(Pchar);
 		break;
@@ -67356,7 +67476,7 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("INTERFACE\elevator_gate.wav");
 			}
-
+			
 			if(Locations[FindLocation("BB_lower_cave")].models.always.l1 == "bars_up")
 			{
 				PlaySound("INTERFACE\rusty.wav");
@@ -67445,7 +67565,7 @@ void QuestComplete(string sQuestName)
 
 		case "book73_check":
 			Pchar.book73_check = "on";
-
+		
 			if(CheckCharacterItem(Pchar,"book73_closed"))
 			{
 				PlaySound("INTERFACE\important_item.wav");
@@ -67519,7 +67639,7 @@ void QuestComplete(string sQuestName)
 					{
 						PlaySound("PEOPLE\counter_close.wav");
 						locations[FindLocation("BB_lower_cave")].reload.l1.disable = 1;	//to upper cave
-
+					
 						LAi_QuestDelay("wand_and_censer_check1", 1.0);
 					}
 				}
@@ -67546,7 +67666,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("blast_dirt" , 7.5, 0.7, 14.4, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("blast_dirt" , 7.0, 0.4, 14.0, 0.0, 0.0, 0.0, sti(20) );
 			Locations[FindLocation("BB_lower_cave")].image = "wr_BB_lower_cave.tga";
-
+			
 			LAi_QuestDelay("wand_and_censer_check4", 1.0);
 
 				Pchar.hell_cave = "locked";	//mummies
@@ -67573,10 +67693,10 @@ void QuestComplete(string sQuestName)
 
 			locations[FindLocation(Pchar.location)].box4.items.icollection = 1;
 			locations[FindLocation(Pchar.location)].box4.items.idol = 1;
-
+			
 			locations[FindLocation(Pchar.location)].box6.items.animists_amulet = 1;
 			locations[FindLocation(Pchar.location)].box6.items.book62 = 1;
-
+		
 			//MUMMIES
 			pchar.quest.hell_cave10.win_condition.l1 = "locator";
 			pchar.quest.hell_cave10.win_condition.l1.location = "bb_burning_cave";
@@ -67626,14 +67746,14 @@ void QuestComplete(string sQuestName)
 
 		case "burning_cave_start3":
 			//CONQUISTADORES to guillotine
-
+			
 			LAi_SetStayType(Pchar);
 
 			if(CheckCharacterItem(Pchar,"potion1") || CheckCharacterItem(Pchar,"potion2") || CheckCharacterItem(Pchar,"potion3") || CheckCharacterItem(Pchar,"potion4")
 		        || CheckCharacterItem(Pchar,"potionrum") || CheckCharacterItem(Pchar,"potionwine")
 			|| CheckCharacterItem(Pchar,"potionwine2") || CheckCharacterItem(Pchar,"cognac")) PlaySound("INTERFACE\glass2.wav");
 
-			if(CheckCharacterItem(Pchar,"medical1") || CheckCharacterItem(Pchar,"medical2")
+			if(CheckCharacterItem(Pchar,"medical1") || CheckCharacterItem(Pchar,"medical2") 
 		        || CheckCharacterItem(Pchar,"tobacco") || CheckCharacterItem(Pchar,"sewing_kit")) PlaySound("PEOPLE\clothes4.wav");
 
 			if(CheckCharacterItem(Pchar,"potion1") || CheckCharacterItem(Pchar,"potion2") || CheckCharacterItem(Pchar,"potion3") || CheckCharacterItem(Pchar,"potion4")
@@ -67664,7 +67784,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.hell_gate1R.win_condition.l1.locator_group = "quest";
 			pchar.quest.hell_gate1R.win_condition.l1.locator = "gate1R";
 			pchar.quest.hell_gate1R.win_condition = "hell_gate1R";
-
+		
 		//----------------------------------------------------------------------------------
 
 			pchar.quest.hell_gate2M.win_condition.l1 = "locator";
@@ -67740,7 +67860,7 @@ void QuestComplete(string sQuestName)
 
 		case "hell_gate5_hole1":
 			//from dialog & from q_r below
-
+	
 			pchar.quest.burning_cave_start5.win_condition.l1 = "locator";
 			pchar.quest.burning_cave_start5.win_condition.l1.location = "bb_burning_cave";
 			pchar.quest.burning_cave_start5.win_condition.l1.locator_group = "goto";
@@ -67752,7 +67872,7 @@ void QuestComplete(string sQuestName)
 			//DEMONS
 
 			LAi_QuestDelay("gate5_large_radius", 0.001);
-
+	
 			pchar.quest.hell_gate5M.win_condition.l1 = "locator";
 			pchar.quest.hell_gate5M.win_condition.l1.location = "bb_burning_cave";
 			pchar.quest.hell_gate5M.win_condition.l1.locator_group = "quest";
@@ -67811,7 +67931,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 //------------------------------------------------------------------------------------------------------------------------
-
+	
 		case "BB_gold_dust":
 			LAi_SetPlayerType(Pchar);
 			PlaySound("PEOPLE\clothes1.wav");
@@ -67820,7 +67940,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("BB_gold_dust1", 1.0);
 		break;
-
+		
 		case "BB_gold_dust1":
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 			Logit(TranslateString("","No, the six Sacks with Gold Dust are too heavy - the crew will take them to the ship."));
@@ -67833,7 +67953,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("BB_cherub1", 0.5);
 		break;
-
+		
 		case "BB_cherub1":
 			PlaySound("VOICE\ENGLISH\blaze_puh.wav");
 			Logit(TranslateString("","No, the Idol is too heavy - the crew will take it to the ship."));
@@ -67855,7 +67975,7 @@ void QuestComplete(string sQuestName)
 				EquipCharacterByItem(Pchar, "bladepainting");
 				SetLocatorRadius(locations[FindLocation(pchar.location)], "randitem", "randitem23", 0.01);
 				Locations[FindLocation(pchar.location)].locators_radius.randitem.randitem23 = 0.01;
-
+				
 				LAi_QuestDelay("book71_enabled", 1.0);
 				LAi_QuestDelay("pchar_oh", 1.0);
 			}
@@ -67903,7 +68023,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "guard10_back");
 
 				LAi_QuestDelay("hell_cave10_start", 0.1);
-				LAi_QuestDelay("to_guard10_back", 0.2);
+				LAi_QuestDelay("to_guard10_back", 0.2);	
 			}
 		break;
 
@@ -67929,7 +68049,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "guard11_back");
 
 				LAi_QuestDelay("hell_cave11_start", 0.1);
-				LAi_QuestDelay("to_guard11_back", 0.2);
+				LAi_QuestDelay("to_guard11_back", 0.2);	
 			}
 		break;
 
@@ -67972,9 +68092,9 @@ void QuestComplete(string sQuestName)
 			{
 				LAi_SetStayType(Pchar);
 				ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "mummyS_back");
-
+				
 				LAi_QuestDelay("hell_caveMS_start", 0.1);
-				LAi_QuestDelay("to_guard10_back", 0.2);		//10: dialog
+				LAi_QuestDelay("to_guard10_back", 0.2);		//10: dialog	
 			}
 		break;
 
@@ -68044,12 +68164,12 @@ void QuestComplete(string sQuestName)
 						LAi_QuestDelay("hell_gate1M_start", 0.1);
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate1M_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate1M_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard13"));
 			LAi_ActorDialog(characterFromID("devil_guard13"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard13"));
@@ -68129,12 +68249,12 @@ void QuestComplete(string sQuestName)
 						LAi_QuestDelay("hell_gate1L_start", 0.1);
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate1L_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate1L_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard13"));
 			LAi_ActorDialog(characterFromID("devil_guard13"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard13"));
@@ -68214,7 +68334,7 @@ void QuestComplete(string sQuestName)
 						LAi_QuestDelay("hell_gate1R_start", 0.1);
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate1R_back":
@@ -68319,7 +68439,7 @@ void QuestComplete(string sQuestName)
 
 		case "to_gate2M_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate2M_back");
-
+			
 			if(Characters[GetCharacterIndex("devil_guard1")].location == "bb_burning_cave")
 			{
 				LAi_SetActorType(characterFromID("devil_guard2"));
@@ -68336,7 +68456,7 @@ void QuestComplete(string sQuestName)
 					}
 				}
 			}
-			else
+			else 
 			{
 				PlaySound("VOICE\ENGLISH\blaze_sigh.wav");
 				LAi_SetPlayerType(Pchar);
@@ -68426,7 +68546,7 @@ void QuestComplete(string sQuestName)
 					}
 				}
 			}
-			else
+			else 
 			{
 				PlaySound("VOICE\ENGLISH\blaze_sigh.wav");
 				LAi_SetPlayerType(Pchar);
@@ -68516,11 +68636,11 @@ void QuestComplete(string sQuestName)
 					}
 				}
 			}
-			else
+			else 
 			{
 				PlaySound("VOICE\ENGLISH\blaze_sigh.wav");
 				LAi_SetPlayerType(Pchar);
-			}
+			}		
 		break;
 
 		case "gift_inca_2":
@@ -68643,7 +68763,7 @@ void QuestComplete(string sQuestName)
 						locations[FindLocation("BB_burning_cave")].type = "burning_cave";
 						PostEvent("LoadSceneSound", 0.1);
 						PlaySound("AMBIENT\JAIL\jail_door2.wav");
-
+	
 						LAi_QuestDelay("hell_gate3L_start", 0.1);
 					break;
 
@@ -68664,11 +68784,11 @@ void QuestComplete(string sQuestName)
 
 		case "to_gate3L_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate3L_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard6"));
 			LAi_ActorDialog(characterFromID("devil_guard6"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard6"));
-			Characters[GetCharacterIndex("devil_guard6")].dialog.CurrentNode  = "password";
+			Characters[GetCharacterIndex("devil_guard6")].dialog.CurrentNode  = "password";			
 		break;
 
 		case "hell_gate3R_start":
@@ -68717,18 +68837,18 @@ void QuestComplete(string sQuestName)
 						LAi_QuestDelay("hell_gate3R_start", 0.1);
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate3R_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate3R_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard5"));
 			LAi_ActorDialog(characterFromID("devil_guard5"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard5"));
 			Characters[GetCharacterIndex("devil_guard5")].dialog.CurrentNode  = "password";
 		break;
-
+	
 	//.................................................................................................
 
 		case "hell_gate4M_start":
@@ -68844,7 +68964,7 @@ void QuestComplete(string sQuestName)
 
 		case "to_gate4L_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate4L_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard3"));
 			LAi_ActorDialog(characterFromID("devil_guard3"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard3"));
@@ -68856,7 +68976,7 @@ void QuestComplete(string sQuestName)
 					case "password": Characters[GetCharacterIndex("devil_guard3")].dialog.CurrentNode  = "bribing"; break;
 					case "search_gift": Characters[GetCharacterIndex("devil_guard3")].dialog.CurrentNode  = "black_magic"; break;
 				}
-			}
+			}		
 		break;
 
 		case "hell_gate4R_start":
@@ -68903,12 +69023,12 @@ void QuestComplete(string sQuestName)
 						//nothing happens, no more checkpoints
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate4R_back":
 			ChangeCharacterAddressGroup(Pchar, "bb_burning_cave", "quest", "gate4R_back");
-
+			
 			LAi_SetActorType(characterFromID("devil_guard4"));
 			LAi_ActorDialog(characterFromID("devil_guard4"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("devil_guard4"));
@@ -68935,7 +69055,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\key_unlock2.wav");
 			LAi_SetStayType(Pchar);
 			Pchar.hell_gate4 = "done";
-
+		
 			Locations[FindLocation("BB_burning_cave")].models.always.locators = "locator3_GD_open";
 			locations[FindLocation("BB_burning_cave")].models.day.charactersPatch = "walk_patch_LONG";
 			locations[FindLocation("BB_burning_cave")].models.night.charactersPatch = "walk_patch_LONG";
@@ -68970,7 +69090,7 @@ void QuestComplete(string sQuestName)
 				{
 					case "locked":
 						LAi_SetStayType(Pchar);
-
+		
 						LAi_QuestDelay("to_gate5M_back", 0.2);
 					break;
 
@@ -69023,7 +69143,7 @@ void QuestComplete(string sQuestName)
 				{
 					case "locked":
 						LAi_SetStayType(Pchar);
-
+			
 						LAi_QuestDelay("to_gate5L_back", 0.2);
 					break;
 
@@ -69058,7 +69178,7 @@ void QuestComplete(string sQuestName)
 					case "password": Characters[GetCharacterIndex("devil_guard7")].dialog.CurrentNode  = "bribing"; break;
 					case "search_gift": Characters[GetCharacterIndex("devil_guard7")].dialog.CurrentNode  = "contracts"; break;
 				}
-			}
+			}		
 		break;
 
 		case "hell_gate5LL":
@@ -69076,7 +69196,7 @@ void QuestComplete(string sQuestName)
 				{
 					case "locked":
 						LAi_SetStayType(Pchar);
-
+			
 						LAi_QuestDelay("to_gate5LL_back", 0.2);
 					break;
 
@@ -69088,7 +69208,7 @@ void QuestComplete(string sQuestName)
 
 					case "search_gift":
 						LAi_SetStayType(Pchar);
-
+						
 						LAi_QuestDelay("to_gate5LL_back", 0.2);
 					break;
 
@@ -69111,7 +69231,7 @@ void QuestComplete(string sQuestName)
 					case "password": Characters[GetCharacterIndex("devil_guard7")].dialog.CurrentNode  = "bribing"; break;
 					case "search_gift": Characters[GetCharacterIndex("devil_guard7")].dialog.CurrentNode  = "contracts"; break;
 				}
-			}
+			}		
 		break;
 
 		case "hell_gate5R":
@@ -69129,7 +69249,7 @@ void QuestComplete(string sQuestName)
 				{
 					case "locked":
 						LAi_SetStayType(Pchar);
-
+				
 						LAi_QuestDelay("to_gate5R_back", 0.2);
 					break;
 
@@ -69141,7 +69261,7 @@ void QuestComplete(string sQuestName)
 
 					case "search_gift":
 						LAi_SetStayType(Pchar);
-
+					
 						LAi_QuestDelay("to_gate5R_back", 0.2);
 					break;
 
@@ -69149,7 +69269,7 @@ void QuestComplete(string sQuestName)
 						//nothing happens, no more checkpoints
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate5R_back":
@@ -69182,7 +69302,7 @@ void QuestComplete(string sQuestName)
 				{
 					case "locked":
 						LAi_SetStayType(Pchar);
-
+				
 						LAi_QuestDelay("to_gate5RR_back", 0.2);
 					break;
 
@@ -69202,7 +69322,7 @@ void QuestComplete(string sQuestName)
 						//nothing happens, no more checkpoints
 					break;
 				}
-			}
+			}	
 		break;
 
 		case "to_gate5RR_back":
@@ -69219,9 +69339,9 @@ void QuestComplete(string sQuestName)
 				}
 			}
 		break;
-
+	
 		case "gift_contracts1":
-			LAi_SetActorType(CharacterFromID("devil_guard12"));
+			LAi_SetActorType(CharacterFromID("devil_guard12"));	
 			LAi_ActorTurnToLocator(CharacterFromID("devil_guard12"), "goto", "stairs1");
 
 			LAi_QuestDelay("gift_contracts2", 1.0);
@@ -69268,7 +69388,7 @@ void QuestComplete(string sQuestName)
 			PauseAllSounds();//stops music
 			locations[FindLocation("BB_burning_cave")].type = "silent_burning_cave";
 			PostEvent("LoadSceneSound", 0.1);
-
+	
 			LAi_QuestDelay("pchar_ohoh", 0.2);
 			LAi_QuestDelay("hell_high1", 2.0);
 			LAi_QuestDelay("bc_loading", 3.0);
@@ -69288,7 +69408,7 @@ void QuestComplete(string sQuestName)
 			LAi_LocationFightDisable(&Locations[FindLocation("BB_burning_cave")], false);
 			LAi_SetPlayerType(Pchar);
 			LAi_SetFightMode(Pchar, true);
-
+			
 			PlaySound("VOICE\ENGLISH\zombie_die.wav");
 			PlaySound("VOICE\ENGLISH\zombie_die.wav");
 			LAi_SetPlayerType(Pchar);
@@ -69307,7 +69427,7 @@ void QuestComplete(string sQuestName)
 			if(Locations[FindLocation("BB_burning_cave")].models.always.locators == "locator_high")
 			{
 				Php = LAi_GetCharacterHP(Pchar);
-				if(Php == 0)
+				if(Php == 0) 
 				{
 					LAi_KillCharacter(Pchar);
 				}
@@ -69380,9 +69500,9 @@ void QuestComplete(string sQuestName)
 		break;
 
 	//.................................................................................................
-
+		
 		case "bc_ladder_stuck":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "bc_ladder_stuck";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -69445,17 +69565,17 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "bc_cage_too_high":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "bc_cage_too_high";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
 		case "bc_cage_too_high_wrong":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "bc_cage_too_high_wrong";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+	
 		case "bc_loading":
 			Locations[FindLocation("BB_burning_cave")].image = "wr_unknown1.tga";
 		break;
@@ -69568,7 +69688,7 @@ void QuestComplete(string sQuestName)
 	//.................................................................................................
 		case "pchar_protection_off":
 			pchar.protection = "off";
-			logit("OFF");
+			logit(TranslateString("","OFF"));
 			//PlaySound("OBJECTS\duel\shield.wav");
 		break;
 
@@ -69615,14 +69735,14 @@ void QuestComplete(string sQuestName)
 					break;
 				}
 			}
-		break;
+		break;	
 
 		case "devil_gives_up":
-			LAi_SetFightMode(characterFromID("devil"), false);
+			LAi_SetFightMode(characterFromID("devil"), false);	
 			LAi_SetActorType(characterFromID("devil"));
 			LAi_ActorAfraid(CharacterFromID("devil"), CharacterFromID("devil"), false);
-			LAi_LocationFightDisable(&Locations[FindLocation(Pchar.location)], true);
-
+			LAi_LocationFightDisable(&Locations[FindLocation(Pchar.location)], true);	
+	
 			LAi_QuestDelay("devil_gives_up1", 1.0 );
 		break;
 
@@ -69631,12 +69751,12 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 
 			GetCharacterPos(characterFromID("devil"), &u, &v, &w);
-
+		
 			PlaySound("OBJECTS\DUEL\rocket.wav");
 			PlaySound("OBJECTS\DUEL\rocket.wav");
 			PlaySound("OBJECTS\DUEL\wet_gunpowder.wav");
 			PlaySound("OBJECTS\DUEL\wet_gunpowder.wav");
-
+		
 			CreateParticleSystem("fire_medium", u, v+1.5, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("waterfog_light", u, v+1.5, w, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("waterfog_light", u, v+1.5, w, 0.0, 0.0, 0.0, sti(20) );
@@ -69656,10 +69776,10 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("pchar_yah", 8.0);
 			LAi_QuestDelay("devil_disappears1", 12.0);
 		break;
-
+	
 		case "devil_disappears1":
 			PlaySound("VOICE\ENGLISH\c_brother21.wav");
-
+			
 			LAi_QuestDelay("devil_disappears2", 3.0);
 		break;
 
@@ -69738,6 +69858,7 @@ void QuestComplete(string sQuestName)
 //------------------------------------------------------------------------------------------------------------------------
 
 		case "Pyle_skeleton":
+			//LAi_QuestDelay("Pyle_skeleton1", 2.0);
 
 		break;
 
@@ -69756,7 +69877,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "place_coin_BB_spyglass":
-			if(Pchar.new.flag.sequence == 6)
+			if(Pchar.new.flag.sequence == 6) 
 			{
 				DeleteQuestHeader("KR_amulet");
 				Locations[FindLocation("BB_island2")].image = "zoom_islet.tga";
@@ -69768,19 +69889,19 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "place_coin_BB_spyglass1":
-			if(Pchar.new.flag.sequence == 6)
+			if(Pchar.new.flag.sequence == 6) 
 			{
 				PlaySound("VOICE\ENGLISH\blaze_hah.wav");
 			}
 			else PlaySound("VOICE\ENGLISH\blaze_sigh.wav");
 
-			Locations[FindLocation("BB_island2")].image = "wr_BB_tower.tga";
+			Locations[FindLocation("BB_island2")].image = "wr_BB_tower.tga";	
 
 			LAi_QuestDelay("place_coin_BB_spyglass2", 1.0);
 		break;
 
 		case "place_coin_BB_spyglass2":
-			PlaySound("INTERFACE\took_item.wav");
+			PlaySound("INTERFACE\took_item.wav");	
 
 			LAi_QuestDelay("move_to_BB_hatch1", 1.0);
 		break;
@@ -69791,9 +69912,13 @@ void QuestComplete(string sQuestName)
 			Pchar.old.flag.sequence = 0;
 			Pchar.new.flag.sequence = 0;
 			pchar.tower.flag = "none";
+
+	//LogIt("old_flag_sequence = " + Pchar.old.flag.sequence);
+	//LogIt("new_flag_sequence = " + Pchar.new.flag.sequence);
 		break;
 
 		case "raise_BBflag":
+		//	ref cmdr = CharacterFromID("Dante Siciliano");
 			cmdr = CharacterFromID("Dante Siciliano");
 
 			pchar_blade = GetCharacterEquipByGroup(PCHAR, BLADE_ITEM_TYPE);
@@ -69843,7 +69968,7 @@ void QuestComplete(string sQuestName)
 
 					if(Pchar.old.flag.sequence == 0) Pchar.new.flag.sequence = 1;
 				break;
-
+				
 				case "bladeflag_SPA":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", SPAIN);
@@ -69860,7 +69985,7 @@ void QuestComplete(string sQuestName)
 
 					if(Pchar.old.flag.sequence == 0) Pchar.new.flag.sequence = 1;
 				break;
-
+		
 				case "bladeflag_IRE":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", PERSONAL_NATION);
@@ -69868,11 +69993,11 @@ void QuestComplete(string sQuestName)
 					cmdr.Flags.Personal = 2; cmdr.Flags.Personal.texture = 4;
 					DeleteQuestHeader("KR_flagchest");
 				break;
-
+		
 				case "bladeflag_SWE":
 					CaptureTownForNation("Grand Turk", PERSONAL_NATION);
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "SWE";
-					cmdr.Flags.Personal = 3; cmdr.Flags.Personal.texture = 4;
+					cmdr.Flags.Personal = 3; cmdr.Flags.Personal.texture = 4;	
 					DeleteQuestHeader("KR_flagchest");
 				break;
 
@@ -69881,7 +70006,7 @@ void QuestComplete(string sQuestName)
 					CaptureTownForNation("Grand Turk", PERSONAL_NATION);
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "HO2";
 					cmdr.Flags.Personal = 4; cmdr.Flags.Personal.texture = 4;
-					DeleteQuestHeader("KR_flagchest");
+					DeleteQuestHeader("KR_flagchest");	
 				break;
 
 				case "bladeflag_AME":
@@ -69891,7 +70016,7 @@ void QuestComplete(string sQuestName)
 					cmdr.Flags.Personal = 5; cmdr.Flags.Personal.texture = 4;
 					DeleteQuestHeader("KR_flagchest");
 				break;
-
+			
 				case "bladeflag_SPA2":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", PERSONAL_NATION);
@@ -69923,7 +70048,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("BB_island2")].image = "";
 			Locations[FindLocation(Pchar.location)].models.always.locators = "jungle01_l_JRH_F";
-
+			
 			DoQuestReloadToLocation("BB_island2", "goto", "flagpole", "change_BBflag_A");
 		break;
 //------------------------------------------------------------------------------------------------------------------------
@@ -69943,27 +70068,26 @@ void QuestComplete(string sQuestName)
 			if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "HO2") Pchar.BB_old_flag = "HO2";
 			if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "AME") Pchar.BB_old_flag = "AME";
 			if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SP2") Pchar.BB_old_flag = "SP2";
-
+		
 			pchar_blade = GetCharacterEquipByGroup(PCHAR, BLADE_ITEM_TYPE);
 			switch (pchar_blade)
 			{
 				case "bladeflag_pir":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", PIRATE);
-					cmdr.nation = PIRATE; 
-					pchar.tower.flag = "pir";
+					cmdr.nation = PIRATE; pchar.tower.flag = "pir";
 
-					if(Pchar.old.flag.sequence == 2)
+					if(Pchar.old.flag.sequence == 2) 
 					{
 						Pchar.new.flag.sequence = 3;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
 					}
 				break;
-
+			
 				case "bladeflag_pir2":
 					//needed as a reset when personal is going down & teach is going up
 					Pchar.special_flag = "off";
@@ -69975,11 +70099,11 @@ void QuestComplete(string sQuestName)
 					cmdr.nation = PIRATE; pchar.tower.flag = "pir2";
 					cmdr.Flags.Pirate = 6; cmdr.Flags.Pirate.texture = 2;
 
-					if(Pchar.old.flag.sequence == 4)
+					if(Pchar.old.flag.sequence == 4) 
 					{
 						Pchar.new.flag.sequence = 5;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
@@ -70000,11 +70124,11 @@ void QuestComplete(string sQuestName)
 					CaptureTownForNation("Grand Turk", ENGLAND);
 					cmdr.nation = ENGLAND; pchar.tower.flag = "ENG";
 
-					if(Pchar.old.flag.sequence == 5)
+					if(Pchar.old.flag.sequence == 5) 
 					{
 						Pchar.new.flag.sequence = 6;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
@@ -70025,17 +70149,17 @@ void QuestComplete(string sQuestName)
 					CaptureTownForNation("Grand Turk", PORTUGAL);
 					cmdr.nation = PORTUGAL; pchar.tower.flag = "POR";
 
-					if(Pchar.old.flag.sequence == 0)
+					if(Pchar.old.flag.sequence == 0) 
 					{
 						Pchar.new.flag.sequence = 1;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
 					}
 				break;
-
+				
 				case "bladeflag_SPA":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", SPAIN);
@@ -70051,11 +70175,11 @@ void QuestComplete(string sQuestName)
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "PRE";
 					cmdr.Flags.Personal = 1; cmdr.Flags.Personal.texture = 4;
 
-					if(Pchar.old.flag.sequence == 0)
+					if(Pchar.old.flag.sequence == 0) 
 					{
 						Pchar.new.flag.sequence = 1;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
@@ -70068,15 +70192,15 @@ void QuestComplete(string sQuestName)
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "IRE";
 					cmdr.Flags.Personal = 2; cmdr.Flags.Personal.texture = 4;
 
-					if(Pchar.old.flag.sequence == 1)
+					if(Pchar.old.flag.sequence == 1) 
 					{
 						Pchar.new.flag.sequence = 2;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
-					}
+					}	
 				break;
 
 				case "bladeflag_SWE":
@@ -70086,7 +70210,7 @@ void QuestComplete(string sQuestName)
 					cmdr.Flags.Personal = 3; cmdr.Flags.Personal.texture = 4;
 
 					Pchar.old.flag.sequence = 0;
-					Pchar.new.flag.sequence = 0;
+					Pchar.new.flag.sequence = 0;	
 				break;
 
 				case "bladeflag_HOL2":
@@ -70096,7 +70220,7 @@ void QuestComplete(string sQuestName)
 					cmdr.Flags.Personal = 4; cmdr.Flags.Personal.texture = 4;
 
 					Pchar.old.flag.sequence = 0;
-					Pchar.new.flag.sequence = 0;
+					Pchar.new.flag.sequence = 0;	
 				break;
 
 				case "bladeflag_AME":
@@ -70105,23 +70229,23 @@ void QuestComplete(string sQuestName)
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "AME";
 					cmdr.Flags.Personal = 5; cmdr.Flags.Personal.texture = 4;
 
-					if(Pchar.old.flag.sequence == 3)
+					if(Pchar.old.flag.sequence == 3) 
 					{
 						Pchar.new.flag.sequence = 4;
 					}
-					else
+					else 
 					{
 						Pchar.old.flag.sequence = 0;
 						Pchar.new.flag.sequence = 0;
-					}
+					}	
 				break;
-
+			
 				case "bladeflag_SPA2":
 					Pchar.special_flag = "off";
 					CaptureTownForNation("Grand Turk", PERSONAL_NATION);
 					cmdr.nation = PERSONAL_NATION; pchar.tower.flag = "SP2";
 					cmdr.Flags.Personal = 6; cmdr.Flags.Personal.texture = 4;
-
+				
 					Pchar.old.flag.sequence = 0;
 					Pchar.new.flag.sequence = 0;
 				break;
@@ -70144,48 +70268,48 @@ void QuestComplete(string sQuestName)
 			if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "AME") TakeItemFromCharacter(Pchar, "bladeflag_AME");
 			if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SP2") TakeItemFromCharacter(Pchar, "bladeflag_SPA2");
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "pir")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "pir") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_pir"); EquipCharacterByItem(Pchar, "bladeflag_pir"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "pir2")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "pir2") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_pir2"); EquipCharacterByItem(Pchar, "bladeflag_pir2"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "HOL")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "HOL") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_HOL"); EquipCharacterByItem(Pchar, "bladeflag_HOL"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "ENG")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "ENG") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_ENG"); EquipCharacterByItem(Pchar, "bladeflag_ENG"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "FRA")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "FRA") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_FRA"); EquipCharacterByItem(Pchar, "bladeflag_FRA"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "POR")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "POR") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_POR"); EquipCharacterByItem(Pchar, "bladeflag_POR"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SPA")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SPA") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_SPA"); EquipCharacterByItem(Pchar, "bladeflag_SPA"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "PRE")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "PRE") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_PRE"); EquipCharacterByItem(Pchar, "bladeflag_PRE"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "IRE")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "IRE") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_IRE"); EquipCharacterByItem(Pchar, "bladeflag_IRE"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SWE")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SWE") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_SWE"); EquipCharacterByItem(Pchar, "bladeflag_SWE"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "HO2")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "HO2") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_HOL2"); EquipCharacterByItem(Pchar, "bladeflag_HOL2"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "AME")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "AME") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_AME"); EquipCharacterByItem(Pchar, "bladeflag_AME"); }
 
-			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SP2")
+			if(CheckAttribute(Pchar, "BB_old_flag") && Pchar.BB_old_flag == "SP2") 
 			{ Pchar.BB_old_flag = "none"; GiveItem2Character(Pchar, "bladeflag_SPA2"); EquipCharacterByItem(Pchar, "bladeflag_SPA2"); }
-
+		
 			Locations[FindLocation("BB_island2")].image = "";
 			Locations[FindLocation(Pchar.location)].models.always.locators = "jungle01_l_JRH_F";
-
+			
 			DoQuestReloadToLocation("BB_island2", "goto", "flagpole", "change_BBflag_A");
 		break;
 
@@ -70198,25 +70322,25 @@ void QuestComplete(string sQuestName)
 	//LogIt("old_flag_sequence = " + Pchar.old.flag.sequence);
 	//LogIt("new_flag_sequence = " + Pchar.new.flag.sequence);
 
-			if(sti(Pchar.new.flag.sequence) > sti(Pchar.old.flag.sequence))
+			if(sti(Pchar.new.flag.sequence) > sti(Pchar.old.flag.sequence)) 
 			{
 				LAi_QuestDelay("confirm_BBflag", 2.0);
 			}
 			else
 			{
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "pir") LogIt("R");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "pir2") LogIt("T");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "HOL") LogIt("D");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "ENG") LogIt("E");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "FRA") LogIt("F");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "POR") LogIt("P");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SPA") LogIt("S");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "PRE") LogIt("P");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "IRE") LogIt("I");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SWE") LogIt("S");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "HO2") LogIt("D");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "AME") LogIt("A");
-				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SP2") LogIt("U");
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "pir") LogIt(TranslateString("","R"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "pir2") LogIt(TranslateString("","T"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "HOL") LogIt(TranslateString("","D"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "ENG") LogIt(TranslateString("","E"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "FRA") LogIt(TranslateString("","F"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "POR") LogIt(TranslateString("","P"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SPA") LogIt(TranslateString("","S"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "PRE") LogIt(TranslateString("","P"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "IRE") LogIt(TranslateString("","I"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SWE") LogIt(TranslateString("","S"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "HO2") LogIt(TranslateString("","D"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "AME") LogIt(TranslateString("","A"));
+				if(CheckAttribute(Pchar, "tower.flag") && Pchar.tower.flag == "SP2") LogIt(TranslateString("","U"));
 
 				LAi_QuestDelay("Pchar_sigh", 2.0);
 				LAi_QuestDelay("BB_isl2_box4_off", 2.0);
@@ -70230,7 +70354,7 @@ void QuestComplete(string sQuestName)
 	//LogIt("old_flag_sequence = " + Pchar.old.flag.sequence);
 	//LogIt("new_flag_sequence = " + Pchar.new.flag.sequence);
 
-			if(Pchar.new.flag.sequence == 1)
+			if(Pchar.new.flag.sequence == 1) 
 			{
 				LogIt("P");
 				LAi_QuestDelay("BB_isl2_box4_off", 2.0);
@@ -70266,7 +70390,7 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("BB_isl2_box4_off", 2.0);
 			}
 
-			if(Pchar.new.flag.sequence == 6)
+			if(Pchar.new.flag.sequence == 6) 
 			{
 				LogIt("P");
 				LogIt("I");
@@ -70276,7 +70400,7 @@ void QuestComplete(string sQuestName)
 				LogIt("E");
 			PlaySound("OBJECTS\SHIPCHARGE\cannon_fire_01.wav");
 				DeleteQuestHeader("KR_letter");
-
+				
 				LAi_QuestDelay("confirm_BBflag_end", 2.0);
 			}
 		break;
@@ -70288,7 +70412,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(Pchar, "doc60B");
 			TakeItemFromCharacter(Pchar, "doc60C");
 			TakeItemFromCharacter(Pchar, "doc60D");
-
+		
 			LAi_QuestDelay("confirm_BBflag_end1", 13.0);
 		break;
 
@@ -70355,14 +70479,14 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(pchar, "bladeflag_SPA"); TakeItemFromCharacter(pchar, "bladeflag_PRE");
 			TakeItemFromCharacter(pchar, "bladeflag_IRE"); TakeItemFromCharacter(pchar, "bladeflag_SWE");
 			TakeItemFromCharacter(pchar, "bladeflag_HOL2"); TakeItemFromCharacter(pchar, "bladeflag_AME");
-			TakeItemFromCharacter(pchar, "bladeflag_SPA2");
+			TakeItemFromCharacter(pchar, "bladeflag_SPA2");   
 
 			if(IsEquipCharacterByItem(Pchar, "bladeflag_pir") || IsEquipCharacterByItem(Pchar, "bladeflag_pir2") || IsEquipCharacterByItem(Pchar, "bladeflag_HOL")
 			|| IsEquipCharacterByItem(Pchar, "bladeflag_FRA") || IsEquipCharacterByItem(Pchar, "bladeflag_POR") || IsEquipCharacterByItem(Pchar, "bladeflag_SPA")
 			|| IsEquipCharacterByItem(Pchar, "bladeflag_PRE") || IsEquipCharacterByItem(Pchar, "bladeflag_IRE") || IsEquipCharacterByItem(Pchar, "bladeflag_SWE")
 			|| IsEquipCharacterByItem(Pchar, "bladeflag_HOL2") || IsEquipCharacterByItem(Pchar, "bladeflag_AME") || IsEquipCharacterByItem(Pchar, "bladeflag_SPA2"))
-			{ RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE); }
-
+			{ RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE); } 
+			
 
 			LAi_SetStayType(characterFromID("Louis_Arot"));
 			Characters[GetCharacterIndex("Louis_Arot")].dialog.CurrentNode  = "neutral_inside";
@@ -70452,7 +70576,7 @@ void QuestComplete(string sQuestName)
 //------------------------------------------------------------------------------------------------------------------------
 
 
-	/*
+	/*	
 		case "reset_box2_lowercave":
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "box", "box2", 0.7);
 			SetLocatorRadius(locations[FindLocation(Pchar.location)], "randitem", "randitem28", 0.0001);
@@ -70478,7 +70602,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("Caesar"), "officers", "reload2_3", "Caesar_scared", 10.0);
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_ActorRunToLocator(characterFromID("Pell"), "goto", "citizen010", "Pell_scared", 10.0);
-
+			
 			LAi_QuestDelay("pchar_sigh", 5.0);
 			LAi_QuestDelay("Pyle_transformation", 6.5);
 		break;
@@ -70488,13 +70612,13 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(CharacterFromID("Hands"), "BB_island1", "goto", "citizen06");
 			LAi_SetStayType(CharacterFromID("Hands"));
 		break;
-
+		
 		case "Caesar_scared":
 			RemovePassenger(Pchar, characterFromID("Caesar"));
 			ChangeCharacterAddressGroup(CharacterFromID("Caesar"), "BB_island1", "officers", "reload2_3");
 			LAi_SetStayType(CharacterFromID("Caesar"));
 		break;
-
+		
 		case "Pell_scared":
 			RemovePassenger(Pchar, characterFromID("Pell"));
 			ChangeCharacterAddressGroup(CharacterFromID("Pell"), "BB_island1", "goto", "citizen010");
@@ -70502,7 +70626,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_transformation":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "I_skeleton";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -70532,7 +70656,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			Locations[FindLocation("BB_mountain_tunnel")].image = "later.tga";
-
+			
 			LAi_QuestDelay("Pyle_transformation4", 5.0);
 		break;
 
@@ -70556,7 +70680,7 @@ void QuestComplete(string sQuestName)
 		case "Pyle_transformation6":
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
-
+		
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(Pchar, "goto", "goto4", "Pyle_transformation6A", 18.0);		//means run
 		break;
@@ -70612,7 +70736,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_transformation12":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "I_body_again";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -70684,7 +70808,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_transformation20":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "I_found_the_treasure";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -70728,7 +70852,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.JRH_sky = "C_Cl3";
 
 			LAi_QuestDelay("pchar_lets_go", 0.01);
-
+			
 		characters[GetCharacterIndex("Pell")].dialog.CurrentNode = "neutral";
 			LAi_SetOfficerType(characterFromID("Hands"));
 			LAi_SetOfficerType(characterFromID("Caesar"));
@@ -70745,7 +70869,7 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("IslaMona_port")].reload.l2.go = "BB_upper_cave";
 			Locations[FindLocation("IslaMona_port")].reload.l2.emerge = "pole";
 
-			locations[FindLocation("BB_upper_cave")].id.label = "Ship.";
+			locations[FindLocation("BB_upper_cave")].id.label = TranslateString("","Ship.");
 			Pchar.treasure_removed = "yes";
 			Pchar.C_dialog = "on";
 
@@ -70781,7 +70905,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.Pyle_transformation_end2.win_condition.l1.location = "IslaMona_port";
 			pchar.quest.Pyle_transformation_end2.win_condition = "Pyle_transformation_end2";
 		break;
-
+		
 		case "Pyle_transformation_end2":
 			SetNextWeather("Clear");
 			Pchar.quest.JRH_rain = "Clear";
@@ -70790,7 +70914,7 @@ void QuestComplete(string sQuestName)
 			SetCharacterShipLocation(Pchar, "BB_upper_cave");
 			SetLocatorRadius(locations[FindLocation("BB_upper_cave")], "randitem", "randitem2", 0.0001);
 			Locations[FindLocation("BB_upper_cave")].image = "wr_BB_upper_cave.tga";
-
+  
 			pchar.quest.with_treasure_to_sea.win_condition.l1 = "location";
 			pchar.quest.with_treasure_to_sea.win_condition.l1.location = "BB_upper_cave";
 			pchar.quest.with_treasure_to_sea.win_condition = "with_treasure_to_sea";
@@ -70813,7 +70937,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("IslaMona_port")].reload.l2.go = "IslaMona";		//reset
 			Locations[FindLocation("IslaMona_port")].reload.l2.emerge = "Reload1";		//reset
-			locations[FindLocation("BB_upper_cave")].id.label = "Grot";			//reset
+			locations[FindLocation("BB_upper_cave")].id.label = TranslateString("","Grot");	//reset
 
 			LAi_QuestDelay("with_treasure_to_sea1", 1.0);
 		break;
@@ -70878,7 +71002,7 @@ void QuestComplete(string sQuestName)
 			SetNextWeather("Clear");
 			Pchar.quest.JRH_rain = "Clear";
 			SetNextWind("N",30);
-
+	
 			RemoveCharacterEquip(Pchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(Pchar, EQUIP2_ITEM_TYPE);		//BB_coin
@@ -70894,12 +71018,12 @@ void QuestComplete(string sQuestName)
 
 //------------------------------------------------------------------------------------------------------------------------
 //careen start
-
+	
 		case "storm_careen":
 			SetModel(PChar, "Howard_Pyle", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
 			LAi_SetActorType(Pchar);
 			LAi_ActorSetLayMode(Pchar);
-
+		
 			RemoveOfficersIndex(pchar, GetCharacterIndex("Hands"));
 			RemovePassenger(pchar, characterFromID("Hands"));
 			RemoveOfficersIndex(pchar, GetCharacterIndex("Caesar"));
@@ -70913,24 +71037,24 @@ void QuestComplete(string sQuestName)
 		case "to_careen_shore":
 			DoQuestReloadToLocation("BB_careen_shore", "goto", "arrive" ,"careen_shore_start");
 		break;
-
+	
 		case "careen_shore_start":
 	//ChangeCharacterAddressGroup(CharacterFromID("Teach"), "BB_careen_shore", "quest", "ghost");
 
-			if(!CheckCharacterItem(CharacterFromID("Fletcher Christian"),"blade1"))
+			if(!CheckCharacterItem(CharacterFromID("Fletcher Christian"),"blade1")) 
 			{
 				GiveItem2Character(CharacterFromID("Fletcher Christian"), "blade1");
 			}
-			EquipCharacterByItem(characterFromID("Fletcher Christian"), "blade1");
-			if(!CheckCharacterItem(CharacterFromID("Fletcher Christian"),"pistolbbuss"))
+			EquipCharacterByItem(characterFromID("Fletcher Christian"), "blade1");	
+			if(!CheckCharacterItem(CharacterFromID("Fletcher Christian"),"pistolbbuss")) 
 			{
 				GiveItem2Character(CharacterFromID("Fletcher Christian"), "pistolbbuss");
 			}
 			EquipCharacterByItem(characterFromID("Fletcher Christian"), "pistolbbuss");
 			TakenItems(characterFromID("Fletcher Christian"), "gunpowder", 4);
-			TakenItems(characterFromID("Fletcher Christian"), "pistolgrapes", 4);
+			TakenItems(characterFromID("Fletcher Christian"), "pistolgrapes", 4);	
 
-			DeleteAttribute(Pchar,"Ship");
+			DeleteAttribute(Pchar,"Ship");	
 
 			LAi_QuestDelay("careen_shore_start1", 5.0);
 			LAi_QuestDelay("careen_shore_start2", 10.0);
@@ -70993,7 +71117,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("AMBIENT\TAVERN\man1.wav");
 			PlaySound("AMBIENT\TAVERN\man1.wav");
 
-
+		
 		pchar.quest.careen_back1_A.win_condition.l1 = "locator";
 			pchar.quest.careen_back1_A.win_condition.l1.location = "BB_careen_shore";
 			pchar.quest.careen_back1_A.win_condition.l1.locator_group = "quest";
@@ -71011,7 +71135,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.careen_back3_A.win_condition.l1.locator_group = "quest";
 			pchar.quest.careen_back3_A.win_condition.l1.locator = "3";
 			pchar.quest.careen_back3_A.win_condition = "careen_back3_A";
-
+		
 			pchar.quest.careen_back4_A.win_condition.l1 = "locator";
 			pchar.quest.careen_back4_A.win_condition.l1.location = "BB_careen_shore";
 			pchar.quest.careen_back4_A.win_condition.l1.locator_group = "quest";
@@ -71064,14 +71188,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "careen_shore_start3B":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "thats_my_flag";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
 		case "rum_check1":
 			//from self dialog
-
+			
 			if(CheckCharacterItem(Pchar,"potionrum"))
 			{
 				PlaySound("INTERFACE\glass1.wav");
@@ -71164,7 +71288,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_mutineers13", 2.0);
 			LAi_QuestDelay("careen_mutineers14", 2.5);
-
+		
 			LAi_QuestDelay("careen_mutineers9_0", 11.0);
 		break;
 
@@ -71208,11 +71332,11 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("Mutineer_15"), "blade5");
 			GiveItem2Character(CharacterFromID("Mutineer_15"), "blade4");
 			EquipCharacterByItem(characterFromID("Mutineer_15"), "blade4");
-
+			
 			RemoveCharacterEquip(characterFromID("Mutineer_20"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("Mutineer_20"), "blade5");
 			GiveItem2Character(CharacterFromID("Mutineer_20"), "blade4");
-			EquipCharacterByItem(characterFromID("Mutineer_20"), "blade4");
+			EquipCharacterByItem(characterFromID("Mutineer_20"), "blade4");	
 		break;
 
 		case "careen_mutineers10":
@@ -71361,7 +71485,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_mutineers15_C", 3.0);
 		break;
-
+	
 		case "careen_mutineers15_C":
 			GiveItem2Character(Pchar, "blade4");
 			EquipCharacterByItem(Pchar, "blade4");
@@ -71435,7 +71559,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("careen_mutineers17_0", 1.0);
 			LAi_QuestDelay("careen_mutineers17_A", 3.0);
 		break;
-
+	
 		case "careen_mutineers17_0":
 			LAi_SetFightMode(characterFromID("Midshipman Young"), false);
 			LAi_SetFightMode(characterFromID("Constable Mills"), false);
@@ -71444,7 +71568,7 @@ void QuestComplete(string sQuestName)
 		case "careen_mutineers17_A":
 			LAi_SetFightMode(characterFromID("Fletcher Christian"), false);
 			LAi_SetFightMode(Pchar, false);
-
+			
 			Characters[GetCharacterIndex("Fletcher Christian")].dialog.CurrentNode  = "careen_mutineers17_A";
 			LAi_SetActorType(characterFromID("Fletcher Christian"));
 			LAi_ActorDialogNow(characterFromID("Fletcher Christian"), pchar, "", 0.1);
@@ -71463,16 +71587,16 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\Mutineer_Christian.wav");
 
 		//	LAi_QuestDelay("careen_mutineers18", 3.0);
-			LAi_QuestDelay("careen_mutineers17_D", 3.0);
+			LAi_QuestDelay("careen_mutineers17_D", 3.0);			
 		break;
-
+	
 		case "careen_mutineers17_D":
 			SetNextWeather("Clear");
 			Locations[FindLocation("BB_careen_shore")].image = "";
 			DoQuestReloadToLocation("BB_careen_shore", "quest", "duel_pyle" ,"careen_mutineers18");
 		break;
 
-		case "careen_mutineers18":
+		case "careen_mutineers18":			
 			LAi_SetActorType(characterFromID("Fletcher Christian"));
 			LAi_ActorTurnToCharacter(characterFromID("Fletcher Christian"), PChar);
 
@@ -71492,13 +71616,13 @@ void QuestComplete(string sQuestName)
 		case "careen_mutineers18_B":
 			LAi_SetActorType(characterFromID("Fletcher Christian"));
 			LAi_ActorAttack(CharacterFromID("Fletcher Christian"), Pchar, "");
-
+	
 			PlaySound("OBJECTS\DUEL\sabre_out.wav");
 			LAi_SetPlayerType(Pchar);
 			LAi_SetFightMode(Pchar, true);
 
 			LAi_SetImmortal(characterFromID("Fletcher Christian"), false);
-
+		
 			pchar.quest.careen_mutineers19.win_condition.l1 = "NPC_Death";
 			pchar.quest.careen_mutineers19.win_condition.l1.character = "Fletcher Christian";
 			pchar.quest.careen_mutineers19.win_condition = "careen_mutineers19";
@@ -71513,7 +71637,7 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(characterFromID("Fletcher Christian"), -1000);
 
 			GiveItem2Character(Pchar, "blade1");
-			EquipCharacterByItem(Pchar, "blade1");
+			EquipCharacterByItem(Pchar, "blade1");	
 			GiveItem2Character(Pchar, "pistolbbuss");
 			EquipCharacterByItem(Pchar, "pistolbbuss");
 			GiveItem2Character(Pchar, "ammopouch");
@@ -71525,10 +71649,10 @@ void QuestComplete(string sQuestName)
 			TakenItems(Pchar, "gunpowder", -6);
 			TakenItems(Pchar, "gunpowder", 6);
 			AddMoneyToCharacter(Pchar, 200);
-
+			
 			LAi_QuestDelay("careen_mutineers19_A", 1.5);
 		break;
-
+	
 		case "careen_mutineers19_A":
 			PlaySound("VOICE\ENGLISH\Mutineer_Young.wav");
 			LAi_SetActorType(Pchar);
@@ -71536,21 +71660,21 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_mutineers19_B", 2.5);
 		break;
-
+	
 		case "careen_mutineers19_B":
 			PlaySound("VOICE\ENGLISH\gm_crew16B.wav");
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Constable Mills"));
-
+			
 			LAi_QuestDelay("careen_mutineers19_C", 1.5);
 		break;
 
 		case "careen_mutineers19_C":
 			DoQuickSave();
 			PlaySound("VOICE\ENGLISH\gm_crew5A.wav");
-
+			
 			LAi_QuestDelay("careen_mutineers19_D", 1.5);
-		break;
+		break;	
 
 		case "careen_mutineers19_D":
 			ChangeCharacterAddressGroup(characterFromID("Fletcher Christian"), "none", "", "");
@@ -71575,8 +71699,8 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(characterFromID("Caesar"), BLADE_ITEM_TYPE);
 			DeleteAttribute(characterFromID("Caesar"), "items");
 			GiveItem2Character(characterFromID("Caesar"), "bladeanchor");
-			EquipCharacterByItem(characterFromID("Caesar"), "bladeanchor");
-
+			EquipCharacterByItem(characterFromID("Caesar"), "bladeanchor");	
+		
 			Locations[FindLocation("BB_careen_shore")].image = "wr_careen_shore.tga";
 
 			LAi_QuestDelay("careen_mutineers19_F", 1.0);
@@ -71652,7 +71776,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Midshipman Young"), "none", "", "");
 			SetNextWeather("Clear");
 			SetNextWind("N",30);
-
+			
 			SetNextWeather("Clear");
 			Locations[FindLocation("BB_careen_shore")].image = "";
 			DoQuestReloadToLocation("BB_careen_shore", "quest", "duel_pyle" ,"careen_mutineers20_C");
@@ -71668,12 +71792,12 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Caesar"), "PiratesPistol");
 			TakenItems(characterFromID("Caesar"), "pistolbullets", 2);
 			TakenItems(characterFromID("Caesar"), "gunpowder", 2);
-
+		
 			TakeItemFromCharacter(Pchar, "blade4");
 			TakeItemFromCharacter(Pchar, "PiratesPistol");
 			TakenItems(Pchar, "pistolbullets", -2);
 			TakenItems(Pchar, "gunpowder", -2);
-
+		
 			Locations[FindLocation("BB_careen_shore")].image = "wr_careen_shore.tga";
 
 			LAi_QuestDelay("careen_mutineers21", 1.0);
@@ -71703,7 +71827,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Caesar"), pchar, "", 0.1);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Caesar"));
 		break;
-
+		
 		case "careen_mutineers21_B":
 			//check if Hands already is in place
 
@@ -71771,7 +71895,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToCharacter(characterFromID("Caesar"), characterFromID("Hands"));
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Hands"));
-
+			
 			LAi_QuestDelay("careen_mutineers22_A", 4.0);
 		break;
 
@@ -71914,7 +72038,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_mutineers26_B", 3.5);
 		break;
-
+	
 		case "careen_mutineers26_B":
 			PlaySound("VOICE\ENGLISH\Dut_m_a_033.wav");			//RIGHT: I don't think I like your attitude hond
 			PlaySound("VOICE\ENGLISH\Dut_m_a_033.wav");
@@ -71969,14 +72093,14 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\Eng_m_a_059.wav");			//RIGHT: Check and mate
 			LAi_SetPlayerType(characterFromID("Mutineer_11"));
 			LAi_SetFightMode(characterFromID("Mutineer_11"), true);
-
+	
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Mutineer_11"));
 
 			LAi_QuestDelay("careen_mutineers27", 1.5);
 		break;
 	//------------------------------------------------------------------------------------------------------
-
+	
 		case "careen_mutineers27":
 			PlaySound("OBJECTS\DUEL\sword_sh.wav");
 			LAi_SetActorType(PChar);
@@ -72016,12 +72140,12 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_mutineers28", 2.0);
 		break;
-
+	
 	//------------------------------------------------------------------------------------------------------
 
 		case "careen_mutineers28":
 			PlaySound("OBJECTS\SHIPCHARGE\CR12C.wav");
-
+		
 			CreateParticleSystem("canfire2" , 89.6, 16.9, 40.8, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud" , 89.6, 16.9, 40.6, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud" , 89.6, 16.9, 41.0, 0.0, 0.0, 0.0, sti(20) );
@@ -72085,14 +72209,14 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Mutineer_7"));
 			LAi_ActorTurnToLocator(characterFromID("Mutineer_7"), "box", "box13");
 		break;
-
+	
 		case "careen_mutineers28_A":
 			characters[GetCharacterIndex("Hands")].dialog.CurrentNode = "Pell_shooting";
 			LAi_SetActorType(characterFromID("Hands"));
 			LAi_ActorDialog(characterFromID("Hands"), pchar, "", 0.0, 0.0);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Hands"));
 		break;
-
+	
 		case "careen_mutineers28_B":
 			PlaySound("OBJECTS\SHIPCHARGE\gunner_fire.wav");
 			LAi_SetActorType(Pchar);
@@ -72213,10 +72337,10 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(Pchar, "goto", "tower_down", "careen_mutineers30", 43.0);
 			Characters[GetCharacterIndex("Mutineer_32")].name = TranslateString("", "Quartermaster");
 		break;
-
+		
 	//-------------------------------------------------------------------------------------------------------------------
 		case "gun1A":  	ChangeCharacterAddressGroup(characterFromID("Mutineer_31"), "BB_careen_shore", "goto", "gun1A");
-			       	LAi_SetStayType(characterFromID("Mutineer_31"));
+			       	LAi_SetStayType(characterFromID("Mutineer_31")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_31"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_31"), "bladeladle");
@@ -72226,7 +72350,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun1B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_10"), "BB_careen_shore", "goto", "gun1B");
-			        LAi_SetStayType(characterFromID("Mutineer_10"));
+			        LAi_SetStayType(characterFromID("Mutineer_10")); 
 			        Pchar.careen_running = "done";
 
 				RemoveCharacterEquip(characterFromID("Mutineer_10"), BLADE_ITEM_TYPE);
@@ -72237,7 +72361,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun_group1": ChangeCharacterAddressGroup(characterFromID("Mutineer_4"), "BB_careen_shore", "goto", "gun_group1");
-		 	           LAi_SetStayType(characterFromID("Mutineer_4"));
+		 	           LAi_SetStayType(characterFromID("Mutineer_4")); 
 
 				   RemoveCharacterEquip(characterFromID("Mutineer_4"), BLADE_ITEM_TYPE);
 				   GiveItem2Character(characterFromID("Mutineer_4"), "bladepowderhornN");
@@ -72247,7 +72371,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun2A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_20"), "BB_careen_shore", "goto", "gun2A");
-			        LAi_SetStayType(characterFromID("Mutineer_20"));
+			        LAi_SetStayType(characterFromID("Mutineer_20")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_20"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_20"), "bladeladle");
@@ -72257,7 +72381,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun2B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_15"), "BB_careen_shore", "goto", "gun2B");
-			        LAi_SetStayType(characterFromID("Mutineer_15"));
+			        LAi_SetStayType(characterFromID("Mutineer_15")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_15"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_15"), "bladecannon_ball");
@@ -72267,7 +72391,7 @@ void QuestComplete(string sQuestName)
 		break;
 	//-------------------------------------------------------------------------------------------------------------------
 		case "gun3A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_25"), "BB_careen_shore", "goto", "gun3A");
-			        LAi_SetStayType(characterFromID("Mutineer_25"));
+			        LAi_SetStayType(characterFromID("Mutineer_25")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_25"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_25"), "bladesponge");
@@ -72277,7 +72401,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun3B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_16"), "BB_careen_shore", "goto", "gun3B");
-			        LAi_SetStayType(characterFromID("Mutineer_16"));
+			        LAi_SetStayType(characterFromID("Mutineer_16")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_16"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_16"), "bladecannon_ball");
@@ -72287,7 +72411,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun_group2": ChangeCharacterAddressGroup(characterFromID("Mutineer_3"), "BB_careen_shore", "goto", "gun_group2");
-			           LAi_SetStayType(characterFromID("Mutineer_3"));
+			           LAi_SetStayType(characterFromID("Mutineer_3")); 
 
 				   RemoveCharacterEquip(characterFromID("Mutineer_3"), BLADE_ITEM_TYPE);
 				   GiveItem2Character(characterFromID("Mutineer_3"), "bladepowderhornN");
@@ -72297,7 +72421,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun4A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_17"), "BB_careen_shore", "goto", "gun4A");
-			        LAi_SetStayType(characterFromID("Mutineer_17"));
+			        LAi_SetStayType(characterFromID("Mutineer_17")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_17"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_17"), "bladeladle");
@@ -72307,7 +72431,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun4B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_26"), "BB_careen_shore", "goto", "gun4B");
-			        LAi_SetStayType(characterFromID("Mutineer_26"));
+			        LAi_SetStayType(characterFromID("Mutineer_26")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_26"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_26"), "bladecannon_ball");
@@ -72317,7 +72441,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun5A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_8"), "BB_careen_shore", "goto", "gun5A");
-			        LAi_SetStayType(characterFromID("Mutineer_8"));
+			        LAi_SetStayType(characterFromID("Mutineer_8")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_8"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_8"), "bladesponge");
@@ -72327,7 +72451,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun5B": ChangeCharacterAddressGroup(characterFromID("Mutineer_22"), "BB_careen_shore", "goto", "gun5B");
-			      LAi_SetStayType(characterFromID("Mutineer_22"));
+			      LAi_SetStayType(characterFromID("Mutineer_22")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_22"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_22"), "bladeladle");
@@ -72335,9 +72459,9 @@ void QuestComplete(string sQuestName)
 				GiveItem2Character(characterFromID("Mutineer_22"), "pistolrammer");
 				EquipCharacterByItem(characterFromID("Mutineer_22"), "pistolrammer");
 		break;
-	//-------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------	
 		case "gun6A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_14"), "BB_careen_shore", "goto", "gun6A");
-			        LAi_SetStayType(characterFromID("Mutineer_14"));
+			        LAi_SetStayType(characterFromID("Mutineer_14")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_14"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_14"), "bladeladle");
@@ -72347,7 +72471,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun6B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_18"), "BB_careen_shore", "goto", "gun6B");
-			        LAi_SetStayType(characterFromID("Mutineer_18"));
+			        LAi_SetStayType(characterFromID("Mutineer_18")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_18"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_18"), "bladerammer");
@@ -72357,17 +72481,17 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun_group3": ChangeCharacterAddressGroup(characterFromID("Mutineer_9"), "BB_careen_shore", "goto", "gun_group3");
-		 	           LAi_SetStayType(characterFromID("Mutineer_9"));
+		 	           LAi_SetStayType(characterFromID("Mutineer_9")); 
 
 				   RemoveCharacterEquip(characterFromID("Mutineer_9"), BLADE_ITEM_TYPE);
 				   GiveItem2Character(characterFromID("Mutineer_9"), "bladepowderhornN");
 				   EquipCharacterByItem(characterFromID("Mutineer_9"), "bladepowderhornN");
 				   GiveItem2Character(characterFromID("Mutineer_9"), "pistolbarrel4");
-				   EquipCharacterByItem(characterFromID("Mutineer_9"), "pistolbarrel4");
+				   EquipCharacterByItem(characterFromID("Mutineer_9"), "pistolbarrel4");	
 		break;
 
 		case "gun_commander":   ChangeCharacterAddressGroup(characterFromID("Mutineer_32"), "BB_careen_shore", "goto", "gun_commander");
-		 	                LAi_SetStayType(characterFromID("Mutineer_32"));
+		 	                LAi_SetStayType(characterFromID("Mutineer_32")); 
 
 					RemoveCharacterEquip(characterFromID("Mutineer_32"), BLADE_ITEM_TYPE);
 					GiveItem2Character(characterFromID("Mutineer_32"), "blademegaphone");
@@ -72375,7 +72499,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun7A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_21"), "BB_careen_shore", "goto", "gun7A");
-			        LAi_SetStayType(characterFromID("Mutineer_21"));
+			        LAi_SetStayType(characterFromID("Mutineer_21")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_21"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_21"), "bladesponge");
@@ -72385,7 +72509,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun7B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_27"), "BB_careen_shore", "goto", "gun7B");
-			        LAi_SetStayType(characterFromID("Mutineer_27"));
+			        LAi_SetStayType(characterFromID("Mutineer_27")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_27"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_27"), "bladecannon_ball");
@@ -72393,9 +72517,9 @@ void QuestComplete(string sQuestName)
 				GiveItem2Character(characterFromID("Mutineer_27"), "pistolrammer");
 				EquipCharacterByItem(characterFromID("Mutineer_27"), "pistolrammer");
 		break;
-	//-------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------	
 		case "gun8A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_13"), "BB_careen_shore", "goto", "gun8A");
-			        LAi_SetStayType(characterFromID("Mutineer_13"));
+			        LAi_SetStayType(characterFromID("Mutineer_13")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_13"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_13"), "bladeladle");
@@ -72405,7 +72529,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun8B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_24"), "BB_careen_shore", "goto", "gun8B");
-			        LAi_SetStayType(characterFromID("Mutineer_24"));
+			        LAi_SetStayType(characterFromID("Mutineer_24")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_24"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_24"), "bladecannon_ball");
@@ -72415,7 +72539,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun_group4": ChangeCharacterAddressGroup(characterFromID("Hands"), "BB_careen_shore", "goto", "gun_group4");
-			           LAi_SetStayType(characterFromID("Hands"));
+			           LAi_SetStayType(characterFromID("Hands")); 
 
 				   RemoveCharacterEquip(characterFromID("Hands"), BLADE_ITEM_TYPE);
 				   GiveItem2Character(characterFromID("Hands"), "bladepowderhornN");
@@ -72425,7 +72549,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun9A":   ChangeCharacterAddressGroup(characterFromID("Mutineer_5"), "BB_careen_shore", "goto", "gun9A");
-			        LAi_SetStayType(characterFromID("Mutineer_5"));
+			        LAi_SetStayType(characterFromID("Mutineer_5")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_5"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_5"), "bladeladle");
@@ -72435,7 +72559,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun9B":   ChangeCharacterAddressGroup(characterFromID("Mutineer_2"), "BB_careen_shore", "goto", "gun9B");
-			        LAi_SetStayType(characterFromID("Mutineer_2"));
+			        LAi_SetStayType(characterFromID("Mutineer_2")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_2"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_2"), "bladecannon_ball");
@@ -72445,7 +72569,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun10A":  ChangeCharacterAddressGroup(characterFromID("Mutineer_19"), "BB_careen_shore", "goto", "gun10A");
-			        LAi_SetStayType(characterFromID("Mutineer_19"));
+			        LAi_SetStayType(characterFromID("Mutineer_19")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_19"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_19"), "bladesponge");
@@ -72455,7 +72579,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun10B":  ChangeCharacterAddressGroup(characterFromID("Mutineer_6"), "BB_careen_shore", "goto", "gun10B");
-			        LAi_SetStayType(characterFromID("Mutineer_6"));
+			        LAi_SetStayType(characterFromID("Mutineer_6")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_6"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_6"), "bladeladle");
@@ -72463,9 +72587,9 @@ void QuestComplete(string sQuestName)
 				GiveItem2Character(characterFromID("Mutineer_6"), "pistolrammer");
 				EquipCharacterByItem(characterFromID("Mutineer_6"), "pistolrammer");
 		break;
-	//-------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------	
 		case "gun11A": ChangeCharacterAddressGroup(characterFromID("Mutineer_7"), "BB_careen_shore", "goto", "gun11A");
-			       LAi_SetStayType(characterFromID("Mutineer_7"));
+			       LAi_SetStayType(characterFromID("Mutineer_7")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_7"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_7"), "bladerammer");
@@ -72475,7 +72599,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun11B": ChangeCharacterAddressGroup(characterFromID("Mutineer_12"), "BB_careen_shore", "goto", "gun11B");
-			       LAi_SetStayType(characterFromID("Mutineer_12"));
+			       LAi_SetStayType(characterFromID("Mutineer_12")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_12"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_12"), "bladeladle");
@@ -72485,7 +72609,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun_group5": ChangeCharacterAddressGroup(characterFromID("Caesar"), "BB_careen_shore", "goto", "gun_group5");
-		 	           LAi_SetStayType(characterFromID("Caesar"));
+		 	           LAi_SetStayType(characterFromID("Caesar")); 
 
 				   RemoveCharacterEquip(characterFromID("Caesar"), BLADE_ITEM_TYPE);
 				   GiveItem2Character(characterFromID("Caesar"), "bladepowderhornN");
@@ -72495,7 +72619,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun12A":  ChangeCharacterAddressGroup(characterFromID("Mutineer_1"), "BB_careen_shore", "goto", "gun12A");
-			        LAi_SetStayType(characterFromID("Mutineer_1"));
+			        LAi_SetStayType(characterFromID("Mutineer_1")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_1"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_1"), "bladeladle");
@@ -72505,7 +72629,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "gun12B":  ChangeCharacterAddressGroup(characterFromID("Mutineer_11"), "BB_careen_shore", "goto", "gun12B");
-			        LAi_SetStayType(characterFromID("Mutineer_11"));
+			        LAi_SetStayType(characterFromID("Mutineer_11")); 
 
 				RemoveCharacterEquip(characterFromID("Mutineer_11"), BLADE_ITEM_TYPE);
 				GiveItem2Character(characterFromID("Mutineer_11"), "bladecannon_ball");
@@ -72518,12 +72642,12 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(Pchar, "BB_careen_shore", "quest", "tower_down");
 			LAi_SetPlayerType(PChar);
 		break;
-
+	
 		case "careen_ship1":
 			//from SL_utils, DQR
 
 			Pchar.careen_corvette = "round1";		//firing at corvette 1:st time
-
+			
 			LAi_QuestDelay("careen_gun12", 55.0);
 		LAi_QuestDelay("turn_to_gun9B", 56.0);
 			LAi_QuestDelay("careen_gun11", 59.0);
@@ -72535,7 +72659,7 @@ void QuestComplete(string sQuestName)
 		LAi_QuestDelay("turn_to_look2", 69.0);
 			LAi_QuestDelay("careen_gun7", 72.0);
 			LAi_QuestDelay("careen_gun6", 74.0);
-		LAi_QuestDelay("turn_to_gun3A", 76.0);
+		LAi_QuestDelay("turn_to_gun3A", 76.0);	
 			LAi_QuestDelay("careen_gun5", 81.0);
 			LAi_QuestDelay("careen_gun4", 84.0);
 			LAi_QuestDelay("careen_gun3", 86.0);
@@ -72544,17 +72668,17 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("careen_gun2", 91.0);
 			LAi_QuestDelay("careen_gun1", 93.0);
 	LAi_QuestDelay("careen_corvette_returns", 95.0);
-
+	
 			Characters[GetCharacterIndex("Pell")].dialog.CurrentNode  = "careen_ship1";
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_ActorDialogNow(characterFromID("Pell"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Pell"));
-
+	
 			Locations[FindLocation("BB_careen_shore")].image = "wr_careen_shore.tga";
 		break;
 
-		case "careen_ship1_A":
-			PlaySound("OBJECTS\DUEL\sabre_out.wav");
+		case "careen_ship1_A":	
+			PlaySound("OBJECTS\DUEL\sabre_out.wav");		
 			GiveItem2Character(characterFromID("Pell"), "blade3");
 			EquipCharacterByItem(characterFromID("Pell"), "blade3");
 		//	if(CheckCharacterItem(Pchar,"pistolbbuss"))
@@ -72565,14 +72689,14 @@ void QuestComplete(string sQuestName)
 		//	}
 			TakenItems(characterFromID("Pell"), "pistolbullets", 2);
 			TakenItems(characterFromID("Pell"), "gunpowder", 2);
-
+		
 			TakeItemFromCharacter(Pchar, "blade3");
 			TakenItems(Pchar, "gunpowder", -2);
 			TakenItems(Pchar, "pistolbullets", -2);
 
 			LAi_QuestDelay("careen_ship2", 1.0);
 		break;
-
+	
 		case "careen_ship2":
 			Characters[GetCharacterIndex("Pell")].dialog.CurrentNode  = "careen_ship2";
 			LAi_SetActorType(characterFromID("Pell"));
@@ -72642,7 +72766,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(PChar);
 			LAi_ActorTurnToLocator(PChar, "goto", "gun3A");
 			LAi_SetActorType(characterFromID("Pell"));
-			LAi_ActorTurnToLocator(characterFromID("Pell"), "goto", "gun3A");
+			LAi_ActorTurnToLocator(characterFromID("Pell"), "goto", "gun3A");	
 		break;
 	//==================================================================================================
 		case "careen_gun12":
@@ -72656,11 +72780,11 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud2" , 219.0, 2.6, 60.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 219.0, 2.6, 60.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 219.0, 2.6, 60.0, 0.0, 0.0, 0.0, sti(20) );
-
+		
 			LAi_QuestDelay("careen_gun12_smoke1", 1.0);
-			LAi_QuestDelay("careen_gun12_smoke2", 2.0);
+			LAi_QuestDelay("careen_gun12_smoke2", 2.0);	
 		break;
-
+	
 		case "careen_gun12_smoke1":
 			if(Pchar.careen_corvette == "round1")
 			{
@@ -72709,7 +72833,7 @@ void QuestComplete(string sQuestName)
 
 			    if(Pchar.careen_corvette == "round4") PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			}
-		break;
+		break;		
 
 		case "careen_gun11":
 			//logit("GUN 11");
@@ -72724,7 +72848,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud2" , 212.7, 2.5, 58.2, 0.0, 0.0, 0.0, sti(20) );
 
 			LAi_QuestDelay("careen_gun11_smoke1", 1.0);
-			LAi_QuestDelay("careen_gun11_smoke2", 2.0);
+			LAi_QuestDelay("careen_gun11_smoke2", 2.0);	
 		break;
 
 		case "careen_gun11_smoke1":
@@ -72768,7 +72892,7 @@ void QuestComplete(string sQuestName)
 
 			    if(Pchar.careen_corvette == "round4") PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			}
-		break;
+		break;	
 	//-----------------------------------------------------------------------------------------------------------
 		case "corvette_fire_sounds":
 			//logit("CORVETTE FIRES!");
@@ -72841,14 +72965,14 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("splinters", 189.0, 8.5, 51.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2", 195.0, 8.7, 51.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters3", 202.0, 9.0, 51.0, 0.0, 0.0, 0.0, 0);
-			CreateParticleSystem("splinters_enhanced", 192.0, 8.5, 53.0, 0.0, 0.0, 0.0, 0);
+			CreateParticleSystem("splinters_enhanced", 192.0, 8.5, 53.0, 0.0, 0.0, 0.0, 0);	
 			CreateParticleSystem("splinters2_enhanced", 199.0, 8.7, 53.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2_enhanced", 205.0, 8.7, 53.0, 0.0, 0.0, 0.0, 0);
 
 			CreateParticleSystem("splinters", 189.0, 8.5, 54.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2", 195.0, 8.7, 54.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters3", 202.0, 9.0, 54.0, 0.0, 0.0, 0.0, 0);
-			CreateParticleSystem("splinters_enhanced", 192.0, 11.5, 53.0, 0.0, 0.0, 0.0, 0);
+			CreateParticleSystem("splinters_enhanced", 192.0, 11.5, 53.0, 0.0, 0.0, 0.0, 0);	
 			CreateParticleSystem("splinters2_enhanced", 199.0, 11.7, 53.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2_enhanced", 205.0, 11.7, 53.0, 0.0, 0.0, 0.0, 0);
 
@@ -72865,14 +72989,14 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("splinters", 189.0, 8.5, 51.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2", 195.0, 8.7, 51.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters3", 202.0, 9.0, 51.0, 0.0, 0.0, 0.0, 0);
-			CreateParticleSystem("splinters_enhanced", 192.0, 8.5, 53.0, 0.0, 0.0, 0.0, 0);
+			CreateParticleSystem("splinters_enhanced", 192.0, 8.5, 53.0, 0.0, 0.0, 0.0, 0);	
 			CreateParticleSystem("splinters2_enhanced", 199.0, 8.7, 53.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2_enhanced", 205.0, 8.7, 53.0, 0.0, 0.0, 0.0, 0);
 
 			CreateParticleSystem("splinters", 189.0, 8.5, 54.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2", 195.0, 8.7, 54.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters3", 202.0, 9.0, 54.0, 0.0, 0.0, 0.0, 0);
-			CreateParticleSystem("splinters_enhanced", 192.0, 11.5, 53.0, 0.0, 0.0, 0.0, 0);
+			CreateParticleSystem("splinters_enhanced", 192.0, 11.5, 53.0, 0.0, 0.0, 0.0, 0);	
 			CreateParticleSystem("splinters2_enhanced", 199.0, 11.7, 53.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystem("splinters2_enhanced", 205.0, 11.7, 53.0, 0.0, 0.0, 0.0, 0);
 
@@ -72968,7 +73092,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );			
 
 			LAi_QuestDelay("Mutineer_5_stay", 0.5);
 			LAi_QuestDelay("careen_gun9_smoke1", 1.0);
@@ -72990,7 +73114,7 @@ void QuestComplete(string sQuestName)
 
 		case "careen_gun9_smoke2":
 			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );	
 			CreateParticleSystem("MMcancloud2_light" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2_light" , 168.8, 2.4, 43.6, 0.0, 0.0, 0.0, sti(20) );
 
@@ -73050,7 +73174,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );	
 
 			LAi_QuestDelay("Mutineer_24_stay", 0.5);
 			LAi_QuestDelay("careen_gun8_smoke1", 1.0);
@@ -73067,7 +73191,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 157.2, 2.5, 40.0, 0.0, 0.0, 0.0, sti(20) );			
 		break;
 
 		case "careen_gun8_smoke2":
@@ -73115,7 +73239,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );	
 
 			LAi_QuestDelay("Mutineer_27_stay", 0.5);
 			LAi_QuestDelay("careen_gun7_smoke1", 1.0);
@@ -73132,7 +73256,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("MMcancloud" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 120.1, 2.65, 16.2, 0.0, 0.0, 0.0, sti(20) );		
 		break;
 
 		case "careen_gun7_smoke2":
@@ -73202,7 +73326,7 @@ void QuestComplete(string sQuestName)
 
 		case "careen_gun6_smoke2":
 			CreateParticleSystem("MMcancloud2" , 111.6, 2.5, 11.8, 0.0, 0.0, 0.0, sti(20) );
-			CreateParticleSystem("MMcancloud2" , 111.6, 2.5, 11.8, 0.0, 0.0, 0.0, sti(20) );
+			CreateParticleSystem("MMcancloud2" , 111.6, 2.5, 11.8, 0.0, 0.0, 0.0, sti(20) );	
 			CreateParticleSystem("MMcancloud2_light" , 111.6, 2.5, 11.8, 0.0, 0.0, 0.0, sti(20) );
 			CreateParticleSystem("MMcancloud2_light" , 111.6, 2.5, 11.8, 0.0, 0.0, 0.0, sti(20) );
 
@@ -73233,7 +73357,7 @@ void QuestComplete(string sQuestName)
 			    if(Pchar.careen_corvette == "round4") PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			}
 		break;
-
+	
 		case "careen_gun5":
 			//logit("GUN 5");
 			LAi_SetSitType(characterFromID("Mutineer_8"));
@@ -73294,7 +73418,7 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("ball_splash", 60.4, 4.0, 150.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("ball_splash", 60.4, 5.0, 150.0, 0.0, 0.0, 0.0, 0);
 			    }
-
+			
 			    if(Pchar.careen_corvette == "round2")
 			    {
 				PlaySound("OBJECTS\SHIPCHARGE\vzriv_pogreb_002.wav");
@@ -73304,7 +73428,7 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("blast_dirt", 60.4, 3.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 60.4, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 60.4, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
-
+			
 				CreateParticleSystemX("flyers2", 60.4, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 60.4, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 60.4, 2.0, 430.0, 0.0, 0.0, 0.0, 0);
@@ -73397,7 +73521,7 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("flyers2", 46.3, 3.0, 140.0, 0.0, 0.0, 0.0, 0);
 
 				LAi_QuestDelay("hurrah", 0.5);
-			    }
+			    }	
 			}
 		break;
 
@@ -73460,8 +73584,8 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("ball_splash", 33.1, 3.0, 150.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("ball_splash", 33.1, 4.0, 150.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("ball_splash", 33.1, 5.0, 150.0, 0.0, 0.0, 0.0, 0);
-			    }
-
+			    }	
+			
 			    if(Pchar.careen_corvette == "round2")
 			    {
 				PlaySound("OBJECTS\SHIPCHARGE\vzriv_pogreb_001.wav");
@@ -73470,21 +73594,21 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("blast_dirt", 33.1, 2.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 33.1, 3.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 33.1, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
-				CreateParticleSystemX("blast_dirt", 33.1, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
-
+				CreateParticleSystemX("blast_dirt", 33.1, 5.0, 430.0, 0.0, 0.0, 0.0, 0);				
+			
 				CreateParticleSystemX("flyers2", 33.1, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 33.1, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 33.1, 2.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 33.1, 3.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers2", 33.1, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers2", 33.1, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
-
+							
 
 				LAi_QuestDelay("hurrah", 0.5);
 			    }
 
 			    if(Pchar.careen_corvette == "round4") PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
-			}
+			}	
 		break;
 	//-----------------------------------------------------------------------------------------------------------
 
@@ -73591,7 +73715,7 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("blast_dirt", 8.2, 3.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 8.2, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 8.2, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
-
+			
 				CreateParticleSystemX("flyers2", 8.2, 4.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 8.2, 5.0, 430.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("flyers", 8.2, 2.0, 430.0, 0.0, 0.0, 0.0, 0);
@@ -73608,7 +73732,7 @@ void QuestComplete(string sQuestName)
 				PlaySound("OBJECTS\SHIPCHARGE\vzriv_pogreb_003.wav");
 				CreateParticleSystemX("blast", 3.4, 2.0, 125.0, 0.0, 0.0, 0.0, 0);
 				PlaySound("PEOPLE\wood2.wav");
-				CreateParticleSystemX("blast_dirt", 3.4, 2.0, 125.0, 0.0, 0.0, 0.0, 0);	//z was 144
+				CreateParticleSystemX("blast_dirt", 3.4, 2.0, 125.0, 0.0, 0.0, 0.0, 0);	//z was 144 
 				CreateParticleSystemX("blast_dirt", 3.4, 3.0, 125.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 3.4, 2.0, 125.0, 0.0, 0.0, 0.0, 0);
 				CreateParticleSystemX("blast_dirt", 3.4, 3.0, 125.0, 0.0, 0.0, 0.0, 0);
@@ -73617,7 +73741,7 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystemX("flyers2", 3.4, 3.0, 125.0, 0.0, 0.0, 0.0, 0);
 
 				LAi_QuestDelay("hurrah", 0.5);
-			    }
+			    }	
 
 			    if(Pchar.careen_corvette == "round4") PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			}
@@ -73732,7 +73856,7 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("BB_careen_shore")].type = "attack_seashore";
 			SetNextWeather("Clear");
 			SetNextWind("SE",90);
-
+		
 			characters[GetCharacterIndex("Maltese_soldier3")].Ship.Type = "obj_invisible";
 			characters[GetCharacterIndex("Maltese_soldier3")].Ship.Stopped = true;
 
@@ -73751,7 +73875,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_ActorTurnToLocator(characterFromID("Pell"), "ships_other", "ship_2");
-
+		
 			LAi_SetActorType(PChar);
 			LAi_ActorTurnToLocator(PChar, "ships_other", "ship_2");
 
@@ -73767,7 +73891,7 @@ void QuestComplete(string sQuestName)
 	//-----------------------------------------------------------------------------------------------------------
 		case "careen_tower_damaged1":
 			//logit("TOWER HIT!");
-
+		
 			LAi_SetActorType(Pchar);
 			LAi_ActorSetLayMode(Pchar);
 
@@ -73826,7 +73950,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(Pchar, "ammopouch");
 			TakeItemFromCharacter(Pchar, "powderflask");
 			TakeItemFromCharacter(Pchar, "bb_hatA2");
-
+		
 			LAi_SetActorType(Pchar);
 			LAi_ActorSetLayMode(Pchar);
 			LAi_SetActorType(characterFromID("Pell"));
@@ -73836,7 +73960,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_dead":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_dead";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -73855,13 +73979,13 @@ void QuestComplete(string sQuestName)
 
 		case "careen_tower_damaged5":
 			//phase B black + seashore sounds
-			//logit("BLACK SHORE");
+			//logit("BLACK SHORE");		
 
 			LAi_QuestDelay("Pyle_dark", 8.0);		//was 10.0
 		break;
 
 		case "Pyle_dark":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_dark";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -73893,8 +74017,8 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "careen_tower_damaged7_A":
-			//from SL_utils.c roof removing roof
-
+			//from SL_utils.c roof removing roof	
+			
 			LAi_SetSitType(characterFromID("Pell"));
 			LAi_SetSitType(characterFromID("Mutineer_9"));
 			LAi_SetSitType(characterFromID("Mutineer_32"));
@@ -73931,21 +74055,21 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "careen_tower_damaged8":
-			//from SL_utils.c roof removed
+			//from SL_utils.c roof removed	
 			//phase D Pyle visible + seashore sounds
 			//logit("PYLE VISIBLE");
 
-			SetModel(PChar, "Howard_Pyle_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);
+			SetModel(PChar, "Howard_Pyle_a", Pchar.model.animation, PChar.sex, stf(PChar.model.height), true);	
 
 			LAi_SetStayType(characterFromID("Pell"));
 			LAi_SetStayType(characterFromID("Mutineer_9"));
 			LAi_SetStayType(characterFromID("Mutineer_32"));
-
+		
 			PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
 			PlaySound("OBJECTS\SHIPCHARGE\ball_splash1.wav");
 			CreateParticleSystemX("ball_splash", 94.3, 0.0, 14.0, 0.0, 0.0, 0.0, 0);
 			CreateParticleSystemX("ball_splash", 94.0, 0.0, 14.0, 0.0, 0.0, 0.0, 0);
-			CreateParticleSystemX("ball_splash", 94.6, 0.0, 14.0, 0.0, 0.0, 0.0, 0);
+			CreateParticleSystemX("ball_splash", 94.6, 0.0, 14.0, 0.0, 0.0, 0.0, 0);		
 
 			LAi_QuestDelay("careen_tower_damaged8_A", 2.0);
 			LAi_QuestDelay("careen_tower_damaged9", 5.0);
@@ -73953,7 +74077,7 @@ void QuestComplete(string sQuestName)
 
 		case "careen_tower_damaged8_A":
 			PlaySound("VOICE\ENGLISH\Dupin_splendid.wav");
-		break;
+		break;		
 
 		case "careen_tower_damaged9":
 			Logit(LanguageConvertString(tmpLangFileID,"I hear church bells - I must have been completely knocked out!"));
@@ -73961,7 +74085,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("stars_short" , u, v+1, w, 0.0, 0.0, 0.0, sti(20) );
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead4.wav");
 			LAi_SetPoorType(Pchar);
-
+	
 			LAi_QuestDelay("careen_tower_damaged10", 5.0);
 		break;
 
@@ -73998,7 +74122,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Pell"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Pell"));
 		break;
-
+	
 		case "corvette_boats":
 			Characters[GetCharacterIndex("Mutineer_32")].Dialog.Filename = "Mutiny leader_dialog.c";
 			Characters[GetCharacterIndex("Mutineer_32")].dialog.CurrentNode  = "corvette_boats";
@@ -74013,7 +74137,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Mutineer_9"));
 			LAi_ActorRunToLocator(characterFromID("Mutineer_9"), "goto", "gun_group3", "_", 10.0);
 			LAi_SetActorType(characterFromID("Mutineer_32"));
-			LAi_ActorRunToLocator(characterFromID("Mutineer_32"), "goto", "goto13", "ready_fire_at_boats", 22.0);
+			LAi_ActorRunToLocator(characterFromID("Mutineer_32"), "goto", "goto13", "ready_fire_at_boats", 22.0);	
 
 			LAi_QuestDelay("Pell_to_cliff1", 2.0);
 		break;
@@ -74031,7 +74155,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Mutineer_32"));
 			LAi_ActorTurnToLocator(characterFromID("Mutineer_32"), "ships_other", "ship_4");
 		break;
-
+		
 		case "ready_fire_at_boats_pchar":
 			ChangeCharacterAddressGroup(Pchar, "BB_careen_shore", "goto", "goto12");
 			LAi_SetActorType(Pchar);
@@ -74063,7 +74187,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("m32_not fight", 3.0);
 			LAi_QuestDelay("fire_at_boats_turn2", 12.0);
 			LAi_QuestDelay("fire_at_boats_turn3", 15.0);
-			LAi_QuestDelay("fire_at_boats2", 18.0);
+			LAi_QuestDelay("fire_at_boats2", 18.0);		
 		break;
 
 		case "m32_not fight":
@@ -74084,14 +74208,14 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "citizen04");
 
-			LAi_QuestDelay("pchar_stand_by_for_broadside", 2.0);
+			LAi_QuestDelay("pchar_stand_by_for_broadside", 2.0);	
 		break;
 
 		case "pchar_stand_by_for_broadside":
 			ChangeCharacterAddressGroup(Pchar, "BB_careen_shore", "goto", "goto12");
 
 			LAi_QuestDelay("pchar_playertype", 1.0);
-		break;
+		break;		
 
 		case "fire_at_boats2":
 			Pchar.careen_corvette = "round4";			//firing at boats 2:nd time
@@ -74126,7 +74250,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("careen_boat4", 45.0);
 			LAi_QuestDelay("careen_boat5", 45.3);
 
-			LAi_QuestDelay("fire_at_boats3", 48.0);
+			LAi_QuestDelay("fire_at_boats3", 48.0);		
 		break;
 
 		case "1_boat_hit":
@@ -74142,13 +74266,13 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("fire_at_boats_turn2", 0.01);
 			LAi_QuestDelay("pchar_grr", 0.01);
 			LAi_QuestDelay("reload_gun3", 1.0);
-			LAi_QuestDelay("reload_gun4", 3.0);
+			LAi_QuestDelay("reload_gun4", 3.0);	
 		break;
 //-----------------------------------------------------------------------------------------------------
 
 		case "reload_gun3":
 			LAi_SetActorType(characterFromID("Mutineer_25"));
-			LAi_ActorRunToLocator(characterFromID("Mutineer_25"), "goto", "gun3RL", "reload_gun3_1", 3.0);
+			LAi_ActorRunToLocator(characterFromID("Mutineer_25"), "goto", "gun3RL", "reload_gun3_1", 3.0);	
 		break;
 
 		case "reload_gun3_1":
@@ -74171,7 +74295,7 @@ void QuestComplete(string sQuestName)
 	//.................................................................................................................
 		case "reload_gun4":
 			LAi_SetActorType(characterFromID("Mutineer_26"));
-			LAi_ActorRunToLocator(characterFromID("Mutineer_26"), "goto", "gun4RL", "reload_gun4_1", 3.0);
+			LAi_ActorRunToLocator(characterFromID("Mutineer_26"), "goto", "gun4RL", "reload_gun4_1", 3.0);	
 		break;
 
 		case "reload_gun4_1":
@@ -74295,11 +74419,11 @@ void QuestComplete(string sQuestName)
 
 			characters[GetCharacterIndex("Maltese_soldier4")].Ship.Type = "obj_invisible";	//boat1 replaced
 			characters[GetCharacterIndex("Maltese_soldier5")].Ship.Type = "obj_invisible";	//boat2 replaced
-			characters[GetCharacterIndex("Maltese_red2")].Ship.Type = "obj_boat2_down";	//boat1 when hit
+			characters[GetCharacterIndex("Maltese_red2")].Ship.Type = "obj_boat2_down";	//boat1 when hit	
 			characters[GetCharacterIndex("Maltese_green")].Ship.Type = "obj_invisible";	//boat2 when hit, was obj_hatch12
 			characters[GetCharacterIndex("Maltese_black")].Ship.Type = "obj_soldier";	//boat2 when hit
 			characters[GetCharacterIndex("Maltese_knight")].Ship.Type = "obj_soldier";	//boat2 when hit
-
+		
 			ChangeCharacterAddressGroup(characterFromID("Mutineer_25"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("Mutineer_26"), "none", "", "");
 
@@ -74415,8 +74539,8 @@ void QuestComplete(string sQuestName)
 		case "bhouse9": ChangeCharacterAddressGroup(characterFromID("Mutineer_9"), "BB_careen_shore", "goto", "hidden"); break;
 		case "bhouse32": ChangeCharacterAddressGroup(characterFromID("Mutineer_32"), "none", "", ""); break;
 		case "bhouse27": ChangeCharacterAddressGroup(characterFromID("Mutineer_27"), "none", "", ""); break;
-
-		case "bhouse31": ChangeCharacterAddressGroup(characterFromID("mutineer_31"), "BB_careen_blockhouse", "goto", "musk1");
+	
+		case "bhouse31": ChangeCharacterAddressGroup(characterFromID("mutineer_31"), "BB_careen_blockhouse", "goto", "musk1"); 
 				 LAi_SetStayType(characterFromID("mutineer_31")); break;
 		case "bhouse10": ChangeCharacterAddressGroup(characterFromID("mutineer_10"), "BB_careen_blockhouse", "goto", "musk2");
 				 LAi_SetStayType(characterFromID("mutineer_10")); break;
@@ -74452,7 +74576,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("careen_boat4_last", 1.0);
 			LAi_QuestDelay("careen_boat3_last", 3.0);
 		break;
-
+	
 		case "careen_boat4_last":
 			PlaySound("OBJECTS\SHIPCHARGE\CR12C.wav");
 			CreateParticleSystem("canfire2" , 168.7, 2.0, 71.0, 3.14, 0.0, 0.0, sti(20) );
@@ -74471,7 +74595,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("splinters_enhanced" , 168.7, 6.0, -8.0, 0.0, 4.0, 0.0, sti(20) );
 			CreateParticleSystem("blast_dirt" , 168.7, 6.0, -8.0, 0.0, 0.0, 0.0, sti(20) );
 		break;
-
+	
 		case "careen_boat3_last":
 			PlaySound("OBJECTS\SHIPCHARGE\CR12C.wav");
 			CreateParticleSystem("canfire2" , 115.7, 2.0, 71.0, 3.14, 0.0, 0.0, sti(20) );
@@ -74533,7 +74657,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Mutineer_2"), "none", "", "");
 
 			ChangeCharacterAddressGroup(characterFromID("Herrick"), "BB_careen_shore", "goto", "hidden");
-
+		
 			SetNextWeather("Clear");
 			Locations[FindLocation("BB_careen_shore")].image = "";
 			DoQuestReloadToLocation("BB_careen_shore", "goto", "locator26" ,"pchar_to_blockhouse3");
@@ -74563,9 +74687,9 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("mutineer_7"));
 			LAi_SetActorType(characterFromID("mutineer_6"));
 			LAi_SetActorType(characterFromID("mutineer_19"));
-
+	
 		//and 4 mutineers in blockhouse
-			ChangeCharacterAddressGroup(characterFromID("mutineer_31"), "BB_careen_blockhouse", "goto", "musk1");
+			ChangeCharacterAddressGroup(characterFromID("mutineer_31"), "BB_careen_blockhouse", "goto", "musk1"); 
 			ChangeCharacterAddressGroup(characterFromID("mutineer_10"), "BB_careen_blockhouse", "goto", "musk2");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_20"), "BB_careen_blockhouse", "goto", "musk3");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_4"), "BB_careen_blockhouse", "goto", "musk4");
@@ -74611,7 +74735,7 @@ void QuestComplete(string sQuestName)
 		EquipCharacterByItem(characterFromID("Mutineer_19"), "blade4");
 
 			PlaySound("VOICE\ENGLISH\Eng_m_b_059.wav");
-
+		
 			LAi_QuestDelay("pchar_to_blockhouse4", 1.0);
 
 			pchar.quest.pchar_to_blockhouse6_0.win_condition.l1 = "locator";
@@ -74699,7 +74823,7 @@ void QuestComplete(string sQuestName)
 			LAi_group_MoveCharacter(characterFromID("car_marine21"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("car_marine22"), "ROOF_THUGS_1");
 			LAi_group_MoveCharacter(characterFromID("car_marine23"), "ROOF_THUGS_1");
-
+		
 			LAi_group_Register("ROOF_THUGS_1");
 			LAi_group_SetRelation(LAI_GROUP_PLAYER, "ROOF_THUGS_1", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_1", true);
@@ -74771,11 +74895,11 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("pchar_to_blockhouse7", 0.5);
 		break;
 
-		case "pchar_to_blockhouse7":
+		case "pchar_to_blockhouse7":			
 			PlaySound("OBJECTS\SHIPCHARGE\CR18C.wav");
 			CreateParticleSystem("gunfire" , 42.3, 10.6, -103.9, 0.0, 0.0, 0.0, sti(20) );		//house 3
 			CreateParticleSystem("gunfire" , 38.75, 10.6, -103.9, 0.0, 0.0, 0.0, sti(20) );		//house 4
-
+		
 			LAi_KillCharacter(characterFromID("car_marine14"));
 			LAi_KillCharacter(characterFromID("car_marine8"));
 			ChangeCharacterAddressGroup(characterFromID("car_marine14"), "none", "", "");
@@ -74798,7 +74922,7 @@ void QuestComplete(string sQuestName)
 			CreateParticleSystem("gunfire" , 37.25, 10.6, -103.9, 0.0, 0.0, 0.0, sti(20) );		//house 5, misses his shot
 
 			LAi_KillCharacter(characterFromID("car_marine13"));
-			LAi_KillCharacter(characterFromID("Herrick"));
+			LAi_KillCharacter(characterFromID("Herrick"));	
 			ChangeCharacterAddressGroup(characterFromID("Herrick"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("car_marine13"), "none", "", "");
 		break;
@@ -74837,7 +74961,7 @@ void QuestComplete(string sQuestName)
 		case "pchar_to_blockhouse11":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "goto", "musk2");
-
+			
 			LAi_QuestDelay("pchar_to_blockhouse13_0", 1.0);
 		break;
 
@@ -74856,7 +74980,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Mutineer_6"), "PiratesPistol");
 			TakenItems(characterFromID("Mutineer_6"), "gunpowder", 2);
 			TakenItems(characterFromID("Mutineer_6"), "pistolbullets", 2);
-
+	
 		RemoveCharacterEquip(characterFromID("Mutineer_19"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Mutineer_19"), BLADE_ITEM_TYPE);
 			DeleteAttribute(characterFromID("Mutineer_19"), "items");
@@ -74971,7 +75095,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\counter_openclose.wav");
 			LAi_SetStayType(characterFromID("Mutineer_32"));
 			ChangeCharacterAddressGroup(characterFromID("mutineer_32"), "BB_careen_blockhouse", "goto", "goto3");
-
+			
 		RemoveCharacterEquip(characterFromID("Hands"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Hands"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("Hands"), "bladepowderhornN");
@@ -75056,12 +75180,12 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("mutineer_19"), "BB_careen_shore", "goto", "def2");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_13"), "BB_careen_shore", "goto", "def3");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_9"), "BB_careen_shore", "goto", "def4");
-			ChangeCharacterAddressGroup(characterFromID("mutineer_24"), "BB_careen_shore", "goto", "def5");
+			ChangeCharacterAddressGroup(characterFromID("mutineer_24"), "BB_careen_shore", "goto", "def5");	
 			ChangeCharacterAddressGroup(characterFromID("mutineer_11"), "BB_careen_shore", "goto", "def6");
-			ChangeCharacterAddressGroup(characterFromID("mutineer_1"), "BB_careen_shore", "goto", "def7");
+			ChangeCharacterAddressGroup(characterFromID("mutineer_1"), "BB_careen_shore", "goto", "def7"); 
 			ChangeCharacterAddressGroup(characterFromID("mutineer_12"), "BB_careen_shore", "goto", "def8");
-			ChangeCharacterAddressGroup(characterFromID("mutineer_7"), "BB_careen_shore", "goto", "def9");
-
+			ChangeCharacterAddressGroup(characterFromID("mutineer_7"), "BB_careen_shore", "goto", "def9"); 
+		
 			LAi_SetOfficerType(characterFromID("Mutineer_6"));
 			LAi_SetOfficerType(characterFromID("Mutineer_19"));
 			LAi_SetOfficerType(characterFromID("Mutineer_9"));
@@ -75071,7 +75195,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("Mutineer_1"));
 			LAi_SetOfficerType(characterFromID("Mutineer_12"));
 			LAi_SetOfficerType(characterFromID("Mutineer_7"));
-
+		
 			LAi_SetOfficerType(characterFromID("Hands"));
 			LAi_SetOfficerType(characterFromID("Caesar"));
 			LAi_SetOfficerType(characterFromID("Pell"));
@@ -75095,7 +75219,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("Inch"), "BB_careen_shore", "quest", "marine1_off1");
 			ChangeCharacterAddressGroup(characterFromID("car_marine16"), "BB_careen_shore", "quest", "marine16");
 			ChangeCharacterAddressGroup(characterFromID("car_marine17"), "BB_careen_shore", "quest", "marine17");
-
+	
 			LAi_group_MoveCharacter(characterFromID("car_marine7"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_marine9"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_marine10"), "ROOF_THUGS_2");
@@ -75117,8 +75241,8 @@ void QuestComplete(string sQuestName)
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_2", true);
 
 			LAi_QuestDelay("pchar_to_blockhouse21", 2.0);
-			LAi_QuestDelay("pchar_to_blockhouse23", 0.1);
-
+			LAi_QuestDelay("pchar_to_blockhouse23", 0.1);	
+		
 			Pchar.quest.careen_shore_fight_end.win_condition.l1 = "NPC_Death";
 			Pchar.quest.careen_shore_fight_end.win_condition.l1.character = "car_marine7";
 			Pchar.quest.careen_shore_fight_end.win_condition.l2 = "NPC_Death";
@@ -75266,10 +75390,10 @@ void QuestComplete(string sQuestName)
 			AddMoneyToCharacter(characterFromID("Inch"), -1000);
 
 			LAi_SetActorType(Pchar);
-
+	
 			PauseAllSounds();//stops music
 			LAi_QuestDelay("hurrah", 0.5);
-
+			
 			characters[GetCharacterIndex("Hands")].dialog.CurrentNode = "neutral";
 			characters[GetCharacterIndex("Caesar")].dialog.CurrentNode = "neutral";
 			characters[GetCharacterIndex("Pell")].dialog.CurrentNode = "neutral";
@@ -75321,12 +75445,12 @@ void QuestComplete(string sQuestName)
 
 		case "careen_shore_fight_end3":
 			LAi_QuestDelay("hurrah", 0.1);
-
+			
 			LAi_QuestDelay("careen_shore_fight_end4", 2.0);
 		break;
 
 		case "careen_shore_fight_end4":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "who_can_swim";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -75422,7 +75546,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\counter_openclose.wav");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_32"), "BB_careen_shore", "goto", "def3");
 
-			Locations[FindLocation("BB_careen_shore")].reload.l1.disable = 1;				//no more access to blockhouse
+			Locations[FindLocation("BB_careen_shore")].reload.l1.disable = 1;				//no more access to blockhouse	
 
 			LAi_QuestDelay("careen_shore_fight_end12", 1.5);
 		break;
@@ -75455,12 +75579,12 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "careen_shore_fight_end16":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "red_uniforms";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
-		case "careen_shore_fight_end17":
+		case "careen_shore_fight_end17":		
 			LAi_QuestDelay("mut6_sold", 1.0);
 
 			LAi_QuestDelay("mut1_sold", 2.0);
@@ -75474,16 +75598,16 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("mut24_sold", 4.0);
 
 			LAi_QuestDelay("mut_sold_to boats", 6.0);		//ok here
-			LAi_QuestDelay("mut_swimmers_to shore", 8.0);		//ok here
+			LAi_QuestDelay("mut_swimmers_to shore", 8.0);		//ok here		
 		break;
     //-----------------------------------------------------------------------------------
-
+		
 		case "mut6_sold":
 			if(!LAi_IsDead(CharacterFromID("Mutineer_6")))
 			{
 				PlaySound("PEOPLE\clothes1.wav");
 				SetModel(characterFromID("Mutineer_6"), "Soldier_Eng_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine7"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine7"), "none", "", "");				
 
 				LAi_QuestDelay("mut6_sold_1", 1.0);
 			}
@@ -75516,7 +75640,7 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("PEOPLE\clothes1.wav");
 				SetModel(characterFromID("Mutineer_1"), "Soldier_Eng2_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine9"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine9"), "none", "", "");			
 
 				LAi_QuestDelay("mut1_sold_1", 1.0);
 			}
@@ -75548,7 +75672,7 @@ void QuestComplete(string sQuestName)
 			if(!LAi_IsDead(CharacterFromID("Mutineer_7")))
 			{
 				SetModel(characterFromID("Mutineer_7"), "Soldier_Eng6_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine10"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine10"), "none", "", "");				
 
 				LAi_QuestDelay("mut7_sold_1", 1.0);
 			}
@@ -75580,7 +75704,7 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("PEOPLE\clothes1.wav");
 				SetModel(characterFromID("Mutineer_9"), "Soldier_Eng2_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine11"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine11"), "none", "", "");			
 
 				LAi_QuestDelay("mut9_sold_1", 1.0);
 			}
@@ -75612,7 +75736,7 @@ void QuestComplete(string sQuestName)
 			if(!LAi_IsDead(CharacterFromID("Mutineer_11")))
 			{
 				SetModel(characterFromID("Mutineer_11"), "Soldier_Eng2_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine12"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine12"), "none", "", "");			
 
 				LAi_QuestDelay("mut11_sold_1", 1.0);
 			}
@@ -75643,7 +75767,7 @@ void QuestComplete(string sQuestName)
 			if(!LAi_IsDead(CharacterFromID("Mutineer_12")))
 			{
 				SetModel(characterFromID("Mutineer_12"), "Soldier_Eng3_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine16"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine16"), "none", "", "");			
 
 				LAi_QuestDelay("mut12_sold_1", 1.0);
 			}
@@ -75674,7 +75798,7 @@ void QuestComplete(string sQuestName)
 			if(!LAi_IsDead(CharacterFromID("Mutineer_13")))
 			{
 				SetModel(characterFromID("Mutineer_13"), "Soldier_Eng2_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine17"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine17"), "none", "", "");			
 
 				LAi_QuestDelay("mut13_sold_1", 1.0);
 			}
@@ -75706,7 +75830,7 @@ void QuestComplete(string sQuestName)
 			{
 				PlaySound("PEOPLE\clothes1.wav");
 				SetModel(characterFromID("Mutineer_24"), "Soldier_Eng3_17", "man", "man", 1.8, false);
-				ChangeCharacterAddressGroup(characterFromID("car_marine28"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine28"), "none", "", "");			
 
 				LAi_QuestDelay("mut24_sold_1", 1.0);
 			}
@@ -75733,9 +75857,9 @@ void QuestComplete(string sQuestName)
 				EquipCharacterByItem(characterFromID("Mutineer_24"), "pistolmketB");
 			}
 		break;
-
+		
     //-----------------------------------------------------------------------------------
-
+		
 		case "mut_sold_to boats":
 			if(!LAi_IsDead(CharacterFromID("Mutineer_6")))
 			{
@@ -75791,11 +75915,11 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("mutineer_12"), "none", "", "");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_7"), "none", "", "");
 		break;
-
+	
     //-----------------------------------------------------------------------------------
 
 		case "mut_swimmers_to shore":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "mut_swimmers_to shore";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -75835,10 +75959,10 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("mutineer_19"));
 		break;
 
-    //-----------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------	
 
 		case "mut_officers_outfits":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "officers_outfits";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -75849,7 +75973,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorRunToLocator(characterFromID("Hands"), "goto", "def4", "Hands_to_def4", 5.0);
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_ActorRunToLocator(characterFromID("Pell"), "goto", "def7", "Pell_to_def7", 4.0);
-
+	
 			LAi_QuestDelay("mut32_sold", 4.0);
 		break;
 
@@ -75862,7 +75986,7 @@ void QuestComplete(string sQuestName)
 		case "Pell_to_def7":
 			ChangeCharacterAddressGroup(characterFromID("Pell"), "BB_careen_shore", "goto", "def7");
 
-			LAi_QuestDelay("Pell_lieutenant", 4.0);
+			LAi_QuestDelay("Pell_lieutenant", 4.0);	
 		break;
 	//..................................................................
 		case "Hands_midshipman":
@@ -75870,13 +75994,13 @@ void QuestComplete(string sQuestName)
 			SetModel(characterFromID("Hands"), "bb_Hands2_officer", "man", "man", 1.8, false);
 			ChangeCharacterAddressGroup(characterFromID("Herrick"), "none", "", "");
 
-			LAi_QuestDelay("careen_shore_fight_end18", 1.0);
+			LAi_QuestDelay("careen_shore_fight_end18", 1.0);					
 		break;
 	//..................................................................
 		case "Pell_lieutenant":
 			PlaySound("PEOPLE\clothes1.wav");
 			SetModel(characterFromID("Pell"), "bb_Pell_officer", "man", "man", 1.8, false);
-			ChangeCharacterAddressGroup(characterFromID("Inch"), "none", "", "");
+			ChangeCharacterAddressGroup(characterFromID("Inch"), "none", "", "");			
 		break;
 	//..................................................................
 		case "mut32_sold":
@@ -75888,7 +76012,7 @@ void QuestComplete(string sQuestName)
 				ChangeCharacterAddressGroup(characterFromID("car_marine30"), "none", "", "");
 				ChangeCharacterAddressGroup(characterFromID("car_marine31"), "none", "", "");
 				ChangeCharacterAddressGroup(characterFromID("car_marine33"), "none", "", "");
-				ChangeCharacterAddressGroup(characterFromID("car_marine32"), "none", "", "");
+				ChangeCharacterAddressGroup(characterFromID("car_marine32"), "none", "", "");			
 
 				LAi_QuestDelay("mut32_sold_1", 1.0);
 			}
@@ -75915,11 +76039,11 @@ void QuestComplete(string sQuestName)
 				EquipCharacterByItem(characterFromID("Mutineer_32"), "pistolmketB");
 			}
 		break;
-
-    //-----------------------------------------------------------------------------------
+	
+    //-----------------------------------------------------------------------------------	
 
 		case "careen_shore_fight_end18":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "command_the_boats";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76009,7 +76133,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "careen_shore_fight_end27":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "wait_until_dark";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76029,7 +76153,7 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(Pchar, "items");
 			GiveItem2Character(Pchar, "book71_9_start");
 			GiveItem2Character(Pchar, "picture8_A");
-
+ 
 			DeleteAttribute(characterFromID("Caesar"), "items");
 			DeleteAttribute(characterFromID("mutineer_23"), "items");
 			DeleteAttribute(characterFromID("mutineer_19"), "items");
@@ -76090,7 +76214,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("PEOPLE\recoil.wav");
 			ChangeCharacterAddressGroup(characterFromID("Bolitho"), "BB_careen_capmd_2", "goto", "cap_sit");
 			LAi_SetSitType(characterFromID("Bolitho"));
-
+			
 			//yes here, not in console!
 			Characters[GetCharacterIndex("Mutineer_19")].name = TranslateString("", "King David");
 			Characters[GetCharacterIndex("Mutineer_23")].name = TranslateString("", "Crimson Pirate");
@@ -76130,7 +76254,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("mutineer_23"), "BB_careen_capsm", "goto", "arrive");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_19"), "BB_careen_capsm", "goto", "arrive2");
 			ChangeCharacterAddressGroup(characterFromID("Caesar"), "BB_careen_capsm", "goto", "arrive3");
-
+		
 			LAi_SetActorType(characterFromID("Mutineer_23"));
 			LAi_SetActorType(characterFromID("Mutineer_19"));
 			LAi_SetActorType(characterFromID("Caesar"));
@@ -76151,7 +76275,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette2":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette2";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76184,7 +76308,7 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("BB_careen_deck2")].type = "silent_deck";
 			PostEvent("LoadSceneSound", 0);
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette4";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76223,9 +76347,9 @@ void QuestComplete(string sQuestName)
 		case "explore_corvette7":
 			LAi_SetActorType(characterFromID("Mutineer_23"));
 			LAi_SetActorType(characterFromID("Mutineer_19"));
-			LAi_SetActorType(characterFromID("Caesar"));
+			LAi_SetActorType(characterFromID("Caesar"));		
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette7";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76278,7 +76402,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette9_A":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette9_B";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76294,7 +76418,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("mutineer_19"));
 			LAi_SetPlayerType(Pchar);
 		break;
-
+	
 		case "explore_corvette10":
 			//from pitchfork p.u
 
@@ -76325,14 +76449,14 @@ void QuestComplete(string sQuestName)
 			pchar.quest.explore_corvette11.win_condition.l1.location = "BB_careen_capmd_2";
 			pchar.quest.explore_corvette11.win_condition = "explore_corvette11";
 		break;
-
+		
 		case "explore_corvette11":
 			LAi_SetStayType(Pchar);
 			LAi_SetImmortal(characterFromID("Bolitho"), false);
 			LAi_SetHP(CharacterFromID("Bolitho"), 50.0, 50.0);
 			Php = LAi_GetCharacterHP(Pchar);
 			if(Php < 100.0) {LAi_SetHP(Pchar, 100.0, 100.0);}
-
+			
 			LAi_QuestDelay("pchar_ohoh", 0.01);
 			LAi_QuestDelay("explore_corvette11_A", 1.0);
 		break;
@@ -76357,23 +76481,23 @@ void QuestComplete(string sQuestName)
 			pchar.quest.explore_corvette12.win_condition.l1.character = "Bolitho";
 			pchar.quest.explore_corvette12.win_condition = "explore_corvette12";
 		break;
-
+	
 		case "explore_corvette12":
 			GiveItem2Character(pchar, "spyglass3");
 			TakeItemFromCharacter(characterFromID("Bolitho"), "bladespyglass6");
 			ChangeCharacterAddressGroup(characterFromID("car_sailor1"), "BB_careen_capmd_2", "goto", "sailor1");
 			LAi_SetStayType(Pchar);
 			LAi_LocationFightDisable(&Locations[FindLocation("BB_careen_capmd_2")], true);
-
-			LAi_QuestDelay("explore_corvette12_A", 1.0);
+			
+			LAi_QuestDelay("explore_corvette12_A", 1.0);	
 		break;
 
 		case "explore_corvette12_A":
 			PlaySound("INTERFACE\knock.wav");
-
+			
 			LAi_QuestDelay("explore_corvette12_B", 1.0);
 		break;
-
+		
 		case "explore_corvette12_B":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "reload1");
@@ -76397,7 +76521,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette13":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette13";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76409,7 +76533,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 			SetLocatorRadius(locations[FindLocation("BB_careen_capmd_2")], "randitem", "randitem5", 1.5);
 			Locations[FindLocation("BB_careen_capmd_2")].locators_radius.randitem.randitem5 = 1.5;
-
+		
 			LAi_QuestDelay("pillow1_check", 0.5);
 			LAi_QuestDelay("corvette_blade11_check", 0.5);
 			LAi_QuestDelay("corvette_pistol6_check", 0.5);
@@ -76431,7 +76555,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\wheel_take.wav");
 			Locations[FindLocation("BB_careen_capmd_2")].models.always.locators = "capmd_2_l_careen_opened";
 
-
+	
 			Locations[FindLocation("BB_careen_capmd_2")].image = "";
 			DoQuestReloadToLocation("BB_careen_capmd_2", "goto", "at_door" ,"reset_capmd_2");
 		break;
@@ -76445,10 +76569,10 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "reset_capmd_2":
-			if(Locations[FindLocation("BB_careen_capmd_2")].models.always.locators == "capmd_2_l_careen_opened")
+			if(Locations[FindLocation("BB_careen_capmd_2")].models.always.locators == "capmd_2_l_careen_opened") 
 			{
 				PlaySound("PEOPLE\wood1.wav");
-
+				
 				LAi_QuestDelay("pchar_ohoh", 1.0);
 				LAi_QuestDelay("explore_corvette14", 8.0);	//timer to sailor1 attack
 			}
@@ -76568,7 +76692,7 @@ void QuestComplete(string sQuestName)
 						Pchar.explore_capmd_2 = "done";		//so this isn't repeated
 						SetLocatorRadius(locations[FindLocation("BB_careen_capmd_2")], "reload", "reload2", 0.7);
 						Locations[FindLocation("BB_careen_capmd_2")].locators_radius.reload.reload2 = 0.7;
-
+					
 						LAi_QuestDelay("corv_capmd_2_check_king", 1.0);
 					}
 				}
@@ -76592,14 +76716,14 @@ void QuestComplete(string sQuestName)
 
 		case "explore_corvette15":
 			Locations[FindLocation("BB_careen_deck2")].models.always.locators = "deck2_l_careen";
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Mutineer_19"));
 
 			LAi_QuestDelay("explore_corvette15_A", 1.0);
 		break;
 
 		case "explore_corvette15_A":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette15";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76654,7 +76778,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("mutineer_19"), "blade1");
 			GiveItem2Character(characterFromID("mutineer_23"), "blade1");
 			EquipCharacterByItem(characterFromID("mutineer_23"), "blade1");
-
+			
 			LAi_QuestDelay("explore_corvette17_B", 1.0);
 		break;
 
@@ -76664,10 +76788,10 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("mutineer_23"), "piratespistol");
 			EquipCharacterByItem(characterFromID("mutineer_23"), "piratespistol");
 
-			LAi_QuestDelay("explore_corvette17_C", 1.0);
+			LAi_QuestDelay("explore_corvette17_C", 1.0);	
 		break;
 
-		case "explore_corvette17_C":
+		case "explore_corvette17_C":	
 			PlaySound("VOICE\ENGLISH\gr_wench3_mhm.wav");
 			SetOfficersIndex(Pchar, 2, getCharacterIndex("Mutineer_23"));
 
@@ -76688,7 +76812,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(characterFromID("mutineer_19"), "blade1");
 			GiveItem2Character(characterFromID("Caesar"), "blade1");
 			EquipCharacterByItem(characterFromID("Caesar"), "blade1");
-
+			
 			LAi_QuestDelay("explore_corvette18_B", 1.0);
 		break;
 
@@ -76698,10 +76822,10 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("Caesar"), "piratespistol");
 			EquipCharacterByItem(characterFromID("Caesar"), "piratespistol");
 
-			LAi_QuestDelay("explore_corvette18_C", 1.0);
+			LAi_QuestDelay("explore_corvette18_C", 1.0);	
 		break;
 
-		case "explore_corvette18_C":
+		case "explore_corvette18_C":	
 			PlaySound("VOICE\ENGLISH\Jupiter_mm.wav");
 			SetOfficersIndex(Pchar, 3, getCharacterIndex("Caesar"));
 
@@ -76716,7 +76840,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette19":
-			Locations[FindLocation("BB_careen_deck2")].models.always.locators = "deck2_l_careen_off";
+			Locations[FindLocation("BB_careen_deck2")].models.always.locators = "deck2_l_careen_off";	
 			LAi_SetPlayerType(pchar);
 			LAi_SetOfficerType(characterFromID("mutineer_23"));
 			LAi_SetOfficerType(characterFromID("mutineer_19"));
@@ -76736,6 +76860,7 @@ void QuestComplete(string sQuestName)
 			TakeItemFromCharacter(Pchar, "key39");
 			Pchar.careen_convicts = "open";
 
+	//for(i=1; i<7; i++) Characters[GetCharacterIndex("car_convict"+i)].name = TranslateString("", "Freedman"));
 			LAi_SetStayType(characterFromID("car_convict1"));
 			LAi_SetStayType(characterFromID("car_convict2"));
 			LAi_SetStayType(characterFromID("car_convict3"));
@@ -76746,19 +76871,19 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_convict1"), "BB_careen_holdP", "quest", "conv1_stay");
 			ChangeCharacterAddressGroup(characterFromID("car_convict2"), "BB_careen_holdP", "quest", "conv2_stay");
 			ChangeCharacterAddressGroup(characterFromID("car_convict3"), "BB_careen_holdP", "quest", "conv3_stay");
-			ChangeCharacterAddressGroup(characterFromID("car_convict4"), "BB_careen_holdP", "quest", "conv4_stay");
+			ChangeCharacterAddressGroup(characterFromID("car_convict4"), "BB_careen_holdP", "quest", "conv4_stay");				
 			ChangeCharacterAddressGroup(characterFromID("car_convict5"), "BB_careen_holdP", "quest", "conv5_stay");
 		break;
 
 		case "explore_corvette20":
 			PlaySound("OBJECTS\SHIPCHARGE\hurrah.wav");
 			PlaySound("AMBIENT\cheer2.wav");
-
+			
 			LAi_QuestDelay("explore_corvette20_B", 2.0);
 		break;
 
 		case "explore_corvette20_B":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette20_B";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76812,12 +76937,12 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(characterFromID("Caesar"), "quest", "exit", "explore_corvette20_F", 2.5);
 			LAi_SetActorType(characterFromID("mutineer_19"));
 			LAi_ActorGoToLocator(characterFromID("mutineer_19"), "quest", "exit", "explore_corvette20_G", 3.5);
-
+		
 			pchar.quest.explore_corvette21.win_condition.l1 = "location";
 			pchar.quest.explore_corvette21.win_condition.l1.location = "BB_careen_holdS";
 			pchar.quest.explore_corvette21.win_condition = "explore_corvette21";
 		break;
-
+	
 		case "explore_corvette20_F":
 			ChangeCharacterAddressGroup(characterFromID("Caesar"), "BB_careen_holdP", "goto", "officers");
 		break;
@@ -76825,7 +76950,7 @@ void QuestComplete(string sQuestName)
 		case "explore_corvette20_G":
 			ChangeCharacterAddressGroup(characterFromID("mutineer_19"), "BB_careen_holdP", "goto", "officers");
 		break;
-
+	
 		case "explore_corvette21":
 			RemoveOfficersIndex(pchar, GetCharacterIndex("mutineer_23"));
 			RemovePassenger(pchar, characterFromID("mutineer_23"));
@@ -76883,7 +77008,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("explore_corvette22_B", 1.5);
 		break;
-
+	
 		case "explore_corvette22_B":
 			LAi_SetSitType(characterFromID("mutineer_23"));
 			PlaySound("PEOPLE\lockpick2.wav");
@@ -76897,7 +77022,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("explore_corvette22_D", 2.0);
 		break;
-
+		
 		case "explore_corvette22_D":
 			LAi_SetSitType(characterFromID("mutineer_23"));
 			PlaySound("PEOPLE\lockpick2.wav");
@@ -76963,12 +77088,12 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("car_slave26"));
 			LAi_SetStayType(characterFromID("car_slave27"));
 			LAi_SetStayType(characterFromID("car_slave7"));
-			Characters[GetCharacterIndex("car_slave28")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave26")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave27")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave7")].name = TranslateString("", "Freedman");
+		Characters[GetCharacterIndex("car_slave28")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave26")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave27")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave7")].name = TranslateString("", "Freedman"));	
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette22_K";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -76998,7 +77123,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(characterFromID("car_slave2"));
 			ChangeCharacterAddressGroup(characterFromID("car_slave3"), "BB_careen_holdS", "quest", "slave3_P");
 			LAi_SetPoorType(characterFromID("car_slave3"));
-
+		
 			ChangeCharacterAddressGroup(characterFromID("car_slave4"), "BB_careen_holdS", "quest", "slave4_P");
 			LAi_SetPoorType(characterFromID("car_slave4"));
 			ChangeCharacterAddressGroup(characterFromID("car_slave5"), "BB_careen_holdS", "quest", "slave5_P");
@@ -77010,7 +77135,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette23":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette23";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -77046,7 +77171,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("car_slave22"));
 			LAi_SetActorType(characterFromID("car_slave24"));
 			LAi_SetActorType(characterFromID("car_slave25"));
-
+			
 			LAi_QuestDelay("explore_corvette23_E", 0.5);
 		break;
 
@@ -77065,10 +77190,10 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("car_slave22"));
 			LAi_SetStayType(characterFromID("car_slave24"));
 			LAi_SetStayType(characterFromID("car_slave25"));
-		Characters[GetCharacterIndex("car_slave22")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave24")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave25")].name = TranslateString("", "Freedman");
-
+		Characters[GetCharacterIndex("car_slave22")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave24")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave25")].name = TranslateString("", "Freedman"));
+		
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "quest", "slave11_P");
 
@@ -77085,7 +77210,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(characterFromID("car_slave11"));
 			ChangeCharacterAddressGroup(characterFromID("car_slave12"), "BB_careen_holdS", "quest", "slave12_P");
 			LAi_SetPoorType(characterFromID("car_slave12"));
-
+		
 			ChangeCharacterAddressGroup(characterFromID("car_slave8"), "BB_careen_holdS", "quest", "slave8_P");
 			LAi_SetPoorType(characterFromID("car_slave8"));
 			ChangeCharacterAddressGroup(characterFromID("car_slave9"), "BB_careen_holdS", "quest", "slave9_P");
@@ -77119,7 +77244,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(characterFromID("car_slave20"));
 			ChangeCharacterAddressGroup(characterFromID("car_slave21"), "BB_careen_holdS", "quest", "slave21_P");
 			LAi_SetPoorType(characterFromID("car_slave21"));
-		break;
+		break; 
 
 		case "explore_corvette26":
 			ChangeCharacterAddressGroup(characterFromID("mutineer_23"), "BB_careen_holdS", "goto", "unlock3");
@@ -77179,13 +77304,13 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("car_slave3"));
 			LAi_SetStayType(characterFromID("car_slave4"));
 			LAi_SetStayType(characterFromID("car_slave5"));
-			Characters[GetCharacterIndex("car_slave23")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave2")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave3")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave4")].name = TranslateString("", "Freedman");
-			Characters[GetCharacterIndex("car_slave5")].name = TranslateString("", "Freedman");
+		Characters[GetCharacterIndex("car_slave23")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave2")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave3")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave4")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave5")].name = TranslateString("", "Freedman"));
 		break;
-
+	
 		case "explore_corvette26_E":
 			LAi_QuestDelay("pchar_yah", 0.1);
 
@@ -77209,7 +77334,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("AMBIENT\TAVERN\Tavern_004.wav");
 			PlaySound("AMBIENT\TAVERN\Tavern_004.wav");
 			PlaySound("AMBIENT\TAVERN\Tavern_004.wav");
-
+		
 			LAi_QuestDelay("explore_corvette27_A", 0.1);
 
 		//on the way back
@@ -77226,20 +77351,20 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("car_slave10"));
 			LAi_SetStayType(characterFromID("car_slave11"));
 			LAi_SetStayType(characterFromID("car_slave12"));
-		Characters[GetCharacterIndex("car_slave8")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave9")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave10")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave11")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave12")].name = TranslateString("", "Freedman");
+		Characters[GetCharacterIndex("car_slave8")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave9")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave10")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave11")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave12")].name = TranslateString("", "Freedman"));
 		break;
-	//---------------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------	
 		case "explore_corvette28":
 			//pchar ammo check
 
 			gp = GetCharacterItem(Pchar, "gunpowder");
 			pb = GetCharacterItem(Pchar, "pistolbullets");
 
-			if(gp == 6 && pb ==6)
+			if(gp == 6 && pb ==6) 
 			{
 				ChangeCharacterAddressGroup(characterFromID("mutineer_23"), "BB_careen_holdS", "goto", "swim_dialog");
 				LAi_SetActorType(characterFromID("car_slave15"));
@@ -77257,10 +77382,10 @@ void QuestComplete(string sQuestName)
 				LAi_ActorTurnToCharacter(characterFromID("car_slave21"), characterFromID("mutineer_23"));
 
 				PlaySound("INTERFACE\closet_open.wav");
+		
+				for(i=1; i<7; i++) Characters[GetCharacterIndex("car_convict"+i)].name = TranslateString("", "Freedman"));
 
-				for(i=1; i<7; i++) Characters[GetCharacterIndex("car_convict"+i)].name = TranslateString("", "Freedman");
-
-				LAi_QuestDelay("explore_corvette29", 1.0);
+				LAi_QuestDelay("explore_corvette29", 1.0);	
 			}
 			else LAi_QuestDelay("explore_corvette28", 1.0);		//loops until enough ammo
 		break;
@@ -77277,12 +77402,12 @@ void QuestComplete(string sQuestName)
 			LAi_SetStayType(characterFromID("car_slave18"));
 			LAi_SetStayType(characterFromID("car_slave20"));
 			LAi_SetStayType(characterFromID("car_slave21"));
-		Characters[GetCharacterIndex("car_slave15")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave16")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave17")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave18")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave20")].name = TranslateString("", "Freedman");
-		Characters[GetCharacterIndex("car_slave21")].name = TranslateString("", "Freedman");
+		Characters[GetCharacterIndex("car_slave15")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave16")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave17")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave18")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave20")].name = TranslateString("", "Freedman"));
+		Characters[GetCharacterIndex("car_slave21")].name = TranslateString("", "Freedman"));
 
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "reload", "reload1");
@@ -77293,7 +77418,7 @@ void QuestComplete(string sQuestName)
 
 		case "explore_corvette29_A":
 			PlaySound("VOICE\ENGLISH\gm_crew7.wav");
-
+			
 			LAi_QuestDelay("explore_corvette29_B", 1.0);
 		break;
 
@@ -77306,7 +77431,7 @@ void QuestComplete(string sQuestName)
 			gp = GetCharacterItem(Pchar, "gunpowder");
 			pb = GetCharacterItem(Pchar, "pistolbullets");
 
-			if(gp == 6 && pb ==6)
+			if(gp == 6 && pb ==6) 
 			{
 				Characters[GetCharacterIndex("mutineer_23")].dialog.CurrentNode  = "swim_to_shore";
 				LAi_SetActorType(characterFromID("mutineer_23"));
@@ -77382,7 +77507,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette32_C":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette32_C";
 			LAi_ActorSelfDialog(pchar, "");
 
@@ -77406,7 +77531,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("mutineer_19"), pchar, "", 0.1);
 			LAi_ActorWaitDialog(Pchar, characterFromID("mutineer_19"));
 		break;
-
+	
 		case "explore_corvette33_A":
 			PlaySound("VOICE\ENGLISH\gm_crew5A.wav");
 			LAi_SetActorType(pchar);
@@ -77422,7 +77547,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette33_B":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette33_B";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -77452,14 +77577,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette33_G":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette33_G";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
 		case "explore_corvette33_H":
 			PlaySound("VOICE\ENGLISH\Mateus Santos2.wav");
-
+			
 			LAi_QuestDelay("explore_corvette33_I", 2.5);
 		break;
 
@@ -77477,7 +77602,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "explore_corvette34":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "explore_corvette34";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -77504,7 +77629,7 @@ void QuestComplete(string sQuestName)
 		case "explore_corvette34_C":
 			LAi_QuestDelay("pchar_lets_go", 0.01);
 
-			LAi_SetPlayerType(pchar);
+			LAi_SetPlayerType(pchar);	
 
 			Locations[FindLocation("BB_careen_holdS")].reload.l1.emerge = "goto2";
 
@@ -77525,7 +77650,7 @@ void QuestComplete(string sQuestName)
 
 		case "explore_corvette35_0":
 			LAi_SetActorType(pchar);
-
+			
 			Locations[FindLocation("BB_careen_holdS")].reload.l1.emerge = "reload1";		//reset
 
 			GiveItem2Character(characterFromID("car_slave8"), "blade4");
@@ -77567,7 +77692,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("car_slave28"), "piratespistol");
 			TakeNItems(characterFromID("car_slave28"), "gunpowder", 2);
 			TakeNItems(characterFromID("car_slave28"), "pistolbullets", 2);
-
+			
 			LAi_QuestDelay("explore_corvette35_B", 1.0);
 		break;
 
@@ -77633,7 +77758,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_slave28"), "BB_careen_deck1", "officers", "reload4_3");
 			LAi_SetActorType(characterFromID("car_slave28"));
 
-			LAi_QuestDelay("explore_corvette36", 1.0);
+			LAi_QuestDelay("explore_corvette36", 1.0); 
 		break;
 
 		case "explore_corvette36":
@@ -77734,7 +77859,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("INTERFACE\closed_door.wav");
 			ChangeCharacterAddressGroup(characterFromID("car_slave25"), "BB_careen_deck1", "officers", "reload5_3");
 
-			LAi_QuestDelay("explore_corvette37", 1.0);
+			LAi_QuestDelay("explore_corvette37", 1.0); 
 		break;
 
 		case "explore_corvette37":
@@ -77755,7 +77880,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorGoToLocator(characterFromID("Caesar"), "quest", "conv4_stay", "Caesar_corv_off", 1.5);
 
 			LAi_QuestDelay("explore_corvette37_AA", 1.0);
-			LAi_QuestDelay("explore_corvette37_B", 2.0);
+			LAi_QuestDelay("explore_corvette37_B", 2.0);  
 		break;
 
 		case "explore_corvette37_AA":
@@ -77800,7 +77925,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper4"), "BB_careen_deck1", "goto", "alm23_1");
 		//not on deck from start
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper5"), "BB_careen_deck1", "goto", "sleepers");
-
+		
 			LAi_group_MoveCharacter(characterFromID("car_sleeper1"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_sleeper2"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_sleeper3"), "ROOF_THUGS_2");
@@ -77860,14 +77985,14 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\Mateus Santos1.wav");
 			LAi_SetActorType(characterFromID("car_slave11"));
 			LAi_ActorTurnToCharacter(characterFromID("car_slave11"), Pchar);
-
+	
 		//not on deck from start
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper6"), "BB_careen_deck1", "goto", "sleepers");
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper7"), "BB_careen_deck1", "goto", "sleepers");
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper8"), "BB_careen_deck1", "goto", "sleepers");
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper9"), "BB_careen_deck1", "goto", "sleepers");
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper10"), "BB_careen_deck1", "goto", "sleepers");
-
+		
 			LAi_group_MoveCharacter(characterFromID("car_sleeper6"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_sleeper7"), "ROOF_THUGS_2");
 			LAi_group_MoveCharacter(characterFromID("car_sleeper8"), "ROOF_THUGS_2");
@@ -77890,7 +78015,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("Caesar"));
 			LAi_SetOfficerType(characterFromID("mutineer_19"));
 
-			Locations[FindLocation("BB_careen_deck1")].models.always.locators = "deck1_l_careen_fight";
+			Locations[FindLocation("BB_careen_deck1")].models.always.locators = "deck1_l_careen_fight";	
 			Pchar.careen_deck1_snoring = "finished";
 
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper11"), "BB_careen_deck1", "goto", "sleepers");
@@ -77951,7 +78076,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("car_slave20"), "piratespistol");
 			TakeNItems(characterFromID("car_slave20"), "gunpowder", 2);
 			TakeNItems(characterFromID("car_slave20"), "pistolbullets", 2);
-
+	
 			LAi_QuestDelay("explore_corvette40_A", 1.0);
 		break;
 
@@ -77964,12 +78089,12 @@ void QuestComplete(string sQuestName)
 
 		case "explore_corvette40_B":
 			PlaySound("VOICE\ENGLISH\gm_crew23B.wav");
-
+	
 			LAi_SetActorType(characterFromID("car_slave8"));
 			LAi_SetActorType(characterFromID("car_slave26"));
 			LAi_SetActorType(characterFromID("car_slave27"));
 			LAi_SetActorType(characterFromID("car_slave28"));
-
+		
 			LAi_QuestDelay("explore_corvette40_C", 2.0);
 		break;
 
@@ -77980,7 +78105,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("car_slave3"));
 			LAi_SetActorType(characterFromID("car_slave7"));
 			LAi_SetActorType(characterFromID("car_slave22"));
-
+		
 			LAi_QuestDelay("explore_corvette40_D", 1.0);
 		break;
 
@@ -78000,7 +78125,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("car_slave23"));
 			LAi_SetActorType(characterFromID("car_slave10"));
 			LAi_SetActorType(characterFromID("car_slave20"));
-
+			
 			LAi_QuestDelay("explore_corvette40_F", 1.0);
 		break;
 
@@ -78020,11 +78145,11 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("BB_careen_deck1")].locators_radius.reload.reload5 = 0.001;
 
 			DoQuickSave();			//before hammock deck fight
-
+		
 			pchar.quest.explore_corvette41.win_condition.l1 = "location";
 			pchar.quest.explore_corvette41.win_condition.l1.location = "BB_careen_deck1";
 			pchar.quest.explore_corvette41.win_condition = "explore_corvette41";
-
+	
 			LAi_QuestDelay("explore_corvette40_H", 1.5);
 		break;
 
@@ -78040,12 +78165,12 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_slave23"), "BB_careen_deck1", "goto", "slaves");
 			ChangeCharacterAddressGroup(characterFromID("car_slave10"), "BB_careen_deck1", "goto", "slaves");
 			ChangeCharacterAddressGroup(characterFromID("car_slave20"), "BB_careen_deck1", "goto", "slaves");
-
+	
 			LAi_SetOfficerType(characterFromID("car_slave8"));
 			LAi_SetOfficerType(characterFromID("car_slave26"));
 			LAi_SetOfficerType(characterFromID("car_slave27"));
 			LAi_SetOfficerType(characterFromID("car_slave28"));
-
+			
 			LAi_SetOfficerType(characterFromID("car_slave25"));
 			LAi_SetOfficerType(characterFromID("car_slave3"));
 			LAi_SetOfficerType(characterFromID("car_slave7"));
@@ -78056,12 +78181,12 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("car_slave23"));
 			LAi_SetOfficerType(characterFromID("car_slave10"));
 			LAi_SetOfficerType(characterFromID("car_slave20"));
-
+		
 			LAi_group_Register("ROOF_THUGS_2");
 			LAi_group_SetRelation(LAI_GROUP_PLAYER, "ROOF_THUGS_2", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "ROOF_THUGS_2", true);
 			LAi_SetFightMode(Pchar, true);
-
+	
 		//opposite side
 			LAi_QuestDelay("jump_corvette31", 2.0);			//1
 			LAi_QuestDelay("jump_corvette32", 4.0);			//1
@@ -78071,7 +78196,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("jump_corvette33", 12.0);		//3
 			LAi_QuestDelay("jump_corvette37", 12.5);		//3
-
+				
 		//my side
 			LAi_QuestDelay("jump_corvette28", 8.0);			//2
 
@@ -78079,9 +78204,9 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("jump_corvette27", 13.5);		//4
 			LAi_QuestDelay("jump_corvette21", 14.5);		//4
-
+			
 		//middle
-			LAi_QuestDelay("jump_corvette45", 14.0);		//4
+			LAi_QuestDelay("jump_corvette45", 14.0);		//4	
 			LAi_QuestDelay("jump_corvette46", 14.25);		//4
 
 			LAi_QuestDelay("explore_corvette41_A", 1.0);
@@ -78119,7 +78244,7 @@ void QuestComplete(string sQuestName)
 			Pchar.quest.careen_corvette_fight_end.win_condition.l16 = "NPC_Death";
 			Pchar.quest.careen_corvette_fight_end.win_condition.l16.character = "car_sleeper16";
 		//	Pchar.quest.careen_corvette_fight_end.win_condition = "careen_corvette_fight_end";
-			Pchar.quest.careen_corvette_fight_end.win_condition = "careen_corvette_fight_end_comment";
+			Pchar.quest.careen_corvette_fight_end.win_condition = "careen_corvette_fight_end_comment";	
 		break;
 
 		case "explore_corvette41_A":
@@ -78194,7 +78319,7 @@ void QuestComplete(string sQuestName)
 		case "sleeper8_mortal":
 			LAi_SetImmortal(characterFromID("car_sleeper8"), false);
 		break;
-
+	
 		case "jump_corvette33":
 			PlaySound("PEOPLE\creak2.wav");
 			ChangeCharacterAddressGroup(characterFromID("car_sleeper9"), "BB_careen_deck1", "goto", "bed33_1");
@@ -78340,7 +78465,7 @@ void QuestComplete(string sQuestName)
 
 			Locations[FindLocation("BB_careen_deck2")].reload.l4.go = "BB_careen_corvette_end";
 			Locations[FindLocation("BB_careen_capmd_2")].reload.l3.go = "BB_careen_corvette_end";
-
+	
 		//mutineer weapons start here
 			RemoveCharacterEquip(characterFromID("Mutineer_2"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("Mutineer_2"), BLADE_ITEM_TYPE);
@@ -78359,15 +78484,15 @@ void QuestComplete(string sQuestName)
 			DeleteAttribute(characterFromID("Mutineer_4"), "items");
 			GiveItem2Character(characterFromID("Mutineer_4"), "blademketB");
 			EquipCharacterByItem(characterFromID("Mutineer_4"), "blademketB");
-
+			
 
 			LAi_QuestDelay("cc_fight_end1", 1.0);
-
+	
 			pchar.quest.cc_wdeck_fight.win_condition.l1 = "location";
 			pchar.quest.cc_wdeck_fight.win_condition.l1.location = "BB_careen_corvette_end";
 			pchar.quest.cc_wdeck_fight.win_condition = "cc_wdeck_fight";
 		break;
-
+	
 		case "cc_fight_end1":
 			if(LAi_IsFightMode(Pchar)) {LAi_SetFightMode(Pchar, false);}
 			if(LAi_IsFightMode(characterFromID("mutineer_19"))) {LAi_SetFightMode(characterFromID("mutineer_19"), false);}
@@ -78414,7 +78539,7 @@ void QuestComplete(string sQuestName)
 			EquipCharacterByItem(characterFromID("Mutineer_8"), "pistolmketB");
 		break;
 //.........................................................................................................................
-
+	
 		case "cc_wdeck_fight":
 			LAi_SetActorType(Pchar);
 
@@ -78469,17 +78594,17 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_sailor10"), "BB_careen_corvette_end", "quest", "sailor10");
 			ChangeCharacterAddressGroup(characterFromID("car_sailor11"), "BB_careen_corvette_end", "quest", "sailor11");
 			ChangeCharacterAddressGroup(characterFromID("car_sailor12"), "BB_careen_corvette_end", "quest", "sailor12");
-
+		
 			LAi_QuestDelay("cc_wdeck_fight1", 0.1);
 			LAi_QuestDelay("wdeck_shot", 0.5);
 			LAi_QuestDelay("Pyle_to_wdeck", 1.0);
-
+		
 
 			LAi_QuestDelay("boat2_m32_arriveA", 5.0);		//was 5
 			LAi_QuestDelay("boat4_m3_arriveA", 7.0);		//6
 			LAi_QuestDelay("boat3_m15_arriveA", 8.5);		//6.5
-
-			LAi_QuestDelay("boat2_m23_arriveA", 10.5);		//7
+			
+			LAi_QuestDelay("boat2_m23_arriveA", 10.5);		//7	
 			LAi_QuestDelay("boat3_pell_arriveA", 12.0);		//8
 			LAi_QuestDelay("boat4_hands_arriveA", 13.0);		//8.5
 		break;
@@ -78491,7 +78616,7 @@ void QuestComplete(string sQuestName)
 			LAi_KillCharacter(characterFromID("car_sailor6"));
 			LAi_KillCharacter(characterFromID("car_sailor7"));
 			LAi_KillCharacter(characterFromID("car_sailor8"));
-			LAi_KillCharacter(characterFromID("car_sailor9"));
+			LAi_KillCharacter(characterFromID("car_sailor9"));	
 			LAi_KillCharacter(characterFromID("car_sailor11"));
 		break;
 //start wdeck
@@ -78511,7 +78636,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetFightMode(characterFromID("car_convict6"), true);
 			LAi_SetFightMode(characterFromID("car_slave27"), true);
 			LAi_SetFightMode(characterFromID("car_convict3"), true);
-
+			
 			LAi_SetFightMode(characterFromID("Mutineer_2"), true);
 			LAi_SetFightMode(characterFromID("Mutineer_4"), true);
 			LAi_SetFightMode(characterFromID("Mutineer_5"), true);
@@ -78531,12 +78656,12 @@ void QuestComplete(string sQuestName)
 		case "Pyle_to_wdeck2":
 			LAi_SetPlayerType(Pchar);
 			LAi_SetFightMode(Pchar, true);
-
+	
 			LAi_KillCharacter(characterFromID("car_sailor12"));
 
 			LAi_QuestDelay("Pyle_to_wdeck3", 1.0);
 		break;
-
+		
 		case "Pyle_to_wdeck3":
 			PlaySound("VOICE\ENGLISH\Eng_m_a_059.wav");
 			LAi_LocationFightDisable(&Locations[FindLocation("BB_careen_corvette_end")], true);
@@ -78548,7 +78673,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorAnimation(characterFromID("car_sailor4"), "hands up", "_", 15.0);
 			LAi_SetActorType(characterFromID("car_sailor10"));
 			LAi_ActorAnimation(characterFromID("car_sailor10"), "hands up", "_", 15.0);
-
+			
 			LAi_QuestDelay("Pyle_to_wdeck4", 1.0);
 			LAi_QuestDelay("Pyle_to_wdeck6", 2.0);
 		break;
@@ -78584,7 +78709,7 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("OBJECTS\SHIPCHARGE\hurrah.wav");
 			PlaySound("OBJECTS\ABORDAGE\abordage_wining.wav");
-			DeleteQuestHeader("Careen_corvette");
+			DeleteQuestHeader("Careen_corvette");		
 		break;
 
 		case "Pyle_to_wdeck7":
@@ -78609,13 +78734,13 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(characterFromID("car_sailor10"));
 		break;
 
-		case "Pyle_to_wdeck9":
-			LAi_SetActorType(pchar);
+		case "Pyle_to_wdeck9":	
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_to_wdeck9";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
-		case "Pyle_to_wdeck10":
+		case "Pyle_to_wdeck10":	
 			LAi_SetFightMode(characterFromID("Mutineer_4"), false);
 			LAi_SetFightMode(characterFromID("Mutineer_5"), false);
 			LAi_SetFightMode(characterFromID("Mutineer_16"), false);
@@ -78624,7 +78749,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("Pyle_to_wdeck11", 1.0);
 		break;
 
-		case "Pyle_to_wdeck11":
+		case "Pyle_to_wdeck11":	
 			PlaySound("VOICE\ENGLISH\grandma_yell2.wav");
 			LAi_SetOfficerType(characterFromID("Hands"));
 			LAi_SetOfficerType(characterFromID("Pell"));
@@ -78669,8 +78794,8 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("mutineer_32"));
 		break;
 
-		case "Pyle_to_wdeck12":
-			LAi_SetActorType(pchar);
+		case "Pyle_to_wdeck12":	
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_to_wdeck12";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -78732,11 +78857,11 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_wdeck19":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_to_wdeck19";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
-
+	
 		case "Pyle_to_wdeck20":
 			Characters[GetCharacterIndex("car_convict6")].old.name = "Peter";
 			Characters[GetCharacterIndex("car_convict6")].old.lastname = "Blood";
@@ -78777,12 +78902,12 @@ void QuestComplete(string sQuestName)
 
 		case "Pyle_to_wdeck23A":
 			PlaySound("AMBIENT\cheer.wav");
-
+			
 			LAi_QuestDelay("Pyle_to_wdeck24", 4.5);
 		break;
 
 		case "Pyle_to_wdeck24":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_to_wdeck24";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -78800,7 +78925,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Mutineer_32"), pchar, "", 0.1);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Mutineer_32"));
 		break;
-//p?r Corvette2
+//pär Corvette2
 		case "Pyle_to_wdeck27":
 			LAi_QuestDelay("Pchar_ooh", 0.01);
 
@@ -78827,7 +78952,7 @@ void QuestComplete(string sQuestName)
 			setCharacterShipLocation(characterFromID("KR_cit1"), "IslaMona_port");		//barrel in shore boat, land
 			setCharacterShipLocation(characterFromID("KR_cit2"), "IslaMona_port");		//barrel in corv boat
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "Pyle_to_wdeck28";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -78904,7 +79029,7 @@ void QuestComplete(string sQuestName)
 		case "Pyle_to_wdeck32A":
 			PlaySound("PEOPLE\clothes1.wav");
 			SetModel(characterFromID("Hands"), "bb_Hands2", "man", "man", 1.8, false);
-
+			
 			LAi_QuestDelay("Pyle_to_wdeck33", 2.0);
 		break;
 
@@ -78919,7 +79044,7 @@ void QuestComplete(string sQuestName)
 		case "Pyle_to_wdeck33A":
 			PlaySound("PEOPLE\clothes1.wav");
 			SetModel(characterFromID("Pell"), "bb_Pell", "man", "man", 1.8, false);
-
+			
 			LAi_QuestDelay("Pyle_to_wdeck34", 2.0);
 		break;
 
@@ -78958,12 +79083,12 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(characterFromID("car_slave27"), GUN_ITEM_TYPE);
 			GiveItem2Character(characterFromID("car_slave27"), "pistolmketB");
 			EquipCharacterByItem(characterFromID("car_slave27"), "pistolmketB");
-
+			
 			LAi_QuestDelay("Pyle_to_wdeck35", 2.0);
 		break;
 
 		case "Pyle_to_wdeck35":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "swedish_uniform";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -78988,7 +79113,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_wdeck39":
-		//	SetCurrentTime(7, 0);
+		//	SetCurrentTime(7, 0);	
 			SetCurrentTime(12, 0);
 			SetNextWeather("Clear");
 			Pchar.quest.JRH_rain = "Clear";
@@ -79021,14 +79146,14 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(pchar);
 			LAi_SetStayType(characterFromID("Hands"));
 			LAi_SetStayType(characterFromID("Pell"));
-			LAi_SetStayType(characterFromID("car_convict3"));
-			LAi_SetStayType(characterFromID("car_slave10"));
-
+			LAi_SetStayType(characterFromID("car_convict3"));	
+			LAi_SetStayType(characterFromID("car_slave10"));	
+		
 			Characters[GetCharacterIndex("Hands")].dialog.CurrentNode  = "neutral";
 			Characters[GetCharacterIndex("Pell")].dialog.CurrentNode  = "neutral";
 			Characters[GetCharacterIndex("car_convict3")].dialog.CurrentNode  = "neutral_Gunnar";
 			Characters[GetCharacterIndex("car_slave10")].dialog.CurrentNode  = "neutral_soldier";
-
+		
 			pchar.quest.Pyle_to_Mona1.win_condition.l1 = "locator";
 			pchar.quest.Pyle_to_Mona1.win_condition.l1.location = "IslaMona_port";
 			pchar.quest.Pyle_to_Mona1.win_condition.l1.locator_group = "quest";
@@ -79102,16 +79227,16 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Hands"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Hands"));
 		break;
-
+	
 		case "Pyle_to_Mona9":
 			ChangeCharacterAddressGroup(characterFromID("car_slave27"), "IslaMona_port", "quest", "music");
 			PlaySound("INTERFACE\violin.wav");
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Pell"));
-
-			LAi_QuestDelay("Pyle_to_Mona10", 1.0);
+		
+			LAi_QuestDelay("Pyle_to_Mona10", 1.0);	
 		break;
-
+	
 		case "Pyle_to_Mona10":
 			Characters[GetCharacterIndex("Pell")].dialog.CurrentNode  = "violin_found";
 			LAi_SetActorType(characterFromID("Pell"));
@@ -79124,14 +79249,14 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_Mona11_A":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "violin_free";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
 
 		case "Pyle_to_Mona12":
 			PlaySound("INTERFACE\violin.wav");
-
+			
 			LAi_QuestDelay("Pyle_to_Mona12_A", 0.25);
 		break;
 
@@ -79141,7 +79266,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Pyle_to_Mona13", 1.0);
 		break;
-
+	
 		case "Pyle_to_Mona13":
 			RemoveCharacterEquip(characterFromID("car_slave11"), GUN_ITEM_TYPE);
 			RemoveCharacterEquip(characterFromID("car_slave11"), BLADE_ITEM_TYPE);
@@ -79150,7 +79275,7 @@ void QuestComplete(string sQuestName)
 			ChangeCharacterAddressGroup(characterFromID("car_slave11"), "IslaMona_port", "quest", "priest");
 			ChangeCharacterAddressGroup(characterFromID("Sergio"), "IslaMona_port", "quest", "soldier");
 			LAi_SetActorType(characterFromID("car_slave11"));
-			LAi_ActorRunToLocator(characterFromID("car_slave11"), "quest", "priest2", "Pyle_to_Mona13_A", 15.0);
+			LAi_ActorRunToLocator(characterFromID("car_slave11"), "quest", "priest2", "Pyle_to_Mona13_A", 15.0);	
 			LAi_ActorRunToLocator(characterFromID("Sergio"), "quest", "soldier2", "Pyle_to_Mona13_B", 17.0);
 
 			Characters[GetCharacterIndex("Hands")].dialog.CurrentNode  = "priest_returning";
@@ -79179,7 +79304,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorTurnToCharacter(characterFromID("car_slave10"), characterFromID("car_slave11"));
 			LAi_SetActorType(characterFromID("car_slave27"));
 			LAi_ActorTurnToCharacter(characterFromID("car_slave27"), characterFromID("car_slave11"));
-
+			
 			PlaySound("OBJECTS\DUEL\pistol_out1original.wav");
 		break;
 
@@ -79191,7 +79316,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPlayerType(Pchar);
 
 			LAi_SetStayType(characterFromID("Pell"));
-			LAi_SetStayType(characterFromID("car_convict3"));
+			LAi_SetStayType(characterFromID("car_convict3"));	
 			LAi_SetStayType(characterFromID("car_slave10"));
 			LAi_SetStayType(characterFromID("car_slave27"));
 		break;
@@ -79241,7 +79366,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(characterFromID("Sergio"), BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(characterFromID("Sergio"), "pistolmketB");
 			TakeItemFromCharacter(characterFromID("Sergio"), "blade_MKnife");
-
+			
 			LAi_QuestDelay("Pyle_to_Mona19", 1.0);
 		break;
 
@@ -79283,7 +79408,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Pyle_to_Mona23", 2.0);
 		break;
-
+	
 		case "Pyle_to_Mona23":
 			ChangeCharacterAddressGroup(characterFromID("Walter"), "IslaMona_port", "goto", "goto1");
 			ChangeCharacterAddressGroup(characterFromID("Hilphershausen"), "IslaMona_port", "goto", "goto5");
@@ -79300,7 +79425,7 @@ void QuestComplete(string sQuestName)
 			Characters[GetCharacterIndex("Kri_grenadier")].dialog.CurrentNode  = "grenadier";
 
 			LAi_QuestDelay("Pyle_to_Mona24", 14.0);	//swedes running time
-
+		
 			Characters[GetCharacterIndex("Pell")].dialog.CurrentNode  = "swedes_arriving";
 			LAi_SetActorType(characterFromID("Pell"));
 			LAi_ActorDialogNow(characterFromID("Pell"), pchar, "", 0.01);
@@ -79326,21 +79451,21 @@ void QuestComplete(string sQuestName)
 		case "Pyle_to_Mona25":
 			LAi_SetStayType(characterFromID("Kri_grenadier"));
 			LAi_SetStayType(characterFromID("Kri_soldier_13"));
-			LAi_SetStayType(characterFromID("Kri_soldier_14"));
-
+			LAi_SetStayType(characterFromID("Kri_soldier_14"));	
+	
 			Characters[GetCharacterIndex("Hilphershausen")].dialog.CurrentNode  = "captain_where";
 			LAi_SetActorType(characterFromID("Hilphershausen"));
 			LAi_ActorDialogNow(characterFromID("Hilphershausen"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Hilphershausen"));
 		break;
-
+	
 		case "Pyle_to_Mona26":
 			Characters[GetCharacterIndex("Walter")].dialog.CurrentNode  = "commanders_here";
 			LAi_SetActorType(characterFromID("Walter"));
 			LAi_ActorDialogNow(characterFromID("Walter"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Walter"));
 		break;
-
+	
 		case "Pyle_to_Mona27":
 			Characters[GetCharacterIndex("Hilphershausen")].dialog.CurrentNode  = "recognize_Pyle";
 			LAi_SetActorType(characterFromID("Hilphershausen"));
@@ -79380,7 +79505,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetOfficerType(characterFromID("car_convict3"));
 			LAi_QuestDelay("Pyle_to_Mona32", 4.0);
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "hey_gunnar";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79427,7 +79552,7 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("AMBIENT\JAIL\sigh.wav");
 			PlaySound("AMBIENT\JAIL\sigh.wav");
-
+		
 			LAi_QuestDelay("Pyle_to_Mona36", 2.5);
 		break;
 
@@ -79488,7 +79613,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("Hilphershausen"));
 			LAi_ActorTurnToCharacter(characterFromID("Hilphershausen"), Pchar);
 
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "took_the_ship";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79503,13 +79628,13 @@ void QuestComplete(string sQuestName)
 		case "Pyle_to_Mona40":
 			PlaySound("VOICE\ENGLISH\Dut_m_a_023.wav");
 
-			LAi_QuestDelay("Pyle_to_Mona41", 4.0);
+			LAi_QuestDelay("Pyle_to_Mona41", 4.0);	
 		break;
 
 		case "Pyle_to_Mona41":
 			PlaySound("VOICE\ENGLISH\Mateus Santos1.wav");
 
-			LAi_QuestDelay("Pyle_to_Mona42", 3.0);
+			LAi_QuestDelay("Pyle_to_Mona42", 3.0);	
 		break;
 
 		case "Pyle_to_Mona42":
@@ -79529,8 +79654,8 @@ void QuestComplete(string sQuestName)
 
 		case "Pyle_to_Mona44":
 			PlaySound("VOICE\ENGLISH\Mateus Santos3.wav");
-
-			LAi_QuestDelay("Pyle_to_Mona45", 3.0);
+			
+			LAi_QuestDelay("Pyle_to_Mona45", 3.0);	
 		break;
 
 		case "Pyle_to_Mona45":
@@ -79625,7 +79750,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_Mona59":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "agree_LOM";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79657,17 +79782,17 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Walter"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Walter"));
 		break;
-
+	
 		case "Pyle_to_Mona64":
 			Characters[GetCharacterIndex("Kri_grenadier")].dialog.CurrentNode  = "grenadier_hello";
 			LAi_SetActorType(characterFromID("Kri_grenadier"));
 			LAi_ActorDialogNow(characterFromID("Kri_grenadier"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Kri_grenadier"));
 		break;
-
+	
 		case "Pyle_to_Mona65":
 			LAi_SetStayType(characterFromID("Kri_grenadier"));
-
+			
 			LAi_SetActorType(characterFromID("Walter"));
 			LAi_ActorTurnToCharacter(characterFromID("Walter"), characterFromID("Hilphershausen"));
 
@@ -79676,7 +79801,7 @@ void QuestComplete(string sQuestName)
 			LAi_ActorDialogNow(characterFromID("Walter"), pchar, "", 0.01);
 			LAi_ActorWaitDialog(Pchar, characterFromID("Walter"));
 		break;
-
+	
 		case "Pyle_to_Mona66":
 			PlaySound("AMBIENT\RESIDENCE\some1.wav");
 			PlaySound("AMBIENT\RESIDENCE\some1.wav");
@@ -79685,7 +79810,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("Pyle_to_Mona67", 5.0);
 		break;
-
+		
 		case "Pyle_to_Mona67":
 			Characters[GetCharacterIndex("Hilphershausen")].dialog.CurrentNode  = "give_document";
 			LAi_SetActorType(characterFromID("Hilphershausen"));
@@ -79747,7 +79872,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_Mona76":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "puh_and_puh_again";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79760,7 +79885,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "Pyle_to_Mona77":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "sail_home";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79796,7 +79921,7 @@ void QuestComplete(string sQuestName)
 		break;
 	//--------------------------------------------------------------------------------------------------------------
 	//jump start IslaMona after corvette
-//p?r
+//pär
 		case "JS38_1":
 			LAi_SetActorType(Pchar);
 			LAi_ActorTurnToLocator(Pchar, "reload", "boat");
@@ -79815,7 +79940,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "JS38_3":
-			LAi_SetActorType(pchar);
+			LAi_SetActorType(pchar);	
 			characters[GetCharacterIndex("Blaze")].dialog.CurrentNode = "JS_sail_home";
 			LAi_ActorSelfDialog(pchar, "");
 		break;
@@ -79839,7 +79964,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("Mutineer_15"), "pistolmketB");
 			EquipCharacterByItem(characterFromID("Mutineer_15"), "bladeX4");
 			EquipCharacterByItem(characterFromID("Mutineer_15"), "pistolmketB");
-
+		
 			LAi_QuestDelay("boat3_m15_arriveB", 2.0);
 		break;
 
@@ -79898,7 +80023,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 	//--------------------------------------------------------------------------------------------------------------
-
+	
 		case "boat4_m3_arriveA":
 			ChangeCharacterAddressGroup(characterFromID("mutineer_3"), "BB_careen_corvette_end", "goto", "arrive4A");
 			RemoveCharacterEquip(characterFromID("Mutineer_3"), GUN_ITEM_TYPE);
@@ -79908,7 +80033,7 @@ void QuestComplete(string sQuestName)
 			GiveItem2Character(characterFromID("Mutineer_3"), "pistolmketB");
 			EquipCharacterByItem(characterFromID("Mutineer_3"), "bladeX4");
 			EquipCharacterByItem(characterFromID("Mutineer_3"), "pistolmketB");
-
+		
 			LAi_QuestDelay("boat4_m3_arriveB", 2.0);
 		break;
 
@@ -79929,7 +80054,7 @@ void QuestComplete(string sQuestName)
 
 		case "boat4_m3_arriveD":
 			LAi_SetStayType(characterFromID("mutineer_3"));
-
+			
 			LAi_QuestDelay("boat4_m3_arriveE", 1.0);
 		break;
 
@@ -80002,7 +80127,7 @@ void QuestComplete(string sQuestName)
 
 		case "boat2_m32_arriveD":
 			LAi_SetStayType(characterFromID("mutineer_32"));
-
+			
 			LAi_QuestDelay("boat2_m32_arriveE", 1.0);
 		break;
 
@@ -80022,7 +80147,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("boat2_m23_arriveB", 2.0);
 		break;
 
-		case "boat2_m23_arriveB":
+		case "boat2_m23_arriveB":	
 			PlaySound("PEOPLE\step_wood1.wav");
 			ChangeCharacterAddressGroup(characterFromID("mutineer_23"), "BB_careen_corvette_end", "goto", "arrive2B");
 
@@ -80064,7 +80189,7 @@ void QuestComplete(string sQuestName)
 				SetLocatorRadius(locations[FindLocation(Pchar.location)], "reload", "reload2", 0.0001);
 				SetLocatorRadius(locations[FindLocation(Pchar.location)], "reload", "reload3", 0.0001);
 			}
-			else
+			else 
 			{
 				LAi_SetPlayerType(Pchar);
 
@@ -80078,9 +80203,9 @@ void QuestComplete(string sQuestName)
 	//..........................................................................................
 		case "careen_deck1_sleeping":
 			if(Pchar.location == "BB_careen_deck1")
-			{
+			{ 
 				if(CheckAttribute(Pchar,"careen_deck1_snoring") && Pchar.careen_deck1_snoring == "finished") return;
-
+							
 				int hammock_sailor_sleeping = rand(12);
 				switch (hammock_sailor_sleeping)
 				{
@@ -80390,7 +80515,7 @@ void QuestComplete(string sQuestName)
 		case "alm24":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm24_1", 5.0);
@@ -80497,7 +80622,7 @@ void QuestComplete(string sQuestName)
 		case "alm29":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm29_1", 5.0);
@@ -80518,7 +80643,7 @@ void QuestComplete(string sQuestName)
 		case "alm30":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm30_1", 5.0);
@@ -80540,7 +80665,7 @@ void QuestComplete(string sQuestName)
 		case "alm31":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm31_1", 5.0);
@@ -80561,7 +80686,7 @@ void QuestComplete(string sQuestName)
 		case "alm32":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm32_1", 5.0);
@@ -80582,7 +80707,7 @@ void QuestComplete(string sQuestName)
 		case "alm33":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm33_1", 5.0);
@@ -80603,7 +80728,7 @@ void QuestComplete(string sQuestName)
 		case "alm34":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm34_1", 5.0);
@@ -80624,7 +80749,7 @@ void QuestComplete(string sQuestName)
 		case "alm35":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm35_1", 5.0);
@@ -80645,7 +80770,7 @@ void QuestComplete(string sQuestName)
 		case "alm36":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm36_1", 5.0);
@@ -80666,7 +80791,7 @@ void QuestComplete(string sQuestName)
 		case "alm37":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm37_1", 5.0);
@@ -80687,7 +80812,7 @@ void QuestComplete(string sQuestName)
 		case "alm38":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm38_1", 5.0);
@@ -80708,7 +80833,7 @@ void QuestComplete(string sQuestName)
 		case "alm39":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm39_1", 5.0);
@@ -80724,12 +80849,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alm39.win_condition.l1.locator_group = "goto";
 			pchar.quest.alm39.win_condition.l1.locator = "alm39";
 			pchar.quest.alm39.win_condition = "alm39";
-		break;
+		break;	
 
 		case "alm40":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm40_1", 5.0);
@@ -80749,7 +80874,7 @@ void QuestComplete(string sQuestName)
 		case "alm41":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm41_1", 5.0);
@@ -80765,12 +80890,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alm41.win_condition.l1.locator_group = "goto";
 			pchar.quest.alm41.win_condition.l1.locator = "alm41";
 			pchar.quest.alm41.win_condition = "alm41";
-		break;
+		break;	
 
 		case "alm42":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm42_1", 5.0);
@@ -80786,12 +80911,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alm42.win_condition.l1.locator_group = "goto";
 			pchar.quest.alm42.win_condition.l1.locator = "alm42";
 			pchar.quest.alm42.win_condition = "alm42";
-		break;
+		break;	
 
 		case "alm44":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm44_1", 5.0);
@@ -80807,12 +80932,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alm44.win_condition.l1.locator_group = "goto";
 			pchar.quest.alm44.win_condition.l1.locator = "alm44";
 			pchar.quest.alm44.win_condition = "alm44";
-		break;
+		break;	
 
 		case "alm45":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm45_1", 5.0);
@@ -80828,12 +80953,12 @@ void QuestComplete(string sQuestName)
 			pchar.quest.alm45.win_condition.l1.locator_group = "goto";
 			pchar.quest.alm45.win_condition.l1.locator = "alm45";
 			pchar.quest.alm45.win_condition = "alm45";
-		break;
-
+		break;	
+						
 		case "alm46":
 			PauseAllSounds();//stops music
 			LAi_SetStayType(Pchar);
-
+			
 			LAi_QuestDelay("hammock_sailor_greeting", 0.01);
 			LAi_QuestDelay("hammock_punch", 2.0);
 			LAi_QuestDelay("alm46_1", 5.0);
@@ -80880,7 +81005,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("mule_kill_check", 1.0);
 		break;
 	//..........................................................................................
-
+	
 		case "holdP_checkpoints":
 			LAi_QuestDelay("pitchfork_check", 0.1);
 
@@ -81127,7 +81252,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.kick1.win_condition.l1.locator = "kick1";
 			pchar.quest.kick1.win_condition = "kick1";
 		break;
-
+		
 		case "kick2":
 			PlaySound("OBJECTS\DUEL\club1.wav");
 			PlaySound("OBJECTS\DUEL\club1.wav");
@@ -81177,7 +81302,7 @@ void QuestComplete(string sQuestName)
 			pchar.quest.kick3.win_condition.l1.locator = "kick3";
 			pchar.quest.kick3.win_condition = "kick3";
 		break;
-
+		
 		case "kick4":
 			PlaySound("OBJECTS\DUEL\club1.wav");
 			PlaySound("OBJECTS\DUEL\club1.wav");
@@ -81279,7 +81404,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 
-
+		
 //careen corvette end
 	//.........................................................................................
 
@@ -81424,7 +81549,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_QuestDelay("careen_back10_B", 0.5);
 		break;
-
+	
 		case "careen_back10_B":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead6.wav");
 			ChangeCharacterAddressGroup(Pchar, "BB_careen_shore", "goto", "10_back");
@@ -81475,7 +81600,7 @@ void QuestComplete(string sQuestName)
 		//here are all start conditions for alchemy 2 part (from shipyard shore ambush)
 		case "start_alchemy2":
 
-			GiveShip2Character(pchar,"SloopBermuda","Marquis",-1,PIRATE,true,true);
+			GiveShip2Character(pchar,"SloopBermuda",TranslateString("","Marquis"),-1,PIRATE,true,true);
 			Locations[FindLocation("Redmond_shore_03")].models.always.locators = "shore10_l_JRH1";
 		//	Locations[FindLocation("Redmond_shore_03")].locators_radius.reload.reload1 = 0.001;
 			Locations[FindLocation("wr_farm_booty")].models.always.locators = "sklad_locators_JRH2";
@@ -81492,8 +81617,8 @@ void QuestComplete(string sQuestName)
 			locations[FindLocation("wr_farm_alchemy")].models.always.l10 = "retort_E0";
 			locations[FindLocation("wr_farm_alchemy")].models.always.l11 = "top3";
 			locations[FindLocation("wr_farm_alchemy")].models.always.l12 = "glass_tube3";
-			locations[FindLocation("wr_farm_servant")].id.label = "Minervas room";
-			locations[FindLocation("wr_farm_corridor")].id.label = "Rogers' passage";
+			locations[FindLocation("wr_farm_servant")].id.label = TranslateString("","Minervas room");
+			locations[FindLocation("wr_farm_corridor")].id.label = TranslateString("","Rogers' passage");
 
 			Locations[FindLocation("wr_farm_kitchen")].items.randitem1 = "key8";		//invisible model
 			Locations[FindLocation("wr_farm_bedroom")].items.randitem7 = "key8";
@@ -81512,7 +81637,7 @@ void QuestComplete(string sQuestName)
 			//Pchar.quest.farm_water = "off";
 			Pchar.quest.alchemy_lever = "down";
 			Pchar.quest.alchemy_plank = "up";
-			Pchar.quest.apparatus_level = "glass_tube";
+			Pchar.quest.apparatus_level = "glass_tube";		
 			Pchar.quest.farmbooty_fillbottle = "off";
 			Pchar.quest.apparatus_liquid = "none";
 			Pchar.quest.apparatus_cooling = "2";
@@ -81623,7 +81748,7 @@ void QuestComplete(string sQuestName)
 					}
 				}
 			}
-		break;
+		break;		
 
 		case "unlock_alchemy2_downstairs":
 			Locations[FindLocation("wr_farm_alchemy")].locators_radius.box.box8 = 0.0001;
@@ -81632,17 +81757,17 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_farm_alchemy2")].locators_radius.reload.reload2 = 0.7;
 			Locations[FindLocation("wr_farm_alchemy")].reload.l2.disable = 0;
 
-			if(CheckAttribute(locations[FindLocation("wr_farm_alchemy2")], "id.label")
-			&& locations[FindLocation("wr_farm_alchemy2")].id.label == "Rogers' secret laboratory")
-			{
-				TakeItemFromCharacter(Pchar, "key36");
+			if(CheckAttribute(locations[FindLocation("wr_farm_alchemy2")], "id.label") 
+			&& locations[FindLocation("wr_farm_alchemy2")].id.label == TranslateString("","Rogers' secret laboratory"));
+			{ 
+				TakeItemFromCharacter(Pchar, "key36"); 
 
 				LAi_QuestDelay("Minerva_Q2", 3.0);
 			}
 
-			locations[FindLocation("wr_farm_alchemy2")].id.label = "Rogers' secret laboratory";
+			locations[FindLocation("wr_farm_alchemy2")].id.label = TranslateString("","Rogers' secret laboratory");
 
-			if(pchar.location == "wr_farm_alchemy")
+			if(pchar.location == "wr_farm_alchemy") 
 			{
 				DoQuestReloadToLocation("wr_farm_alchemy2", "reload", "reload2", "_");
 			}
@@ -81655,18 +81780,18 @@ void QuestComplete(string sQuestName)
 			Locations[FindLocation("wr_farm_alchemy2")].locators_radius.box.box18 = 0.0001;
 			Locations[FindLocation("wr_farm_alchemy2")].locators_radius.reload.reload3 = 0.7;
 			Locations[FindLocation("wr_farm_servant")].reload.l2.disable = 0;
-
-			if(CheckAttribute(locations[FindLocation("wr_farm_alchemy2")], "id.label")
-			&& locations[FindLocation("wr_farm_alchemy2")].id.label == "Rogers' secret laboratory")
-			{
-				TakeItemFromCharacter(Pchar, "key36");
+			
+			if(CheckAttribute(locations[FindLocation("wr_farm_alchemy2")], "id.label") 
+			&& locations[FindLocation("wr_farm_alchemy2")].id.label == TranslateString("","Rogers' secret laboratory"))
+			{ 
+				TakeItemFromCharacter(Pchar, "key36"); 
 
 				LAi_QuestDelay("Minerva_Q2", 3.0);
 			}
 
-			locations[FindLocation("wr_farm_alchemy2")].id.label = "Rogers' secret laboratory";
+			locations[FindLocation("wr_farm_alchemy2")].id.label = TranslateString("","Rogers' secret laboratory");
 
-			if(pchar.location == "wr_farm_servant")
+			if(pchar.location == "wr_farm_servant") 
 			{
 				DoQuestReloadToLocation("wr_farm_alchemy2", "reload", "reload3", "_");
 			}
@@ -81745,7 +81870,7 @@ void QuestComplete(string sQuestName)
 		case "ovenback1":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "wr_farm_alchemy2", "goto", "ovenback1");
-
+			
 			LAi_QuestDelay("ovenstop", 0.1);
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
@@ -81753,7 +81878,7 @@ void QuestComplete(string sQuestName)
 		case "ovenback2":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "wr_farm_alchemy2", "goto", "ovenback2");
-
+			
 			LAi_QuestDelay("ovenstop", 0.1);
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
@@ -81761,7 +81886,7 @@ void QuestComplete(string sQuestName)
 		case "woodback":
 			LAi_SetStayType(Pchar);
 			ChangeCharacterAddressGroup(Pchar, "wr_farm_alchemy2", "goto", "woodback");
-
+			
 			LAi_QuestDelay("ovenstop", 0.1);
 			LAi_QuestDelay("pchar_playertype", 0.5);
 		break;
@@ -81816,7 +81941,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		//---------------------------------------------------------------------------------------------------------------------
-
+		
 		case "extra_bottle_sound":
 			PlaySound("INTERFACE\button2.wav");
 		break;
@@ -81845,7 +81970,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		case "oven_alchemy2_box9_burning_direct":
-			Pchar.crucible = "off";
+			Pchar.crucible = "off";			
 
 			if(CheckAttribute(Pchar, "Q2_mix") && Pchar.Q2_mix == "11")
 			{
@@ -81856,7 +81981,7 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("alchemy_acid_small_boiling1", 3.0);
 				LAi_QuestDelay("alchemy_acid_hevay_boiling2", 5.0);
 			}
-			else
+			else 
 			{
 				CreateParticleSystemX("qar_fire", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
 				CreateParticleSystemX("smoke_inv_short", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
@@ -81901,7 +82026,7 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("alchemy_acid_small_boiling1", 3.0);
 				LAi_QuestDelay("alchemy_acid_hevay_boiling2", 5.0);
 			}
-			else
+			else 
 			{
 				CreateParticleSystemX("qar_fire", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
 				CreateParticleSystemX("smoke_inv_short", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
@@ -81921,7 +82046,7 @@ void QuestComplete(string sQuestName)
 			PlaySound("VOICE\ENGLISH\blaze_mhm.wav");
 			Logit(LanguageConvertString(tmpLangFileID,"I think that's the right mixture."));
 		break;
-
+		
 		case "oven_alchemy2_box14":
 			Locations[FindLocation("wr_farm_alchemy2")].image = "";
 			DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "ovenback2", "loading_back_alchemy2");
@@ -81992,7 +82117,7 @@ void QuestComplete(string sQuestName)
 						Pchar.liquid_orange = "processed";
 
 						LAi_QuestDelay("oven_alchemy2_box9_burning_direct", 0.5);
-					}
+					}			
 				}
 			}
 
@@ -82062,7 +82187,7 @@ void QuestComplete(string sQuestName)
 						Pchar.liquid_orange = "processed";
 
 						LAi_QuestDelay("oven_alchemy2_box9_burning_direct", 0.5);
-					}
+					}			
 				}
 			}
 
@@ -82082,7 +82207,7 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white"
 					|| Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_grey")
-					{
+					{	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 
 				LAi_QuestDelay("rumble1", 2.5);
@@ -82114,24 +82239,24 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("fireplace3", 2.5);
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white")
-					{
+					{	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 						PlaySound3D("INTERFACE\bubbles2.wav", -8.4, 3.7, 4.4);
 
 			LAi_QuestDelay("rumble1", 2.5);
-			LAi_QuestDelay("bubbles2", 2.5);
+			LAi_QuestDelay("bubbles2", 2.5);	
 					}
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_grey")
 					{
-						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
+						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);	
 						PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 						PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 
 			LAi_QuestDelay("rumble1", 2.5);
 			LAi_QuestDelay("rumble2", 2.5);
 
-						if(CheckAttribute(Pchar, "Q2_mix"))
+						if(CheckAttribute(Pchar, "Q2_mix")) 
 						{
 							if(Pchar.Q2_mix == "5" || Pchar.Q2_mix == "9")
 							{
@@ -82181,7 +82306,7 @@ void QuestComplete(string sQuestName)
 								PlaySound("INTERFACE\fire_off.wav");
 
 								LAi_QuestDelay("Pchar_ooh", 2.0);
-							}
+							}	
 						}
 					}
 
@@ -82202,7 +82327,7 @@ void QuestComplete(string sQuestName)
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white")
 					{
 						CreateParticleSystemX("smoke_short", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
-
+	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 						PlaySound("INTERFACE\steam1.wav");
 						PlaySound3D("INTERFACE\bubbles2.wav", -8.4, 3.7, 4.4);
@@ -82220,11 +82345,11 @@ void QuestComplete(string sQuestName)
 						if(CheckAttribute(Pchar, "Q2_mix") && Pchar.Q2_mix == "2")
 						{
 							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
-							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
+							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);		
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
-							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
+							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);	
 
 				LAi_QuestDelay("rumble1", 2.5);
 				LAi_QuestDelay("rumble2", 2.5);
@@ -82315,7 +82440,7 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white"
 					|| Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_grey")
-					{
+					{	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 
 				LAi_QuestDelay("rumble1", 2.5);
@@ -82328,7 +82453,7 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_light_yellow"
 					|| Locations[FindLocation(Pchar.location)].models.always.l10 == "solid_red")
-					{
+					{	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 						CreateParticleSystemX("waterfog_fall", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
 
@@ -82352,7 +82477,7 @@ void QuestComplete(string sQuestName)
 				LAi_QuestDelay("fireplace3", 2.5);
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white")
-					{
+					{	
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 						PlaySound3D("INTERFACE\bubbles2.wav", -8.4, 3.7, 4.4);
 
@@ -82362,14 +82487,14 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_grey")
 					{
-						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
+						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);	
 						PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 						PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 
 				LAi_QuestDelay("rumble1", 2.5);
 				LAi_QuestDelay("rumble2", 2.5);
 
-						if(CheckAttribute(Pchar, "Q2_mix"))
+						if(CheckAttribute(Pchar, "Q2_mix")) 
 						{
 							if(Pchar.Q2_mix == "5" || Pchar.Q2_mix == "9")
 							{
@@ -82403,7 +82528,7 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation(Pchar.location)].models.always.l10 == "liquid_white")
 					{
-						CreateParticleSystemX("smoke_short", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);
+						CreateParticleSystemX("smoke_short", -8.4, 3.7, 3.7, 0.0, 3.0, -2.0, 5);	
 
 						PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
 						PlaySound("INTERFACE\steam1.wav");
@@ -82420,7 +82545,7 @@ void QuestComplete(string sQuestName)
 						if(CheckAttribute(Pchar, "Q2_mix") && Pchar.Q2_mix == "2")
 						{
 							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
-							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);
+							PlaySound3D("INTERFACE\rumble1.wav", -8.4, 3.7, 4.4);		
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
 							PlaySound3D("INTERFACE\rumble2.wav", -8.4, 3.7, 4.4);
@@ -82480,9 +82605,9 @@ void QuestComplete(string sQuestName)
 			if(Locations[FindLocation(Pchar.location)].models.always.l10 == "powder_grey")
 			{
 				Pchar.powder_grey = "processed";
-				if(CheckAttribute(Pchar, "Q2_mix"))
+				if(CheckAttribute(Pchar, "Q2_mix")) 
 				{
-					if(Pchar.Q2_mix == "5" || Pchar.Q2_mix == "9")
+					if(Pchar.Q2_mix == "5" || Pchar.Q2_mix == "9") 
 					{
 						Pchar.powder_grey = "processed2";
 					}
@@ -82600,7 +82725,7 @@ void QuestComplete(string sQuestName)
 		case "crucible_turn":
 			Locations[FindLocation("wr_farm_alchemy2")].image = "";
 
-			if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l7 == "cauldron2")
+			if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l7 == "cauldron2") 
 			{
 				//TURN DOWN
 
@@ -82666,7 +82791,7 @@ void QuestComplete(string sQuestName)
 				else
 				{
 					//no funnel => pour out the crucible content on the floor
-
+					
 					if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l8 == "bottle_FE0")
 					{
 						Pchar.empty_bottle = "crashed";
@@ -82674,7 +82799,7 @@ void QuestComplete(string sQuestName)
 					}
 
 					if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "solid_brown"
-					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "solid_red")
+					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "solid_red") 
 					{
 						Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 = "";
 						Pchar.content_to_floor = "solid";
@@ -82683,7 +82808,7 @@ void QuestComplete(string sQuestName)
 					if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "liquid_white"
 					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "liquid_grey"
 					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "liquid_orange"
-					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "liquid_mercury")
+					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "liquid_mercury") 
 					{
 						Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 = "";
 						Pchar.content_to_floor = "liquid";
@@ -82691,7 +82816,7 @@ void QuestComplete(string sQuestName)
 
 					if(Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "powder_white"
 					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "powder_grey"
-					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "powder_dark_yellow")
+					|| Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 == "powder_dark_yellow") 
 					{
 						Locations[FindLocation("wr_farm_alchemy2")].models.always.l10 = "";
 						Pchar.content_to_floor = "powder";
@@ -82700,7 +82825,7 @@ void QuestComplete(string sQuestName)
 
 				DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "wheel2", "crucible_turn_down");
 			}
-			else
+			else 
 			{
 				//TURN UP
 
@@ -82709,21 +82834,21 @@ void QuestComplete(string sQuestName)
 				DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "wheel2", "crucible_turn_up");
 			}
 		break;
-
+	
 		case "crucible_turn_down":
 			PlaySound("INTERFACE\damper_close.wav");
 			PlaySound("INTERFACE\damper_close.wav");
 
 			LAi_QuestDelay("loading_back_alchemy2", 0.1);
 
-			if(CheckAttribute(Pchar, "content_to_bottle"))
+			if(CheckAttribute(Pchar, "content_to_bottle")) 
 			{
 				if(Pchar.content_to_bottle == "powder") PlaySound("PEOPLE\gunpowder.wav");
 				if(Pchar.content_to_bottle == "liquid") PlaySound("AMBIENT\TAVERN\tinkle1.wav");
 				Pchar.content_to_bottle = "";
 			}
 
-			if(CheckAttribute(Pchar, "content_to_floor"))
+			if(CheckAttribute(Pchar, "content_to_floor")) 
 			{
 				if(Pchar.content_to_floor == "solid")
 				{
@@ -82733,7 +82858,7 @@ void QuestComplete(string sQuestName)
 					LAi_QuestDelay("stones_out", 0.5);
 					LAi_QuestDelay("crucible_turn_down1", 1.5);
 				}
-
+				
 				if(Pchar.content_to_floor == "liquid")
 				{
 					PlaySound("OBJECTS\SHIPCHARGE\ball_splash2.wav");
@@ -82754,18 +82879,18 @@ void QuestComplete(string sQuestName)
 				}
 			}
 		break;
-
+	
 		case "stones_out":
 			PlaySound("PEOPLE\cavern1.wav");
 		break;
 
 		case "crucible_turn_down1":
-			if(CheckAttribute(Pchar, "empty_bottle") && Pchar.empty_bottle == "crashed")
+			if(CheckAttribute(Pchar, "empty_bottle") && Pchar.empty_bottle == "crashed")  
 			{
 				PlaySound("AMBIENT\TAVERN\tinkle4.wav");
 				Pchar.empty_bottle = "";
 
-				LAi_QuestDelay("Pchar_ooh", 1.5);
+				LAi_QuestDelay("Pchar_ooh", 1.5);		
 			}
 			else PlaySound("OBJECTS\VOICES\DEAD\male\dead7.wav");
 		break;
@@ -82797,12 +82922,12 @@ void QuestComplete(string sQuestName)
 
 			PlaySound("AMBIENT\TAVERN\open_bottle.wav");
 		break;
-		//JRH take time
+//JRH take time
 		case "loading_back_alchemy2_take_time_JRH3":
 			Pchar.crucible = "off";
 			LAi_SetPlayerType(Pchar);
 			Locations[FindLocation("wr_farm_alchemy2")].image = "wr_farm_alchemy2.tga";
-
+			
 			if(Locations[FindLocation(Pchar.location)].models.always.locators == "TwoFloorHouse_locators_JRH3")
 			{
 				LAi_QuestDelay("take_time", 2.0);
@@ -82813,7 +82938,7 @@ void QuestComplete(string sQuestName)
 			Pchar.crucible = "off";
 			LAi_SetPlayerType(Pchar);
 			Locations[FindLocation("wr_farm_alchemy2")].image = "wr_farm_alchemy2.tga";
-
+			
 			if(Locations[FindLocation(Pchar.location)].models.always.locators == "TwoFloorHouse_locators_JRH1")
 			{
 				LAi_QuestDelay("take_time", 2.0);
@@ -82824,7 +82949,7 @@ void QuestComplete(string sQuestName)
 			Pchar.crucible = "off";
 			LAi_SetPlayerType(Pchar);
 			Locations[FindLocation("wr_farm_alchemy2")].image = "wr_farm_alchemy2.tga";
-
+			
 			if(Locations[FindLocation(Pchar.location)].models.always.locators == "TwoFloorHouse_locators_JRH2")
 			{
 				LAi_QuestDelay("take_time", 2.0);
@@ -82846,7 +82971,7 @@ void QuestComplete(string sQuestName)
 
 		case "2FH_running_acid1":
 			PlaySound("OBJECTS\VOICES\DEAD\male\dead6.wav");
-			LAi_ApplyCharacterDamage(Pchar, 20);
+			LAi_ApplyCharacterDamage(Pchar, 20);	
 
 			LAi_QuestDelay("2FH_running_acid2", 0.5);
 		break;
@@ -82867,7 +82992,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 		//---------------------------------------------------------------------------------------------------------------------
-
+	
 		case "2FH_fill_acidbottle":
 			PlaySound("AMBIENT\TAVERN\tinkle1.wav");
 
@@ -82910,14 +83035,14 @@ void QuestComplete(string sQuestName)
 				CreateParticleSystem("blast_dirt_small" , -9.05, 3.9, 9.65, 0.0, 0.0, 0.0, sti(20) );
 			}
 
-			LAi_QuestDelay("pchar_staytype", 1.0);
+			LAi_QuestDelay("pchar_staytype", 1.0);	
 			LAi_QuestDelay("2FH_grinding1", 1.7);
 		break;
 
 		case "2FH_grinding1":
 			LAi_SetPlayerType(Pchar);
 			Pchar.alchemy2_box8 = "off";
-
+			
 			if(CheckAttribute(Pchar, "alchemy2_grinder") && Pchar.alchemy2_grinder == "black_stones")
 			{ Pchar.alchemy2_grinder = "black_powder";}
 
@@ -82926,7 +83051,7 @@ void QuestComplete(string sQuestName)
 		break;
 
 
-
+		
 		case "alchemy2_grinder_powder_out":
 			switch(Locations[FindLocation("wr_farm_alchemy2")].models.always.l14)
 			{
@@ -82957,7 +83082,7 @@ void QuestComplete(string sQuestName)
 								case "black_powder":
 									Pchar.alchemy2_grinder = "empty";
 									Locations[FindLocation("wr_farm_alchemy2")].models.always.l14 = "bottle_GC1";
-
+					
 									Locations[FindLocation("wr_farm_alchemy2")].image = "";
 									DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "box16", "alchemy2_grinder_powder_out1");
 								break;
@@ -82971,11 +83096,11 @@ void QuestComplete(string sQuestName)
 								break;
 							}
 
-						}
+						}	
 					break;
 			}
 		break;
-
+	
 		case "alchemy2_grinder_powder_out1":
 			PlaySound("PEOPLE\gunpowder.wav");
 			LAi_SetPlayerType(Pchar);
@@ -82989,7 +83114,7 @@ void QuestComplete(string sQuestName)
 
 		//---------------------------------------------------------------------------------------------------------------------
 
-		case "alch2_box4":
+		case "alch2_box4":	
 			Locations[FindLocation("wr_farm_alchemy2")].image = "";
 			DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "box4", "loading_back_alchemy2");
 		break;
@@ -82998,7 +83123,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "bladebottle_CE0");
 			GiveItem2Character(Pchar,"bladebottle_CV1_sc");
-			EquipCharacterByItem(Pchar, "bladebottle_CV1_sc");
+			EquipCharacterByItem(Pchar, "bladebottle_CV1_sc");	
 			Locations[FindLocation("wr_farm_alchemy2")].image = "";
 			DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "box4", "loading_back_alchemy2_plop");
 		break;
@@ -83007,7 +83132,7 @@ void QuestComplete(string sQuestName)
 			RemoveCharacterEquip(Pchar, BLADE_ITEM_TYPE);
 			TakeItemFromCharacter(Pchar, "bladebottle_CE0");
 			GiveItem2Character(Pchar,"bladebottle_CR1");
-			EquipCharacterByItem(Pchar, "bladebottle_CR1");
+			EquipCharacterByItem(Pchar, "bladebottle_CR1");	
 			Locations[FindLocation("wr_farm_alchemy2")].image = "";
 			DoQuestReloadToLocation("wr_farm_alchemy2", "goto", "box4", "loading_back_alchemy2_plop");
 		break;
@@ -83067,7 +83192,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("CB6"));
 			LAi_SetActorType(characterFromID("CB7"));
 			LAi_SetActorType(characterFromID("CB12"));
-
+			
 			LAi_QuestDelay("B_A6", 2.25);			//was 2.0
 		break;
 
@@ -83093,16 +83218,16 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("B_turn_left", 2.5);		//subdominant
 			LAi_QuestDelay("B_turn_forward", 5.0);		//tonika
 			LAi_QuestDelay("B_turn_right", 7.5);		//dominant
-
+			
 			LAi_QuestDelay("B_turn_left", 8.5);		//subdominant
 			LAi_QuestDelay("B_turn_forward", 10.5);		//tonika
-
+		
 		LAi_QuestDelay("B_CB21_hands_up", 12.5);
 			LAi_QuestDelay("B_B5", 13.0);			//was 13.5
 		break;
 
 	//----------------------------------------------------------
-
+	
 		case "B_turn_left":
 			//turn left
 
@@ -83164,7 +83289,7 @@ void QuestComplete(string sQuestName)
 
 			LAi_ActorTurnToLocator(characterFromID("CB13"), "goto", "R3_high");
 		break;
-
+	
 	//----------------------------------------------------------
 
 		case "B_CB21_hands_up":
@@ -83180,7 +83305,7 @@ void QuestComplete(string sQuestName)
 			//verse 2
 
 			Pchar.chorus_singer = "stop";
-
+	
 			LAi_SetStayType(characterFromID("CB13"));		//reset
 			LAi_SetPoorType(characterFromID("CB13"));
 
@@ -83190,7 +83315,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetPoorType(characterFromID("CB2")); LAi_SetPoorType(characterFromID("CB3")); LAi_SetPoorType(characterFromID("CB4"));
 			LAi_SetPoorType(characterFromID("CB5")); LAi_SetPoorType(characterFromID("CB8")); LAi_SetPoorType(characterFromID("CB9"));
 			LAi_SetPoorType(characterFromID("CB10")); LAi_SetPoorType(characterFromID("CB11"));
-
+			
 			LAi_QuestDelay("B_CB21_hands_up", 0.01);
 			LAi_QuestDelay("B_B6", 3.0);			//was 2.0
 		break;
@@ -83198,7 +83323,7 @@ void QuestComplete(string sQuestName)
 		case "B_B6":
 			LAi_SetActorType(characterFromID("CB13"));
 
-			LAi_QuestDelay("B_B7", 2.5);			//was 3.5
+			LAi_QuestDelay("B_B7", 2.5);			//was 3.5			
 		break;
 
 		case "B_B7":
@@ -83208,18 +83333,18 @@ void QuestComplete(string sQuestName)
 			Pchar.chorus_anim = "verse2";
 			LAi_QuestDelay("B_chorus_anim", 0.01);
 
-			LAi_QuestDelay("B_turn_left", 0.01);
-			LAi_QuestDelay("B_turn_forward", 2.5);
-			LAi_QuestDelay("B_turn_right", 5.0);
-
-			LAi_QuestDelay("B_turn_left", 6.0);
-			LAi_QuestDelay("B_turn_forward", 8.0);
+			LAi_QuestDelay("B_turn_left", 0.01);		
+			LAi_QuestDelay("B_turn_forward", 2.5);		
+			LAi_QuestDelay("B_turn_right", 5.0);		
+			
+			LAi_QuestDelay("B_turn_left", 6.0);		
+			LAi_QuestDelay("B_turn_forward", 8.0);		
 
 			LAi_QuestDelay("B_C4", 11.0);			//was 10.5
 		break;
 
 	//----------------------------------------------------------
-
+	
 		case "B_C4":
 			//verse 3
 
@@ -83235,7 +83360,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("CB6"));
 			LAi_SetActorType(characterFromID("CB7"));
 			LAi_SetActorType(characterFromID("CB12"));
-
+			
 			LAi_QuestDelay("B_C6", 2.25);			//was 2.0
 		break;
 
@@ -83247,7 +83372,7 @@ void QuestComplete(string sQuestName)
 
 		case "B_C7":
 			for(i = 1; i < 14; i++) {LAi_SetActorType(CharacterFromID("CB"+i));}
-
+		
 			Pchar.chorus_singer = "go";
 			Pchar.chorus_anim = "verse3";
 			LAi_QuestDelay("B_chorus_anim", 0.01);
@@ -83255,13 +83380,13 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("B_turn_left", 2.5);
 			LAi_QuestDelay("B_turn_forward", 5.0);
 			LAi_QuestDelay("B_turn_right", 7.5);
-
+			
 			LAi_QuestDelay("B_turn_left", 8.5);
 			LAi_QuestDelay("B_turn_forward", 10.5);
 
 			LAi_QuestDelay("B_D1", 13.5);			//pause party from here, was 13.5
 		break;
-
+	
 	//----------------------------------------------------------
 
 		case "B_chorus_anim":
@@ -83295,14 +83420,14 @@ void QuestComplete(string sQuestName)
 
 						case "verse4":
 							for(i = 1; i < 14; i++) {LAi_tmpl_ani_PlayAnimation(characterFromID("CB"+i), "fight stand_5", 1.0);}
-
+							
 							LAi_QuestDelay("B_D_pause", 1.0);
 						break;
 					}
 				}
 			}
 		break;
-
+	
 	//----------------------------------------------------------
 
 		case "B_D_pause":
@@ -83319,7 +83444,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("B_turn_left", 5.5);
 			LAi_QuestDelay("B_turn_forward", 8.0);
 			LAi_QuestDelay("B_turn_right", 10.5);
-
+			
 			LAi_QuestDelay("B_turn_left", 11.5);
 			LAi_QuestDelay("B_turn_forward", 13.5);
 
@@ -83352,7 +83477,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("CB7"));
 			LAi_SetActorType(characterFromID("CB12"));
 
-
+			
 			LAi_QuestDelay("B_E7", 5.5);
 		break;
 
@@ -83375,7 +83500,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("B_turn_left", 0.0);
 			LAi_QuestDelay("B_turn_forward", 2.5);
 			LAi_QuestDelay("B_turn_right", 5.0);
-
+			
 			LAi_QuestDelay("B_turn_left", 6.0);
 			LAi_QuestDelay("B_turn_forward", 8.0);			//should be 8?
 
@@ -83397,7 +83522,7 @@ void QuestComplete(string sQuestName)
 			LAi_SetActorType(characterFromID("CB6"));
 			LAi_SetActorType(characterFromID("CB7"));
 			LAi_SetActorType(characterFromID("CB12"));
-
+			
 			LAi_QuestDelay("B_F6", 2.25);			//was 2.0
 		break;
 
@@ -83409,7 +83534,7 @@ void QuestComplete(string sQuestName)
 
 		case "B_F7":
 			for(i = 1; i < 14; i++) {LAi_SetActorType(CharacterFromID("CB"+i));}
-
+		
 			Pchar.chorus_singer = "go";
 			Pchar.chorus_anim = "verse3";
 			LAi_QuestDelay("B_chorus_anim", 0.01);
@@ -83417,7 +83542,7 @@ void QuestComplete(string sQuestName)
 			LAi_QuestDelay("B_turn_left", 2.5);
 			LAi_QuestDelay("B_turn_forward", 5.0);
 			LAi_QuestDelay("B_turn_right", 7.5);
-
+			
 			LAi_QuestDelay("B_turn_left", 8.5);
 			LAi_QuestDelay("B_turn_forward", 10.5);
 
@@ -83451,7 +83576,7 @@ void QuestComplete(string sQuestName)
 			InterfaceStates.Buttons.Resume.enable = false;
 		break;
 	//..............................................................................................................
-
+	
 		PChar.questnotfound = true; // PB: Testing
 	}
 	LanguageCloseFile(tmpLangFileID);

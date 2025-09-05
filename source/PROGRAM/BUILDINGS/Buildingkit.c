@@ -14,7 +14,7 @@ void Build_here(ref user, string building, string interior, bool permanent)
 	float x,y,z,ay;
 	ref lcn = &Locations[FindLocation(user.location)];	// determines where you are
 	string aigroup = user.chr_ai.group;
-	
+
 //check if a buildingslot is free
 	for(int i = 1; i<=MAXBUILDINGS; i++)
 	{
@@ -25,19 +25,19 @@ void Build_here(ref user, string building, string interior, bool permanent)
     }
 	}
 
-	if(nr == "" )	
+	if(nr == "" )
 	{
 		Logit(TranslateString("","There is no building ground left anymore!"));
 		return;
 	}
 
-//just earcandy 
+//just earcandy :)
 	PlaySound("ambient\shipyard\axe.wav");
 	PlaySound("ambient\shipyard\vehicle.wav");
 	PlaySound("ambient\shipyard\saw.wav");
 	PlaySound("ambient\shipyard\hammer.wav");
-	
-	// determine position in front of user 
+
+	// determine position in front of user (by NK, thanks :)  )
 	GetCharacterPos(user, &x, &y, &z); // get pos
 	GetCharacterAy(user, &ay); // get angle
 	z += cos(ay)*1; // add Z component
@@ -63,7 +63,7 @@ void Build_here(ref user, string building, string interior, bool permanent)
 	lcn.building.(nr).taxyear = GetDataYear();
 	lcn.building.(nr).taxMonth = GetDataMonth();
   }
-  
+
 // time passing for building
 	aref buildingref;
 	Items_FindItem(building,&buildingref);
@@ -81,7 +81,7 @@ void Build_at(string locname, string building, string interior, float x, float y
 	string nr = "";
 	string attr;
 	ref lcn = &Locations[FindLocation(locname)];
-	
+
 //check if a buildingslot is free
 	for(int i = 1; i<=MAXBUILDINGS; i++)
 	{
@@ -92,12 +92,12 @@ void Build_at(string locname, string building, string interior, float x, float y
 		}
 	}
 
-	if(nr == "" )	
+	if(nr == "" )
 	{
 		Logit(TranslateString("","There is no building ground free at") + " " + TranslateString("",locname));
 		return;
 	}
-	
+
 // save permanent building as locationattributes for reloading
 	lcn.building.(nr).building = building;
 	lcn.building.(nr).interior = interior;
@@ -109,7 +109,7 @@ void Build_at(string locname, string building, string interior, float x, float y
 
 // ccc Feb06  use fixed date at gamestart
 	if( !CheckAttribute(Environment,"date") )
-	{	
+	{
 		lcn.building.(nr).taxDay = 15;
 		lcn.building.(nr).taxMonth = 4;
 		lcn.building.(nr).taxyear = 1690;
@@ -118,7 +118,7 @@ void Build_at(string locname, string building, string interior, float x, float y
 		lcn.building.(nr).taxMonth = GetDataMonth();
 		lcn.building.(nr).taxyear = GetDataYear();
 	}
-// Feb06 end 
+// Feb06 end
 }
 
 // This deletes a building "plan" that was stored as locationattributes
@@ -146,7 +146,7 @@ void Build_again(ref lcn)
 	 attr = "building."+i+".building";
 	 if(CheckAttribute(lcn,attr) )
 	 {
-    // load building locationattributes 
+    // load building locationattributes
 	   building = lcn.building.(nr).building;
 	   interior = lcn.building.(nr).interior;
 	   x = stf(lcn.building.(nr).x);
@@ -204,7 +204,7 @@ int Build(string nr, string building, string interior, float x, float y, float z
  	GiveItem2Character(chr, interior);
  	EquipCharacterbyItem(chr, building);
  	EquipCharacterbyItem(chr, interior);
-	
+
 	//Levis let's add colliding data
 	AddCollider(building, sti(chr.index), x, y, z, ay);
 	//AddCollider(interior, sti(chr.index), x, y, z, ay);

@@ -15,7 +15,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleTavernNews";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();
+	// CreateExitString();
 
 	CreateString(false, "LogEntry_Title", "", FONT_SHIPSLOG, COLOR_WHITE, 320, 62, SCRIPT_ALIGN_CENTER, 1.0);	
 	CreateString(false, "LogEntry_Date", "", FONT_SHIPSLOG, COLOR_WHITE, 75, 62, SCRIPT_ALIGN_LEFT, 1.0);	

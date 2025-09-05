@@ -728,6 +728,8 @@ void InitTownNationalities()
 			ChangeCharacterAddressGroup(characterFromID("Dutch Emissary"),   "Tortuga_Townhall",  "Sit", "Sit1");
 			ChangeCharacterAddressGroup(characterFromID("English Tailor"),   "Tortuga_tailorsShop", "goto","stay2");
 			ChangeCharacterAddressGroup(characterFromID("Dutch Tailor"),     "Tortuga_tailorsShop", "goto","stay3");
+			Towns[GetTownIndex("Pointe a Pitre")].skiptrade = true;	// Block trade to towns which shouldn't exist
+			Towns[GetTownIndex("Oranjestad")].skiptrade = true;
 
 			if (Items_FindItem("mapGuadeloupe", &item) >= 0) {
 				item.skiptrade = true;
@@ -754,6 +756,15 @@ void InitTownNationalities()
 				item.skiptrade = true;
 				item.skipsell  = true;
 			}*/
+
+// GR: set correct flags on soldier interface icons -->
+			Models[GetModelIndex("Offic_en77")].FaceID = 620;
+			Models[GetModelIndex("brtoffic18")].FaceID = 620;
+			for(i=1; i<=6; i++)
+			{
+				Models[GetModelIndex("BrtSol18_" + i)].FaceID = 620;
+			}
+// GR: <-- set correct flags on soldier interface icons
 		break;
 
 		case PERIOD_THE_SPANISH_MAIN:
@@ -784,6 +795,19 @@ void InitTownNationalities()
 			{
 				ChangeCharacterAddressGroup(CharacterFromID("Swedish Emissary"), "Marigot_mansion_hall",  "goto","goto5");
 			}
+
+// GR: set correct flags on soldier interface icons -->
+			Models[GetModelIndex("Offic_spa_18")].FaceID = 622;
+			Models[GetModelIndex("Soldier_Spa_18")].FaceID = 622;
+			for(i=2; i<=6; i++)
+			{
+				Models[GetModelIndex("Soldier_Spa" + i + "_18")].FaceID = 622;
+			}
+			for(i=0; i<CHARACTERS_QUANTITY; i++)
+			{
+				if (HasSubStr(Characters[i].model, "Soldier_Spa")) Characters[i].faceid = 622;
+			}
+// GR: <-- set correct flags on soldier interface icons
 		break;
 
 		case PERIOD_REVOLUTIONS:
@@ -794,6 +818,25 @@ void InitTownNationalities()
 		case PERIOD_NAPOLEONIC:
 			ChangeCharacterAddressGroup(characterFromID("Portuguese Emissary"), "Conceicao_townhall",   "Sit", "Sit3");
 			ChangeCharacterAddressGroup(characterFromID("Portuguese Tailor"),   "Conceicao_TailorsShop","goto","locator6");
+
+// GR: set correct flags on soldier interface icons -->
+			Models[GetModelIndex("Offic_en77")].FaceID = 99;
+			Models[GetModelIndex("Offic_eng_18")].FaceID = 99;
+			Models[GetModelIndex("Soldier_Eng_18")].FaceID = 99;
+			Models[GetModelIndex("brtoffic18")].FaceID = 99;
+			Models[GetModelIndex("BrtSol18_1")].FaceID = 99;
+			for(i=2; i<=6; i++)
+			{
+				Models[GetModelIndex("Soldier_Eng" + i + "_18")].FaceID = 99;
+				Models[GetModelIndex("BrtSol18_" + i)].FaceID = 99;
+			}
+			for(i=0; i<CHARACTERS_QUANTITY; i++)
+			{
+				if (Characters[i].id == "Richard Sharpe") continue;	// Sgt. Sharpe has a "Soldier_Eng" model but his own photographic interface pictures
+				if (HasSubStr(Characters[i].model, "Soldier_Eng")) Characters[i].faceid = 99;
+				if (Characters[i].model == "Offic_eng_18" || Characters[i].model == "brtoffic18") Characters[i].faceid = 99;
+			}
+// GR: <-- set correct flags on soldier interface icons
 		break;
 	}
 
@@ -882,6 +925,25 @@ void InitTownNationalities()
 	PChar.quest.colombian_silver_start.win_condition = "colombian_silver_start";
 	PChar.quest.colombian_silver_start.skip = "yes";
 	//Colombian Silver quest
+
+	//Traps for Martinique bridge and Crystal Skullquest
+	PChar.quest.crysskull_bridge_trap1.win_condition.l1 = "locator";
+	PChar.quest.crysskull_bridge_trap1.win_condition.l1.location = "FalaiseDeFleur_Bridge";
+	PChar.quest.crysskull_bridge_trap1.win_condition.l1.locator_group = "goto";
+	PChar.quest.crysskull_bridge_trap1.win_condition.l1.locator = "goto30";
+	PChar.quest.crysskull_bridge_trap1.win_condition = "crysskull_bridge_trap";
+	PChar.quest.crysskull_bridge_trap2.win_condition.l1 = "locator";
+	PChar.quest.crysskull_bridge_trap2.win_condition.l1.location = "FalaiseDeFleur_Bridge";
+	PChar.quest.crysskull_bridge_trap2.win_condition.l1.locator_group = "goto";
+	PChar.quest.crysskull_bridge_trap2.win_condition.l1.locator = "goto40";
+	PChar.quest.crysskull_bridge_trap2.win_condition = "crysskull_bridge_trap";
+	//Traps for Martinique bridge and Crystal Skullquest
+
+	// Captain Murphy Tribute
+	PChar.quest.Murphy_tribute_activate.win_condition.l1 = "location";
+	PChar.quest.Murphy_tribute_activate.win_condition.l1.location = "Capt_Murphy_house";
+	PChar.quest.Murphy_tribute_activate.win_condition = "Murphy_tribute_activate";
+	// Captain Murphy Tribute
 
 	//JRH: Cartagena New_cloister
 	PChar.quest.cloister_start.win_condition.l1 = "location";

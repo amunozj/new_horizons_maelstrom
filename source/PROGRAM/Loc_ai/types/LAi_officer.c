@@ -20,7 +20,34 @@ void LAi_type_officer_Init(aref chr)
 	chr.chr_ai.type = LAI_TYPE_OFFICER;
 	LAi_tmpl_SetFollow(chr, GetMainCharacter(), -1.0);
 	//Установим анимацию персонажу
-	LAi_SetDefaultStayAnimation(chr);
+	bool isMusk = false;
+	string sAni = strcut(chr.model.animation, 0, 8);
+	if (sAni == "mushketer")
+        isMusk = true;
+	if (isMusk && !CheckAttribute(chr, "isMusketer.weapon") && chr.index != getmaincharacterindex() && !isOfficer(chr))
+	{
+        while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
+        }
+        while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
+        {
+            TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
+        }
+		GiveItem2Character(chr, "unarmed");
+		EquipCharacterbyItem(chr, "unarmed");
+		GiveItem2Character(chr, "mushket2x2");
+		EquipCharacterbyItem(chr, "mushket2x2");
+		chr.items.bullet = 300;
+		chr.isMusketer = true;
+		if (!CheckAttribute(chr, "MusketerDistance"))
+			chr.MusketerDistance = 5.0 + frand(10.0);
+		chr.isMusketer.weapon = true;
+	}
+	else
+	{
+		LAi_SetDefaultStayAnimation(chr);
+	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 

@@ -31,12 +31,12 @@ void InitIslandSmuggling()
 	Island.smuggling.pause.0.end = 13.75;			This is the endtime of a pause
 	Island.smuggling.pause.0.name = "lunch";		This is the name of the pause
 	Island.smuggling.patrolversion = 2;
-	Island.smuggling.patrol.0.start = 0.0;			This is the starttime of a patrol	
+	Island.smuggling.patrol.0.start = 0.0;			This is the starttime of a patrol
 	Island.smuggling.patrol.0.end = 7.75;			This is the endtime of a patrol
 	Island.smuggling.patrol.0.groups = 2;			This is how many groups the patrol has
 	Island.smuggling.patrol.0.name = "patrol";		This is the name of the patrol
 	*/
-	for(int n=0; n<ISLANDS_QUANTITY; n++) 
+	for(int n=0; n<ISLANDS_QUANTITY; n++)
 	{
 		ref sisland = GetIslandByIndex(n);
 		if(DEBUG_SMUGGLING>0) trace("SMUGGLING Check island: "+sisland.id);
@@ -74,7 +74,7 @@ void setIslandSmugglingPauses(ref sisland)
 	}
 	int left = SMUGGLING_PAUSE_QUANTITY;
 	//Choose some options
-	for(int n=0; n<SMUGGLING_PAUSE_QUANTITY; n++) 
+	for(int n=0; n<SMUGGLING_PAUSE_QUANTITY; n++)
 	{
 		if(pick==0) break;
 		if(left > pick)
@@ -125,7 +125,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "supper";
 			}*/
 		break;
-		
+
 		case FRANCE:
 			id = 0;
 			if(pickpauses[sti(id)] == TRUE)
@@ -149,7 +149,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "dinner";
 			}
 		break;
-		
+
 		case SPAIN:
 			id = 0;
 			if(pickpauses[sti(id)] == TRUE)
@@ -173,7 +173,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "cena";
 			}
 		break;
-		
+
 		case PIRATE:
 			id = 0;
 			if(pickpauses[sti(id)] == TRUE)
@@ -190,7 +190,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "private time";
 			}
 		break;
-		
+
 		case HOLLAND:
 			id = 0;
 			if(pickpauses[sti(id)] == TRUE)
@@ -214,7 +214,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "avondeten";
 			}
 		break;
-		
+
 		case PORTUGAL:
 			id = 0;
 			if(pickpauses[sti(id)] == TRUE)
@@ -239,7 +239,7 @@ void setIslandSmugglingPauses(ref sisland)
 				sisland.smuggling.pause.(id).name = "cena";
 			}
 		break;
-		
+
 		case GUEST1_NATION:
 			if(GetCurrentPeriod() > PERIOD_EARLY_EXPLORERS && GetCurrentPeriod() < PERIOD_REVOLUTIONS && SWEDEN_ALLOWED){
 				id = 0;
@@ -344,7 +344,7 @@ void lockIslandContraband(ref sisland)
 		aref contrabands;
 		makearef(contrabands,sisland.Trade.Contraband);
 		int amountcontraband = GetAttributesNum(contrabands);
-		for(int i = 0; i < amountcontraband; i++) 
+		for(int i = 0; i < amountcontraband; i++)
 		{
 			string contrabandidx = GetAttributeName(GetAttributeN(contrabands,i));
 			sisland.Trade.Contraband.(contrabandidx).notremove = true;
@@ -360,7 +360,7 @@ void unlockIslandContraband(ref sisland)
 		aref contrabands;
 		makearef(contrabands,sisland.Trade.Contraband);
 		int amountcontraband = GetAttributesNum(contrabands);
-		for(int i = 0; i < amountcontraband; i++) 
+		for(int i = 0; i < amountcontraband; i++)
 		{
 			string contrabandidx = GetAttributeName(GetAttributeN(contrabands,i));
 			if(CheckAttribute(sisland,"Trade.Contraband."+contrabandidx+".notremove"))
@@ -387,7 +387,7 @@ void removeIslandContraband(ref sisland)
 		aref contrabands;
 		makearef(contrabands,sisland.Trade.Contraband);
 		int amountcontraband = GetAttributesNum(contrabands);
-		for(int i = 0; i < amountcontraband; i++) 
+		for(int i = 0; i < amountcontraband; i++)
 		{
 			string contrabandidx = GetAttributeName(GetAttributeN(contrabands,i));
 			if(!CheckAttribute(sisland,"Trade.Contraband."+contrabandidx+".notremove"))
@@ -428,7 +428,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_BRICKS);
 			}
 		break;
-		
+
 		case FRANCE:
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_SANDAL);
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_COTTON);
@@ -441,7 +441,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_MAHOGANY);
 			}
 		break;
-		
+
 		case SPAIN:
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_ALE);
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_SILK);
@@ -454,7 +454,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_CHOCOLATE);
 			}
 		break;
-		
+
 		case PIRATE:
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_LEATHER);
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_CLOTHES);
@@ -467,7 +467,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_SILK);
 			}
 		break;
-		
+
 		case HOLLAND:
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_SUGAR);
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_LINEN);
@@ -480,7 +480,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_SANDAL);
 			}
 		break;
-		
+
 		case PORTUGAL:
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_WINE);
 			idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_MAHOGANY);
@@ -493,7 +493,7 @@ void setIslandSmugglingContraband(ref sisland)
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND_NAME, idx, GOOD_EBONY);
 			}
 		break;
-		
+
 		case GUEST1_NATION:
 			if(GetCurrentPeriod() > PERIOD_EARLY_EXPLORERS && GetCurrentPeriod() < PERIOD_REVOLUTIONS && SWEDEN_ALLOWED){
 				idx = AddTradeGood(sisland, TRADE_TYPE_CONTRABAND, idx, GOOD_LINEN);
@@ -555,7 +555,7 @@ int getIslandSmugglingPatrols(ref sisland)
 	int amountpatrols = GetAttributesNum(patrols);
 	int numpatrols = 0;
 	float time = GetTime();
-	for(int i = 0; i < amountpatrols; i++) 
+	for(int i = 0; i < amountpatrols; i++)
 	{
 		string patrolidx = GetAttributeName(GetAttributeN(patrols,i));
 		if(time <= stf(sisland.smuggling.patrol.(patrolidx).end) && time >= stf(sisland.smuggling.patrol.(patrolidx).start))
@@ -592,15 +592,15 @@ void setIslandSmugglingPatrols(ref sisland)
 	}
 	bool startpatrol = true;
 	//Make first few patrols
-	for(int n=0; n<(numpatrols-1); n++) 
+	for(int n=0; n<(numpatrols-1); n++)
 	{
 		string patrol = n;
 		if(pause<amountpause) string pausestring = GetAttributeName(GetAttributeN(pauses,pause));
 		int maxdur = (24 - hour)/((numpatrols-n)-1);
 		int hmax = maxdur+hour;
-		for(int h=hour; h<(hmax); h++) 
+		for(int h=hour; h<(hmax); h++)
 		{
-			if(startpatrol) 
+			if(startpatrol)
 			{
 				tottroops = (coastguardnum+restguards);
 				//Let's randomize the patrols a bit more
@@ -673,12 +673,12 @@ void setIslandSmugglingPatrols(ref sisland)
 						startpatrol = false;
 						//If possible split up the patrol in 2 pieces
 						if(groups>1) sisland.smuggling.patrol.(patrol).groups = (groups/2);
-						if(tottroops > ((SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))*6)) 
+						if(tottroops > ((SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))*6))
 						{
 							sisland.smuggling.patrol.(patrol).groups = tottroops/12; //because we want half
 							restguards = 0; //need to set this for the next loop
 						}
-						if(sisland.smuggling.patrol.(patrol).groups > (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))) 
+						if(sisland.smuggling.patrol.(patrol).groups > (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland)))
 						{
 							sisland.smuggling.patrol.(patrol).groups = (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland));
 							restguards = tottroops - ((SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))*12); //need to set this for the next loop
@@ -721,7 +721,7 @@ void setIslandSmugglingPatrols(ref sisland)
 	{
 		groups = (coastguardnum+restguards)/6;
 		sisland.smuggling.patrol.(patrol).start = hour+(minute/60.0);
-		sisland.smuggling.patrol.(patrol).end = 24.0;
+		sisland.smuggling.patrol.(patrol).end = 24.0);
 		sisland.smuggling.patrol.(patrol).groups = 0;
 		if(sti(sisland.smuggling.state)>0) sisland.smuggling.patrol.(patrol).groups = groups;
 		if(groups > (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland))) sisland.smuggling.patrol.(patrol).groups = (SMUGGLING_MAX_GROUPS_PER_STATE * getIslandSmugglingState(sisland));
@@ -739,7 +739,7 @@ void setIslandSmugglingPatrols(ref sisland)
 	//Debug info
 	if(DEBUG_SMUGGLING>1)
 	{
-		for(n=0; n<(numpatrols); n++) 
+		for(n=0; n<(numpatrols); n++)
 		{
 			patrol = n;
 			string start = GetTimeText(stf(sisland.smuggling.patrol.(patrol).start));
@@ -779,7 +779,7 @@ void addIslandSmugglingAmount(ref sisland, int amount)
 {
 	// add the amount of smuggled goods.
 	int oldamount = 0;
-	if(CheckAttribute(sisland,"smuggling.amount")) 
+	if(CheckAttribute(sisland,"smuggling.amount"))
 	{
 		oldamount = sisland.smuggling.amount;
 	}
@@ -789,7 +789,7 @@ void addIslandSmugglingAmount(ref sisland, int amount)
 
 void UpdateAllIslandSmuggling()
 {
-	for(int n=0; n<ISLANDS_QUANTITY; n++) 
+	for(int n=0; n<ISLANDS_QUANTITY; n++)
 	{
 		ref sisland = GetIslandByIndex(n);
 		if(CheckAttribute(sisland,"smuggling.state"))
@@ -801,90 +801,93 @@ void UpdateAllIslandSmuggling()
 
 void UpdateIslandSmugglingState(ref sisland)
 {
-	//This function updates the smuggling state, this needs to run daily.
-	int townnum = GetIslandTownsQuantity(sisland.id);
-	// if there are not towns then we dont need to check
-	bool bRemoveContraband = false;
-	if (townnum == 0)                                     bRemoveContraband = true; //no smuggling state has to be set either
-	if (sti(sisland.smuggling_nation) == PIRATE         ) bRemoveContraband = true; //no coast guard if the island is under pirate control
-	if (sti(sisland.smuggling_nation) == PERSONAL_NATION) bRemoveContraband = true; //you don't want the coastguard to get you on your own island
-	if (IsIslandDisabled(sisland.id))                     return; 			//no smuggling updates to unexplored islands
-	if (bRemoveContraband)
-	{
-		removeIslandContraband(sisland);
-		return;
-	}
-	// Check if already set or not
-	if(!CheckAttribute(sisland,"smuggling.state"))
-	{
-		int economy = 0;
-		//Check all towns on the island
-		for(int n = 1; n <= townnum; n++)
-		{
-			string townid = GetTownIDFromIsland(sisland.id, n);
-			ref stown = GetTownFromID(townid);
-			int towneco = GetTownEconomy(stown)+2; //economy starts at -2 so we increase it so its never below 0
-			economy = economy + towneco;
-		}
-		//Take the avarage economy.
-		sisland.smuggling.state = (economy/townnum);
-		//We dont want to start with 0 already
-		if(sisland.smuggling.state < 1)
-		{
-			sisland.smuggling.state = 1;
-		}
-		if(DEBUG_SMUGGLING>0) trace("SMUGGLING set state to: "+sisland.smuggling.state);
-	}
-	else
-	{
-		if(CheckAttribute(sisland,"smuggling.date"))
-		{
-			int dayspast = GetPastTime("day", sti(sisland.smuggling.date.year), sti(sisland.smuggling.date.month),sti(sisland.smuggling.date.day), stf(sisland.smuggling.date.time),
-			GetDataYear(),GetDataMonth(),GetDataDay(), GetTime());
-			if(dayspast >= SMUGGLING_DAYS_BEFORE_CHANGE)
-			{
-				if(rand(1000)<=SMUGGLING_STATE_CHANGE_CHANCE)
-				{
-					int samount = getAttribute(sisland,"smuggling.amount");
-					int change = -1;
-					if (samount>SMUGGLING_THRESHOLD_INCREASE) change = 1;
-					changeIslandSmugglingState(sisland, change);
-				}
-			}
-			else
-			{
-				if(rand(1000)<=SMUGGLING_AMOUNT_INCR_CHANCE)
-				{
-					//See if they get caught
-					if(pow2(sisland.smuggling.state,2)<=rand(16))
-					{
-						if(CheckAttribute(sisland,"Trade.Contraband") && getIslandAmountContraband(sisland)>0)
-						{
-							//Make a smuggler who adds some goods to the island
-							if(DEBUG_SMUGGLING>0) trace("SMUGGLING smuggler visited "+sisland.id);
-							int iShipType, iCargoType, iTradeGoods, irank;
-							if(CheckAttribute(sisland,"smuggler.ship")) DeleteAttribute(sisland,"smuggler.ship");
-							iShipType = Force_GetShipType(7, rand(20), "trade", sti(sisland.smuggling_nation));
-							sisland.smuggler.ship.type = GetShipID(iShipType);
-							int contid = rand(getIslandAmountContraband(sisland)-1)+1;//to make sure the rand() wont give 0
-							string contrabandid = "id" + contid;
-							iTradeGoods = sisland.Trade.Contraband.(contrabandid);
-							aref smuggler;
-							makearef(smuggler,sisland.smuggler);
-							int hullspace = GetCharacterFreeSpace(smuggler, iTradeGoods);
-							//Only 60% of space is used
-							int smuggle_amount = hullspace*0.6;
-							addIslandSmugglingAmount(sisland, smuggle_amount);
-						}
-					}
-				}
-			}
-		}
-		else
-		{
-			setIslandSmugglingDate(sisland);
-		}
-	}
+    // This function updates the smuggling state, this needs to run daily.
+    int townnum = GetIslandTownsQuantity(sisland.id);
+    // if there are not towns then we dont need to check
+    bool bRemoveContraband = false;
+    if (townnum == 0) bRemoveContraband = true; // no smuggling state has to be set either
+    if (CheckAttribute(sisland, "smuggling_nation"))
+    {
+        if (sti(sisland.smuggling_nation) == PIRATE) bRemoveContraband = true; // no coast guard if the island is under pirate control
+        if (sti(sisland.smuggling_nation) == PERSONAL_NATION) bRemoveContraband = true; // you don't want the coastguard to get you on your own island
+    }
+    if (IsIslandDisabled(sisland.id)) return; // no smuggling updates to unexplored islands
+    if (bRemoveContraband)
+    {
+        removeIslandContraband(sisland);
+        return;
+    }
+    // Check if already set or not
+    if (!CheckAttribute(sisland, "smuggling.state"))
+    {
+        int economy = 0;
+        // Check all towns on the island
+        for (int n = 1; n <= townnum; n++)
+        {
+            string townid = GetTownIDFromIsland(sisland.id, n);
+            ref stown = GetTownFromID(townid);
+            int towneco = GetTownEconomy(stown) + 2; // economy starts at -2 so we increase it so its never below 0
+            economy = economy + towneco;
+        }
+        // Take the average economy.
+        sisland.smuggling.state = (economy / townnum);
+        // We don't want to start with 0 already
+        if (sisland.smuggling.state < 1)
+        {
+            sisland.smuggling.state = 1;
+        }
+        if (DEBUG_SMUGGLING > 0) trace("SMUGGLING set state to: " + sisland.smuggling.state);
+    }
+    else
+    {
+        if (CheckAttribute(sisland, "smuggling.date"))
+        {
+            int dayspast = GetPastTime("day", sti(sisland.smuggling.date.year), sti(sisland.smuggling.date.month), sti(sisland.smuggling.date.day), stf(sisland.smuggling.date.time),
+                                       GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());
+            if (dayspast >= SMUGGLING_DAYS_BEFORE_CHANGE)
+            {
+                if (rand(1000) <= SMUGGLING_STATE_CHANGE_CHANCE)
+                {
+                    int samount = getAttribute(sisland, "smuggling.amount");
+                    int change = -1;
+                    if (samount > SMUGGLING_THRESHOLD_INCREASE) change = 1;
+                    changeIslandSmugglingState(sisland, change);
+                }
+            }
+            else
+            {
+                if (rand(1000) <= SMUGGLING_AMOUNT_INCR_CHANCE)
+                {
+                    // See if they get caught
+                    if (pow2(sisland.smuggling.state, 2) <= rand(16))
+                    {
+                        if (CheckAttribute(sisland, "Trade.Contraband") && getIslandAmountContraband(sisland) > 0)
+                        {
+                            // Make a smuggler who adds some goods to the island
+                            if (DEBUG_SMUGGLING > 0) trace("SMUGGLING smuggler visited " + sisland.id);
+                            int iShipType, iCargoType, iTradeGoods, irank;
+                            if (CheckAttribute(sisland, "smuggler.ship")) DeleteAttribute(sisland, "smuggler.ship");
+                            iShipType = Force_GetShipType(7, rand(20), "trade", sti(sisland.smuggling_nation));
+                            sisland.smuggler.ship.type = GetShipID(iShipType);
+                            int contid = rand(getIslandAmountContraband(sisland) - 1) + 1; // to make sure the rand() wont give 0
+                            string contrabandid = "id" + contid;
+                            iTradeGoods = sisland.Trade.Contraband.(contrabandid);
+                            aref smuggler;
+                            makearef(smuggler, sisland.smuggler);
+                            int hullspace = GetCharacterFreeSpace(smuggler, iTradeGoods);
+                            // Only 60% of space is used
+                            int smuggle_amount = hullspace * 0.6;
+                            addIslandSmugglingAmount(sisland, smuggle_amount);
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            setIslandSmugglingDate(sisland);
+        }
+    }
 }
 
 void changeIslandSmugglingState(ref sisland, int change)
@@ -910,29 +913,29 @@ void changeIslandSmugglingState(ref sisland, int change)
 	else
 	{
 		sisland.smuggling.state = SMUGGLING_NORMAL;
-	} 
+	}
 	string logTitle, logEntry,SmugglingState;
 	// DeathDaisy: Add smuggling state level info to rumours.
 	if(sisland.smuggling.state == SMUGGLING_LOW) SmugglingState = "lax";
 	if(sisland.smuggling.state == SMUGGLING_NORMAL) SmugglingState = "normal";
 	if(sisland.smuggling.state == SMUGGLING_MEDIUM) SmugglingState = "tight";
 	if(sisland.smuggling.state == SMUGGLING_HIGH) SmugglingState = "very tight";
-	
+
 	if(change>0) 
 	{
-		logTitle = sisland.name+" "+TranslateString("","Increase_Patrol");
-		logEntry = TranslateString("","Increase_Message1")+" "+sisland.name+TranslateString("Increase_Message2",SmugglingState)+".";
+		logTitle = XI_ConvertString(sisland.name)+" "+TranslateString("","Increase_Patrol");
+		logEntry = TranslateString("","Increase_Message1")+" "+XI_ConvertString(sisland.name)+TranslateString("Increase_Message2",SmugglingState)+".";
 		WriteNewLogEntry(logTitle, logEntry, "General", false);
 		if(DEBUG_SMUGGLING>0) trace("SMUGGLING increased state of "+sisland.id+" to: "+sisland.smuggling.state);
 	}
 	if(change<0) 
 	{
-		logTitle = sisland.name+" "+TranslateString("","Decrease_Patrol");
-		logEntry = TranslateString("","Decrease_Message1")+" "+sisland.name+TranslateString("Decrease_Message2",SmugglingState)+".";
+		logTitle = XI_ConvertString(sisland.name)+" "+TranslateString("","Decrease_Patrol");
+		logEntry = TranslateString("","Decrease_Message1")+" "+XI_ConvertString(sisland.name)+TranslateString("Decrease_Message2",SmugglingState)+".";
 		WriteNewLogEntry(logTitle, logEntry, "General", false);
 		if(DEBUG_SMUGGLING>0) trace("SMUGGLING decreased state of "+sisland.id+" to: "+sisland.smuggling.state);
 	}
-	if(change==0) 
+	if(change==0)
 	{
 		if(DEBUG_SMUGGLING>0) trace("SMUGGLING state of "+sisland.id+" remained at: "+sisland.smuggling.state);
 	}
@@ -1026,7 +1029,7 @@ float getCoastGuardEncounterChance()
 	chance_get_caught = chance_get_caught * (1.0-(CalcCharacterSkill(PChar,SKILL_SNEAK)/20.0));
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING skill: "+CalcCharacterSkill(PChar,SKILL_SNEAK)+" chance: "+chance_get_caught);
 	//Check for day/night
-	if(!isDay()) 
+	if(!isDay())
 	{
 		float moonintensity = getMoonIntensity(); //between 0 and 1 with 1 being max brightness
 		float multnight = 1 - (0.25 * (1-moonintensity));
@@ -1035,24 +1038,23 @@ float getCoastGuardEncounterChance()
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING isday: "+isDay()+" chance: "+chance_get_caught);
 	//Check for weather
 	aref aCurWeather = GetCurrentWeather();
-	if (wRain < 75 && fog < 5) chance_get_caught = chance_get_caught * 1.2;
-	if (wRain >= 75 && wRain < 80) chance_get_caught = chance_get_caught * 0.8;
-	if (wRain >= 80 && wRain < 85) chance_get_caught = chance_get_caught * 0.7;
-	if (wRain >= 85 && wRain < 90) chance_get_caught = chance_get_caught * 0.6;
-	if (wRain >= 90 && wRain < 95) chance_get_caught = chance_get_caught * 0.5;
-	if (wRain >= 95) chance_get_caught = chance_get_caught * 0.4;
-	if (fog > 20) chance_get_caught = chance_get_caught * 0.2;
-	if (fog > 15) chance_get_caught = chance_get_caught * 0.4;
-	if (fog > 10) chance_get_caught = chance_get_caught * 0.6;
-
+	if(aCurWeather.id == "Blue Sky") chance_get_caught = chance_get_caught * 1.2;
+	if(aCurWeather.id == "Day Storm") chance_get_caught = chance_get_caught * 0.5;
+	if(aCurWeather.id == "Rainy") chance_get_caught = chance_get_caught * 0.8;
+	if(aCurWeather.id == "Heavy Rain") chance_get_caught = chance_get_caught * 0.6;
+	if(aCurWeather.id == "Stormy") chance_get_caught = chance_get_caught * 0.4;
+	if(aCurWeather.id == "Heavy Storm") chance_get_caught = chance_get_caught * 0.2;
+	if(aCurWeather.id == "Foggy") chance_get_caught = chance_get_caught * 0.8;
+	if(aCurWeather.id == "Heavy Fog") chance_get_caught = chance_get_caught * 0.2;
+	if(aCurWeather.id == "Super Fog") chance_get_caught = chance_get_caught * 0.05;
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING weather: "+aCurWeather.id+" chance: "+chance_get_caught);
 	//Check for difficulty
 	int difficulty = GetDifficulty();
 	chance_get_caught = chance_get_caught * (0.8 + (difficulty*0.1)); // is between 1 and 4 and with 2 it should give the same chance and if higher the chance should go up again.
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING difficulty: "+difficulty+" chance: "+chance_get_caught);
 	//Check perks
-	if(CheckCharacterPerk(Pchar,"ImproveSmuggling")) chance_get_caught = chance_get_caught * 0.95;
-	if(CheckCharacterPerk(Pchar,"AdvanceSmuggling")) chance_get_caught = chance_get_caught * 0.90;
+	if(CheckPerkForGroup(Pchar,"ImproveSmuggling")) chance_get_caught = chance_get_caught * 0.95;
+	if(CheckPerkForGroup(Pchar,"AdvanceSmuggling")) chance_get_caught = chance_get_caught * 0.90;
 	if(DEBUG_SMUGGLING>2) trace("SMUGGLING perks ImproveSmuggling: "+CheckCharacterPerk(Pchar,"ImproveSmuggling")+" AdvanceSmuggling "+CheckCharacterPerk(Pchar,"AdvanceSmuggling")+" chance: "+chance_get_caught);
 	if(DEBUG_SMUGGLING>0) trace("SMUGGLING chance get caught: "+chance_get_caught);
 	return chance_get_caught;
@@ -1066,7 +1068,7 @@ string GetPatrolText(ref sisland)
 	int amountpatrols = GetAttributesNum(patrols);
 	string text = "";
 	//Loop trough all patrols and make a nice text.
-	for(int i = 0; i < amountpatrols; i++) 
+	for(int i = 0; i < amountpatrols; i++)
 	{
 		string patrol = GetAttributeName(GetAttributeN(patrols,i));
 		string start = GetTimeText(stf(sisland.smuggling.patrol.(patrol).start));
@@ -1088,7 +1090,7 @@ string GetPatrolTimeText(ref sisland, int best)
 		string patrol = GetAttributeName(GetAttributeN(patrols,best));
 		string start  = GetTimeText(stf(sisland.smuggling.patrol.(patrol).start));
 		string end    = GetTimeText(stf(sisland.smuggling.patrol.(patrol).end));
-		return "between "+start+" and "+end;
+		return TranslateString("","between") +" "+ start +" "+ TranslateString("","and") +" "+ end;
 	}
 	return "";
 }
@@ -1101,8 +1103,8 @@ int GetBestSmugglingtime(ref sisland,ref chr)
 	int cLuck = CalcCharacterSkill(chr,SKILL_SNEAK); // DeathDaisy: Changed from float to int since it will always be a round number
 	int cLeadership = CalcCharacterSkill(chr,SKILL_LEADERSHIP);
 	int badinfo_chance = makeint((SMUGGLING_PERCENTAGE_BAD_INFO/100)*(((11-cLuck)*5)-((11-cLeadership)*2)));
-	if(CheckCharacterPerk(chr,"Trustworthy")) badinfo_chance = badinfo_chance*0.7;
-	if(CheckCharacterPerk(chr,"IronWill")) badinfo_chance = badinfo_chance*0.8;
+	if(CheckPerkForGroup(chr,"Trustworthy")) badinfo_chance = badinfo_chance*0.7;
+	if(CheckPerkForGroup(chr,"IronWill")) badinfo_chance = badinfo_chance*0.8;
 	/*if(CheckCharacterPerk(chr,"Charisma")) badinfo_chance = badinfo_chance*0.5;
 	if(CheckCharacterPerk(chr,"WitCharm")) badinfo_chance = 0;*/
 //	trace("chance = "+badinfo_chance);
@@ -1115,7 +1117,7 @@ int GetBestSmugglingtime(ref sisland,ref chr)
 		int bestgroups = 9999;
 		bool atnight = FALSE;
 		//Loop trough all patrols and make a nice text.
-		for(int i = 0; i < amountpatrols; i++) 
+		for(int i = 0; i < amountpatrols; i++)
 		{
 			string patrol = GetAttributeName(GetAttributeN(patrols,i));
 			int groups = sti(sisland.smuggling.patrol.(patrol).groups);
@@ -1170,19 +1172,19 @@ string getSmugglingStateDesc(int state)
 		case SMUGGLING_NONE:
 			return TranslateString("","Patrol_None");
 		break;
-		
+
 		case SMUGGLING_LOW:
 			return TranslateString("","Patrol_Low");
 		break;
-		
+
 		case SMUGGLING_NORMAL:
 			return TranslateString("","Patrol_Normal");
 		break;
-		
+
 		case SMUGGLING_MEDIUM:
 			return TranslateString("","Patrol_Medium");
 		break;
-		
+
 		case SMUGGLING_HIGH:
 			return TranslateString("","Patrol_High");
 		break;
@@ -1197,7 +1199,7 @@ string CreatePatrolBook(ref sisland)
 	//If there is no patrol set we return empty handed
 	if(Checkattribute(sisland,"smuggling.patrolversion"))
 	{
-		id = "patrolbook_"+sisland.id+"_"+sisland.smuggling.patrolversion;
+		id = "patrolbook_"+sisland.id+"_"+sisland.smuggling.patrolversion);
 		//We got the id so if the book already exist we can exit
 		if(GetItemIndex(id) == -1) //Book already exists
 		{
@@ -1212,11 +1214,11 @@ string CreatePatrolBook(ref sisland)
 			genitm.name			= "itmname_patrolbook"; //All patrol books use the same template
 			genitm.describe		= "itmdescr_patrolbook"; //All patrol books use the same template
 			genitm.text			= "patrolbook"; //All patrol books use the same template
-			genitm.island		= sisland.name;	
+			genitm.island		= sisland.name;
 			genitm.version		= sisland.smuggling.patrolversion;
 			genitm.state		= getSmugglingStateDesc(sti(sisland.smuggling.state));
 			genitm.schedule		= GetPatrolText(sisland);
-			genitm.UnlockedPerk = "ImproveSmuggling"; 
+			genitm.UnlockedPerk = "ImproveSmuggling";
 		}
 	}
 	else
@@ -1253,7 +1255,7 @@ void CheckCoastGuard()
 		if(DEBUG_SMUGGLING>1) TraceAndLog("SMUGGLING Evaded the Coastguard (for now)");
 	}
 	else{
-		if(DEBUG_SMUGGLING>1) TraceAndLog("SMUGGLING caught chance paused"); 
+		if(DEBUG_SMUGGLING>1) TraceAndLog("SMUGGLING caught chance paused");
 	}
 	PostEvent("CheckCoastGuard",5000,"f",chance_get_caught);
 }
@@ -1328,10 +1330,10 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 
 		if (GetAttribute(chr, "id") == "0" || GetAttribute(chr, "id") == "-1")	continue; // PB: Invalid character, no point checking further
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS Character index: " + chridx + ", name = " + GetMySimpleName(chr) + " (" + chr.id + ")");
-		
+
 		if (bAllies(chr))														continue;
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass player party check");
-		
+
 		if (CheckAttribute(chr,"Dialog.Filename.SmugglingGuild"))				continue;
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass guildmember already check");
 
@@ -1341,7 +1343,7 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 		sLocName = GetAttribute(chr,"location");
 		if (sLocName == "-1" || sLocName == "" || sLocName == "none")			continue;
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass location");
-		
+
 		sIslandName = FindIslandByLocation(sLocName);
 		if (sIslandName == "")													continue;
 		if (sIslandName == sLocName)											continue; // This avoids captains at sea and fort commanders
@@ -1370,7 +1372,8 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 		if (GetAttribute(chr,"Dialog.Filename") == "Agent_dialog.c")			continue;
 		if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass smuggler check");
 
-
+	//	if (GetAttribute(chr,"abordagemode") != "1")							continue; // PB: This can only be disabled for officers, who aren't valid clients
+	//	if(DEBUG_SMUGGLING>2) trace("SMUGGLING GUILD MEMBERS pass boardingmode check");
 
 		if (chr.lastname == "") {
 			if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS RENAMED: "+GetMySimpleName(chr));
@@ -1382,7 +1385,7 @@ void GetSmugglingGuildMembers(int NumMembers, string Category, string Dialog)
 		pchar.quest.smuggling_guild.people.(Category).(index).name = GetMySimpleName(chr);
 		pchar.quest.smuggling_guild.people.(Category).(index).location = GetPrettyLocationName(chr.location);
 		pchar.quest.smuggling_guild.people.(Category).(index).island = GetIslandNameByLocationID(chr.location);
-		if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS PICKED: "+pchar.quest.smuggling_guild.people.(Category).(index).name+" at: "+pchar.quest.smuggling_guild.people.(Category).(index).location+" ("+chr.location+") on: "+pchar.quest.smuggling_guild.people.(Category).(index).island);
+		if(DEBUG_SMUGGLING>0) trace("SMUGGLING GUILD MEMBERS PICKED: "+pchar.quest.smuggling_guild.people.(Category).(index).name+" at: "+pchar.quest.smuggling_guild.people.(Category).(index).location+" ("+chr.location+") on: "+pchar.quest.smuggling_guild.people.(Category).(index).island));
 		chr.Dialog.Filename.SmugglingGuild = Dialog;
 		chosen += 1;
 	}
@@ -1497,10 +1500,10 @@ int getOpiumCaughtChance()
 	chance = chance - (50-GetDifficulty()*10);
 	float mult = 1;
 	//Take smuggling perks into account:
-	if(CheckCharacterPerk(Pchar,"ImproveSmuggling")) mult = mult - 0.10;
-	if(CheckCharacterPerk(Pchar,"AdvanceSmuggling")) mult = mult - 0.15;
+	if(CheckPerkForGroup(Pchar,"ImproveSmuggling")) mult = mult - 0.10;
+	if(CheckPerkForGroup(Pchar,"AdvanceSmuggling")) mult = mult - 0.15;
 	//At night you wont be detected that easy
-	if(!isDay()) 
+	if(!isDay())
 	{
 		mult = mult - 0.5;
 	}
@@ -1571,17 +1574,17 @@ void OpiumEffects(ref User)
 	float a,b,c;
 	GetCharacterPos(User, &a, &b, &c);
 	int effect = rand(100);
-	
+
 	if(effect <=10)
 	{
 		//decrease max health
-		float Bonus = -5 + sti(User.rank)/5;
+		float Bonus = -5 - sti(User.rank)/5;
 		if(CheckAttribute(User, "HPBonus")) Bonus = Bonus + stf(User.HPBonus);
 		User.HPBonus = Bonus;
 		Logit(TranslateString("","Opium lose health"));
 		return;
 	}
-	
+
 	if(effect <=60)
 	{
 		//unlock random perk
@@ -1595,7 +1598,7 @@ void OpiumEffects(ref User)
 		}
 		return;
 	}
-	
+
 	if(effect <=75)
 	{
 		//Get a skillpoint
@@ -1604,14 +1607,14 @@ void OpiumEffects(ref User)
 		Logit(TranslateString("","Opium Skillpoint"));
 		return;
 	}
-	
+
 	if(effect <=80)
 	{
 		User.chr_ai.poison = 150;
 		Logit(TranslateString("","Opium Poison"));
 		return;
 	}
-	
+
 	if(effect >=80)
 	{
 		//decrease max health
@@ -1667,7 +1670,7 @@ string FindCoastGuardLocator(bool BySea)
 				return reloadref.emerge;
 			}
 		}
-		
+
 	}
 	else
 	{
@@ -1692,7 +1695,7 @@ void CreateCoastGuardPatrol()
 	if(DEBUG_SMUGGLING>1) trace("SMUGGLING load Coastguard patrol and pursuit");
 	//Levis add smuggling perk -->
 	float largegroup_chance = 100.0;
-	if(CheckCharacterPerk(Pchar,"ImproveSmuggling"))
+	if(CheckPerkForGroup(Pchar,"ImproveSmuggling"))
 	{
 		largegroup_chance = largegroup_chance*0.5;
 	}
@@ -1701,7 +1704,7 @@ void CreateCoastGuardPatrol()
 	string group = "reload";
 	string locator;
 	int fromseachance = 50;
-	if(CheckCharacterPerk(Pchar,"AdvanceSmuggling"))
+	if(CheckPerkForGroup(Pchar,"AdvanceSmuggling"))
 	{
 		fromseachance = fromseachance*0.5;
 	}
@@ -1722,7 +1725,9 @@ void CreateCoastGuardPatrol()
 	if(rand(100)<=largegroup_chance) numguards = 2;
 	//Generate the Captain
 	//sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.75, GetRandomModelForTypeNation(true, "Land_Officers", GetSmugglingNation()), group, locator);
-	sld = LAi_CreateFantomCharacterExOt(false, 0, true, OFFIC_TYPE_GUARD, GetRandomRank(true, OFFIC_TYPE_GUARD, (4-GetDifficulty())), true, 0.75, GetRandomModelForTypeNation(true, "Land_Officers", GetSmugglingNation()), group, locator);
+	//sld = LAi_CreateFantomCharacterExOt(false, 0, true, OFFIC_TYPE_GUARD, GetRandomRank(true, OFFIC_TYPE_GUARD, (4-GetDifficulty())), true, 0.75, GetRandomModelForTypeNation(true, "Land_Officers", GetSmugglingNation()), group, locator);
+    //#20220720-01 Boyer add
+    sld = LAi_CreateFantomCharacterRk(false, (4-GetDifficulty()), true, OFFIC_TYPE_GUARD, true, 0.75, GetRandomModelForTypeNation(true, "Land_Officers", GetSmugglingNation()), group, locator);
 	sld.Dialog.Filename = "Coastal Guards_dialog.c";
 	sld.Dialog.CurrentNode = "First time";
 	Pchar.quest.contraband.SoldierIDX1 = sld.index;
@@ -1832,7 +1837,7 @@ void PlaceSmugglersOnShore(string LocationId)
 		{
 			TakeNItems(Smuggler, "opium", 2+rand(sti(PChar.rank)));
 		}
-*/		
+*/
 		LAi_SetCurHPMax(Smuggler);
 		SetModelfromArray(Smuggler, GetModelIndex(GetRandomModelForTypeExSubCheck(1, "Smugglers", "man", PIRATE)));
 
@@ -1944,18 +1949,18 @@ string SelectSmugglingLocation()
 			if(DEBUG_SMUGGLING>0) Trace("Location " + TargetLocation + " Selected");
 		break;
 
-// TALISMAN added --> so smugglers have beach to use - 
+// TALISMAN added --> so smugglers have beach to use -
 		case "Curacao":
 			TargetLocation = "Curacao_shore_01";
 			if(DEBUG_SMUGGLING>0) Trace("Location " + TargetLocation + " Selected");
-		break;	
-		
+		break;
+
 		case "Aruba":
 			TargetLocation = "Aruba_shore";
 			if(DEBUG_SMUGGLING>0) Trace("Location " + TargetLocation + " Selected");
 		break;
-		
-// <-- TALISMAN		
+
+// <-- TALISMAN
 // JRH -->
 		case "Eleuthera":
 			TargetLocation = "Eleuthera_shore";

@@ -99,7 +99,7 @@ void InitNations()
 		rNation.boardingModel.enemy.m7 = "soldier_eng6_17";
 		rNation.boardingModel.enemy.m7.ani = "man";
 	}
-	if (period == PERIOD_COLONIAL_POWERS || period == PERIOD_REVOLUTIONS || period == PERIOD_NAPOLEONIC) {
+	if (period == PERIOD_COLONIAL_POWERS || period == PERIOD_REVOLUTIONS) {
 
 		rNation.Name = "Britain";		//the Kingdom of Britain was founded 1707
 		rNation.Desc = "British";
@@ -115,17 +115,46 @@ void InitNations()
 		//Boarding models
 		rNation.boardingModel.enemy.m1 = "offic_eng_18";
 		rNation.boardingModel.enemy.m1.ani = "man";
-		rNation.boardingModel.enemy.m2 = "Soldier_Eng_18";
+		rNation.boardingModel.enemy.m2 = "BrtSol18_1";
 		rNation.boardingModel.enemy.m2.ani = "man";
-		rNation.boardingModel.enemy.m3 = "Soldier_Eng2_18";
+		rNation.boardingModel.enemy.m3 = "BrtSol18_2";
 		rNation.boardingModel.enemy.m3.ani = "man";
-		rNation.boardingModel.enemy.m4 = "Soldier_Eng3_18";
+		rNation.boardingModel.enemy.m4 = "BrtSol18_3";
 		rNation.boardingModel.enemy.m4.ani = "man";
-		rNation.boardingModel.enemy.m5 = "Soldier_Eng4_18";
+		rNation.boardingModel.enemy.m5 = "BrtSol18_4";
 		rNation.boardingModel.enemy.m5.ani = "man";
-		rNation.boardingModel.enemy.m6 = "Soldier_Eng5_18";
+		rNation.boardingModel.enemy.m6 = "BrtSol18_5";
 		rNation.boardingModel.enemy.m6.ani = "man";
-		rNation.boardingModel.enemy.m7 = "Soldier_Eng6_18";
+		rNation.boardingModel.enemy.m7 = "BrtSol18_6";
+		rNation.boardingModel.enemy.m7.ani = "man";
+	}
+	if (period ==  PERIOD_NAPOLEONIC) {
+
+		rNation.Name = "Britain";		//the Kingdom of Britain was founded 1707
+		rNation.Desc = "British";
+
+		//Location fantom models
+		rNation.fantomModel.m0 = "offic_eng_18";
+		rNation.fantomModel.m1 = "soldier_eng_19";
+		rNation.fantomModel.m2 = "soldier_eng2_19";
+		rNation.fantomModel.m3 = "soldier_eng3_19";
+		rNation.fantomModel.m4 = "soldier_eng4_19";
+		rNation.fantomModel.m5 = "soldier_eng5_19";
+		rNation.fantomModel.m6 = "soldier_eng6_19";
+		//Boarding models
+		rNation.boardingModel.enemy.m1 = "offic_eng_18";
+		rNation.boardingModel.enemy.m1.ani = "man";
+		rNation.boardingModel.enemy.m2 = "soldier_eng_19";
+		rNation.boardingModel.enemy.m2.ani = "man";
+		rNation.boardingModel.enemy.m3 = "soldier_eng2_19";
+		rNation.boardingModel.enemy.m3.ani = "man";
+		rNation.boardingModel.enemy.m4 = "soldier_eng3_19";
+		rNation.boardingModel.enemy.m4.ani = "man";
+		rNation.boardingModel.enemy.m5 = "soldier_eng4_19";
+		rNation.boardingModel.enemy.m5.ani = "man";
+		rNation.boardingModel.enemy.m6 = "soldier_eng5_19";
+		rNation.boardingModel.enemy.m6.ani = "man";
+		rNation.boardingModel.enemy.m7 = "soldier_eng6_19";
 		rNation.boardingModel.enemy.m7.ani = "man";
 	}
 // <-- PB
@@ -733,8 +762,8 @@ void InitNations()
 	rNation.Titles.4 = "Tweede Luitenant";
 	rNation.Titles.5 = "Eerste Luitenant";
 	rNation.Titles.6 = "Kapitein-Luitenant";
-	rNation.Titles.7 = "Ridder";
-	rNation.Titles.8 = "Erfridder";
+	rNation.Titles.7 = "Jonkheer";
+	rNation.Titles.8 = "Ridder";
 	rNation.Titles.9 = "Baron";
 	rNation.Titles.10 = "Burggraaf";
 	rNation.Titles.11 = "Graaf";
@@ -992,7 +1021,7 @@ void InitNations()
 			rNation.Titles.9 = "Representative";
 			rNation.Titles.10 = "Senator Elect";
 			rNation.Titles.11 = "Senator";
-			rNation.Titles.12 = "Governor";
+			rNation.Titles.12 = "GovernorUS";
 			// NK <--
 		}
 	
@@ -1076,7 +1105,7 @@ void InitNations()
 			rNation.Ranks.8 = "Schoutbynacht";
 			rNation.Ranks.9 = "Konteramiral";
 			rNation.Ranks.10 = "Viceamiral";
-			rNation.Ranks.11 = "Amiral";
+			rNation.Ranks.11 = "Amiral_S";	// "_S" suffix to distinguish from French "Amiral", corrected in "common.ini"
 			rNation.Ranks.12 = "Riksamiral";
 			rNation.Titles.Quantity = 12;
 			rNation.Titles.1 = "Underlöjtnant";
@@ -1085,11 +1114,11 @@ void InitNations()
 			rNation.Titles.4 = "Kapten";
 			rNation.Titles.5 = "Örlogskapten";
 			rNation.Titles.6 = "Kommendörkapten";
-			rNation.Titles.7 = "Riddare";
-			rNation.Titles.8 = "Friherre";
-			rNation.Titles.9 = "Greve";
+			rNation.Titles.7 = "Godsägare";
+			rNation.Titles.8 = "Riddare";
+			rNation.Titles.9 = "Friherre";
 			rNation.Titles.10 = "Borgmästare";
-			rNation.Titles.11 = "Landshövding";
+			rNation.Titles.11 = "Greve";
 			rNation.Titles.12 = "Riksråd";
 			// JRH <--
 		}

@@ -49,7 +49,7 @@ void Abordage_ReloadStartFade()
 	DelEventHandler("FaderEvent_StartFade", "Abordage_ReloadStartFade");
 
 	fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-	Sea.MaxSeaHeight = 1.15;						// set maxinum sea height for ship abordage
+	Sea.MaxSeaHeight = 2.0;						// set maxinum sea height for ship abordage
 // KK -->
 	a = FindLocation(DeckID);
 	if (a >= 0) {
@@ -160,7 +160,7 @@ void Return2SeaAfterAbordage()
 	SetMusic("music_sea_battle"); // Baste
 
 	PauseParticles(false);
-	Whr_UpdateWeather(false);	// LDH 24Mar09
+	Whr_UpdateWeather(true);	// LDH 24Mar09
 
 	bSeaReloadStarted = false;
 }
@@ -173,12 +173,13 @@ void Abordage_ReloadEndFade()
 	AIBalls.Clear = "";
 
 	// unload all models
-	aref arModel;
-	if (FindClass(&arModel, "modelr"))
-	{
-		SendMessage(arModel, "l", MSG_MODEL_RELEASE);
-		while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
-	}
+	//#20230719-01 Terrible idea
+	//aref arModel;
+	//if (FindClass(&arModel, "modelr"))
+	//{
+	//	SendMessage(arModel, "l", MSG_MODEL_RELEASE);
+	//	while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
+	//}
 
 	if (bAbordagePlaceShipNear)
 	{

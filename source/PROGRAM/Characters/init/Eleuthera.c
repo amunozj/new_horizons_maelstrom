@@ -330,11 +330,11 @@ void CreateEleutheraCharacters(ref n)
 	ch.name	= TranslateString("",  "Karen");
 	ch.lastname	= TranslateString("",  "Cakebread");
 	ch.id = "Karen Cakebread";
-	ch.model = "Towngirl";
-	ch.sex = "man";
+	ch.model = "towngirl1_1";
+	ch.sex = "woman";
 	ch.location	= "Alice_TailorsShop";
 	ch.location.group = "sit";
-	ch.location.locator = "sit2";
+	ch.location.locator = "sit1";
 	ch.IsTailor = true;
 	ch.Dialog.Filename = "tailor_dialog.c";
  	ch.Dialog.Filename.Groupdialog = "tailor.c";
@@ -356,7 +356,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetStayType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	AddGameCharacter(n, ch);
-/*
+
 	ch.old.name = "Brendan";
 	ch.old.lastname = "Arrowsmith";
 	ch.name	= TranslateString("", "Brendan");
@@ -366,7 +366,7 @@ void CreateEleutheraCharacters(ref n)
 	ch.sex = "man";
 	ch.location	= "Eleuthera_TailorsShop";
 	ch.location.group = "sit";
-	ch.location.locator = "sit2";
+	ch.location.locator = "sit1";
 	ch.IsTailor = true;
 	ch.Dialog.Filename = "tailor_dialog.c";
  	ch.Dialog.Filename.Groupdialog = "tailor.c";
@@ -388,7 +388,77 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetStayType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	AddGameCharacter(n, ch);
-*/
+
+	// Alice Mistress
+	ch.old.name		= "Josie";
+	ch.old.lastname		= "Hopkins";
+	ch.name			= TranslateString("", "Josie");
+	ch.lastname		= TranslateString("", "Hopkins");
+	ch.id			= "Alice_Mistress";
+	ch.model		= "towngirl3_1";
+	ch.sound_type		= "female_citizen";
+	ch.sex			= "woman";
+	GiveItem2Character(ch, "Piratesdagger");
+	ch.location		= "Alice_brothel";
+	ch.location.group 	= "goto";
+	ch.location.locator 	= "goto3";
+	ch.Dialog.Filename 	= "mistress_dialog.c";
+	ch.greeting		= "Gr_Brothel's mom";//MAXIMUS
+	ch.rank			= 1;
+	ch.experience		= "10000";
+	ch.skill.Leadership	= "1";
+	ch.skill.Fencing	= "10";
+	ch.skill.Sailing	= "1";
+	ch.skill.Accuracy	= "10";
+	ch.skill.Cannons	= "1";
+	ch.skill.Grappling	= "1";
+	ch.skill.Repair		= "1";
+	ch.skill.Defence	= "10";
+	ch.skill.Commerce	= "1";
+	ch.skill.Sneak		= "10";
+	ch.money		= "1000";
+	LAi_SetHP(ch, 1500.0, 1500.0);
+	LAi_SetWarriorType(ch);
+	LAi_warrior_DialogEnable(ch, true);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
+	AddGameCharacter(n, ch);
+
+	// Eleuthera Mistress
+	ch.old.name		= "Sweat Shop Sally";
+	ch.old.lastname		= "";
+	ch.name			= TranslateString("Sweat Shop", "Sally");
+	ch.lastname		= "";
+	ch.id			= "Eleuthera_Mistress";
+	ch.model		= "OldWoman2";
+	ch.sound_type		= "female_citizen";
+	ch.sex			= "woman";
+	GiveItem2Character(ch, "Piratesdagger");
+	ch.location		= "Eleuthera_brothel";
+	ch.location.group	= "goto";
+	ch.location.locator	= "goto3";
+	ch.Dialog.Filename	= "mistress_dialog.c";
+	ch.greeting		= "Gr_Brothel's mom";//MAXIMUS
+	ch.rank			= 1;
+	ch.reputation		= "None";
+	ch.experience		= "10000";
+	ch.skill.Leadership	= "1";
+	ch.skill.Fencing	= "10";
+	ch.skill.Sailing	= "1";
+	ch.skill.Accuracy	= "10";
+	ch.skill.Cannons	= "1";
+	ch.skill.Grappling	= "1";
+	ch.skill.Repair		= "1";
+	ch.skill.Defence	= "10";
+	ch.skill.Commerce	= "1";
+	ch.skill.Sneak		= "10";
+	ch.money		= "1000";
+	LAi_SetHP(ch, 1500.0, 1500.0);
+	LAi_SetWarriorType(ch);
+	LAi_warrior_DialogEnable(ch, true);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
+	AddGameCharacter(n, ch);
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// SOLDIERS   ELEUTHERA
@@ -809,7 +879,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -846,7 +916,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 
@@ -884,7 +954,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -921,7 +991,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -958,7 +1028,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -995,7 +1065,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	//////////////////PATROL/////////////////////////////////////////////
@@ -1035,7 +1105,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -1072,7 +1142,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -1109,7 +1179,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -1146,7 +1216,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -1183,7 +1253,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -1220,7 +1290,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);	  
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////:::
@@ -2052,7 +2122,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -2090,7 +2160,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -2127,7 +2197,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -2165,7 +2235,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -2202,7 +2272,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -2240,7 +2310,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -2277,7 +2347,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -2315,7 +2385,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 				//Patrol
@@ -2353,7 +2423,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "";
@@ -2390,7 +2460,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 			//Patrol
@@ -2428,7 +2498,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_group_MoveCharacter(ch, "ENGLAND_SOLDIERS");
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Slave";
@@ -2695,7 +2765,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.questchar = true;//MAXIMUS: identifier for captives
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Slaver";
@@ -2731,7 +2801,7 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.questchar = true;//MAXIMUS: identifier for captives
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Slaver";
@@ -2767,6 +2837,6 @@ void CreateEleutheraCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.questchar = true;//MAXIMUS: identifier for captives
-	ch.greeting = "Gr_Patrol";
+	ch.greeting = "Gr_Redmond Soldier"; // was "Gr_Patrol"
 	AddGameCharacter(n, ch);
 }

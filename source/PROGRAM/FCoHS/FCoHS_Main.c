@@ -226,7 +226,7 @@ void FCoHS_Boarding_StartFade()
 	if (CheckAttribute(Sea, "MaxSeaHeight"))
 	{
 		fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-		Sea.MaxSeaHeight = 1.2;
+		Sea.MaxSeaHeight = 2.0;
 	}
 
 	// Fader event has been processed, delete handler
@@ -357,7 +357,7 @@ void FCoHS_Boarding_LoadDeck()
 	// Weather
 	if (HasSubStr(FindCurrentDeck(), "ShipDeck"))
 	{
-		Whr_UpdateWeather(false);
+		Whr_UpdateWeather(true);
 	}
 	else
 	{
@@ -698,7 +698,7 @@ void FCoHS_Boarding_ReturnEndFade()
 	// Reload progress end
 	SetSchemeForSea();
 	PauseParticles(false);
-	Whr_UpdateWeather(false);
+	Whr_UpdateWeather(true);
 	ReloadProgressEnd();
 }
 

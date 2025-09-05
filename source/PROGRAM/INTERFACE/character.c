@@ -104,7 +104,7 @@ void InitInterface_R(string iniName,ref pCharacter)
 	SetNodeUsing("BOX",false);
 // MAXIMUS interface MOD <--
 
-	CreateExitString();
+	// CreateExitString();
 	CreateString(true,"CurrentExperience","",FONT_NORMAL,COLOR_NORMAL,175,379,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(true,"NextExperience","",FONT_NORMAL,COLOR_NORMAL,175,410,SCRIPT_ALIGN_CENTER,1.0);
 	CreateString(true,"Money","",FONT_NORMAL,COLOR_MONEY,175,441,SCRIPT_ALIGN_CENTER,1.0);
@@ -127,43 +127,43 @@ void InitInterface_R(string iniName,ref pCharacter)
 // MAXIMUS interface MOD -->
 //	CreateString(true,"Salary","",FONT_NORMAL,COLOR_MONEY,470,470,SCRIPT_ALIGN_LEFT,1.0); // NK // moved by MAXIMUS to void SetVariable()
 
-    CreateString(true,"OfficerType","",FONT_NORMAL,COLOR_MONEY,300,470,SCRIPT_ALIGN_LEFT,1.0);
+    CreateString(true,"OfficerType","",FONT_NORMAL,COLOR_MONEY,300,470,SCRIPT_ALIGN_LEFT,0.8);
 // MAXIMUS interface MOD <--
 
 	// NK switch to using actual skill names -->
-	CreateString(true,SKILL_LEADERSHIP,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,46,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_FENCING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,80,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_SAILING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,114,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_ACCURACY,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,148,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_CANNONS,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,182,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_GRAPPLING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,216,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_REPAIR,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,250,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_DEFENCE,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,284,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_COMMERCE,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,318,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_SNEAK,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,517,352,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_LEADERSHIP,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,46,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_FENCING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,80,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SAILING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,114,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_ACCURACY,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,148,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_CANNONS,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,182,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_GRAPPLING,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,216,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_REPAIR,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,250,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_DEFENCE,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,284,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_COMMERCE,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,318,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SNEAK,"",FONT_BOLD_NUMBERS,COLOR_NORMAL,514,352,SCRIPT_ALIGN_CENTER,1.0);
 	
 	//Levis let's seperate the two values in different strings so we can manipulate them easier
-	CreateString(true,SKILL_LEADERSHIP+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,46,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_FENCING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,80,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_SAILING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,114,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_ACCURACY+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,148,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_CANNONS+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,182,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_GRAPPLING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,216,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_REPAIR+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,250,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_DEFENCE+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,284,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_COMMERCE+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,318,SCRIPT_ALIGN_RIGHT,1.0);
-	CreateString(true,SKILL_SNEAK+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,562,352,SCRIPT_ALIGN_RIGHT,1.0);
+	CreateString(true,SKILL_LEADERSHIP+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,48,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_FENCING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,82,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SAILING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,116,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_ACCURACY+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,150,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_CANNONS+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,184,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_GRAPPLING+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,218,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_REPAIR+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,252,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_DEFENCE+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,286,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_COMMERCE+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,320,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SNEAK+"_SEP","",FONT_BOLD_NUMBERS,COLOR_NORMAL,543,354,SCRIPT_ALIGN_CENTER,1.0);
 	
-	CreateString(true,SKILL_LEADERSHIP+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,46,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_FENCING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,80,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_SAILING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,114,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_ACCURACY+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,148,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_CANNONS+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,182,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_GRAPPLING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,216,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_REPAIR+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,250,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_DEFENCE+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,284,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_COMMERCE+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,318,SCRIPT_ALIGN_CENTER,1.0);
-	CreateString(true,SKILL_SNEAK+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,572,352,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_LEADERSHIP+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,46,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_FENCING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,80,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SAILING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,114,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_ACCURACY+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,148,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_CANNONS+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,182,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_GRAPPLING+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,216,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_REPAIR+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,250,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_DEFENCE+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,284,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_COMMERCE+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,318,SCRIPT_ALIGN_CENTER,1.0);
+	CreateString(true,SKILL_SNEAK+"_MOD","",FONT_BOLD_NUMBERS,COLOR_NORMAL,571,352,SCRIPT_ALIGN_CENTER,1.0);
 	// NK <--
 // added by MAXIMUS [new skill-change] -->
 	if(AUTO_SKILL_SYSTEM)
@@ -175,7 +175,7 @@ void InitInterface_R(string iniName,ref pCharacter)
 			if(CheckAttribute(xi_refCharacter,"skill."+curSkill))
 			{
 				string skillPercent = curSkill+"_Percent";
-				CreateString(true,skillPercent,"",FONT_NORMAL,COLOR_MONEY,475,curY,SCRIPT_ALIGN_LEFT,0.8);
+				CreateString(true,skillPercent,"",FONT_NORMAL,COLOR_MONEY,480,curY,SCRIPT_ALIGN_CENTER,0.8);
 				if(CheckAttribute(xi_refCharacter,"skill."+curSkill+".bonus") && stf(xi_refCharacter.skill.(curSkill).bonus)>1.0) { CreateImage("Bonus"+curSkill,"icons","complete",590,curY-10,620,curY+20); }
 				curY = curY + 34;
 			}
@@ -218,7 +218,7 @@ void InitInterface_R(string iniName,ref pCharacter)
 	if (hasShip == false && GetBerthedShipsQuantityForTown(GetTownIDFromLocID(MainChar.location)) > 0) {
 		hasShip = true;
 		GameInterface.GoDirectToShipBerthing = true;
-		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "I_SHIP", 0, "#"+XI_ConvertString("Sel Berth"));
+		SendMessage(&GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, "I_SHIP", 0, XI_ConvertString("Sel Berth"));
 	}
 // <-- KK
 
@@ -607,8 +607,8 @@ void SetVariable()
     GameInterface.strings.NextExperience = nNextExperience;
     GameInterface.strings.Money = MakeMoneyShow(nPlayerMoney,MONEY_SIGN,MONEY_DELIVER);
 	GameInterface.strings.Land = MakeMoneyShow(nPlayerLand,MONEY_SIGN,MONEY_DELIVER) + " " + XI_ConvertString("acr") + "."; // GreatZen
-
-
+    // Scheffnow - bfd -->
+    // GameInterface.strings.CharacterName = xi_refCharacter.name+" "+ stringRet(CheckAttribute(xi_refCharacter,"firstname"),xi_refCharacter.firstname + " ","") + xi_refCharacter.lastname; // RM
     // NK clean this up 05-07-21
 	string namestr = "";
 	if(CheckAttribute(xi_refCharacter,"name")) namestr = xi_refCharacter.name+" ";
@@ -675,7 +675,7 @@ void SetVariable()
 		if(IsPrisoner(xi_refCharacter))
 			GameInterface.strings.Salary = XI_ConvertString("Redemption") + ": " + MakeMoneyShow(sti(GetPrisonRansomCost(xi_refCharacter)),MONEY_SIGN,MONEY_DELIVER);  // added by MAXIMUS
 		else
-			CreateString(true,"Salary",XI_ConvertString("Cashdesk") + ": " + MakeMoneyShow(sti(xi_refCharacter.money),MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,605,470,SCRIPT_ALIGN_RIGHT,1.0);	// LDH change
+			CreateString(true,"Salary",XI_ConvertString("Cashdesk") + ": " + MakeMoneyShow(sti(xi_refCharacter.money),MONEY_SIGN,MONEY_DELIVER),FONT_NORMAL,COLOR_MONEY,605,470,SCRIPT_ALIGN_RIGHT,0.8);	// LDH change
 	}
 	// NK <--
 
@@ -706,9 +706,11 @@ void SetVariable()
 //	SetNewPicture("TYPEPICT1", "");//MAXIMUS: SetNewPicture with "" couses many traces into log-file and slows down an interface
 	SetNodeUsing("TYPEPICT", xi_refCharacter.id!=xi_refMainChar.id);
 	SetNodeUsing("TYPEPICT1",CheckAttribute(xi_refCharacter,"prisoned")==true);
-	
+//	if( xi_refCharacter.id == xi_refMainChar.id ) {
+//		SetNewPicture("TYPEPICT", "");
+//	} else {
 	if ( IsCompanion(xi_refCharacter) ) SetNewPicture("TYPEPICT", "interfaces\blank_ship.tga");			// changed after build 11 by KAM
-	if ( IsOfficer(xi_refCharacter) ) 
+	if ( IsOfficer(xi_refCharacter) ) //SetNewPicture("TYPEPICT", "interfaces\kam_isofficer.tga");				// changed after build 11 by KAM
 	{
 		if(CheckAttribute(xi_refCharacter,"quest.officertype"))
 		{
@@ -794,7 +796,7 @@ void SetVariable()
 	int rankNation = GetBestRank(xi_refCharacter, &bestRank, rankNation); // add return by levis
 	if (bestRank > 0 && !IsPrisoner(xi_refCharacter)) GameInterface.strings.fakeTitle = TranslateString("", GetRankNameDirect(xi_refCharacter, rankNation, bestrank)); //Fix by Levis
 
-	CreateStringCheckCase(true,"fakeTitle",GameInterface.strings.fakeTitle,"interface_title",COLOR_NORMAL,320,5,SCRIPT_ALIGN_CENTER,1.0,true); // MAXIMUS interface MOD
+	CreateStringCheckCase(true,"fakeTitle",GameInterface.strings.fakeTitle,"interface_title",COLOR_YELLOW_LIGHT,320,5,SCRIPT_ALIGN_CENTER,0.8,true); // MAXIMUS interface MOD
 
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"exp",0);
 	oldIndex = -1;
@@ -1002,7 +1004,7 @@ void SetSkillShow(string skillName, int skillVal)
 	
 	color = COLOR_NORMAL;
 	stringname = skillName+"_SEP";
-	GameInterface.strings.(stringname) = " - ";
+	GameInterface.strings.(stringname) = "-";
 	ChangeStringColor(stringname,SetAlphaIntoColor(COLOR_MONEY,GetAlphaFromSkill(1)));
 	
 	stringname = skillName+"_MOD";
@@ -1281,7 +1283,7 @@ void ProcessFrame()
 			if(nFreeSkillPoints>0)
 			{
 				// NK 04-09-08 added choice for whether to disable skillup if skill == 0 -->
-				// added this 04-09-19. Sorry I missed it before
+				//(added this 04-09-19. Sorry I missed it before
 				if(ENABLE_SKILLUP_IFZERO)
 				{
 					switch(newIndex)
@@ -1318,7 +1320,7 @@ void ProcessFrame()
 			{
 				int pic_top    = 12 + 34*newIndex;
 				int pic_bottom = 44 + 34*newIndex;
-				SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE,"B_SKILLUP",0, 478,pic_top,510,pic_bottom, 0); // NK was 528,560
+				SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE,"B_SKILLUP",0, 467,pic_top,499,pic_bottom, 0); // NK was 528,560
 			}
 		}
 		SetNodeUsing("B_ABILITIES",newIndex==curChanger);//11 - MAXIMUS [new skill-change]

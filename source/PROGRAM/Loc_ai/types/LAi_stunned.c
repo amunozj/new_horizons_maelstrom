@@ -85,7 +85,7 @@ void LAi_Stunned_StunCharacter(aref chr, float duration, bool playSFX, bool play
 	{
 		CreateParticleSystem("stars" , x, y+1, z, 0.0, 0.0, 0.0, 20);
 	}
-	
+	QuestsCheck();	// Force quest check so that case "NPC_Stunned" can trigger
 }
 
 // fix this 05-07-12 to check for proper resume old type attribute since it was changed above.
@@ -132,7 +132,7 @@ void LAi_StunnedStandsUp(aref chr)
 	else
 	{
 		string func;
-		if(IsOfficer(chr) || bAbordageStarted) func = "LAi_Set"+chr.stuntime.old_type+"Type";
+		if(IsOfficer(chr) || bAbordageStarted || chr.stuntime.old_type == "officer") func = "LAi_Set"+chr.stuntime.old_type+"Type";
 		else func = "LAi_Set"+chr.stuntime.old_type+"TypeNoGroup";
 		trace("old type func name is " + func + ", type is " + chr.stuntime.old_type);
 		call func(chr);
@@ -386,7 +386,7 @@ void LAi_type_stunned_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 
-
+	//}	// ccc jul05 tools, mine
 
 }
 

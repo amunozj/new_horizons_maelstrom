@@ -1,4 +1,4 @@
-void LocationInitColombia(ref n)
+﻿void LocationInitColombia(ref n)
 {
 	// -------------------------------------------------
 	Locations[n].id = "Residence_Cartagena";
@@ -120,7 +120,7 @@ void LocationInitColombia(ref n)
 //	locations[n].fastreload = "Cartagena";
 	//Models
 	//Always
-	Locations[n].models.always.SanFelipe = "SanFelipe";
+	// Locations[n].models.always.SanFelipe = "SanFelipe";
 	Locations[n].models.always.locators = "CartPort_l";
 	Locations[n].models.always.grassPatch = "CartPort_g";
 	Locations[n].models.always.l1 = "CartPort";
@@ -208,7 +208,7 @@ void LocationInitColombia(ref n)
 	locations[n].type = "port";
 	//Models
 	//Always
-	Locations[n].models.always.SanFelipe = "SanFelipe";
+	// Locations[n].models.always.SanFelipe = "SanFelipe";
 	Locations[n].models.always.locators = "CartPortB_l";
 	Locations[n].models.always.grassPatch = "CartPort_g";
 	Locations[n].models.always.l1 = "CartPort";
@@ -471,7 +471,7 @@ void LocationInitColombia(ref n)
 	locations[n].type = "San_Felipe_fort";
 	//Models
 	//Always
-	Locations[n].models.always.SanFelipe = "SanFelipe";
+	// Locations[n].models.always.SanFelipe = "SanFelipe";
 	Locations[n].models.always.locators = "Cartfort_l";
 	Locations[n].models.always.grassPatch = "CartPort_g";
 	Locations[n].models.always.l1 = "CartPort";
@@ -1299,6 +1299,7 @@ void LocationInitColombia(ref n)
 	Locations[n].reload.l13.emerge = "reload2";
 	Locations[n].reload.l13.autoreload = "0";
 	Locations[n].reload.l13.label = "Gaming House.";
+	if(iRealismMode>0 && DISCOVER_FAST_TRAVEL) Locations[n].reload.l13.goto_disable = 1;
 
 	Locations[n].reload.l14.name = "reload14";
 	Locations[n].reload.l14.go = "Cartagena Mansion Town";
@@ -2107,6 +2108,7 @@ void LocationInitColombia(ref n)
 
 	//Town sack
 	Locations[n].townsack = "Cartagena";
+	locations[n].fastreload = "Cartagena";
 
 	//Sound
 	locations[n].type = "house";
@@ -2234,6 +2236,7 @@ void LocationInitColombia(ref n)
 
 	//Sound
 	locations[n].type = "house";
+	locations[n].fastreload = "Cartagena";
 	
 	//Models
 	//Always
@@ -3393,7 +3396,7 @@ void LocationInitColombia(ref n)
 	n = n + 1;
 
 	//--------------------------------------------------------------------------
-//p�r
+//pär
 	Locations[n].id = "New_cloister_library";
 	locations[n].id.label = "Library";
 	Locations[n].filespath.models = "locations\inside\Dungeon_2\\";

@@ -24,7 +24,7 @@ ref procGetRiggingData()
 
     int locidx = FindLoadedLocation();
 	//Boyer change
-
+	//if (datName == "GetFlagTexNum") {
 	if (datName != "") {
 		//n = GetEventData();
 		//n = GetEventData();
@@ -80,7 +80,7 @@ ref procGetRiggingData()
 				if(PirateOverride) retVal = 6;												// PB: For Pirate Flags on Forts and Ashore
 				else			   retVal = GetPirateFlag(chr, &n);           break;
 			case GUEST1_NATION:    retVal = 5;                                break;
-			case GUEST2_NATION:    retVal = 6;                                break;
+			case GUEST2_NATION:    retVal = 7;                                break;
 			case PRIVATEER_NATION: retVal = GetPersonalFlag(chr, &n);         break;
 			case UNKNOWN_NATION:   retVal = FLAGS_NULL_PICTURE_TEXTURE_INDEX; break;		//added by KAM		// changed after build 11 by KAM
 			case NEUTRAL_NATION:   retVal = FLAGS_NULL_PICTURE_TEXTURE_INDEX; break;		//added by KAM
@@ -121,12 +121,9 @@ string GetShipFlagType(ref chr, int pos)
 	aref arMasts; makearef(arMasts, rShip.Flags);
 	int nMasts = GetAttributesNum(arMasts);
 	int m = 0;
-	//Boyer fix
-	//int i = 1;
+	int i = 0;	// original = 1;
 	if (CheckAttribute(chr, "surrendered")) return FLAG_NONE; // Screwface: to fix the white flags
-	//Boyer fix
-	//while (i <= nMasts)
-	while (m < nMasts)
+	while (i < nMasts)	// Mirsaneli
 	{
 		string sMast = "Mast" + m;
 		if (CheckAttribute(chr, "Ship.Masts." + sMast) == true && GetLocalShipAttrib(arShip, rShip, "Ship.Masts." + sMast) == "1") {
@@ -137,8 +134,7 @@ string GetShipFlagType(ref chr, int pos)
 			m++;
 			continue;
 		}
-		//Boyer fix
-		//i++;
+		i++;
 		aref arFlags; makearef(arFlags, rShip.Flags.(sMast));
 		int nFlags = GetAttributesNum(arFlags);
 		for (int f = 1; f <= nFlags; f++)
@@ -147,8 +143,6 @@ string GetShipFlagType(ref chr, int pos)
 			if (!CheckShipAttribute(arShip, rShip, "Flags." + sMast + "." + sFlag)) continue;
 			if (n == pos) return GetLocalShipAttrib(arShip, rShip, "Flags." + sMast + "." + sFlag);
 			n++;
-			//Boyer fix
-			//m++;
 		}
 		//Boyer fix
 		m++;
@@ -226,6 +220,7 @@ void SetShipFlag(int chridx)
 	ShipFlagsQuantity = -1;
 	int iNation = sti(chr.nation);
 	int j;
+	int nIdx;
 	if (FindClass(&arModel, "modelr")) {
 		i++;
 		while (FindClassNext(&arModel))
@@ -249,18 +244,21 @@ void SetShipFlag(int chridx)
 				switch (iNation) {
 					case PIRATE:
 						GetPirateFlag(chr, &j);
-						SendMessage(&PirateFlag[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
-						if (IsEntity(&PiratePennant[j])) SendMessage(&PiratePennant[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
+						nIdx = j;
+						SendMessage(&PirateFlag[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
+						if (IsEntity(&PiratePennant[nIdx])) SendMessage(&PiratePennant[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
 					break;
 					case PRIVATEER_NATION:
 						GetPersonalFlag(chr, &j);
-						SendMessage(&PersonalFlag[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
-						if (IsEntity(&PersonalPennant[j])) SendMessage(&PersonalPennant[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
+						nIdx = j;
+						SendMessage(&PersonalFlag[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
+						if (IsEntity(&PersonalPennant[nIdx])) SendMessage(&PersonalPennant[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
 					break;
 					case PERSONAL_NATION:
 						GetPersonalFlag(chr, &j);
-						SendMessage(&PersonalFlag[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
-						if (IsEntity(&PersonalPennant[j])) SendMessage(&PersonalPennant[j], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
+						nIdx = j;
+						SendMessage(&PersonalFlag[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
+						if (IsEntity(&PersonalPennant[nIdx])) SendMessage(&PersonalPennant[nIdx], "lila", MSG_FLAG_INIT, &arModel, SHIP_PENNANT, &Characters[chridx]);
 					break;
 					case NEUTRAL_NATION:
 						SendMessage(&FortFlag, "lila", MSG_FLAG_INIT, &arModel, SHIP_FLAG, &Characters[chridx]);
@@ -349,7 +347,7 @@ void FlagsDelay()
 	}
 }
 
-int GetPirateFlag(ref chr, int ntex)
+int GetPirateFlag(ref chr, ref ntex)
 {
 	ntex = 0;
 	// Use character-specific flag if available
@@ -365,7 +363,7 @@ int GetPirateFlag(ref chr, int ntex)
 	{
 		ref cmdr = Group_GetGroupCommander(GetGroupIDFromCharacter(chr));
 		if (!CheckAttribute(cmdr, "Flags.Pirate") || !CheckAttribute(cmdr, "Flags.Pirate.texture")) {
-			ntex = rand(PIRATEFLAGS_TEXTURES_QUANTITY - 2); //PW: -2 to disable last row in random encounters
+			ntex = rand(PIRATEFLAGS_TEXTURES_QUANTITY - 3); //PW: -3 to disable last 2 rows in random encounters
 			cmdr.Flags.Pirate.texture = ntex;
 			cmdr.Flags.Pirate = rand(FLAGS_PICTURES_QUANTITY_PER_TEXTURE - 2); // PB: -2 to disable last column in random encounters
 		}
@@ -376,7 +374,7 @@ int GetPirateFlag(ref chr, int ntex)
 	}
 }
 
-int GetPersonalFlag(ref chr, int ntex)
+int GetPersonalFlag(ref chr, ref ntex)
 {
 	// PB -->
 	// Use character-specific flag if available

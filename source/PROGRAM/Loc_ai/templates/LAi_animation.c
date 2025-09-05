@@ -146,7 +146,7 @@ void LAi_tmpl_ani_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_ani_IsFire(aref chr)
-{	
+{
 	return false;
 }
 
@@ -185,7 +185,7 @@ void LAi_tmpl_ani_ColThreshold(aref chr)
 
 //Персонаж закончил проигрывать анимацию
 void LAi_tmpl_ani_EndAction(aref chr)
-{	
+{
 	if(chr.chr_ai.tmpl.animation == "") return;
 	LAi_tmpl_ani_EndAnimation(chr);
 }

@@ -370,7 +370,7 @@ void ProcessDialogEvent()
 		case "tickets":
 			LAi_SetActorType(NPchar);
 			LAi_ActorTurnToCharacter(NPchar, characterFromID("jrh"));
-			LAi_SetActorType(Pchar);
+			LAi_SetActorType(Pchar));
 			LAi_ActorTurnToCharacter(Pchar, characterFromID("Defoe"));
 			PlaySound("VOICE\ENGLISH\claire_hmm.wav");
 			Dialog.text = DLG_TEXT[76];

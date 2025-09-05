@@ -150,3 +150,8 @@ int locCameraGetSpecialMode()
 	if(GetTargetPlatform() == "PC") return false;
 	return locCameraEnableSpecialMode;
 }
+
+void locCameraTarget(ref _char)
+{
+    SendMessage(&locCamera, "li", MSG_CAMERA_SETTARGET, _char);
+}

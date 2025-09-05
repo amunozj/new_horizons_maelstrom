@@ -485,7 +485,19 @@ void ProcessDialogEvent()
 			link.l1 = DLG_TEXT[117];			
 			link.l1.go = "exit";
 			SetNextWeather("Blue Sky");
-
+			// GR: Moved to "quests_reaction.c", case "insertforchase2", to prevent you from becoming Barbossa while talking to Barbossa
+/*
+			GiveShip2Character(pchar, SHIP_CURSED, PreprocessText("#scursed_ship#"),-1,PIRATE,true,true);
+			AddCharacterGoods(pchar, GOOD_GUNPOWDER, 5000);
+			// PB: Become Barbossa -->
+			PChar.name = "Hector";
+			PChar.lastname = "Barbossa";
+			GiveModel2Player("Barbossa",true);
+			PChar.Flags.Pirate = 0; // PB: Jack Rackham Pirate Flag (used by Barbossa)
+			PChar.Flags.Pirate.texture = 0;
+			// PB: Become Barbossa <--
+*/
+			// GR
 			AddDialogExitQuest("insertforchase");
 		break;
 		
@@ -502,7 +514,7 @@ void ProcessDialogEvent()
 			link.l1 = DLG_TEXT[120];
 			link.l1.go = "exit";
 			AddDialogExitQuest("Turner_Buts_In");
-			ChangeCharacterAddressGroup(CharacterFromID("Will Turner"), "ShipDeck7", "goto", "goto8"); 
+			ChangeCharacterAddressGroup(CharacterFromID("Will Turner"), "ShipDeck7", "goto", "goto8"); //"Black_Pearl", "rld", "aloc1");
 		break;
 
 		case "Begin_4X":

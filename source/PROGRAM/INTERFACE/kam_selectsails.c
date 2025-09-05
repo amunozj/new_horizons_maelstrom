@@ -54,7 +54,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleKAMSelectSails";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	if (GetCharacterShipClass(PChar) > 8) // Petros: Was 3, changed to allow Fleut and Caravel
 	{

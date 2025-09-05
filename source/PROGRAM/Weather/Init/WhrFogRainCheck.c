@@ -1,0 +1,143 @@
+#define FOGFACTOR 0.5
+#define FOGHEIGHTFACTOR 0.5
+
+void Whr_FogRainCheck(){
+//JL -------------------------------------------------------------
+
+//  LDH more fog in mornings - 26Feb09
+	int tempFog = fog;
+	int theHour = GetHour();
+	if (theHour >= 6 && theHour < 10) {  // Morning (Heavy fog)
+		fog += 35 - theHour;  // Strongest fog buildup
+	} else if (theHour >= 10 && theHour < 18) {  // Afternoon (Less fog)
+		fog += 10 - (theHour / 2);  // Sunlight burns off fog
+	} else if (theHour >= 18 && theHour < 23) {  // Evening (Fog increases)
+		fog += 30 - theHour;  // Fog builds up again
+	} else {  // Late Night (11 PM - 6 AM) (Clearer sky, minimal fog)
+		fog += 5;  // Almost no fog
+	}
+
+//  LDH more fog during rain - 26Feb09
+	if (wRain > 75 && fog < 10) fog += (wRain-75)/2;
+
+	if ( fog >= 5 ){
+		WeathersNH.Fog.Enable = true;
+		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09
+		WeathersNH.Fog.Start = 0.0;
+//		WeathersNH.Fog.Density = (fog*0.00025);
+		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
+		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
+		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
+		WeathersNH.SpecialSeaFog.Enable = true;
+		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
+		WeathersNH.SpecialSeaFog.Start = 0.0;
+		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
+		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
+	}
+	else{
+		WeathersNH.Fog.Enable = true;
+		WeathersNH.Fog.Height = 300.0*FOGHEIGHTFACTOR;
+		WeathersNH.Fog.Start = 0.0;
+		WeathersNH.Fog.Density = 0.001*FOGFACTOR;
+		WeathersNH.Fog.SeaDensity = 0.001*FOGFACTOR;
+		WeathersNH.Fog.IslandDensity = 0.001*FOGFACTOR;
+
+		WeathersNH.SpecialSeaFog.Enable = true;
+		WeathersNH.SpecialSeaFog.Height = 1500.0*FOGHEIGHTFACTOR;
+		WeathersNH.SpecialSeaFog.Start = 0.0;
+		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
+		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
+	}
+
+	fog = tempFog;		// LDH 26Feb09
+	
+	if (wRain > 75)
+	{
+		bWeatherIsRain = true; // screwface
+		WeathersNH.Lightning.Enable = true;
+		WeathersNH.Sky.Dir = "weather\skies\7\\";
+		WeathersNH.Rain.NumDrops = ((wRain-75)*400);
+		WeathersNH.Rain.Color = argb(0,73,73,73);
+		WeathersNH.Rain.DropLength = (1.12);
+		WeathersNH.Rain.Height = 30.0;
+		WeathersNH.Rain.Radius = 30.0;
+		WeathersNH.Rain.Speed = 12.0;
+		WeathersNH.Rain.Jitter = 0.4;
+		WeathersNH.Rain.WindSpeedJitter = (0.5);
+		WeathersNH.Rain.MaxBlend = 75;
+		WeathersNH.Rain.TimeBlend = 2000;
+		WeathersNH.Storm = false;
+		WeathersNH.Sea.SunRoad.Power = 2.0;
+		if(wRain > 80 && wRain < 85){
+			WeathersNH.Rain.Speed = 14.0;
+			WeathersNH.Rain.MaxBlend = 95;
+			WeathersNH.Rain.DropLength = (1.5);
+			WeathersNH.Lightning.Enable = true;
+			if(theHour >= 6 && theHour < 20) {WeathersNH.Rainbow.Enable = true;}		//UZVER
+			WeathersNH.LightingLm = "storm";
+			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
+			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
+			WeathersNH.Sea.Water.Color = argb(0,24,44,78);
+			WeathersNH.Sky.Color = argb(0,220,220,255);
+		}
+		if(wRain >= 85 && wRain < 95){
+			WeathersNH.Rain.Speed = 16.0;
+			WeathersNH.Rain.MaxBlend = 115;
+			WeathersNH.Rain.DropLength = (1.75);
+			WeathersNH.Lightning.Enable = true;
+			WeathersNH.Rainbow.Enable = false;
+			WeathersNH.Sun.Glow.Enable = false;
+			WeathersNH.Sun.Flare.Enable = false;
+			WeathersNH.Sun.Overflow.Enable = false;
+			WeathersNH.Lights = false;
+	        WeathersNH.LightingLm = "storm";
+	        WeathersNH.InsideBack = "n";
+			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
+			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
+			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
+			WeathersNH.Sky.Color = argb(0,210,210,255);
+		}
+		if(wRain >= 95){
+			WeathersNH.Rain.Speed = 18.0;
+			WeathersNH.Rain.MaxBlend = 129;
+			WeathersNH.Rain.DropLength = (2.12);
+			WeathersNH.Storm = true;
+			WeathersNH.Lightning.Texture = "Weather\lightning\lightning_storm.tga";
+			WeathersNH.Lightning.FlickerTime = 32;
+			WeathersNH.Lightning.SubTexX = 4;
+			WeathersNH.Lightning.SubTexY = 1;
+			WeathersNH.Lightning.ScaleX = 0.7;
+			WeathersNH.Lightning.ScaleY = 1.0;
+			WeathersNH.Lightning.Flash.Texture = "Weather\lightning\flash.tga";
+			WeathersNH.Lightning.Enable = true;
+			WeathersNH.Sun.Glow.Enable = false;
+			WeathersNH.Sun.Flare.Enable = false;
+			WeathersNH.Sun.Overflow.Enable = false;
+	        WeathersNH.LightingLm = "storm";
+	        WeathersNH.InsideBack = "n";
+			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
+			WeathersNH.Sea.SunRoad.Color2 = argb(0,0,0,0);
+			WeathersNH.Sea.Water.Color = argb(0,20,35,63);
+			WeathersNH.Sky.Color = argb(0,200,200,255);
+			WeathersNH.Rainbow.Enable = false;
+		}
+		WeathersNH.Rainbow.Enable = false;
+		WeathersNH.Rainbow.Texture = "weather\rainbow\rainbow.tga.tx";
+	}
+	else
+	{
+		WeathersNH.Rain.NumDrops = 0;
+		WeathersNH.Rain.Color = argb(0,73,73,73);
+		WeathersNH.Rain.DropLength = 2.12;
+		WeathersNH.Rain.Height = 30.0;
+		WeathersNH.Rain.Radius = 30.0;
+		WeathersNH.Rain.Speed = 18.0;
+		WeathersNH.Rain.Jitter = 0.4;
+		WeathersNH.Rain.WindSpeedJitter = 0.5;
+		WeathersNH.Rain.MaxBlend = 49;
+		WeathersNH.Rain.TimeBlend = 2000;
+
+		WeathersNH.Rainbow.Enable = false;
+		WeathersNH.Rainbow.Texture = "weather\rainbow\rainbow.tga.tx";
+	}
+}

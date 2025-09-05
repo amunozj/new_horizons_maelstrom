@@ -37,7 +37,27 @@ void ProcessDialogEvent()
 			{
 				ChangeCharacterReputation(PChar, 1);
 			}
-
+			/*NPChar.dialog.filename = NPChar.stuntime.dialog.filename;	// restores original dialog
+			LAi_SetCitizenTypeNoGroup(NPchar);	// makes character walk again, but not very agile
+			DeleteAttribute(NPChar,"stuntime");	// removes "stunned" tag*/
+// MAXIMUS [so, we can heal our crewmembers and add them to the fighting command] -->
+/*			if(bAbordageStarted)
+			{
+				LAi_SetStayType(NPChar);
+				LAi_group_MoveCharacter(NPChar, LAI_GROUP_PLAYER);
+				LAi_tmpl_SetFollow(NPChar, PChar, 0);
+				DeleteAttribute(NPChar,"Dialog.Filename");
+				if(IsOfficer(NPChar))
+				{
+					LAi_SetOfficerType(NPChar);
+					NPChar.Dialog.Filename = "Enc_Officer_dialog.c";
+					Diag.CurrentNode = "hired";
+				}
+				DeleteAttribute(NPChar,"stuntime");
+			}
+			else
+			{*/ //MAXIMUS: outcommented, because LAi_Stunned_AwakenCharacter was rewritten a little
+// MAXIMUS [so, we can heal our crewmembers and add them to the fighting command] <--
 
 			Diag.CurrentNode = Diag.TempNode;	// restores the current node of the original dialog
 			DialogExit();
@@ -171,7 +191,7 @@ void ProcessDialogEvent()
 					}	// link for samaritans
 
 					Link.l3 = DLG_TEXT[0];
-					Link.l3.go = "exit";		// link for Hamlets 
+					Link.l3.go = "exit";		// link for Hamlets ;)
 				}
 			}
 	}

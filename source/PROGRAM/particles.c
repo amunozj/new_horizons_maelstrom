@@ -109,8 +109,8 @@ int CreateBlast(float x,float y,float z)
 	object blast;
 	iRes = CreateEntity(&blast,"blast");
 	SendMessage(&blast,"lfff",LM_SETPOINT,x,y,z);
-	LayerAddObject("realize",blast,3);
-	LayerAddObject(SEA_REALIZE,blast,3);
+	LayerAddObject("realize",blast,65536);	// was 3 - Mirsaneli: prevents fog rendering over particles which made them look white
+	LayerAddObject(SEA_REALIZE,blast,65536);	// was 3 - Mirsaneli: prevents fog rendering over particles which made them look white
 	return iRes;
 }
 
@@ -120,8 +120,8 @@ int CreateBlastX(float x,float y,float z,float ax,float ay,float az)
 	object blast;
 	iRes = CreateEntity(&blast,"blast");
 	SendMessage(&blast,"lffffff",LM_SETPOINTANDANGLES,x,y,z,ax,ay,az);
-	LayerAddObject("realize",blast,3);
-	LayerAddObject(SEA_REALIZE,blast,3);
+	LayerAddObject("realize",blast,65536);	// was 3 - Mirsaneli: prevents fog rendering over particles which made them look white
+	LayerAddObject(SEA_REALIZE,blast,65536);	// was 3 - Mirsaneli: prevents fog rendering over particles which made them look white
 	return iRes;
 }
 

@@ -517,7 +517,7 @@ int GetCurrentShipHP(ref _refCharacter)
 float GetCharacterShipSP(ref _refCharacter)
 {
 	int nShipType = GetCharacterShipType(_refCharacter);
-	if (nShipType <0 || nShipType >= SHIP_TYPES_QUANTITY) { return 0; } // PB: Prevent CTDs
+	if (nShipType <0 || nShipType >= SHIP_TYPES_QUANTITY) { return 0.0; } // PB: Prevent CTDs
 	aref arship; makearef(arship, _refCharacter.ship); // PRS3
 	return stf(GetLocalShipAttrib(arship, &ShipsTypes[nShipType], "SP")); // PRS3
 }
@@ -849,19 +849,19 @@ string GetCharacterOfficerType(ref _refCharacter)
 int GetWoundedHealedPerDay(ref _refCharacter)
 {
 	int healing_rate = HEALED_PER_DAY;
-if(GetCargoGoods(_refCharacter, GOOD_TREATMENT) > 0)
+	if(GetCargoGoods(_refCharacter, GOOD_TREATMENT) > 0)
 		healing_rate = healing_rate + HEALED_WITH_MEDS;
 	if(CharacterHasOfficerType(_refCharacter, OFFIC_TYPE_DOCTOR))
 	{
 		healing_rate = healing_rate + CharacterGetOfficerSkill(_refCharacter, OFFIC_TYPE_DOCTOR, "defence");
-		if(CheckCharacterPerk(_refCharacter, "AdvancedFirstAid"))
+		if(CheckPerkForGroup(_refCharacter, "AdvancedFirstAid"))
 		{
 			healing_rate = healing_rate + 2;
 			trace("2 more healed due to Advanced First Aid");
 		}
 		else
 		{
-			if(CheckCharacterPerk(_refCharacter, "BasicFirstAid"))
+			if(CheckPerkForGroup(_refCharacter, "BasicFirstAid"))
 			{
 				healing_rate = healing_rate + 1;
 				trace("1 more healed due to Basic First Aid");
@@ -1024,7 +1024,7 @@ float GetPersonalShareRatio(ref char)
 	return 0.05*makefloat(GetDifficulty());
 }
 
-//returns shareratio for chref chref assumed to be, or have been, officer and/or companion of pchar
+//returns shareratio for chref (chref assumed to be, or have been, officer and/or companion of pchar
 float GetCharShareRatio(ref pchar, ref chref)
 {
 	// LDH rewritten 12Mar09
@@ -2448,14 +2448,18 @@ string GetRankNameDirect(ref char, int iNation, int rank)
 		if(CheckAttribute(Nations[PIRATE],"Ranks."+rn))		return Nations[PIRATE].Ranks.(rn);		// PB: Fame Levels
 	}
 
-//	if (ProfessionalNavyNation() == iNation)
-	if (ProfessionalNavyNationChar(char) == iNation)	// GR: Look at whether this char, not player char, is in the navy
+										   
+	if (ProfessionalNavyNationChar(char) == iNation)		// GR: Look at whether this char, not player char, is in the navy
 	{
 		if(CheckAttribute(Nations[iNation],"Ranks."+rn))	return Nations[iNation].Ranks.(rn);		// NK: Navy Ranks
 	}
 	else
 	{
-		if(CheckAttribute(Nations[iNation],"Titles."+rn))	return Nations[iNation].Titles.(rn);	// PB: Privateer Titles
+		if(CheckAttribute(Nations[iNation],"Titles."+rn))	// PB: Privateer Titles
+		{
+			if(GetAttribute(char, "sex") == "woman" && rank > 6)	return Nations[iNation].Titles.(rn) + "_f";	// GR: women may have different titles
+			else							return Nations[iNation].Titles.(rn);
+		}
 	}
 // KK -->
 	rn = "" + iNation;
@@ -2523,14 +2527,26 @@ int Promote(ref char, ref gov, int iNation)
 	GivePromotionReward(iNation); // PB
 //	bool NoLandGiven = ProfessionalNavyNation() != UNKNOWN_NATION && curRank < 7;
 	bool NoLandGiven = curRank < 7;	// GR: no land for navy OR privateers until you are landed gentry	if(NoLandGiven || iNation == PIRATE)
-	{
-		if (!InTutDeck) WriteNewLogEntry("Promoted to "+GetNationDescByType(iNation)+" "+GetRankNameDirect(char, iNation, currank),"My dedication and faithful service for "+GetNationNameByType(iNation)+" have earned me the rank of "+GetRankNameDirect(char, iNation, currank)+".","Personal",true);
-	}
-	else
+	string title, text;
+
+	Preprocessor_Add("nationdesc", XI_ConvertString(GetNationDescByType(iNation)));
+	Preprocessor_Add("nationname", XI_ConvertString(GetNationNameByType(iNation)));
+	Preprocessor_Add("rank", XI_ConvertString(GetRankNameDirect(char, iNation, currank)));
+	Preprocessor_Add("govname", GetMySimpleName(gov));
+	Preprocessor_Add("newland", "" + curRank*LAND_PER_RANK);
+	title = GetTranslatedLog("Promoted to #snationdesc# #srank#");
+	text = GetTranslatedLog("My dedication and faithful service for #snationname# have earned me the rank of #srank#.")
+	if(!NoLandGiven && iNation != PIRATE)
 	{
 		AddLandToCharacter(&char, Locations[FindLocation(gov.location)].island, iNation, curRank*LAND_PER_RANK); // KK
-		if (!InTutDeck) WriteNewLogEntry("Promoted to "+GetNationDescByType(iNation)+" "+GetRankNameDirect(char, iNation, currank),"My dedication and faithful service for "+GetNationNameByType(iNation)+" have earned me the title of "+GetRankNameDirect(char, iNation, currank)+". The "+GetNationDescByType(iNation)+" governor "+gov.name+" "+gov.lastname+" awarded me with the title and "+curRank*LAND_PER_RANK+" acres of land.","Personal",true);
+		text = text + " " + GetTranslatedLog("The #snationdesc# governor #sgovname# awarded me with the title and #snewland# acres of land.");
 	}
+	if (!InTutDeck) WriteNewLogEntry(PreprocessText(title), PreprocessText(text),"Personal",true);
+	Preprocessor_Delete("newland");
+	Preprocessor_Delete("govname");
+	Preprocessor_Delete("rank");
+	Preprocessor_Delete("nationname");
+	Preprocessor_Delete("nationdesc");
 	//UpdateTitle(&char);
 	return curRank;
 }
@@ -2575,9 +2591,13 @@ float SetRank(ref char, int iNation, int newrank)
 				//UpdateTitle(&char);
 				points = RequiredNextRankDirect(newrank);
 			}
-			string sLogTitle = "Joined Service of " + GetNationNameByType(iNation);
-			string sLogEntry = "I received a Letter of Marque from " + GetNationNameByType(iNation) + ". Now I am in their service, I can legally sink and capture ships, which means prize money and potential promotions for me in the future.";
-			WriteNewLogEntry(sLogTitle,sLogEntry, "Personal", true);
+			string title, text;
+			
+			Preprocessor_Add("nationname", XI_ConvertString(GetNationNameByType(iNation)));
+			title = GetTranslatedLog("Joined Service of #snationname#");
+			text = GetTranslatedLog("I received a Letter of Marque from #snationname#. Now I am in their service, I can legally sink and capture ships, which means prize money and potential promotions for me in the future.");
+			WriteNewLogEntry(PreprocessText(title), PreprocessText(text),"Personal",true);
+			Preprocessor_Delete("nationname");
 		}
 		if(points < 0.0) points = 0.0;
 		SetRMRelation(char, iNation, points);
@@ -2668,15 +2688,19 @@ bool LeaveService(ref char, int iNation, bool override)
 	}
 
 	// Lost LoM
-	string sLogTitle = "Left Service of " + GetNationNameByType(iNation);
-	string sLogEntry = "This marks the end of my service for " + GetNationNameByType(iNation) + ". But at least I am free now to pursue other goals.";
+	string title, text;
+			
+	Preprocessor_Add("nationname", XI_ConvertString(GetNationNameByType(iNation)));
+	title = GetTranslatedLog("Left Service of #snationname#");
+	text = GetTranslatedLog("This marks the end of my service for #snationname#. But at least I am free now to pursue other goals.");
 	if(leavebad)
 	{
-		sLogEntry += " My leaving was on rather bad terms and left me with decidedly less friends than I had.";
+		text = text + " " + GetTranslatedLog("My leaving was on rather bad terms and left me with decidedly less friends than I had.");
 		SetServedNation(PIRATE); // PB
 	}
-	WriteNewLogEntry(sLogTitle,sLogEntry, "Personal", true);
+	WriteNewLogEntry(PreprocessText(title), PreprocessText(text),"Personal",true);
 	LooseLetterOfMarque(iNation);
+	Preprocessor_Delete("nationname");
 
 	DeleteAttribute(char, "professionalnavy"); // PB: No more navy
 	DeleteAttribute(char, "isnotcaptain"); // LDH 16Apr09
@@ -3406,7 +3430,7 @@ bool TakeNItems(ref _refCharacter,string itemName, int n)
 	aref arItm;
 	if( Items_FindItem(itemName,&arItm)<0 )
 	{
-		trace("WARNING!!! Item id = "+itemName+" not implemented");
+		trace("WARNING!!! Character '" + GetMySimpleName(_refCharacter) + "': + Item id = "+itemName+" not implemented");
 
 		// LDH - because I'm damned tired of fixing individual instances of these problems when mods are turned off - 31Mar09
 		if ( ! ENABLE_AMMOMOD )
@@ -3565,6 +3589,11 @@ int GetCharacterCurrentIsland(ref _refCharacter)
 string GetIslandIDByLocationID(string locid)
 {
 	int locIdx = FindLocation(locid);
+	if (locIdx<0)
+	{
+		trace("GetIslandIDByLocationID: no index for island '" + locid + "'");
+		return "";
+	}
 	if(CheckAttribute(Locations[locIdx],"island")) { return Islands[FindIsland(Locations[locIdx].island)].id; } // NK bugfix 05-04-02
 	/*aref rootar,ar;
 	makearef(rootar,Locations[0].IslandsList);
@@ -3713,11 +3742,12 @@ void SetRandomNameToCharacter(ref rCharacter)
 			}
 		}
 	}*/
-	if (CheckAttribute(rCharacter, "questchar")) {
-		if (CheckAttribute(rCharacter, "old.name")) rCharacter.name = rCharacter.old.name;
-		if (CheckAttribute(rCharacter, "old.middlename")) rCharacter.middlename = rCharacter.old.middlename; // KK
-		if (CheckAttribute(rCharacter, "old.nickname")) rCharacter.nickname = rCharacter.old.nickname; // KK
-		if (CheckAttribute(rCharacter, "old.lastname")) rCharacter.lastname = rCharacter.old.lastname;
+	if (CheckAttribute(rCharacter, "questchar"))
+	{
+		if (CheckAttribute(rCharacter, "old.name")) rCharacter.name = TranslateString("",rCharacter.old.name);
+		if (CheckAttribute(rCharacter, "old.middlename")) rCharacter.middlename = TranslateString("",rCharacter.old.middlename); // KK
+		if (CheckAttribute(rCharacter, "old.nickname")) rCharacter.nickname = TranslateString("",rCharacter.old.nickname); // KK
+		if (CheckAttribute(rCharacter, "old.lastname")) rCharacter.lastname = TranslateString("",rCharacter.old.lastname);
 		return;
 	}
 // MAXIMUS random name on death fix 24.11.2006 <--
@@ -3937,6 +3967,58 @@ string FindCharacterItemByGroup(ref chref, string groupID)
 	if(high > -1) return Items[high].id;
 	return "";
 	*/
+	//Boyer check gun feasiblity
+    float  maxGunValue = 0;
+    float curGunValue;
+    bool bShootist = false;
+    bool bClever = false;
+    bool bGunCheck, bShootistCheck;
+
+    string resultItemId = "";
+    // boal 17.06.0
+	if (groupID == BLADE_ITEM_TYPE && IsOfficer(chref) && IsEquipCharacterByItem(chref, "unarmed") && !CheckAttribute(chref, "isMusketer"))
+	{
+        RemoveCharacterEquip(chref, BLADE_ITEM_TYPE);
+        TakeItemFromCharacter(chref, "unarmed");
+	}
+	// boal 17.06.05
+	//Boyer add
+	bShootist = IsCharacterPerkOn(chref,"Gunman");
+	bClever = IsCharacterPerkOn(chref,"GunProfessional");
+	//#20200228-03
+    bool bMuskSupport = false;
+	string sAni = "";
+	if(groupID==GUN_ITEM_TYPE) {
+        if(CheckAttribute(chref, "model")) {
+            string chrModel = chref.model;
+            if(GetINIString("pscripts\MusketAni.ini", chrModel, &sAni))
+            {
+               bMuskSupport = true;
+            }
+            else {
+                chrModel = chref.model + "_mush":
+                if(GetINIString("pscripts\MusketAni.ini", chrModel, &sAni))
+                    bMuskSupport = true;
+            }
+        }
+	}
+	for(i=MAX_ITEMS-1; i>=0; i--)
+	{
+		refItm = &Items[i];
+		if( !CheckAttribute(refItm,"groupID") ) continue;
+		if(refItm.groupID!=groupID) continue;
+		if( !CheckAttribute(chref,"items."+refItm.id) ) continue;
+		if(groupID==GUN_ITEM_TYPE)
+		{
+            //Skip muskets
+             //#20200228-03
+            bool bIsMusket = false;
+            if(refItm.id == "mushket" || refItm.id == "mushket1" || refItm.id == "mushket2x2") {
+                if(!bMuskSupport) continue;
+                bIsMusket = true;
+            }
+		}
+	}
 }
 
 bool IsEquipCharacterByItem(ref chref, string itemID)
@@ -4147,6 +4229,115 @@ void EquipCharacterByItem(ref chref, string itemID)
 
 	string groupName = arItm.groupID;
 	string oldItemID = GetCharacterEquipByGroup(chref, groupName);
+	if(oldItemID==itemID) return;
+	// Back84 -->
+	if(oldItemID == "unarmed")
+	{
+		removecharacterequip(chref,BLADE_ITEM_TYPE);
+		takeitemfromcharacter(chref,"unarmed");
+		chref.items.unarmed = 0;
+	}
+    bool isMusket = false;
+    string sMod = strcut(arItm.id, 0, 6);
+    if (sMod == "mushket")
+        isMusket = true;
+	//#20171102-01 Add hat/helmet...#20200228-03 actually replace to just check gun or blade
+    if (groupname == BLADE_ITEM_TYPE || groupname == GUN_ITEM_TYPE)
+	{
+	    bool isAlreadyMuskEq = IsEquipMusketItem(chref);
+	   //#20190114-01 #20190729-01
+        if(!isMusket && isAlreadyMuskEq && CheckAttribute(chref, "model.oldmodel"))
+        {
+            removecharacterequip(chref,GUN_ITEM_TYPE);
+            chref.model = chref.model.oldmodel;
+            chref.model.animation = chref.model.oldani;
+            SetNewModelToChar(chref);
+        }
+	}
+	// <-- Back84
+	bool bElseCheck = false;
+    string sAni = "";	// Mirsaneli: fix error	-->
+	if (CheckAttribute(chref, "model.animation")) {
+		sAni = strcut(chref.model.animation, 0, 8);
+	} else {
+		Trace("ERROR: Missing attribute 'model.animation' for character " + chref.id);
+	}
+	// <-- Mirsaneli: fix error
+    bool bIsOff = false;
+    if(IsOfficer(chref))
+        bIsOff = true;
+    if(!bIsOff && IsCompanion(chref))
+        bIsOff = true;
+    if (sAni == "mushketer")
+	{
+		//#20200228-03 Other chars may now possibly use mushketer animations
+        if(!bIsOff) { //Non-officers cannot switch weapon from musket
+            if (groupName == BLADE_ITEM_TYPE && itemID != "unarmed") return;
+            //#20190114-01
+            if(groupName == GUN_ITEM_TYPE) {
+                if(!isMusket) return;
+                if (chref.id == "OffMushketer" && itemID != "mushket2x2") return;
+            }
+        }
+        else {
+            if (chref.id == "OffMushketer") //Special quest char keeps special musket
+            {
+                if (groupName == GUN_ITEM_TYPE && itemID != "mushket2x2") return;
+            }
+            else {
+                bElseCheck = true;
+            }
+            //else
+            //{
+            //    if (groupName == GUN_ITEM_TYPE && itemID != "mushket" && itemID != "mushket1") return;
+            //}
+        }
+	}
+    else {
+        bElseCheck = true;
+    }
+    //#20200228-03
+    if(bElseCheck) {
+// Back84 -->
+        if (groupName == GUN_ITEM_TYPE && isMusket)
+        {
+            if (sti(chref.index) == GetMainCharacterIndex() || bIsOff)
+            {
+                sAni = chref.model.animation;
+                string sModel = chref.model;
+                if(!GetINIString("pscripts\MusketAni.ini", sModel, &sAni))
+				{
+					sModel = chref.model + "_mush";
+    
+				// Check if character is female and assign mushketer_whisper
+					if(CheckAttribute(chref, "sex") && chref.sex == "woman") {
+					sAni = "mushketer_whisper";
+				}
+				else {
+				if(!GetINIString("pscripts\MusketAni.ini", sModel, &sAni))
+					return;
+					}
+				}
+                if(!isAlreadyMuskEq) {
+                    chref.model.oldmodel = chref.model;
+                    chref.model.oldani = chref.model.animation;
+                }
+                chref.model = sModel;
+                chref.model.animation = sAni;
+                SetNewModelToChar(chref);
+                if(!isequipcharacterbyitem(chref,"unarmed"))
+                {
+                    GiveItem2Character(chref, "unarmed");
+                    EquipCharacterByItem(chref,"unarmed");
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+// <-- back84
+	}
 	// for now just comment this. 05-07-06 - if(oldItemID==itemID && !CheckAttribute(chref,"armoroverride")) return; // NK bugfix to armor model switching. 05-07-06
 	chref.equip.(groupName) = itemID;
 
@@ -4698,13 +4889,30 @@ int RemoveNotCaptivePassenger(ref _refCharacter,ref _refPassenger)
 
 float GetCharacterMaxEnergyValue(ref _refCharacter)
 {
-    float ret = (30.0);
+    float ret = (30.0); // + GetCharacterSPECIAL(_refCharacter, SPECIAL_A)*10);
+    /*if (CheckCharacterPerk(_refCharacter, "EnergyPlus"))
+	{
+		ret = ret + 20;
+	}
+	if (CheckAttribute(_refCharacter, "PerkValue.EnergyPlus"))
+	{
+  		ret = ret + stf(_refCharacter.PerkValue.EnergyPlus);
+	} */
 	return ret;
 }
 
 float GetCharacterMaxEnergyABSValue(ref _refCharacter)
 {
- 	float ret = (30.0);
+    // ???????? ?????? to_do
+	float ret = (30.0); // + GetCharacterSPECIALSimple(_refCharacter, SPECIAL_A)*10);
+	/*if (CheckCharacterPerk(_refCharacter, "EnergyPlus"))
+	{
+		ret = ret + 20;
+	}
+	if (CheckAttribute(_refCharacter, "PerkValue.EnergyPlus"))
+	{
+  		ret = ret + stf(_refCharacter.PerkValue.EnergyPlus);
+	} */
 	return ret;
 }
 
@@ -4744,4 +4952,85 @@ void SaveCurrentQuestDateParam(string _quest)
     arQ.control_month = GetDataMonth();
     arQ.control_year = GetDataYear();
     arQ.control_time = GetTime();
+}
+
+//#20190114-01
+bool IsEquipMusketItem(ref chref)
+{
+    string itemID;
+    aref arItm;
+    aref arEquip;
+    bool isMusk = false;
+    string sMod;
+
+	makearef(arEquip,chref.equip);
+	int q = GetAttributesNum(arEquip);
+	for(int i=0; i<q; i++)
+	{
+	    itemID = GetAttributeValue(GetAttributeN(arEquip, i));
+	    if(Items_FindItem(itemID, &arItm) < 0)
+            continue;
+        sMod = strcut(arItm.id, 0, 6);
+        if (sMod == "mushket")
+            return true;
+	}
+    return false;
+}
+
+//#20171020-01 Bug fix SetNewModelToChar sending itemID, and needs model name
+void SetNewModelToChar(ref chref)
+{
+    float liveTime = 0.1;
+	int colors = argb(64, 64, 64, 64);
+	int colore = argb(0, 32, 32, 32);
+
+	aref arItm;
+    string modelName;
+    object emptyItm;
+
+    if (IsEntity(chref))
+    {
+    	if(CheckAttribute(chref, "model"))
+        {
+            SendMessage(chref, "lss",   MSG_CHARACTER_SETMODEL, chref.model, chref.model.animation);
+        }
+        if(CheckAttribute(chref, "equip.gun"))
+        {
+            modelName = chref.equip.gun;
+            makearef(arItm,emptyItm);
+            if(modelName!="")
+            {
+                Items_FindItem(modelName,&arItm);
+            }
+            if(CheckAttribute(arItm,"model"))    {modelName = arItm.model;}
+            //SendMessage(chref, "ls",    MSG_CHARACTER_SETGUN,   chref.equip.gun);
+            SendMessage(chref, "ls",    MSG_CHARACTER_SETGUN,   modelName);
+        }
+        if(CheckAttribute(chref, "equip.blade"))
+        {
+            modelName = chref.equip.blade;
+            makearef(arItm,emptyItm);
+            if(modelName!="")
+            {
+                Items_FindItem(modelName,&arItm);
+            }
+            if(CheckAttribute(arItm,"model"))    {modelName = arItm.model;}
+             //#20191009-01
+            if(CheckAttribute(arItm, "param.time")) //"blade.time"))
+            {
+                liveTime = stf(arItm.param.time);
+            }
+            if(CheckAttribute(arItm, "param.colorstart")) //"blade.colorstart"))
+            {
+                colors = sti(arItm.param.colorstart);
+            }
+            if(CheckAttribute(arItm, "param.colorend")) //"blade.colorend"))
+            {
+                colore = sti(arItm.param.colorend);
+            }
+            //SendMessage(chref, "lsfll", MSG_CHARACTER_SETBLADE, chref.equip.blade, liveTime, colors, colore);
+            //SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, chref.equip.blade, liveTime, colors, colore);
+            SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, modelName, liveTime, colors, colore);
+        }
+    }
 }

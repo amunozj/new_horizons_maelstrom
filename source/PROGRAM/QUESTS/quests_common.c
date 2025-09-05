@@ -267,10 +267,10 @@ string GenerateDestination()
 	for(int i=0; i<TOWNS_QUANTITY; i++)
 	{
 		ref ctown; makeref(ctown, Towns[i]);
-		if (GetAttribute(ctown,"skiptrade") == true)																						continue;	// MAXIMUS: added for some towns (such as St. John's on Antigua)
+		if (GetAttribute(ctown,"skiptrade") == true)												continue;	// MAXIMUS: added for some towns (such as St. John's on Antigua)
 		if (sti(ctown.nation) != PIRATE)																												// PB: Any pirate town is fair game
 		{
-		//	if (GetNationRelation2MainCharacter(sti(ctown.nation)) == RELATION_ENEMY)														continue;	// PB: You should never have to go to ports hostile to yourself
+		//	if (GetNationRelation2MainCharacter(sti(ctown.nation)) == RELATION_ENEMY)							continue;	// PB: You should never have to go to ports hostile to yourself
 			if (GetNationRelation(GetCurrentLocationNation(), sti(ctown.nation)) == RELATION_ENEMY && GetCurrentLocationNation() != PIRATE)	continue;	// PB: Nor towns that are hostile to the current location (unless it is pirate)
 		}
 
@@ -310,7 +310,14 @@ string FindDestinationName(string sdest)
 			if(CheckAttribute(&locations[di],"id") && HasSubStr(locations[di].id,"port"))
 			{
 				sdest = locations[di].id;
-				if(FindLocation(sdest)!=-1) sDestin = FindTownName(PChar.quest.generate_convoy_quest.destination) + " " + TranslateString("", "SeaPort");
+				if(FindLocation(sdest)!=-1)
+				{
+					switch(LanguageGetLanguage())
+					{
+						case "SPANISH": sDestin = "puerto de "+ FindTownName(PChar.quest.generate_convoy_quest.destination); break;
+						sDestin = FindTownName(PChar.quest.generate_convoy_quest.destination) + " " + TranslateString("", "SeaPort");
+					}
+				}
 				break;
 			}
 		}
@@ -442,10 +449,10 @@ string GenerateFetchCargo(ref ctown) //temp function until economy overhaul
 					options[option]="tailor"; option++;
 					break;
 				case "blacksmith":
-					if (ENABLE_WEAPONSMOD) options[option]="blacksmith"; option++; // PB: NOT if the relevant mod is OFF!
+					if (ENABLE_WEAPONSMOD) {options[option]="blacksmith"; option++;} // PB: NOT if the relevant mod is OFF!
 					break;
 				case "gunsmith":
-					if (ENABLE_WEAPONSMOD) options[option]="gunsmith"; option++; // PB: NOT if the relevant mod is OFF!
+					if (ENABLE_WEAPONSMOD) {options[option]="gunsmith"; option++;} // PB: NOT if the relevant mod is OFF!
 					break;
 				case "apothecary":
 					options[option]="apothecary"; option++;
@@ -543,27 +550,31 @@ void AnnounceFetchQuestEvent(String IslandID, string cargoid) //will be moved la
 		tisland.cargos.(cargoid).expireMonth = GetAddingDataMonth(0, expiremonths, expiredays);
 		tisland.cargos.(cargoid).expireYear = GetAddingDataYear(0, expiremonths, expiredays);
 		string logTitle, logEntry;
-		logTitle = "The "+tisland.cargos.(cargoid).requester+" of "+FindTownName(tisland.cargos.(cargoid).town)+" needs help.";
+		Preprocessor_Add("requester", XI_ConvertString(tisland.cargos.(cargoid).requester));
+		Preprocessor_Add("town", FindTownName(tisland.cargos.(cargoid).town));
+		logTitle = PreprocessText(GetTranslatedLog("The #srequester# of #stown# needs help."));
+		Preprocessor_Delete("town");
+		Preprocessor_Delete("requester");
 		switch(tisland.cargos.(cargoid).requester)
 		{
 			case "dockyard":
-				logEntry = "The governor ordered to build more ships but there aren't enough resources on the island to make them. Looks like they need help to get these goods.";
+				logEntry = GetTranslatedLog("The governor ordered to build more ships but there aren't enough resources on the island to make them. Looks like they need help to get these goods.");
 			break;
 			case "tailor":
-				logEntry = "The governor wants to increase the amount of troops on the island and they will all need new uniforms. They need help to get the resources required.";
+				logEntry = GetTranslatedLog("The governor wants to increase the amount of troops on the island and they will all need new uniforms. They need help to get the resources required.");
 			break;
 			case "blacksmith":
-				logEntry = "The military ordered new weapons as it is time to amortize their current stock. The blacksmith needs help to acquire the resources to make them.";
+				logEntry = GetTranslatedLog("The military ordered new weapons as it is time to amortize their current stock. The blacksmith needs help to acquire the resources to make them.");
 			break;
 			
 			case "gunsmith":
-				logEntry = "The gunsmith has gotten lots of new orders lately. Everyone wants a new sword or a firearm and he doesn't have the means to make them all.";
+				logEntry = GetTranslatedLog("The gunsmith has gotten lots of new orders lately. Everyone wants a new sword or a firearm and he doesn't have the means to make them all.");
 			break;
 			
 			// TALISMAN -->
 			// added to fill blank page in Ship's Log
 			case "apothecary":
-				logEntry = "There has been a serious outbreak of disease lately, and the Apothecary is running out of medicines to treat the sick. He needs help to get supplies.";
+				logEntry = GetTranslatedLog("There has been a serious outbreak of disease lately, and the Apothecary is running out of medicines to treat the sick. He needs help to get supplies.");
 			break;
 			// TALISMAN <--
 		}
@@ -578,6 +589,7 @@ void AnnounceFetchQuestEvent(String IslandID, string cargoid) //will be moved la
 
 void UpdateAllCargos() //for now placed here. will be moved later
 {
+	bool fetch_expired;
 	if(DEBUG_FETCH_QUEST) trace("FETCH QUEST: Update all cargos");
 	for(int n=0; n<ISLANDS_QUANTITY; n++) 
 	{
@@ -598,7 +610,18 @@ void UpdateAllCargos() //for now placed here. will be moved later
 					if(cargo.assigned == "fetchquest") fetchquest += 1;
 				}
 				//Check for expiration
-				if((GetDataYear() >= sti(cargo.expireYear)) && (GetDataMonth() >= sti(cargo.expireMonth)) && (GetDataDay() >= sti(cargo.expireDay)))
+//				if((GetDataYear() >= sti(cargo.expireYear)) && (GetDataMonth() >= sti(cargo.expireMonth)) && (GetDataDay() >= sti(cargo.expireDay)))
+				fetch_expired = false;
+				if(GetDataYear() > sti(cargo.expireYear)) fetch_expired = true;
+				if(GetDataYear() == sti(cargo.expireYear))
+				{
+					if(GetDataMonth() > sti(cargo.expireMonth)) fetch_expired = true;
+					if(GetDataMonth() == sti(cargo.expireMonth))
+					{
+						if(GetDataDay() >= sti(cargo.expireDay)) fetch_expired = true;
+					}
+				}
+				if(fetch_expired)
 				{
 					if(DEBUG_FETCH_QUEST) trace("FETCH QUEST: "+cargoid+" on island "+tisland.name+" expired");
 					string cargoid = GetAttributeName(cargo);
@@ -1065,7 +1088,7 @@ void CommonQuestComplete(string sQuestName)
 			Pchar.quest.Contraband.tavern = pchar.location; //Added so we know where to spawn the officer when he returns.
 			//Levis add smuggling questbook
 			Preprocessor_AddQuestData("island",Islands[GetCharacterCurrentIsland(Pchar)].name);
-			Preprocessor_AddQuestData("location",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name);
+			Preprocessor_AddQuestData("location",TranslateString("",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name));
 			//DeleteQuestHeader("smuggle&number=0"); //we dont have to delete anymore now
 			questbookname = "smuggle&number="+Pchar.amount_smuggleruns; //Set a questname
 			SetQuestHeader(questbookname);
@@ -1104,7 +1127,7 @@ void CommonQuestComplete(string sQuestName)
 
 		case "Send Officer to scout":
 			//Levis add smuggling questbook
-			Preprocessor_AddQuestData("location",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name);
+			Preprocessor_AddQuestData("location",TranslateString("",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name));
 			questbookname = "smuggle&number="+Pchar.amount_smuggleruns; //Set a questname
 			AddQuestRecord(questbookname, 11);
 			Preprocessor_Remove("location");
@@ -1220,7 +1243,7 @@ void CommonQuestComplete(string sQuestName)
 
 		case "Made Deal with Smuggler":
 			PlaceSmugglersOnShore(Pchar.quest.contraband.CurrentPlace);
-			Preprocessor_AddQuestData("location",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name);
+			Preprocessor_AddQuestData("location",TranslateString("",locations[FindLocation(Pchar.quest.contraband.CurrentPlace)].name));
 			questbookname = "smuggle&number="+Pchar.amount_smuggleruns;
 			AddQuestRecord(questbookname, 10);
 			Preprocessor_Remove("location");
@@ -1815,7 +1838,7 @@ void CommonQuestComplete(string sQuestName)
 				{
 					LAi_SetActorType(characters[GetOfficersIndex(Pchar, i)]);
 					LAi_type_actor_Reset(characters[GetOfficersIndex(Pchar, i)]);
-					LAi_SetOfficerType(characters[GetOfficersIndex(Pchar, i)]);
+					LAi_SetOfficerType(characters[GetOfficersIndex(Pchar, i)]));
 				}
 			}
 		break;
@@ -2013,6 +2036,8 @@ void CommonQuestComplete(string sQuestName)
 				Characters[makeint(Pchar.quest.FreeRandomOfficerIdx)].index = Pchar.quest.FreeRandomOfficerIdx;
 				Characters[makeint(Pchar.quest.FreeRandomOfficerIdx)].id = Pchar.quest.FreeRandomOfficerID;
 // added by MAXIMUS [for placing new officer in empty slot (default for some officers)] -->
+// GR: disabled because it can kick an unremovable quest officer out of the slot
+/*
 				int ofNum = 3;
 				switch(Characters[makeint(Pchar.quest.FreeRandomOfficerIdx)].quest.officertype)
 				{
@@ -2022,6 +2047,10 @@ void CommonQuestComplete(string sQuestName)
 				}
 				SetOfficersIndex(Pchar, ofNum, makeint(Pchar.quest.FreeRandomOfficerIdx));
 // added by MAXIMUS [for placing new officer in empty slot (default for some officers)] <--
+*/
+// GR: try to put new officer into a free slot, also explicitly add the officer as a passenger as failsafe -->
+				SetOfficersIndex(PChar, -1, sti(PChar.quest.FreeRandomOfficerIdx));
+				AddPassenger(PChar, Characters[sti(PChar.quest.FreeRandomOfficerIdx)], 0);
 
 				Characters[makeint(Pchar.quest.FreeRandomOfficerIdx)].location = "None";
 
@@ -2046,7 +2075,7 @@ void CommonQuestComplete(string sQuestName)
 			}
 			else
 			{
-				Log_SetStringToLog(QUEST_MESSAGE12);
+				Log_SetStringToLog(GlobalStringConvert("QUEST_MESSAGE12"));
 				DeleteAttribute(Pchar, "quest.FreeRandomOfficerIdx");
 				DeleteAttribute(Pchar, "quest.FreeRandomOfficerID");
 			}
@@ -2062,7 +2091,20 @@ void CommonQuestComplete(string sQuestName)
 			{
 				ChangeCharacterAddressGroup(&Characters[makeint(Pchar.quest.HiringOfficerIDX)], "None", "", "");
 				PlaceCharacter(characterFromID(Pchar.quest.FreeRandomOfficerID), "goto");
-				DialogMain(characterFromID(Pchar.quest.FreeRandomOfficerID)); // added by MAXIMUS
+				if(IsOfficer(CharacterFromID(PChar.quest.FreeRandomOfficerID)))
+				{
+					DialogMain(characterFromID(Pchar.quest.FreeRandomOfficerID)); // added by MAXIMUS
+					LAi_SetOfficerType(characterFromID(Pchar.quest.FreeRandomOfficerID));
+				}
+				else
+				{
+					Characters[sti(PChar.quest.HiringOfficerIDX)].location = "none";
+					Characters[sti(PChar.quest.HiringOfficerIDX)].Dialog.Filename = "Enc_Officer_dialog.c";
+					Characters[sti(PChar.quest.HiringOfficerIDX)].Dialog.CurrentNode = "hired";
+					LAi_group_MoveCharacter(&Characters[sti(PChar.quest.HiringOfficerIDX)], LAI_GROUP_PLAYER);
+					LAi_SetActorType(CharacterFromID(PChar.quest.FreeRandomOfficerID));
+					LAi_ActorGoToLocation(CharacterFromID(PChar.quest.FreeRandomOfficerID), "reload", "reload1", "none", "", "", "", -1);
+				}
 			}
 			else
 			{
@@ -2264,7 +2306,7 @@ Cost for level 50 is 55,374,000
 			if (pchar.quest.generate_trade_quest_progress == "begin")
 			{
 				pchar.quest.generate_trade_quest_progress = "failed";
-				Log_SetStringToLog(QUEST_MESSAGE2);
+				Log_SetStringToLog(GlobalStringConvert("QUEST_MESSAGE2"));
 				AddQuestRecord("trade", 2);
 			}
 		break;
@@ -2458,7 +2500,7 @@ Cost for level 50 is 55,374,000
 			if(rand(1) == 0) // Fixed 50% chance
 			{
 				if(CheckAttribute(characterFromID("quest trader"), "nation")) iTradeNation = sti(characters[GetCharacterIndex("quest trader")].nation);
-				else iTradeNation = GetServedNation();
+				else iTradeNation = GetServedNation());
 //				GenerateQuestShip("Convoy Pirate", GetServedNation());	// PB: Use Generic Function
 				GenerateQuestShip("Convoy Pirate", iTradeNation);	// GR: make the enemy hostile to the trader
 				Group_CreateGroup("Convoy_Pirate");
@@ -2511,6 +2553,8 @@ Cost for level 50 is 55,374,000
 			Group_SetAddress("Story_Pirate", Pchar.location, "Quest_ships", GetRandomQuestShipLocator(pchar.location)); // PB: Add some variety
 
 			Group_LockTask("Story_Pirate");
+
+			PChar.quest.generate_kill_quest = "searching";
 
 			pchar.quest.kill_pirate_complete.win_condition.l1 = "NPC_Death";
 			pchar.quest.kill_pirate_complete.win_condition.l1.character = "Quest pirate";
@@ -2585,6 +2629,21 @@ Cost for level 50 is 55,374,000
 			DeleteAttribute(pchar, "quest.generate_kill_quest");
 			//pchar.quest.generate_kill_quest = "";
 		break;
+
+		case "kill_pirate_failed":
+			PChar.quest.generate_kill_quest = "gave_up";
+			ChangeCharacterReputation(PChar, -1); //Add some reputation loss -Levis
+			PChar.quest.kill_pirate_refused_timer.win_condition.l1 = "Timer";
+			PChar.quest.kill_pirate_refused_timer.win_condition.l1.date.day   = GetAddingDataDay  (0, 0, 3);
+			PChar.quest.kill_pirate_refused_timer.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 3);
+			PChar.quest.kill_pirate_refused_timer.win_condition.l1.date.year  = GetAddingDataYear (0, 0, 3);
+			PChar.quest.kill_pirate_refused_timer.win_condition = "kill_pirate_refused_timer";
+			i = Group_FindGroup("Story_Pirate");
+			if (i >= 0) Group_DeleteGroupIndex(i);
+			ChangeCharacterAddressGroup(CharacterFromID("Quest Pirate"), "None", "", "");
+			DeleteQuestHeader("hunting");
+			DeleteQuestAttribute("hunting");
+		break;
 // boal <--
 
 		case "sleep_in_tavern":
@@ -2650,12 +2709,25 @@ Cost for level 50 is 55,374,000
 			LAi_SetCurHPMax(pchar);
 			for (i = 1; i < 4; i++)
 			{
-				iOfficer = GetOfficersIndex(Pchar, "" + i);
+				iOfficer = GetOfficersIndex(Pchar, i);
 				if (iOfficer != -1) LAi_SetCurHPMax(&characters[iOfficer]);
 			}
 			LAi_ActorRunToLocator(NPChar,"reload","reload1","girl_gone",40);
 		break;
 		//Levis: Extra atmosphere <--
+
+		//GR: brothel bedroom -->
+		case "to_bedroom_for_girl":
+			NPChar = LAi_CreateFantomCharacter(true, 0, true, false, 0.00, GetRandSubString(GetBrothelModels()), "goto", "goto5");
+			NPChar.nation = GetTownNation(GetCurrentTownID());
+			SetRandomNameToCharacter(NPChar);
+			NPChar.dialog.filename = "wenched_dialog.c";
+			NPChar.greeting = "Gr_Wench";
+			LAi_SetWaitressType(NPChar);
+			// LAi_SetStayType(NPChar);
+			LAi_QuestDelay("restore_hp", 0.0);
+		break;
+		//GR: brothel bedroom <--
 		
 		//Levis: Add waiting time on ship -->
 		case "waited_on_ship_for_time":
@@ -2685,9 +2757,9 @@ Cost for level 50 is 55,374,000
 
 		case "restore_hp":
 			LAi_SetCurHPMax(pchar);
-			for (i = 1; i < 4; i++)
+			for (i = 1; i < OFFICER_MAX; i++)
 			{
-				iOfficer = GetOfficersIndex(Pchar, "" + i);
+				iOfficer = GetOfficersIndex(Pchar, i);
 				if (iOfficer != -1) LAi_SetCurHPMax(&characters[iOfficer]);
 			}
 		break;
@@ -4575,7 +4647,7 @@ Cost for level 50 is 55,374,000
 					LAi_SetImmortal(sld, true);
 					sld.dialog.filename = "Dame_dialog.c";
 					sld.id = "dame1";
-					sld.name = "Scarlett";
+					sld.name = TranslateString("Scarlett", "");
 					sld.lastname = "";
 					LAi_SetCitizenType(characterFromID("dame1"));
 
@@ -4583,16 +4655,25 @@ Cost for level 50 is 55,374,000
 					LAi_SetImmortal(sld, true);
 					sld.dialog.filename = "Dame_dialog.c";
 					sld.id = "dame2";
-					sld.name = "Giselle";
+					sld.name = TranslateString("Giselle","");
 					sld.lastname = "";
 					LAi_SetCitizenType(characterFromID("dame2"));
 
-					sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, "Anamaria", "goto", LAi_FindRandomLocator("goto"));
+					if (PChar.model == "Anamaria" || GetMySimpleOldName(PChar) == "Anamaria")
+					{
+						sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, "Danblack", "goto", LAi_FindRandomLocator("goto"));
+						sld.name = TranslateString("Harriett", "");
+						sld.lastname = "";
+					}
+					else
+					{
+						sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, "Anamaria", "goto", LAi_FindRandomLocator("goto"));
+						sld.name = TranslateString("Anamaria","");
+						sld.lastname = "";
+					}
 					LAi_SetImmortal(sld, true);
 					sld.dialog.filename = "Dame_dialog.c";
 					sld.id = "dame3";
-					sld.name = "Anamaria";
-					sld.lastname = "";
 					LAi_SetCitizenType(characterFromID("dame3"));
 				}
 				else
@@ -4649,21 +4730,21 @@ Cost for level 50 is 55,374,000
 					sld = LAi_CreateFantomCharacter(false, 0, true, false, 0.25, GetRandomModelForType(-1,"Monks"), "goto", SkelLocator);
 					LAi_SetImmortal(sld, true);
 					sld.id = "bagarreur6";
-					sld.name = "Scared";
-					sld.lastname = "Monk";
+					sld.name = TranslateString("Scared Monk", "");
+					sld.lastname = "";
 					LAi_SetActorType(characterFromID("bagarreur6"));
 					LAi_ActorRunToLocation(characterFromID("bagarreur6"), "reload", "reload7_back", "none", "", "", "skeleton_leaves", 0.0);
 
 					sld = LAi_CreateFantomCharacter(false, 0, true, true, 0.25, GetRandomModelForType(-1,"Skeletons"), "goto", SkelLocator);
 					LAi_SetImmortal(sld, true);
 					sld.id = "bagarreur7";
-					sld.name = "Cursed";
-					sld.lastname = "Skeleton";
+					sld.name = TranslateString("Cursed Skeleton", "");
+					sld.lastname = "";
 					LAi_SetWarriorType(characterFromID("bagarreur7"));
 					LAi_warrior_SetCommander(CharacterFromID("bagarreur7"), CharacterFromID("bagarreur6"));
 				}
 			}
-        break;
+		break;
 
 		case "skeleton_leaves":
 			LAi_SetActorType(characterFromID("bagarreur7"));
@@ -4780,8 +4861,8 @@ Cost for level 50 is 55,374,000
 				sld.greeting = "Gr_Mr. Gibbs";
 				sld.money = rand(100);
 				sld.id = "Mr. Gibbs";
-				sld.name = "Joshamee";
-				sld.lastname = "Gibbs";
+				sld.name = TranslateString("","Joshamee");
+				sld.lastname = TranslateString("","Gibbs");
 				sld.reputation = REPUTATION_GOOD;
 				sld.nation = PIRATE;
 				sld.sex = "man";
@@ -5578,7 +5659,6 @@ Cost for level 50 is 55,374,000
 		case "Rheims_house_setup":
 			PChar.quest.rheims_house.done = true;
 			Locations[FindLocation("Rheims_house_in_smugglers")].vcskip = true;
-			Locations[FindLocation("Rheims_house_in_smugglers")].reload.l1.disable = 1;
 			LAi_SetFightMode(PChar, false);
 			LAi_LocationFightDisable(&Locations[FindLocation("Rheims_house_in_smugglers")], true);
 			PChar.quest.Rheims_house_window_setup.win_condition.l1 = "locator";
@@ -5593,6 +5673,7 @@ Cost for level 50 is 55,374,000
 		case "Rheims_house_window_setup":
 			PChar.quest.rheims_house.current_year = GetDataYear();
 			SetCurrentDate(GetDataDay(), GetDataMonth(), 1750);
+			Locations[FindLocation("Rheims_house_in_smugglers")].reload.l1.disable = 1;
 			DoQuestReloadToLocation("Rheims_house_in_smugglers", "goto", "goto2", "Rheims_house_inside");
 		break;
 
@@ -5611,7 +5692,7 @@ Cost for level 50 is 55,374,000
 			LAi_ActorDialog(sld,PChar,"",5.0,5.0);
 		break;
 
-		case "Rheims_exit_setup":
+		case "Rheims_exit_setup":	// Triggered by dialog with "Fake_Nathaniel"
 			LAi_SetCitizenType(CharacterFromID("Fake_Nathaniel"));
 			PChar.quest.Rheims_exit.win_condition.l1 = "locator";
 			PChar.quest.Rheims_exit.win_condition.l1.location = "Rheims_house_in_smugglers";
@@ -5622,6 +5703,7 @@ Cost for level 50 is 55,374,000
 
 		case "Rheims_exit":
 			Locations[FindLocation("Rheims_house_in_smugglers")].type = "house";
+			Locations[FindLocation("Rheims_house_in_smugglers")].reload.l1.disable = 0;
 			SetCurrentDate(GetDataDay(), GetDataMonth(), sti(PChar.quest.rheims_house.current_year));
 			DoQuestReloadToLocation("Smugglers_Lair", "reload", "reload10", "_");
 		break;
@@ -5790,6 +5872,8 @@ void hip_mketB()
 	aref weapon;
 	Items_FindItem(weaponID, &weapon);
 
+	EquipCharacterByItem(attack, FindCharacterItemByGroup(attack, BLADE_ITEM_TYPE));	//so you can use your best blade while the loaded bayonet-musket is ready to fire on your hip
+
 	float GunCurCharge = LAi_GetCharacterRelCharge(attack); // Levis
 	weapon.model = "musketB";
 	RemoveCharacterEquip(attack, GUN_ITEM_TYPE );
@@ -5829,8 +5913,9 @@ void gun_mketB()
 
 	RemoveCharacterEquip(attack, BLADE_ITEM_TYPE );
 	TakeItemFromCharacter(attack, "blademketB");
-	if(!CheckCharacterItem(attack, "bladeX4")) GiveItem2Character(attack, "bladeX4");
-	EquipCharacterByItem(attack, "bladeX4");
+/*	if(!CheckCharacterItem(attack, "bladeX4")) GiveItem2Character(attack, "bladeX4");
+	EquipCharacterByItem(attack, "bladeX4");	*/
+EquipCharacterByItem(attack, FindCharacterItemByGroup(attack, BLADE_ITEM_TYPE));
 
 	float GunCurCharge = LAi_GetCharacterRelCharge(attack); // Levis
 	RemoveCharacterEquip(attack, GUN_ITEM_TYPE );
@@ -6381,8 +6466,9 @@ void reset_check_mguns()
 				if(IsEquipCharacterByItem(tmpChr, "blademketB"))
 				{
 					TakeItemFromCharacter(tmpChr, "blademketB");
-					if(!CheckCharacterItem(tmpChr, "bladeX4")) GiveItem2Character(tmpChr, "bladeX4");
-					EquipCharacterByItem(tmpChr, "bladeX4");
+				/*	if(!CheckCharacterItem(tmpChr, "bladeX4")) GiveItem2Character(tmpChr, "bladeX4");
+					EquipCharacterByItem(tmpChr, "bladeX4");	*/
+				EquipCharacterByItem(tmpChr, FindCharacterItemByGroup(tmpChr, BLADE_ITEM_TYPE));
 
 					GiveItem2Character(tmpChr, "pistolmketB");
 					EquipCharacterByItem(tmpChr, "pistolmketB");

@@ -178,7 +178,7 @@ void CreateSideQuestCharacters(ref n)
 	ch.money = "1";
 	LAi_SetSitType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
-	ch.greeting = "Gr_Balltesar Figueiredo";
+	ch.greeting = "Gr_Portuguese Officer"; // was "Gr_Balltesar Figueiredo", both just use "Por_m_a_001.wav"
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -342,9 +342,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_01";
 	ch.model = "ANIMISTS2";
@@ -381,9 +381,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_02";
 	ch.model = "ANIMISTS2";
@@ -420,9 +420,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_03";
 	ch.model = "ANIMISTS2";
@@ -459,9 +459,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_04";
 	ch.model = "ANIMISTS2";
@@ -498,9 +498,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_05";
 	ch.model = "ANIMISTS2";
@@ -537,9 +537,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_06";
 	ch.model = "ANIMISTS2";
@@ -576,9 +576,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_07";
 	ch.model = "ANIMISTS2";
@@ -615,9 +615,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_08";
 	ch.model = "ANIMISTS2";
@@ -654,9 +654,9 @@ void CreateSideQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 				// 
-	ch.old.name = "Animist";
+	ch.old.name = "Satanist";			// was "Animist"
 	ch.old.lastname = "";
-	ch.name = TranslateString("", "Animist");
+	ch.name = TranslateString("", "Satanist");
 	ch.lastname = "";
 	ch.id		= "ANIMISTS_09";
 	ch.model = "ANIMISTS2";
@@ -2746,7 +2746,7 @@ void CreateSideQuestCharacters(ref n)
 	ch.old.name = "Gordon";
 	ch.old.lastname = "Carpenter";
 	ch.name = TranslateString("", "Gordon");
-	ch.lastname = TranslateString("", "Carpenter");
+	ch.lastname = TranslateString("", "Carpenter1");
 	ch.id		= "Gordon Carpenter";
 	ch.model = "bocman4";
 	ch.sex = "man";
@@ -3107,7 +3107,7 @@ void CreateSideQuestCharacters(ref n)
 	ch.Ship.Type = "PiratBrig50"; // Petros: was Brig1
 	ch.Ship.Stopped = true;
 	// KNB ch.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS12;
-	LAi_SetSitType(ch);
+	LAi_SetStayType(ch);		// GR: was LAi_SetSitType(ch)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
@@ -3381,7 +3381,7 @@ void CreateSideQuestCharacters(ref n)
 	LAi_SetStayType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 50.0, 50.0);
-	ch.greeting = "Gr_Ambroz Bricenos";
+	ch.greeting = "Gr_Portuguese Officer"; // was "Gr_Ambroz Bricenos", both just use "Por_m_a_001.wav"
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -5104,7 +5104,7 @@ void CreateSideQuestCharacters(ref n)
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
 	LAi_NoRebirthEnable(ch);
-	ch.greeting = "Gr_Quest_Smuggler_01";
+	ch.greeting = "Gr_Smuggler Agent"; // was "Gr_Quest_Smuggler_01" which is identical
 	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
@@ -7305,4 +7305,3 @@ void CreateSideQuestCharacters(ref n)
 	LAi_SetHP(ch, 100.0, 100.0);
 	AddGameCharacter(n, ch);
 }
-	

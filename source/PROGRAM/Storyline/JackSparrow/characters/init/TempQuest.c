@@ -95,7 +95,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "James Norrington_dialog.c";
 //	ch.greeting = "Gr_James Norrington";
-	ch.Ship.Name = "Interceptor";	//SJG
+	ch.Ship.Name = TranslateString("","Interceptor");	//SJG
 	ch.Ship.Type = "HMS_Interceptor";		//Kazeite
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 2;
@@ -139,7 +139,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Lieutenant Bligh_dialog.c";
 //	ch.greeting = "Gr_Oxbay Citizen";
-	ch.Ship.Name = "Bounty";	//SJG
+	ch.Ship.Name = TranslateString("","Bounty1");	//SJG
 	ch.Ship.Type = "HMS_Bounty";	//ZarethPL
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 2;
@@ -251,13 +251,13 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Sir Christopher Mings_dialog.c";
 	// PB -->
-	ch.Ship.Name = "China Vase";
+	ch.Ship.Name = TranslateString("","China Vase");
 	ch.Ship.Type = "Frigate2";
 	ch.Ship.Stopped = true;
-	GiveItem2Character(ch, "blade21");
-	ch.equip.blade = "blade21";
-	GiveItem2Character(ch, "pistol4");
-	ch.equip.gun = "pistol4";
+	GiveItem2Character(ch, "blade21"); //"blade26+1");
+	ch.equip.blade = "blade21"; //"blade26+1";
+	GiveItem2Character(ch, "pistol4"); //"pistol5+1");
+	ch.equip.gun = "pistol4"; //"pistol5+1";
 	//JRH ammo mod -->
 	TakenItems(ch, "gunpowder", 6);
 	TakenItems(ch, "pistolbullets", 6);
@@ -446,7 +446,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.id		= "Bootstrap Bill Turner";
 	ch.nation	= ENGLAND;
 	ch.sound_type = "seaman";
-	ch.model	= "Will";
+	ch.model	= "BootstrapBill";	// was "Will"
 	ch.sex = "man";
 	GiveItem2Character(ch, "blade4");
 	ch.equip.blade = "blade4";
@@ -489,7 +489,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Cutler Beckett_dialog.c";
 //	ch.greeting = "Gr_Cutler Beckett";
-	ch.Ship.Name = "Lindesfarne";	// PB
+	ch.Ship.Name = TranslateString("","Lindesfarne");	// PB
 	ch.Ship.Type = "HMS_Bounty";	// PB
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 2;
@@ -631,13 +631,13 @@ void CreateTempQuestCharacters(ref n)
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Pirate";
-	ch.old.lastname = "1";
+	ch.old.lastname = "";
 	ch.name = TranslateString("", "Pirate");
-	ch.lastname = TranslateString("", "1");
+	ch.lastname = "";
 	ch.id		= "Pirates_1";
 	ch.model	= "korsar";
 	ch.sound_type = "pirate";
-	LAi_NoRebirthEnable(ch);
+	//LAi_NoRebirthEnable(ch);
 	ch.sex = "man";
 	GiveItem2Character(ch, "blade4");
 	ch.equip.blade = "blade4";
@@ -661,20 +661,21 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Commerce = "1";
 	ch.skill.Sneak = "1";
 	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	ch.Dialog.Filename = "Turks_prison_guard1_dialog.c";
 	LAi_SetActorType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
-	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Pirate";
-	ch.old.lastname = "2";
+	ch.old.lastname = "";
 	ch.name = TranslateString("", "Pirate");
-	ch.lastname = TranslateString("", "2");
+	ch.lastname = "";
 	ch.id		= "Pirates_2";
 	ch.model	= "corsair2";
 	ch.sound_type = "pirate";
-	LAi_NoRebirthEnable(ch);
+	//LAi_NoRebirthEnable(ch);
 	ch.sex = "man";
 	GiveItem2Character(ch, "blade4");
 	ch.equip.blade = "blade4";
@@ -698,20 +699,20 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Commerce = "1";
 	ch.skill.Sneak = "1";
 	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
 	LAi_SetActorType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
-	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Pirate";
-	ch.old.lastname = "3";
+	ch.old.lastname = "";
 	ch.name = TranslateString("", "Pirate");
-	ch.lastname = TranslateString("", "3");
+	ch.lastname = "";
 	ch.id		= "Pirates_3";
 	ch.model	= "corsair1";
 	ch.sound_type = "pirate";
-	LAi_NoRebirthEnable(ch);
+	//LAi_NoRebirthEnable(ch);
 	ch.sex = "man";
 	GiveItem2Character(ch, "blade4");
 	ch.equip.blade = "blade4";
@@ -735,12 +736,277 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Commerce = "1";
 	ch.skill.Sneak = "1";
 	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
 	LAi_SetActorType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 80.0, 80.0);
-	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
+	ch.old.name = "Pirate";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Pirate");
+	ch.lastname = "";
+	ch.id		= "Pirates_4";
+	ch.model	= "Fatman2";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	ch.old.name = "Pirate";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Pirate");
+	ch.lastname = "";
+	ch.id		= "Pirates_5";
+	ch.model	= "33_Ronald";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	ch.old.name = "Pirate";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Pirate");
+	ch.lastname = "";
+	ch.id		= "Pirates_6";
+	ch.model	= "Black_corsair";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "Pirat.c";
+	ch.Dialog.Filename = "";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	ch.old.name = "Pirate";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Pirate");
+	ch.lastname = "";
+	ch.id		= "Pirates_6";
+	ch.model	= "Black_corsair";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "Pirat.c";
+	ch.Dialog.Filename = "";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	
+	ch.old.name = "Sailor";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Sailor");
+	ch.lastname = "";
+	ch.id		= "Sailor_1";
+	ch.model	= "Sailor5";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	//GiveItem2Character(ch, "blade4");
+	//ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "Turks_prison_guard1_dialog.c";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	ch.old.name = "Sailor";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Sailor");
+	ch.lastname = "";
+	ch.id		= "Sailor_2";
+	ch.model	= "Sailor6";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	//GiveItem2Character(ch, "blade4");
+	//ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "Turks_prison_guard1_dialog.c";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	ch.old.name = "Sailor";
+	ch.old.lastname = "";
+	ch.name = TranslateString("", "Sailor");
+	ch.lastname = "";
+	ch.id		= "Corpse";
+	ch.model	= "davy2";
+	ch.sound_type = "pirate";
+	//LAi_NoRebirthEnable(ch);
+	ch.sex = "man";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.nodisarm	= 1;				// PB: Disable disarming
+	ch.location	= "";
+	ch.location.group = "goto";
+	ch.location.locator = "character7";
+	ch.Dialog.Filename = "Turks_prison_guard1_dialog.c";
+	ch.nation = PIRATE;
+	ch.rank 	= 1;
+	ch.reputation = "None";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "1";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "1";
+	ch.skill.Grappling = "1";
+	ch.skill.Repair = "1";
+	ch.skill.Defence = "1";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "10";
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	LAi_SetActorType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 80.0, 80.0);
+	AddGameCharacter(n, ch);
+	
+	
+	
+	
 	ch.old.name = "Morris";
 	ch.old.lastname = "Murtogg";
 	ch.name = TranslateString("", "Morris");
@@ -846,7 +1112,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Commerce = "1";
 	ch.skill.Sneak = "1";
 	ch.money = "1000";
-	ch.Ship.Name = "Volcano";
+	ch.Ship.Name = TranslateString("","Volcano");
 	ch.Ship.Type = "Battleship1"; // PRS3
 	ch.Ship.Stopped = true;
 	// KNB ch.Ship.Cannons.Type = CANNON_TYPE_CULVERINE_LBS24;
@@ -909,7 +1175,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Ship.Stopped = true;	
 	ch.Dialog.Filename = "falaise de fleur soldier_dialog.c";
 	ch.nation = PIRATE;
-	ch.Ship.Name = "Volcano II";
+	ch.Ship.Name = TranslateString("","Volcano II");
 	ch.Ship.Type = 	"Frigate2";
 	// KNB ch.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS16;
 	ch.rank 	= 1;
@@ -984,7 +1250,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Pieter Boelen_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Amsterdam";
+	ch.Ship.Name = TranslateString("","Amsterdam");
 	ch.Ship.Type = "NL_Amsterdam";
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 0;
@@ -1149,7 +1415,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Sneak = "1";
 	ch.money = "0";
 	ch.perks.list.LongRangeShoot = true;
-	ch.Ship.Name = "Vertigo";
+	ch.Ship.Name = TranslateString("","Vertigo");
 	ch.Ship.Type = "PiratHannah"; // PRS3
 	ch.FaceId = 30;
 	ch.HPBonus = 100;
@@ -1194,15 +1460,15 @@ void CreateTempQuestCharacters(ref n)
 	ch.reputation = "42";
 	ch.experience = "0";
 	ch.skill.Leadership = "8";
-    ch.skill.Fencing = "9";
-    ch.skill.Sailing = "8";
-    ch.skill.Accuracy = "10";
-    ch.skill.Cannons = "10";
-    ch.skill.Grappling = "6";
-    ch.skill.Repair = "5";
-    ch.skill.Defence = "9";
-    ch.skill.Commerce = "1";
-    ch.skill.Sneak = "4";
+	ch.skill.Fencing = "9";
+	ch.skill.Sailing = "8";
+	ch.skill.Accuracy = "10";
+	ch.skill.Cannons = "10";
+	ch.skill.Grappling = "6";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "9";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "4";
 	ch.perks.list.BasicDamageControl = true;
 	ch.perks.list.AdvancedDamageControl = true;
 	ch.perks.list.Rigging = true;
@@ -1219,6 +1485,7 @@ void CreateTempQuestCharacters(ref n)
 	LAi_SetActorType(ch);
 	LAi_SetLoginTime(ch, 0.0, 24.0);
 	LAi_SetHP(ch, 990.0, 990.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
 	AddGameCharacter(n, ch);
 
 	ch.old.name = "Konrad";
@@ -1236,7 +1503,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Konrad Kulczycki_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Phantom";
+	ch.Ship.Name = TranslateString("","Phantom");
 	ch.Ship.Type = "FastGalleon2";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade26+1");
@@ -1297,7 +1564,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Petros_dialog.c";
 	// PB -->
-	ch.Ship.Name = "The Rock";
+	ch.Ship.Name = TranslateString("","The Rock");
 	ch.Ship.Type = "SP_Galeon50";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade26+1");
@@ -1359,7 +1626,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Maykin Blundas.c";
 	// PB -->
-	ch.Ship.Name = "Whisper";
+	ch.Ship.Name = TranslateString("","Whisper");
 	ch.Ship.Type = "Brig2";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4");
@@ -1419,7 +1686,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Cap'n Drow_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Vengeance";
+	ch.Ship.Name = TranslateString("","Vengeance");
 	ch.Ship.Type = "Corvette47";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4"); //(ch, "blade26+1");
@@ -1475,7 +1742,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.sex = "man";
 	ch.loyality = 15;
 //	ch.sound_type = "pirate";
-	ch.Ship.Name = "Wapen van Bergen op Zoom";
+	ch.Ship.Name = TranslateString("","Wapen van Bergen op Zoom");
 	ch.Ship.Type = "NL_Frigate47";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4");
@@ -1522,7 +1789,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Nathan Kell_dialog.c";
 	ch.nation = PIRATE;
 	// PB -->
-	ch.Ship.Name = "The Coder";
+	ch.Ship.Name = TranslateString("","The Coder");
 	ch.Ship.Type = "PiratFrigateSup";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4"); //(ch, "blade26+1");
@@ -1584,13 +1851,13 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Jack Rackham_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Curlew";
+	ch.Ship.Name = TranslateString("","Curlew");
 	ch.Ship.Type = "HMS_Sophie";
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 0;
 	ch.Flags.Pirate.texture = 0;
-	GiveItem2Character(ch, "blade21"); 
-	ch.equip.blade = "blade21"; 
+	GiveItem2Character(ch, "blade21"); //"blade26+1");
+	ch.equip.blade = "blade21"; //"blade26+1";
 	GiveItem2Character(ch, "pistol5+1");
 	ch.equip.gun = "pistol5+1";
 	// PB <--
@@ -1648,7 +1915,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Peter Willemoes_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Horn";
+	ch.Ship.Name = TranslateString("","Horn");
 	ch.Ship.Type = "Sloop1";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4"); //(ch, "blade26+1");
@@ -1727,7 +1994,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.skill.Defence = "10";
 	ch.skill.Commerce = "5";
 	ch.skill.Sneak = "10";
-	ch.Ship.Name = "Interceptor"; // Kazeite
+	ch.Ship.Name = TranslateString("","Interceptor"); // Kazeite
 	ch.Ship.Type = "HMS_Interceptor"; // Kazeite
 	ch.Ship.Stopped = false; // SJG
 	ch.Flags.Pirate = 2;
@@ -1774,7 +2041,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Captain Damski_dialog.c";
 	// PB -->
-	ch.Ship.Name = "Slick Rigging";
+	ch.Ship.Name = TranslateString("","Slick Rigging");
 	ch.Ship.Type = "Sloop2";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4"); //(ch, "blade26+1");
@@ -1835,7 +2102,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Captain Maximus_dialog.c";
-	ch.Ship.Name = "The Big Buccaneer";
+	ch.Ship.Name = TranslateString("","The Big Buccaneer");
 	ch.Ship.Type = "Cutter1";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4");
@@ -1893,7 +2160,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Captain Philippe_dialog.c";
-	ch.Ship.Name = "Compass Rose";
+	ch.Ship.Name = TranslateString("","Compass Rose");
 	ch.Ship.Type = "Sloop1";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4");
@@ -1951,7 +2218,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Couch Captain Charles_dialog.c";
 	// PB -->
-	ch.Ship.Name = "The Comfy Sofa";
+	ch.Ship.Name = TranslateString("","The Comfy Sofa");
 	ch.Ship.Type = "HMS_Sophie";
 	ch.Ship.Stopped = true;
 	GiveItem2Character(ch, "blade4"); //(ch, "blade26+1");
@@ -2875,10 +3142,10 @@ void CreateTempQuestCharacters(ref n)
 	ch.location	= "";
 	ch.location.group = "";
 	ch.location.locator = "";
-	ch.Ship.Name = "Sargento";
+	ch.Ship.Name = TranslateString("","Sargento");
 	ch.Ship.Type = "SP_Neptunus";
 	ch.Ship.Stopped = true;
-	ch.Flags.Pirate = 5; // PB: Eduardo Villanueva Pirate Flag
+	ch.Flags.Pirate = 20; // PB: Eduardo Villanueva Pirate Flag
 	ch.Flags.Pirate.texture = 0;
 	ch.Dialog.Filename = "Eduardo Villanueva_dialog.c";
 	ch.greeting = "Gr_Eduardo Villanueva";
@@ -2923,7 +3190,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location	= "none";
 	ch.location.group = "";
 	ch.location.locator = "";
-	ch.Ship.Name = "La Licorne";
+	ch.Ship.Name = TranslateString("","La Licorne");
 	ch.Ship.Type = "FR_Licorne";
 	ch.Ship.Stopped = true; 
 	ch.Dialog.Filename = "Francois de Hadoque_dialog.c";
@@ -3154,7 +3421,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Sao Feng_dialog.c";
 	ch.Dialog.Filename.GroupDialog = "governor.c";
 	ch.greeting = "Gr_Sao Feng";
-	ch.Ship.Name = "Empress";
+	ch.Ship.Name = TranslateString("","Empress");
 	ch.Ship.Type = "Empress";
 	ch.Ship.Stopped = true;
 	ch.Flags.Pirate = 4; // JRH&GR: Sao Feng's Pirate Pennant
@@ -3351,7 +3618,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Mergildo Hurtado_dialog.c";
-	ch.Ship.Name = "Montanez";
+	ch.Ship.Name = TranslateString("","Montanez");
 	ch.Ship.Type = "Barque1"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.nosurrender = 2; // PB
@@ -3438,7 +3705,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";//locator8
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "Hundred Devils"; // KK
+	ch.Ship.Name = TranslateString("","Hundred Devils"); // KK
 	ch.Ship.Type = "Barque2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3490,7 +3757,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.old.Dialog.Filename = ch.Dialog.Filename; // KK
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "666"; // KK
+	ch.Ship.Name = TranslateString("","666"); // KK
 	ch.Ship.Type = "Brig2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3582,7 +3849,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";//locator8
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "Hundred Devils"; // KK
+	ch.Ship.Name = TranslateString("","Hundred Devils"); // KK
 	ch.Ship.Type = "Barque2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3634,7 +3901,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.old.Dialog.Filename = ch.Dialog.Filename; // KK
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "666"; // KK
+	ch.Ship.Name = TranslateString("","666"); // KK
 	ch.Ship.Type = "Brig2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3687,7 +3954,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";//locator8
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "Hundred Devils"; // KK
+	ch.Ship.Name = TranslateString("","Hundred Devils"); // KK
 	ch.Ship.Type = "Barque2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3739,7 +4006,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.old.Dialog.Filename = ch.Dialog.Filename; // KK
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "666"; // KK
+	ch.Ship.Name = TranslateString("","666"); // KK
 	ch.Ship.Type = "Brig2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3831,7 +4098,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";//locator8
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "Hundred Devils"; // KK
+	ch.Ship.Name = TranslateString("","Hundred Devils"); // KK
 	ch.Ship.Type = "Barque2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3883,7 +4150,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.old.Dialog.Filename = ch.Dialog.Filename; // KK
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "666"; // KK
+	ch.Ship.Name = TranslateString("","666"); // KK
 	ch.Ship.Type = "Brig2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -3975,7 +4242,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "";//locator8
 	ch.Dialog.Filename = "Quest_ANIMISTS_dialog.c";
 	ch.greeting = "Gr_Quest_ANIMISTS";
-	ch.Ship.Name = "Hundred Devils"; // KK
+	ch.Ship.Name = TranslateString("","Hundred Devils"); // KK
 	ch.Ship.Type = "Barque2"; // PRS3
 	ch.Ship.Stopped = true;
 	ch.skipRM = true; // PB: Skip Relations Mod
@@ -4025,7 +4292,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.Dialog.Filename = "Gyles Dubois_dialog.c";
-	ch.Ship.Name = "Crimson Blood";
+	ch.Ship.Name = TranslateString("","Crimson Blood");
 	ch.Ship.Type = "CrimsonBlood"; // Cylon13
 	ch.Ship.Stopped = true;
 	ch.Ship.EmblemedSails.normalTex = "sail_Petros_black_red.tga"; // PB
@@ -4450,7 +4717,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.name = TranslateString("", "Bos'un");
 	ch.lastname = "";
 	ch.id		= "Bos'un";
-	ch.model	= "Ancient"; 
+	ch.model	= "BlackCaesar"; 
 	ch.sex = "man";
 	GiveItem2Character(ch, "blade4");
 	ch.equip.blade = "blade4";
@@ -4781,7 +5048,7 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.group = "";
 	ch.location.locator = "";
 	//--> CTM
-	ch.Ship.Name = "Van Diemen";
+	ch.Ship.Name = TranslateString("","Van Diemen");
 	ch.Ship.Type = "RN_RevengeW";
 	ch.Ship.Stopped = true;
 	//<-- CTM
@@ -4822,6 +5089,8 @@ void CreateTempQuestCharacters(ref n)
 	ch.location.locator = "goto5";
 	ch.Dialog.Filename = "Reynoud Verheugen_dialog.c";
 	ch.greeting = "Gr_Toff Oremans";
+	ch.Ship.Type = "obj_Boat2"; 				//SfsiWreck		
+	ch.Ship.Stopped = true;
 	ch.rank 	= 1;
 	ch.reputation = "None";
 	ch.experience = "0";
@@ -5068,4 +5337,190 @@ void CreateTempQuestCharacters(ref n)
 	LAi_group_MoveCharacter(ch, "SPAIN_SOLDIERS");
 	ch.greeting = "Gr_Redmond Soldier";
 	AddGameCharacter(n, ch);
+	
+	//DMC CHARACTERS//
+
+    // Sailor at Turks Elton Garfield
+	ch.old.name = "Elton";
+	ch.old.lastname = "Garfield";
+	ch.name = TranslateString("","Elton");
+	ch.lastname = TranslateString("","Garfield");
+	ch.id		= "Elton Garfield";
+	ch.model = "corsair1_2";
+	ch.sex = "man";
+	ch.sound_type = "pirate";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.location	= "none";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.rank 	= 30;
+	ch.reputation = "50";
+	ch.experience = "0";
+	ch.skill.Leadership = "10";
+	ch.skill.Fencing = "7";
+	ch.skill.Sailing = "8";
+	ch.skill.Accuracy = "5";
+	ch.skill.Cannons = "5";
+	ch.skill.Grappling = "5";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "7";
+	ch.skill.Commerce = "6";
+	ch.skill.Sneak = "4";
+	ch.money = "100";
+	ch.quest.meeting = "0";
+	ch.Dialog.Filename = "Elton Garfield_dialog.c";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 200.0, 200.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+
+	// Turks prison guard
+	ch.old.name = "Prison";
+	ch.old.lastname = "Guard";
+	ch.name = TranslateString("Prison","Guard");
+	ch.lastname = "";
+	ch.id		= "turks_prison_guard1";
+	ch.model = "50evl2in";
+	ch.sex = "man";
+	ch.sound_type = "pirate";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.location	= "none";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.rank 	= 30;
+	ch.reputation = "50";
+	ch.experience = "0";
+	ch.skill.Leadership = "10";
+	ch.skill.Fencing = "7";
+	ch.skill.Sailing = "8";
+	ch.skill.Accuracy = "5";
+	ch.skill.Cannons = "5";
+	ch.skill.Grappling = "5";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "7";
+	ch.skill.Commerce = "6";
+	ch.skill.Sneak = "4";
+	ch.money = "100";
+	ch.quest.meeting = "0";
+	ch.Dialog.Filename = "Turks_prison_guard1_dialog.c";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 200.0, 200.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+	
+	//Turks prison guard captain
+	ch.old.name = "Guard";
+	ch.old.lastname = "Captain";
+	ch.name = TranslateString("Guard","Captain");
+	ch.lastname = "";
+	ch.id		= "prison_guard_captain";
+	ch.model	= "Corsair5";
+	ch.sound_type = "pirate";
+	ch.sex = "man";
+	ch.sound_type = "pirate";
+	GiveItem2Character(ch, "blade4");
+	ch.equip.blade = "blade4";
+	ch.location	= "none";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.rank 	= 30;
+	ch.reputation = "50";
+	ch.experience = "0";
+	ch.skill.Leadership = "10";
+	ch.skill.Fencing = "7";
+	ch.skill.Sailing = "8";
+	ch.skill.Accuracy = "5";
+	ch.skill.Cannons = "5";
+	ch.skill.Grappling = "5";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "7";
+	ch.skill.Commerce = "6";
+	ch.skill.Sneak = "4";
+	ch.money = "100";
+	ch.quest.meeting = "0";
+	ch.Dialog.Filename = "Turks_prison_captain_dialog.c";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 200.0, 200.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+
+	//Atwood Paddley
+	ch.old.name = "Atwood";
+	ch.old.lastname = "Paddley";
+	ch.name = TranslateString("", "Atwood");
+	ch.lastname = TranslateString("","Paddley");
+	ch.id		= "Atwood Paddley";
+	ch.model	= "Bocman";
+	ch.sound_type = "pirate";
+	ch.sex = "man";
+	ch.sound_type = "pirate";
+	//GiveItem2Character(ch, "blade4");
+	//ch.equip.blade = "blade4";
+	ch.location	= "none";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.rank 	= 30;
+	ch.reputation = "50";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "2";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "5";
+	ch.skill.Grappling = "5";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "3";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "100";
+	ch.quest.meeting = "0";
+	ch.Dialog.Filename = "Atwood_Paddley_dialog.c";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 200.0, 200.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+	
+	//Cannibal chief
+	ch.old.name = "Cannibal";
+	ch.old.lastname = "Chief";
+	ch.name = TranslateString("Cannibal","Chief");
+	ch.lastname = "";	
+	ch.id		= "Cannibal_chief";
+	ch.model	= "RabBlack_1";
+	ch.sound_type = "pirate";
+	ch.sex = "man";
+	ch.sound_type = "pirate";
+	//GiveItem2Character(ch, "blade4");
+	//ch.equip.blade = "blade4";
+	ch.location	= "none";
+	ch.location.group = "";
+	ch.location.locator = "";
+	ch.rank 	= 30;
+	ch.reputation = "50";
+	ch.experience = "0";
+	ch.skill.Leadership = "1";
+	ch.skill.Fencing = "2";
+	ch.skill.Sailing = "1";
+	ch.skill.Accuracy = "1";
+	ch.skill.Cannons = "5";
+	ch.skill.Grappling = "5";
+	ch.skill.Repair = "5";
+	ch.skill.Defence = "3";
+	ch.skill.Commerce = "1";
+	ch.skill.Sneak = "1";
+	ch.money = "100";
+	ch.quest.meeting = "0";
+	ch.Dialog.Filename = "slave_dialog.c";
+	LAi_SetStayType(ch);
+	LAi_SetLoginTime(ch, 0.0, 24.0);
+	LAi_SetHP(ch, 200.0, 200.0);
+	ch.questchar = true;//MAXIMUS: identifier for captives
+	AddGameCharacter(n, ch);
+	
 }

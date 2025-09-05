@@ -85,7 +85,7 @@ void DailyCrewUpdate()
 		{
 			rationedFoodConsumption = foodused / makefloat(foodrations);
 			//Add by levis for cooking perk:
-			if(CheckCharacterPerk(pchar, "Cooking")) rationedFoodConsumption = rationedFoodConsumption*0.9;
+			if(CheckPerkForGroup(pchar, "Cooking")) rationedFoodConsumption = rationedFoodConsumption*0.9;
 		}
 		if(CheckFood) food_daysleft = makeint((makefloat(foodQ) - foodusedtemp) / rationedFoodConsumption);
 
@@ -408,19 +408,22 @@ void DailyCrewUpdate()
 				float uncursed_percentage = stf(crewQ)/GetSquadronTotalCrewQuantity(pchar);
 				moralescale = moralescale * uncursed_percentage;
 				if(moralescale < 0.5)	moralescale = 0.5;
-				LogIt("Captain, " + makeint((1-uncursed_percentage)*100) + "% of the crew is cursed due to " + CursedCoins + " Aztec coins");
+			//	LogIt("Captain, " + makeint((1-uncursed_percentage)*100) + "% of the crew is cursed due to " + CursedCoins + " Aztec coins");
+				LogIt(TranslateString("","Captain") + ", " + makeint((1-uncursed_percentage)*100) + "% " + TranslateString("","of the crew is cursed due to") + " "  + CursedCoins + " " + TranslateString("","Aztec coins") );
 			}
 
-			for (i = 0; i < GetCompanionQuantity(pchar); i++) {
-				chref = GetCharacter(GetCompanionIndex(GetMainCharacter(), sti(i)));
+			for (i = 0; i < COMPANION_MAX; i++)
+			{
+				if (GetCompanionIndex(PChar, i) < 0) continue;
+				chref = GetCharacter(GetCompanionIndex(PChar, i));
 				if(CheckCharacterItem(chref,"cursedcoin"))
 				{
 					if(!CheckAttribute(chref, "curseddays"))	chref.curseddays = 0;
 					chref.curseddays = sti(chref.curseddays) + 1;
 				}
 			}
-			if(sti(pchar.curseddays)==25)	LogIt("Captain, the crew is really not happy with this whole curse business. They work SO HARD at repairing the sails, but it appears to have no effect!");
-			if(sti(pchar.curseddays)==35)	LogIt("Captain, now the crew can't even see where they're going anymore with all this unnatural fog! Cannot you be persuaded to attempt to lift the curse?");
+			if(sti(pchar.curseddays)==25)	LogIt(TranslateString("","Captain, the crew is really not happy with this whole curse business. They work SO HARD at repairing the sails, but it appears to have no effect!"));
+			if(sti(pchar.curseddays)==35)	LogIt(TranslateString("","Captain, now the crew can't even see where they're going anymore with all this unnatural fog! Cannot you be persuaded to attempt to lift the curse?"));
 		}
 		// PB: Cursed Coins <--
 
@@ -519,8 +522,18 @@ void DailyCrewUpdate()
 //trace("DailyCrewUpdate: old morale = " + pchar.Ship.Crew.Morale + ", norm_morale = " + norm_morale + ", moralemod = " + moralemod + ", moralech = " + moralech + ", new morale = " + morale);
 		pchar.Ship.Crew.Morale = morale;
 
-		if (morale <= 10) KAM_Mutiny(); //MAXIMUS: new "Mutiny"
-		if(LogsToggle > LOG_QUIET) Log_SetStringToLog(TranslateString("","The crew now has") + " " + XI_ConvertString(GetMoraleName(morale)) + " " + XI_ConvertString("morale") + " (" + makeint(morale) + ").");
+        	if (morale <= 10) KAM_Mutiny(); //MAXIMUS: new "Mutiny"
+		if(LogsToggle > LOG_QUIET)
+		{
+	        	switch (LanguageGetLanguage())
+			{
+				case "Spanish":
+					Log_SetStringToLog(TranslateString("","The crew now has") + " " + XI_ConvertString("morale") + " " + XI_ConvertString(GetMoraleName(morale)) + " (" + makeint(morale) + ").");            
+				break;
+				// default:
+				Log_SetStringToLog(TranslateString("","The crew now has") + " " + XI_ConvertString(GetMoraleName(morale)) + " " + XI_ConvertString("morale") + " (" + makeint(morale) + ").");
+			}
+		}
 		if(!CheckFood) { pchar.foodoff = true; }
 
 		
@@ -579,7 +592,7 @@ void DailyCrewUpdate()
 						if(!CheckAttribute(chref, "mutiny_note") && GetDifficulty() < DIFFICULTY_SEADOG) // Hints only on Landlubber and Mariner
 						{
 							chref.mutiny_note = true;	
-							LogIt("Captain, the crew of the " + XI_ConvertString(GetShipString(GetCharacterShipType(chref))) + " " + GetMyShipNameShow(chref) + " " + TranslateString("", "commanded by") + " " + GetMySimpleName(chref) + " has less than Low morale. Beware of mutiny!");
+							LogIt(TranslateString("","Captain, the crew of the") +" "+ XI_ConvertString(GetShipString(GetCharacterShipType(chref))) +" "+ GetMyShipNameShow(chref) +" "+ TranslateString("", "commanded by") + " " + GetMySimpleName(chref) +" "+ TranslateString("","has less than Low morale. Beware of mutiny!"));
 						}
 					}
 				}
@@ -662,12 +675,16 @@ void DailyCrewUpdate()
 
 			if (GetWoundedCrewQuantity(chref) > 0 || healed_qty > 0 || killed_qty > 0)
 			{
-				LogIt(GetWoundedCrewQuantity(chref) + " wounded crewmembers: " + healed_qty + " healed and " + killed_qty + " died from gangrene on "+GetMyShipNameShow(chref)+".");
+				LogIt(GetWoundedCrewQuantity(chref) +" "+ TranslateString("","wounded crewmembers:") +" "+ healed_qty +" "+ TranslateString("","healed and") +" "+ killed_qty +" "+ TranslateString("","died from gangrene on")+ " "+ GetMyShipNameShow(chref)+".");
 			} // Serge Grey: moved and changed for ship's name outputting (24.05.2018).
 		}
+		LAi_SetCurHPMax(chref);		// GR: routine personal healing doesn't seem to happen at sea, so heal fully instead
 	}
-	if (wounded_total > 0 || healed_total > 0 || killed_total > 0) {
-		LogIt(wounded_total + " wounded crewmembers: " + healed_total + " healed and " + killed_total + " died from gangrene.");
+
+	for (i = 1; i < OFFICER_MAX; i++)	// Heal officers too
+	{
+		cn = GetOfficersIndex(PChar, i);
+		if (cn != -1) LAi_SetCurHPMax(&Characters[cn]);
 	}
 // KK & PB <--
 

@@ -165,7 +165,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 5.0;
@@ -187,7 +187,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 5.5;
@@ -279,7 +279,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 3.4;
@@ -303,7 +303,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 5.5;
@@ -328,7 +328,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 6.0;
@@ -352,7 +352,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 6.1;
@@ -376,7 +376,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 5.0;
@@ -400,7 +400,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 7.0;
@@ -424,7 +424,7 @@ void InitCannons()
 		rCannon.FireAngMax = 1.0;
 		rCannon.FireAngMin = 1.0;
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 9.1;
@@ -503,7 +503,7 @@ void InitCannons()
 		rCannon.FireAngMax = 0.60 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.FireAngMin = -0.35 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 1.5;
@@ -563,7 +563,7 @@ void InitCannons()
 		rCannon.FireAngMax = 0.60 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.FireAngMin = -0.35 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 1.5;
@@ -583,7 +583,7 @@ void InitCannons()
 		rCannon.FireAngMax = 0.60 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.FireAngMin = -0.35 * FIRE_ANGLE_SCALAR_H*0.5; // NK 04-09-09
 		rCannon.TimeSpeedMultiply = 1.0;
-		rCannon.BigBall = 0;
+		rCannon.BigBall = 1;
 		rCannon.SizeMultiply = 1.0;
 		rCannon.HeightMultiply = 1.0;
 		rCannon.DamageMultiply = 2.25;

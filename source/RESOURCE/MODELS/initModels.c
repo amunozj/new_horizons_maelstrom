@@ -746,7 +746,7 @@ void InitModels(bool isstart)
 	model.Flags.Pirate = 23;
 	model.Flags.Personal = 25;
 	model.ship = "FR_Sloop";
-	model.shipname = "Le R?ve";
+	model.shipname = "Le Rève";
 	model.date.hour = 10;
 	model.date.min = 24;
 	model.date.sec = 42;
@@ -1015,7 +1015,7 @@ void InitModels(bool isstart)
 	model.price	=  2000;
 	model.assigned	=  true;
 	model.sex	=  "woman";
-	model.ani	=  "woman_sit";
+	model.ani	=  "man_woman_sit";
 	model.height	=  1.75;
 //	model.name = "Claire";
 //	model.lastname = "Larrouse";
@@ -2168,7 +2168,7 @@ void InitModels(bool isstart)
 	model.id	   =  "beatrise";
 	model.FaceId	= 204;
 	model.sex		 =  "woman";
-	model.ani		 =  "woman_sit";
+	model.ani		 =  "man_woman_sit";
 	model.height	  =  1.75;
 	model.nation	  =  PORTUGAL;
 	model.price	   =  1200;
@@ -4678,7 +4678,7 @@ void InitModels(bool isstart)
 	model.nation	  =  FRANCE;
 	model.price	   =  500;
 	model.assigned	=  true;
-	model.name = "Fran?ois";
+	model.name = "François";
 	model.lastname = "de Hadoque";
 	model.ship = "FR_Licorne";
 	model.shipname = "La Licorne";
@@ -5175,7 +5175,7 @@ void InitModels(bool isstart)
 	AddCharacterModel(model);
 	// <-- For the Bartolomeu o Portugues quest
 
-	model.description	=  "It's actually spelled, Concei??o!";
+	model.description	=  "It's actually spelled, Conceição!";
 	model.id		=  "Kieron";
 	model.FaceId		=  10;
 	model.nation		=  ENGLAND;
@@ -9364,7 +9364,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_Farmer";
-	model.ani = "man_NH";
 	model.FaceId	= 63;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;
@@ -9373,7 +9372,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_girl";
-	model.ani = "man_NH";
 	model.FaceId	= 160;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;
@@ -9382,7 +9380,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_invisible";
-	model.ani = "man_NH";
 	model.FaceId	= 100;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;
@@ -9391,7 +9388,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_man";
-	model.ani = "man_NH";
 	model.FaceId	= 135;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;
@@ -9400,7 +9396,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_soldier";
-	model.ani = "man_NH";
 	model.FaceId	= 9;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;
@@ -9409,7 +9404,6 @@ void InitModels(bool isstart)
 
 	model.description =  "I am invisible - you can't see me!";
 	model.id	   =  "B_worker";
-	model.ani = "man_NH";
 	model.FaceId	= 34;
 	model.nation	  =  BROKEN;
 	model.price	   =  50;

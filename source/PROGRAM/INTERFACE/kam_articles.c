@@ -9,7 +9,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "titleKAMArticles";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	CreateExitString();//MAXIMUS: standard exit-string for exit-button
+	// CreateExitString();//MAXIMUS: standard exit-string for exit-button
 
 	CreateString(true,"IslandName","",FONT_NORMAL,COLOR_NORMAL,320,190,SCRIPT_ALIGN_CENTER,1.0);
 
