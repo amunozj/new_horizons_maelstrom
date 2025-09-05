@@ -746,7 +746,7 @@ void InitModels(bool isstart)
 	model.Flags.Pirate = 23;
 	model.Flags.Personal = 25;
 	model.ship = "FR_Sloop";
-	model.shipname = "Le Rï¿½ve";
+	model.shipname = "Le Rève";
 	model.date.hour = 10;
 	model.date.min = 24;
 	model.date.sec = 42;
@@ -1022,7 +1022,7 @@ void InitModels(bool isstart)
 	AddCharacterModel(model);
 	// <-- no model assignment quest character
 
-	model.description =  "As skilled with the sword as she is beautiful, they call her Borinqueï¿½a";
+	model.description =  "As skilled with the sword as she is beautiful, they call her Borinqueña";
 	model.id       =  "50_33Petra";
 	model.FaceId	= 175;
 	model.nation      =  SPAIN;
@@ -1033,7 +1033,7 @@ void InitModels(bool isstart)
 	model.ani         =  "woman_sit";
 	model.height      =  1.75;
 	model.name = "Petra";
-	model.lastname = "Borinqueï¿½a";
+	model.lastname = "Borinqueña";
 	AssignModelType(isstart, model, "women", 1.0);
 	AssignModelType(isstart, model, OFFIC_TYPE_DOCTOR, 1.0);
 	AddCharacterModel(model);
@@ -2153,7 +2153,7 @@ void InitModels(bool isstart)
 	model.assigned		=  true;
 	model.name = "Hector";
 	model.lastname = "Barbossa";
-	model.storytitle = "The Curse of Cortï¿½s";
+	model.storytitle = "The Curse of Cortés";
 	model.storytext = "Pirate Lord of the Caspian Sea. Mutineer. And now finder of the lost treasure of Isla de Muerta. You are ready to make good use of your new-found wealth! But a nasty surprise lies in store for you...";
 	model.playertype = PLAYER_TYPE_CURSED;
 	model.ship = SHIP_CURSED;
@@ -4185,7 +4185,7 @@ void InitModels(bool isstart)
 	model.period = "" + PERIOD_COLONIAL_POWERS + PERIOD_REVOLUTIONS + PERIOD_NAPOLEONIC;
 	AddCharacterModel(model);
 
-	model.description =  "A French Naval Commodore's uniform. Oui, C'est trï¿½s bon.";
+	model.description =  "A French Naval Commodore's uniform. Oui, C'est très bon.";
 	model.id          =  "fra_cmd_18";
 	model.FaceId      =  101;
 	model.minlevel    =  14;
@@ -4236,7 +4236,7 @@ void InitModels(bool isstart)
 	AssignModelTypeNation(isstart, model, "navy", 1.0, FRANCE);	// ccc Feb06
 	AddCharacterModel(model);
 
-	model.description =  "A French Naval Lieutenant's uniform, s'il vous plait. Blue and white from 'la mï¿½re' and 'rouge' from blood!";
+	model.description =  "A French Naval Lieutenant's uniform, s'il vous plait. Blue and white from 'la mère' and 'rouge' from blood!";
 	model.id          =  "fra_lut2_18";
 	model.FaceId      =  101;
 	model.minlevel    =  6;
@@ -4678,7 +4678,7 @@ void InitModels(bool isstart)
 	model.nation	  =  FRANCE;
 	model.price	   =  500;
 	model.assigned	=  true;
-	model.name = "Franï¿½ois";
+	model.name = "François";
 	model.lastname = "de Hadoque";
 	model.ship = "FR_Licorne";
 	model.shipname = "La Licorne";
@@ -5031,7 +5031,7 @@ void InitModels(bool isstart)
 	model.loadingScreen = "Character_LaCroix.tga";
 	model.playertype = PLAYER_TYPE_ROGUE;
 	model.difficulty = DIFFICULTY_MARINER;
-	model.Flags.Pirate = 3;
+	model.Flags.Pirate = 3
 	model.Flags.Personal = 3;
 	model.ship = "Schooner2";
 	model.shipname = "Le Cheval Furieux";
@@ -5175,7 +5175,7 @@ void InitModels(bool isstart)
 	AddCharacterModel(model);
 	// <-- For the Bartolomeu o Portugues quest
 
-	model.description	=  "It's actually spelled, Conceiï¿½ï¿½o!";
+	model.description	=  "It's actually spelled, Conceição!";
 	model.id		=  "Kieron";
 	model.FaceId		=  10;
 	model.nation		=  ENGLAND;
@@ -5436,7 +5436,7 @@ void InitModels(bool isstart)
 	model.assigned	=  true;
 	model.name = "Michiel";
 	model.lastname = "de Ruyter";
-	model.storytitle = "Bestevaï¿½r";
+	model.storytitle = "Bestevaêr";
 	model.storytext = "Born as Michiel Adriaenszoon de Ruyter to a beer porter in Vlissingen, you are a humble man. However, the Anglo-Dutch Wars of the 17th century will give you plenty of opportunity for greatness!";
 	model.playertype = PLAYER_TYPE_NAVAL_OFFICER;
 	model.ship = "NL_NeptunusE";
@@ -5777,7 +5777,7 @@ void InitModels(bool isstart)
 	AssignModelType(isstart, model, OFFIC_TYPE_FIRSTMATE, 1.0); // later switch this to CAP?
 	AddCharacterModel(model);
 
-	model.description =  "I feel like a Portuguese Marine. How about something like Lourenï¿½o Vaz ?";
+	model.description =  "I feel like a Portuguese Marine. How about something like Lourenço Vaz ?";
 	model.id	   =  "Navy_Portugal";
 	model.FaceId	= 363;
 	model.nation	  =  PORTUGAL;
@@ -6631,7 +6631,7 @@ void InitModels(bool isstart)
 	model.nation	  =  SPAIN;
 	model.price	   =  100;
 	model.assigned	=  true;
-	model.name = "Josï¿½";
+	model.name = "José";
 	model.lastname = "Gaspar";
 	model.storytitle = "The Legend of Gasparilla";
 	model.storytext = "Eventually becoming the last of the Buccaneers, rumours surrounding your life have been scarce. Most say you were born in Spain in 1756 and served in the Spanish Navy. Whatever may be the truth, you worked yourself up from a lowly position until you gained command of a ship of your own. It is time to make a name for yourself in the waters south of Florida!";
@@ -6662,8 +6662,8 @@ void InitModels(bool isstart)
 	model.nation	  =  PORTUGAL;
 	model.price	   =  120;
 	model.assigned	=  true;
-    model.name = "Josï¿½";
-    model.middlename = "Joaquï¿½n";
+    model.name = "José";
+    model.middlename = "Joaquín";
 	model.lastname = "Almeida";
     model.storytitle = "Rustic Sea Wolf";
     model.storytext = "I left my Portuguese home in the Azores for America in 1796 at the age of 19. I worked as a merchant for a while but now with the outbreak of war I have turned privateer.";
