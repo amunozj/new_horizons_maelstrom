@@ -788,7 +788,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_claire";
 	locations[n].id.label = "House";
-	Locations[n].filespath.models = "locations\inside\MediumHouse\\";
+	Locations[n].filespath.models = "locations\inside\MediumHouse\";
 	Locations[n].filespath.textures = "locations\inside\MediumHouse";
 	Locations[n].image = "wr_claire.tga";
 
@@ -1001,7 +1001,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_food_supply";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogers´food supply.";
+	Locations[n].reload.l3.label = "Woodes Rogersï¿½food supply.";
 	Locations[n].locators_radius.reload.reload3 = 0.5;
 	Locations[n].reload.l3.disable = 1;				
 
@@ -1359,7 +1359,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "wr_library";
 	Locations[n].reload.l3.emerge = "reload1";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogers´ library.";
+	Locations[n].reload.l3.label = "Woodes Rogersï¿½ library.";
 
 	//Charles Windem room
 	Locations[n].reload.l4.name = "reload4";
@@ -1495,7 +1495,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "wr_library";
 	locations[n].id.label = "Woodes Rogers' library";		
 	Locations[n].image = "wr_library.tga";
-	Locations[n].filespath.models = "locations\inside\Residence2\\";
+	Locations[n].filespath.models = "locations\inside\Residence2\";
 
 	//Town sack
 	Locations[n].townsack = "Redmond";
@@ -1532,7 +1532,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l2.go = "wr_residence";
 	Locations[n].reload.l2.emerge = "reload2";
 	Locations[n].reload.l2.autoreload = "0";
-	Locations[n].reload.l2.label = "Woodes Rogers´residence.";
+	Locations[n].reload.l2.label = "Woodes Rogersï¿½residence.";
 	Locations[n].locators_radius.reload.reload2 = 0.1;//0.5 later on
 
 	//attic
@@ -1795,7 +1795,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "wr_study";
 //	locations[n].id.label = "Woodes Rogers' study";		//open = on
 	Locations[n].image = "wr_study.tga";
-	Locations[n].filespath.models = "locations\inside\shipyard5\\";
+	Locations[n].filespath.models = "locations\inside\shipyard5\";
 
 	//Town sack
 	Locations[n].townsack = "Redmond";
@@ -2849,7 +2849,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_mother_stairs";
 //	locations[n].id.label = "House";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "wr_mother_stairs.tga";
 
 	//Town sack
@@ -3434,7 +3434,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_mine_control";
 	locations[n].id.label = "Port Royal old mine";
-	Locations[n].filespath.models = "locations\inside\Dungeon_2\\";
+	Locations[n].filespath.models = "locations\inside\Dungeon_2\";
 	Locations[n].image = "wr_mine_control.tga";
 
 	//Town sack
@@ -4638,7 +4638,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_wood_tower3";
 	locations[n].id.label = "Wood tower";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\wood_tower";
 	Locations[n].image = "wr_wood_tower3.tga";
 
@@ -5002,7 +5002,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_church_attic_stairs";
 	locations[n].id.label = "Entrance to church attic";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "wr_church_attic_stairs.tga";
 
@@ -5469,7 +5469,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "wr_chapel";
 	locations[n].id.label = "Chapel";
 	Locations[n].image = "wr_chapel.tga";
-	Locations[n].filespath.models = "locations\inside\Church_2\\";
+	Locations[n].filespath.models = "locations\inside\Church_2\";
 	Locations[n].filespath.textures = "locations\inside\Church_2\chapel";
 	
 
@@ -5522,7 +5522,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "wr_animists_stairs";
 //	locations[n].id.label = "Temple stairs";				//turn it on later
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\chapel";
 	Locations[n].image = "wr_animists_stairs.tga";
 
@@ -6926,7 +6926,7 @@ void LocationInitQuestLocations(ref n)
 	n = n + 1;
 
 // -------------------------------------------------
-//pär qdeck
+//pï¿½r qdeck
 	Locations[n].id = "wr_gall_qdeck";
 	locations[n].id.label = "Quarterdeck";
 	//Info
@@ -7851,7 +7851,7 @@ Locations[n].models.always.locators = "qdeck_l_JRH";
 
 	//Models
 	//Always
-	Locations[n].filespath.models = "locations\inside\mh6_galley\\";
+	Locations[n].filespath.models = "locations\inside\mh6_galley\";
     	Locations[n].models.always.l1 = "mh6";
 	Locations[n].models.always.locators = "mh6_l_JRH";
 	Locations[n].models.always.window.tech = "LocationWindows";
@@ -7913,7 +7913,7 @@ Locations[n].models.always.locators = "qdeck_l_JRH";
 
 	//Models
 	//Always
-	Locations[n].filespath.models = "locations\inside\mh6_galley\\";
+	Locations[n].filespath.models = "locations\inside\mh6_galley\";
     	Locations[n].models.always.l1 = "mh6";
 	Locations[n].models.always.locators = "mh6_l_JRH_closed";
 	Locations[n].models.always.window.tech = "LocationWindows";
@@ -8457,7 +8457,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "wr_farm_corridor";
 	//locations[n].id.label = "Rogers' passage";				//when opened
-	Locations[n].filespath.models = "locations\inside\Corridor\\";
+	Locations[n].filespath.models = "locations\inside\Corridor\";
 	Locations[n].filespath.textures = "locations\inside\Corridor\dark";	//start dark, normal later
 
 	Locations[n].image = "wr_farm_corridor.tga";
@@ -9659,7 +9659,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "bb_prison_elevator";
 	locations[n].id.label = "Elevator";
-	Locations[n].filespath.models = "locations\inside\Dungeon_2\\";
+	Locations[n].filespath.models = "locations\inside\Dungeon_2\";
 	Locations[n].filespath.textures = "locations\inside\Dungeon_2\elevator";
 	Locations[n].image = "wr_prison_elevator.tga";
 
@@ -9938,10 +9938,10 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 	n = n + 1;
 
 	//  -------------------------------------------------
-//pär
+//pï¿½r
 	Locations[n].id = "bb_prison_stairs2";
 //	locations[n].id.label = "House";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\Tortuga";	
 	Locations[n].image = "Inside_Townhall_Stairs_Tortuga.tga";
 
@@ -10805,7 +10805,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "Oriel_room_stairs";
 	locations[n].id.label = "Stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -11341,7 +11341,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "Kristiania_shipyard_stairs";
 	locations[n].id.label = "Shipyard stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -11908,7 +11908,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "Kristiania_brothel_stairs";
 	locations[n].id.label = "To the Brothel";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 //	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\wood_tower";
 	Locations[n].image = "GB_small_stairs.tga";
@@ -12110,7 +12110,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 	Locations[n].id = "Kristiania_chapel";
 	locations[n].id.label = "Kristiania Chapel";
 	Locations[n].image = "wr_chapel.tga";
-	Locations[n].filespath.models = "locations\inside\Church_2\\";
+	Locations[n].filespath.models = "locations\inside\Church_2\";
 	Locations[n].filespath.textures = "locations\inside\Church_2\chapel";
 	
 	//Sound
@@ -17228,10 +17228,10 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 	n = n + 1;
 
 	// -------------------------------------------------
-//pär
+//pï¿½r
 	Locations[n].id = "Tortuga_tower_stairs_A";
 	locations[n].id.label = "Tower stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\Tortuga";
 	Locations[n].image = "Inside_Townhall_Stairs_Tortuga.tga";
 	//Town sack
@@ -17304,7 +17304,7 @@ Locations[n].reload.l4.go = "wr_gall_qdeck";
 
 	Locations[n].id = "Tortuga_tower_stairs_B";
 	locations[n].id.label = "To the Dovecote";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\Tortuga";
 	Locations[n].image = "Inside_Townhall_Stairs_Tortuga.tga";
 
@@ -17435,7 +17435,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 
 	Locations[n].id = "Tortuga_tower_passage";
 	//locations[n].id.label = "Tower passage";				//when opened
-	Locations[n].filespath.models = "locations\inside\Corridor\\";
+	Locations[n].filespath.models = "locations\inside\Corridor\";
 	Locations[n].filespath.textures = "locations\inside\Corridor\fort";
 	Locations[n].image = "wr_Tortuga_tower_passage.tga";
 
@@ -17852,7 +17852,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Locations[n].id = "BB_monastary_chapel";
 	locations[n].id.label = "Chapel";
 	Locations[n].image = "Inside_Church_2.tga";
-	Locations[n].filespath.models = "locations\inside\Church_2\\";
+	Locations[n].filespath.models = "locations\inside\Church_2\";
 	
 	//Sound
 	//locations[n].type = "Vane_chapel";
@@ -18804,7 +18804,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Locations[n].id = "BB_Eden_bedroom1";
 	locations[n].id.label = "Bedroom";
 	Locations[n].image = "Inside_estate_bedroom1.tga";
-	Locations[n].filespath.models = "locations\inside\EstateBedRoom1\\";
+	Locations[n].filespath.models = "locations\inside\EstateBedRoom1\";
 	
 	//Sound
 //	locations[n].type = "residence";
@@ -19093,7 +19093,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Locations[n].id = "BB_Eden_dining_room";
 	locations[n].id.label = "Dining room";
 	Locations[n].image = "Inside_diningroom.tga";
-	Locations[n].filespath.models = "locations\inside\Dining_room\\";
+	Locations[n].filespath.models = "locations\inside\Dining_room\";
 	
 	//Sound
 //	locations[n].type = "residence";
@@ -19163,7 +19163,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Locations[n].id = "BB_Eden_bedroom2";
 	locations[n].id.label = "Bedroom";
 	Locations[n].image = "Inside_estate_bedroom2.tga";
-	Locations[n].filespath.models = "locations\inside\EstateBedRoom2\\";
+	Locations[n].filespath.models = "locations\inside\EstateBedRoom2\";
 	
 	//Sound
 	locations[n].type = "Estate_sneaking";
@@ -19312,7 +19312,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 	Locations[n].id = "BB_Eden_chapel";
 	locations[n].id.label = "Chapel";
 	Locations[n].image = "Inside_chapel.tga";
-	Locations[n].filespath.models = "locations\inside\Church_2\\";
+	Locations[n].filespath.models = "locations\inside\Church_2\";
 //	Locations[n].filespath.textures = "locations\inside\Church_2\chapel";
 	
 	//Sound
@@ -21065,7 +21065,7 @@ Locations[n].items.randitem1 = "door_TortugaT";
 //	Locations[n].rats = "true";			//fewer rats added via animals.c
 	Locations[n].island = "Redmond";
 	n = n + 1;
-//pär här
+//pï¿½r hï¿½r
 //--------------------------------------------------------------------------
 //fake location - never visited -just for the label
 

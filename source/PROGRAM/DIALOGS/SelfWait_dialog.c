@@ -15,7 +15,7 @@ void DoWaitHours(int hrs)
     // --- show sand clock fader ---
     if (!IsEntity(&reload_fader)) {
         CreateEntity(&reload_fader, "fader");
-        SendMessage(&reload_fader, "ls", FADER_PICTURE, "loading\\sandclock.tga.tx"); // your custom image
+        SendMessage(&reload_fader, "ls", FADER_PICTURE, "loading\sandclock.tga.tx"); // your custom image
         SendMessage(&reload_fader, "lfl", FADER_IN, 1.0, false); // fade in over 1 second
         SendMessage(&reload_fader, "lfl", FADER_OUT, 1.0, true); // fade out after
     }

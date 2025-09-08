@@ -30,7 +30,7 @@
 #define MSG_MODEL_SET_POSITION			20506
 #define MSG_MODEL_BLEND        			20507
 #define MSG_MODEL_SET_LIGHT_LMPATH	20508
-#define MSG_MODEL_SET_DIRPATH		20509 // "s" = "texture_path\\"
+#define MSG_MODEL_SET_DIRPATH		20509 // "s" = "texture_path\"
 #define MSG_MODEL_SET_TECHNIQUE		20510 // "s" = technique
 #define MSG_MODEL_SET_FOG			20511
 #define MSG_MODEL_SET_MAX_VIEW_DIST	20512

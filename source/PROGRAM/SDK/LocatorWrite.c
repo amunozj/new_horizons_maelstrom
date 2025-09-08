@@ -56,7 +56,7 @@ void DoLocWrite(float magForward, float magUp, int numdigits, bool placebody)
 //			return;
 //		}
 		ref loc = &Locations[FindLoadedLocation()];
-		string locname = "locatormodel: Resource\\models\\" + loc.filespath.models + "\\" + loc.models.always.locators + ".gm";
+		string locname = "locatormodel: Resource\models\" + loc.filespath.models + "\" + loc.models.always.locators + ".gm";
 		// angle components
 		
 		//Inez: corrected angle

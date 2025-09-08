@@ -23,8 +23,8 @@ void Items_LoadModel (ref _itemModel, ref _item)
 		CreateEntity(&_itemModel, "MODELR");
 		if (CheckAttribute(_item, "folder"))
 			itemFolder = _item.folder;
-		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\\"); // qf)")
-		SendMessage(&_itemModel, "ls", MSG_MODEL_LOAD_GEO, itemFolder + "\\" + _item.model);
+		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\"); // qf)")
+		SendMessage(&_itemModel, "ls", MSG_MODEL_LOAD_GEO, itemFolder + "\" + _item.model);
 		SendMessage(&_itemModel, "ls", MSG_MODEL_SET_DIRPATH,"");
 		// NK set blades diff -->
 		// 05-07-13 do for pistols as well
@@ -34,7 +34,7 @@ void Items_LoadModel (ref _itemModel, ref _item)
 		LayerAddObject("execute", &_itemModel, ITEMS_LAYER);
 		LayerAddObject("realize", &_itemModel, ITEMS_LAYER);
 
-		Trace("ItemLogic: Loaded model "+itemFolder+"\\"+_item.model);
+		Trace("ItemLogic: Loaded model "+itemFolder+"\"+_item.model);
 	}
 }
 

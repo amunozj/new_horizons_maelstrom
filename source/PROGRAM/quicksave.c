@@ -149,8 +149,8 @@ void FindQuicksave()
 		aref arCur = GetAttributeN(arList, i);
 		string fname = GetAttributeValue(arCur);
 		if(fname != "quicksave") continue;
-		string fullname = LocDirectory.dir+"\\"+fname;
-		if(fullname == LocDirectory.dir+"\\quicksave") Log_SetStringToLog(TranslateString("","...done!"));
+		string fullname = LocDirectory.dir+"\"+fname;
+		if(fullname == LocDirectory.dir+"\quicksave") Log_SetStringToLog(TranslateString("","...done!"));
 	    else Log_SetStringToLog(TranslateString("","...error quicksaving!"));
 	}
 }
@@ -183,7 +183,7 @@ void ProcessQuickload()
 
 		      SetEventHandler("evntLoad","LoadGame",1);
 
-		      if(GetTargetPlatform()=="pc") { PostEvent("evntLoad",0,"s", LocDirectory.dir + "\\" + sCurSave); }
+		      if(GetTargetPlatform()=="pc") { PostEvent("evntLoad",0,"s", LocDirectory.dir + "\" + sCurSave); }
 		      else { PostEvent("evntLoad",0,"s",sCurSave); }
 		      Event("evntPreLoad");
 		}

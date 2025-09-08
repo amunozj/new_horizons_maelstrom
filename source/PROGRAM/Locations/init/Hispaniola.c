@@ -2149,7 +2149,7 @@ void LocationInitHispaniola(ref n)
 
 	Locations[n].id = "Santo_Domingo_usurer_stairs_up";
 	locations[n].id.label = "To the Loanshark";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -2218,7 +2218,7 @@ void LocationInitHispaniola(ref n)
 
 	Locations[n].id = "Santo_Domingo_usurer_stairs_down";
 	locations[n].id.label = "Exit";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 

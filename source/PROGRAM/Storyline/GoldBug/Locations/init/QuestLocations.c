@@ -1643,7 +1643,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Moultrie_hotel_stairs";
 	locations[n].id.label = "Room";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -3049,7 +3049,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Fort_M_tower3C";
 	locations[n].id.label = "South tower";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_Fort_room.tga";
 
@@ -3309,7 +3309,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Fort_M_tower5A";
 	locations[n].id.label = "Gate tower stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -3388,7 +3388,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Fort_M_tower5B";
 	locations[n].id.label = "Gate tower stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -3869,7 +3869,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Fort_Moultrie_barracks_entre";
 	locations[n].id.label = "Fort Moultrie barracks";				//when opened
-	Locations[n].filespath.models = "locations\inside\Corridor\\";
+	Locations[n].filespath.models = "locations\inside\Corridor\";
 	Locations[n].filespath.textures = "locations\inside\Corridor\fort";
 
 	Locations[n].image = "GB_Fort_barracks_entre.tga";
@@ -4476,7 +4476,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Charleston_port_tavern_stairs";
 	locations[n].id.label = "";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -4591,7 +4591,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "GB_Charleston_shipyard";
 	locations[n].id.label = "Charleston shipyard";
 	locations[n].image = "Inside_Shipyard5.tga";
-	Locations[n].filespath.models = "locations\inside\shipyard5\\";
+	Locations[n].filespath.models = "locations\inside\shipyard5\";
 
 	//Town sack
 	Locations[n].townsack = "Redmond";
@@ -5229,7 +5229,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Chinatown";
 	locations[n].id.label = "Chinatown";
-	Locations[n].filespath.models = "locations\outside\Chinatown\\";
+	Locations[n].filespath.models = "locations\outside\Chinatown\";
 //	Locations[n].filespath.textures = "locations\outside\Chinatown";
 	Locations[n].image = "GB_Chinatown.tga";
 
@@ -5465,7 +5465,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_chinese_room";
 //	locations[n].id.label = "Fireworks laboratory";			//later when opened
-	Locations[n].filespath.models = "locations\outside\Chinatown\\";
+	Locations[n].filespath.models = "locations\outside\Chinatown\";
 //	Locations[n].filespath.textures = "locations\outside\Chinatown";
 	Locations[n].image = "GB_chinese_room.tga";
 
@@ -5578,7 +5578,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_closed_chinese_room";
 	locations[n].id.label = "";			
-	Locations[n].filespath.models = "locations\outside\Chinatown\\";
+	Locations[n].filespath.models = "locations\outside\Chinatown\";
 
 	//Town sack
 	//Locations[n].townsack = "Redmond";
@@ -5879,7 +5879,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_charcoal_stairs";
 //	locations[n].id.label = "House";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -6117,7 +6117,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_sulphur_corridor";
 	//locations[n].id.label = "Rogers' passage";
-	Locations[n].filespath.models = "locations\inside\Corridor\\";
+	Locations[n].filespath.models = "locations\inside\Corridor\";
 	Locations[n].filespath.textures = "locations\inside\Corridor\dark";
 
 	Locations[n].image = "GB_sulfur_passage.tga";
@@ -6291,7 +6291,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Chinese_restaurant";
 	locations[n].id.label = "Restaurant Tin Ho";
-	Locations[n].filespath.models = "locations\inside\Chinese_restaurant\\";
+	Locations[n].filespath.models = "locations\inside\Chinese_restaurant\";
 	Locations[n].filespath.textures = "locations\outside\Chinatown";
 	Locations[n].image = "GB_chinese_restaurant.tga";
 
@@ -6417,7 +6417,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Dupin_stairs_up";
 	locations[n].id.label = "Detective Agency 1st floor";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -6488,7 +6488,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Dupin_stairs_down";
 	locations[n].id.label = "Exit";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -7039,7 +7039,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Pym_stairs";
 	//locations[n].id.label = "Stairs";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -7177,7 +7177,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "Pym_towerroom";
 	locations[n].id.label = "Tower room";
 	locations[n].image = "GB_Pym_chamber.tga";
-	Locations[n].filespath.models = "locations\inside\SmallChamber\\";
+	Locations[n].filespath.models = "locations\inside\SmallChamber\";
 
 	//Town sack
 	Locations[n].townsack = "Redmond";
@@ -8160,7 +8160,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].reload.l3.go = "GB_Charleston_high_house_entre";
 	Locations[n].reload.l3.emerge = "reload4";
 	Locations[n].reload.l3.autoreload = "0";
-	Locations[n].reload.l3.label = "Woodes Rogers´food supply.";
+	Locations[n].reload.l3.label = "Woodes Rogersï¿½food supply.";
 	Locations[n].locators_radius.reload.reload3 = 0.5;
 					
 /*
@@ -8549,7 +8549,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Charleston_riverhouse_stairs";
 //	locations[n].id.label = "House";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "GB_small_stairs.tga";
 
 	//Town sack
@@ -8649,7 +8649,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Charleston_brothel1_stairs_in";
 	locations[n].id.label = "To the Brothel";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -8719,7 +8719,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "GB_Charleston_brothel1_stairs_out";
 	locations[n].id.label = "Exit";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\church_attic";
 	Locations[n].image = "GB_small_stairs.tga";
 
@@ -9631,7 +9631,7 @@ void LocationInitQuestLocations(ref n)
 
 	Locations[n].id = "Loghouse_stairs";
 	//locations[n].id.label = "Loghouse stairs";				//when opened			
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].filespath.textures = "locations\inside\Doubleflour_house\chapel";
 	Locations[n].image = "GB_hideout_stairs.tga";
 

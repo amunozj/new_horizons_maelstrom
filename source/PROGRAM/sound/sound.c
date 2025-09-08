@@ -1584,7 +1584,7 @@ string GetMusicSchemeName(int musNum)
 	ref rms; makeref(rms, registered_music_schemes);
 	string lnode = "l" + musNum;
 	if (CheckAttribute(rms, lnode)) {
-		if (CheckDirectory(GetResourceDirectory() + "Sounds\MUSIC\\" + rms.(lnode).resdir, "*.ogg") > 0) retVal = rms.(lnode).name;
+		if (CheckDirectory(GetResourceDirectory() + "Sounds\MUSIC\" + rms.(lnode).resdir, "*.ogg") > 0) retVal = rms.(lnode).name;
 	}
 	return retVal;
 }
@@ -1595,7 +1595,7 @@ string GetMusicScheme()
 	ref rms; makeref(rms, registered_music_schemes);
 	string lnode = "l" + music_scheme;
 	if (CheckAttribute(rms, lnode)) {
-		if (CheckDirectory(GetResourceDirectory() + "Sounds\MUSIC\\" + rms.(lnode).resdir, "*.ogg") > 0) retVal = rms.(lnode).id;
+		if (CheckDirectory(GetResourceDirectory() + "Sounds\MUSIC\" + rms.(lnode).resdir, "*.ogg") > 0) retVal = rms.(lnode).id;
 	}
 	return retVal;
 }

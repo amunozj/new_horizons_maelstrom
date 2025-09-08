@@ -121,7 +121,7 @@ int GetSectionNumFromName(string sectName)
 
 string GetSegmentFromName(string segName)
 {
-	return "interface\help_section\\"+segName+".c";
+	return "interface\help_section\"+segName+".c";
 }
 
 void ProcToHelpMain()

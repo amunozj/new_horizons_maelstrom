@@ -109,7 +109,7 @@ int LocationInitModLocations(int n)
 	DeleteAttribute(&LocDirectory, "");
 
 	ref pc = GetMainCharacter(); // KK
-	LocDirectory.dir = "Program\\Locations\\init\\mods";
+	LocDirectory.dir = "Program\Locations\init\mods";
 	LocDirectory.mask = "*.c";
 	CreateEntity(&LocDirectory,"FINDFILESINTODIRECTORY");
 	DeleteClass(&LocDirectory);
@@ -119,7 +119,7 @@ int LocationInitModLocations(int n)
 	{
 		aref arCur = GetAttributeN(arList, i);
 		string fname = GetAttributeValue(arCur);
-		string fullname = "locations\\init\\mods\\"+fname;  
+		string fullname = "locations\init\mods\"+fname;  
 		if(LoadSegment(fullname))
 		{
 			pc.numlocations = n; //Hack because we can't pass parameters to extern functions
