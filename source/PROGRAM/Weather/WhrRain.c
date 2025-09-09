@@ -11,7 +11,7 @@ void WhrDeleteRainEnvironment()
 
 void WhrCreateRainEnvironment()
 {
-	bWeatherIsRain = false;
+	// bWeatherIsRain = false;
 
 	if (!isEntity(&Rain))
 	{
@@ -20,7 +20,7 @@ void WhrCreateRainEnvironment()
 	FillRainData(iCurWeatherNum,iBlendWeatherNum);
 	Rain.isDone = "";
 
-	if( sti(Rain.NumDrops) > 0 ) {bWeatherIsRain = true;}
+	// if( sti(Rain.NumDrops) > 0 ) {bWeatherIsRain = true;}
 }
 
 void ClearRainEnvironment()
@@ -35,7 +35,7 @@ void ClearRainEnvironment()
 	Rain.DropLength = 0.1;
 	Rain.isDone = "";
 
-	bWeatherIsRain = false;
+	// bWeatherIsRain = false;
 }
 
 void FillRainData(int nw1, int nw2)
@@ -96,7 +96,7 @@ void FillRainData(int nw1, int nw2)
 		Rain.RainDrops.DropsNearRadius = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsNearRadius"), Whr_GetFloat(aRain2, "DropsNearRadius"));
 		Rain.RainDrops.DropsFarRadius = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsFarRadius"), Whr_GetFloat(aRain2, "DropsFarRadius"));
 		Rain.RainDrops.DropsLifeTime = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsLifeTime"), Whr_GetFloat(aRain2, "DropsLifeTime"));
-		Rain.RainDrops.DropsSize = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsSize"), Whr_GetFloat(aRain2, "DropsSize"));77
+		Rain.RainDrops.DropsSize = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsSize"), Whr_GetFloat(aRain2, "DropsSize"));
 		Rain.RainDrops.DropsColor = Whr_GetLong(aRain1, "DropsColor"); //Whr_BlendColor( fBlend, Whr_GetColor(aRain1, "DropsColor"), Whr_GetColor(aRain2, "DropsColor"));
 		Rain.RainDrops.DropsTexture = Whr_GetString(aRain1, "DropsTexture");
 

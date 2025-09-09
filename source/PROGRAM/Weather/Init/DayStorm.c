@@ -777,7 +777,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sounds.Sea.Postfix = "_storm";
 
 	Weathers[n].Storm = true;
-	Weathers[n].skip = true;
+	Weathers[n].Skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
 	Weathers[n].Lights = 1;
@@ -969,7 +969,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sounds.Sea.Postfix = "_storm";
 
 	Weathers[n].Storm = true;
-	Weathers[n].skip = true;
+	Weathers[n].Skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
 	Weathers[n].Lights = 1;
@@ -1162,7 +1162,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sounds.Sea.Postfix = "_storm";
 
 	Weathers[n].Storm = true;
-	Weathers[n].skip = true;
+	Weathers[n].Skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
 	Weathers[n].Lights = 1;
@@ -1355,7 +1355,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sounds.Sea.Postfix = "_storm";
 
 	Weathers[n].Storm = true;
-	Weathers[n].skip = true;
+	Weathers[n].Skip = true;
 	Weathers[n].Tornado = true;
 	Weathers[n].Shark = false;
 	Weathers[n].Lights = 1;

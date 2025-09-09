@@ -30,7 +30,7 @@ int iScriptVersion = 8675309;       //54128  --  15650
 #define CANNOT_RELOAD_WHILE_FIGHTING		0		// INT - 1=DEFAULT: Controlled by Realism Mode - 0 or 2 override the Realism Mode setting
 #define SAIL_OPERATE_DELAY			3		// INT - sailors will operate sails this amount of seconds after receiving command (set to 0 to restore stock PotC)
 // Included in Iron Man Mode:
-#define OPEN_SEA_MOD				0		// BOOL - 1=ON - Worldmap enlarged for realistic DirectSail
+#define OPEN_SEA_MOD				1		// BOOL - 1=ON - Worldmap enlarged for realistic DirectSail
 #define WORLDMAP_DISABLED			0		// BOOL - 1=ON - DirectSail enforced
 #define SAILTO_DISABLED				0		// BOOL - 1=ON - Cannot Sail-To any ships at sea
 #define ONSEA_DATA_DISABLED			0		// BOOL - 1=ON - Spyglass and compass additional information disabled, cannot move camera to non-player ships
@@ -122,15 +122,26 @@ int		TIMESCALAR_SEA =			5;			// INT - how many seconds of gametime one second of
 // WEATHER CONTROLS - JL
 // ======================================
 
-int		MAX_WBALLAST =					25;		// INT - how far the weighting will swing in favor of current trend.. use positive integer between 0 and 50 - 0 is no swing - 50 is major swing.. this is for Windspeed
-int		MAX_RBALLAST =					25;		// ^^DITTO for rain
-int		MAX_FBALLAST =					25;		// ^^DITTO for fog
-float	MAX_ABALLAST =					25.0;	// FLOAT - ^^DITTO for wind angle
+int		MAX_WBALLAST =					30;		// INT - how far the weighting will swing in favor of current trend.. use positive integer between 0 and 50 - 0 is no swing - 50 is major swing.. this is for Windspeed
+int		MAX_RBALLAST =					40;		// ^^DITTO for rain
+int		MAX_FBALLAST =					20;		// ^^DITTO for fog
+float	MAX_ABALLAST =					50.0;	// FLOAT - ^^DITTO for wind angle
 
+int		MAX_WIND = 						30;		// Max windpeed outside of storms
+int		MAX_RAIN_INFLUENCE = 			75;		// Max rain value that needs to be reached before rain values influence wind values
 int		MAX_WINDCHANGE =				5;		// INT - How much the wind CAN change in one hour - use positive integer between 0 and 20
-int		MAX_FOGCHANGE =					5;		// INT - ^^DITTO for fog
-int		MAX_RAINCHANGE =				5;		// INT - ^^DITTO for rain
+int		MAX_FOGCHANGE =					3;		// INT - ^^DITTO for fog
+int		MAX_RAINCHANGE =				20;		// INT - ^^DITTO for rain
 #define MAX_ANGLECHANGE					0.5		// FLOAT - ^^DITTO for wind angle
+
+float 	MAX_RAIN_HOUR = 				17.0;	// FLOAT - Hour of day when rain is likeliest to occur
+float 	RAIN_HOUR_FACTOR = 				3.0;	// Factor that determines how strongly the 24 hour cycle influences rain - higher number means stronger influence
+
+// wRain levels.  Names are self explanatory.  Once rain variable crosses these levels the corresponding weather effects kick in
+#define WRAINRAIN 25
+#define WRAINOVERCAST 50
+#define WRAINSTORM 85
+#define WRAINTORNADO 95
 
 #define FREE_FOG						1		// BOOL - Allow fog during daylight hours 0 - false 1 - true
 

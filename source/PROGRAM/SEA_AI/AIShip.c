@@ -5216,7 +5216,9 @@ void Ship_UpdateParameters()
 
 		// hull damage
 // NK -->
-		fDamageHP = (sqrt(fBaseShipHP) / 15);
+		// fDamageHP = (sqrt(fBaseShipHP) / 15); 
+		fDamageHP = (sqrt(fCurHP) / 15); //QS 20250908 change damage to be proportional to current hitpoints
+		
 // NK <--
 		Ship_ApplyHullHitpoints(rCharacter, fDamageMultiply * fDamageHP, KILL_BY_TOUCH, -1);
 
@@ -5277,7 +5279,8 @@ void Ship_UpdateParameters()
 
 		// hull damage
 // NK -->
-		fDamageHP = (sqrt(fBaseShipHP) / 10);
+		// fDamageHP = (sqrt(fBaseShipHP) / 10);
+		fDamageHP = (sqrt(fCurHP) / 10); //QS 20250908 change damage to be proportional to current hitpoints
 // NK <--
 //placed here by MAXIMUS <--
 		float fTornadoDistance = GetDistance2D(stf(Tornado.x), stf(Tornado.z), stf(arCharShip.Pos.x), stf(arCharShip.Pos.z));
