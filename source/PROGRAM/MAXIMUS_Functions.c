@@ -2250,13 +2250,13 @@ string GetLingvo(string strData)
 {
 	if(LanguageGetLanguage()=="Russian")
 	{
-		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="à")
+		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="ï¿½")
 		{
-			strData = strcut(strData, 0, strlen(strData)-2)+"ó";
+			strData = strcut(strData, 0, strlen(strData)-2)+"ï¿½";
 		}
-		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="À")
+		if(strcut(strData, strlen(strData)-1, strlen(strData)-1)=="ï¿½")
 		{
-			strData = strcut(strData, 0, strlen(strData)-2)+"Ó";
+			strData = strcut(strData, 0, strlen(strData)-2)+"ï¿½";
 		}
 	}
 
@@ -2814,8 +2814,8 @@ void AddDroppedItem(string locationID, int itmIdx)
 			CreateEntity(&curModel, "MODELR");
 			ReloadProgressUpdate();
 			if(CheckAttribute(curItem, "folder")) { itemFolder = curItem.folder; }
-			SendMessage(&curModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\\");
-			SendMessage(&curModel, "ls", MSG_MODEL_LOAD_GEO, itemFolder + "\\" + curItem.model);
+			SendMessage(&curModel, "ls", MSG_MODEL_SET_DIRPATH, itemFolder+"\");
+			SendMessage(&curModel, "ls", MSG_MODEL_LOAD_GEO, itemFolder + "\" + curItem.model);
 			SendMessage(&curModel, "ls", MSG_MODEL_SET_DIRPATH,"");
 
 			if(HasSubStr(curItem.model, "blade") || HasSubStr(curItem.model, "pistol")) SendMessage(&curModel, "ls", MSG_MODEL_SET_TECHNIQUE, "BladeItem");
@@ -2828,7 +2828,7 @@ void AddDroppedItem(string locationID, int itmIdx)
 			SendMessage(SeaLighter, "ssi", "AddModel", curItem.model, &curModel);
 			SendMessage(&curModel, "lffffffffffff", MSG_MODEL_SET_POSITION, stf(locations[FindLocation(locationID)].locators.items.(curLocName).x), stf(locations[FindLocation(locationID)].locators.items.(curLocName).y), stf(locations[FindLocation(locationID)].locators.items.(curLocName).z), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
-			Trace("LandInterface: Loaded model "+itemFolder+"\\"+curItem.model);
+			Trace("LandInterface: Loaded model "+itemFolder+"\"+curItem.model);
 			ReloadProgressUpdate();
 		}
 	}
@@ -3130,39 +3130,39 @@ void ResetKeyboardCharacters(string curLanguage)
 		break;
 
 		case "English":
-			CI_CreateAndSetControls("", "NK_Key_à", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_á", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_â", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ã", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ä", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_å", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_¸", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_æ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ç", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_è", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_é", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ê", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ë", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ì", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_í", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_î", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ï", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ð", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ñ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ò", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ó", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ô", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_õ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ö", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_÷", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ø", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ù", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_û", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ú", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ý", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ü", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_þ", "", 0, false);
-			CI_CreateAndSetControls("", "NK_Key_ÿ", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
+			CI_CreateAndSetControls("", "NK_Key_ï¿½", "", 0, false);
 			CI_CreateAndSetControls("", "NK_Key_.", "", 0, false);
 		break;
 	}

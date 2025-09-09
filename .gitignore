@@ -48,6 +48,8 @@ settings.json
 # Save folder
 source/SAVE
 
+.vscode/
+
 # Screenshots
 source/Screenshots
 

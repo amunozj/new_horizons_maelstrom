@@ -1696,7 +1696,7 @@ void SetCoastTraffic(string islandstr)
 					}
 					else
 					{
-						CRTrace("do not need to create new group")
+						CRTrace("do not need to create new group");
 						Group_ChangeCharacter(crg, cr.id);
 						//Group_SetGroupCommander(crg, cr.id);
 						bool t2 = Group_GetType(crg) != "war" || sFantomType == "war"; // KK

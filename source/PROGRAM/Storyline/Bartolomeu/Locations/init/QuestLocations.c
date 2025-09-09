@@ -601,7 +601,7 @@ void LocationInitQuestLocations(ref n)
 	// Morro fort inside 1--------------------------------------
 	Locations[n].id = "Quest_Morro_fort1";
 	//Info
-	Locations[n].filespath.models = "locations\Fort_Inside\Morro\\";
+	Locations[n].filespath.models = "locations\Fort_Inside\Morro\";
 	Locations[n].image = "Fort_Inside_Morro.tga";
 
 	//Town sack
@@ -647,7 +647,7 @@ void LocationInitQuestLocations(ref n)
 	// Morro fort inside 2--------------------------------------
 	Locations[n].id = "Quest_Morro_fort2";
 	//Info
-	Locations[n].filespath.models = "locations\Fort_Inside\Morrob\\";
+	Locations[n].filespath.models = "locations\Fort_Inside\Morrob\";
 	Locations[n].image = "Fort_Inside_Morrob.tga";
 
 	//Town sack
@@ -676,7 +676,7 @@ void LocationInitQuestLocations(ref n)
  	// -------------------------------------------------
 	Locations[n].id = "Morro_warehouse";
 	locations[n].id.label = "Morro warehouse";	
-	Locations[n].filespath.models = "locations\inside\Warehouse\\";
+	Locations[n].filespath.models = "locations\inside\Warehouse\";
 	Locations[n].image = "Inside_Warehouse.tga";
 
 	//Town sack
@@ -951,7 +951,7 @@ void LocationInitQuestLocations(ref n)
 	Locations[n].id = "Vera Cruz Fort";
 	locations[n].id.label = "MILITARY AREA. NO TRESPASSING!";
 	//Info
-	Locations[n].filespath.models = "locations\Fort_inside\Fort_1\\";
+	Locations[n].filespath.models = "locations\Fort_inside\Fort_1\";
 	Locations[n].image = "Fort_Inside_Fort_1.tga"; // KK
 
 	//Town sack

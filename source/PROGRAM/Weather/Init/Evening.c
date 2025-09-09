@@ -389,10 +389,10 @@ int Whr_InitEvening(int n)
 	Weathers[n].Fog.IslandDensity = 0.0003;
 	Weathers[n].Fog.SeaDensity = 0.00006;
 	//Weathers[n].Fog.Color = argb(0,115,140,155);
-	Weathers[n].Fog.Color = argb(0,135,168,205);
-	Weathers[n].SpecialSeaFog.Color = argb(0,135,168,205);
-	Weathers[n].Bak.Fog.Color = argb(0,135,168,205);
-	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,135,168,205);
+	Weathers[n].Fog.Color = argb(0,26,60,115);
+	Weathers[n].SpecialSeaFog.Color = argb(0,26,60,115);
+	Weathers[n].Bak.Fog.Color = argb(0,26,60,115);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,26,60,115);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -572,10 +572,11 @@ int Whr_InitEvening(int n)
 	Weathers[n].Fog.Density = 0.005;
 	Weathers[n].Fog.IslandDensity = 0.0025;
 	Weathers[n].Fog.SeaDensity = 0.0037;
-	Weathers[n].Fog.Color = argb(0,60,70,80);
-	Weathers[n].SpecialSeaFog.Color = argb(0,60,70,80);
-	Weathers[n].Bak.Fog.Color = argb(0,60,70,80);
-	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,60,70,80);
+	// Weathers[n].Fog.Color = argb(0,60,70,80);
+	Weathers[n].Fog.Color = argb(0,9,15,21);
+	Weathers[n].SpecialSeaFog.Color = argb(0,9,15,21);
+	Weathers[n].Bak.Fog.Color = argb(0,9,15,21);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,9,15,21);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
@@ -749,10 +750,11 @@ int Whr_InitEvening(int n)
 	Weathers[n].Fog.Density = 0.005;
 	Weathers[n].Fog.IslandDensity = 0.0025;
 	Weathers[n].Fog.SeaDensity = 0.0037;
-	Weathers[n].Fog.Color = argb(0,60,70,80);
-	Weathers[n].SpecialSeaFog.Color = argb(0,60,70,80);
-	Weathers[n].Bak.Fog.Color = argb(0,60,70,80);
-	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,60,70,80);
+	// Weathers[n].Fog.Color = argb(0,60,70,80);
+	Weathers[n].Fog.Color = argb(0,9,15,21);
+	Weathers[n].SpecialSeaFog.Color = argb(0,9,15,21);
+	Weathers[n].Bak.Fog.Color = argb(0,9,15,21);
+	Weathers[n].Bak.SpecialSeaFog.Color = argb(0,9,15,21);
 
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);

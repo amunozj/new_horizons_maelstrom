@@ -231,7 +231,7 @@ string FindCardsForNation(ref refCharacter)// by this way anyone can make his ow
 
 	DeleteAttribute(&LocDirectory, "");
 
-	LocDirectory.dir = "RESOURCE\\TEXTURES\\INTERFACES";
+	LocDirectory.dir = "RESOURCE\TEXTURES\INTERFACES";
 	LocDirectory.mask = "*_cards.tga.tx";
 	CreateEntity(&LocDirectory,"FINDFILESINTODIRECTORY");
 	DeleteClass(&LocDirectory);
@@ -255,8 +255,8 @@ void SetGame(string gameName)// resets all to virginity :)
 {
 	if (LanguageGetLanguage() == "Spanish")
 	{
-		prefix1 = "¡";
-		prefix2 = "¿";
+		prefix1 = "ï¿½";
+		prefix2 = "ï¿½";
 	}
 	else
 	{
@@ -2615,7 +2615,7 @@ void ProcessExit()
 
 	interfaceResultCommand = RC_INTERFACE_GAMBLE_EXIT;
 
-	UnloadSegment("DIALOGS\\" + LanguageGetLanguage() + "\\Habitue_dialog.h");
+	UnloadSegment("DIALOGS\" + LanguageGetLanguage() + "\Habitue_dialog.h");
 
 	EndCancelInterface(true);
 

@@ -12,7 +12,7 @@ void InitInterface(string iniName)
 	CalculateInfoData();
 /*	if (ENABLE_EXTRA_SOUNDS == 1) {
 		PauseAllSounds();
-		PlayStereoSound("VOICE\\"+LanguageGetLanguage()+"\\pay_mutiny.wav");
+		PlayStereoSound("VOICE\"+LanguageGetLanguage()+"\pay_mutiny.wav");
 	}*/
 
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);

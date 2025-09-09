@@ -964,7 +964,7 @@ void procUpdateTime()
 				if(li >= 0)
 				{
 					aref aCurWeather = GetCurrentWeather();
-					if (wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //if(aCurWeather.id == "Blue Sky")
+					if (wRain < WRAINRAIN && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //if(aCurWeather.id == "Blue Sky")
                     {
                         float psX = MakeFloat(mchr.Ship.Pos.x);
                         float psZ = MakeFloat(mchr.Ship.Pos.z);

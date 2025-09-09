@@ -23,7 +23,7 @@ void WhrCreateSkyEnvironment()
 	aref aSky;
 	makearef(aSky, aCurWeather.Sky);
 
-	DeleteAttribute(&Sky, "")
+	DeleteAttribute(&Sky, "");
 	if(!isEntity(&Sky))
 	{
 		CreateEntity(&Sky, "Sky");
@@ -128,18 +128,24 @@ void FillSkyDir(aref aSky) // Mirsaneli: random skies + storm override only duri
             else if (hourInt < 10) { hourStr = "0" + hourInt; }
             else                   { hourStr = "" + hourInt; }
 
-            sDir = "weather\\" + selectedSkyFolder + "\\" + hourStr + "\\";
+            sDir = "weather\" + selectedSkyFolder + "\" + hourStr + "\";
 
             // Assign sky normally first
             aSky.Dir.(satr) = sDir;
 
-            // Override with storm sky only during daytime if it's raining
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay))
+            // Override with storm sky only during daytime if it's stormy
+			if (CheckAttribute(WeathersNH, "StormSky") && WeathersNH.StormSky==true)
 			{
-				int hourMin = sti(Weathers[i].Hour.Min);
-				if (hourMin >= 7 && hourMin <= 20) // Only override for 6h to 20h
+				if (hourInt >= 6 && hourInt <= 20) // Only override for 6h to 21h
 				{
-					aSky.Dir.(satr) = "weather\\skies\\Storm01\\";
+					switch (rand(3))  
+					{
+						case 0: selectedSkyFolder = "storm01"; break;
+						case 1: selectedSkyFolder = "storm02"; break;
+						case 2: selectedSkyFolder = "storm03"; break;
+						case 3: selectedSkyFolder = "storm04"; break;
+					}					
+					aSky.Dir.(satr) = "weather\skies\" + selectedSkyFolder + "\";
 				}
 			}
         }

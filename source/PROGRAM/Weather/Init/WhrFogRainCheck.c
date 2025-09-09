@@ -7,18 +7,18 @@ void Whr_FogRainCheck(){
 //  LDH more fog in mornings - 26Feb09
 	int tempFog = fog;
 	int theHour = GetHour();
-	if (theHour >= 6 && theHour < 10) {  // Morning (Heavy fog)
-		fog += 35 - theHour;  // Strongest fog buildup
-	} else if (theHour >= 10 && theHour < 18) {  // Afternoon (Less fog)
-		fog += 10 - (theHour / 2);  // Sunlight burns off fog
-	} else if (theHour >= 18 && theHour < 23) {  // Evening (Fog increases)
-		fog += 30 - theHour;  // Fog builds up again
-	} else {  // Late Night (11 PM - 6 AM) (Clearer sky, minimal fog)
-		fog += 5;  // Almost no fog
-	}
+	// if (theHour >= 6 && theHour < 10) {  // Morning (Heavy fog)
+	// 	fog += 35 - theHour;  // Strongest fog buildup
+	// } else if (theHour >= 10 && theHour < 18) {  // Afternoon (Less fog)
+	// 	fog += 10 - (theHour / 2);  // Sunlight burns off fog
+	// } else if (theHour >= 18 && theHour < 23) {  // Evening (Fog increases)
+	// 	fog += 30 - theHour;  // Fog builds up again
+	// } else {  // Late Night (11 PM - 6 AM) (Clearer sky, minimal fog)
+	// 	fog += 5;  // Almost no fog
+	// }
 
 //  LDH more fog during rain - 26Feb09
-	if (wRain > 75 && fog < 10) fog += (wRain-75)/2;
+	if (wRain > WRAINOVERCAST) fog += (wRain-WRAINOVERCAST)/2;
 
 	if ( fog >= 5 ){
 		WeathersNH.Fog.Enable = true;
@@ -51,12 +51,29 @@ void Whr_FogRainCheck(){
 
 	fog = tempFog;		// LDH 26Feb09
 	
-	if (wRain > 75)
+	WeatherParams.Rain = false;
+	environment.weather.rain = false;
+	bWeatherIsRain = false;
+	WeathersNH.StormSky = false;
+	WeatherParams.Storm = false;
+	bWeatherIsStorm = false;
+	Seafoam.storm = "false";
+	WeatherParams.Tornado = false;
+	WeatherParams.Rain.Sound = false;
+	if (wRain > WRAINRAIN)
 	{
-		bWeatherIsRain = true; // screwface
-		WeathersNH.Lightning.Enable = true;
-		WeathersNH.Sky.Dir = "weather\skies\7\\";
-		WeathersNH.Rain.NumDrops = ((wRain-75)*400);
+		WeatherParams.Rain = true;
+		environment.weather.rain = true;
+		bWeatherIsRain = true;
+		WeatherParams.Rain.Sound = true;
+		WeathersNH.StormSky = false;
+		WeatherParams.Storm = false;
+		bWeatherIsStorm = false;
+		Seafoam.storm = "false";
+		WeatherParams.Tornado = false;
+		WeathersNH.Lightning.Enable = false;
+		WeathersNH.Sky.Dir = "weather\skies\7\";
+		WeathersNH.Rain.NumDrops = ((wRain-WRAINRAIN+10)*150);
 		WeathersNH.Rain.Color = argb(0,73,73,73);
 		WeathersNH.Rain.DropLength = (1.12);
 		WeathersNH.Rain.Height = 30.0;
@@ -68,11 +85,20 @@ void Whr_FogRainCheck(){
 		WeathersNH.Rain.TimeBlend = 2000;
 		WeathersNH.Storm = false;
 		WeathersNH.Sea.SunRoad.Power = 2.0;
-		if(wRain > 80 && wRain < 85){
+		if(wRain > WRAINOVERCAST && wRain < WRAINSTORM){
+			WeatherParams.Rain = true;
+			environment.weather.rain = true;
+			bWeatherIsRain = true;
+			WeatherParams.Rain.Sound = true;
+			WeathersNH.StormSky = true;
+			WeatherParams.Storm = false;
+			bWeatherIsStorm = false;
+			Seafoam.storm = "false";
+			WeatherParams.Tornado = false;
 			WeathersNH.Rain.Speed = 14.0;
 			WeathersNH.Rain.MaxBlend = 95;
 			WeathersNH.Rain.DropLength = (1.5);
-			WeathersNH.Lightning.Enable = true;
+			WeathersNH.Lightning.Enable = false;
 			if(theHour >= 6 && theHour < 20) {WeathersNH.Rainbow.Enable = true;}		//UZVER
 			WeathersNH.LightingLm = "storm";
 			WeathersNH.Sea.SunRoad.Color1 = argb(0,0,0,0);
@@ -80,7 +106,16 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.Water.Color = argb(0,24,44,78);
 			WeathersNH.Sky.Color = argb(0,220,220,255);
 		}
-		if(wRain >= 85 && wRain < 95){
+		if(wRain >= WRAINSTORM && wRain < WRAINTORNADO){
+			WeatherParams.Rain = true;
+			environment.weather.rain = true;
+			bWeatherIsRain = true;
+			WeathersNH.StormSky = true;
+			WeatherParams.Storm = true;
+			WeatherParams.Rain.Sound = true;
+			bWeatherIsStorm = true;
+			Seafoam.storm = "true";
+			WeatherParams.Tornado = false;
 			WeathersNH.Rain.Speed = 16.0;
 			WeathersNH.Rain.MaxBlend = 115;
 			WeathersNH.Rain.DropLength = (1.75);
@@ -97,7 +132,16 @@ void Whr_FogRainCheck(){
 			WeathersNH.Sea.Water.Color = argb(0,22,39,69);
 			WeathersNH.Sky.Color = argb(0,210,210,255);
 		}
-		if(wRain >= 95){
+		if(wRain >= WRAINTORNADO){
+			WeatherParams.Rain = true;
+			environment.weather.rain = true;
+			bWeatherIsRain = true;
+			WeathersNH.StormSky = true;
+			WeatherParams.Storm = true;
+			WeatherParams.Rain.Sound = true;
+			bWeatherIsStorm = true;
+			Seafoam.storm = "true";
+			WeatherParams.Tornado = true;
 			WeathersNH.Rain.Speed = 18.0;
 			WeathersNH.Rain.MaxBlend = 129;
 			WeathersNH.Rain.DropLength = (2.12);

@@ -85,31 +85,31 @@ bool LoadLocation(ref loc)
 	{
 		switch(loc.type)
 		{
-			case "cave":			// пещера
+			case "cave":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_cave");
 				break;
 			case "KhaelRoa":			// desert cave
 				ExecuteTechnique("amb_cave");
 				break;
-			case "inca_temple":		// храм инков
+			case "inca_temple":		// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_inca_temple");
 				break;
-			case "house":			// дом
+			case "house":			// пїЅпїЅпїЅ
 				ExecuteTechnique("amb_house");
 				break;
-			case "tavern":			// таверна
+			case "tavern":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_tavern");
 				break;
-			case "shop":			// магазин
+			case "shop":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_shop");
 				break;
-			case "residence":		// резиденция
+			case "residence":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_residence");
 				break;
-			case "church":			// церковь
+			case "church":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_church");
 				break;
-			case "jail":			// тюрьма
+			case "jail":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 				ExecuteTechnique("amb_jail");
 				break;
 			case "dungeon":
@@ -322,7 +322,7 @@ bool LoadLocation(ref loc)
 			if(res == 0)
 			{
 				traceif("");
-				traceif("\\");
+				traceif("\");
 				traceif("Character patch not loaded!");
 				traceif("/");
 				traceif("");
@@ -331,7 +331,7 @@ bool LoadLocation(ref loc)
 			}
 		}else{
 			traceif("");
-			traceif("\\");
+			traceif("\");
 			traceif("Character patch not setting for location.models.day.charactersPatch!");
 			traceif("/");
 			traceif("");
@@ -371,7 +371,7 @@ bool LoadLocation(ref loc)
 			if(res == 0)
 			{
 				traceif("");
-				traceif("\\");
+				traceif("\");
 				traceif("Character patch not loaded!");
 				traceif("/");
 				traceif("");
@@ -380,7 +380,7 @@ bool LoadLocation(ref loc)
 			}
 		}else{
 			traceif("");
-			traceif("\\");
+			traceif("\");
 			traceif("Character patch not setting for location.models.night.charactersPatch!");
 			traceif("/");
 			traceif("");
@@ -943,9 +943,9 @@ bool LocLoadModel(aref loc, string sat, string addition)
 {
 	//traceif("Load model: " + loc.(sat) + " from:" + sat);
 
-	//Пропустим пустое имя
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	if(loc.(sat) == "") return true;
-	//Считываем параметры модельки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	string attr, attr1;
 	bool res;
 	string tech = "";
@@ -958,7 +958,7 @@ bool LocLoadModel(aref loc, string sat, string addition)
         level = MakeInt(loc.(attr));
         if(!bSeaActive) level += 10;
     }
-	//Грузим модельку
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	string realModel = loc.(sat) + addition;
 	if(HasSubStr(sat,"back") && !ownDeckStarted())
 	{
@@ -986,13 +986,13 @@ bool LocLoadModel(aref loc, string sat, string addition)
 	}
 	res = SendMessage(loc, "lssll", MSG_LOCATION_ADD_MODEL, realModel, tech, level, 0);
 	if(res == 0) return 0;
-	//Устанавливаем флаги
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	object mdl;
 	if(SendMessage(loc, "le", MSG_LOCATION_GET_MODEL, &mdl) != 0)
 	{
 		SetTownFlag(loc, &mdl); // KK
 	}
-	// Проверяем на пену
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	attr = sat + ".foam";
 	if(CheckAttribute(loc, attr) != 0)
 	{
@@ -1008,7 +1008,7 @@ bool LocLoadModel(aref loc, string sat, string addition)
 			//traceif("<> Model " + attr + ", have a foam!!!");
 		}
 	}
-	//Ставим модификаторы
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//locator
 	attr = sat + ".locator.group";
 	//traceif("> " + attr);
@@ -1080,7 +1080,7 @@ float GetAngleY(float x, float z)
 	float l = vx*vx + vz*vz;
 	if(l > 0.0000001)
 	{
-		//Ищем углы
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		vz = acos(vz/sqrt(l));
 	}else vz = l;
 	if(vx < 0) vz = -vz;

@@ -453,9 +453,9 @@ void InitEncounters()
 	Enc_ExcludeNation(rEnc, PIRATE);  // Only appears via forced trigger
 
 	Enc_AddClasses(rEnc, -1, 0, 0, 4, 4); // class 4 warship only
-
+	*/
 	ENCOUNTERS_QUANTITY = n;
 
 	Trace("Init encounters complete.");
-	*/
+
 }

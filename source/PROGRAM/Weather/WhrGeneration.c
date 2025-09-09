@@ -6,11 +6,6 @@
 #define GENERATIONDEBUG 0
 #define RANDOMDEBUG 1
 
-// wRain levels
-#define WRAINOVERCAST 30
-#define WRAINRAIN 50
-#define WRAINSTORM 70
-#define WRAINTORNADO 90
 // Night and lagoon color properties
 #define NIGHTCOLORBLEND 6.0
 #define SHORECOLORDISTANCE 20.0
@@ -81,6 +76,7 @@ void Whr_Generator(int iHour){
 	rWindA = frand(MAX_ANGLECHANGE);
 	
 	Whr_GenerateValues(FREE_FOG);
+	Whr_FogRainCheck();	 //Set wRain and fog values
 	
 	//--Testing Settings--------------------------------------------------------
 	
@@ -111,24 +107,6 @@ void Whr_Generator(int iHour){
 	//WeatherParams.Tornado = false;
 	bool bStormAlreadyStarted = bWeatherIsStorm;
     if (bWeatherIsStorm) bWhrStorm = true;
-	
-	if(bWhrStorm && !bWeatherIsStorm){
-		wRain = 95;
-		winds = 25;
-		windBallast = 10;
-		rainBallast = 10;
-		fog = 75; //Armada
-		//Weathers.Fog.Color = argb(0,33,40,50);
-		bWeatherIsStorm = true; // screwface
-	}
-	if(bWhrTornado){
-		wRain = 100;
-		winds = 30;
-		windBallast = 20;
-		rainBallast = 20;
-		fog = 75; //Armada
-		//Weathers.Fog.Color = argb(0,33,40,50);
-	}
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
 	
@@ -136,7 +114,7 @@ void Whr_Generator(int iHour){
 	goldFog = fog;
 	oldWind = winds;
 	fWeatherAngleOld = fWindA;
-	
+
 	if(windABallast >=  MAX_ABALLAST || windABallast <= -MAX_ABALLAST ){ windABallast = 0;}
 	if(rainBallast  >=  MAX_RBALLAST )                                 { rainBallast = -MAX_RBALLAST;}
 	if(rainBallast  <= -MAX_RBALLAST )                                 { rainBallast =  MAX_RBALLAST;}
@@ -145,8 +123,6 @@ void Whr_Generator(int iHour){
 	if(fogBallast   >=  MAX_FBALLAST )                                 { fogBallast  = -MAX_FBALLAST;}
 	if(fogBallast   <= -MAX_FBALLAST )                                 { fogBallast  =  MAX_FBALLAST;}
 	
-	if(wRain >= 85 && winds <= 10){ windBallast = 15;}
-	if(winds <= 25 && wRain >= 90){ rainBallast = -15;}
 	if(fog > 0 && curTime >= 7 && curTime <= 20 && wRain <= 75){fogBallast = -30;}
 	if(fogBallast < 0 && curTime > 20 || curTime < 7){fogBallast = 0;}
 	if(fogBallast < 0 && curTime >= 7 && curTime <=20 && wRain > 75){fogBallast = 0;}
@@ -154,14 +130,8 @@ void Whr_Generator(int iHour){
 	minwind = winds - rand(2);
 	maxwind = winds + rand(2);
 	if(minwind < 5){minwind = 5;}	// LDH up from 0 - 12Feb09
-	if(maxwind > 30){maxwind = 30;}
 	if(minwind > maxwind){ minwind = maxwind; } // JL - Temporary catch all for weird wind bug
 	
-	// Whr_InitGValues(); //Setup generic values based on ToD
-	Whr_FogRainCheck();	 //Set wRain and fog values
-	// Whr_SetAzmAng(); //Setup specific values for azimuth and angle and sky loaded
-
-	// NK & Mith-->
 	// LDH fixes - 16Mar09
 	string direction1, direction2, direction3;
 
@@ -220,8 +190,8 @@ void Whr_Generator(int iHour){
 			if(bSeaActive && !ownDeckStarted())
 			{
 			    //#20220311-01
-			    if (!bStormAlreadyStarted)
-                    iStormLockSeconds = 60;
+			    // if (!bStormAlreadyStarted)
+                //     iStormLockSeconds = 60;
 				Seafoam.storm = "true";
 				//bstorm = true;
 				// Build 13 fog - Armada -> (fog effects changed and moved to lines 85 and 94)

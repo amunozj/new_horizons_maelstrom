@@ -457,7 +457,7 @@ void UnloadDialogFileByIndex(int index)
 	// Get the Dialog path
 	DPath = GetStorylinePath(FindCurrentStoryline()) + "dialogs\";
 	//Check if there is a storyline file else take the normal one
-	if (FindFile("PROGRAM\\" + DPath, "*.c", DFile) == "") {
+	if (FindFile("PROGRAM\" + DPath, "*.c", DFile) == "") {
 		DPath = "dialogs\";
 	}
 	//Close it
@@ -494,7 +494,7 @@ string LoadDialogFile(string dialogFile) //Changed to string by levis
 	string FullDialogPath = sDialogDir + dialogFile; // KK
 	string sLanguageDir = LanguageGetLanguage(); // KK
 	//Check if there is a storyline file else take the normal one
-	if (FindFile("PROGRAM\\" + sDialogDir, "*.c", dialogFile) == "") {
+	if (FindFile("PROGRAM\" + sDialogDir, "*.c", dialogFile) == "") {
 		sDialogDir = "dialogs\";
 		FullDialogPath = sDialogDir + dialogFile;
 	}
@@ -630,7 +630,7 @@ string GetLanguageFile(string dialogFile)
 	}
 	//Open the language file
 // KK -->
-	if (FindFile("PROGRAM\\" + sDialogDir, "*.c", dialogFile) == "") {
+	if (FindFile("PROGRAM\" + sDialogDir, "*.c", dialogFile) == "") {
 		sDialogDir = "dialogs\";
 		FullDialogPath = sDialogDir + dialogFile;
 	}

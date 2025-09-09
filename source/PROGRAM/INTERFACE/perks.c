@@ -322,7 +322,7 @@ void DoViewDescribe()
 	
 	//<--Levis add perk cost
 	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"PERK_NAME",0,"PerkName", namestring, FONT_NORMAL, 300,115, argb(255,255,255,255),0, SCRIPT_ALIGN_CENTER, true, 1.0, 420);
-	SetNewPicture("PERK_IMAGE","interfaces\perks\128\\" + strPerkName + ".tga");
+	SetNewPicture("PERK_IMAGE","interfaces\perks\128\" + strPerkName + ".tga");
 
 	aref perkARef; makearef(perkARef, ChrPerksList.list.(strPerkName).condition);
 	perksIconsQ = GetAttributesNum(perkARef);
@@ -334,32 +334,32 @@ void DoViewDescribe()
 		SetNodeUsing("PLUS_"+i, true);
 		if(CheckPerkSimple(refUsedCharacter, abilName))
 		{
-			SetNewPicture("CONDITION_"+i, "interfaces\perks\64\\" + abilName + ".tga");
+			SetNewPicture("CONDITION_"+i, "interfaces\perks\64\" + abilName + ".tga");
 		}
 		else
 		{
 			if(CheckCharacterPerkLocked(refUsedCharacter, abilName))
 			{
-				SetNewPicture("CONDITION_"+i, "interfaces\perks\64Forbidden\\" + abilName + ".tga");
+				SetNewPicture("CONDITION_"+i, "interfaces\perks\64Forbidden\" + abilName + ".tga");
 			}
 			else
 			{
 				if(SHOW_NON_CONTRIB_PERK>0)
 				{
-					SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\\" + abilName + ".tga");
+					SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\" + abilName + ".tga");
 				}
 				else
 				{
 					if(isOfficerPerk(refUsedCharacter, abilName)) //If you are a captain everything will be shown but the perks not for you are locked.
 					{
-						SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\\" + abilName + ".tga");
+						SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\" + abilName + ".tga");
 					}
 					else
 					{
-						SetNewPicture("CONDITION_"+i, "interfaces\perks\64Forbidden\\" + abilName + ".tga");
+						SetNewPicture("CONDITION_"+i, "interfaces\perks\64Forbidden\" + abilName + ".tga");
 					}
 				}
-				SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\\" + abilName + ".tga");
+				SetNewPicture("CONDITION_"+i, "interfaces\perks\64Disable\" + abilName + ".tga");
 			}
 		}
 	}
@@ -485,7 +485,7 @@ void procFTUpdate()
             if(CheckPerkSimple(refUsedCharacter, tmpstr))
 			{
 				argbColor = argb(255,128,128,128);
-				tmpstr = "64\\"+tmpstr;
+				tmpstr = "64\"+tmpstr;
 				nPerkState = 1;
 				//SetNodeUsing("PERK_STATE_"+imgQ, true);
 			}
@@ -496,7 +496,7 @@ void procFTUpdate()
 				if(CheckCharacterPerkLocked(refUsedCharacter, tmpstr))
 				{
 					argbColor = argb(255,128,128,128);
-					tmpstr = "64Forbidden\\"+tmpstr; //Levis Disable Perks
+					tmpstr = "64Forbidden\"+tmpstr; //Levis Disable Perks
 					nPerkState = 2;
 				}
 				//<-- Levis Locked Perks
@@ -505,7 +505,7 @@ void procFTUpdate()
 					if(SHOW_NON_CONTRIB_PERK>0)
 					{
 						argbColor = argb(255,128,128,128);
-						tmpstr = "64Disable\\"+tmpstr;
+						tmpstr = "64Disable\"+tmpstr;
 						nPerkState = 0;
 					}
 					else
@@ -513,13 +513,13 @@ void procFTUpdate()
 						if(isOfficerPerk(refUsedCharacter, tmpstr)) //If you are a captain everything will be shown but the perks not for you are locked.
 						{
 							argbColor = argb(255,128,128,128);
-							tmpstr = "64Disable\\"+tmpstr;
+							tmpstr = "64Disable\"+tmpstr;
 							nPerkState = 0;
 						}
 						else
 						{
 							argbColor = argb(255,128,128,128);
-							tmpstr = "64Forbidden\\"+tmpstr; //Levis Disable Perks
+							tmpstr = "64Forbidden\"+tmpstr; //Levis Disable Perks
 							nPerkState = 2;
 						}
 					}
@@ -548,7 +548,7 @@ void procFTUpdate()
 			//Set the image
 			SetNodeUsing("PERK_ICON_"+imgQ,true);
 			//SetNodeUsing("PERK_STATE_"+imgQ, nPerkState==0); //Changed by Levis for Locked Perks
-			SetNewPicture("PERK_ICON_"+imgQ,"interfaces\perks\\" + tmpstr + ".tga");
+			SetNewPicture("PERK_ICON_"+imgQ,"interfaces\perks\" + tmpstr + ".tga");
 			SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE,"PERK_ICON_"+imgQ, 4,argbColor);
 			imgQ++;
 		}

@@ -1,6 +1,6 @@
-     //\\ INTERFACE MOD BY MAXIMUS //\\
+     //\ INTERFACE MOD BY MAXIMUS //\
 
-//\\ INTERFACE FOR OFFICER STATUS WINDOW //\\
+//\ INTERFACE FOR OFFICER STATUS WINDOW //\
 
 // Aconcagua: deleted several functions not needed here
 // they remained from copying this file from characters.c

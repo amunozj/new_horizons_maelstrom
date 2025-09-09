@@ -1483,7 +1483,7 @@
 //JRH -->
 	Locations[n].id = "Cartagena_church_stairs";
 	locations[n].id.label = "Secret passage";
-	Locations[n].filespath.models = "locations\inside\Doubleflour_house\\";
+	Locations[n].filespath.models = "locations\inside\Doubleflour_house\";
 	Locations[n].image = "secret_passage.tga";
 
 	//Town sack
@@ -3320,7 +3320,7 @@
 	Locations[n].id = "New_cloister_chapel";
 	locations[n].id.label = "Chapel";
 	Locations[n].image = "Inside_Church_2.tga";
-	Locations[n].filespath.models = "locations\inside\Church_2\\";
+	Locations[n].filespath.models = "locations\inside\Church_2\";
 	
 	//Town sack
 	Locations[n].townsack = "Cartagena";
@@ -3399,7 +3399,7 @@
 //pär
 	Locations[n].id = "New_cloister_library";
 	locations[n].id.label = "Library";
-	Locations[n].filespath.models = "locations\inside\Dungeon_2\\";
+	Locations[n].filespath.models = "locations\inside\Dungeon_2\";
 	Locations[n].filespath.textures = "locations\inside\Dungeon_2\library";
 	Locations[n].image = "Inside_Cloister_Library.tga";
 
