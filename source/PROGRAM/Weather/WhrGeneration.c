@@ -75,7 +75,24 @@ void Whr_Generator(int iHour){
 	rRain = rand(MAX_RAINCHANGE);
 	rWindA = frand(MAX_ANGLECHANGE);
 	
-	Whr_GenerateValues(FREE_FOG);
+	if (fixed_check_cycles == 0){
+		Whr_GenerateValues(FREE_FOG);
+	}else{
+		fixed_check_cycles = fixed_check_cycles - 1;
+	}
+
+	if(gWeatherOvrd){
+		if(oWeatherAngle != -50.0){fWindA = OWeatherAngle;	}
+		if(OWABallast != -50.0){windABallast = OWABallast; }
+		if(OFog != -50){fog = OFog;}
+		if(OFBallast != - 50){fogBallast = OFBallast;}
+		if(ORain != -50){wRain = ORain;}
+		if(ORBallast != -50){rainBallast = ORBallast;}
+		if(OWind != -50){winds = OWind;}
+		if(OWBallast != -50){windBallast = OWBallast;}
+		Whr_ResetOvrd();
+	}
+
 	Whr_FogRainCheck();	 //Set wRain and fog values
 	
 	//--Testing Settings--------------------------------------------------------
@@ -88,25 +105,15 @@ void Whr_Generator(int iHour){
 
 	//--Testing Settings--------------------------------------------------------
 	
-	if(gWeatherOvrd){
-		if(oWeatherAngle != -50.0){fWindA = OWeatherAngle;	}
-		if(OWABallast != -50.0){windABallast = OWABallast; }
-		if(OFog != -50){fog = OFog;}
-		if(OFBallast != - 50){fogBallast = OFBallast;}
-		if(ORain != -50){wRain = ORain;}
-		if(ORBallast != -50){rainBallast = ORBallast;}
-		if(OWind != -50){winds = OWind;}
-		if(OWBallast != -50){windBallast = OWBallast;}
-		Whr_ResetOvrd();
-	}
+
 	
 	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); } 
 	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); } 
 	//#20220311-01
 	//WeatherParams.Storm = false;
 	//WeatherParams.Tornado = false;
-	bool bStormAlreadyStarted = bWeatherIsStorm;
-    if (bWeatherIsStorm) bWhrStorm = true;
+	// bool bStormAlreadyStarted = bWeatherIsStorm;
+    // if (bWeatherIsStorm) bWhrStorm = true;
 	btornado = bWhrTornado; //screwface
 	bstorm = bWhrStorm; //screwface
 	

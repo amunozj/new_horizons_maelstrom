@@ -136,6 +136,7 @@ int		MAX_RAINCHANGE =				20;		// INT - ^^DITTO for rain
 
 float 	MAX_RAIN_HOUR = 				17.0;	// FLOAT - Hour of day when rain is likeliest to occur
 float 	RAIN_HOUR_FACTOR = 				3.0;	// Factor that determines how strongly the 24 hour cycle influences rain - higher number means stronger influence
+#define SET_WEATHER_DURATION 			6		// Number of hours that a set weather lasts without randomization
 
 // wRain levels.  Names are self explanatory.  Once rain variable crosses these levels the corresponding weather effects kick in
 #define WRAINRAIN 25

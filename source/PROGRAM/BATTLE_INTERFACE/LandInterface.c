@@ -413,9 +413,9 @@ void BLI_SetObjectData()
     int fTmp, fTmp2;
 	DeleteAttribute(&objLandInterface,"");
 	objLandInterface.data.riskAlarm = 0;
-	// индикатор тревоги
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	objLandInterface.data.alarm = 0.0;
-	// персы вместе с нами
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	ref mainCh = GetMainCharacter();
 	aref ar;
 	int i,cn;
@@ -435,7 +435,7 @@ void BLI_SetObjectData()
 	}
 
 	BLI_SetMessageParameters();
-	// текстуры
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	int idLngFile = LanguageOpenFile("commands_name.txt");
 	objLandInterface.CommandTextures.list.t0.name = "battle_interface\LandCommands.tga";
 	objLandInterface.CommandTextures.list.t0.xsize = 4;
@@ -496,7 +496,7 @@ void BLI_SetObjectData()
 	objLandInterface.CommandTextures.list.t16.ysize = 16;
 
 	objLandInterface.CommandTextures.CommandTexNum = 0;
-	// список команд
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	objLandInterface.Commands.Cancel.enable			= false;
 	objLandInterface.Commands.Cancel.picNum			= 0;
 	objLandInterface.Commands.Cancel.selPicNum			= 1;
@@ -628,7 +628,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.TalkSelf.event		= "BI_TalkSelf";
 	objLandInterface.Commands.TalkSelf.note			= LanguageConvertString(idLngFile, "land_TalkSelf");
 
-	// список пользовательских картинок
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// cancel icon
 	objLandInterface.UserIcons.cancel.enable = true;
 	objLandInterface.UserIcons.cancel.pic = 0;
@@ -758,7 +758,7 @@ void BLI_SetShowParameters()
 	ar.heightHealth = RecalculateVIcon(16);
 	ar.distHealth = RecalculateVIcon(4);
 
-	// высота и отступ для количества зарядов пистолета
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ar.GunShootHeight = RecalculateHIcon(16);
 	ar.GunShootSpace = RecalculateVIcon(2);
 
@@ -2018,7 +2018,7 @@ void ReloadFromLandToSea()
 //trace("Doing land-to-sea");
 //trace("reload_locator_ref " + reload_locator_ref.name);
     aref aCurWeather = GetCurrentWeather();
-    if(wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1)
+    if(wRain < WRAINOVERCAST && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1)
     { //Colors get set in WhrCreateSeaEnvironment
 //trace("land-to-sea Setting lagoon colors");
         //Sea.Sea2.WaterColor = argb(0,84,162,175);

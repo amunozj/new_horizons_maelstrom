@@ -78,10 +78,10 @@ trace("worldMap.playerShipZ " + worldMap.playerShipZ);
                 //End Boyer add
 				isShipEncounterType = true;
 				/*
-				// boal нужно перенести наверх, а то в территории острова -->
+				// boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 				wdmLoginToSea.island = "";
 				wdmCurrentIsland = WDM_NONE_ISLAND;
-				// boal нужно перенести наверх, а то в территории острова <--
+				// boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 				*/
 				grp = "group" + i;
 				encX = MakeFloat(worldMap.encounter.x);
@@ -358,10 +358,10 @@ void WdmStormEncounter()
 	if(MakeInt(wdmLoginToSea.storm) != 0)
 	{
 		wdmLoginToSea.tornado = worldMap.stormWhithTornado;
-		// SetNextWeather("Heavy Storm");
+		SetNextWeather("Heavy Storm");
 	}else{
 		wdmLoginToSea.tornado = "0";
-		// SetNextWeather("Stormy");
+		SetNextWeather("Stormy");
 	}
 
 	//wdmLoginToSea.tornado = "1";

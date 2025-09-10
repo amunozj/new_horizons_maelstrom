@@ -2479,24 +2479,24 @@ int AddSeaTimeToCurrent(bool incrementTime)
 			}
 		}
 // <-- KK
-		if(oldhour != GetHour())
-		{
-			sNewExecuteLayer = SEA_EXECUTE;
-			sNewRealizeLayer = SEA_REALIZE;
-			// LDH this is where the weather is updated when on ship - 04Jan09
-			bool oldIsNight = Whr_IsNight();
-			bool oldIsRain = Whr_IsRain();		// LDH 20Feb09
-			//trace("AIShip oldhour != new " + GetHour());
-			aref aCurWeather = GetCurrentWeather();
-			DeleteAttribute(aCurWeather, "Sea.inlagoon");
-			Whr_UpdateWeather(true);
-			// LDH update the music if day/night changes - 20Jan09
-			// turn off the rain sounds if it's no longer raining - 20Feb09
-			if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain) {
-				doShipLightChange(aCurWeather);
-                SetSchemeForSea();
-			}
-		}
+		// if(oldhour != GetHour())
+		// {
+		// 	sNewExecuteLayer = SEA_EXECUTE;
+		// 	sNewRealizeLayer = SEA_REALIZE;
+		// 	// LDH this is where the weather is updated when on ship - 04Jan09
+		// 	bool oldIsNight = Whr_IsNight();
+		// 	bool oldIsRain = Whr_IsRain();		// LDH 20Feb09
+		// 	//trace("AIShip oldhour != new " + GetHour());
+		// 	aref aCurWeather = GetCurrentWeather();
+		// 	DeleteAttribute(aCurWeather, "Sea.inlagoon");
+		// 	Whr_UpdateWeather(true);
+		// 	// LDH update the music if day/night changes - 20Jan09
+		// 	// turn off the rain sounds if it's no longer raining - 20Feb09
+		// 	if (Whr_IsNight() != oldIsNight || Whr_IsRain() != oldIsRain) {
+		// 		doShipLightChange(aCurWeather);
+        //         SetSchemeForSea();
+		// 	}
+		// }
 	}
 	return minutes;
 }

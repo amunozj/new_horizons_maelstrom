@@ -575,8 +575,18 @@ void SeaLogin(ref Login)
 		if (CheckAttribute(Login,"Tornado")) WeatherParams.Tornado = Login.Tornado;
 		bStorm = sti(WeatherParams.Storm);
 		bTornado = sti(WeatherParams.Tornado);
-		if (bStorm) iStormLockSeconds = 60;
+		if (bStorm){
+			iStormLockSeconds = 60;
+			SetNextWeather("Stormy");
+			bWeatherIsStorm = true;
+		}
+		if (bTornado){
+			SetNextWeather("Heavy Storm");
+			bWeatherIsStorm = true;
+		}
 	}
+
+	
 
 	// Island
 	int iIslandIndex = FindIsland(Login.Island);

@@ -33,9 +33,7 @@ float rWindA = 0.0;
 float fSeaA;
 float fSeaB;
 bool rainState = false;
-bool stormSkyState = false;
 bool stormState = false;
-bool tornadoState = false;
 
 // Values for overriding weather or setting it
 // ----------------DO NOT CHANGE THESE VALUES HERE------------------------
@@ -69,6 +67,7 @@ float	fFogDensity;
 int		iShadowDensity[2];
 int		iPrevWeather = -1;
 int		sunIsShine = true;
+int 	fixed_check_cycles = 0;
 bool	bWeatherLoaded = false;
 bool	bWeatherIsNight = false;
 bool	bWeatherIsLight = false;
@@ -105,7 +104,9 @@ void SetNextWeather(string sWeatherID)
 	if (sWeatherID == "Blue Sky" || sWeatherID == "Moon Night" || sWeatherID == "Red Sky") sWeather = "Clear";
 	if (sWeatherID == "Day Storm")								sWeather = "Heavy Storm";
 	if (sWeatherID == "alcove") sWeather = "inside";
+	if (sWeatherID == "Cloudy") sWeather = "Overcast";
 
+	fixed_check_cycles = SET_WEATHER_DURATION;
 	switch (sWeather)
 	{
 	case "Clear":
@@ -115,38 +116,41 @@ void SetNextWeather(string sWeatherID)
 		Fog = 0;
 		OFog = 0;
 		gWeatherOvrd = true;	// LDH make new weather in CreateWeatherEnvironment 17Feb09
-		break;
-
-	case "Cloudy":
-		wRain = 60;		// clouds start at 50, overcast starts at 65
-		ORain = 60;		// clouds start at 50, overcast starts at 65
-		gWeatherOvrd = true;
-		sWeatherID = "21 Rain";
+		stormState = false;
 		break;
 
 	case "Overcast":
 		wRain = WRAINOVERCAST+10;		// overcast starts at WRAINOVERCAST, rain starts at WRAINRAIN
 		ORain = WRAINOVERCAST+10;		// overcast starts at WRAINOVERCAST, rain starts at WRAINRAIN
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = false;
 		break;
 
 	case "Rainy":
 		wRain = WRAINRAIN+10;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
 		ORain = WRAINRAIN+10;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = false;
 		break;
 
 	case "Heavy Rain":
-		wRain = WRAINRAIN+20;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
-		ORain = WRAINRAIN+20;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
+		wRain = WRAINOVERCAST+20;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
+		ORain = WRAINOVERCAST+20;		// rain starts at WRAINRAIN, storm starts at WRAINSTORM
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = false;
 		break;
 
 	case "Stormy":		// this produces lightning
 		wRain = WRAINSTORM+5;		// storm starts at WRAINSTORM
 		ORain = WRAINSTORM+5;		// storm starts at WRAINSTORM
 		OWind = 25;		// twisters start at minwind >= 28
+		OWBallast = 50;
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = true;
 		break;
 
 	case "Heavy Storm":	// this produces twisters, "Day Storm"
@@ -154,8 +158,10 @@ void SetNextWeather(string sWeatherID)
 		ORain = 100;	// storm starts at WRAINSTORM
 		ORBallast = 15;
 		OWind = 30;		// twisters start at minwind >= 28
-		OWBallast = 15;
+		OWBallast = 50;
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = true;
 		break;
 
 	case "Foggy":
@@ -175,7 +181,10 @@ void SetNextWeather(string sWeatherID)
 		Fog = 25;
 		OFog = 25;
 		OWind = 25;
+		OWBallast = 50;
 		gWeatherOvrd = true;
+		rainState = true;
+		stormState = true;
 		break;
 
 	case "IslaDeMuerte":
@@ -192,7 +201,7 @@ void SetNextWeather(string sWeatherID)
 
 	}
 
-	//Whr_Generator();
+	Whr_FogRainCheck();
 
 	// find weather
 	iNextWeatherNum = -1;
@@ -311,20 +320,8 @@ void CreateWeatherEnvironment()
 	bool bWhrStormSky = false;
 	bool bRain = false;
 
-	Whr_Generator(iHour);
-
-	iCurWeatherNum = FindWeatherByHour(iHour);
-	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
-
-	// WTrace("Weather ID: " + Weathers[iCurWeatherNum].id );
-
-	if (CheckAttribute(WeathersNH, "StormSky")) { bWhrStormSky = sti(WeathersNH.StormSky); }
-	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
-	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
-
 	int iMonth = GetDataMonth();
 	int iTmp; //, iChance;
-	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
 
 	int iCurLocation;
 	int iTestWeather;
@@ -340,29 +337,23 @@ void CreateWeatherEnvironment()
 		{
 			if(CheckAttribute(&locations[iCurLocation], "storm"))
 			{
-				bWhrStorm = 1;
+				SetNextWeather("Stormy");
+				bWeatherIsStorm = true;
 			}
 			if(CheckAttribute(&locations[iCurLocation], "tornado"))
 			{
-				bWhrTornado = 1;
+				SetNextWeather("Heavy Storm");
+				bWeatherIsStorm = true;
 			}
 			if(CheckAttribute(&locations[iCurLocation], "alwaysStorm"))
 			{
-				if (fGetTime >= 6.0 && fGetTime < 10.0) locations[iCurLocation].QuestlockWeather = "Storm01_add";
-				else { if (fGetTime >= 10.0 && fGetTime < 18.0) locations[iCurLocation].QuestlockWeather = "Storm02_add";
-				else { if (fGetTime >= 18.0 && fGetTime < 22.0) locations[iCurLocation].QuestlockWeather = "Storm03_add";
-				else { locations[iCurLocation].QuestlockWeather = "Storm04_add";
-				}}}
-				if (CheckAttribute(&locations[iCurLocation], "alwaysStorm.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 2.5;
+				SetNextWeather("Stormy");
+				bWeatherIsStorm = true;
 			}
 			else { if(CheckAttribute(&locations[iCurLocation], "alwaysStorm_2")) //COAS escape
                 {
-                    if (fGetTime >= 6.0 && fGetTime < 10.0) locations[iCurLocation].QuestlockWeather = "Storm01";
-                    else { if (fGetTime >= 10.0 && fGetTime < 18.0) locations[iCurLocation].QuestlockWeather = "Storm02";
-                    else { if (fGetTime >= 18.0 && fGetTime < 22.0) locations[iCurLocation].QuestlockWeather = "Storm03";
-                    else { locations[iCurLocation].QuestlockWeather = "Storm04";
-                    }}}
-                    if (CheckAttribute(&locations[iCurLocation], "alwaysStorm_2.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 28.0; //40.0;
+					SetNextWeather("Stormy");
+					bWeatherIsStorm = true;
                 }
 			}
 			if(CheckAttribute(&locations[iCurLocation], "QuestlockWeather"))
@@ -386,19 +377,18 @@ void CreateWeatherEnvironment()
 			{
 				if(CheckAttribute(&Islands[iCurLocation], "storm"))
 				{
-					bWhrStorm = 1;
+					SetNextWeather("Stormy");
+					bWeatherIsStorm = true;
 				}
 				if(CheckAttribute(&Islands[iCurLocation], "tornado"))
 				{
-					bWhrTornado = 1;
+					SetNextWeather("Heavy Storm");
+					bWeatherIsStorm = true;
 				}
 				if(CheckAttribute(&Islands[iCurLocation], "alwaysStorm"))
 				{
-					if (fGetTime >= 6.0 && fGetTime < 10.0) Islands[iCurLocation].QuestlockWeather = "Storm01";
-					else { if (fGetTime >= 10.0 && fGetTime < 18.0) Islands[iCurLocation].QuestlockWeather = "Storm02";
-					else { if (fGetTime >= 18.0 && fGetTime < 22.0) Islands[iCurLocation].QuestlockWeather = "Storm03";
-					else { Islands[iCurLocation].QuestlockWeather = "Storm04";
-					}}}
+					SetNextWeather("Stormy");
+					bWeatherIsStorm = true;
 				}
 				if(CheckAttribute(&Islands[iCurLocation], "QuestlockWeather"))
 				{
@@ -412,6 +402,19 @@ void CreateWeatherEnvironment()
 			}
 		}
 	}
+
+	Whr_Generator(iHour);
+
+	iCurWeatherNum = FindWeatherByHour(iHour);
+	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
+
+	// WTrace("Weather ID: " + Weathers[iCurWeatherNum].id );
+
+	if (CheckAttribute(WeathersNH, "StormSky")) { bWhrStormSky = sti(WeathersNH.StormSky); }
+	if (CheckAttribute(&WeatherParams,"Storm")) { bWhrStorm = sti(WeatherParams.Storm); }
+	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
+	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); }
+
 	bCurWeatherStorm = bWhrStorm;
 
 	if (!bQuestlockWeather)
@@ -449,31 +452,11 @@ void CreateWeatherEnvironment()
 	}
 	FillWeatherData(iCurWeatherNum, iBlendWeatherNum, true);
 
-	if (iBlendWeatherNum < 0 || bQuestlockWeather)
-	{
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 450.0/3;
-		Weather.Time.updatefrequence = 15;
-	} else {
-		Weather.Time.time = fGetTime;
-		Weather.Time.speed = 450.0/3;
-		Weather.Time.updatefrequence = 15;
-		if (bSeaActive && !bAbordageStarted)
-		{
-			/*
-			if (iArcadeSails == 1)
-            {
-                Weather.Time.speed = 250;
-                Weather.Time.updatefrequence = 10;
-            }
-		*/
-		}
-		else
-		{
-			Weather.Time.speed = 350;
-			Weather.Time.updatefrequence = 12;
-		}
-	}
+	// Set day night cycle speed
+	Weather.Time.time = fGetTime;
+	Weather.Time.speed = 450.0/3;
+	Weather.Time.updatefrequence = 15;
+
 	Weather.isDone = "";
 
 	SetEventHandler(WEATHER_CALC_FOG_COLOR,"Whr_OnCalcFogColor",0);
@@ -789,6 +772,10 @@ void Whr_TimeUpdate()
 		Weather.Time.time = GetTime();
 	}
 
+	//navy <-- Rain
+	aref oldWeather = GetCurrentWeather();
+	bool isLagoon = CheckAttribute(oldWeather, "Sea.inlagoon");
+
 	// Run weather generator
 	if( nNewHour != nOldHour )
 	{
@@ -833,9 +820,6 @@ void Whr_TimeUpdate()
 	if (CheckAttribute(&WeatherParams,"Tornado")) { bWhrTornado = sti(WeatherParams.Tornado); }
 	if (CheckAttribute(WeathersNH, "StormSky")) { StormSky = sti(WeathersNH.StormSky); }
 
-	//navy <-- Rain
-	aref oldWeather = GetCurrentWeather();
-	bool isLagoon = CheckAttribute(oldWeather, "Sea.inlagoon");
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
 	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
 
@@ -907,34 +891,34 @@ void Whr_TimeUpdate()
 	WhrFillSunGlowData(iCurWeatherNum, iBlendWeatherNum);
 	SunGlow.isDone = true;
 
+	string imageName = "sea.tga";
+
 	// Final checks to fix sound and reload to storms
-	WTrace("Check for change in weather condition");
+	// WTrace("Check for change in weather condition");
 	if (bRain != rainState || stormState != bWhrStorm)
 	{
-		WTrace("Change in weather condition");
-		if (!bSeaActive){
-			Whr_SetRainSound(bRain, sti(Weathers[iCurWeatherNum].Night));
-		}else{
-			Whr_SetRainSound(bRain, sti(Weathers[iCurWeatherNum].Night));
-			SetSchemeForSea();
-		}
+		// WTrace("Change in weather condition");
+		PauseAllSounds();
 
+		ref pchar = GetMainCharacter();
 		if (stormState != bWhrStorm && bSeaActive){
-			WTrace("Change in storm condition");
+			// WTrace("Change in storm condition");
 			rainState = bRain;
 			stormState = bWhrStorm;
-			bWhrTornado = tornadoState;
 
-			if (bDirectSail){ // Reload weather in case of storm and direcsail active
+			if (bWhrStorm){imageName = "Storm.tga";}
+			else{imageName = "sea.tga";}
+			if (DirectsailCheck(false)){ // Reload weather in case of storm and direcsail active
 				CreateEntity(&SeaFader, "fader");
-				SendMessage(&SeaFader, "ls", FADER_PICTURE, FindReloadPicture("sea.tga")); // KK
+				SendMessage(&SeaFader, "ls", FADER_PICTURE, FindReloadPicture(imageName)); // KK
 				SendMessage(&SeaFader, "lfl", FADER_IN, 0.5, true);
 				Sea_ReloadStartDirect();
 			}			
 		}
+		
+		LoadSceneSound();
 		rainState = bRain;
 		stormState = bWhrStorm;
-		bWhrTornado = tornadoState;
 	}
 
 	// update sky: fog
@@ -1099,6 +1083,11 @@ void FillWeatherData(int nw1, int nw2, bool updateFog)
 		Weather.Sun.Ambient = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sun.Ambient"), Whr_GetColor(&Weathers[nw2],"Sun.Ambient") );
 		Sky.Color = Whr_BlendColor( fBlend, Whr_GetColor(&Weathers[nw1],"Sky.Color"), Whr_GetColor(&Weathers[nw2],"Sky.Color") );
 	}
+	// WTrace("Weather Fog Density:" + Weather.Fog.Density);
+	// WTrace("Weather Fog IslandDensity :" + Weather.Fog.IslandDensity);
+	// WTrace("Weather Fog SeaDensity:" + Weather.Fog.SeaDensity);
+	// WTrace("Weather Fog Height:" + Weather.Fog.Height);
+	
 	Whr_addwind2weather(&Weather);
     //arWeather.Lightning.Enable = false;
     Whr_addRain2weather(&Weather);

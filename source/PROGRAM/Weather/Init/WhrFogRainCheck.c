@@ -1,5 +1,5 @@
 #define FOGFACTOR 0.5
-#define FOGHEIGHTFACTOR 0.5
+#define FOGHEIGHTFACTOR 1.0
 
 void Whr_FogRainCheck(){
 //JL -------------------------------------------------------------
@@ -18,36 +18,63 @@ void Whr_FogRainCheck(){
 	// }
 
 //  LDH more fog during rain - 26Feb09
-	if (wRain > WRAINOVERCAST) fog += (wRain-WRAINOVERCAST)/2;
+	// if (wRain > WRAINOVERCAST) fog += (wRain-WRAINOVERCAST)/2;
 
-	if ( fog >= 5 ){
-		WeathersNH.Fog.Enable = true;
-		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09
-		WeathersNH.Fog.Start = 0.0;
-//		WeathersNH.Fog.Density = (fog*0.00025);
-		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
-		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
-		WeathersNH.SpecialSeaFog.Enable = true;
-		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
-		WeathersNH.SpecialSeaFog.Start = 0.0;
-		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
-		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
-	}
-	else{
-		WeathersNH.Fog.Enable = true;
-		WeathersNH.Fog.Height = 300.0*FOGHEIGHTFACTOR;
-		WeathersNH.Fog.Start = 0.0;
-		WeathersNH.Fog.Density = 0.001*FOGFACTOR;
-		WeathersNH.Fog.SeaDensity = 0.001*FOGFACTOR;
-		WeathersNH.Fog.IslandDensity = 0.001*FOGFACTOR;
+// 	if ( fog >= 5 ){
+// 		WeathersNH.Fog.Enable = true;
+// 		WeathersNH.Fog.Height = (fog-4)*500.0*FOGHEIGHTFACTOR;				// LDH - 25Feb09
+// 		WeathersNH.Fog.Start = 0.0;
+// //		WeathersNH.Fog.Density = (fog*0.00025);
+// 		WeathersNH.Fog.Density = (fog*0.0005)*FOGFACTOR;				// denser fog on land - 26Feb09
+// 		WeathersNH.Fog.SeaDensity = (fog*0.00025)*FOGFACTOR;
+// 		WeathersNH.Fog.IslandDensity = (fog*0.00025)*FOGFACTOR;
+// 		WeathersNH.SpecialSeaFog.Enable = true;
+// 		WeathersNH.SpecialSeaFog.Height = fog*400.0*FOGHEIGHTFACTOR;			// LDH - 25Feb09
+// 		WeathersNH.SpecialSeaFog.Start = 0.0;
+// 		WeathersNH.SpecialSeaFog.Density = (fog*0.00025)*FOGFACTOR;
+// 		WeathersNH.SpecialSeaFog.SeaDensity = (fog*0.00025)*FOGFACTOR;
+// 	}
+// 	else{
+// 		WeathersNH.Fog.Enable = true;
+// 		WeathersNH.Fog.Height = 300.0*FOGHEIGHTFACTOR;
+// 		WeathersNH.Fog.Start = 0.0;
+// 		WeathersNH.Fog.Density = 0.001*FOGFACTOR;
+// 		WeathersNH.Fog.SeaDensity = 0.001*FOGFACTOR;
+// 		WeathersNH.Fog.IslandDensity = 0.001*FOGFACTOR;
 
-		WeathersNH.SpecialSeaFog.Enable = true;
-		WeathersNH.SpecialSeaFog.Height = 1500.0*FOGHEIGHTFACTOR;
-		WeathersNH.SpecialSeaFog.Start = 0.0;
-		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
-		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
+// 		WeathersNH.SpecialSeaFog.Enable = true;
+// 		WeathersNH.SpecialSeaFog.Height = 1500.0*FOGHEIGHTFACTOR;
+// 		WeathersNH.SpecialSeaFog.Start = 0.0;
+// 		WeathersNH.SpecialSeaFog.Density = 0.001*FOGFACTOR;
+// 		WeathersNH.SpecialSeaFog.SeaDensity = 0.001*FOGFACTOR;
+// 	}
+
+	float fogHeigth = 150.0;
+	float fogDensity = 0.0005;
+	WeathersNH.Fog.Start = 0.0;
+	if (wRain > WRAINRAIN){
+		fogHeigth = fogHeigth + 150.0*MakeFloat(wRain-WRAINRAIN)*FOGHEIGHTFACTOR;
+		fogDensity = fogDensity + 0.0001*MakeFloat(wRain-WRAINRAIN)*FOGFACTOR;		
 	}
+	if (wRain > WRAINOVERCAST){
+		fogDensity = fogDensity + 0.0005*MakeFloat(wRain-WRAINOVERCAST)*FOGFACTOR;
+	}
+	if (wRain > WRAINSTORM){
+		fogDensity = fogDensity + 0.0005*MakeFloat(wRain-WRAINSTORM)*FOGFACTOR;		
+		WeathersNH.Fog.Start = 10.0;
+	}
+
+	WeathersNH.Fog.Enable = true;
+	WeathersNH.SpecialSeaFog.Enable = true;
+	WeathersNH.Fog.Height = fogHeigth;
+	WeathersNH.Fog.Density = fogDensity;
+	WeathersNH.Fog.SeaDensity = fogDensity;
+	WeathersNH.Fog.IslandDensity = fogDensity/3;
+	WeathersNH.SpecialSeaFog.Height = fogHeigth;
+	WeathersNH.SpecialSeaFog.Start = 0.0;
+	WeathersNH.SpecialSeaFog.Density = fogDensity;
+	WeathersNH.SpecialSeaFog.SeaDensity = fogDensity;	
+
 
 	fog = tempFog;		// LDH 26Feb09
 	
