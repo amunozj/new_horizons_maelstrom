@@ -813,17 +813,17 @@ void procUpdateTime()
 					int numBells = (theHour % 4) * 2;
 					if (theMinute == 30) numBells += 1;
 					if (numBells == 0) numBells = 8;
-					switch (numBells)
-					{
-						case 1:	PlaySound("AMBIENT\SEA\bell1_0030_0430_0830.wav"); break;
-						case 2:	PlaySound("AMBIENT\SEA\bell2_0100_0500_0900.wav"); break;
-						case 3:	PlaySound("AMBIENT\SEA\bell3_0130_0530_0930.wav"); break;
-						case 4:	PlaySound("AMBIENT\SEA\bell4_0200_0600_1000.wav"); break;
-						case 5:	PlaySound("AMBIENT\SEA\bell5_0230_0630_1030.wav"); break;
-						case 6:	PlaySound("AMBIENT\SEA\bell6_0300_0700_1100.wav"); break;
-						case 7:	PlaySound("AMBIENT\SEA\bell7_0330_0730_1130.wav"); break;
-						case 8:	PlaySound("AMBIENT\SEA\bell8_0400_0800_1200.wav"); break;
-					}
+					// switch (numBells)
+					// {
+					// 	case 1:	PlaySound("AMBIENT\SEA\bell1_0030_0430_0830.wav"); break;
+					// 	case 2:	PlaySound("AMBIENT\SEA\bell2_0100_0500_0900.wav"); break;
+					// 	case 3:	PlaySound("AMBIENT\SEA\bell3_0130_0530_0930.wav"); break;
+					// 	case 4:	PlaySound("AMBIENT\SEA\bell4_0200_0600_1000.wav"); break;
+					// 	case 5:	PlaySound("AMBIENT\SEA\bell5_0230_0630_1030.wav"); break;
+					// 	case 6:	PlaySound("AMBIENT\SEA\bell6_0300_0700_1100.wav"); break;
+					// 	case 7:	PlaySound("AMBIENT\SEA\bell7_0330_0730_1130.wav"); break;
+					// 	case 8:	PlaySound("AMBIENT\SEA\bell8_0400_0800_1200.wav"); break;
+					// }
 					bHourBellPlayed = true;
 
 					// LDH get experience for manual sailing - 21Dec08

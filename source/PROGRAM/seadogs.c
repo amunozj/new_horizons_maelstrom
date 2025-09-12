@@ -2940,8 +2940,8 @@ switch (GetTimeScale())
 case  0: PChar.basetime =  1; break;		// New values by El Rapido
 case  1: PChar.basetime =  3; break;
 case  3: PChar.basetime =  5; break;
-case  5: PChar.basetime = 8; break;
-case 8: PChar.basetime = 12; break;
+case  5: PChar.basetime = 10; break;
+case 10: PChar.basetime = 20; break;
 }
 }
 else
@@ -2963,8 +2963,8 @@ if(!IsEntity(&worldMap))
 {
 switch (GetTimeScale())
 {
-case 12: PChar.basetime = 8; break;		// New values by El Rapido
-case 8: PChar.basetime =  5; break;
+case 20: PChar.basetime = 10; break;		// New values by El Rapido
+case 10: PChar.basetime =  5; break;
 case  5: PChar.basetime =  3; break;
 case  3: PChar.basetime =  1; break;
 }

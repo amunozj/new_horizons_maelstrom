@@ -801,6 +801,19 @@ void Whr_TimeUpdate()
 			Sea.Sea2.AnimSpeed2 = 0.002;
 			Sea.Sea2.MoveSpeed2 = "0.7, 0.0, 0.003";
 		}
+
+		if (bSeaActive){PlaySound("AMBIENT\SEA\bell1_0030_0430_0830.wav");}
+
+		// int numBells = (nNewHour % 6) + 1;
+		// switch (numBells)
+		// {
+		// 	case 1:	PlaySound("AMBIENT\SEA\bell1_0030_0430_0830.wav"); break;
+		// 	case 2:	PlaySound("AMBIENT\SEA\bell2_0100_0500_0900.wav"); break;
+		// 	case 3:	PlaySound("AMBIENT\SEA\bell3_0130_0530_0930.wav"); break;
+		// 	case 4:	PlaySound("AMBIENT\SEA\bell4_0200_0600_1000.wav"); break;
+		// 	case 5:	PlaySound("AMBIENT\SEA\bell5_0230_0630_1030.wav"); break;
+		// 	case 6:	PlaySound("AMBIENT\SEA\bell6_0300_0700_1100.wav"); break;
+		// }		
 	}
 	else {
         // update weather: sun lighting
