@@ -2078,6 +2078,9 @@ bool bSelfDialogTurn = true;
 void StartActorSelfDialog(string _CurrentNode)
 {
 	ref pchar = GetMainCharacter();
+	if (CheckAttribute(pchar, "location.locator")) {
+    pchar.SelfWaitLocator = pchar.location.locator; // save where player is
+	}
 	pchar.Dialog.Filename = "SelfWait_dialog.c";
     LAi_SetActorType(pchar);
     locCameraSleep(true);

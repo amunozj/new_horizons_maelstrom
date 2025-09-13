@@ -23,7 +23,14 @@ void DoWaitHours(int hrs)
     // --- then reload same location ---
     ref pchar = GetMainCharacter();
     string curLoc = pchar.location;
-    DoQuestReloadToLocation(curLoc, "reload", "reload1", "pchar_back_to_player");
+	
+	string curLocGroup = "goto"; // default group
+	string curLocLocator = "goto1"; // fallback
+
+	if (CheckAttribute(pchar, "SelfWaitLocator")) {
+		curLocLocator = pchar.SelfWaitLocator;
+	}
+    DoQuestReloadToLocation(curLoc, curLocGroup, curLocLocator, "pchar_back_to_player");
 }
 
 int HoursUntil(int targetHour) // targetHour: 0..23
