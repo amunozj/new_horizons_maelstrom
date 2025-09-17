@@ -30,16 +30,16 @@ void ShowMap()
 	object fakeMap;
 	ref chm = GetMainCharacter();
 
-	float startX = makefloat(199.0)+makefloat(23.0); //189
-	float startY = makefloat(37.0)+makefloat(23.0); //50
-	float endX = makefloat(665.0)-makefloat(23.0); //653
-	float endY = makefloat(501.0)-makefloat(23.0); //493
+	float startX = makefloat(223.0); //189
+	float startY = makefloat(61.0); //50
+	float endX = makefloat(643.0); //653
+	float endY = makefloat(478.0); //493
 
-	float FAKE_MAP_TO_SEA_SCALE_X = makefloat(2000/stf(endX-startX)) * -1.0;
-	float FAKE_MAP_TO_SEA_SCALE_Y = makefloat(2000/stf(endY-startY)) * -1.0;
+	float FAKE_MAP_TO_SEA_SCALE_X = makefloat(2000/stf(endX-startX));
+	float FAKE_MAP_TO_SEA_SCALE_Y = makefloat(2000/stf(endY-startY));
 
-	float fakeMapPosX = makefloat(sti(stf(endX-startX)/2)+startX);
-	float fakeMapPosY = makefloat(sti(stf(endY-startY)/2)+startY);
+	float fakeMapPosX = makefloat(stf(stf(endX-startX)/2)+startX);
+	float fakeMapPosY = makefloat(stf(stf(endY-startY)/2)+startY);
 
 	fakeMap.X = fakeMapPosX;
 	fakeMap.Y = fakeMapPosY;
@@ -47,8 +47,8 @@ void ShowMap()
 	fakeMap.poz.X = makefloat(makefloat(worldMap.playerShipX)/FAKE_MAP_TO_SEA_SCALE_X);
 	fakeMap.poz.Y = makefloat(makefloat(worldMap.playerShipZ)/FAKE_MAP_TO_SEA_SCALE_Y);
 
-	int fakeShipPosX = makeint(makefloat(fakeMap.X) - makefloat(fakeMap.poz.X));
-	int fakeShipPosY = makeint(makefloat(fakeMap.Y) + makefloat(fakeMap.poz.Y))-15;
+	int fakeShipPosX = makeint(makefloat(fakeMap.X) + makefloat(fakeMap.poz.X));
+	int fakeShipPosY = makeint(makefloat(fakeMap.Y) - makefloat(fakeMap.poz.Y))-15;
 
 	ref shipRef = GetShipByType(GetCharacterShipType(chm));
 	aref arship; makearef(arship, chm.ship);
@@ -114,69 +114,72 @@ void ShowMap()
 		float pozY = makefloat(makefloat(worldMap.islands.(isIsland).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
 
 		// PB: Improved Island labels -->
-		int fakeX = makeint(makefloat(fakeMap.X) - pozX);
-		int fakeY = makeint(makefloat(fakeMap.Y) + pozY)-20;
-		switch(isIsland)
-		{
-			case "IslaMona":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-5,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Battle_Rocks":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-28,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "IslaMuelle":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY+2,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "SaintMartin":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-5,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "QuebradasCostillas":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-10,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Guadeloupe":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-20,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "FalaiseDeFleur":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Oxbay":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Conceicao":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Eleuthera":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY+10,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Cuba":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY+10,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Douwesen":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Curacao":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Aruba":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Colombia":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-30,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Antigua":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-10,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Redmond":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-5,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "Turks":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY+10,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			case "":
-				CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-5,SCRIPT_ALIGN_CENTER,0.5);
-			break;
-			CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
-		}
+		int fakeX = makeint(makefloat(fakeMap.X) + pozX);
+		int fakeY = makeint((makefloat(fakeMap.Y) - pozY)*0.89);
+		// switch(isIsland)
+		// {
+		// 	case "IslaMona":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Battle_Rocks":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "IslaMuelle":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "SaintMartin":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "QuebradasCostillas":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Guadeloupe":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "FalaiseDeFleur":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Oxbay":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Conceicao":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Eleuthera":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Cuba":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Douwesen":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Curacao":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Aruba":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Colombia":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Antigua":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Redmond":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "Turks":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+		// 	case "":
+		// 		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// 	break;
+			// CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+		// }
+
+		CreateString(true,isIsland,isName,"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY,SCRIPT_ALIGN_CENTER,0.5);
+
 		// PB: Improved Island labels <--
 		aref wIsland; makearef(wIsland, worldMap.islands.(isIsland).locations);
 		for(int c=0; c<GetAttributesNum(wIsland); c++)
@@ -185,16 +188,22 @@ void ShowMap()
 			if(CheckAttribute(wIsland,cityNum))
 			{
 				string colonyName = wIsland.(cityNum).name;
-				pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
-				pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
-				int fakeXr = makeint(makefloat(fakeMap.X) + pozX);
-				int fakeYr = makeint(makefloat(fakeMap.Y) - pozY)-15;
+				pozX = -makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
+				pozY = -makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
+				int fakeXr = makeint(makefloat(fakeMap.X) + pozX)+15;
+				int fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);
+
+				// pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
+				// pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
+				// fakeXr = makeint(makefloat(fakeMap.X) + pozX);
+				// fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);
+
 				if(CheckAttribute(wIsland,cityNum+".real"))
 				{
 					if(isIsland=="Hispaniola" && cityNum=="city3" && iRealismMode<2 && !OPEN_SEA_MOD) CreateString(true,wIsland.(cityNum).name,FindTownName(colonyName),"seadogs",COLOR_GREEN_LIGHT,fakeX,fakeY-20,SCRIPT_ALIGN_CENTER,0.5);
 					if(GetAttribute(chm, "quest.generate_convoy_quest.destination") == wIsland.(cityNum).real)
 					{
-						CreateImage("CONVOY", "ICONS", "ship speed icon", fakeXr-5, fakeYr+7, fakeXr+9, fakeYr+21);
+						CreateImage("CONVOY", "ICONS", "ship speed icon", fakeXr-picScale, fakeYr-picScale, fakeXr+picScale, fakeYr+picScale);
 						if(HasSubStr(chm.location,"tavern") || chm.location == "Antigua_mansion_study")
 						{
 							SetPictureBlind("CONVOY",true,minBlindColor,maxBlindColor);
@@ -207,7 +216,7 @@ void ShowMap()
 					if(HasSubStr(chm.location,"store"))										ShowTradeQuest = 2;
 					if(GetAttribute(chm, "quest.generate_trade_quest_progress.iTradeColony") == wIsland.(cityNum).real && ShowTradeQuest > 0)
 					{
-						CreateImage("CARGO", "ICONS", "ship capacity icon", fakeXr-5, fakeYr+7, fakeXr+9, fakeYr+21);
+						CreateImage("CARGO", "ICONS", "ship capacity icon", fakeXr-picScale, fakeYr-picScale, fakeXr+picScale, fakeYr+picScale);
 						if(ShowTradeQuest > 1)
 						{
 							SetPictureBlind("CARGO",true,minBlindColor,maxBlindColor);
@@ -219,7 +228,13 @@ void ShowMap()
 				// PB: Treasure Quests -->
 				if(GetAttribute(chm, "treasureloc") == wIsland.(cityNum).name)
 				{
-					CreateImage("MARK", "MARK", "mark", fakeXr-5, fakeYr+7, fakeXr+9, fakeYr+21);
+
+					pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
+					pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
+					fakeXr = makeint(makefloat(fakeMap.X) + pozX);
+					fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);					
+
+					CreateImage("MARK", "MARK", "mark", fakeXr-picScale, fakeYr-picScale, fakeXr+picScale, fakeYr+picScale);
 					if(CheckAttribute(chm, "treasuremap"))
 					{
 						SetPictureBlind("MARK",true,minBlindColor,maxBlindColor);
