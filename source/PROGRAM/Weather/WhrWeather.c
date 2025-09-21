@@ -779,7 +779,7 @@ void Whr_TimeUpdate()
 	// Run weather generator
 	if( nNewHour != nOldHour )
 	{
-	    if (isLagoon) {
+	    if (isLagoon && wRain < WRAINOVERCAST) {
             DeleteAttribute(oldWeather, "Sea.inlagoon");
             Weathers[iCurWeatherNum].Sea.inlagoon = 1;
 	    }
@@ -1693,7 +1693,7 @@ void Whr_addWaves2weather(ref tmpweather){
 	tmpweather.Sea.WaterReflection = Whr_GetFloat(aSea,"WaterReflection");
 	tmpweather.Sea.WaterAttenuation = Whr_GetFloat(aSea,"WaterAttenuation");
 
-	if (!CheckAttribute(aCurWeather, "Sea.inlagoon")) {
+	if (!CheckAttribute(aCurWeather, "Sea.inlagoon") || wRain > WRAINOVERCAST) {
         //trace("Whr_addWaves2weather no lagoon " + aCurWeather.id);
         tmpweather.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
         tmpweather.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
