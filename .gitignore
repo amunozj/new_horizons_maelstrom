@@ -42,6 +42,8 @@ options
 *.exe
 *.zip
 
+*.ini
+
 launch.json
 settings.json
 
