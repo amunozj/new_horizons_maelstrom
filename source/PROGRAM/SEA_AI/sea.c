@@ -564,6 +564,9 @@ void SeaLogin(ref Login)
 	Sea_FreeTaskList();
 	Encounter_DeleteDeadQuestMapEncounters();
 
+	int nextIsland;
+	bool islandswitch = getRTclosestIslandLocs(&nextIsland);
+
 // KK -->
 	if (!bDirectSail) {
 		// weather parameters
@@ -1991,7 +1994,7 @@ ref SeaLoad_GetPointer()
 
 float SetMaxSeaHeight(int islandIdx)
 {
-	if (!bSeaActive) return   7.0; // СЃРёС‚СѓС†РёСЏ РєРѕРіРґР° РЅРµС‚ РјРѕСЂСЏ, РЅРµС‚ РєРѕРѕСЂРґРёРЅР°С‚ pchar.Ship.Pos.x
+	if (!bSeaActive) return   7.0; // ситуция когда нет моря, нет координат pchar.Ship.Pos.x
 	if (bStorm) return 200.0;
 	string sIslandID = Islands[islandIdx].id;
 
@@ -2000,8 +2003,8 @@ float SetMaxSeaHeight(int islandIdx)
 	
 	if (CheckAttribute(Islands[islandIdx], "MaxSeaHeight")) return stf(Islands[islandIdx].MaxSeaHeight);
 
-	// РїРѕРёСЃРє РјРёРЅ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РґРѕ РіРѕСЂРѕРґРѕРІ РїРѕ С„РѕСЂС‚Р°Рј -->
-    //fMaxViewDist = 2000; // РїРѕСЃР»СѓР¶РёС‚ РІСЂРµРјРµРЅРЅРѕ РґРёСЃС‚Р°РЅС†РёРµР№
+	// поиск мин расстояния до городов по фортам -->
+    //fMaxViewDist = 2000; // послужит временно дистанцией
 	
 	aref arReloadLoc, arLocator;	
 	makearef(arReloadLoc, Islands[islandIdx].reload);
@@ -2013,43 +2016,43 @@ float SetMaxSeaHeight(int islandIdx)
 		arLocator = GetAttributeN(arReloadLoc, i);
 		sLabel = arLocator.label;
 
-		//СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґРѕ Р±СѓС…С‚ Рё РјР°СЏРєРѕРІ
+		//расстояние до бухт и маяков
 		if (findsubstr(sLabel, "Shore" , 0) != -1 || findsubstr(sLabel, "Mayak" , 0) != -1)
 		{
-			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix РєСЂРёРІС‹С… Р»РѕРєР°С‚РѕСЂРѕРІ Сѓ РѕСЃС‚СЂРѕРІР°, РїСЂР°РІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РјРѕРґРµР»Рё to_do
+			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix кривых локаторов у острова, правка должна быть в модели to_do
 			{
 				if (GetDistance2D(stf(pchar.Ship.Pos.x), stf(pchar.Ship.Pos.z), stf(arLocator.x), stf(arLocator.z)) < 1500)
 					return 7.0;
 			}
 			else
 			{
-				trace("Error: РїСЂРѕР±Р»РµРјР° РѕРїСЂРµРґРµР»РµРЅРёСЏ SetMaxSeaHeight РґР»СЏ " + sLabel);
+				trace("Error: проблема определения SetMaxSeaHeight для " + sLabel);
 			}
 		}
-		//СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґРѕ С„РѕСЂС‚Р°
+		//расстояние до форта
 		if (findsubstr(sLabel, "Fort" , 0) != -1)  
 		{
-			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix РєСЂРёРІС‹С… Р»РѕРєР°С‚РѕСЂРѕРІ Сѓ РѕСЃС‚СЂРѕРІР°, РїСЂР°РІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РјРѕРґРµР»Рё to_do
+			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix кривых локаторов у острова, правка должна быть в модели to_do
 			{
 				if (GetDistance2D(stf(pchar.Ship.Pos.x), stf(pchar.Ship.Pos.z), stf(arLocator.x), stf(arLocator.z)) < 1700)
 					return 8.0;
 			}
 			else
 			{
-				trace("Error: РїСЂРѕР±Р»РµРјР° РѕРїСЂРµРґРµР»РµРЅРёСЏ SetMaxSeaHeight РґР»СЏ " + sLabel);
+				trace("Error: проблема определения SetMaxSeaHeight для " + sLabel);
 			}				
 		}
-		//СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґРѕ РїРѕСЂС‚Р°
+		//расстояние до порта
 		if (findsubstr(sLabel, "Port" , 0) != -1)
 		{
-			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix РєСЂРёРІС‹С… Р»РѕРєР°С‚РѕСЂРѕРІ Сѓ РѕСЃС‚СЂРѕРІР°, РїСЂР°РІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РјРѕРґРµР»Рё to_do
+			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix кривых локаторов у острова, правка должна быть в модели to_do
 			{
 				if (GetDistance2D(stf(pchar.Ship.Pos.x), stf(pchar.Ship.Pos.z), stf(arLocator.x), stf(arLocator.z)) < 2000)
 					return 7.0;
 			}
 			else
 			{
-				trace("Error: РїСЂРѕР±Р»РµРјР° РѕРїСЂРµРґРµР»РµРЅРёСЏ SetMaxSeaHeight РґР»СЏ " + sLabel);
+				trace("Error: проблема определения SetMaxSeaHeight для " + sLabel);
 			}
 		}
 	}

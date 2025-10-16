@@ -48,7 +48,7 @@ void ShowMap()
 	fakeMap.poz.Y = makefloat(makefloat(worldMap.playerShipZ)/FAKE_MAP_TO_SEA_SCALE_Y);
 
 	int fakeShipPosX = makeint(makefloat(fakeMap.X) + makefloat(fakeMap.poz.X));
-	int fakeShipPosY = makeint(makefloat(fakeMap.Y) - makefloat(fakeMap.poz.Y))-15;
+	int fakeShipPosY = makeint((makefloat(fakeMap.Y) - makefloat(fakeMap.poz.Y))*0.89);
 
 	ref shipRef = GetShipByType(GetCharacterShipType(chm));
 	aref arship; makearef(arship, chm.ship);
@@ -188,9 +188,9 @@ void ShowMap()
 			if(CheckAttribute(wIsland,cityNum))
 			{
 				string colonyName = wIsland.(cityNum).name;
-				pozX = -makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
-				pozY = -makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
-				int fakeXr = makeint(makefloat(fakeMap.X) + pozX)+15;
+				pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
+				pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
+				int fakeXr = makeint(makefloat(fakeMap.X) + pozX);
 				int fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);
 
 				// pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
@@ -229,10 +229,10 @@ void ShowMap()
 				if(GetAttribute(chm, "treasureloc") == wIsland.(cityNum).name)
 				{
 
-					pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
-					pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
-					fakeXr = makeint(makefloat(fakeMap.X) + pozX);
-					fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);					
+					// pozX = makefloat(makefloat(wIsland.(cityNum).position.x)/FAKE_MAP_TO_SEA_SCALE_X);
+					// pozY = makefloat(makefloat(wIsland.(cityNum).position.z)/FAKE_MAP_TO_SEA_SCALE_Y);
+					// fakeXr = makeint(makefloat(fakeMap.X) + pozX);
+					// fakeYr = makeint((makefloat(fakeMap.Y) - pozY)*0.89);					
 
 					CreateImage("MARK", "MARK", "mark", fakeXr-picScale, fakeYr-picScale, fakeXr+picScale, fakeYr+picScale);
 					if(CheckAttribute(chm, "treasuremap"))

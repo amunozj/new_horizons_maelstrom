@@ -5153,7 +5153,7 @@ void InitOpenSeaMod()
 		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	100.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3500;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =								50.0;		// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_SCALE =								30.0;		// orig 19.607843 for this and next line
 		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =					90.0;		// was 60 in build, 10.0 in stock. NK 05-04-30
 	}
 	else
@@ -5181,7 +5181,7 @@ void InitOpenSeaMod()
 		MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION =	800.0;	// FLOAT - original value is 500
 		RANGE_TO_ENEMY =									3000;	// INT - in feet/yards/whatever unit the game uses.
 
-		WDM_MAP_TO_SEA_SCALE =								50;	// orig 19.607843 for this and next line
+		WDM_MAP_TO_SEA_SCALE =								30;	// orig 19.607843 for this and next line
 		WDM_MAP_TO_SEA_ENCOUNTERS_SCALE =					45.0;		// was 60 in build, 10.0 in stock. NK 05-04-30 Changed to 19.607843, which puts player too close to enemy.  Changed to 45 by GR 30/1/22
 	}
 }

@@ -41,8 +41,8 @@
 #include "models\initModels.c" //scheffnow
 #include "Characters\init\monks.c" // scheffnow
 #include "CCCFunctions.c" // ccc
-#include "CCCdirectsail.c" // ccc Jan07, directsail code
-// #include "directsail_GOF.c" // ccc Jan07, directsail code
+// #include "CCCdirectsail.c" // ccc Jan07, directsail code
+#include "directsail_GOF.c" // ccc Jan07, directsail code
 #include "elrapido.c" // El Rapido
 #include "MAXIMUS_Functions.c" // MAXIMUS
 #include "KB_routines.c"  // KBlack - to accomodate functions from other mods - initially for tuning ships mod
