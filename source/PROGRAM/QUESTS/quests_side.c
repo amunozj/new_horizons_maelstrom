@@ -2288,7 +2288,7 @@ void SideQuestComplete(string sQuestName)
 			LAi_ActorDialog(sld, PChar, "", 2.0, 0);
 			AddXP(pchar, SKILL_SAILING, 500, XP_GROUP_OFFIC);
 		break;
-//pär
+//pï¿½r
 		case "Returned in Greenford for Apothecary":
 			//RestoreCharacterShip(pchar);//PW moved to reduce food use and possible deaths and mutiny and in loop
 			for (i = 0; i < COMPANION_MAX; i++) {//PW now loop for whole pchar fleet
@@ -2396,7 +2396,7 @@ void SideQuestComplete(string sQuestName)
 			LAi_QuestDelay("Finish Beggar Find",0);
 			LAi_QuestDelay("Cartagena_hotel_plants_start",0);
 		break;
-//pär
+//pï¿½r
 		case "Got Hotel Flyer":
 			AddQuestRecord("plants",39);
 			LAi_QuestDelay("Finish Beggar Find",0);
@@ -2889,7 +2889,7 @@ void SideQuestComplete(string sQuestName)
 			
            		
 		break;
-//pär
+//pï¿½r
 
 ///////////////////////////////////////////////////////////////
 ///// Smugglers: Thomas O Reily is annoying
@@ -3551,7 +3551,7 @@ void SideQuestComplete(string sQuestName)
 		case "mendes_away_forewer":
 			LAi_SetActorType(characterFromID("Vigila Mendes"));
 			LAi_ActorGoToLocation(characterFromID("Vigila Mendes"), "reload", "locator2", "none", "", "", "", 3.0);
-			//ZAID MURRO - çàêðûâàåì âîçìîæíîñòü ïðîõîäèòü ýòîò êâåñò
+			//ZAID MURRO - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 			//ChangeCharacterAddress(characterFromID("Zaid Murro"), "none", ""); //NK disable this (dunno why it's here but it breaks Zaid)
 		break;
 
@@ -8450,7 +8450,8 @@ void SideQuestComplete(string sQuestName)
 				PChar.quest.Lucas = "sign"; // GR: Billy Brock is in "Guardian" mode so you can talk to him. This attribute means he'll talk about ransom
 				break;
 			}
-			StartQuestMovie(true, false, false);TrackQuestMovie("start","Lucas_ransom_delivery");
+			StartQuestMovie(true, false, false);
+			TrackQuestMovie("start","Lucas_ransom_delivery");
 			bDisableFastReload = 1;
 
 			LAi_SetActorType(CharacterFromID("Billy Brock"));
@@ -8461,7 +8462,7 @@ void SideQuestComplete(string sQuestName)
 
 			LAi_SetActorType(PChar);
 			pchar.dialog.currentnode = "Lucas"; // CTM
-			LAi_ActorSelfDialog(PChar, "");
+			LAi_ActorSelfDialog(PChar, ""); //
 		break;
 
 		case "Lucas_ransom_delivery1":
@@ -9732,25 +9733,28 @@ void SideQuestComplete(string sQuestName)
 		break;
 
 		case "Nigel_Adventure":
-			if (!LAi_IsDead(characterFromID("Nigel Blythe"))) // Levis: 16-10-13 Oxbay capture removed as requirement
+			if (!LAi_IsDead(characterFromID("Nigel Blythe")))
 			{
-				if(FindFellowTravellers(PChar, CharacterFromID("Nigel Blythe")) == FELLOWTRAVEL_PASSENGER || FindFellowTravellers(PChar, CharacterFromID("Nigel Blythe")) == FELLOWTRAVEL_OFFICER)
+				if (FindFellowTravellers(PChar, CharacterFromID("Nigel Blythe")) == FELLOWTRAVEL_PASSENGER
+				 || FindFellowTravellers(PChar, CharacterFromID("Nigel Blythe")) == FELLOWTRAVEL_OFFICER)
 				{
 					AddQuestRecord("nigel", 4);
 					Pchar.quest.Nigel_Blythe1.win_condition.l1 = "location";
-					Pchar.quest.Nigel_Blythe1.win_condition.l1.location = "Redmond_tavern";	//Petros ... was Oxbay_Tavern
+					Pchar.quest.Nigel_Blythe1.win_condition.l1.location = "Redmond_tavern";
 					Pchar.quest.Nigel_Blythe1.win_condition = "Blythe_Setup";
 					pchar.quest.Nigel_lost = "1";
 
-					LAi_SetActorType(Pchar);
-					Pchar.Temp.self.dialog = Pchar.dialog.currentnode;
-					Pchar.dialog.currentnode = "nigel_lost";
-					LAi_ActorSelfDialog(Pchar, "player_back");
+					// Remove Nigel from crew
 					RemoveOfficersIndex(pchar, GetCharacterIndex("Nigel Blythe"));
 					RemovePassenger(pchar, characterFromID("Nigel Blythe"));
-					LAi_SetActorType(CharacterFromID("Nigel Blythe"));
+
+					// Place Nigel in the tavern
+					ChangeCharacterAddressGroup(CharacterFromID("Nigel Blythe"), "Redmond_tavern", "sit", "sit8");
 					LAi_SetSitType(CharacterFromID("Nigel Blythe"));
-					ChangeCharacterAddressGroup(CharacterFromID("Nigel Blythe"), "Redmond_tavern", "sit", "sit8");	// Petros ... was Oxbay_Tavern
+
+					// Start dialog with Nigel
+					LAi_SetActorType(CharacterFromID("Nigel Blythe"));
+					LAi_ActorDialog(CharacterFromID("Nigel Blythe"), PChar, "", 0.0, 0);
 				}
 			}
 		break;
@@ -10331,9 +10335,9 @@ void SideQuestComplete(string sQuestName)
 			{
 				case "SPANISH": temp = TranslateString("","Crewmember of") + " " + GetMyName(PChar); break;
 				case "RUSSIAN":
-					if(strright(GetMyName(PChar),1) == "ü") temp = strleft(GetMyName(PChar), strlen(GetMyName(PChar))-1);
+					if(strright(GetMyName(PChar),1) == "ï¿½") temp = strleft(GetMyName(PChar), strlen(GetMyName(PChar))-1);
 					else temp = GetMyName(PChar);
-					temp = TranslateString("","Crewmember of") + " " + temp + "à";
+					temp = TranslateString("","Crewmember of") + " " + temp + "ï¿½";
 				break;
 				temp = GetMyName(PChar) + TranslateString("","'s crewmember");
 			}
@@ -11787,7 +11791,7 @@ void SideQuestComplete(string sQuestName)
 ///////////////////////////////////////////////////////////////////////
 // The Kapitein of Kralendijk
 // By Grey Roger
-// Based very loosely on the real life story of the Captain of Köpenick
+// Based very loosely on the real life story of the Captain of Kï¿½penick
 ///////////////////////////////////////////////////////////////////////
 		case "Kapitein_follow_proposer_upstairs":
 			ChangeCharacterAddressGroup(characterFromID("Willem Voigt"), "Philipsburg_tavern", "tables", "table5");
@@ -12154,7 +12158,7 @@ void SideQuestComplete(string sQuestName)
 
 		case "kapitein_get_money2":
 			PlayStereoSound("INTERFACE\took_item.wav");
-			AddMoneyToCharacter(pchar, 35574);		// About 10 times the number of Marks that the real Captain of Köpenick got.
+			AddMoneyToCharacter(pchar, 35574);		// About 10 times the number of Marks that the real Captain of Kï¿½penick got.
 			PChar.quest.kapitein = "got_money";
 			LAi_SetActorType(characterFromID("Dou_soldier_1"));
 			Characters[GetCharacterIndex("Dou_soldier_1")].dialog.CurrentNode = "keep_them_here";
