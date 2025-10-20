@@ -27,6 +27,7 @@ int curTime, minwind, maxwind;
 int wRain = 0;
 int winds = 0;
 int fog = 0;
+int lastReloadHour = -1;
 int rWind, rRain, rFog;
 float fWindA = 0.0;
 float rWindA = 0.0;
@@ -766,6 +767,9 @@ void Whr_TimeUpdate()
 	Environment.date.sec = nNewSec;
 	worldMap.date.hour = nNewHour;
 	worldMap.date.min  = nNewMin;
+
+	iCurWeatherNum = FindWeatherByHour(MakeInt(GetHour()));
+	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
 	if( nNewHour < nOldHour )
 	{
 		AddDataToCurrent(0,0,1,true);
@@ -819,6 +823,33 @@ void Whr_TimeUpdate()
         // update weather: sun lighting
         FillWeatherData(iCurWeatherNum, iBlendWeatherNum, false);
 	}
+
+	if (nNewHour == 7 || nNewHour == 22)
+	{
+		if (nNewHour != lastReloadHour && bSeaActive && DirectsailCheck(false))
+		{
+			trace("Forcing sea reload at hour " + nNewHour);
+
+			// Determine which picture to use
+			string reloadPicture;
+			if (nNewHour == 7) {
+				reloadPicture = "Morning.tga";
+			} else { // nNewHour == 21
+				reloadPicture = "Night.tga";
+			}
+
+			// fade in/out like storm reloads
+			CreateEntity(&SeaFader, "fader");
+			SendMessage(&SeaFader, "ls", FADER_PICTURE, FindReloadPicture(reloadPicture));
+			SendMessage(&SeaFader, "lfl", FADER_IN, 0.5, true);
+
+			// do the safe reload that preserves ship pos
+			Sea_ReloadStartDirect();
+
+			lastReloadHour = nNewHour;
+		}
+	}
+	
 	Weather.isDone = "";
 
 	//navy --> Rain
@@ -1431,10 +1462,10 @@ void SetTradeWinds()
     {
         ref pchar = GetMainCharacter();
 
-        // --- Base angle: East (-90Â°), allow variation Â±30Â° (i.e. NE to SE)
+        // --- Base angle: East (-90°), allow variation ±30° (i.e. NE to SE)
         float baseAngle = Degree2Radian(-90.0);
-        float variance = Degree2Radian(30.0); // Â±30Â°
-        float angleDelta = (frand(variance * 2.0)) - variance; // from -30Â° to +30Â°
+        float variance = Degree2Radian(30.0); // ±30°
+        float angleDelta = (frand(variance * 2.0)) - variance; // from -30° to +30°
 
         float fixedAngle = baseAngle + angleDelta;
         if (fixedAngle < 0.0) fixedAngle += PIm2;
@@ -1458,9 +1489,9 @@ void Whr_WindChange()
 {
     aref aCurWeather = GetCurrentWeather();
 
-    // --- WIND ANGLE: Constrain new angle within Â±45Â° of the previous angle ---
+    // --- WIND ANGLE: Constrain new angle within ±45° of the previous angle ---
     float oldAngle = fWeatherAngle; // the last known angle (in radians)
-    float delta = (frand(PI / 2.0)) - (PI / 4.0); // random delta between -45Â° and +45Â°
+    float delta = (frand(PI / 2.0)) - (PI / 4.0); // random delta between -45° and +45°
     float newAngle = oldAngle + delta;
 
     // Wrap the angle between 0 and 2*PI

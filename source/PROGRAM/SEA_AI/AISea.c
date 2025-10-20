@@ -80,7 +80,7 @@ void SeaAI_SailToEndFade()
 			aref rIslLoc = FindIslandReloadLocator(rCharacter.Location, sSailToString);
 			// Screwface : Lagoon mod : Check if the locator is in a lagoon or not to update the color
 			aref aCurWeather = GetCurrentWeather();
-			if(wRain < WRAINOVERCAST && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //aCurWeather.id == "Blue Sky" && wRain < 75)
+			if(CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1 && wRain < WRAINOVERCAST) //aCurWeather.id == "Blue Sky" && wRain < 75)
             {
                 aref arLocator, arReload;
                 ref rIsland = GetIslandByIndex(FindIsland(rCharacter.location));
@@ -92,7 +92,7 @@ void SeaAI_SailToEndFade()
                     if (arLocator.Name == rIslLoc.name)
                     {
                         string sType = Locations[FindLocation(arLocator.go)].type;
-                        if(sType == "seashore" || sType == "port")
+                        if(sType == "seashore" || sType == "port" && wRain < WRAINOVERCAST)
                         {
                             //if(wRain < 75 && CheckAttribute(aCurWeather, "doLagoon") && sti(aCurWeather.doLagoon) == 1) //aCurWeather.id == "Blue Sky" && wRain < 75)
                             //{

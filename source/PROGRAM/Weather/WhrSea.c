@@ -189,7 +189,7 @@ void WhrCreateSeaEnvironment()
 	//}
 
 	// Advanced Sea initialize
-	if (!CheckAttribute(aCurWeather, "Sea.inlagoon")) {
+	if (!CheckAttribute(aCurWeather, "Sea.inlagoon") || wRain > WRAINOVERCAST) {
         //trace("WhrCreateSeaEnvironment no lagoon " + aCurWeather.id);
         Sea.Sea2.WaterColor = Whr_GetColor(aSea3, "WaterColor");
         Sea.Sea2.SkyColor = Whr_GetColor(aSea3, "SkyColor");
